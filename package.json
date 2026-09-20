@@ -14,7 +14,11 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "verify": "npm run lint && npm run typecheck && npm run test && npm run build",
-    "test:e2e:run": "playwright test"
+    "test:e2e:run": "playwright test",
+    "test:e2e:a11y": "playwright test tests/e2e/accessibility.spec.ts",
+    "test:e2e:routes": "playwright test tests/e2e/route-audit.spec.ts",
+    "test:e2e:security": "playwright test tests/e2e/security.spec.ts",
+    "quality:release": "npm run verify && npm run test:e2e:run"
   },
   "engines": {
     "node": ">=20"
@@ -26,6 +30,7 @@
     "react-dom": "latest"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@playwright/test": "latest",
     "@types/node": "latest",
     "@types/react": "latest",

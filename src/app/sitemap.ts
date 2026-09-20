@@ -35,7 +35,8 @@ const staticRoutes = [
   "/careers",
   "/contact",
   "/privacy",
-  "/legal"
+  "/legal",
+  "/security"
 ];
 
 export default function sitemap():

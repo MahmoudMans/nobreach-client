@@ -82,6 +82,7 @@ export function SiteFooter() {
           <div className={styles.bottomRight}>
             <Link href="/privacy">Privacy</Link>
             <Link href="/legal">Legal</Link>
+            <Link href="/security">Security</Link>
           </div>
         </div>
       </Container>
