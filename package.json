@@ -10,10 +10,11 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test",
+    "test:e2e": "npm run build && npm run test:e2e:run",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "verify": "npm run lint && npm run typecheck && npm run test && npm run build"
+    "verify": "npm run lint && npm run typecheck && npm run test && npm run build",
+    "test:e2e:run": "playwright test"
   },
   "engines": {
     "node": ">=20"

@@ -2,7 +2,13 @@
 
 import { useRef } from "react";
 import Link from "next/link";
-import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
+import {
+  ArrowUpRight,
+  ChevronDown,
+  Menu,
+  X
+} from "lucide-react";
 import { BrandMark } from "@/components/brand/brand-mark";
 import { Container } from "@/components/layout/container";
 import { siteConfig } from "@/content/site";
@@ -59,8 +65,41 @@ const serviceLinks = [
   }
 ];
 
+function routeMatches(
+  pathname: string,
+  href: string
+) {
+  if (href === "/") {
+    return pathname === "/";
+  }
+
+  if (
+    href === "/company" ||
+    href === "/services"
+  ) {
+    return pathname === href;
+  }
+
+  return (
+    pathname === href ||
+    pathname.startsWith(`${href}/`)
+  );
+}
+
 export function SiteHeader() {
-  const dialogRef = useRef<HTMLDialogElement>(null);
+  const dialogRef =
+    useRef<HTMLDialogElement>(null);
+
+  const pathname = usePathname();
+
+  const companyActive =
+    pathname === "/company" ||
+    pathname.startsWith("/company/") ||
+    pathname.startsWith("/careers");
+
+  const servicesActive =
+    pathname === "/services" ||
+    pathname.startsWith("/services/");
 
   function openMenu() {
     dialogRef.current?.showModal();
@@ -70,60 +109,248 @@ export function SiteHeader() {
     dialogRef.current?.close();
   }
 
+  function linkClass(
+    href: string
+  ) {
+    return [
+      styles.navLink,
+      routeMatches(pathname, href)
+        ? styles.navLinkActive
+        : ""
+    ]
+      .filter(Boolean)
+      .join(" ");
+  }
+
+  function mobileLinkClass(
+    href: string
+  ) {
+    return routeMatches(pathname, href)
+      ? styles.mobileLinkActive
+      : undefined;
+  }
+
   return (
     <header className={styles.header}>
-      <Container className={styles.inner} size="wide">
+      <Container
+        className={styles.inner}
+        size="wide"
+      >
         <BrandMark />
 
-        <nav className={styles.desktopNav} aria-label="Primary navigation">
-          <details className={styles.navDetails}>
-            <summary className={styles.navSummary}>
+        <nav
+          className={styles.desktopNav}
+          aria-label="Primary navigation"
+        >
+          <details
+            className={styles.navDetails}
+          >
+            <summary
+              className={[
+                styles.navSummary,
+                companyActive
+                  ? styles.navSummaryActive
+                  : ""
+              ]
+                .filter(Boolean)
+                .join(" ")}
+            >
               Company
-              <ChevronDown size={14} strokeWidth={1.8} aria-hidden="true" />
+              <ChevronDown
+                size={14}
+                strokeWidth={1.8}
+                aria-hidden="true"
+              />
             </summary>
+
             <div className={styles.dropdown}>
-              {companyLinks.map((item) => (
-                <Link href={item.href} key={item.href}>
-                  <strong>{item.label}</strong>
-                  <span>{item.description}</span>
-                </Link>
-              ))}
+              {companyLinks.map(
+                (item) => (
+                  <Link
+                    href={item.href}
+                    key={item.href}
+                    className={
+                      routeMatches(
+                        pathname,
+                        item.href
+                      )
+                        ? styles.dropdownActive
+                        : undefined
+                    }
+                    aria-current={
+                      routeMatches(
+                        pathname,
+                        item.href
+                      )
+                        ? "page"
+                        : undefined
+                    }
+                  >
+                    <strong>
+                      {item.label}
+                    </strong>
+                    <span>
+                      {item.description}
+                    </span>
+                  </Link>
+                )
+              )}
             </div>
           </details>
 
-          <details className={styles.navDetails}>
-            <summary className={styles.navSummary}>
+          <details
+            className={styles.navDetails}
+          >
+            <summary
+              className={[
+                styles.navSummary,
+                servicesActive
+                  ? styles.navSummaryActive
+                  : ""
+              ]
+                .filter(Boolean)
+                .join(" ")}
+            >
               Services
-              <ChevronDown size={14} strokeWidth={1.8} aria-hidden="true" />
+              <ChevronDown
+                size={14}
+                strokeWidth={1.8}
+                aria-hidden="true"
+              />
             </summary>
+
             <div className={styles.dropdown}>
-              {serviceLinks.map((item) => (
-                <Link href={item.href} key={item.href}>
-                  <strong>{item.label}</strong>
-                  <span>{item.description}</span>
-                </Link>
-              ))}
+              {serviceLinks.map(
+                (item) => (
+                  <Link
+                    href={item.href}
+                    key={item.href}
+                    className={
+                      routeMatches(
+                        pathname,
+                        item.href
+                      )
+                        ? styles.dropdownActive
+                        : undefined
+                    }
+                    aria-current={
+                      routeMatches(
+                        pathname,
+                        item.href
+                      )
+                        ? "page"
+                        : undefined
+                    }
+                  >
+                    <strong>
+                      {item.label}
+                    </strong>
+                    <span>
+                      {item.description}
+                    </span>
+                  </Link>
+                )
+              )}
             </div>
           </details>
 
-          <Link className={styles.navLink} href="/training">
+          <Link
+            className={linkClass(
+              "/training"
+            )}
+            href="/training"
+            aria-current={
+              routeMatches(
+                pathname,
+                "/training"
+              )
+                ? "page"
+                : undefined
+            }
+          >
             Training
           </Link>
-          <Link className={styles.navLink} href="/cr4ckout">
+
+          <Link
+            className={linkClass(
+              "/cr4ckout"
+            )}
+            href="/cr4ckout"
+            aria-current={
+              routeMatches(
+                pathname,
+                "/cr4ckout"
+              )
+                ? "page"
+                : undefined
+            }
+          >
             CR4CKOUT
           </Link>
-          <Link className={styles.navLink} href="/activities">
+
+          <Link
+            className={linkClass(
+              "/activities"
+            )}
+            href="/activities"
+            aria-current={
+              routeMatches(
+                pathname,
+                "/activities"
+              )
+                ? "page"
+                : undefined
+            }
+          >
             Activities
           </Link>
-          <Link className={styles.navLink} href="/insights">
+
+          <Link
+            className={linkClass(
+              "/insights"
+            )}
+            href="/insights"
+            aria-current={
+              routeMatches(
+                pathname,
+                "/insights"
+              )
+                ? "page"
+                : undefined
+            }
+          >
             Insights
           </Link>
         </nav>
 
         <div className={styles.actions}>
-          <Link className={styles.contact} href="/contact">
+          <Link
+            className={[
+              styles.contact,
+              routeMatches(
+                pathname,
+                "/contact"
+              )
+                ? styles.contactActive
+                : ""
+            ]
+              .filter(Boolean)
+              .join(" ")}
+            href="/contact"
+            aria-current={
+              routeMatches(
+                pathname,
+                "/contact"
+              )
+                ? "page"
+                : undefined
+            }
+          >
             Contact
-            <ArrowUpRight size={15} aria-hidden="true" />
+            <ArrowUpRight
+              size={15}
+              aria-hidden="true"
+            />
           </Link>
 
           <button
@@ -132,75 +359,150 @@ export function SiteHeader() {
             aria-label="Open navigation"
             onClick={openMenu}
           >
-            <Menu size={20} aria-hidden="true" />
+            <Menu
+              size={20}
+              aria-hidden="true"
+            />
           </button>
         </div>
       </Container>
 
-      <dialog className={styles.dialog} ref={dialogRef}>
+      <dialog
+        className={styles.dialog}
+        ref={dialogRef}
+        onCancel={closeMenu}
+      >
         <div className={styles.mobileShell}>
-          <Container className={styles.mobileTop} size="wide">
+          <Container
+            className={styles.mobileTop}
+            size="wide"
+          >
             <BrandMark />
+
             <button
               className={styles.closeButton}
               type="button"
               aria-label="Close navigation"
               onClick={closeMenu}
             >
-              <X size={20} aria-hidden="true" />
+              <X
+                size={20}
+                aria-hidden="true"
+              />
             </button>
           </Container>
 
-          <Container className={styles.mobileNav}>
-            <div className={styles.mobileSection}>
-              <p className={styles.mobileSectionTitle}>Company</p>
-              <div className={styles.mobileLinks}>
-                {companyLinks.map((item) => (
-                  <Link href={item.href} key={item.href} onClick={closeMenu}>
-                    {item.label}
-                  </Link>
-                ))}
+          <Container
+            className={styles.mobileNav}
+          >
+            <div
+              className={styles.mobileSection}
+            >
+              <p
+                className={
+                  styles.mobileSectionTitle
+                }
+              >
+                Company
+              </p>
+
+              <div
+                className={styles.mobileLinks}
+              >
+                {companyLinks.map(
+                  (item) => (
+                    <Link
+                      href={item.href}
+                      key={item.href}
+                      className={mobileLinkClass(
+                        item.href
+                      )}
+                      onClick={closeMenu}
+                    >
+                      {item.label}
+                    </Link>
+                  )
+                )}
               </div>
             </div>
 
-            <div className={styles.mobileSection}>
-              <p className={styles.mobileSectionTitle}>Security</p>
-              <div className={styles.mobileLinks}>
-                {serviceLinks.map((item) => (
-                  <Link href={item.href} key={item.href} onClick={closeMenu}>
-                    {item.label}
-                  </Link>
-                ))}
+            <div
+              className={styles.mobileSection}
+            >
+              <p
+                className={
+                  styles.mobileSectionTitle
+                }
+              >
+                Security
+              </p>
+
+              <div
+                className={styles.mobileLinks}
+              >
+                {serviceLinks.map(
+                  (item) => (
+                    <Link
+                      href={item.href}
+                      key={item.href}
+                      className={mobileLinkClass(
+                        item.href
+                      )}
+                      onClick={closeMenu}
+                    >
+                      {item.label}
+                    </Link>
+                  )
+                )}
               </div>
             </div>
 
-            <div className={styles.mobileSection}>
-              <p className={styles.mobileSectionTitle}>Ecosystem</p>
-              <div className={styles.mobileLinks}>
-                <Link href="/training" onClick={closeMenu}>
-                  Training Hub
-                </Link>
-                <Link href="/cr4ckout" onClick={closeMenu}>
-                  CR4CKOUT
-                </Link>
-                <Link href="/activities" onClick={closeMenu}>
-                  Activities
-                </Link>
-                <Link href="/events" onClick={closeMenu}>
-                  Events
-                </Link>
-                <Link href="/insights" onClick={closeMenu}>
-                  Insights
-                </Link>
-                <Link href="/contact" onClick={closeMenu}>
-                  Contact
-                </Link>
+            <div
+              className={styles.mobileSection}
+            >
+              <p
+                className={
+                  styles.mobileSectionTitle
+                }
+              >
+                Ecosystem
+              </p>
+
+              <div
+                className={styles.mobileLinks}
+              >
+                {[
+                  ["/training", "Training Hub"],
+                  ["/cr4ckout", "CR4CKOUT"],
+                  ["/activities", "Activities"],
+                  ["/events", "Events"],
+                  ["/insights", "Insights"],
+                  ["/contact", "Contact"]
+                ].map(([href, label]) => (
+                  <Link
+                    href={href}
+                    key={href}
+                    className={mobileLinkClass(
+                      href
+                    )}
+                    onClick={closeMenu}
+                  >
+                    {label}
+                  </Link>
+                ))}
               </div>
             </div>
 
             <div className={styles.mobileMeta}>
-              <span>{siteConfig.location}</span>
-              <a href={siteConfig.linkedin} target="_blank" rel="noreferrer">
+              <span>
+                {siteConfig.location}
+              </span>
+
+              <a
+                href={siteConfig.linkedin}
+                target="_blank"
+                rel="noreferrer"
+              >
                 LinkedIn ↗
               </a>
             </div>

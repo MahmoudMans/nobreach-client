@@ -1,5 +1,11 @@
-import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type {
+  Metadata,
+  Viewport
+} from "next";
+import {
+  Geist,
+  Geist_Mono
+} from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { siteConfig } from "@/content/site";
@@ -18,20 +24,27 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
+  metadataBase: new URL(
+    siteConfig.url
+  ),
   title: {
-    default: "No Breach | Offensive Security & Cybersecurity Training",
+    default:
+      "No Breach | Offensive Security & Cybersecurity Training",
     template: "%s | No Breach"
   },
-  description: siteConfig.description,
-  applicationName: siteConfig.name,
+  description:
+    siteConfig.description,
+  applicationName:
+    siteConfig.name,
   authors: [
     {
       name: siteConfig.name
     }
   ],
-  creator: siteConfig.name,
-  publisher: siteConfig.name,
+  creator:
+    siteConfig.name,
+  publisher:
+    siteConfig.name,
   robots: {
     index: true,
     follow: true
@@ -50,9 +63,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable}`}
+      >
+        <a
+          className="skipLink"
+          href="#main-content"
+        >
+          Skip to main content
+        </a>
+
         <SiteHeader />
-        <main>{children}</main>
+
+        <main id="main-content">
+          {children}
+        </main>
+
         <SiteFooter />
       </body>
     </html>

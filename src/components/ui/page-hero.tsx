@@ -20,19 +20,42 @@ export function PageHero({
   return (
     <section className={styles.hero}>
       <Container>
-        <p className={styles.eyebrow}>{eyebrow}</p>
-        <h1 className={styles.title}>{title}</h1>
-        <p className={styles.description}>{description}</p>
+        <div className={styles.content}>
+          <p className={styles.eyebrow}>
+            {eyebrow}
+          </p>
 
-        {meta && meta.length > 0 ? (
-          <div className={styles.meta}>
-            {meta.map((item) => (
-              <span key={item}>{item}</span>
-            ))}
-          </div>
-        ) : null}
+          <h1 className={styles.title}>
+            {title}
+          </h1>
 
-        {actions ? <div className={styles.actions}>{actions}</div> : null}
+          <p className={styles.description}>
+            {description}
+          </p>
+
+          {meta && meta.length > 0 ? (
+            <div className={styles.meta}>
+              {meta.map((item) => (
+                <span key={item}>
+                  {item}
+                </span>
+              ))}
+            </div>
+          ) : null}
+
+          {actions ? (
+            <div className={styles.actions}>
+              {actions}
+            </div>
+          ) : null}
+
+          <p
+            className={styles.coordinate}
+            aria-hidden="true"
+          >
+            NB / PUBLIC INTERFACE / 2026
+          </p>
+        </div>
       </Container>
     </section>
   );

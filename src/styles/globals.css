@@ -13,21 +13,65 @@ body {
   overflow-x: hidden;
   background:
     radial-gradient(
-      circle at 88% 5%,
-      rgba(99, 51, 198, 0.16),
-      transparent 25rem
+      circle at 82% 2%,
+      rgba(99, 51, 198, 0.145),
+      transparent 27rem
     ),
     radial-gradient(
-      circle at 12% 18%,
-      rgba(131, 179, 215, 0.08),
-      transparent 24rem
+      circle at 5% 22%,
+      rgba(131, 179, 215, 0.07),
+      transparent 26rem
     ),
-    var(--color-bg);
+    linear-gradient(
+      180deg,
+      #050506 0%,
+      #06070a 47%,
+      #050506 100%
+    );
   color: var(--color-text);
   font-family: var(--font-geist-sans), Arial, sans-serif;
   line-height: 1.5;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  position: fixed;
+  z-index: -2;
+  inset: 0;
+  background-image:
+    linear-gradient(
+      rgba(161, 226, 240, 0.017) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(161, 226, 240, 0.017) 1px,
+      transparent 1px
+    );
+  background-size: 72px 72px;
+  content: "";
+  pointer-events: none;
+}
+
+body::after {
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5, 5, 6, 0.75),
+      transparent 18%,
+      transparent 82%,
+      rgba(5, 5, 6, 0.75)
+    );
+  content: "";
+  pointer-events: none;
+}
+
+body:has(dialog[open]) {
+  overflow: hidden;
 }
 
 ::selection {
@@ -50,6 +94,7 @@ a {
     color var(--duration-normal) var(--ease-standard),
     background-color var(--duration-normal) var(--ease-standard),
     border-color var(--duration-normal) var(--ease-standard),
+    box-shadow var(--duration-normal) var(--ease-standard),
     opacity var(--duration-normal) var(--ease-standard),
     transform var(--duration-normal) var(--ease-standard);
 }
@@ -65,6 +110,45 @@ samp {
   font-family: var(--font-geist-mono), monospace;
 }
 
+.skipLink {
+  position: fixed;
+  z-index: 1000;
+  top: 12px;
+  left: 12px;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid var(--brand-cyan);
+  border-radius: 8px;
+  background: var(--color-bg);
+  color: var(--brand-cyan);
+  font-size: 0.82rem;
+  font-weight: 650;
+  transform: translateY(-160%);
+}
+
+.skipLink:focus {
+  transform: translateY(0);
+}
+
+.routeFrame {
+  animation:
+    route-frame-in
+    var(--duration-page)
+    var(--ease-emphasized)
+    both;
+}
+
+@keyframes route-frame-in {
+  from {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -75,4 +159,10 @@ samp {
   white-space: nowrap;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .routeFrame {
+    animation: none;
+  }
 }

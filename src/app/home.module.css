@@ -579,3 +579,162 @@
     padding-block: 6rem;
   }
 }
+
+.capabilities {
+  padding-block: 7rem;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.capabilityGrid {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.75fr)
+    minmax(480px, 1.25fr);
+  gap: 5rem;
+  align-items: center;
+}
+
+.capabilityCopy {
+  max-width: 590px;
+}
+
+.capabilityEyebrow {
+  color: var(--brand-blue);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.capabilityTitle {
+  margin-top: 1rem;
+  font-size: clamp(
+    2.7rem,
+    5.6vw,
+    5.7rem
+  );
+  font-weight: 500;
+  letter-spacing: -0.06em;
+  line-height: 0.98;
+}
+
+.capabilityText {
+  margin-top: 1.4rem;
+  color: var(--color-text-secondary);
+  font-size: 1.03rem;
+  line-height: 1.75;
+}
+
+.capabilityList {
+  display: grid;
+  margin-top: 2rem;
+  border-top: 1px solid var(--border-soft);
+}
+
+.capabilityItem {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.capabilityIndex {
+  color: var(--brand-lavender);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.67rem;
+}
+
+.capabilityItemTitle {
+  font-size: 0.95rem;
+  font-weight: 580;
+}
+
+.activityLayout {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.35fr)
+    minmax(280px, 0.65fr);
+  gap: 1rem;
+}
+
+.eventPanel {
+  position: relative;
+  overflow: hidden;
+  min-height: 100%;
+  padding: 1.7rem;
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  background:
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(99, 51, 198, 0.18),
+      transparent 15rem
+    ),
+    var(--color-surface);
+}
+
+.eventPanel::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--brand-lavender),
+      transparent
+    );
+  content: "";
+  opacity: 0.55;
+}
+
+.eventEyebrow {
+  color: var(--brand-lavender);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.67rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.eventYear {
+  margin-top: 4rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.68rem;
+}
+
+.eventTitle {
+  margin-top: 0.7rem;
+  font-size: 2rem;
+  font-weight: 560;
+  letter-spacing: -0.045em;
+}
+
+.eventText {
+  margin-top: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+}
+
+.eventAction {
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 1100px) {
+  .capabilityGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .activityLayout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 780px) {
+  .capabilities {
+    padding-block: 5rem;
+  }
+}
