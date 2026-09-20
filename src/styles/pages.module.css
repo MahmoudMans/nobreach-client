@@ -584,3 +584,267 @@
       );
   }
 }
+
+/* NB_RESPONSIVE_SYSTEM_V1 */
+
+/* -------------------------------------------------------------------------- */
+/* Compact desktop / split-screen                                             */
+/* -------------------------------------------------------------------------- */
+
+@media (max-width: 1240px) {
+  .grid3 {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+  .grid3 > *,
+  .split > *,
+  .timelineItem > *,
+  .featureRow > * {
+    min-width: 0;
+  }
+
+  .split {
+    grid-template-columns:
+      minmax(135px, 0.48fr)
+      minmax(0, 1.52fr);
+    gap: 2.5rem;
+  }
+
+  .largeCopy {
+    max-width: 760px;
+  }
+
+  .cta {
+    padding: 2.75rem;
+  }
+
+  .ctaTitle {
+    max-width: 700px;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Tablet landscape                                                           */
+/* -------------------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .section {
+    padding-block:
+      clamp(
+        4rem,
+        7vw,
+        5rem
+      );
+  }
+
+  .sectionCompact {
+    padding-block:
+      3.5rem;
+  }
+
+  .split {
+    grid-template-columns:
+      minmax(110px, 0.38fr)
+      minmax(0, 1.62fr);
+    gap: 2rem;
+  }
+
+  .grid3 {
+    gap: 0.85rem;
+  }
+
+  .card {
+    min-height: 190px;
+    padding: 1.3rem;
+  }
+
+  .largeCopy {
+    font-size:
+      clamp(
+        1.7rem,
+        3.6vw,
+        2.65rem
+      );
+  }
+
+  .timelineItem {
+    grid-template-columns:
+      105px
+      minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .featureRow {
+    grid-template-columns:
+      62px
+      minmax(0, 1fr);
+  }
+
+  .cta {
+    padding: 2.5rem;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Tablet portrait / narrow half-window                                       */
+/* -------------------------------------------------------------------------- */
+
+@media (max-width: 860px) {
+  .split {
+    grid-template-columns:
+      minmax(0, 1fr);
+    gap: 1.4rem;
+  }
+
+  .sideLabel {
+    max-width: 240px;
+  }
+
+  .largeCopy {
+    max-width: 680px;
+  }
+
+  .timelineItem {
+    grid-template-columns:
+      88px
+      minmax(0, 1fr);
+  }
+
+  .cta {
+    padding: 2.25rem;
+  }
+
+  .ctaTitle {
+    max-width: 620px;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Mobile                                                                     */
+/* -------------------------------------------------------------------------- */
+
+@media (max-width: 720px) {
+  .grid3 {
+    grid-template-columns:
+      minmax(0, 1fr);
+  }
+
+  .grid2 {
+    grid-template-columns:
+      minmax(0, 1fr);
+  }
+
+  .section {
+    padding-block:
+      3.75rem;
+  }
+
+  .sectionCompact {
+    padding-block:
+      3rem;
+  }
+
+  .card {
+    min-height: auto;
+    padding: 1.25rem;
+  }
+
+  .cardNumber {
+    margin-bottom: 1.65rem;
+  }
+
+  .cardTitle {
+    font-size: 1.18rem;
+  }
+
+  .cardDescription {
+    max-width: 580px;
+  }
+
+  .timelineItem {
+    grid-template-columns:
+      minmax(0, 1fr);
+    gap: 0.45rem;
+    padding: 1.15rem 0;
+  }
+
+  .featureRow {
+    grid-template-columns:
+      52px
+      minmax(0, 1fr);
+  }
+
+  .largeCopy {
+    font-size:
+      clamp(
+        1.65rem,
+        7.5vw,
+        2.35rem
+      );
+  }
+
+  .prose {
+    max-width: 100%;
+  }
+
+  .prose p {
+    font-size: 0.97rem;
+    line-height: 1.75;
+  }
+
+  .cta {
+    padding: 1.65rem;
+  }
+
+  .ctaTitle {
+    font-size:
+      clamp(
+        1.8rem,
+        8vw,
+        2.45rem
+      );
+  }
+
+  .ctaActions {
+    align-items: stretch;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Small mobile                                                               */
+/* -------------------------------------------------------------------------- */
+
+@media (max-width: 430px) {
+  .section {
+    padding-block:
+      3.25rem;
+  }
+
+  .card {
+    padding: 1.1rem;
+  }
+
+  .featureRow {
+    grid-template-columns:
+      42px
+      minmax(0, 1fr);
+  }
+
+  .cta {
+    padding: 1.35rem;
+    border-radius: 10px;
+  }
+
+  .ctaTitle {
+    font-size:
+      clamp(
+        1.7rem,
+        9vw,
+        2.2rem
+      );
+  }
+}

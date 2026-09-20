@@ -58,3 +58,20 @@
 .ghost {
   min-height: 40px;
 }
+
+/* NB_RESPONSIVE_SYSTEM_V1 */
+
+@media (max-width: 540px) {
+  .button {
+    min-height: 44px;
+    padding:
+      0 0.9rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .button {
+    min-height: 42px;
+    font-size: 0.79rem;
+  }
+}

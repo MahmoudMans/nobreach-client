@@ -357,3 +357,48 @@
 .dropdown span {
   font-size: 0.69rem;
 }
+
+/* NB_RESPONSIVE_SYSTEM_V1 */
+
+@media (max-width: 1240px) {
+  .inner {
+    gap: 0.75rem;
+  }
+
+  .navLink,
+  .navSummary {
+    min-height: 38px;
+    padding:
+      0 0.5rem;
+    font-size: 0.78rem;
+  }
+
+  .contact {
+    min-height: 38px;
+    padding:
+      0 0.75rem;
+    font-size: 0.78rem;
+  }
+
+  .dropdown {
+    width: 270px;
+  }
+}
+
+@media (max-width: 1060px) {
+  .navLink,
+  .navSummary {
+    padding:
+      0 0.42rem;
+    font-size: 0.75rem;
+  }
+
+  .contact {
+    padding:
+      0 0.65rem;
+  }
+
+  .dropdown {
+    width: 255px;
+  }
+}

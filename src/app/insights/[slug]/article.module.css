@@ -432,3 +432,113 @@
       );
   }
 }
+
+/* NB_RESPONSIVE_SYSTEM_V1 */
+
+@media (max-width: 1240px) {
+  .layout {
+    grid-template-columns:
+      175px
+      minmax(0, 1fr)
+      170px;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 1050px) {
+  .layout {
+    grid-template-columns:
+      160px
+      minmax(0, 1fr);
+    gap: 2.25rem;
+  }
+
+  .metaSide {
+    display: none;
+  }
+
+  .content {
+    max-width: 720px;
+  }
+
+  .relatedGrid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+}
+
+@media (max-width: 820px) {
+  .layout {
+    grid-template-columns:
+      minmax(0, 1fr);
+  }
+
+  .toc {
+    position: static;
+    order: -1;
+    padding-bottom: 1.25rem;
+    border-bottom:
+      1px solid
+      var(--border-soft);
+  }
+
+  .tocList {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+    column-gap: 1rem;
+  }
+
+  .section {
+    padding:
+      2.8rem 0;
+  }
+
+  .contextGrid {
+    grid-template-columns:
+      minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .article {
+    padding-block:
+      3.25rem;
+  }
+
+  .tocList {
+    grid-template-columns:
+      minmax(0, 1fr);
+  }
+
+  .intro {
+    font-size: 1rem;
+  }
+
+  .sectionTitle {
+    font-size:
+      clamp(
+        1.7rem,
+        8vw,
+        2.25rem
+      );
+  }
+
+  .paragraph {
+    font-size: 0.97rem;
+  }
+
+  .relatedGrid {
+    grid-template-columns:
+      minmax(0, 1fr);
+  }
+
+  .relatedCard {
+    min-height: auto;
+  }
+}

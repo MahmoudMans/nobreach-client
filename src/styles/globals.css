@@ -232,3 +232,72 @@ main {
     transition: none !important;
   }
 }
+
+/* NB_RESPONSIVE_SYSTEM_V1 */
+
+html {
+  min-width: 320px;
+}
+
+body {
+  min-width: 320px;
+}
+
+img,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+svg {
+  max-width: 100%;
+}
+
+input,
+textarea,
+select,
+button {
+  max-width: 100%;
+}
+
+pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+main {
+  min-width: 0;
+}
+
+#main-content {
+  min-width: 0;
+}
+
+#main-content > * {
+  min-width: 0;
+}
+
+@media (max-width: 1280px) {
+  body {
+    font-size: 0.985rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  body {
+    font-size: 0.975rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 0.965rem;
+  }
+}
+
+@media (max-width: 430px) {
+  body {
+    font-size: 0.95rem;
+  }
+}

@@ -90,3 +90,59 @@
       );
   }
 }
+
+/* NB_RESPONSIVE_SYSTEM_V1 */
+
+@media (max-width: 1100px) {
+  .header {
+    grid-template-columns:
+      minmax(120px, 0.4fr)
+      minmax(0, 1.6fr);
+    gap: 2rem;
+  }
+
+  .title {
+    max-width: 700px;
+    font-size:
+      clamp(
+        1.95rem,
+        3.8vw,
+        3rem
+      );
+  }
+}
+
+@media (max-width: 860px) {
+  .header {
+    grid-template-columns:
+      minmax(0, 1fr);
+    gap: 0.8rem;
+  }
+
+  .title {
+    max-width: 680px;
+  }
+
+  .description {
+    max-width: 590px;
+  }
+}
+
+@media (max-width: 540px) {
+  .header {
+    margin-bottom: 1.75rem;
+  }
+
+  .title {
+    font-size:
+      clamp(
+        1.8rem,
+        8.5vw,
+        2.45rem
+      );
+  }
+
+  .description {
+    font-size: 0.94rem;
+  }
+}

@@ -1169,3 +1169,339 @@
     min-width: 0;
   }
 }
+
+/* NB_RESPONSIVE_SYSTEM_V1 */
+
+/* Compact desktop and browser half-screen */
+
+@media (max-width: 1240px) {
+  .hero {
+    padding:
+      3.25rem 0
+      4.5rem;
+  }
+
+  .heroGrid {
+    grid-template-columns:
+      minmax(0, 1fr);
+    gap: 3rem;
+    min-height: auto;
+  }
+
+  .heroGrid > * {
+    min-width: 0;
+  }
+
+  .heroTitle {
+    max-width: 820px;
+    font-size:
+      clamp(
+        3rem,
+        6.3vw,
+        5.45rem
+      );
+  }
+
+  .heroText {
+    max-width: 650px;
+  }
+
+  .intro {
+    grid-template-columns:
+      minmax(120px, 0.35fr)
+      minmax(0, 1.65fr);
+    gap: 2.5rem;
+  }
+
+  .founderGrid {
+    grid-template-columns:
+      minmax(320px, 0.75fr)
+      minmax(0, 1.25fr);
+    gap: 3rem;
+  }
+
+  .capabilityGrid {
+    grid-template-columns:
+      minmax(0, 1fr);
+    gap: 3rem;
+  }
+
+  .programGrid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+}
+
+/* Tablet landscape */
+
+@media (max-width: 1024px) {
+  .hero {
+    padding:
+      3rem 0
+      4rem;
+  }
+
+  .heroGrid {
+    gap: 2.5rem;
+  }
+
+  .heroTitle {
+    max-width: 760px;
+    font-size:
+      clamp(
+        2.9rem,
+        7.5vw,
+        4.8rem
+      );
+  }
+
+  .heroText {
+    max-width: 620px;
+  }
+
+  .companyFacts {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+    gap: 1rem;
+  }
+
+  .intro {
+    grid-template-columns:
+      minmax(100px, 0.3fr)
+      minmax(0, 1.7fr);
+    gap: 2rem;
+  }
+
+  .introTitle {
+    font-size:
+      clamp(
+        2.1rem,
+        4.8vw,
+        3.5rem
+      );
+  }
+
+  .methodGrid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+  .founderGrid {
+    grid-template-columns:
+      minmax(0, 1fr);
+  }
+
+  .founderVisual {
+    min-height: 440px;
+  }
+
+  .founderTitle {
+    max-width: 700px;
+  }
+
+  .programGrid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+}
+
+/* Tablet portrait */
+
+@media (max-width: 820px) {
+  .hero {
+    padding:
+      2.75rem 0
+      3.75rem;
+  }
+
+  .heroTitle {
+    max-width: 680px;
+    font-size:
+      clamp(
+        2.8rem,
+        10vw,
+        4.25rem
+      );
+  }
+
+  .heroText {
+    max-width: 600px;
+  }
+
+  .heroMeta {
+    margin-top: 2rem;
+  }
+
+  .intro {
+    grid-template-columns:
+      minmax(0, 1fr);
+    gap: 0.9rem;
+  }
+
+  .companyFacts {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+  .methodGrid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+  .programGrid {
+    grid-template-columns:
+      minmax(0, 1fr);
+  }
+
+  .activityLayout {
+    grid-template-columns:
+      minmax(0, 1fr);
+  }
+
+  .founderVisual {
+    min-height: 400px;
+  }
+}
+
+/* Large mobile */
+
+@media (max-width: 600px) {
+  .hero {
+    padding:
+      2.4rem 0
+      3.25rem;
+  }
+
+  .heroGrid {
+    gap: 2rem;
+  }
+
+  .heroTitle {
+    max-width: 100%;
+    font-size:
+      clamp(
+        2.65rem,
+        13vw,
+        3.75rem
+      );
+  }
+
+  .heroText {
+    max-width: 100%;
+    font-size: 0.98rem;
+  }
+
+  .heroActions {
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .companyFacts {
+    grid-template-columns:
+      minmax(0, 1fr);
+  }
+
+  .methodGrid {
+    grid-template-columns:
+      minmax(0, 1fr);
+  }
+
+  .methodItem {
+    min-height: auto;
+    padding: 1.15rem 0;
+  }
+
+  .methodTitle {
+    margin-top: 2rem;
+  }
+
+  .founderVisual {
+    min-height: 340px;
+  }
+
+  .founderInitials {
+    font-size:
+      clamp(
+        6rem,
+        30vw,
+        9rem
+      );
+  }
+
+  .founderTitle,
+  .trainingTitle,
+  .capabilityTitle {
+    font-size:
+      clamp(
+        2.1rem,
+        10vw,
+        2.9rem
+      );
+  }
+
+  .programGrid {
+    grid-template-columns:
+      minmax(0, 1fr);
+  }
+
+  .programCard {
+    min-height: auto;
+  }
+
+  .crackoutTitle {
+    font-size:
+      clamp(
+        3rem,
+        16vw,
+        4.6rem
+      );
+  }
+}
+
+/* Small mobile */
+
+@media (max-width: 390px) {
+  .heroTitle {
+    font-size:
+      clamp(
+        2.45rem,
+        12.5vw,
+        3.25rem
+      );
+  }
+
+  .heroText {
+    font-size: 0.94rem;
+  }
+
+  .founderVisual {
+    min-height: 300px;
+  }
+
+  .crackoutTitle {
+    font-size:
+      clamp(
+        2.85rem,
+        15vw,
+        4rem
+      );
+  }
+}
