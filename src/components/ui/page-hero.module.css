@@ -151,3 +151,96 @@
     display: none;
   }
 }
+
+/* NB_VISUAL_REFINEMENT_V1 */
+
+.hero {
+  padding:
+    clamp(4.5rem, 7vw, 6rem)
+    0
+    clamp(4rem, 6vw, 5.25rem);
+}
+
+.content {
+  max-width: 1120px;
+}
+
+.eyebrow {
+  margin-bottom: 1rem;
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+}
+
+.title {
+  max-width: 960px;
+  font-size:
+    clamp(
+      2.85rem,
+      5.25vw,
+      5.35rem
+    );
+  font-weight: 520;
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+}
+
+.description {
+  max-width: 680px;
+  margin-top: 1.6rem;
+  font-size:
+    clamp(
+      1rem,
+      1.45vw,
+      1.16rem
+    );
+  line-height: 1.7;
+}
+
+.meta {
+  margin-top: 1.6rem;
+}
+
+.actions {
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding:
+      4rem 0
+      3.5rem;
+  }
+
+  .title {
+    font-size:
+      clamp(
+        2.65rem,
+        12.5vw,
+        4rem
+      );
+    line-height: 0.99;
+  }
+
+  .description {
+    margin-top: 1.35rem;
+    font-size: 1rem;
+  }
+}
+
+/* NB_MOBILE_PAGE_HERO_VISIBILITY_RECOVERY_V1 */
+
+@media (max-width: 768px) {
+  .hero,
+  .content {
+    min-height: auto;
+    visibility: visible;
+  }
+
+  .title {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    visibility: visible;
+    opacity: 1;
+  }
+}

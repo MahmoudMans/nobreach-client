@@ -350,3 +350,85 @@
       1fr;
   }
 }
+
+/* NB_VISUAL_REFINEMENT_V1 */
+
+.article {
+  padding-block:
+    clamp(
+      4rem,
+      6vw,
+      5.25rem
+    );
+}
+
+.layout {
+  grid-template-columns:
+    190px
+    minmax(0, 720px)
+    minmax(170px, 1fr);
+  gap: clamp(2rem, 4vw, 3.5rem);
+}
+
+.intro {
+  font-size: 1.05rem;
+  line-height: 1.78;
+}
+
+.section {
+  padding:
+    3.25rem 0;
+}
+
+.sectionTitle {
+  font-size:
+    clamp(
+      1.85rem,
+      3.2vw,
+      2.75rem
+    );
+  letter-spacing: -0.043em;
+  line-height: 1.08;
+}
+
+.paragraph {
+  margin-top: 1.15rem;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.relatedSection {
+  padding-block:
+    clamp(
+      4rem,
+      6vw,
+      5rem
+    );
+}
+
+.relatedCard {
+  min-height: 230px;
+}
+
+.relatedTitle {
+  font-size: 1.12rem;
+}
+
+@media (max-width: 760px) {
+  .article {
+    padding-block: 3.5rem;
+  }
+
+  .section {
+    padding: 2.75rem 0;
+  }
+
+  .sectionTitle {
+    font-size:
+      clamp(
+        1.8rem,
+        8vw,
+        2.4rem
+      );
+  }
+}

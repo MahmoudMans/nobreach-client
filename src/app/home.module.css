@@ -738,3 +738,434 @@
     padding-block: 5rem;
   }
 }
+
+/* NB_VISUAL_REFINEMENT_V1 */
+
+.hero {
+  padding:
+    3.75rem 0
+    5rem;
+}
+
+.heroGrid {
+  grid-template-columns:
+    minmax(0, 1.04fr)
+    minmax(400px, 0.96fr);
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  min-height: min(760px, calc(100svh - 124px));
+}
+
+.heroEyebrow {
+  margin-bottom: 1.25rem;
+  font-size: 0.66rem;
+}
+
+.heroTitle {
+  max-width: 800px;
+  font-size:
+    clamp(
+      3.15rem,
+      6vw,
+      6.1rem
+    );
+  font-weight: 520;
+  letter-spacing: -0.064em;
+  line-height: 0.93;
+}
+
+.heroText {
+  max-width: 610px;
+  margin-top: 1.65rem;
+  font-size:
+    clamp(
+      1rem,
+      1.4vw,
+      1.14rem
+    );
+  line-height: 1.72;
+}
+
+.heroActions {
+  margin-top: 2rem;
+}
+
+.heroMeta {
+  margin-top: 2.5rem;
+  padding-top: 1.15rem;
+  font-size: 0.63rem;
+}
+
+.intro {
+  grid-template-columns:
+    minmax(130px, 0.48fr)
+    minmax(0, 1.52fr);
+  gap: 3rem;
+  padding-block:
+    clamp(4.5rem, 7vw, 6rem);
+}
+
+.introTitle {
+  max-width: 780px;
+  font-size:
+    clamp(
+      2.25rem,
+      4.3vw,
+      4.15rem
+    );
+  letter-spacing: -0.052em;
+  line-height: 1.04;
+}
+
+.introText {
+  max-width: 680px;
+  margin-top: 1.3rem;
+  font-size: 1rem;
+}
+
+.companyFacts {
+  margin-top: 2.5rem;
+}
+
+.fact {
+  padding-top: 1.1rem;
+}
+
+.services,
+.methodology,
+.founder,
+.training {
+  padding-block:
+    clamp(4.75rem, 7vw, 6rem);
+}
+
+.serviceCard {
+  min-height: 300px;
+  padding: 1.65rem;
+}
+
+.serviceTitle {
+  max-width: 420px;
+  margin-top: 3.8rem;
+  font-size:
+    clamp(
+      1.75rem,
+      3vw,
+      2.55rem
+    );
+  line-height: 1.04;
+}
+
+.serviceText {
+  max-width: 520px;
+  margin-top: 0.85rem;
+  font-size: 0.93rem;
+}
+
+.methodItem {
+  min-height: 220px;
+  padding: 1rem;
+}
+
+.methodTitle {
+  margin-top: 3.75rem;
+  font-size: 0.95rem;
+}
+
+.methodText {
+  font-size: 0.78rem;
+}
+
+.founderGrid {
+  grid-template-columns:
+    minmax(0, 0.82fr)
+    minmax(0, 1.18fr);
+  gap: clamp(3rem, 6vw, 5rem);
+}
+
+.founderVisual {
+  min-height: 500px;
+}
+
+.founderInitials {
+  font-size:
+    clamp(
+      8rem,
+      17vw,
+      14rem
+    );
+}
+
+.founderTitle {
+  max-width: 620px;
+  font-size:
+    clamp(
+      2.65rem,
+      4.8vw,
+      4.45rem
+    );
+  letter-spacing: -0.057em;
+  line-height: 0.99;
+}
+
+.founderText {
+  max-width: 600px;
+  margin-top: 1.25rem;
+  font-size: 0.98rem;
+}
+
+.trainingTitle {
+  max-width: 760px;
+  font-size:
+    clamp(
+      2.6rem,
+      4.8vw,
+      4.4rem
+    );
+  line-height: 1;
+}
+
+.programGrid {
+  margin-top: 2.5rem;
+}
+
+.programCard {
+  min-height: 320px;
+  padding: 1.5rem;
+}
+
+.programTitle {
+  font-size: 1.45rem;
+}
+
+.programText {
+  font-size: 0.86rem;
+}
+
+.crackout {
+  padding-block:
+    clamp(5rem, 8vw, 7rem);
+}
+
+.crackoutTitle {
+  max-width: 880px;
+  font-size:
+    clamp(
+      3.8rem,
+      8vw,
+      6.9rem
+    );
+  letter-spacing: -0.065em;
+  line-height: 0.9;
+}
+
+.crackoutText {
+  max-width: 610px;
+  margin-top: 1.5rem;
+  font-size: 0.98rem;
+}
+
+.capabilities {
+  padding-block:
+    clamp(4.75rem, 7vw, 6rem);
+}
+
+.capabilityGrid {
+  grid-template-columns:
+    minmax(0, 0.8fr)
+    minmax(440px, 1.2fr);
+  gap: clamp(3rem, 6vw, 5rem);
+}
+
+.capabilityTitle {
+  font-size:
+    clamp(
+      2.4rem,
+      4.5vw,
+      4.15rem
+    );
+  line-height: 1.02;
+}
+
+.capabilityText {
+  font-size: 0.98rem;
+}
+
+.activityLayout {
+  gap: 1.25rem;
+}
+
+.eventTitle {
+  font-size: 1.65rem;
+}
+
+@media (max-width: 1100px) {
+  .heroGrid {
+    min-height: auto;
+  }
+
+  .capabilityGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 780px) {
+  .hero {
+    padding:
+      2.75rem 0
+      3.75rem;
+  }
+
+  .heroTitle {
+    font-size:
+      clamp(
+        3rem,
+        14vw,
+        4.75rem
+      );
+  }
+
+  .intro {
+    padding-block: 4rem;
+  }
+
+  .introTitle {
+    font-size:
+      clamp(
+        2.05rem,
+        9vw,
+        3rem
+      );
+  }
+
+  .services,
+  .methodology,
+  .founder,
+  .training,
+  .capabilities {
+    padding-block: 4.25rem;
+  }
+
+  .founderVisual {
+    min-height: 380px;
+  }
+
+  .founderTitle,
+  .trainingTitle,
+  .capabilityTitle {
+    font-size:
+      clamp(
+        2.35rem,
+        10vw,
+        3.4rem
+      );
+  }
+
+  .crackoutTitle {
+    font-size:
+      clamp(
+        3.5rem,
+        17vw,
+        5.5rem
+      );
+  }
+}
+
+/* NB_MOBILE_HERO_VISIBILITY_RECOVERY_V1 */
+
+@media (max-width: 780px) {
+  .hero {
+    min-height: auto;
+    overflow: clip;
+  }
+
+  .heroGrid {
+    min-height: auto;
+    align-items: start;
+  }
+
+  .heroGrid > div:first-child {
+    display: block;
+    min-width: 0;
+    visibility: visible;
+  }
+
+  .heroTitle {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .heroAccent {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+/* NB_HOME_RESPONSIVE_GRID_RECOVERY_V3 */
+
+/*
+ * These overrides intentionally live after the visual-refinement rules.
+ * The refinement re-declared desktop grid templates later in the cascade,
+ * so responsive column resets must also occur later.
+ */
+
+@media (max-width: 1100px) {
+  .heroGrid {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3rem;
+  }
+
+  .heroGrid > div:first-child {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .founderGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 780px) {
+  .heroGrid {
+    display: grid;
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
+  .heroGrid > div:first-child {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .heroTitle {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .intro {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .intro > * {
+    min-width: 0;
+  }
+
+  .founderGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
+  .founderGrid > * {
+    min-width: 0;
+  }
+}

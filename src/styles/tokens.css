@@ -9,11 +9,11 @@
   --color-surface-hover: #171b24;
   --color-surface-subtle: #0a0c10;
 
-  --color-white: #ffffff;
-  --color-text: #f7f8fb;
-  --color-text-secondary: #b4b8c3;
-  --color-text-muted: #7f8490;
-  --color-text-faint: #565b66;
+  --color-white: #f8fafc;
+  --color-text: #eef2f6;
+  --color-text-secondary: #aab1bc;
+  --color-text-muted: #818995;
+  --color-text-faint: #5e6672;
 
   --brand-blue: #83b3d7;
   --brand-cyan: #a1e2f0;
@@ -104,12 +104,12 @@
   --radius-2xl: 24px;
   --radius-pill: 999px;
 
-  --container-wide: 1440px;
-  --container-default: 1280px;
-  --container-content: 1080px;
+  --container-wide: 1380px;
+  --container-default: 1220px;
+  --container-content: 1020px;
   --container-reading: 760px;
 
-  --header-height: 76px;
+  --header-height: 70px;
 
   --duration-fast: 140ms;
   --duration-normal: 220ms;

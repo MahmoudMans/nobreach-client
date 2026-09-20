@@ -43,3 +43,18 @@
 .ghost:hover {
   color: var(--color-white);
 }
+
+/* NB_VISUAL_REFINEMENT_V1 */
+
+.button {
+  min-height: 44px;
+  gap: 0.5rem;
+  padding:
+    0 1rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+}
+
+.ghost {
+  min-height: 40px;
+}

@@ -39,3 +39,54 @@
     gap: 1rem;
   }
 }
+
+/* NB_VISUAL_REFINEMENT_V1 */
+
+.header {
+  grid-template-columns:
+    minmax(150px, 0.55fr)
+    minmax(0, 1.45fr);
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.eyebrow {
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+}
+
+.title {
+  max-width: 760px;
+  font-size:
+    clamp(
+      2rem,
+      3.8vw,
+      3.35rem
+    );
+  font-weight: 510;
+  letter-spacing: -0.048em;
+  line-height: 1.04;
+}
+
+.description {
+  max-width: 620px;
+  margin-top: 1rem;
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .header {
+    gap: 0.85rem;
+    margin-bottom: 2rem;
+  }
+
+  .title {
+    font-size:
+      clamp(
+        1.9rem,
+        8vw,
+        2.75rem
+      );
+  }
+}

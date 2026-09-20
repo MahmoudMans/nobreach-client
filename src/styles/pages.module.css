@@ -412,3 +412,175 @@
   opacity: 0.14;
   pointer-events: none;
 }
+
+/* NB_VISUAL_REFINEMENT_V1 */
+
+.section {
+  padding-block:
+    clamp(
+      4.5rem,
+      7vw,
+      5.75rem
+    );
+}
+
+.sectionCompact {
+  padding-block:
+    clamp(
+      3.5rem,
+      5vw,
+      4.5rem
+    );
+}
+
+.card {
+  min-height: 205px;
+  padding: 1.45rem;
+  border-radius: 12px;
+}
+
+.cardNumber {
+  margin-bottom: 2rem;
+  font-size: 0.67rem;
+}
+
+.cardTitle {
+  font-size:
+    clamp(
+      1.15rem,
+      1.8vw,
+      1.34rem
+    );
+  letter-spacing: -0.028em;
+  line-height: 1.18;
+}
+
+.cardDescription {
+  margin-top: 0.72rem;
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.cardMeta {
+  font-size: 0.66rem;
+}
+
+.prose {
+  max-width: 700px;
+}
+
+.prose p {
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.78;
+}
+
+.largeCopy {
+  max-width: 840px;
+  font-size:
+    clamp(
+      1.8rem,
+      3.45vw,
+      3rem
+    );
+  letter-spacing: -0.043em;
+  line-height: 1.13;
+}
+
+.split {
+  grid-template-columns:
+    minmax(150px, 0.68fr)
+    minmax(0, 1.32fr);
+  gap: clamp(2.5rem, 5vw, 4.25rem);
+}
+
+.featureRow {
+  grid-template-columns:
+    74px 1fr;
+  padding: 1.25rem 0;
+}
+
+.featureTitle {
+  font-size: 1.05rem;
+}
+
+.featureText {
+  margin-top: 0.45rem;
+  font-size: 0.92rem;
+}
+
+.timelineItem {
+  grid-template-columns:
+    130px 1fr;
+  gap: 1.5rem;
+  padding: 1.3rem 0;
+}
+
+.timelineTitle {
+  font-size: 1.05rem;
+}
+
+.timelineDescription {
+  max-width: 650px;
+  font-size: 0.91rem;
+}
+
+.cta {
+  padding:
+    clamp(
+      2.25rem,
+      5vw,
+      3.5rem
+    );
+}
+
+.ctaTitle {
+  max-width: 760px;
+  margin-top: 0.85rem;
+  font-size:
+    clamp(
+      2rem,
+      4vw,
+      3.45rem
+    );
+  letter-spacing: -0.048em;
+  line-height: 1.04;
+}
+
+.ctaText {
+  max-width: 590px;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.ctaActions {
+  margin-top: 1.6rem;
+}
+
+@media (max-width: 680px) {
+  .section {
+    padding-block: 4rem;
+  }
+
+  .sectionCompact {
+    padding-block: 3.25rem;
+  }
+
+  .largeCopy {
+    font-size:
+      clamp(
+        1.7rem,
+        8vw,
+        2.5rem
+      );
+  }
+
+  .ctaTitle {
+    font-size:
+      clamp(
+        1.9rem,
+        9vw,
+        2.8rem
+      );
+  }
+}

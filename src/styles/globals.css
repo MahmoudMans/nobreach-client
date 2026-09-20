@@ -166,3 +166,69 @@ samp {
     animation: none;
   }
 }
+
+/* NB_VISUAL_REFINEMENT_V1 */
+
+body {
+  font-size: 1rem;
+  line-height: 1.58;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--color-text);
+  text-wrap: balance;
+}
+
+main {
+  isolation: isolate;
+}
+
+@media (min-width: 1600px) {
+  body {
+    font-size: 1.015rem;
+  }
+}
+
+/* NB_MOBILE_ROUTEFRAME_RECOVERY_V2 */
+
+@media (max-width: 780px) {
+  .routeFrame {
+    display: block !important;
+    min-width: 0;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  #main-content {
+    display: block;
+    min-width: 0;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  #main-content h1 {
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 780px) and (prefers-reduced-motion: reduce) {
+  .routeFrame,
+  #main-content,
+  #main-content h1 {
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}

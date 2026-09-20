@@ -421,3 +421,64 @@
     min-height: 430px;
   }
 }
+
+/* NB_VISUAL_REFINEMENT_V1 */
+
+.featured {
+  min-height: 390px;
+}
+
+.featuredContent {
+  padding: 1.75rem;
+}
+
+.featuredTitle {
+  max-width: 680px;
+  padding-top: 3rem;
+  font-size:
+    clamp(
+      2rem,
+      4vw,
+      3.45rem
+    );
+  letter-spacing: -0.05em;
+  line-height: 1.02;
+}
+
+.featuredSummary {
+  max-width: 620px;
+  font-size: 0.94rem;
+}
+
+.articleGrid {
+  gap: 1rem;
+}
+
+.card {
+  min-height: 285px;
+  padding: 1.35rem;
+}
+
+.cardTitle {
+  padding-top: 3rem;
+  font-size: 1.3rem;
+}
+
+.cardSummary {
+  font-size: 0.84rem;
+}
+
+@media (max-width: 720px) {
+  .featuredContent {
+    min-height: 360px;
+  }
+
+  .featuredTitle {
+    font-size:
+      clamp(
+        1.9rem,
+        9vw,
+        2.8rem
+      );
+  }
+}

@@ -94,3 +94,38 @@
     padding-block: 1.25rem;
   }
 }
+
+/* NB_VISUAL_REFINEMENT_V1 */
+
+.top {
+  gap: 2.5rem;
+  padding-block:
+    clamp(
+      3.75rem,
+      6vw,
+      4.75rem
+    );
+}
+
+.tagline {
+  margin-top: 1.25rem;
+  font-size: 0.94rem;
+}
+
+.columnTitle {
+  margin-bottom: 0.9rem;
+  font-size: 0.64rem;
+}
+
+.links {
+  gap: 0.58rem;
+}
+
+.links a {
+  font-size: 0.84rem;
+}
+
+.bottom {
+  min-height: 66px;
+  font-size: 0.73rem;
+}
