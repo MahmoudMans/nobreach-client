@@ -13,3 +13,9 @@ test-results
 .env.test.local
 .env.production.local
 !.env.example
+
+# TypeScript generated incremental build metadata
+*.tsbuildinfo
+
+# Next.js generated TypeScript environment declaration
+next-env.d.ts
