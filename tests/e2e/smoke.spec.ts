@@ -291,7 +291,7 @@ test.describe(
     });
 
     test(
-      "mobile navigation opens and reaches Training Hub",
+      "mobile navigation opens and reaches Training",
       async ({ page }) => {
         await page.goto("/");
 
@@ -307,8 +307,14 @@ test.describe(
 
         const dialog =
           page.getByRole(
-            "dialog"
-          );
+          "dialog",
+          {
+            name:
+              "Site navigation",
+            exact:
+              true
+          }
+        );
 
         await expect(
           dialog
@@ -316,10 +322,21 @@ test.describe(
 
         await dialog
           .getByRole(
+            "navigation",
+            {
+              name:
+                "Mobile navigation",
+              exact:
+                true
+            }
+          )
+          .getByRole(
             "link",
             {
               name:
-                "Training Hub"
+                "Training",
+              exact:
+                true
             }
           )
           .click();

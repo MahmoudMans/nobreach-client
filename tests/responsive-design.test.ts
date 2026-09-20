@@ -25,7 +25,7 @@ describe(
   "responsive design system",
   () => {
     it(
-      "applies responsive refinement markers exactly once",
+      "applies responsive refinement markers exactly once to responsive-owned styles",
       () => {
         const files = [
           "src/styles/globals.css",
@@ -33,7 +33,6 @@ describe(
           "src/app/home.module.css",
           "src/components/ui/page-hero.module.css",
           "src/components/ui/section-header.module.css",
-          "src/components/layout/site-header.module.css",
           "src/components/layout/site-footer.module.css",
           "src/components/ui/button-link.module.css",
           "src/components/insights/insights-browser.module.css",
@@ -58,6 +57,32 @@ describe(
             1
           );
         }
+      }
+    );
+
+    it(
+      "recognizes navigation as the current responsive header owner",
+      () => {
+        const source =
+          read(
+            "src/components/layout/site-header.module.css"
+          );
+
+        expect(
+          (
+            source.match(
+              /NB_NAVIGATION_REDESIGN_V1/g
+            ) ?? []
+          ).length
+        ).toBe(
+          1
+        );
+
+        expect(
+          source
+        ).not.toContain(
+          "NB_RESPONSIVE_SYSTEM_V1"
+        );
       }
     );
 
@@ -110,6 +135,32 @@ describe(
         ).toContain(
           "@media (max-width: 390px)"
         );
+      }
+    );
+
+    it(
+      "navigation handles compact desktop tablet and mobile explicitly",
+      () => {
+        const source =
+          read(
+            "src/components/layout/site-header.module.css"
+          );
+
+        for (
+          const breakpoint
+          of [
+            "@media (max-width: 1260px)",
+            "@media (max-width: 1120px)",
+            "@media (max-width: 820px)",
+            "@media (max-width: 560px)"
+          ]
+        ) {
+          expect(
+            source
+          ).toContain(
+            breakpoint
+          );
+        }
       }
     );
 
