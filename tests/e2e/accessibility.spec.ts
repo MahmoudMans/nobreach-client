@@ -7,6 +7,7 @@ import {
 const routes = [
   "/",
   "/company",
+  "/company/founder",
   "/services",
   "/services/api-security",
   "/training",
