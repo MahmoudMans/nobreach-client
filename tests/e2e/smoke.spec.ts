@@ -492,3 +492,202 @@ test(
     );
   }
 );
+
+test(
+  "insights index renders published technical content",
+  async ({ page }) => {
+    await page.goto(
+      "/insights"
+    );
+
+    await expect(
+      page.getByRole(
+        "heading",
+        {
+          level: 1,
+          name:
+            /security thinking worth publishing/i
+        }
+      )
+    ).toBeVisible();
+
+    await expect(
+      page.getByRole(
+        "link",
+        {
+          name:
+            /authorization is a system, not a checkbox/i
+        }
+      )
+    ).toBeVisible();
+  }
+);
+
+test(
+  "insight category deep link initializes the filter",
+  async ({ page }) => {
+    await page.goto(
+      "/insights?category=AI%20Security"
+    );
+
+    await expect(
+      page.getByRole(
+        "button",
+        {
+          name:
+            "AI Security"
+        }
+      )
+    ).toHaveAttribute(
+      "aria-pressed",
+      "true"
+    );
+
+    await expect(
+      page.getByRole(
+        "link",
+        {
+          name:
+            /prompt injection matters most when AI can act/i
+        }
+      )
+    ).toBeVisible();
+  }
+);
+
+test(
+  "insight search filters articles",
+  async ({ page }) => {
+    await page.goto(
+      "/insights"
+    );
+
+    await page
+      .getByRole(
+        "searchbox",
+        {
+          name:
+            "Search insights"
+        }
+      )
+      .fill(
+        "prompt injection"
+      );
+
+    await expect(
+      page.getByRole(
+        "link",
+        {
+          name:
+            /prompt injection matters most when AI can act/i
+        }
+      )
+    ).toBeVisible();
+
+    await expect(
+      page.getByText(
+        "1 article"
+      )
+    ).toBeVisible();
+  }
+);
+
+test(
+  "article route renders contents and related context",
+  async ({ page }) => {
+    await page.goto(
+      "/insights/authorization-is-a-system-not-a-checkbox"
+    );
+
+    await expect(
+      page.getByRole(
+        "heading",
+        {
+          level: 1,
+          name:
+            "Authorization is a system, not a checkbox"
+        }
+      )
+    ).toBeVisible();
+
+    await expect(
+      page.getByRole(
+        "navigation",
+        {
+          name:
+            "Article contents"
+        }
+      )
+    ).toBeVisible();
+
+    await expect(
+      page.getByRole(
+        "link",
+        {
+          name:
+            /api security/i
+        }
+      ).first()
+    ).toBeVisible();
+  }
+);
+
+test(
+  "RSS feed returns cybersecurity insights",
+  async ({ page }) => {
+    const response =
+      await page.request.get(
+        "/feed.xml"
+      );
+
+    expect(
+      response.ok()
+    ).toBeTruthy();
+
+    expect(
+      response.headers()[
+        "content-type"
+      ]
+    ).toContain(
+      "application/rss+xml"
+    );
+
+    const body =
+      await response.text();
+
+    expect(
+      body
+    ).toContain(
+      "<rss"
+    );
+
+    expect(
+      body
+    ).toContain(
+      "Authorization is a system, not a checkbox"
+    );
+  }
+);
+
+test(
+  "sitemap includes insight article routes",
+  async ({ page }) => {
+    const response =
+      await page.request.get(
+        "/sitemap.xml"
+      );
+
+    expect(
+      response.ok()
+    ).toBeTruthy();
+
+    const body =
+      await response.text();
+
+    expect(
+      body
+    ).toContain(
+      "/insights/prompt-injection-matters-when-ai-can-act"
+    );
+  }
+);

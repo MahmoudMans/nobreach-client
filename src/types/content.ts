@@ -108,15 +108,33 @@ export type TeamMember = {
   status: "current" | "alumni";
 };
 
+export type InsightCategory =
+  | "Web Security"
+  | "API Security"
+  | "Offensive Security"
+  | "AI Security"
+  | "Research"
+  | "Community";
+
+export type InsightSection = {
+  id: string;
+  heading: string;
+  paragraphs: string[];
+  bullets?: string[];
+};
+
 export type Insight = {
   slug: string;
   title: string;
-  category: string;
+  category: InsightCategory;
   summary: string;
+  author: string;
   publishedAt: string;
+  updatedAt?: string;
   readingTime: string;
-  sections: {
-    heading: string;
-    paragraphs: string[];
-  }[];
+  featured: boolean;
+  tags: string[];
+  sections: InsightSection[];
+  relatedServiceSlugs: string[];
+  relatedTrainingSlugs: string[];
 };

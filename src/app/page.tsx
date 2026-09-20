@@ -11,6 +11,7 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { SignalStrip } from "@/components/ui/signal-strip";
 import { activities } from "@/content/activities";
 import { events } from "@/content/events";
+import { insights } from "@/content/insights";
 import {
   companyTimeline,
   methodology,
@@ -952,7 +953,52 @@ export default function HomePage() {
       <section className={pages.section}>
         <Container>
           <SectionHeader
-            eyebrow="09 / Timeline"
+            eyebrow="09 / Insights"
+            title="Technical thinking from the No Breach ecosystem."
+            description="Writing about web security, API authorization, offensive-security methodology and emerging AI-security boundaries."
+          />
+
+          <div className={pages.grid3}>
+            {insights.slice(0, 3).map((insight) => (
+              <Link
+                className={`${pages.card} ${pages.linkCard}`}
+                href={`/insights/${insight.slug}`}
+                key={insight.slug}
+              >
+                <p className={pages.cardNumber}>
+                  {insight.category.toUpperCase()}
+                </p>
+
+                <h3 className={pages.cardTitle}>
+                  {insight.title}
+                </h3>
+
+                <p className={pages.cardDescription}>
+                  {insight.summary}
+                </p>
+
+                <p className={pages.cardMeta}>
+                  {insight.readingTime}
+                </p>
+              </Link>
+            ))}
+          </div>
+
+          <div style={{ marginTop: "2rem" }}>
+            <ButtonLink
+              href="/insights"
+              variant="secondary"
+            >
+              Explore all insights
+            </ButtonLink>
+          </div>
+        </Container>
+      </section>
+
+      <section className={pages.section}>
+        <Container>
+          <SectionHeader
+            eyebrow="10 / Timeline"
             title="From specialist practice to a broader security ecosystem."
           />
 

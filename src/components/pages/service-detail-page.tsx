@@ -1,5 +1,7 @@
+import Link from "next/link";
 import { Breadcrumbs } from "@/components/navigation/breadcrumbs";
 import { FaqList } from "@/components/content/faq-list";
+import { insights } from "@/content/insights";
 import { ServiceStructuredData } from "@/components/services/service-structured-data";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/layout/container";
@@ -17,6 +19,15 @@ type ServiceDetailPageProps = {
 export function ServiceDetailPage({
   service
 }: ServiceDetailPageProps) {
+  const relatedInsights =
+    insights
+      .filter((insight) =>
+        insight.relatedServiceSlugs.includes(
+          service.slug
+        )
+      )
+      .slice(0, 3);
+
   return (
     <>
       <ServiceStructuredData
@@ -382,6 +393,45 @@ export function ServiceDetailPage({
           />
         </Container>
       </section>
+
+      {relatedInsights.length > 0 ? (
+        <section
+          className={pages.section}
+        >
+          <Container>
+            <SectionHeader
+              eyebrow="Related insights"
+              title="Continue with the technical context."
+            />
+
+            <div className={pages.grid3}>
+              {relatedInsights.map((insight) => (
+                <Link
+                  className={`${pages.card} ${pages.linkCard}`}
+                  href={`/insights/${insight.slug}`}
+                  key={insight.slug}
+                >
+                  <p className={pages.cardNumber}>
+                    {insight.category.toUpperCase()}
+                  </p>
+
+                  <h3 className={pages.cardTitle}>
+                    {insight.title}
+                  </h3>
+
+                  <p className={pages.cardDescription}>
+                    {insight.summary}
+                  </p>
+
+                  <p className={pages.cardMeta}>
+                    {insight.readingTime}
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </Container>
+        </section>
+      ) : null}
 
       <section
         className={

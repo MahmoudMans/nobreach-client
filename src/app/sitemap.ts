@@ -1,11 +1,24 @@
 import type {
   MetadataRoute
 } from "next";
-import { activities } from "@/content/activities";
-import { events } from "@/content/events";
-import { services } from "@/content/services";
-import { siteConfig } from "@/content/site";
-import { trainingPrograms } from "@/content/training";
+import {
+  activities
+} from "@/content/activities";
+import {
+  events
+} from "@/content/events";
+import {
+  insights
+} from "@/content/insights";
+import {
+  services
+} from "@/content/services";
+import {
+  siteConfig
+} from "@/content/site";
+import {
+  trainingPrograms
+} from "@/content/training";
 
 const staticRoutes = [
   "",
@@ -18,6 +31,7 @@ const staticRoutes = [
   "/activities",
   "/events",
   "/insights",
+  "/feed.xml",
   "/careers",
   "/contact",
   "/privacy",
@@ -47,6 +61,11 @@ export default function sitemap():
     ...activities.map(
       (activity) =>
         `/activities/${activity.slug}`
+    ),
+
+    ...insights.map(
+      (insight) =>
+        `/insights/${insight.slug}`
     )
   ];
 
@@ -66,12 +85,20 @@ export default function sitemap():
       changeFrequency:
         route === ""
           ? "weekly"
-          : "monthly",
+          : route.startsWith(
+                "/insights"
+              )
+            ? "weekly"
+            : "monthly",
 
       priority:
         route === ""
           ? 1
-          : 0.7
+          : route.startsWith(
+                "/insights/"
+              )
+            ? 0.75
+            : 0.7
     })
   );
 }

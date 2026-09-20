@@ -271,3 +271,155 @@ describe(
     );
   }
 );
+
+describe(
+  "insight content integrity",
+  () => {
+    it(
+      "keeps insight slugs unique",
+      async () => {
+        const {
+          insights
+        } =
+          await import(
+            "@/content/insights"
+          );
+
+        const slugs =
+          insights.map(
+            (insight) =>
+              insight.slug
+          );
+
+        expect(
+          new Set(slugs).size
+        ).toBe(
+          slugs.length
+        );
+      }
+    );
+
+    it(
+      "provides complete article content",
+      async () => {
+        const {
+          insights
+        } =
+          await import(
+            "@/content/insights"
+          );
+
+        for (
+          const insight
+          of insights
+        ) {
+          expect(
+            insight.title.length
+          ).toBeGreaterThan(
+            10
+          );
+
+          expect(
+            insight.summary.length
+          ).toBeGreaterThan(
+            40
+          );
+
+          expect(
+            insight.sections.length
+          ).toBeGreaterThanOrEqual(
+            3
+          );
+
+          expect(
+            insight.tags.length
+          ).toBeGreaterThanOrEqual(
+            3
+          );
+
+          expect(
+            insight.author
+          ).toBe(
+            "No Breach"
+          );
+        }
+      }
+    );
+
+    it(
+      "references only existing service slugs from insights",
+      async () => {
+        const {
+          insights
+        } =
+          await import(
+            "@/content/insights"
+          );
+
+        const serviceSlugs =
+          new Set(
+            services.map(
+              (service) =>
+                service.slug
+            )
+          );
+
+        for (
+          const insight
+          of insights
+        ) {
+          for (
+            const slug
+            of insight.relatedServiceSlugs
+          ) {
+            expect(
+              serviceSlugs.has(
+                slug
+              )
+            ).toBe(
+              true
+            );
+          }
+        }
+      }
+    );
+
+    it(
+      "references only existing training slugs from insights",
+      async () => {
+        const {
+          insights
+        } =
+          await import(
+            "@/content/insights"
+          );
+
+        const trainingSlugs =
+          new Set(
+            trainingPrograms.map(
+              (program) =>
+                program.slug
+            )
+          );
+
+        for (
+          const insight
+          of insights
+        ) {
+          for (
+            const slug
+            of insight.relatedTrainingSlugs
+          ) {
+            expect(
+              trainingSlugs.has(
+                slug
+              )
+            ).toBe(
+              true
+            );
+          }
+        }
+      }
+    );
+  }
+);
