@@ -1,3 +1,4 @@
+import { Breadcrumbs } from "@/components/navigation/breadcrumbs";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/layout/container";
 import { PageHero } from "@/components/ui/page-hero";
@@ -37,6 +38,14 @@ const principles = [
 export default function CompanyPage() {
   return (
     <>
+      <Breadcrumbs
+        items={[
+          {
+            label: "Company"
+          }
+        ]}
+      />
+
       <PageHero
         eyebrow="Company"
         title="Security practice, education and community under one brand."

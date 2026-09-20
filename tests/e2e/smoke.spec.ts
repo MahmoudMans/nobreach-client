@@ -344,3 +344,151 @@ test.describe(
     );
   }
 );
+
+test(
+  "activity archive links to activity detail pages",
+  async ({ page }) => {
+    await page.goto(
+      "/activities"
+    );
+
+    const activityLink =
+      page.getByRole(
+        "link",
+        {
+          name:
+            /AI Security Foundations/i
+        }
+      );
+
+    await expect(
+      activityLink
+    ).toBeVisible();
+
+    await activityLink.click();
+
+    await expect(
+      page
+    ).toHaveURL(
+      /\/activities\/ai-security-foundations-2026$/
+    );
+
+    await expect(
+      page.getByRole(
+        "heading",
+        {
+          level: 1,
+          name:
+            "AI Security Foundations"
+        }
+      )
+    ).toBeVisible();
+  }
+);
+
+test(
+  "activity detail exposes breadcrumb navigation",
+  async ({ page }) => {
+    await page.goto(
+      "/activities/cr4ckout-2"
+    );
+
+    const breadcrumb =
+      page.getByRole(
+        "navigation",
+        {
+          name:
+            "Breadcrumb"
+        }
+      );
+
+    await expect(
+      breadcrumb
+    ).toBeVisible();
+
+    await expect(
+      breadcrumb.getByRole(
+        "link",
+        {
+          name:
+            "Activities"
+        }
+      )
+    ).toBeVisible();
+  }
+);
+
+test(
+  "service detail contains engagement workflow and FAQ",
+  async ({ page }) => {
+    await page.goto(
+      "/services/api-security"
+    );
+
+    await expect(
+      page.getByRole(
+        "heading",
+        {
+          level: 2,
+          name:
+            /from initial context to actionable reporting/i
+        }
+      )
+    ).toBeVisible();
+
+    await expect(
+      page.getByText(
+        /does api testing include authorization/i
+      )
+    ).toBeVisible();
+  }
+);
+
+test(
+  "training detail contains audience and expected outcomes",
+  async ({ page }) => {
+    await page.goto(
+      "/training/ai-security-foundations"
+    );
+
+    await expect(
+      page.getByRole(
+        "heading",
+        {
+          level: 2,
+          name:
+            /designed for learners building practical security capability/i
+        }
+      )
+    ).toBeVisible();
+
+    await expect(
+      page.getByText(
+        /AI application trust boundaries/i
+      )
+    ).toBeVisible();
+  }
+);
+
+test(
+  "sitemap includes dynamic activity route",
+  async ({ page }) => {
+    const response =
+      await page.request.get(
+        "/sitemap.xml"
+      );
+
+    expect(
+      response.ok()
+    ).toBeTruthy();
+
+    const body =
+      await response.text();
+
+    expect(
+      body
+    ).toContain(
+      "/activities/cr4ckout-2"
+    );
+  }
+);

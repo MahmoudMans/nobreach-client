@@ -1,43 +1,273 @@
-import { describe, expect, it } from "vitest";
-import { activities } from "@/content/activities";
-import { events } from "@/content/events";
-import { services } from "@/content/services";
-import { trainingPrograms } from "@/content/training";
+import {
+  describe,
+  expect,
+  it
+} from "vitest";
+import {
+  activities,
+  getActivity
+} from "@/content/activities";
+import {
+  events
+} from "@/content/events";
+import {
+  services
+} from "@/content/services";
+import {
+  trainingPrograms
+} from "@/content/training";
 
-describe("content integrity", () => {
-  it("keeps service slugs unique", () => {
-    const slugs = services.map((service) => service.slug);
-    expect(new Set(slugs).size).toBe(slugs.length);
-  });
+describe(
+  "content integrity",
+  () => {
+    it(
+      "keeps service slugs unique",
+      () => {
+        const slugs =
+          services.map(
+            (service) =>
+              service.slug
+          );
 
-  it("keeps training slugs unique", () => {
-    const slugs = trainingPrograms.map((program) => program.slug);
-    expect(new Set(slugs).size).toBe(slugs.length);
-  });
+        expect(
+          new Set(slugs).size
+        ).toBe(
+          slugs.length
+        );
+      }
+    );
 
-  it("keeps event slugs unique", () => {
-    const slugs = events.map((event) => event.slug);
-    expect(new Set(slugs).size).toBe(slugs.length);
-  });
+    it(
+      "keeps training slugs unique",
+      () => {
+        const slugs =
+          trainingPrograms.map(
+            (program) =>
+              program.slug
+          );
 
-  it("keeps activity slugs unique", () => {
-    const slugs = activities.map((activity) => activity.slug);
-    expect(new Set(slugs).size).toBe(slugs.length);
-  });
+        expect(
+          new Set(slugs).size
+        ).toBe(
+          slugs.length
+        );
+      }
+    );
 
-  it("provides meaningful service content", () => {
-    for (const service of services) {
-      expect(service.title.length).toBeGreaterThan(5);
-      expect(service.summary.length).toBeGreaterThan(20);
-      expect(service.scope.length).toBeGreaterThan(3);
-      expect(service.deliverables.length).toBeGreaterThan(3);
-    }
-  });
+    it(
+      "keeps event slugs unique",
+      () => {
+        const slugs =
+          events.map(
+            (event) =>
+              event.slug
+          );
 
-  it("provides modules for every training program", () => {
-    for (const program of trainingPrograms) {
-      expect(program.modules.length).toBeGreaterThan(2);
-      expect(program.objectives.length).toBeGreaterThan(2);
-    }
-  });
-});
+        expect(
+          new Set(slugs).size
+        ).toBe(
+          slugs.length
+        );
+      }
+    );
+
+    it(
+      "keeps activity slugs unique",
+      () => {
+        const slugs =
+          activities.map(
+            (activity) =>
+              activity.slug
+          );
+
+        expect(
+          new Set(slugs).size
+        ).toBe(
+          slugs.length
+        );
+      }
+    );
+
+    it(
+      "provides meaningful service content",
+      () => {
+        for (
+          const service
+          of services
+        ) {
+          expect(
+            service.title.length
+          ).toBeGreaterThan(
+            5
+          );
+
+          expect(
+            service.summary.length
+          ).toBeGreaterThan(
+            20
+          );
+
+          expect(
+            service.scope.length
+          ).toBeGreaterThan(
+            3
+          );
+
+          expect(
+            service.deliverables.length
+          ).toBeGreaterThan(
+            3
+          );
+
+          expect(
+            service.suitableFor.length
+          ).toBeGreaterThan(
+            2
+          );
+
+          expect(
+            service.engagement.length
+          ).toBe(
+            5
+          );
+
+          expect(
+            service.faqs.length
+          ).toBeGreaterThanOrEqual(
+            3
+          );
+        }
+      }
+    );
+
+    it(
+      "provides modules and audiences for every training program",
+      () => {
+        for (
+          const program
+          of trainingPrograms
+        ) {
+          expect(
+            program.modules.length
+          ).toBeGreaterThan(
+            2
+          );
+
+          expect(
+            program.objectives.length
+          ).toBeGreaterThan(
+            2
+          );
+
+          expect(
+            program.audience.length
+          ).toBeGreaterThan(
+            2
+          );
+
+          expect(
+            program.outcomes.length
+          ).toBeGreaterThan(
+            2
+          );
+        }
+      }
+    );
+
+    it(
+      "provides complete activity detail content",
+      () => {
+        for (
+          const activity
+          of activities
+        ) {
+          expect(
+            activity.description.length
+          ).toBeGreaterThan(
+            30
+          );
+
+          expect(
+            activity.highlights.length
+          ).toBeGreaterThan(
+            2
+          );
+
+          expect(
+            activity.sections.length
+          ).toBeGreaterThan(
+            0
+          );
+
+          expect(
+            getActivity(
+              activity.slug
+            )
+          ).toEqual(
+            activity
+          );
+        }
+      }
+    );
+
+    it(
+      "references only existing training programs from activities",
+      () => {
+        const trainingSlugs =
+          new Set(
+            trainingPrograms.map(
+              (program) =>
+                program.slug
+            )
+          );
+
+        for (
+          const activity
+          of activities
+        ) {
+          if (
+            activity.relatedTrainingSlug
+          ) {
+            expect(
+              trainingSlugs.has(
+                activity.relatedTrainingSlug
+              )
+            ).toBe(
+              true
+            );
+          }
+        }
+      }
+    );
+
+    it(
+      "references only existing events from activities",
+      () => {
+        const eventSlugs =
+          new Set(
+            events.map(
+              (event) =>
+                event.slug
+            )
+          );
+
+        for (
+          const activity
+          of activities
+        ) {
+          if (
+            activity.relatedEventSlug
+          ) {
+            expect(
+              eventSlugs.has(
+                activity.relatedEventSlug
+              )
+            ).toBe(
+              true
+            );
+          }
+        }
+      }
+    );
+  }
+);

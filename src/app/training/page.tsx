@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/navigation/breadcrumbs";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/layout/container";
 import { PageHero } from "@/components/ui/page-hero";
@@ -35,6 +36,14 @@ const learningPrinciples = [
 export default function TrainingPage() {
   return (
     <>
+      <Breadcrumbs
+        items={[
+          {
+            label: "Training"
+          }
+        ]}
+      />
+
       <PageHero
         eyebrow="No Breach Training Hub"
         title="Learn cybersecurity by doing cybersecurity."

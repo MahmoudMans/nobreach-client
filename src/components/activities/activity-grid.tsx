@@ -1,45 +1,71 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { activities } from "@/content/activities";
+import {
+  useMemo,
+  useState
+} from "react";
+import Link from "next/link";
+import {
+  activities
+} from "@/content/activities";
 import {
   activityFilters,
   type ActivityFilter
 } from "@/lib/activity-filter";
-import type { ActivityCategory } from "@/types/content";
+import type {
+  ActivityCategory
+} from "@/types/content";
 import styles from "./activity-grid.module.css";
 
 type ActivityGridProps = {
-  initialFilter?: ActivityFilter;
+  initialFilter?:
+    ActivityFilter;
 };
 
 export function ActivityGrid({
   initialFilter = "all"
 }: ActivityGridProps) {
-  const [filter, setFilter] =
-    useState<ActivityFilter>(initialFilter);
-
-  const visibleActivities = useMemo(() => {
-    if (filter === "all") {
-      return activities;
-    }
-
-    return activities.filter(
-      (activity) =>
-        activity.category ===
-        (filter as ActivityCategory)
+  const [
+    filter,
+    setFilter
+  ] =
+    useState<ActivityFilter>(
+      initialFilter
     );
-  }, [filter]);
+
+  const visibleActivities =
+    useMemo(() => {
+      if (
+        filter === "all"
+      ) {
+        return activities;
+      }
+
+      return activities.filter(
+        (activity) =>
+          activity.category ===
+          (filter as
+            ActivityCategory)
+      );
+    }, [filter]);
 
   function selectFilter(
-    nextFilter: ActivityFilter
+    nextFilter:
+      ActivityFilter
   ) {
     setFilter(nextFilter);
 
-    const url = new URL(window.location.href);
+    const url =
+      new URL(
+        window.location.href
+      );
 
-    if (nextFilter === "all") {
-      url.searchParams.delete("type");
+    if (
+      nextFilter === "all"
+    ) {
+      url.searchParams.delete(
+        "type"
+      );
     } else {
       url.searchParams.set(
         "type",
@@ -57,24 +83,34 @@ export function ActivityGrid({
   return (
     <>
       <div
-        className={styles.filters}
+        className={
+          styles.filters
+        }
         aria-label="Filter activities"
       >
         {activityFilters.map(
           (category) => (
             <button
-              className={`${styles.filter} ${
-                filter === category
+              className={`${
+                styles.filter
+              } ${
+                filter ===
+                category
                   ? styles.active
                   : ""
               }`}
-              key={category}
+              key={
+                category
+              }
               type="button"
               aria-pressed={
-                filter === category
+                filter ===
+                category
               }
               onClick={() =>
-                selectFilter(category)
+                selectFilter(
+                  category
+                )
               }
             >
               {category}
@@ -84,16 +120,23 @@ export function ActivityGrid({
       </div>
 
       <div
-        className={styles.grid}
+        className={
+          styles.grid
+        }
         aria-live="polite"
       >
         {visibleActivities.length >
         0 ? (
           visibleActivities.map(
             (activity) => (
-              <article
-                className={styles.card}
-                key={activity.slug}
+              <Link
+                className={
+                  styles.card
+                }
+                href={`/activities/${activity.slug}`}
+                key={
+                  activity.slug
+                }
               >
                 <div
                   className={
@@ -101,10 +144,15 @@ export function ActivityGrid({
                   }
                 >
                   <span>
-                    {activity.year}
+                    {
+                      activity.year
+                    }
                   </span>
+
                   <span>
-                    {activity.category}
+                    {
+                      activity.category
+                    }
                   </span>
                 </div>
 
@@ -113,7 +161,9 @@ export function ActivityGrid({
                     styles.title
                   }
                 >
-                  {activity.title}
+                  {
+                    activity.title
+                  }
                 </h2>
 
                 <p
@@ -121,26 +171,43 @@ export function ActivityGrid({
                     styles.summary
                   }
                 >
-                  {activity.summary}
+                  {
+                    activity.summary
+                  }
                 </p>
 
-                {activity.location ? (
-                  <p
+                <div
+                  className={
+                    styles.footer
+                  }
+                >
+                  <span
                     className={
                       styles.location
                     }
                   >
                     {
-                      activity.location
+                      activity.location ??
+                      "No Breach"
                     }
-                  </p>
-                ) : null}
-              </article>
+                  </span>
+
+                  <span
+                    className={
+                      styles.action
+                    }
+                  >
+                    View activity →
+                  </span>
+                </div>
+              </Link>
             )
           )
         ) : (
           <div
-            className={styles.empty}
+            className={
+              styles.empty
+            }
           >
             No published activities
             match this filter yet.

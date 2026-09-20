@@ -1,3 +1,4 @@
+import { Breadcrumbs } from "@/components/navigation/breadcrumbs";
 import { Container } from "@/components/layout/container";
 import { PageHero } from "@/components/ui/page-hero";
 import { team } from "@/content/team";
@@ -16,6 +17,18 @@ export default function TeamPage() {
 
   return (
     <>
+      <Breadcrumbs
+        items={[
+          {
+            label: "Company",
+            href: "/company"
+          },
+          {
+            label: "Team"
+          }
+        ]}
+      />
+
       <PageHero
         eyebrow="Team"
         title="People behind the work."

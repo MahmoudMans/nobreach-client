@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/navigation/breadcrumbs";
 import { ArrowUpRight } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/layout/container";
@@ -19,6 +20,14 @@ export const metadata = createMetadata({
 export default function ServicesPage() {
   return (
     <>
+      <Breadcrumbs
+        items={[
+          {
+            label: "Services"
+          }
+        ]}
+      />
+
       <PageHero
         eyebrow="Security services"
         title="See the system from the attacker’s side."

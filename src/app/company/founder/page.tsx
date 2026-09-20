@@ -1,3 +1,4 @@
+import { Breadcrumbs } from "@/components/navigation/breadcrumbs";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Container } from "@/components/layout/container";
 import { PageHero } from "@/components/ui/page-hero";
@@ -24,6 +25,18 @@ const journey = [
 export default function FounderPage() {
   return (
     <>
+      <Breadcrumbs
+        items={[
+          {
+            label: "Company",
+            href: "/company"
+          },
+          {
+            label: "Founder"
+          }
+        ]}
+      />
+
       <PageHero
         eyebrow="Founder"
         title="Nouha Ben Brahim"
