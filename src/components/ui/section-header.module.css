@@ -1,0 +1,41 @@
+.header {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.5fr);
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.eyebrow {
+  color: var(--brand-blue);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.7rem;
+  font-weight: 650;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.copy {
+  max-width: 780px;
+}
+
+.title {
+  font-size: clamp(2.25rem, 5vw, 4.4rem);
+  font-weight: 510;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.description {
+  max-width: 680px;
+  margin-top: 1.25rem;
+  color: var(--color-text-secondary);
+  font-size: 1.03rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .header {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

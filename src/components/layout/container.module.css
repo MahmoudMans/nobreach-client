@@ -1,0 +1,25 @@
+.container {
+  width: min(
+    calc(100% - 64px),
+    var(--container-default)
+  );
+  margin-inline: auto;
+}
+
+.wide {
+  max-width: var(--container-wide);
+}
+
+.content {
+  max-width: var(--container-content);
+}
+
+.reading {
+  max-width: var(--container-reading);
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: min(calc(100% - 36px), var(--container-default));
+  }
+}

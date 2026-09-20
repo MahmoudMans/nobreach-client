@@ -1,0 +1,49 @@
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: fit-content;
+}
+
+.mark {
+  position: relative;
+  display: grid;
+  width: 2.35rem;
+  height: 2.35rem;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--border-medium);
+  border-radius: 9px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(161, 226, 240, 0.12),
+      rgba(99, 51, 198, 0.16)
+    ),
+    var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.mark::after {
+  position: absolute;
+  right: -10%;
+  bottom: -34%;
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  background: var(--brand-violet);
+  content: "";
+  filter: blur(16px);
+  opacity: 0.6;
+}
+
+.text {
+  font-size: 0.87rem;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  white-space: nowrap;
+}

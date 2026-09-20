@@ -1,0 +1,78 @@
+@import "./tokens.css";
+@import "./reset.css";
+@import "./animations.css";
+
+html {
+  color-scheme: dark;
+  background: var(--color-bg);
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(
+      circle at 88% 5%,
+      rgba(99, 51, 198, 0.16),
+      transparent 25rem
+    ),
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(131, 179, 215, 0.08),
+      transparent 24rem
+    ),
+    var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-geist-sans), Arial, sans-serif;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--brand-violet);
+  color: var(--color-white);
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand-cyan);
+  outline-offset: 4px;
+}
+
+main {
+  min-height: 70vh;
+}
+
+button,
+a {
+  transition:
+    color var(--duration-normal) var(--ease-standard),
+    background-color var(--duration-normal) var(--ease-standard),
+    border-color var(--duration-normal) var(--ease-standard),
+    opacity var(--duration-normal) var(--ease-standard),
+    transform var(--duration-normal) var(--ease-standard);
+}
+
+button {
+  color: inherit;
+}
+
+code,
+pre,
+kbd,
+samp {
+  font-family: var(--font-geist-mono), monospace;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

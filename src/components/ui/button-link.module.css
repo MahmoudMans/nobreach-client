@@ -1,0 +1,45 @@
+.button {
+  display: inline-flex;
+  min-height: 48px;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0 1.1rem;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  font-size: 0.88rem;
+  font-weight: 650;
+}
+
+.primary {
+  background: var(--brand-cyan);
+  color: #06080a;
+}
+
+.primary:hover {
+  background: #bcf0f8;
+  transform: translateY(-2px);
+}
+
+.secondary {
+  border-color: var(--border-medium);
+  background: rgba(161, 226, 240, 0.045);
+  color: var(--color-text);
+}
+
+.secondary:hover {
+  border-color: rgba(161, 226, 240, 0.45);
+  background: rgba(161, 226, 240, 0.08);
+  transform: translateY(-2px);
+}
+
+.ghost {
+  min-height: 42px;
+  padding-inline: 0;
+  color: var(--brand-cyan);
+}
+
+.ghost:hover {
+  color: var(--color-white);
+}
