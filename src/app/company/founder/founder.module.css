@@ -1300,3 +1300,318 @@
   margin-bottom:
     2rem;
 }
+/* ==========================================================================
+   NB_CONTENT_DENSITY_V5
+
+   Route-level content density:
+   all information remains visible.
+   ========================================================================== */
+
+
+/* HERO --------------------------------------------------------------- */
+
+.hero,
+.pageHero,
+.detailHero,
+.introHero {
+  padding-block:
+    clamp(
+      2.8rem,
+      4.5vw,
+      3.9rem
+    );
+}
+
+
+/* SECTION ------------------------------------------------------------ */
+
+.section,
+.contentSection,
+.detailSection,
+.overview,
+.story,
+.principles,
+.ecosystem,
+.approach,
+.process,
+.methodology,
+.deliverables,
+.engagement,
+.audience,
+.outcomes,
+.curriculum,
+.community,
+.archive,
+.timelineSection,
+.faqSection,
+.ctaSection {
+  padding-block:
+    clamp(
+      2.8rem,
+      4.4vw,
+      3.8rem
+    );
+}
+
+
+/* HEADER ------------------------------------------------------------- */
+
+.sectionHeader,
+.header,
+.heading {
+  margin-bottom:
+    clamp(
+      1.2rem,
+      2.2vw,
+      1.75rem
+    );
+}
+
+
+/* GRID --------------------------------------------------------------- */
+
+.grid,
+.cards,
+.cardGrid,
+.serviceGrid,
+.programGrid,
+.teamGrid,
+.eventGrid,
+.activityGrid,
+.featureGrid,
+.valueGrid,
+.metaGrid,
+.outcomeGrid,
+.deliverableGrid,
+.processGrid,
+.methodGrid,
+.galleryGrid,
+.projectGrid {
+  gap:
+    0.7rem;
+}
+
+
+/* CARD --------------------------------------------------------------- */
+
+.card,
+.panel,
+.serviceCard,
+.programCard,
+.teamCard,
+.memberCard,
+.eventCard,
+.activityCard,
+.featureCard,
+.valueCard,
+.metaCard,
+.infoCard,
+.processCard,
+.methodCard,
+.outcomeCard,
+.deliverableCard,
+.jobCard,
+.securityCard,
+.contactCard,
+.statCard,
+.galleryCard,
+.project {
+  min-height:
+    auto;
+  padding:
+    1rem;
+}
+
+
+/* COPY --------------------------------------------------------------- */
+
+.description,
+.intro,
+.lead,
+.summary,
+.copy {
+  max-width:
+    720px;
+}
+
+
+.card p,
+.serviceCard p,
+.programCard p,
+.teamCard p,
+.memberCard p,
+.eventCard p,
+.activityCard p,
+.featureCard p,
+.jobCard p,
+.project p {
+  margin-top:
+    0.45rem;
+  line-height:
+    1.6;
+}
+
+
+/* META --------------------------------------------------------------- */
+
+.meta,
+.metadata,
+.metaGrid,
+.stats,
+.statGrid,
+.facts,
+.factGrid {
+  gap:
+    0;
+}
+
+
+.metaCard,
+.statCard,
+.fact,
+.stat {
+  min-height:
+    auto;
+  padding:
+    0.75rem
+    0.85rem;
+}
+
+
+/* TIMELINE ----------------------------------------------------------- */
+
+.timeline,
+.timelineGrid {
+  gap:
+    0;
+}
+
+
+.timelineItem,
+.timelineCard {
+  min-height:
+    auto;
+  padding:
+    0.85rem
+    0;
+}
+
+
+/* PROCESS ------------------------------------------------------------ */
+
+.processGrid,
+.methodGrid,
+.steps,
+.methodologyGrid {
+  gap:
+    0.6rem;
+}
+
+
+.processCard,
+.methodCard,
+.step {
+  min-height:
+    auto;
+}
+
+
+/* FAQ ---------------------------------------------------------------- */
+
+.faq,
+.faqList,
+.accordion {
+  max-width:
+    800px;
+}
+
+
+.faqItem,
+.accordionItem {
+  min-height:
+    auto;
+}
+
+
+/* CTA ---------------------------------------------------------------- */
+
+.cta,
+.ctaBox,
+.contactBox,
+.callout {
+  min-height:
+    auto;
+  padding:
+    clamp(
+      1.4rem,
+      2.8vw,
+      2rem
+    );
+}
+
+
+/* MOBILE ------------------------------------------------------------- */
+
+@media (max-width: 640px) {
+
+  .hero,
+  .pageHero,
+  .detailHero,
+  .introHero {
+    padding-block:
+      2.7rem;
+  }
+
+
+  .section,
+  .contentSection,
+  .detailSection,
+  .overview,
+  .story,
+  .principles,
+  .ecosystem,
+  .approach,
+  .process,
+  .methodology,
+  .deliverables,
+  .engagement,
+  .audience,
+  .outcomes,
+  .curriculum,
+  .community,
+  .archive,
+  .timelineSection,
+  .faqSection,
+  .ctaSection {
+    padding-block:
+      2.8rem;
+  }
+
+
+  .card,
+  .panel,
+  .serviceCard,
+  .programCard,
+  .teamCard,
+  .memberCard,
+  .eventCard,
+  .activityCard,
+  .featureCard,
+  .valueCard,
+  .metaCard,
+  .infoCard,
+  .processCard,
+  .methodCard,
+  .outcomeCard,
+  .deliverableCard,
+  .jobCard,
+  .securityCard,
+  .contactCard,
+  .statCard,
+  .galleryCard,
+  .project {
+    padding:
+      0.95rem;
+  }
+
+}

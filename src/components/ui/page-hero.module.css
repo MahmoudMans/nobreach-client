@@ -483,3 +483,38 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_CONTENT_DENSITY_V5
+   ========================================================================== */
+
+.hero {
+  padding-block:
+    clamp(
+      2.8rem,
+      4.5vw,
+      3.9rem
+    );
+}
+
+.description,
+.intro,
+.lead {
+  margin-top:
+    0.85rem;
+}
+
+.actions {
+  margin-top:
+    1.35rem;
+}
+
+@media (max-width: 640px) {
+
+  .hero {
+    padding-block:
+      2.7rem;
+  }
+
+}

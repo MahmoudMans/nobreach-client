@@ -1533,3 +1533,288 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_CONTENT_DENSITY_V5
+
+   Reduce page length without removing information.
+
+   Principles:
+   - smaller vertical intervals
+   - content-first rows
+   - less artificial card height
+   - compact metadata
+   - tighter timelines
+   - restrained CTAs
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   PAGE SECTIONS
+   -------------------------------------------------------------------------- */
+
+.section,
+.contentSection,
+.detailSection,
+.featureSection,
+.timelineSection,
+.faqSection,
+.ctaSection {
+  padding-block:
+    clamp(
+      2.8rem,
+      4.4vw,
+      3.8rem
+    );
+}
+
+
+/* --------------------------------------------------------------------------
+   SECTION HEADERS
+   -------------------------------------------------------------------------- */
+
+.sectionHeader,
+.heading,
+.header {
+  margin-bottom:
+    clamp(
+      1.25rem,
+      2.2vw,
+      1.8rem
+    );
+}
+
+
+/* --------------------------------------------------------------------------
+   CONTENT GRIDS
+   -------------------------------------------------------------------------- */
+
+.grid,
+.cardGrid,
+.serviceGrid,
+.programGrid,
+.teamGrid,
+.activityGrid,
+.eventGrid,
+.valueGrid,
+.featureGrid,
+.metaGrid,
+.outcomeGrid,
+.deliverableGrid,
+.processGrid {
+  gap:
+    0.7rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   CONTENT CARDS
+   -------------------------------------------------------------------------- */
+
+.card,
+.featureCard,
+.serviceCard,
+.programCard,
+.teamCard,
+.activityCard,
+.eventCard,
+.jobCard,
+.infoCard,
+.metaCard,
+.valueCard,
+.detailCard,
+.processCard,
+.outcomeCard,
+.deliverableCard {
+  min-height:
+    auto;
+  padding:
+    1rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   CARD TEXT
+   -------------------------------------------------------------------------- */
+
+.card h3,
+.featureCard h3,
+.serviceCard h3,
+.programCard h3,
+.teamCard h3,
+.activityCard h3,
+.eventCard h3,
+.jobCard h3 {
+  margin-bottom:
+    0.45rem;
+}
+
+
+.card p,
+.featureCard p,
+.serviceCard p,
+.programCard p,
+.teamCard p,
+.activityCard p,
+.eventCard p,
+.jobCard p {
+  margin-top:
+    0.45rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   METADATA
+   -------------------------------------------------------------------------- */
+
+.metaGrid,
+.factGrid,
+.statGrid,
+.metadata {
+  gap:
+    0;
+}
+
+
+.metaCard,
+.fact,
+.stat {
+  min-height:
+    auto;
+  padding:
+    0.8rem
+    0.9rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   TIMELINE
+   -------------------------------------------------------------------------- */
+
+.timeline {
+  gap:
+    0;
+}
+
+
+.timelineItem,
+.timelineCard {
+  min-height:
+    auto;
+  padding:
+    0.9rem
+    0;
+}
+
+
+/* --------------------------------------------------------------------------
+   PROCESS / METHODOLOGY
+   -------------------------------------------------------------------------- */
+
+.processGrid,
+.methodGrid,
+.steps {
+  gap:
+    0;
+}
+
+
+.processCard,
+.methodCard,
+.step {
+  min-height:
+    auto;
+}
+
+
+/* --------------------------------------------------------------------------
+   FAQ
+   -------------------------------------------------------------------------- */
+
+.faq,
+.faqList {
+  max-width:
+    800px;
+}
+
+
+.faqItem {
+  min-height:
+    auto;
+}
+
+
+/* --------------------------------------------------------------------------
+   CTA
+   -------------------------------------------------------------------------- */
+
+.cta,
+.ctaBox,
+.callout,
+.contactBox {
+  min-height:
+    auto;
+  padding:
+    clamp(
+      1.4rem,
+      2.8vw,
+      2rem
+    );
+}
+
+
+/* --------------------------------------------------------------------------
+   SPLIT CONTENT
+   -------------------------------------------------------------------------- */
+
+.split,
+.twoColumn,
+.contentGrid,
+.detailGrid,
+.overviewGrid {
+  gap:
+    clamp(
+      1.75rem,
+      4vw,
+      3.5rem
+    );
+}
+
+
+/* --------------------------------------------------------------------------
+   MOBILE
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 640px) {
+
+  .section,
+  .contentSection,
+  .detailSection,
+  .featureSection,
+  .timelineSection,
+  .faqSection,
+  .ctaSection {
+    padding-block:
+      2.8rem;
+  }
+
+
+  .grid,
+  .cardGrid,
+  .serviceGrid,
+  .programGrid,
+  .teamGrid,
+  .activityGrid,
+  .eventGrid,
+  .valueGrid,
+  .featureGrid,
+  .metaGrid,
+  .outcomeGrid,
+  .deliverableGrid,
+  .processGrid {
+    gap:
+      0.6rem;
+  }
+
+}
