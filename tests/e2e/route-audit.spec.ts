@@ -8,6 +8,7 @@ const visualRoutes = [
   "/company",
   "/company/founder",
   "/company/team",
+  "/company/internships",
   "/services",
   "/services/web-application-pentesting",
   "/services/api-security",

@@ -58,6 +58,14 @@ const companyItems:
     },
     {
       href:
+        "/company/internships",
+      label:
+        "Internship Projects",
+      description:
+        "Selected applied-security work from No Breach internships."
+    },
+    {
+      href:
         "/careers",
       label:
         "Careers",
