@@ -1075,3 +1075,1487 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_ATTACK_SURFACE_SOURCE_LAYOUT_V5
+
+   Route-scoped editorial layout using the real source classes from this
+   module: .article, .layout, .toc, .content and .metaSide.
+
+   This deliberately replaces the previous speculative semantic selectors.
+   ========================================================================== */
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.article {
+  padding-top:
+    clamp(
+      2.6rem,
+      5vw,
+      4.5rem
+    );
+
+  padding-bottom:
+    clamp(
+      4rem,
+      7vw,
+      6rem
+    );
+}
+
+
+/* ==========================================================================
+   TOP EDITORIAL INDEX
+
+   Instead of:
+       narrow TOC | narrow content | narrow metadata
+
+   use:
+       metadata  | contents
+       --------------------
+           research body
+   ========================================================================== */
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.layout {
+  display: grid;
+
+  width:
+    min(
+      calc(
+        100% - 2rem
+      ),
+      1080px
+    );
+
+  max-width:
+    1080px;
+
+  min-width: 0;
+
+  margin-inline:
+    auto;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    minmax(
+      0,
+      1fr
+    );
+
+  grid-template-areas:
+    "meta toc"
+    "content content";
+
+  column-gap:
+    clamp(
+      2rem,
+      5vw,
+      4.5rem
+    );
+
+  row-gap:
+    2.5rem;
+
+  align-items:
+    start;
+}
+
+
+/* ==========================================================================
+   METADATA
+   ========================================================================== */
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.metaSide {
+  grid-area:
+    meta;
+
+  position:
+    static;
+
+  top:
+    auto;
+
+  width:
+    100%;
+
+  max-width:
+    none;
+
+  min-width: 0;
+
+  margin: 0;
+
+  padding:
+    0.85rem
+    0
+    1rem;
+
+  border: 0;
+
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  border-radius: 0;
+
+  background:
+    transparent;
+
+  box-shadow:
+    none;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.metaLabel {
+  margin-bottom:
+    0.8rem;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.32
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.47rem;
+
+  font-weight:
+    560;
+
+  letter-spacing:
+    0.11em;
+
+  text-transform:
+    uppercase;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.metaGroup {
+  display: grid;
+
+  gap:
+    0;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.metaRow {
+  display: flex;
+
+  align-items:
+    baseline;
+
+  justify-content:
+    space-between;
+
+  gap:
+    1rem;
+
+  padding:
+    0.48rem
+    0;
+
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.045
+    );
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.metaRow:last-child {
+  border-bottom: 0;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.metaKey {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.35
+    );
+
+  font-size:
+    0.69rem;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.metaValue {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.74
+    );
+
+  font-size:
+    0.72rem;
+
+  text-align:
+    right;
+}
+
+
+/* ==========================================================================
+   CONTENTS
+   ========================================================================== */
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.toc {
+  grid-area:
+    toc;
+
+  position:
+    static;
+
+  top:
+    auto;
+
+  width:
+    100%;
+
+  max-width:
+    none;
+
+  min-width: 0;
+
+  margin: 0;
+
+  padding:
+    0.85rem
+    0
+    1rem;
+
+  border: 0;
+
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  border-radius: 0;
+
+  background:
+    transparent;
+
+  box-shadow:
+    none;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.tocLabel {
+  margin-bottom:
+    0.75rem;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.32
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.47rem;
+
+  font-weight:
+    560;
+
+  letter-spacing:
+    0.11em;
+
+  text-transform:
+    uppercase;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.tocList {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    0;
+
+  margin: 0;
+
+  padding: 0;
+
+  list-style:
+    none;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.tocLink {
+  display: block;
+
+  padding:
+    0.43rem
+    0.65rem
+    0.43rem
+    0;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.43
+    );
+
+  font-size:
+    0.68rem;
+
+  line-height:
+    1.45;
+
+  text-decoration:
+    none;
+
+  transition:
+    color
+    140ms
+    ease,
+    transform
+    140ms
+    ease;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.tocLink:hover {
+  transform:
+    translateX(
+      3px
+    );
+
+  color:
+    #a1e2f0;
+}
+
+
+/* ==========================================================================
+   PRIMARY RESEARCH BODY
+   ========================================================================== */
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.content {
+  grid-area:
+    content;
+
+  display: block;
+
+  width:
+    min(
+      100%,
+      760px
+    );
+
+  max-width:
+    760px;
+
+  min-width: 0;
+
+  margin-inline:
+    auto;
+
+  padding:
+    0;
+
+  justify-self:
+    center;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.intro {
+  width:
+    100%;
+
+  max-width:
+    710px;
+
+  margin:
+    0
+    0
+    clamp(
+      2.7rem,
+      5vw,
+      3.8rem
+    );
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.84
+    );
+
+  font-size:
+    clamp(
+      1.06rem,
+      1.3vw,
+      1.16rem
+    );
+
+  line-height:
+    1.76;
+}
+
+
+/* ==========================================================================
+   NUMBERED SECTIONS
+   ========================================================================== */
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.content {
+  counter-reset:
+    nbAttackResearch;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.section {
+  counter-increment:
+    nbAttackResearch;
+
+  position: relative;
+
+  width:
+    100%;
+
+  max-width:
+    760px;
+
+  min-width: 0;
+
+  margin: 0;
+
+  padding:
+    clamp(
+      2.6rem,
+      5vw,
+      3.8rem
+    )
+    0;
+
+  border: 0;
+
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.075
+    );
+
+  border-radius: 0;
+
+  background:
+    transparent;
+
+  box-shadow:
+    none;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.sectionTitle {
+  width:
+    100%;
+
+  max-width:
+    700px;
+
+  margin:
+    0
+    0
+    1.2rem;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.94
+    );
+
+  font-size:
+    clamp(
+      1.75rem,
+      2.75vw,
+      2.4rem
+    );
+
+  font-weight:
+    510;
+
+  letter-spacing:
+    -0.047em;
+
+  line-height:
+    1.05;
+
+  text-wrap:
+    balance;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.sectionTitle::before {
+  display: block;
+
+  margin-bottom:
+    0.72rem;
+
+  color:
+    #83b3d7;
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.48rem;
+
+  font-weight:
+    580;
+
+  letter-spacing:
+    0.12em;
+
+  content:
+    counter(
+      nbAttackResearch,
+      decimal-leading-zero
+    )
+    " /";
+
+  text-transform:
+    uppercase;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.paragraph {
+  width:
+    100%;
+
+  max-width:
+    720px;
+
+  margin:
+    1rem
+    0;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.68
+    );
+
+  font-size:
+    1rem;
+
+  line-height:
+    1.84;
+}
+
+
+/* ==========================================================================
+   LISTS
+   ========================================================================== */
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.bullets {
+  display: grid;
+
+  width:
+    100%;
+
+  max-width:
+    720px;
+
+  gap: 0;
+
+  margin:
+    1.45rem
+    0;
+
+  padding: 0;
+
+  list-style:
+    none;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.bullet {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    18px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    0.55rem;
+
+  padding:
+    0.72rem
+    0;
+
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.055
+    );
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.68
+    );
+
+  line-height:
+    1.65;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.bulletMarker {
+  display: grid;
+
+  width:
+    16px;
+
+  height:
+    16px;
+
+  margin-top:
+    0.28rem;
+
+  place-items:
+    center;
+
+  border:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.24
+    );
+
+  border-radius:
+    50%;
+
+  color:
+    #a1e2f0;
+
+  font-size:
+    0.44rem;
+}
+
+
+/* ==========================================================================
+   CONTEXT CARDS
+   ========================================================================== */
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.contextGrid {
+  display: grid;
+
+  width:
+    100%;
+
+  max-width:
+    720px;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    1px;
+
+  margin-top:
+    2rem;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.075
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.075
+    );
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.contextCard {
+  min-height: 0;
+
+  padding:
+    1.15rem;
+
+  border: 0;
+
+  border-radius: 0;
+
+  background:
+    #090a0d;
+
+  box-shadow:
+    none;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.contextLabel {
+  margin-bottom:
+    0.6rem;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.3
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.45rem;
+
+  letter-spacing:
+    0.1em;
+
+  text-transform:
+    uppercase;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.contextTitle {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.88
+    );
+
+  font-size:
+    0.95rem;
+
+  font-weight:
+    550;
+
+  line-height:
+    1.3;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.contextAction {
+  color:
+    #a1e2f0;
+
+  font-size:
+    0.7rem;
+
+  text-decoration:
+    none;
+}
+
+
+/* ==========================================================================
+   TAGS
+   ========================================================================== */
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.tags {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap:
+    0.4rem;
+
+  margin-top:
+    0.9rem;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.tag {
+  padding:
+    0.24rem
+    0.45rem;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  border-radius:
+    4px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.45
+    );
+
+  background:
+    transparent;
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.48rem;
+
+  letter-spacing:
+    0.04em;
+}
+
+
+/* ==========================================================================
+   RELATED RESEARCH
+   ========================================================================== */
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.relatedSection {
+  width:
+    min(
+      calc(
+        100% - 2rem
+      ),
+      1080px
+    );
+
+  max-width:
+    1080px;
+
+  margin:
+    clamp(
+      3.5rem,
+      7vw,
+      5rem
+    )
+    auto
+    0;
+
+  padding:
+    clamp(
+      2rem,
+      4vw,
+      3rem
+    )
+    0
+    0;
+
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.relatedGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap: 0;
+
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.065
+    );
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.relatedCard {
+  min-height: 0;
+
+  padding:
+    1.2rem
+    1rem
+    1.2rem
+    0;
+
+  border: 0;
+
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.065
+    );
+
+  border-radius: 0;
+
+  background:
+    transparent;
+
+  box-shadow:
+    none;
+
+  transition:
+    padding-left
+    150ms
+    ease,
+    border-color
+    150ms
+    ease;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.relatedCard:nth-child(
+  even
+) {
+  padding-left:
+    1rem;
+
+  border-left:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.065
+    );
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.relatedCard:hover {
+  padding-left:
+    0.35rem;
+
+  border-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.24
+    );
+
+  transform: none;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.relatedCard:nth-child(
+  even
+):hover {
+  padding-left:
+    1.35rem;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.relatedCategory {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.3
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.45rem;
+
+  letter-spacing:
+    0.1em;
+
+  text-transform:
+    uppercase;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.relatedTitle {
+  margin-top:
+    0.55rem;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.88
+    );
+
+  font-size:
+    1rem;
+
+  font-weight:
+    540;
+
+  letter-spacing:
+    -0.018em;
+
+  line-height:
+    1.3;
+}
+
+
+:global(
+  [data-insight-article="attack-surface-mapping-before-exploitation"]
+)
+.relatedSummary {
+  margin-top:
+    0.45rem;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.47
+    );
+
+  font-size:
+    0.78rem;
+
+  line-height:
+    1.6;
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+
+@media (
+  max-width: 860px
+) {
+
+  :global(
+    [data-insight-article="attack-surface-mapping-before-exploitation"]
+  )
+  .layout {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    grid-template-areas:
+      "meta"
+      "toc"
+      "content";
+
+    row-gap:
+      1.6rem;
+  }
+
+
+  :global(
+    [data-insight-article="attack-surface-mapping-before-exploitation"]
+  )
+  .tocList {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width: 620px
+) {
+
+  :global(
+    [data-insight-article="attack-surface-mapping-before-exploitation"]
+  )
+  .article {
+    padding-top:
+      2rem;
+  }
+
+
+  :global(
+    [data-insight-article="attack-surface-mapping-before-exploitation"]
+  )
+  .layout,
+  :global(
+    [data-insight-article="attack-surface-mapping-before-exploitation"]
+  )
+  .relatedSection {
+    width:
+      min(
+        calc(
+          100% - 1.25rem
+        ),
+        100%
+      );
+  }
+
+
+  :global(
+    [data-insight-article="attack-surface-mapping-before-exploitation"]
+  )
+  .tocList {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  :global(
+    [data-insight-article="attack-surface-mapping-before-exploitation"]
+  )
+  .content {
+    width:
+      100%;
+
+    max-width:
+      100%;
+  }
+
+
+  :global(
+    [data-insight-article="attack-surface-mapping-before-exploitation"]
+  )
+  .intro {
+    font-size:
+      1rem;
+  }
+
+
+  :global(
+    [data-insight-article="attack-surface-mapping-before-exploitation"]
+  )
+  .section {
+    padding:
+      2.45rem
+      0;
+  }
+
+
+  :global(
+    [data-insight-article="attack-surface-mapping-before-exploitation"]
+  )
+  .sectionTitle {
+    font-size:
+      clamp(
+        1.6rem,
+        8vw,
+        2rem
+      );
+  }
+
+
+  :global(
+    [data-insight-article="attack-surface-mapping-before-exploitation"]
+  )
+  .paragraph {
+    font-size:
+      0.94rem;
+
+    line-height:
+      1.76;
+  }
+
+
+  :global(
+    [data-insight-article="attack-surface-mapping-before-exploitation"]
+  )
+  .contextGrid,
+  :global(
+    [data-insight-article="attack-surface-mapping-before-exploitation"]
+  )
+  .relatedGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  :global(
+    [data-insight-article="attack-surface-mapping-before-exploitation"]
+  )
+  .relatedCard:nth-child(
+    even
+  ) {
+    padding-left:
+      0;
+
+    border-left: 0;
+  }
+
+
+  :global(
+    [data-insight-article="attack-surface-mapping-before-exploitation"]
+  )
+  .relatedCard:nth-child(
+    even
+  ):hover {
+    padding-left:
+      0.35rem;
+  }
+
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+
+  :global(
+    [data-insight-article="attack-surface-mapping-before-exploitation"]
+  )
+  .tocLink:hover {
+    transform: none;
+  }
+
+
+  :global(
+    [data-insight-article="attack-surface-mapping-before-exploitation"]
+  )
+  .relatedCard:hover {
+    padding-left:
+      0;
+  }
+
+}

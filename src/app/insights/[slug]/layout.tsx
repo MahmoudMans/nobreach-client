@@ -23,6 +23,7 @@ export default async function InsightArticleLayout({
   } =
     await params;
 
+
   const isAttackSurfaceArticle =
     slug ===
     "attack-surface-mapping-before-exploitation";
@@ -44,192 +45,108 @@ export default async function InsightArticleLayout({
           ? (
               <div
                 className={
-                  styles.attackSurfaceVisual
+                  styles.editorialAmbient
                 }
-                data-ui="attack-surface-topology"
+                data-ui="attack-surface-editorial-ambient"
                 aria-hidden="true"
               >
-                <div
+                <svg
                   className={
-                    styles.visualHeader
+                    styles.ambientMap
                   }
+                  viewBox="0 0 560 320"
+                  preserveAspectRatio="none"
                 >
-                  <span>
-                    NB / ATTACK SURFACE
-                  </span>
-
-                  <span>
-                    RECON / 01
-                  </span>
-                </div>
-
-                <div
-                  className={
-                    styles.topologyStage
-                  }
-                >
-                  <div
-                    className={
-                      styles.topologyGrid
-                    }
+                  <path
+                    d="M68 220 L168 128 L284 176 L390 85 L500 148"
                   />
 
-                  <div
-                    className={
-                      styles.scanLine
-                    }
+                  <path
+                    d="M168 128 L220 60"
                   />
 
-                  <svg
-                    className={
-                      styles.topologyConnections
-                    }
-                    viewBox="0 0 620 430"
-                    preserveAspectRatio="none"
-                  >
-                    <path
-                      d="M92 104 L207 183"
-                    />
+                  <path
+                    d="M284 176 L338 258"
+                  />
 
-                    <path
-                      d="M207 183 L324 105"
-                    />
+                  <path
+                    d="M390 85 L472 44"
+                  />
 
-                    <path
-                      d="M207 183 L341 255"
-                    />
+                  <circle
+                    cx="68"
+                    cy="220"
+                    r="4"
+                  />
 
-                    <path
-                      d="M341 255 L494 174"
-                    />
+                  <circle
+                    cx="168"
+                    cy="128"
+                    r="4"
+                  />
 
-                    <path
-                      d="M341 255 L496 326"
-                    />
+                  <circle
+                    cx="220"
+                    cy="60"
+                    r="4"
+                  />
 
-                    <path
-                      d="M92 104 L324 105"
-                      className={
-                        styles.secondaryConnection
-                      }
-                    />
+                  <circle
+                    cx="284"
+                    cy="176"
+                    r="5"
+                  />
 
-                    <path
-                      d="M207 183 L496 326"
-                      className={
-                        styles.secondaryConnection
-                      }
-                    />
-                  </svg>
+                  <circle
+                    cx="338"
+                    cy="258"
+                    r="4"
+                  />
 
-                  <div
-                    className={`${styles.surfaceNode} ${styles.nodeDns}`}
-                  >
-                    <span>
-                      DNS
-                    </span>
+                  <circle
+                    cx="390"
+                    cy="85"
+                    r="4"
+                  />
 
-                    <small>
-                      discovery
-                    </small>
-                  </div>
+                  <circle
+                    cx="472"
+                    cy="44"
+                    r="4"
+                  />
 
-                  <div
-                    className={`${styles.surfaceNode} ${styles.nodeEdge}`}
-                  >
-                    <span>
-                      EDGE
-                    </span>
-
-                    <small>
-                      exposure
-                    </small>
-                  </div>
-
-                  <div
-                    className={`${styles.surfaceNode} ${styles.nodeAuth}`}
-                  >
-                    <span>
-                      AUTH
-                    </span>
-
-                    <small>
-                      trust
-                    </small>
-                  </div>
-
-                  <div
-                    className={`${styles.surfaceNode} ${styles.nodeApi}`}
-                  >
-                    <span>
-                      API
-                    </span>
-
-                    <small>
-                      objects
-                    </small>
-                  </div>
-
-                  <div
-                    className={`${styles.surfaceNode} ${styles.nodeApp}`}
-                  >
-                    <span>
-                      APP
-                    </span>
-
-                    <small>
-                      logic
-                    </small>
-                  </div>
-
-                  <div
-                    className={`${styles.surfaceNode} ${styles.nodeData}`}
-                  >
-                    <span>
-                      DATA
-                    </span>
-
-                    <small>
-                      impact
-                    </small>
-                  </div>
-
-                  <div
-                    className={
-                      styles.reconCore
-                    }
-                  >
-                    <strong>
-                      MAP
-                    </strong>
-
-                    <small>
-                      BEFORE
-                      <br />
-                      EXPLOIT
-                    </small>
-                  </div>
-                </div>
+                  <circle
+                    cx="500"
+                    cy="148"
+                    r="4"
+                  />
+                </svg>
 
                 <div
                   className={
-                    styles.visualFooter
+                    styles.ambientCrosshair
+                  }
+                />
+
+                <div
+                  className={
+                    styles.ambientLegend
                   }
                 >
                   <span>
-                    Discover
+                    RECON
                   </span>
 
                   <span>
-                    Model
+                    MAP
                   </span>
 
                   <span>
-                    Prioritize
+                    PRIORITIZE
                   </span>
 
                   <span>
-                    Validate
+                    TEST
                   </span>
                 </div>
               </div>

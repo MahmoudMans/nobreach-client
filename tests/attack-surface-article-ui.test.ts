@@ -26,21 +26,55 @@ function read(
 
 
 describe(
-  "attack surface article UI",
+  "attack surface source-class editorial experience",
   () => {
+    const page =
+      read(
+        "src/app/insights/[slug]/page.tsx"
+      );
+
+    const baseCss =
+      read(
+        "src/app/insights/[slug]/article.module.css"
+      );
+
+    const shellCss =
+      read(
+        "src/app/insights/[slug]/attack-surface-shell.module.css"
+      );
+
     const layout =
       read(
         "src/app/insights/[slug]/layout.tsx"
       );
 
-    const css =
-      read(
-        "src/app/insights/[slug]/attack-surface-shell.module.css"
-      );
+
+    it(
+      "uses the real article source structure",
+      () => {
+        for (
+          const token
+          of [
+            "styles.layout",
+            "styles.toc",
+            "styles.content",
+            "styles.metaSide",
+            "styles.section",
+            "styles.paragraph"
+          ]
+        ) {
+          expect(
+            page
+          ).toContain(
+            token
+          );
+        }
+      }
+    );
 
 
     it(
-      "scopes the presentation to the intended insight",
+      "scopes the redesign to attack surface mapping",
       () => {
         expect(
           layout
@@ -51,119 +85,151 @@ describe(
         expect(
           layout
         ).toContain(
-          "styles.attackSurfaceArticle"
-        );
-
-        expect(
-          layout
-        ).toContain(
-          "styles.articleShell"
+          'data-insight-article='
         );
       }
     );
 
 
     it(
-      "adds the topology visualization",
+      "defines the source-class V5 layout once",
       () => {
         expect(
-          layout
-        ).toContain(
-          'data-ui="attack-surface-topology"'
-        );
-
-        for (
-          const node
-          of [
-            "DNS",
-            "EDGE",
-            "AUTH",
-            "API",
-            "APP",
-            "DATA"
-          ]
-        ) {
-          expect(
-            layout
-          ).toContain(
-            node
-          );
-        }
-      }
-    );
-
-
-    it(
-      "upgrades article reading presentation",
-      () => {
-        expect(
-          css
-        ).toContain(
-          ":global(article p)"
+          baseCss.match(
+            /NB_ATTACK_SURFACE_SOURCE_LAYOUT_V5/g
+          )?.length
+        ).toBe(
+          1
         );
 
         expect(
-          css
+          baseCss
         ).toContain(
-          ":global(article h2)"
+          ".layout"
         );
 
         expect(
-          css
+          baseCss
         ).toContain(
-          ":global(article pre)"
+          ".content"
         );
 
         expect(
-          css
+          baseCss
         ).toContain(
-          ":global(blockquote)"
+          ".toc"
+        );
+
+        expect(
+          baseCss
+        ).toContain(
+          ".metaSide"
         );
       }
     );
 
 
     it(
-      "upgrades TOC and related content",
+      "gives the research body a real editorial measure",
       () => {
         expect(
-          css
+          baseCss
         ).toContain(
-          'class*="toc"'
+          "760px"
         );
 
         expect(
-          css
+          baseCss
         ).toContain(
-          'class*="relatedCard"'
+          "720px"
         );
 
         expect(
-          css
+          baseCss
         ).toContain(
-          "position:"
+          '"meta toc"'
         );
 
         expect(
-          css
+          baseCss
         ).toContain(
-          "sticky"
+          '"content content"'
         );
       }
     );
 
 
     it(
-      "supports responsive and reduced motion",
+      "uses flat editorial cards and numbered sections",
       () => {
         expect(
-          css
+          baseCss
         ).toContain(
-          "max-width: 640px"
+          "counter-reset:"
         );
 
         expect(
-          css
+          baseCss
+        ).toContain(
+          "counter-increment:"
+        );
+
+        expect(
+          baseCss
+        ).toContain(
+          "decimal-leading-zero"
+        );
+
+        expect(
+          baseCss
+        ).toContain(
+          "background:"
+        );
+      }
+    );
+
+
+    it(
+      "keeps the route visual restrained",
+      () => {
+        expect(
+          shellCss
+        ).toContain(
+          "NB_ATTACK_SURFACE_EDITORIAL_SHELL_V5"
+        );
+
+        expect(
+          shellCss
+        ).toContain(
+          ".editorialAmbient"
+        );
+
+        expect(
+          shellCss
+        ).not.toContain(
+          ".surfaceNode"
+        );
+
+        expect(
+          shellCss
+        ).not.toContain(
+          ".attackSurfaceVisual"
+        );
+      }
+    );
+
+
+    it(
+      "supports responsive and reduced-motion presentation",
+      () => {
+        expect(
+          baseCss
+        ).toContain(
+          "max-width: 620px"
+        );
+
+        expect(
+          shellCss
         ).toContain(
           "prefers-reduced-motion"
         );
