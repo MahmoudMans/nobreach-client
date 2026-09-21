@@ -1,0 +1,1872 @@
+/* ==========================================================================
+   NB_ATTACK_SURFACE_ARTICLE_UI_V1
+
+   Route-specific presentation for:
+   /insights/attack-surface-mapping-before-exploitation
+
+   Editorial + technical reconnaissance visual system.
+   ========================================================================== */
+
+
+.articleShell {
+  min-width: 0;
+}
+
+
+.attackSurfaceArticle {
+  position: relative;
+  isolation: isolate;
+
+  min-width: 0;
+
+  overflow: clip;
+
+  background:
+    radial-gradient(
+      circle at 89% 8%,
+      rgba(
+        99,
+        51,
+        198,
+        0.11
+      ),
+      transparent 34rem
+    ),
+    radial-gradient(
+      circle at 8% 38%,
+      rgba(
+        161,
+        226,
+        240,
+        0.018
+      ),
+      transparent 28rem
+    ),
+    #08090b;
+}
+
+
+/* ==========================================================================
+   ATTACK SURFACE VISUAL
+   ========================================================================== */
+
+
+.attackSurfaceVisual {
+  position: absolute;
+  z-index: 1;
+
+  top:
+    78px;
+
+  right:
+    max(
+      1.5rem,
+      calc(
+        (
+          100vw - 1280px
+        ) / 2
+      )
+    );
+
+  width:
+    min(
+      42vw,
+      590px
+    );
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.09
+    );
+
+  border-radius:
+    13px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(
+        126,
+        96,
+        185,
+        0.07
+      ),
+      transparent 48%
+    ),
+    rgba(
+      8,
+      9,
+      12,
+      0.86
+    );
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(
+        255,
+        255,
+        255,
+        0.035
+      ),
+    0 28px 80px
+      rgba(
+        0,
+        0,
+        0,
+        0.15
+      );
+
+  backdrop-filter:
+    blur(10px);
+
+  pointer-events:
+    none;
+}
+
+
+.visualHeader,
+.visualFooter {
+  position: relative;
+  z-index: 5;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    1rem;
+
+  padding:
+    0.75rem
+    0.9rem;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.34
+    );
+
+  background:
+    rgba(
+      7,
+      8,
+      10,
+      0.62
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.46rem;
+
+  letter-spacing:
+    0.09em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.visualHeader {
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.065
+    );
+}
+
+
+.visualFooter {
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.065
+    );
+}
+
+
+.topologyStage {
+  position: relative;
+
+  height:
+    405px;
+
+  overflow: hidden;
+}
+
+
+.topologyGrid {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(
+        131,
+        179,
+        215,
+        0.035
+      )
+      1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(
+        131,
+        179,
+        215,
+        0.035
+      )
+      1px,
+      transparent 1px
+    );
+
+  background-size:
+    33px
+    33px;
+
+  mask-image:
+    radial-gradient(
+      circle,
+      black,
+      transparent 82%
+    );
+}
+
+
+.topologyStage::after {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width:
+    270px;
+
+  height:
+    270px;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  border:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.07
+    );
+
+  border-radius:
+    50%;
+
+  box-shadow:
+    0 0 0 55px
+      rgba(
+        126,
+        96,
+        185,
+        0.018
+      ),
+    0 0 0 110px
+      rgba(
+        161,
+        226,
+        240,
+        0.008
+      );
+
+  content: "";
+
+  pointer-events:
+    none;
+}
+
+
+.scanLine {
+  position: absolute;
+  z-index: 3;
+
+  top: 0;
+  bottom: 0;
+
+  left: 15%;
+
+  width:
+    1px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgba(
+        161,
+        226,
+        240,
+        0.55
+      ),
+      transparent
+    );
+
+  box-shadow:
+    0 0 16px
+    rgba(
+      161,
+      226,
+      240,
+      0.13
+    );
+}
+
+
+.topologyConnections {
+  position: absolute;
+  z-index: 2;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+
+.topologyConnections path {
+  fill: none;
+
+  stroke:
+    rgba(
+      131,
+      179,
+      215,
+      0.2
+    );
+
+  stroke-width:
+    1;
+}
+
+
+.topologyConnections
+.secondaryConnection {
+  stroke:
+    rgba(
+      126,
+      96,
+      185,
+      0.13
+    );
+
+  stroke-dasharray:
+    5 8;
+}
+
+
+.surfaceNode {
+  position: absolute;
+  z-index: 4;
+
+  display: flex;
+
+  min-width:
+    78px;
+
+  flex-direction:
+    column;
+
+  gap:
+    0.18rem;
+
+  padding:
+    0.58rem
+    0.68rem;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.09
+    );
+
+  border-radius:
+    7px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.9
+    );
+
+  background:
+    rgba(
+      7,
+      8,
+      11,
+      0.94
+    );
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+}
+
+
+.surfaceNode::before {
+  position: absolute;
+
+  top:
+    0.5rem;
+
+  right:
+    0.5rem;
+
+  width:
+    4px;
+
+  height:
+    4px;
+
+  border-radius:
+    50%;
+
+  background:
+    #a1e2f0;
+
+  box-shadow:
+    0 0 9px
+    rgba(
+      161,
+      226,
+      240,
+      0.55
+    );
+
+  content: "";
+}
+
+
+.surfaceNode span {
+  font-size:
+    0.55rem;
+
+  font-weight:
+    650;
+
+  letter-spacing:
+    0.08em;
+}
+
+
+.surfaceNode small {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.34
+    );
+
+  font-size:
+    0.42rem;
+
+  letter-spacing:
+    0.04em;
+}
+
+
+.nodeDns {
+  top:
+    14%;
+
+  left:
+    8%;
+}
+
+
+.nodeEdge {
+  top:
+    35%;
+
+  left:
+    27%;
+}
+
+
+.nodeAuth {
+  top:
+    14%;
+
+  left:
+    49%;
+}
+
+
+.nodeApi {
+  top:
+    52%;
+
+  left:
+    51%;
+}
+
+
+.nodeApp {
+  top:
+    33%;
+
+  right:
+    4%;
+}
+
+
+.nodeData {
+  right:
+    5%;
+
+  bottom:
+    10%;
+}
+
+
+.reconCore {
+  position: absolute;
+  z-index: 4;
+
+  top:
+    53%;
+
+  left:
+    37%;
+
+  display: grid;
+
+  width:
+    86px;
+
+  height:
+    86px;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  place-items:
+    center;
+
+  border:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.35
+    );
+
+  border-radius:
+    50%;
+
+  color:
+    #a1e2f0;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        161,
+        226,
+        240,
+        0.09
+      ),
+      rgba(
+        8,
+        9,
+        12,
+        0.98
+      ) 70%
+    );
+
+  box-shadow:
+    0 0 0 8px
+      rgba(
+        161,
+        226,
+        240,
+        0.02
+      ),
+    0 0 40px
+      rgba(
+        126,
+        96,
+        185,
+        0.12
+      );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  text-align:
+    center;
+}
+
+
+.reconCore strong {
+  align-self:
+    end;
+
+  font-size:
+    0.62rem;
+
+  letter-spacing:
+    0.1em;
+}
+
+
+.reconCore small {
+  align-self:
+    start;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.34
+    );
+
+  font-size:
+    0.36rem;
+
+  letter-spacing:
+    0.08em;
+
+  line-height:
+    1.4;
+}
+
+
+/* ==========================================================================
+   ARTICLE HERO
+   ========================================================================== */
+
+
+.attackSurfaceArticle
+:global(
+  [class*="article-module"][class*="hero"]
+) {
+  position: relative;
+  z-index: 2;
+
+  min-height:
+    585px;
+
+  display: flex;
+
+  align-items:
+    center;
+
+  padding-block:
+    clamp(
+      4.6rem,
+      8vw,
+      6.7rem
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.085
+    );
+
+  background:
+    linear-gradient(
+      108deg,
+      rgba(
+        8,
+        9,
+        11,
+        1
+      )
+      0%,
+      rgba(
+        8,
+        9,
+        11,
+        0.98
+      )
+      51%,
+      rgba(
+        11,
+        10,
+        17,
+        0.48
+      )
+      100%
+    );
+}
+
+
+.attackSurfaceArticle
+:global(
+  [class*="article-module"][class*="hero"]
+)::before {
+  position: absolute;
+  z-index: -1;
+
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(
+        131,
+        179,
+        215,
+        0.025
+      )
+      1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(
+        131,
+        179,
+        215,
+        0.025
+      )
+      1px,
+      transparent 1px
+    );
+
+  background-size:
+    58px
+    58px;
+
+  mask-image:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 25%,
+      black 100%
+    );
+
+  content: "";
+}
+
+
+.attackSurfaceArticle
+:global(
+  [class*="article-module"][class*="hero"]
+)
+h1 {
+  max-width:
+    10.8ch;
+
+  font-size:
+    clamp(
+      3.7rem,
+      6.8vw,
+      6.35rem
+    );
+
+  font-weight:
+    470;
+
+  letter-spacing:
+    -0.072em;
+
+  line-height:
+    0.9;
+
+  text-wrap:
+    balance;
+}
+
+
+.attackSurfaceArticle
+:global(
+  [class*="article-module"][class*="hero"]
+)
+p {
+  max-width:
+    600px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.63
+    );
+
+  font-size:
+    0.96rem;
+
+  line-height:
+    1.72;
+}
+
+
+/* ==========================================================================
+   ARTICLE READING LAYOUT
+   ========================================================================== */
+
+
+.attackSurfaceArticle
+:global(
+  [class*="article-module"][class*="article"]
+),
+.attackSurfaceArticle
+:global(
+  [class*="article-module"][class*="body"]
+),
+.attackSurfaceArticle
+:global(
+  [class*="article-module"][class*="content"]
+) {
+  max-width:
+    760px;
+}
+
+
+.attackSurfaceArticle
+:global(main) {
+  position: relative;
+  z-index: 2;
+}
+
+
+.attackSurfaceArticle
+:global(article) {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.73
+    );
+}
+
+
+.attackSurfaceArticle
+:global(article p) {
+  font-size:
+    clamp(
+      0.98rem,
+      1.1vw,
+      1.04rem
+    );
+
+  line-height:
+    1.84;
+}
+
+
+.attackSurfaceArticle
+:global(article > p:first-of-type) {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.84
+    );
+
+  font-size:
+    clamp(
+      1.06rem,
+      1.4vw,
+      1.17rem
+    );
+
+  line-height:
+    1.75;
+}
+
+
+.attackSurfaceArticle
+:global(article h2) {
+  position: relative;
+
+  margin-top:
+    3.8rem;
+
+  margin-bottom:
+    1.1rem;
+
+  padding-top:
+    0.9rem;
+
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.085
+    );
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.95
+    );
+
+  font-size:
+    clamp(
+      1.75rem,
+      3vw,
+      2.55rem
+    );
+
+  font-weight:
+    510;
+
+  letter-spacing:
+    -0.048em;
+
+  line-height:
+    1.04;
+}
+
+
+.attackSurfaceArticle
+:global(article h2)::before {
+  display: block;
+
+  width:
+    30px;
+
+  height:
+    1px;
+
+  margin-bottom:
+    0.8rem;
+
+  background:
+    linear-gradient(
+      90deg,
+      #a1e2f0,
+      #7e60b9
+    );
+
+  content: "";
+}
+
+
+.attackSurfaceArticle
+:global(article h3) {
+  margin-top:
+    2.4rem;
+
+  margin-bottom:
+    0.75rem;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.9
+    );
+
+  font-size:
+    1.18rem;
+
+  font-weight:
+    570;
+
+  letter-spacing:
+    -0.025em;
+}
+
+
+.attackSurfaceArticle
+:global(article strong) {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.92
+    );
+
+  font-weight:
+    610;
+}
+
+
+/* ==========================================================================
+   LISTS
+   ========================================================================== */
+
+
+.attackSurfaceArticle
+:global(article ul),
+.attackSurfaceArticle
+:global(article ol) {
+  display: grid;
+
+  gap:
+    0.55rem;
+
+  margin:
+    1.35rem
+    0;
+
+  padding-left:
+    1.25rem;
+}
+
+
+.attackSurfaceArticle
+:global(article li) {
+  padding-left:
+    0.25rem;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.68
+    );
+
+  line-height:
+    1.7;
+}
+
+
+.attackSurfaceArticle
+:global(article li)::marker {
+  color:
+    #83b3d7;
+}
+
+
+/* ==========================================================================
+   CODE
+   ========================================================================== */
+
+
+.attackSurfaceArticle
+:global(article code) {
+  padding:
+    0.16rem
+    0.35rem;
+
+  border:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.09
+    );
+
+  border-radius:
+    4px;
+
+  color:
+    #a1e2f0;
+
+  background:
+    rgba(
+      161,
+      226,
+      240,
+      0.045
+    );
+
+  font-size:
+    0.84em;
+}
+
+
+.attackSurfaceArticle
+:global(article pre) {
+  position: relative;
+
+  overflow-x: auto;
+
+  margin:
+    1.6rem
+    0;
+
+  padding:
+    1rem
+    1.1rem;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.09
+    );
+
+  border-radius:
+    9px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(
+        126,
+        96,
+        185,
+        0.045
+      ),
+      transparent 50%
+    ),
+    #090a0d;
+
+  box-shadow: none;
+}
+
+
+.attackSurfaceArticle
+:global(article pre)::before {
+  display: block;
+
+  margin-bottom:
+    0.75rem;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.26
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.42rem;
+
+  letter-spacing:
+    0.11em;
+
+  content:
+    "RECON / TERMINAL";
+
+  text-transform:
+    uppercase;
+}
+
+
+/* ==========================================================================
+   QUOTES / CALLOUTS
+   ========================================================================== */
+
+
+.attackSurfaceArticle
+:global(blockquote) {
+  position: relative;
+
+  margin:
+    2rem
+    0;
+
+  padding:
+    1.25rem
+    1.25rem
+    1.25rem
+    1.5rem;
+
+  border:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.11
+    );
+
+  border-left:
+    2px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.58
+    );
+
+  border-radius:
+    0
+    8px
+    8px
+    0;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.77
+    );
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        161,
+        226,
+        240,
+        0.045
+      ),
+      transparent
+    );
+}
+
+
+/* ==========================================================================
+   TOC / SIDEBAR
+   ========================================================================== */
+
+
+.attackSurfaceArticle
+:global(
+  [class*="article-module"][class*="toc"]
+),
+.attackSurfaceArticle
+:global(
+  [class*="article-module"][class*="sidebar"]
+) {
+  position:
+    sticky;
+
+  top:
+    90px;
+
+  padding:
+    1rem;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.085
+    );
+
+  border-radius:
+    9px;
+
+  background:
+    rgba(
+      9,
+      10,
+      13,
+      0.76
+    );
+
+  box-shadow:
+    none;
+
+  backdrop-filter:
+    blur(10px);
+}
+
+
+.attackSurfaceArticle
+:global(
+  [class*="article-module"][class*="toc"]
+)
+a,
+.attackSurfaceArticle
+:global(
+  [class*="article-module"][class*="sidebar"]
+)
+a {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.48
+    );
+
+  font-size:
+    0.7rem;
+
+  line-height:
+    1.5;
+
+  text-decoration:
+    none;
+
+  transition:
+    color
+    140ms
+    ease,
+    padding-left
+    140ms
+    ease;
+}
+
+
+.attackSurfaceArticle
+:global(
+  [class*="article-module"][class*="toc"]
+)
+a:hover,
+.attackSurfaceArticle
+:global(
+  [class*="article-module"][class*="sidebar"]
+)
+a:hover {
+  padding-left:
+    0.25rem;
+
+  color:
+    #a1e2f0;
+}
+
+
+/* ==========================================================================
+   RELATED CONTENT
+   ========================================================================== */
+
+
+.attackSurfaceArticle
+:global(
+  [class*="article-module"][class*="related"]
+) {
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(
+        126,
+        96,
+        185,
+        0.045
+      ),
+      transparent 30rem
+    );
+}
+
+
+.attackSurfaceArticle
+:global(
+  [class*="article-module"][class*="relatedCard"]
+) {
+  position: relative;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.085
+    );
+
+  border-radius:
+    8px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.012
+    );
+
+  box-shadow: none;
+
+  transition:
+    transform
+    160ms
+    ease,
+    border-color
+    160ms
+    ease;
+}
+
+
+.attackSurfaceArticle
+:global(
+  [class*="article-module"][class*="relatedCard"]
+):hover {
+  transform:
+    translateY(-2px);
+
+  border-color:
+    rgba(
+      131,
+      179,
+      215,
+      0.2
+    );
+}
+
+
+/* ==========================================================================
+   LINKS
+   ========================================================================== */
+
+
+.attackSurfaceArticle
+:global(article a) {
+  color:
+    #a1e2f0;
+
+  text-decoration-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.35
+    );
+
+  text-underline-offset:
+    0.18em;
+
+  transition:
+    color
+    140ms
+    ease,
+    text-decoration-color
+    140ms
+    ease;
+}
+
+
+.attackSurfaceArticle
+:global(article a:hover) {
+  color:
+    #ffffff;
+
+  text-decoration-color:
+    #a1e2f0;
+}
+
+
+/* ==========================================================================
+   TABLES
+   ========================================================================== */
+
+
+.attackSurfaceArticle
+:global(article table) {
+  overflow: hidden;
+
+  margin:
+    1.5rem
+    0;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  border-radius:
+    8px;
+}
+
+
+.attackSurfaceArticle
+:global(article th) {
+  background:
+    rgba(
+      161,
+      226,
+      240,
+      0.035
+    );
+}
+
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+
+@media (
+  max-width: 1120px
+) {
+
+  .attackSurfaceVisual {
+    top:
+      125px;
+
+    right:
+      -125px;
+
+    width:
+      500px;
+
+    opacity:
+      0.46;
+  }
+
+
+  .attackSurfaceArticle
+  :global(
+    [class*="article-module"][class*="hero"]
+  ) {
+    min-height:
+      530px;
+  }
+
+}
+
+
+@media (
+  max-width: 820px
+) {
+
+  .attackSurfaceVisual {
+    top:
+      170px;
+
+    right:
+      -220px;
+
+    width:
+      460px;
+
+    opacity:
+      0.25;
+  }
+
+
+  .attackSurfaceArticle
+  :global(
+    [class*="article-module"][class*="toc"]
+  ),
+  .attackSurfaceArticle
+  :global(
+    [class*="article-module"][class*="sidebar"]
+  ) {
+    position:
+      static;
+
+    top:
+      auto;
+  }
+
+}
+
+
+@media (
+  max-width: 640px
+) {
+
+  .attackSurfaceVisual {
+    top:
+      165px;
+
+    right:
+      -255px;
+
+    width:
+      430px;
+
+    opacity:
+      0.17;
+  }
+
+
+  .visualHeader,
+  .visualFooter {
+    font-size:
+      0.38rem;
+  }
+
+
+  .attackSurfaceArticle
+  :global(
+    [class*="article-module"][class*="hero"]
+  ) {
+    min-height:
+      auto;
+
+    padding-block:
+      3.35rem;
+  }
+
+
+  .attackSurfaceArticle
+  :global(
+    [class*="article-module"][class*="hero"]
+  )
+  h1 {
+    max-width:
+      12ch;
+
+    font-size:
+      clamp(
+        2.75rem,
+        12.6vw,
+        3.9rem
+      );
+
+    line-height:
+      0.94;
+  }
+
+
+  .attackSurfaceArticle
+  :global(article p) {
+    font-size:
+      0.95rem;
+
+    line-height:
+      1.77;
+  }
+
+
+  .attackSurfaceArticle
+  :global(article > p:first-of-type) {
+    font-size:
+      1rem;
+  }
+
+
+  .attackSurfaceArticle
+  :global(article h2) {
+    margin-top:
+      3rem;
+
+    font-size:
+      clamp(
+        1.65rem,
+        8vw,
+        2.1rem
+      );
+  }
+
+
+  .attackSurfaceArticle
+  :global(article pre) {
+    margin-inline:
+      -0.15rem;
+
+    padding:
+      0.85rem;
+  }
+
+}
+
+
+/* ==========================================================================
+   MOTION
+   ========================================================================== */
+
+
+@media (
+  prefers-reduced-motion:
+  no-preference
+) {
+
+  .scanLine {
+    animation:
+      attackSurfaceScan
+      7s
+      ease-in-out
+      infinite;
+  }
+
+
+  .surfaceNode::before {
+    animation:
+      surfaceNodePulse
+      2.8s
+      ease-in-out
+      infinite;
+  }
+
+
+  .nodeAuth::before {
+    animation-delay:
+      -0.6s;
+  }
+
+
+  .nodeApi::before {
+    animation-delay:
+      -1.2s;
+  }
+
+
+  .nodeApp::before {
+    animation-delay:
+      -1.8s;
+  }
+
+
+  .nodeData::before {
+    animation-delay:
+      -2.2s;
+  }
+
+
+  .topologyGrid {
+    animation:
+      topologyGridShift
+      24s
+      linear
+      infinite;
+  }
+
+}
+
+
+@keyframes attackSurfaceScan {
+
+  0%,
+  100% {
+    transform:
+      translateX(0);
+
+    opacity:
+      0;
+  }
+
+  10% {
+    opacity:
+      0.8;
+  }
+
+  50% {
+    transform:
+      translateX(405px);
+
+    opacity:
+      0.5;
+  }
+
+  90% {
+    opacity:
+      0.8;
+  }
+
+}
+
+
+@keyframes surfaceNodePulse {
+
+  0%,
+  100% {
+    transform:
+      scale(1);
+
+    opacity:
+      0.48;
+  }
+
+  50% {
+    transform:
+      scale(1.5);
+
+    opacity:
+      1;
+  }
+
+}
+
+
+@keyframes topologyGridShift {
+
+  from {
+    background-position:
+      0 0,
+      0 0;
+  }
+
+  to {
+    background-position:
+      33px 33px,
+      33px 33px;
+  }
+
+}
+
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+
+  .scanLine,
+  .surfaceNode::before,
+  .topologyGrid {
+    animation:
+      none;
+  }
+
+
+  .attackSurfaceArticle
+  :global(
+    [class*="article-module"][class*="relatedCard"]
+  ):hover {
+    transform:
+      none;
+  }
+
+}
