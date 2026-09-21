@@ -1,0 +1,1532 @@
+/* ==========================================================================
+   NO BREACH — AI SECURITY FOUNDATIONS
+   Route-scoped modern training presentation.
+   ========================================================================== */
+
+
+.programShell {
+  min-width: 0;
+}
+
+
+.aiSecurity {
+  position: relative;
+  isolation: isolate;
+
+  min-width: 0;
+
+  overflow: clip;
+
+  background:
+    radial-gradient(
+      circle at 88% 9%,
+      rgba(
+        126,
+        96,
+        185,
+        0.12
+      ),
+      transparent 30rem
+    ),
+    radial-gradient(
+      circle at 11% 34%,
+      rgba(
+        161,
+        226,
+        240,
+        0.025
+      ),
+      transparent 25rem
+    );
+}
+
+
+/* ==========================================================================
+   AMBIENT AI GRAPH
+   ========================================================================== */
+
+
+.aiAmbientVisual {
+  position: absolute;
+  z-index: 0;
+
+  top:
+    55px;
+
+  right:
+    max(
+      1.5rem,
+      calc(
+        (
+          100vw - 1280px
+        ) / 2
+      )
+    );
+
+  width:
+    min(
+      39vw,
+      520px
+    );
+
+  height:
+    420px;
+
+  opacity:
+    0.5;
+
+  pointer-events:
+    none;
+}
+
+
+.aiAmbientVisual::before {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(
+        161,
+        226,
+        240,
+        0.17
+      )
+      1px,
+      transparent 1px
+    );
+
+  background-size:
+    25px
+    25px;
+
+  mask-image:
+    radial-gradient(
+      circle,
+      black,
+      transparent 72%
+    );
+
+  content: "";
+}
+
+
+.aiOrbitLarge,
+.aiOrbitSmall {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  border:
+    1px solid
+    rgba(
+      131,
+      179,
+      215,
+      0.14
+    );
+
+  border-radius:
+    50%;
+}
+
+
+.aiOrbitLarge {
+  width:
+    320px;
+
+  height:
+    320px;
+}
+
+
+.aiOrbitSmall {
+  width:
+    188px;
+
+  height:
+    188px;
+
+  border-color:
+    rgba(
+      126,
+      96,
+      185,
+      0.19
+    );
+}
+
+
+.aiCore {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  display: grid;
+
+  width:
+    78px;
+
+  height:
+    78px;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  place-items: center;
+
+  border:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.35
+    );
+
+  border-radius:
+    50%;
+
+  color:
+    #a1e2f0;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        161,
+        226,
+        240,
+        0.1
+      ),
+      rgba(
+        8,
+        9,
+        12,
+        0.96
+      ) 68%
+    );
+
+  box-shadow:
+    0 0 0 9px
+      rgba(
+        161,
+        226,
+        240,
+        0.018
+      ),
+    0 0 48px
+      rgba(
+        126,
+        96,
+        185,
+        0.12
+      );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.72rem;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    0.12em;
+}
+
+
+.aiNode {
+  position: absolute;
+
+  width:
+    8px;
+
+  height:
+    8px;
+
+  border:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.75
+    );
+
+  border-radius:
+    50%;
+
+  background:
+    #0b0c10;
+
+  box-shadow:
+    0 0 14px
+    rgba(
+      161,
+      226,
+      240,
+      0.35
+    );
+}
+
+
+.aiNodeOne {
+  top:
+    19%;
+
+  left:
+    22%;
+}
+
+
+.aiNodeTwo {
+  top:
+    17%;
+
+  right:
+    19%;
+}
+
+
+.aiNodeThree {
+  top:
+    52%;
+
+  right:
+    7%;
+}
+
+
+.aiNodeFour {
+  right:
+    29%;
+
+  bottom:
+    14%;
+}
+
+
+.aiNodeFive {
+  left:
+    16%;
+
+  bottom:
+    19%;
+}
+
+
+.aiConnections {
+  position: absolute;
+  inset: 0;
+
+  width:
+    100%;
+
+  height:
+    100%;
+}
+
+
+.aiConnections path {
+  fill: none;
+
+  stroke:
+    rgba(
+      131,
+      179,
+      215,
+      0.15
+    );
+
+  stroke-width:
+    1;
+
+  stroke-dasharray:
+    4 8;
+}
+
+
+/* ==========================================================================
+   PAGE HERO
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module"][class*="hero"]
+) {
+  position: relative;
+  z-index: 2;
+
+  min-height:
+    510px;
+
+  display: flex;
+
+  align-items: center;
+
+  padding-block:
+    clamp(
+      4rem,
+      7vw,
+      6rem
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.085
+    );
+
+  background:
+    linear-gradient(
+      110deg,
+      rgba(
+        8,
+        9,
+        11,
+        0.98
+      )
+      0%,
+      rgba(
+        8,
+        9,
+        11,
+        0.94
+      )
+      51%,
+      rgba(
+        11,
+        10,
+        17,
+        0.56
+      )
+      100%
+    );
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module"][class*="hero"]
+)::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(
+        131,
+        179,
+        215,
+        0.03
+      )
+      1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(
+        131,
+        179,
+        215,
+        0.03
+      )
+      1px,
+      transparent 1px
+    );
+
+  background-size:
+    54px
+    54px;
+
+  mask-image:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        0,
+        0,
+        0,
+        0.75
+      )
+    );
+
+  content: "";
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module"][class*="title"]
+) {
+  max-width:
+    10.5ch;
+
+  font-size:
+    clamp(
+      3.6rem,
+      6.5vw,
+      6.2rem
+    );
+
+  font-weight:
+    470;
+
+  letter-spacing:
+    -0.073em;
+
+  line-height:
+    0.9;
+
+  text-wrap:
+    balance;
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module"][class*="eyebrow"]
+) {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap:
+    0.65rem;
+
+  color:
+    #a1e2f0;
+
+  letter-spacing:
+    0.15em;
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module"][class*="eyebrow"]
+)::before {
+  width:
+    24px;
+
+  height:
+    1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #a1e2f0,
+      #7e60b9
+    );
+
+  content: "";
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module"][class*="description"]
+),
+.aiSecurity
+:global(
+  [class*="page-hero-module"][class*="intro"]
+),
+.aiSecurity
+:global(
+  [class*="page-hero-module"][class*="lead"]
+) {
+  max-width:
+    590px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.67
+    );
+
+  font-size:
+    0.98rem;
+
+  line-height:
+    1.72;
+}
+
+
+/* ==========================================================================
+   GENERAL SECTIONS
+   ========================================================================== */
+
+
+.aiSecurity
+:global(section) {
+  position: relative;
+  z-index: 2;
+
+  padding-block:
+    clamp(
+      3.2rem,
+      5.5vw,
+      4.8rem
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.065
+    );
+}
+
+
+.aiSecurity
+:global(section:nth-of-type(even)) {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        126,
+        96,
+        185,
+        0.018
+      )
+      52%,
+      transparent
+    );
+}
+
+
+.aiSecurity
+:global(section h2) {
+  max-width:
+    18ch;
+
+  margin-bottom:
+    0.9rem;
+
+  font-size:
+    clamp(
+      1.9rem,
+      3.4vw,
+      2.9rem
+    );
+
+  font-weight:
+    500;
+
+  letter-spacing:
+    -0.05em;
+
+  line-height:
+    1.02;
+}
+
+
+.aiSecurity
+:global(section h2)::before {
+  display: block;
+
+  width:
+    32px;
+
+  height:
+    1px;
+
+  margin-bottom:
+    0.8rem;
+
+  background:
+    linear-gradient(
+      90deg,
+      #a1e2f0,
+      rgba(
+        126,
+        96,
+        185,
+        0.55
+      )
+    );
+
+  content: "";
+}
+
+
+.aiSecurity
+:global(section h3) {
+  font-weight:
+    560;
+
+  letter-spacing:
+    -0.025em;
+}
+
+
+.aiSecurity
+:global(section p) {
+  max-width:
+    720px;
+
+  line-height:
+    1.72;
+}
+
+
+/* ==========================================================================
+   PROGRAM METADATA
+   ========================================================================== */
+
+
+.aiSecurity
+:global(dl) {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    1px;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.09
+    );
+
+  border-radius:
+    10px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    );
+}
+
+
+.aiSecurity
+:global(dl > div) {
+  min-width: 0;
+
+  padding:
+    1rem;
+
+  background:
+    rgba(
+      8,
+      9,
+      12,
+      0.96
+    );
+}
+
+
+.aiSecurity
+:global(dt) {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.4
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.5rem;
+
+  letter-spacing:
+    0.09em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.aiSecurity
+:global(dd) {
+  margin:
+    0.55rem
+    0
+    0;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.91
+    );
+
+  font-size:
+    0.8rem;
+
+  line-height:
+    1.45;
+}
+
+
+/* ==========================================================================
+   LEARNING OBJECTIVES / OUTCOMES
+   ========================================================================== */
+
+
+.aiSecurity
+:global(section > ul),
+.aiSecurity
+:global(section > ol) {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    0.75rem;
+
+  margin:
+    1.5rem
+    0
+    0;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+
+.aiSecurity
+:global(section > ul > li),
+.aiSecurity
+:global(section > ol > li) {
+  position: relative;
+
+  min-height:
+    88px;
+
+  margin: 0;
+
+  padding:
+    1rem
+    1rem
+    1rem
+    2.15rem;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.085
+    );
+
+  border-radius:
+    8px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.72
+    );
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(
+        126,
+        96,
+        185,
+        0.04
+      ),
+      transparent 55%
+    ),
+    rgba(
+      255,
+      255,
+      255,
+      0.01
+    );
+
+  font-size:
+    0.8rem;
+
+  line-height:
+    1.6;
+
+  transition:
+    border-color
+    160ms
+    ease,
+    transform
+    160ms
+    ease,
+    background
+    160ms
+    ease;
+}
+
+
+.aiSecurity
+:global(section > ul > li)::before,
+.aiSecurity
+:global(section > ol > li)::before {
+  position: absolute;
+
+  top:
+    1.2rem;
+
+  left:
+    1rem;
+
+  width:
+    6px;
+
+  height:
+    6px;
+
+  border:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.65
+    );
+
+  border-radius:
+    50%;
+
+  box-shadow:
+    0 0 12px
+    rgba(
+      161,
+      226,
+      240,
+      0.18
+    );
+
+  content: "";
+}
+
+
+.aiSecurity
+:global(section > ul > li:hover),
+.aiSecurity
+:global(section > ol > li:hover) {
+  transform:
+    translateY(-2px);
+
+  border-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.2
+    );
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(
+        126,
+        96,
+        185,
+        0.07
+      ),
+      transparent 58%
+    ),
+    rgba(
+      255,
+      255,
+      255,
+      0.015
+    );
+}
+
+
+/* ==========================================================================
+   CURRICULUM / CARDS
+   ========================================================================== */
+
+
+.aiSecurity
+:global(article) {
+  position: relative;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.085
+    );
+
+  border-radius:
+    9px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(
+        126,
+        96,
+        185,
+        0.04
+      ),
+      transparent 48%
+    ),
+    rgba(
+      255,
+      255,
+      255,
+      0.012
+    );
+
+  box-shadow: none;
+
+  transition:
+    transform
+    170ms
+    ease,
+    border-color
+    170ms
+    ease,
+    background
+    170ms
+    ease;
+}
+
+
+.aiSecurity
+:global(article)::after {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width:
+    56px;
+
+  height:
+    56px;
+
+  border-top:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.12
+    );
+
+  border-right:
+    1px solid
+    rgba(
+      126,
+      96,
+      185,
+      0.15
+    );
+
+  content: "";
+
+  opacity: 0;
+
+  transition:
+    opacity
+    170ms
+    ease;
+}
+
+
+.aiSecurity
+:global(article:hover) {
+  transform:
+    translateY(-3px);
+
+  border-color:
+    rgba(
+      131,
+      179,
+      215,
+      0.19
+    );
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(
+        126,
+        96,
+        185,
+        0.07
+      ),
+      transparent 48%
+    ),
+    rgba(
+      255,
+      255,
+      255,
+      0.015
+    );
+}
+
+
+.aiSecurity
+:global(article:hover)::after {
+  opacity: 1;
+}
+
+
+/* ==========================================================================
+   FAQ
+   ========================================================================== */
+
+
+.aiSecurity
+:global(details) {
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.09
+    );
+
+  border-radius: 0;
+
+  background:
+    transparent;
+}
+
+
+.aiSecurity
+:global(details:last-of-type) {
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.09
+    );
+}
+
+
+.aiSecurity
+:global(summary) {
+  min-height:
+    58px;
+
+  padding-block:
+    0.8rem;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.9
+    );
+
+  font-size:
+    0.86rem;
+
+  font-weight:
+    560;
+}
+
+
+.aiSecurity
+:global(details[open] summary) {
+  color:
+    #a1e2f0;
+}
+
+
+/* ==========================================================================
+   CTA / BUTTONS
+   ========================================================================== */
+
+
+.aiSecurity
+:global(a[class*="button"]),
+.aiSecurity
+:global(a[class*="primary"]) {
+  box-shadow: none;
+}
+
+
+.aiSecurity
+:global(section:last-of-type) {
+  background:
+    radial-gradient(
+      circle at 82% 50%,
+      rgba(
+        126,
+        96,
+        185,
+        0.09
+      ),
+      transparent 24rem
+    );
+}
+
+
+/* ==========================================================================
+   MOBILE / TABLET
+   ========================================================================== */
+
+
+@media (
+  max-width: 1024px
+) {
+
+  .aiAmbientVisual {
+    top:
+      90px;
+
+    right:
+      -130px;
+
+    width:
+      430px;
+
+    height:
+      350px;
+
+    opacity:
+      0.32;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module"][class*="hero"]
+  ) {
+    min-height:
+      470px;
+  }
+
+
+  .aiSecurity
+  :global(dl) {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+}
+
+
+@media (
+  max-width: 640px
+) {
+
+  .aiAmbientVisual {
+    top:
+      65px;
+
+    right:
+      -190px;
+
+    width:
+      390px;
+
+    height:
+      315px;
+
+    opacity:
+      0.22;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module"][class*="hero"]
+  ) {
+    min-height:
+      auto;
+
+    padding-block:
+      3.2rem;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module"][class*="title"]
+  ) {
+    max-width:
+      12ch;
+
+    font-size:
+      clamp(
+        2.7rem,
+        12vw,
+        3.8rem
+      );
+
+    line-height:
+      0.95;
+  }
+
+
+  .aiSecurity
+  :global(section) {
+    padding-block:
+      2.9rem;
+  }
+
+
+  .aiSecurity
+  :global(dl) {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .aiSecurity
+  :global(dl > div) {
+    padding:
+      0.85rem;
+  }
+
+
+  .aiSecurity
+  :global(section > ul),
+  .aiSecurity
+  :global(section > ol) {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .aiSecurity
+  :global(section > ul > li),
+  .aiSecurity
+  :global(section > ol > li) {
+    min-height:
+      auto;
+  }
+
+}
+
+
+/* ==========================================================================
+   MOTION
+   ========================================================================== */
+
+
+@media (
+  prefers-reduced-motion:
+  no-preference
+) {
+
+  .aiOrbitLarge {
+    animation:
+      aiOrbitRotate
+      28s
+      linear
+      infinite;
+  }
+
+
+  .aiOrbitSmall {
+    animation:
+      aiOrbitReverse
+      20s
+      linear
+      infinite;
+  }
+
+
+  .aiNode {
+    animation:
+      aiNodePulse
+      3s
+      ease-in-out
+      infinite;
+  }
+
+
+  .aiNodeTwo {
+    animation-delay:
+      -0.8s;
+  }
+
+
+  .aiNodeThree {
+    animation-delay:
+      -1.5s;
+  }
+
+
+  .aiNodeFour {
+    animation-delay:
+      -2.1s;
+  }
+
+
+  .aiNodeFive {
+    animation-delay:
+      -0.45s;
+  }
+
+}
+
+
+@keyframes aiOrbitRotate {
+
+  from {
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      rotate(0deg);
+  }
+
+  to {
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      rotate(360deg);
+  }
+
+}
+
+
+@keyframes aiOrbitReverse {
+
+  from {
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      rotate(360deg);
+  }
+
+  to {
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      rotate(0deg);
+  }
+
+}
+
+
+@keyframes aiNodePulse {
+
+  0%,
+  100% {
+    transform:
+      scale(1);
+
+    opacity:
+      0.55;
+  }
+
+  50% {
+    transform:
+      scale(1.55);
+
+    opacity:
+      1;
+  }
+
+}
+
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+
+  .aiOrbitLarge,
+  .aiOrbitSmall,
+  .aiNode {
+    animation:
+      none;
+  }
+
+
+  .aiSecurity
+  :global(article:hover),
+  .aiSecurity
+  :global(section > ul > li:hover),
+  .aiSecurity
+  :global(section > ol > li:hover) {
+    transform:
+      none;
+  }
+
+}
