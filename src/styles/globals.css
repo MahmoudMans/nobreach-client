@@ -582,3 +582,385 @@ ol {
   }
 
 }
+
+
+/* ==========================================================================
+   NB_MINIMALIST_INTERACTIONS_V3
+
+   Quiet, precise and accessible interaction language.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   FORM CONTROLS
+   -------------------------------------------------------------------------- */
+
+#main-content
+:where(
+  input,
+  select,
+  textarea
+) {
+  width:
+    100%;
+  min-height:
+    44px;
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.13
+    );
+  border-radius:
+    7px;
+  box-shadow:
+    none;
+  color:
+    var(--color-text);
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.018
+    );
+  transition:
+    border-color 150ms ease,
+    background 150ms ease;
+}
+
+
+#main-content textarea {
+  min-height:
+    132px;
+  resize:
+    vertical;
+}
+
+
+#main-content
+:where(
+  input,
+  select,
+  textarea
+):hover {
+  border-color:
+    rgba(
+      255,
+      255,
+      255,
+      0.2
+    );
+}
+
+
+#main-content
+:where(
+  input,
+  select,
+  textarea
+):focus {
+  border-color:
+    rgba(
+      var(--brand-cyan-rgb),
+      0.62
+    );
+  outline:
+    none;
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.026
+    );
+}
+
+
+#main-content
+:where(
+  input,
+  select,
+  textarea,
+  button,
+  a,
+  summary
+):focus-visible {
+  outline:
+    2px solid
+    var(--brand-cyan);
+  outline-offset:
+    3px;
+}
+
+
+#main-content
+:where(
+  input,
+  select,
+  textarea,
+  button
+):disabled {
+  cursor:
+    not-allowed;
+  opacity:
+    0.48;
+}
+
+
+/* --------------------------------------------------------------------------
+   LABELS
+   -------------------------------------------------------------------------- */
+
+#main-content label {
+  display:
+    inline-block;
+  margin-bottom:
+    0.45rem;
+  color:
+    var(--color-text-muted);
+  font-size:
+    0.72rem;
+  font-weight:
+    560;
+  letter-spacing:
+    0.01em;
+}
+
+
+#main-content fieldset {
+  margin:
+    0;
+  padding:
+    0;
+  border:
+    0;
+}
+
+
+#main-content legend {
+  margin-bottom:
+    0.75rem;
+  color:
+    var(--color-text);
+  font-size:
+    0.8rem;
+  font-weight:
+    600;
+}
+
+
+/* --------------------------------------------------------------------------
+   BUTTONS
+   -------------------------------------------------------------------------- */
+
+#main-content button {
+  min-height:
+    42px;
+  border-radius:
+    7px;
+  box-shadow:
+    none;
+}
+
+
+#main-content button:not(:disabled) {
+  cursor:
+    pointer;
+}
+
+
+/* --------------------------------------------------------------------------
+   DISCLOSURES / FAQ
+   -------------------------------------------------------------------------- */
+
+#main-content details {
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.1
+    );
+  border-bottom:
+    0;
+  border-right:
+    0;
+  border-left:
+    0;
+  border-radius:
+    0;
+  box-shadow:
+    none;
+  background:
+    transparent;
+}
+
+
+#main-content details:last-child {
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.1
+    );
+}
+
+
+#main-content summary {
+  display:
+    flex;
+  min-height:
+    52px;
+  align-items:
+    center;
+  cursor:
+    pointer;
+  color:
+    var(--color-text);
+  font-size:
+    0.88rem;
+  font-weight:
+    560;
+}
+
+
+#main-content summary::marker {
+  color:
+    var(--brand-blue);
+}
+
+
+/* --------------------------------------------------------------------------
+   TABLES
+   -------------------------------------------------------------------------- */
+
+#main-content table {
+  width:
+    100%;
+  border-collapse:
+    collapse;
+  border-spacing:
+    0;
+  font-size:
+    0.8rem;
+}
+
+
+#main-content th {
+  padding:
+    0.72rem
+    0.8rem;
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.16
+    );
+  color:
+    var(--color-text-faint);
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+  font-size:
+    0.56rem;
+  font-weight:
+    500;
+  letter-spacing:
+    0.07em;
+  text-align:
+    left;
+  text-transform:
+    uppercase;
+}
+
+
+#main-content td {
+  padding:
+    0.78rem
+    0.8rem;
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.075
+    );
+  color:
+    var(--color-text-secondary);
+  vertical-align:
+    top;
+}
+
+
+/* --------------------------------------------------------------------------
+   CODE / TECHNICAL VALUES
+   -------------------------------------------------------------------------- */
+
+#main-content code {
+  border-radius:
+    4px;
+  color:
+    var(--brand-cyan);
+  background:
+    rgba(
+      var(--brand-cyan-rgb),
+      0.055
+    );
+}
+
+
+/* --------------------------------------------------------------------------
+   BLOCKQUOTES
+   -------------------------------------------------------------------------- */
+
+#main-content blockquote {
+  margin:
+    2rem 0;
+  padding:
+    0.25rem
+    0
+    0.25rem
+    1.25rem;
+  border-left:
+    1px solid
+    rgba(
+      var(--brand-cyan-rgb),
+      0.42
+    );
+  color:
+    var(--color-text-secondary);
+  background:
+    transparent;
+}
+
+
+/* --------------------------------------------------------------------------
+   REDUCED MOTION
+   -------------------------------------------------------------------------- */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+
+  #main-content
+  :where(
+    input,
+    select,
+    textarea,
+    button
+  ) {
+    transition:
+      none;
+  }
+
+}

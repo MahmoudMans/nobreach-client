@@ -48,3 +48,158 @@
   color:
     var(--color-text-faint);
 }
+/* ==========================================================================
+   NB_MINIMALIST_INTERACTIONS_V3
+   ========================================================================== */
+
+
+/* FILTER / TOOLBAR --------------------------------------------------- */
+
+.filters,
+.filterBar,
+.filterGroup,
+.toolbar,
+.controls,
+.actions {
+  gap:
+    0.45rem;
+}
+
+
+.filterButton,
+.filter,
+.option,
+.chip,
+.pill,
+.tag,
+.badge {
+  box-shadow:
+    none;
+}
+
+
+/* FORMS -------------------------------------------------------------- */
+
+.form,
+.formGrid,
+.fields,
+.fieldGroup {
+  gap:
+    1rem;
+}
+
+
+.field {
+  gap:
+    0.4rem;
+}
+
+
+.input,
+.select,
+.textarea,
+.searchInput {
+  min-height:
+    44px;
+  border-radius:
+    7px;
+  box-shadow:
+    none;
+}
+
+
+.textarea {
+  min-height:
+    132px;
+}
+
+
+/* SEARCH ------------------------------------------------------------- */
+
+.search,
+.searchBox,
+.searchField {
+  max-width:
+    560px;
+}
+
+
+/* BREADCRUMBS -------------------------------------------------------- */
+
+.breadcrumbs,
+.breadcrumb,
+.list {
+  font-size:
+    0.66rem;
+}
+
+
+/* FAQ / ACCORDION ---------------------------------------------------- */
+
+.accordion,
+.faq,
+.faqList {
+  max-width:
+    840px;
+}
+
+
+.accordionItem,
+.faqItem {
+  border-radius:
+    0;
+  box-shadow:
+    none;
+  background:
+    transparent;
+}
+
+
+/* EMPTY STATES ------------------------------------------------------- */
+
+.empty,
+.emptyState,
+.noResults {
+  border-radius:
+    0;
+  box-shadow:
+    none;
+  background:
+    transparent;
+}
+
+
+/* PAGINATION --------------------------------------------------------- */
+
+.pagination {
+  gap:
+    0.35rem;
+}
+
+
+/* META --------------------------------------------------------------- */
+
+.meta,
+.metadata,
+.status,
+.tag,
+.badge {
+  box-shadow:
+    none;
+}
+
+
+/* MOBILE ------------------------------------------------------------- */
+
+@media (max-width: 640px) {
+
+  .formGrid,
+  .fields {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+}

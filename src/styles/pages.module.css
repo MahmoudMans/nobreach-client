@@ -1144,3 +1144,225 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_MINIMALIST_INTERACTIONS_V3
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   FILTERS
+   -------------------------------------------------------------------------- */
+
+.filters,
+.filterBar,
+.toolbar,
+.controls {
+  display:
+    flex;
+  flex-wrap:
+    wrap;
+  gap:
+    0.45rem;
+  align-items:
+    center;
+}
+
+
+.filter,
+.filterButton,
+.filterOption,
+.chip,
+.pill {
+  min-height:
+    38px;
+  padding:
+    0.45rem
+    0.68rem;
+  border:
+    1px solid
+    var(--nb-line);
+  border-radius:
+    6px;
+  box-shadow:
+    none;
+  background:
+    transparent;
+  font-size:
+    0.68rem;
+}
+
+
+.filter:hover,
+.filterButton:hover,
+.filterOption:hover,
+.chip:hover,
+.pill:hover {
+  border-color:
+    var(--nb-line-strong);
+  background:
+    var(--nb-flat-surface-hover);
+}
+
+
+/* --------------------------------------------------------------------------
+   SEARCH
+   -------------------------------------------------------------------------- */
+
+.search,
+.searchBox,
+.searchField {
+  max-width:
+    540px;
+}
+
+
+.searchInput {
+  min-height:
+    42px;
+  border-radius:
+    7px;
+  box-shadow:
+    none;
+}
+
+
+/* --------------------------------------------------------------------------
+   EMPTY STATES
+   -------------------------------------------------------------------------- */
+
+.empty,
+.emptyState,
+.noResults {
+  max-width:
+    640px;
+  padding:
+    2rem 0;
+  border:
+    0;
+  border-top:
+    1px solid
+    var(--nb-line);
+  border-radius:
+    0;
+  box-shadow:
+    none;
+  background:
+    transparent;
+}
+
+
+/* --------------------------------------------------------------------------
+   PAGINATION
+   -------------------------------------------------------------------------- */
+
+.pagination {
+  display:
+    flex;
+  gap:
+    0.35rem;
+  align-items:
+    center;
+  margin-top:
+    2rem;
+}
+
+
+.pagination a,
+.pagination button {
+  min-width:
+    40px;
+  min-height:
+    40px;
+  border-radius:
+    6px;
+  box-shadow:
+    none;
+}
+
+
+/* --------------------------------------------------------------------------
+   BREADCRUMB-LIKE META
+   -------------------------------------------------------------------------- */
+
+.breadcrumb,
+.breadcrumbs,
+.metaLine {
+  color:
+    var(--color-text-faint);
+  font-size:
+    0.65rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   FORM LAYOUTS
+   -------------------------------------------------------------------------- */
+
+.form,
+.formGrid,
+.fields {
+  gap:
+    1rem;
+}
+
+
+.field {
+  gap:
+    0.4rem;
+}
+
+
+.formActions,
+.actions {
+  gap:
+    0.6rem;
+  margin-top:
+    1.2rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   STATUS
+   -------------------------------------------------------------------------- */
+
+.status,
+.badge,
+.tag {
+  border-radius:
+    5px;
+  box-shadow:
+    none;
+  font-size:
+    0.58rem;
+  letter-spacing:
+    0.035em;
+}
+
+
+/* --------------------------------------------------------------------------
+   MOBILE
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 640px) {
+
+  .filters,
+  .filterBar,
+  .toolbar,
+  .controls {
+    gap:
+      0.4rem;
+  }
+
+
+  .formGrid,
+  .fields {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+}
