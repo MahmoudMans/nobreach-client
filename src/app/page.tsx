@@ -1,636 +1,339 @@
 import Link from "next/link";
+
 import {
-  ArrowUpRight
-} from "lucide-react";
-import { Container } from "@/components/layout/container";
-import { AttackGraph } from "@/components/security/attack-graph";
-import { CapabilityMap } from "@/components/security/capability-map";
-import { ButtonLink } from "@/components/ui/button-link";
-import { JsonLd } from "@/components/ui/json-ld";
-import { SectionHeader } from "@/components/ui/section-header";
-import { SignalStrip } from "@/components/ui/signal-strip";
-import { activities } from "@/content/activities";
-import { events } from "@/content/events";
-import { insights } from "@/content/insights";
-import {
-  companyTimeline,
-  methodology,
-  siteConfig
-} from "@/content/site";
-import { services } from "@/content/services";
-import { trainingPrograms } from "@/content/training";
-import pages from "@/styles/pages.module.css";
+  Container
+} from "@/components/layout/container";
+
 import styles from "./home.module.css";
 
+const services = [
+  {
+    number:
+      "01",
+
+    title:
+      "Web Application Security",
+
+    description:
+      "Security testing focused on authentication, authorization, business logic and real application attack surfaces.",
+
+    href:
+      "/services/web-application-pentesting"
+  },
+  {
+    number:
+      "02",
+
+    title:
+      "API Security",
+
+    description:
+      "Assessment of REST and GraphQL APIs, object-level access, tokens, authorization and data exposure.",
+
+    href:
+      "/services/api-security"
+  },
+  {
+    number:
+      "03",
+
+    title:
+      "Infrastructure Security",
+
+    description:
+      "Review of exposed services, network configuration, credentials, privilege paths and segmentation.",
+
+    href:
+      "/services/infrastructure-security"
+  },
+  {
+    number:
+      "04",
+
+    title:
+      "Security Training",
+
+    description:
+      "Practical cybersecurity education for teams, universities, communities and technical learners.",
+
+    href:
+      "/services/security-training"
+  }
+] as const;
+
+const destinations = [
+  {
+    index:
+      "01",
+
+    eyebrow:
+      "Company",
+
+    title:
+      "About No Breach",
+
+    description:
+      "Company story, operating principles, ecosystem and milestones.",
+
+    href:
+      "/company"
+  },
+  {
+    index:
+      "02",
+
+    eyebrow:
+      "Founder",
+
+    title:
+      "Nouha Ben Brahim",
+
+    description:
+      "Founder profile, journey, security work, speaking, writing and public record.",
+
+    href:
+      "/company/founder"
+  },
+  {
+    index:
+      "03",
+
+    eyebrow:
+      "Training",
+
+    title:
+      "Training Hub",
+
+    description:
+      "Hands-on cybersecurity programs built around practical technical work.",
+
+    href:
+      "/training"
+  },
+  {
+    index:
+      "04",
+
+    eyebrow:
+      "Community",
+
+    title:
+      "CR4CKOUT",
+
+    description:
+      "No Breach's community security initiative, workshops, CTF activity and events.",
+
+    href:
+      "/cr4ckout"
+  },
+  {
+    index:
+      "05",
+
+    eyebrow:
+      "Applied work",
+
+    title:
+      "Internship Projects",
+
+    description:
+      "Technical projects developed through No Breach internship programs.",
+
+    href:
+      "/company/internships"
+  },
+  {
+    index:
+      "06",
+
+    eyebrow:
+      "Public record",
+
+    title:
+      "Activities & LinkedIn",
+
+    description:
+      "Events, workshops, community activity and verified public LinkedIn posts.",
+
+    href:
+      "/activities"
+  },
+  {
+    index:
+      "07",
+
+    eyebrow:
+      "Knowledge",
+
+    title:
+      "Technical Insights",
+
+    description:
+      "Original writing on application security, offensive security and AI security.",
+
+    href:
+      "/insights"
+  },
+  {
+    index:
+      "08",
+
+    eyebrow:
+      "Events",
+
+    title:
+      "Events Archive",
+
+    description:
+      "Published No Breach events and previous community activity.",
+
+    href:
+      "/events"
+  }
+] as const;
+
 export default function HomePage() {
-  const featuredActivities =
-    activities.slice(0, 3);
-
-  const featuredEvent =
-    events[0];
-
   return (
     <>
-      <JsonLd
-        data={{
-          "@context":
-            "https://schema.org",
-          "@type": "Organization",
-          name: siteConfig.name,
-          url: siteConfig.url,
-          foundingDate:
-            siteConfig.founded,
-          description:
-            siteConfig.description,
-          address: {
-            "@type":
-              "PostalAddress",
-            addressLocality:
-              "Tunis",
-            addressCountry:
-              "TN"
-          },
-          founder: {
-            "@type": "Person",
-            name:
-              siteConfig.founder.name
-          },
-          sameAs: [
-            siteConfig.linkedin
-          ]
-        }}
-      />
-
-      <section className={styles.hero}>
+      <section
+        className={
+          styles.compactHero
+        }
+        data-home-section="hero"
+      >
         <Container size="wide">
           <div
             className={
-              styles.heroGrid
+              styles.compactHeroGrid
             }
           >
-            <div>
+            <div
+              className={
+                styles.compactHeroCopy
+              }
+            >
               <p
                 className={
-                  styles.heroEyebrow
+                  styles.compactEyebrow
                 }
               >
-                Offensive Security /
-                Tunisia
+                Offensive Security / Tunisia
               </p>
 
               <h1
                 className={
-                  styles.heroTitle
+                  styles.compactHeroTitle
                 }
               >
-                Offensive security
-                built around
-                <span
-                  className={
-                    styles.heroAccent
-                  }
-                >
-                  real-world attack
-                  thinking.
-                </span>
+                Offensive security built around real-world attack thinking.
               </h1>
 
               <p
                 className={
-                  styles.heroText
+                  styles.compactHeroText
                 }
               >
-                No Breach helps
-                organizations examine
-                security weaknesses
-                through an
-                attacker-oriented
-                perspective while
-                developing practical
-                cybersecurity knowledge
-                through training and
-                community initiatives.
+                No Breach helps organizations uncover security weaknesses while building practical cybersecurity capability through services, education and community work.
               </p>
 
               <div
                 className={
-                  styles.heroActions
+                  styles.compactActions
                 }
               >
-                <ButtonLink href="/services">
-                  Explore security
-                  services
-                </ButtonLink>
-
-                <ButtonLink
-                  href="/company"
-                  variant="secondary"
-                >
-                  Discover No Breach
-                </ButtonLink>
-              </div>
-
-              <div
-                className={
-                  styles.heroMeta
-                }
-              >
-                <span>
-                  Founded{" "}
-                  {
-                    siteConfig.founded
-                  }
-                </span>
-
-                <span>
-                  {
-                    siteConfig.location
-                  }
-                </span>
-
-                <span>
-                  Services · Education
-                  · Community
-                </span>
-              </div>
-            </div>
-
-            <AttackGraph />
-          </div>
-        </Container>
-      </section>
-
-      <SignalStrip />
-
-      <Container>
-        <section
-          className={styles.intro}
-        >
-          <p
-            className={
-              styles.introLabel
-            }
-          >
-            01 / No Breach
-          </p>
-
-          <div>
-            <h2
-              className={
-                styles.introTitle
-              }
-            >
-              A cybersecurity
-              organization built from
-              offensive security.
-            </h2>
-
-            <p
-              className={
-                styles.introText
-              }
-            >
-              No Breach brings
-              together security
-              assessment, hands-on
-              education and
-              cybersecurity community
-              initiatives. The
-              objective is simple:
-              understand how systems
-              fail, communicate
-              security clearly and
-              help people build
-              stronger technical
-              capability.
-            </p>
-
-            <div
-              className={
-                styles.companyFacts
-              }
-            >
-              <div
-                className={
-                  styles.fact
-                }
-              >
-                <p
-                  className={
-                    styles.factLabel
-                  }
-                >
-                  Founded
-                </p>
-                <p
-                  className={
-                    styles.factValue
-                  }
-                >
-                  2023
-                </p>
-              </div>
-
-              <div
-                className={
-                  styles.fact
-                }
-              >
-                <p
-                  className={
-                    styles.factLabel
-                  }
-                >
-                  Based
-                </p>
-                <p
-                  className={
-                    styles.factValue
-                  }
-                >
-                  Tunis, Tunisia
-                </p>
-              </div>
-
-              <div
-                className={
-                  styles.fact
-                }
-              >
-                <p
-                  className={
-                    styles.factLabel
-                  }
-                >
-                  Focus
-                </p>
-                <p
-                  className={
-                    styles.factValue
-                  }
-                >
-                  Offensive Security
-                </p>
-              </div>
-
-              <div
-                className={
-                  styles.fact
-                }
-              >
-                <p
-                  className={
-                    styles.factLabel
-                  }
-                >
-                  Ecosystem
-                </p>
-                <p
-                  className={
-                    styles.factValue
-                  }
-                >
-                  Security · Training
-                  · Community
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-      </Container>
-
-      <section
-        className={styles.services}
-      >
-        <Container>
-          <SectionHeader
-            eyebrow="02 / Security services"
-            title="Examine the system from the attacker’s side."
-            description="Focused security services designed around attack surfaces, trust boundaries, application behavior and actionable reporting."
-          />
-
-          <div
-            className={
-              styles.serviceGrid
-            }
-          >
-            {services.map(
-              (service) => (
                 <Link
                   className={
-                    styles.serviceCard
+                    styles.compactPrimaryButton
                   }
-                  href={`/services/${service.slug}`}
-                  key={service.slug}
+                  href="/services"
                 >
-                  <div
-                    className={
-                      styles.serviceTop
-                    }
+                  Explore services
+                  <span
+                    aria-hidden="true"
                   >
-                    <span
-                      className={
-                        styles.serviceNumber
-                      }
-                    >
-                      {service.number}
-                    </span>
-
-                    <ArrowUpRight
-                      className={
-                        styles.serviceArrow
-                      }
-                      size={19}
-                      aria-hidden="true"
-                    />
-                  </div>
-
-                  <h3
-                    className={
-                      styles.serviceTitle
-                    }
-                  >
-                    {
-                      service.shortTitle
-                    }
-                  </h3>
-
-                  <p
-                    className={
-                      styles.serviceText
-                    }
-                  >
-                    {service.summary}
-                  </p>
+                    ↗
+                  </span>
                 </Link>
-              )
-            )}
-          </div>
-        </Container>
-      </section>
 
-      <section
-        className={
-          styles.capabilities
-        }
-      >
-        <Container size="wide">
-          <div
-            className={
-              styles.capabilityGrid
-            }
-          >
-            <div
-              className={
-                styles.capabilityCopy
-              }
-            >
-              <p
-                className={
-                  styles.capabilityEyebrow
-                }
-              >
-                03 / Capability
-                architecture
-              </p>
-
-              <h2
-                className={
-                  styles.capabilityTitle
-                }
-              >
-                Security, education
-                and community are one
-                connected system.
-              </h2>
-
-              <p
-                className={
-                  styles.capabilityText
-                }
-              >
-                No Breach is presented
-                as more than a list of
-                consulting services.
-                Security assessment,
-                technical education and
-                community activity
-                reinforce the same
-                practical cybersecurity
-                identity.
-              </p>
-
-              <div
-                className={
-                  styles.capabilityList
-                }
-              >
-                {[
-                  "Offensive security services",
-                  "Hands-on cybersecurity education",
-                  "CR4CKOUT community initiative"
-                ].map(
-                  (item, index) => (
-                    <div
-                      className={
-                        styles.capabilityItem
-                      }
-                      key={item}
-                    >
-                      <span
-                        className={
-                          styles.capabilityIndex
-                        }
-                      >
-                        {String(
-                          index + 1
-                        ).padStart(
-                          2,
-                          "0"
-                        )}
-                      </span>
-
-                      <span
-                        className={
-                          styles.capabilityItemTitle
-                        }
-                      >
-                        {item}
-                      </span>
-                    </div>
-                  )
-                )}
+                <Link
+                  className={
+                    styles.compactSecondaryButton
+                  }
+                  href="/company"
+                >
+                  About No Breach
+                </Link>
               </div>
             </div>
 
-            <CapabilityMap />
-          </div>
-        </Container>
-      </section>
-
-      <section
-        className={
-          styles.methodology
-        }
-      >
-        <Container size="wide">
-          <SectionHeader
-            eyebrow="04 / Methodology"
-            title="A disciplined path from scope to remediation."
-            description="Security testing should be understandable, reproducible and useful to the people responsible for fixing what matters."
-          />
-
-          <div
-            className={
-              styles.methodGrid
-            }
-          >
-            {methodology.map(
-              (step) => (
-                <div
-                  className={
-                    styles.methodItem
-                  }
-                  key={step.number}
-                >
-                  <p
-                    className={
-                      styles.methodNumber
-                    }
-                  >
-                    {step.number}
-                  </p>
-
-                  <h3
-                    className={
-                      styles.methodTitle
-                    }
-                  >
-                    {step.title}
-                  </h3>
-
-                  <p
-                    className={
-                      styles.methodText
-                    }
-                  >
-                    {
-                      step.description
-                    }
-                  </p>
-                </div>
-              )
-            )}
-          </div>
-        </Container>
-      </section>
-
-      <section
-        className={styles.founder}
-      >
-        <Container>
-          <div
-            className={
-              styles.founderGrid
-            }
-          >
             <div
               className={
-                styles.founderVisual
+                styles.compactSignal
               }
               aria-hidden="true"
             >
-              <span
-                className={
-                  styles.founderInitials
-                }
-              >
-                NB
-              </span>
-
-              <span
-                className={
-                  styles.founderVisualLabel
-                }
-              >
-                Founder / No Breach
-              </span>
-            </div>
-
-            <div>
-              <p
-                className={
-                  styles.founderEyebrow
-                }
-              >
-                05 / Founder
-              </p>
-
-              <h2
-                className={
-                  styles.founderTitle
-                }
-              >
-                Nouha Ben Brahim
-              </h2>
-
-              <p
-                className={
-                  styles.founderText
-                }
-              >
-                Founder of No Breach
-                and a cybersecurity
-                professional focused
-                on offensive security,
-                web security, practical
-                education and building
-                stronger cybersecurity
-                communities.
-              </p>
-
               <div
                 className={
-                  styles.founderTags
+                  styles.signalTop
                 }
               >
-                {[
-                  "Offensive Security",
-                  "Web Security",
-                  "Bug Bounty",
-                  "Training",
-                  "AI Security"
-                ].map((tag) => (
-                  <span
-                    className={
-                      styles.founderTag
-                    }
-                    key={tag}
-                  >
-                    {tag}
-                  </span>
-                ))}
+                <span>
+                  NB / ATTACK SURFACE
+                </span>
+
+                <span>
+                  ACTIVE
+                </span>
               </div>
 
               <div
                 className={
-                  styles.founderActions
+                  styles.signalGraph
                 }
               >
-                <ButtonLink href="/company/founder">
-                  Meet the founder
-                </ButtonLink>
-
-                <ButtonLink
-                  href={
-                    siteConfig
-                      .founder
-                      .linkedin
-                  }
-                  variant="secondary"
+                <span
+                  className={`${styles.signalNode} ${styles.signalNodeApp}`}
                 >
-                  LinkedIn
-                </ButtonLink>
+                  APP
+                </span>
+
+                <span
+                  className={`${styles.signalNode} ${styles.signalNodeApi}`}
+                >
+                  API
+                </span>
+
+                <span
+                  className={`${styles.signalNode} ${styles.signalNodeAuth}`}
+                >
+                  AUTH
+                </span>
+
+                <span
+                  className={`${styles.signalNode} ${styles.signalNodeUser}`}
+                >
+                  USER
+                </span>
+
+                <span
+                  className={`${styles.signalNode} ${styles.signalNodeData}`}
+                >
+                  DATA
+                </span>
+
+                <svg
+                  className={
+                    styles.signalLines
+                  }
+                  viewBox="0 0 500 300"
+                  preserveAspectRatio="none"
+                >
+                  <path d="M250 40 L120 125" />
+                  <path d="M250 40 L380 125" />
+                  <path d="M120 125 L250 205" />
+                  <path d="M380 125 L250 205" />
+                  <path d="M250 205 L250 270" />
+                </svg>
               </div>
             </div>
           </div>
@@ -638,103 +341,197 @@ export default function HomePage() {
       </section>
 
       <section
-        className={styles.training}
+        className={
+          styles.compactFacts
+        }
+        data-home-section="company"
       >
-        <Container>
+        <Container size="wide">
           <div
             className={
-              styles.trainingHead
+              styles.compactFactGrid
+            }
+          >
+            <div
+              className={
+                styles.compactCompanyIntro
+              }
+            >
+              <p
+                className={
+                  styles.compactEyebrow
+                }
+              >
+                No Breach
+              </p>
+
+              <h2
+                className={
+                  styles.compactSectionTitle
+                }
+              >
+                A cybersecurity organization built from offensive security.
+              </h2>
+
+              <Link
+                className={
+                  styles.compactTextLink
+                }
+                href="/company"
+              >
+                Read the company story
+                <span
+                  aria-hidden="true"
+                >
+                  →
+                </span>
+              </Link>
+            </div>
+
+            <dl
+              className={
+                styles.compactFactList
+              }
+            >
+              <div>
+                <dt>
+                  Founded
+                </dt>
+
+                <dd>
+                  2023
+                </dd>
+              </div>
+
+              <div>
+                <dt>
+                  Based
+                </dt>
+
+                <dd>
+                  Tunis, Tunisia
+                </dd>
+              </div>
+
+              <div>
+                <dt>
+                  Focus
+                </dt>
+
+                <dd>
+                  Offensive Security
+                </dd>
+              </div>
+
+              <div>
+                <dt>
+                  Ecosystem
+                </dt>
+
+                <dd>
+                  Services · Education · Community
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </Container>
+      </section>
+
+      <section
+        className={
+          styles.compactSection
+        }
+        data-home-section="services"
+      >
+        <Container size="wide">
+          <div
+            className={
+              styles.compactSectionHeader
             }
           >
             <div>
               <p
                 className={
-                  styles.trainingEyebrow
+                  styles.compactEyebrow
                 }
               >
-                06 / No Breach Training
-                Hub
+                Security services
               </p>
 
               <h2
                 className={
-                  styles.trainingTitle
+                  styles.compactSectionTitle
                 }
               >
-                Learn cybersecurity
-                by doing
-                cybersecurity.
+                Examine systems from an attacker&apos;s perspective.
               </h2>
             </div>
 
-            <ButtonLink
-              href="/training"
-              variant="secondary"
+            <Link
+              className={
+                styles.compactTextLink
+              }
+              href="/services"
             >
-              Explore Training Hub
-            </ButtonLink>
+              Full methodology & services
+              <span
+                aria-hidden="true"
+              >
+                →
+              </span>
+            </Link>
           </div>
 
           <div
             className={
-              styles.programGrid
+              styles.compactServiceGrid
             }
           >
-            {trainingPrograms.map(
-              (program) => (
+            {services.map(
+              (
+                service
+              ) => (
                 <Link
                   className={
-                    styles.programCard
+                    styles.compactServiceCard
                   }
-                  href={`/training/${program.slug}`}
-                  key={program.slug}
+                  href={
+                    service.href
+                  }
+                  key={
+                    service.number
+                  }
                 >
-                  <div
+                  <span
                     className={
-                      styles.programMeta
+                      styles.compactCardNumber
                     }
                   >
-                    <span>
-                      {
-                        program.category
-                      }
-                    </span>
-
-                    <span>
-                      {program.status}
-                    </span>
-                  </div>
-
-                  <h3
-                    className={
-                      styles.programTitle
+                    {
+                      service.number
                     }
-                  >
-                    {program.title}
+                  </span>
+
+                  <h3>
+                    {
+                      service.title
+                    }
                   </h3>
 
-                  <p
-                    className={
-                      styles.programText
+                  <p>
+                    {
+                      service.description
                     }
-                  >
-                    {program.summary}
                   </p>
 
-                  <div
+                  <span
                     className={
-                      styles.programFooter
+                      styles.compactCardArrow
                     }
+                    aria-hidden="true"
                   >
-                    <span>
-                      {program.level}
-                    </span>
-
-                    <ArrowUpRight
-                      size={15}
-                      aria-hidden="true"
-                    />
-                  </div>
+                    ↗
+                  </span>
                 </Link>
               )
             )}
@@ -743,318 +540,124 @@ export default function HomePage() {
       </section>
 
       <section
-        className={styles.crackout}
+        className={
+          styles.compactSection
+        }
+        data-home-section="explore"
       >
-        <Container>
-          <p
-            className={
-              styles.crackoutEyebrow
-            }
-          >
-            07 / Community
-          </p>
-
-          <h2
-            className={
-              styles.crackoutTitle
-            }
-          >
-            CR4CKOUT
-          </h2>
-
+        <Container size="wide">
           <div
             className={
-              styles.crackoutWords
+              styles.compactSectionHeader
             }
           >
-            <span>HACK.</span>
-            <span>LEARN.</span>
-            <span>BREAK.</span>
-            <span>BUILD.</span>
-          </div>
-
-          <p
-            className={
-              styles.crackoutText
-            }
-          >
-            CR4CKOUT is a
-            cybersecurity community
-            initiative launched by No
-            Breach, designed around
-            hands-on learning,
-            technical challenges and
-            bringing cybersecurity
-            practitioners and learners
-            together.
-          </p>
-
-          <div
-            className={
-              styles.crackoutAction
-            }
-          >
-            <ButtonLink href="/cr4ckout">
-              Explore CR4CKOUT
-            </ButtonLink>
-          </div>
-        </Container>
-      </section>
-
-      <section className={pages.section}>
-        <Container>
-          <SectionHeader
-            eyebrow="08 / Activity"
-            title="What No Breach is building, teaching and supporting."
-            description="A public record of training, community activity, events and cybersecurity participation."
-          />
-
-          <div
-            className={
-              styles.activityLayout
-            }
-          >
-            <div className={pages.grid3}>
-              {featuredActivities.map(
-                (activity) => (
-                  <div
-                    className={
-                      pages.card
-                    }
-                    key={
-                      activity.slug
-                    }
-                  >
-                    <p
-                      className={
-                        pages.cardNumber
-                      }
-                    >
-                      {
-                        activity.year
-                      }{" "}
-                      /{" "}
-                      {activity.category.toUpperCase()}
-                    </p>
-
-                    <h3
-                      className={
-                        pages.cardTitle
-                      }
-                    >
-                      {
-                        activity.title
-                      }
-                    </h3>
-
-                    <p
-                      className={
-                        pages.cardDescription
-                      }
-                    >
-                      {
-                        activity.summary
-                      }
-                    </p>
-
-                    {activity.location ? (
-                      <p
-                        className={
-                          pages.cardMeta
-                        }
-                      >
-                        {
-                          activity.location
-                        }
-                      </p>
-                    ) : null}
-                  </div>
-                )
-              )}
-            </div>
-
-            {featuredEvent ? (
-              <aside
+            <div>
+              <p
                 className={
-                  styles.eventPanel
+                  styles.compactEyebrow
                 }
               >
-                <p
-                  className={
-                    styles.eventEyebrow
-                  }
-                >
-                  Event archive
-                </p>
+                Explore No Breach
+              </p>
 
-                <p
-                  className={
-                    styles.eventYear
-                  }
-                >
-                  {
-                    featuredEvent.year
-                  }{" "}
-                  /{" "}
-                  {featuredEvent.status.toUpperCase()}
-                </p>
-
-                <h3
-                  className={
-                    styles.eventTitle
-                  }
-                >
-                  {
-                    featuredEvent.title
-                  }
-                </h3>
-
-                <p
-                  className={
-                    styles.eventText
-                  }
-                >
-                  {
-                    featuredEvent.summary
-                  }
-                </p>
-
-                <div
-                  className={
-                    styles.eventAction
-                  }
-                >
-                  <ButtonLink
-                    href={`/events/${featuredEvent.slug}`}
-                    variant="secondary"
-                  >
-                    View event
-                  </ButtonLink>
-                </div>
-              </aside>
-            ) : null}
-          </div>
-
-          <div
-            style={{
-              marginTop: "2rem"
-            }}
-          >
-            <ButtonLink
-              href="/activities"
-              variant="secondary"
-            >
-              View all activities
-            </ButtonLink>
-          </div>
-        </Container>
-      </section>
-
-      <section className={pages.section}>
-        <Container>
-          <SectionHeader
-            eyebrow="09 / Insights"
-            title="Technical thinking from the No Breach ecosystem."
-            description="Writing about web security, API authorization, offensive-security methodology and emerging AI-security boundaries."
-          />
-
-          <div className={pages.grid3}>
-            {insights.slice(0, 3).map((insight) => (
-              <Link
-                className={`${pages.card} ${pages.linkCard}`}
-                href={`/insights/${insight.slug}`}
-                key={insight.slug}
+              <h2
+                className={
+                  styles.compactSectionTitle
+                }
               >
-                <p className={pages.cardNumber}>
-                  {insight.category.toUpperCase()}
-                </p>
+                Detailed content now lives where it belongs.
+              </h2>
+            </div>
 
-                <h3 className={pages.cardTitle}>
-                  {insight.title}
-                </h3>
-
-                <p className={pages.cardDescription}>
-                  {insight.summary}
-                </p>
-
-                <p className={pages.cardMeta}>
-                  {insight.readingTime}
-                </p>
-              </Link>
-            ))}
-          </div>
-
-          <div style={{ marginTop: "2rem" }}>
-            <ButtonLink
-              href="/insights"
-              variant="secondary"
+            <p
+              className={
+                styles.compactSectionIntro
+              }
             >
-              Explore all insights
-            </ButtonLink>
+              Go deeper into the company, founder, training, technical work, events, public activity and security research without making the homepage carry every detail.
+            </p>
           </div>
-        </Container>
-      </section>
-
-      <section className={pages.section}>
-        <Container>
-          <SectionHeader
-            eyebrow="10 / Timeline"
-            title="From specialist practice to a broader security ecosystem."
-          />
 
           <div
             className={
-              pages.timeline
+              styles.compactDestinationGrid
             }
           >
-            {companyTimeline.map(
-              (item) => (
-                <div
+            {destinations.map(
+              (
+                destination
+              ) => (
+                <Link
                   className={
-                    pages.timelineItem
+                    styles.compactDestination
                   }
-                  key={`${item.year}-${item.title}`}
+                  href={
+                    destination.href
+                  }
+                  key={
+                    destination.index
+                  }
                 >
-                  <p
+                  <div
                     className={
-                      pages.timelineYear
+                      styles.compactDestinationTop
                     }
                   >
-                    {item.year}
+                    <span>
+                      {
+                        destination.index
+                      }
+                    </span>
+
+                    <span>
+                      {
+                        destination.eyebrow
+                      }
+                    </span>
+                  </div>
+
+                  <h3>
+                    {
+                      destination.title
+                    }
+                  </h3>
+
+                  <p>
+                    {
+                      destination.description
+                    }
                   </p>
 
-                  <div>
-                    <h3
-                      className={
-                        pages.timelineTitle
-                      }
-                    >
-                      {item.title}
-                    </h3>
-
-                    <p
-                      className={
-                        pages.timelineDescription
-                      }
-                    >
-                      {
-                        item.description
-                      }
-                    </p>
-                  </div>
-                </div>
+                  <span
+                    className={
+                      styles.compactDestinationArrow
+                    }
+                    aria-hidden="true"
+                  >
+                    →
+                  </span>
+                </Link>
               )
             )}
           </div>
         </Container>
       </section>
 
-      <section className={pages.section}>
+      <section
+        className={
+          styles.compactCta
+        }
+        data-home-section="contact"
+      >
         <Container>
-          <div className={pages.cta}>
+          <div
+            className={
+              styles.compactCtaBox
+            }
+          >
             <p
               className={
-                pages.ctaEyebrow
+                styles.compactEyebrow
               }
             >
               Start a conversation
@@ -1062,42 +665,47 @@ export default function HomePage() {
 
             <h2
               className={
-                pages.ctaTitle
+                styles.compactCtaTitle
               }
             >
-              Security starts with
-              understanding the attack
-              surface.
+              Need a security assessment, training program or collaboration?
             </h2>
 
             <p
               className={
-                pages.ctaText
+                styles.compactCtaText
               }
             >
-              Talk to No Breach about
-              a security assessment,
-              training, university
-              collaboration or
-              cybersecurity community
-              initiative.
+              Tell No Breach what you are trying to secure, teach or build.
             </p>
 
             <div
               className={
-                pages.ctaActions
+                styles.compactActions
               }
             >
-              <ButtonLink href="/contact">
-                Contact No Breach
-              </ButtonLink>
-
-              <ButtonLink
-                href="/services"
-                variant="secondary"
+              <Link
+                className={
+                  styles.compactPrimaryButton
+                }
+                href="/contact"
               >
-                Explore services
-              </ButtonLink>
+                Contact No Breach
+                <span
+                  aria-hidden="true"
+                >
+                  ↗
+                </span>
+              </Link>
+
+              <Link
+                className={
+                  styles.compactSecondaryButton
+                }
+                href="/company/internships"
+              >
+                Explore technical work
+              </Link>
             </div>
           </div>
         </Container>

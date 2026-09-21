@@ -28,8 +28,20 @@ test(
     ).toBeVisible();
 
     await expect(
-      page.getByText(
-        /security, education and community are one connected system/i
+      page.getByRole(
+        "heading",
+        {
+          level:
+            2,
+          name:
+            /a cybersecurity organization built from offensive security/i
+        }
+      )
+    ).toBeVisible();
+
+    await expect(
+      page.locator(
+        '[data-home-section="explore"]'
       )
     ).toBeVisible();
   }

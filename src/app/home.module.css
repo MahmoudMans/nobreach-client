@@ -1505,3 +1505,823 @@
       );
   }
 }
+
+
+/* ==========================================================================
+   NB_HOME_CONDENSED_V1
+   Homepage is intentionally a concise navigation and positioning surface.
+   Detailed content lives on its dedicated routes.
+   ========================================================================== */
+
+.compactHero {
+  position: relative;
+  overflow: hidden;
+  padding:
+    clamp(
+      4.75rem,
+      8vw,
+      7rem
+    )
+    0
+    clamp(
+      4rem,
+      7vw,
+      6rem
+    );
+  border-bottom:
+    1px solid
+    var(--border-soft);
+}
+
+.compactHero::before {
+  position: absolute;
+  inset:
+    0 0 auto;
+  height: 620px;
+  background:
+    radial-gradient(
+      circle at 78% 18%,
+      rgba(
+        var(--brand-violet-rgb),
+        0.16
+      ),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 46% 4%,
+      rgba(
+        var(--brand-cyan-rgb),
+        0.055
+      ),
+      transparent 28%
+    );
+  content: "";
+  pointer-events: none;
+}
+
+.compactHeroGrid {
+  position: relative;
+  display: grid;
+  grid-template-columns:
+    minmax(
+      0,
+      1.18fr
+    )
+    minmax(
+      340px,
+      0.82fr
+    );
+  gap:
+    clamp(
+      3rem,
+      7vw,
+      6.5rem
+    );
+  align-items: center;
+}
+
+.compactHeroCopy {
+  min-width: 0;
+}
+
+.compactEyebrow {
+  color:
+    var(--brand-blue);
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.compactHeroTitle {
+  max-width: 900px;
+  margin-top: 1rem;
+  font-size:
+    clamp(
+      3.4rem,
+      6.6vw,
+      6.1rem
+    );
+  font-weight: 510;
+  letter-spacing:
+    -0.068em;
+  line-height: 0.93;
+  text-wrap: balance;
+}
+
+.compactHeroText {
+  max-width: 680px;
+  margin-top: 1.4rem;
+  color:
+    var(--color-text-secondary);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.compactActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.8rem;
+}
+
+.compactPrimaryButton,
+.compactSecondaryButton {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding:
+    0.75rem
+    1rem;
+  border-radius: 8px;
+  font-size: 0.76rem;
+  font-weight: 620;
+  text-decoration: none;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.compactPrimaryButton {
+  border:
+    1px solid
+    rgba(
+      var(--brand-cyan-rgb),
+      0.38
+    );
+  color:
+    #08090b;
+  background:
+    var(--brand-cyan);
+}
+
+.compactPrimaryButton:hover {
+  transform:
+    translateY(-1px);
+}
+
+.compactSecondaryButton {
+  border:
+    1px solid
+    var(--border-medium);
+  color:
+    var(--color-text);
+  background:
+    var(--color-surface);
+}
+
+.compactSecondaryButton:hover {
+  border-color:
+    rgba(
+      var(--brand-blue-rgb),
+      0.38
+    );
+}
+
+.compactPrimaryButton:focus-visible,
+.compactSecondaryButton:focus-visible,
+.compactTextLink:focus-visible,
+.compactServiceCard:focus-visible,
+.compactDestination:focus-visible {
+  outline:
+    2px solid
+    var(--brand-cyan);
+  outline-offset: 4px;
+}
+
+.compactSignal {
+  min-height: 430px;
+  overflow: hidden;
+  border:
+    1px solid
+    var(--border-medium);
+  border-radius: 16px;
+  background:
+    linear-gradient(
+      rgba(
+        var(--brand-cyan-rgb),
+        0.035
+      )
+      1px,
+      transparent
+      1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(
+        var(--brand-cyan-rgb),
+        0.035
+      )
+      1px,
+      transparent
+      1px
+    ),
+    linear-gradient(
+      145deg,
+      rgba(
+        var(--brand-violet-rgb),
+        0.13
+      ),
+      transparent 50%
+    ),
+    var(--color-surface);
+  background-size:
+    34px 34px,
+    34px 34px,
+    auto,
+    auto;
+}
+
+.signalTop {
+  display: flex;
+  align-items: center;
+  justify-content:
+    space-between;
+  padding:
+    1rem 1.1rem;
+  border-bottom:
+    1px solid
+    var(--border-soft);
+  color:
+    var(--color-text-faint);
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+  font-size: 0.54rem;
+  letter-spacing: 0.08em;
+}
+
+.signalGraph {
+  position: relative;
+  height: 355px;
+}
+
+.signalLines {
+  position: absolute;
+  inset:
+    0;
+  width: 100%;
+  height: 100%;
+}
+
+.signalLines path {
+  fill: none;
+  stroke:
+    rgba(
+      var(--brand-blue-rgb),
+      0.25
+    );
+  stroke-width: 1.2;
+}
+
+.signalNode {
+  position: absolute;
+  z-index: 1;
+  display: grid;
+  width: 54px;
+  height: 54px;
+  place-items: center;
+  border:
+    1px solid
+    rgba(
+      var(--brand-cyan-rgb),
+      0.26
+    );
+  border-radius: 50%;
+  color:
+    var(--brand-cyan);
+  background:
+    #0b0d11;
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+  font-size: 0.53rem;
+}
+
+.signalNodeApp {
+  top: 8%;
+  left: calc(50% - 27px);
+}
+
+.signalNodeApi {
+  top: 34%;
+  left: 17%;
+}
+
+.signalNodeAuth {
+  top: 34%;
+  right: 17%;
+}
+
+.signalNodeUser {
+  top: 58%;
+  left: calc(50% - 27px);
+}
+
+.signalNodeData {
+  bottom: 5%;
+  left: calc(50% - 27px);
+}
+
+.compactFacts {
+  padding-block:
+    clamp(
+      3.5rem,
+      6vw,
+      5rem
+    );
+  border-bottom:
+    1px solid
+    var(--border-soft);
+}
+
+.compactFactGrid {
+  display: grid;
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    minmax(
+      420px,
+      1fr
+    );
+  gap:
+    clamp(
+      3rem,
+      7vw,
+      6rem
+    );
+  align-items: end;
+}
+
+.compactCompanyIntro {
+  max-width: 680px;
+}
+
+.compactSectionTitle {
+  max-width: 780px;
+  margin-top: 0.8rem;
+  font-size:
+    clamp(
+      2rem,
+      4vw,
+      3.3rem
+    );
+  font-weight: 510;
+  letter-spacing:
+    -0.05em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+
+.compactTextLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.3rem;
+  color:
+    var(--brand-cyan);
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+  font-size: 0.62rem;
+  text-decoration: none;
+}
+
+.compactFactList {
+  display: grid;
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+  margin: 0;
+}
+
+.compactFactList div {
+  min-height: 105px;
+  padding:
+    1rem;
+  border-top:
+    1px solid
+    var(--border-soft);
+}
+
+.compactFactList div:nth-child(
+  odd
+) {
+  border-right:
+    1px solid
+    var(--border-soft);
+}
+
+.compactFactList dt {
+  color:
+    var(--color-text-faint);
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+  font-size: 0.54rem;
+  text-transform: uppercase;
+}
+
+.compactFactList dd {
+  margin-top: 0.7rem;
+  color:
+    var(--color-text);
+  font-size: 0.9rem;
+}
+
+.compactSection {
+  padding-block:
+    clamp(
+      4rem,
+      7vw,
+      5.5rem
+    );
+  border-bottom:
+    1px solid
+    var(--border-soft);
+}
+
+.compactSectionHeader {
+  display: flex;
+  align-items: end;
+  justify-content:
+    space-between;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.compactSectionIntro {
+  max-width: 530px;
+  color:
+    var(--color-text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.compactServiceGrid {
+  display: grid;
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(
+        0,
+        1fr
+      )
+    );
+  border-top:
+    1px solid
+    var(--border-soft);
+  border-left:
+    1px solid
+    var(--border-soft);
+}
+
+.compactServiceCard {
+  position: relative;
+  min-height: 280px;
+  padding:
+    1.3rem;
+  border-right:
+    1px solid
+    var(--border-soft);
+  border-bottom:
+    1px solid
+    var(--border-soft);
+  color:
+    inherit;
+  text-decoration: none;
+  background:
+    var(--color-surface);
+  transition:
+    background 160ms ease;
+}
+
+.compactServiceCard:hover {
+  background:
+    rgba(
+      var(--brand-violet-rgb),
+      0.055
+    );
+}
+
+.compactCardNumber {
+  color:
+    var(--brand-cyan);
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+  font-size: 0.58rem;
+}
+
+.compactServiceCard h3 {
+  max-width: 240px;
+  margin-top: 3.3rem;
+  font-size:
+    clamp(
+      1.15rem,
+      1.8vw,
+      1.45rem
+    );
+  font-weight: 540;
+  letter-spacing:
+    -0.035em;
+  line-height: 1.08;
+}
+
+.compactServiceCard p {
+  margin-top: 0.75rem;
+  color:
+    var(--color-text-secondary);
+  font-size: 0.77rem;
+  line-height: 1.6;
+}
+
+.compactCardArrow {
+  position: absolute;
+  right: 1.3rem;
+  bottom: 1.2rem;
+  color:
+    var(--brand-blue);
+}
+
+.compactDestinationGrid {
+  display: grid;
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(
+        0,
+        1fr
+      )
+    );
+  gap: 0.8rem;
+}
+
+.compactDestination {
+  position: relative;
+  min-height: 220px;
+  padding:
+    1.2rem;
+  border:
+    1px solid
+    var(--border-soft);
+  border-radius: 10px;
+  color:
+    inherit;
+  text-decoration: none;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(
+        var(--brand-violet-rgb),
+        0.055
+      ),
+      transparent 48%
+    ),
+    var(--color-surface);
+}
+
+.compactDestinationTop {
+  display: flex;
+  justify-content:
+    space-between;
+  gap: 1rem;
+  color:
+    var(--color-text-faint);
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+  font-size: 0.52rem;
+  text-transform: uppercase;
+}
+
+.compactDestination h3 {
+  margin-top: 2.6rem;
+  font-size: 1.15rem;
+  font-weight: 540;
+  letter-spacing:
+    -0.03em;
+}
+
+.compactDestination p {
+  max-width: 270px;
+  margin-top: 0.6rem;
+  color:
+    var(--color-text-secondary);
+  font-size: 0.74rem;
+  line-height: 1.55;
+}
+
+.compactDestinationArrow {
+  position: absolute;
+  right: 1.2rem;
+  bottom: 1rem;
+  color:
+    var(--brand-cyan);
+}
+
+.compactCta {
+  padding-block:
+    clamp(
+      4rem,
+      7vw,
+      5.5rem
+    );
+}
+
+.compactCtaBox {
+  padding:
+    clamp(
+      2rem,
+      5vw,
+      3.3rem
+    );
+  border:
+    1px solid
+    var(--border-medium);
+  border-radius: 15px;
+  background:
+    radial-gradient(
+      circle at 92% 12%,
+      rgba(
+        var(--brand-violet-rgb),
+        0.18
+      ),
+      transparent 42%
+    ),
+    var(--color-surface);
+}
+
+.compactCtaTitle {
+  max-width: 850px;
+  margin-top: 0.9rem;
+  font-size:
+    clamp(
+      2rem,
+      4vw,
+      3.35rem
+    );
+  font-weight: 510;
+  letter-spacing:
+    -0.05em;
+  line-height: 1.04;
+}
+
+.compactCtaText {
+  max-width: 580px;
+  margin-top: 0.9rem;
+  color:
+    var(--color-text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 1180px) {
+  .compactHeroGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      )
+      minmax(
+        300px,
+        0.72fr
+      );
+    gap: 3rem;
+  }
+
+  .compactServiceGrid,
+  .compactDestinationGrid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+}
+
+@media (max-width: 900px) {
+  .compactHeroGrid,
+  .compactFactGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+  .compactSignal {
+    min-height: 380px;
+  }
+
+  .compactSectionHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .compactHero {
+    padding:
+      3.4rem 0
+      3.8rem;
+  }
+
+  .compactHeroTitle {
+    font-size:
+      clamp(
+        2.55rem,
+        12vw,
+        3.6rem
+      );
+  }
+
+  .compactSignal {
+    min-height: 335px;
+  }
+
+  .signalGraph {
+    height: 275px;
+  }
+
+  .compactFactList,
+  .compactServiceGrid,
+  .compactDestinationGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+  .compactFactList div:nth-child(
+    odd
+  ) {
+    border-right: 0;
+  }
+
+  .compactServiceCard {
+    min-height: 230px;
+  }
+
+  .compactActions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .compactPrimaryButton,
+  .compactSecondaryButton {
+    width: 100%;
+  }
+}
+
+@media (max-width: 390px) {
+  .compactHeroTitle {
+    font-size:
+      clamp(
+        2.3rem,
+        12vw,
+        3rem
+      );
+  }
+
+  .compactSignal {
+    min-height: 310px;
+  }
+
+  .signalGraph {
+    height: 250px;
+  }
+}
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+  .compactPrimaryButton,
+  .compactSecondaryButton,
+  .compactServiceCard {
+    transition: none;
+  }
+
+  .compactPrimaryButton:hover {
+    transform: none;
+  }
+}
