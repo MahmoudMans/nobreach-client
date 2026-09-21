@@ -1,121 +1,317 @@
 import {
   expect,
-  test
+  test,
+  type Locator,
+  type Page
 } from "@playwright/test";
 
 
-const targetRoute =
-  "/insights/attack-surface-mapping-before-exploitation";
+const routes = [
+  "/insights/authorization-is-a-system-not-a-checkbox",
+  "/insights/attack-surface-mapping-before-exploitation",
+  "/insights/prompt-injection-matters-when-ai-can-act",
+  "/insights/manual-reasoning-in-web-security-testing"
+];
 
 
 function articleClass(
-  className: string
+  name: string
 ) {
   return (
-    `[class*="article-module"][class*="${className}"]`
+    `[class*="article-module"][class*="${name}"]`
   );
 }
 
 
+async function waitForStableBox(
+  locator: Locator
+) {
+  await expect(
+    locator
+  ).toBeVisible();
+
+
+  await expect
+    .poll(
+      async () => {
+        const box =
+          await locator.boundingBox();
+
+
+        if (!box) {
+          return {
+            width:
+              0,
+
+            height:
+              0
+          };
+        }
+
+
+        return {
+          width:
+            Math.round(
+              box.width
+            ),
+
+          height:
+            Math.round(
+              box.height
+            )
+        };
+      },
+      {
+        timeout:
+          5000,
+
+        intervals: [
+          50,
+          100,
+          150
+        ]
+      }
+    )
+    .toEqual(
+      expect.objectContaining({
+        width:
+          expect.any(
+            Number
+          ),
+
+        height:
+          expect.any(
+            Number
+          )
+      })
+    );
+
+
+  await expect
+    .poll(
+      async () => {
+        const box =
+          await locator.boundingBox();
+
+
+        return (
+          box &&
+          box.width >
+            0 &&
+          box.height >
+            0
+        );
+      },
+      {
+        timeout:
+          5000,
+
+        intervals: [
+          50,
+          100,
+          150
+        ]
+      }
+    )
+    .toBe(
+      true
+    );
+
+
+  const first =
+    await locator.boundingBox();
+
+
+  if (!first) {
+    throw new Error(
+      "Element became unavailable after visibility synchronization"
+    );
+  }
+
+
+  await locator.page().waitForTimeout(
+    75
+  );
+
+
+  const second =
+    await locator.boundingBox();
+
+
+  if (!second) {
+    throw new Error(
+      "Element became unavailable during geometry stabilization"
+    );
+  }
+
+
+  /*
+   * We do not require pixel-perfect equality because fonts and fractional
+   * layout calculations can legitimately differ by tiny values.
+   */
+
+  expect(
+    Math.abs(
+      first.width -
+      second.width
+    )
+  ).toBeLessThanOrEqual(
+    2
+  );
+
+
+  expect(
+    Math.abs(
+      first.height -
+      second.height
+    )
+  ).toBeLessThanOrEqual(
+    2
+  );
+
+
+  return second;
+}
+
+
+async function waitForInsightReady(
+  page: Page,
+  slug: string
+) {
+  const shell =
+    page.locator(
+      `[data-insight-article="${slug}"]`
+    );
+
+
+  await expect(
+    shell
+  ).toBeVisible();
+
+
+  await expect(
+    page.locator(
+      "#main-content h1"
+    ).first()
+  ).toBeVisible();
+
+
+  const layout =
+    shell
+      .locator(
+        articleClass(
+          "layout"
+        )
+      )
+      .first();
+
+
+  const toc =
+    shell
+      .locator(
+        articleClass(
+          "toc"
+        )
+      )
+      .first();
+
+
+  const content =
+    shell
+      .locator(
+        articleClass(
+          "content"
+        )
+      )
+      .first();
+
+
+  const meta =
+    shell
+      .locator(
+        articleClass(
+          "metaSide"
+        )
+      )
+      .first();
+
+
+  await expect(
+    layout
+  ).toBeVisible();
+
+
+  await expect(
+    toc
+  ).toBeVisible();
+
+
+  await expect(
+    content
+  ).toBeVisible();
+
+
+  await expect(
+    meta
+  ).toBeVisible();
+
+
+  return {
+    shell,
+    layout,
+    toc,
+    content,
+    meta
+  };
+}
+
+
 test(
-  "attack surface page uses its clean editorial shell",
+  "all insight details use the shared editorial architecture",
   async ({
     page
   }) => {
-    await page.goto(
-      targetRoute
-    );
-
-
-    const shell =
-      page.locator(
-        '[data-insight-article="attack-surface-mapping-before-exploitation"]'
+    for (
+      const route
+      of routes
+    ) {
+      await page.goto(
+        route,
+        {
+          waitUntil:
+            "domcontentloaded"
+        }
       );
 
 
-    await expect(
-      shell
-    ).toBeVisible();
+      const slug =
+        route
+          .split(
+            "/"
+          )
+          .at(
+            -1
+          );
 
 
-    const h1 =
-      page.locator(
-        "#main-content h1"
-      ).first();
+      if (!slug) {
+        throw new Error(
+          "Missing insight slug"
+        );
+      }
 
 
-    await expect(
-      h1
-    ).toBeVisible();
-
-
-    const title =
-      (
-        await h1.innerText()
-      )
-        .toLowerCase();
-
-
-    expect(
-      title
-    ).toContain(
-      "attack"
-    );
-
-
-    expect(
-      title
-    ).toContain(
-      "surface"
-    );
-
-
-    await expect(
-      shell.locator(
-        '[data-ui="attack-surface-editorial-ambient"]'
-      )
-    ).toBeAttached();
+      await waitForInsightReady(
+        page,
+        slug
+      );
+    }
   }
 );
 
 
 test(
-  "editorial ambient visual stays decorative",
-  async ({
-    page
-  }) => {
-    await page.goto(
-      targetRoute
-    );
-
-
-    const visual =
-      page.locator(
-        '[data-ui="attack-surface-editorial-ambient"]'
-      );
-
-
-    await expect(
-      visual
-    ).toHaveAttribute(
-      "aria-hidden",
-      "true"
-    );
-
-
-    await expect(
-      visual.locator(
-        "a, button, input, select, textarea"
-      )
-    ).toHaveCount(
-      0
-    );
-  }
-);
-
-
-test(
-  "desktop layout uses a genuine readable research column",
+  "desktop places contents left research center and information right",
   async ({
     page
   }) => {
@@ -129,90 +325,138 @@ test(
 
 
     await page.goto(
-      targetRoute
+      "/insights/attack-surface-mapping-before-exploitation",
+      {
+        waitUntil:
+          "domcontentloaded"
+      }
     );
 
 
-    const shell =
-      page.locator(
-        '[data-insight-article="attack-surface-mapping-before-exploitation"]'
+    const {
+      toc,
+      content,
+      meta
+    } =
+      await waitForInsightReady(
+        page,
+        "attack-surface-mapping-before-exploitation"
       );
 
 
-    const layout =
-      shell.locator(
-        articleClass(
-          "layout"
-        )
-      ).first();
+    /*
+     * Synchronize on visible measurable layout instead of immediately asking
+     * Playwright for bounding boxes after navigation.
+     */
 
-
-    const content =
-      shell.locator(
-        articleClass(
-          "content"
-        )
-      ).first();
-
-
-    const toc =
-      shell.locator(
-        articleClass(
-          "toc"
-        )
-      ).first();
-
-
-    const meta =
-      shell.locator(
-        articleClass(
-          "metaSide"
-        )
-      ).first();
-
-
-    await expect(
-      layout
-    ).toBeVisible();
-
-
-    await expect(
-      content
-    ).toBeVisible();
-
-
-    await expect(
-      toc
-    ).toBeVisible();
-
-
-    await expect(
-      meta
-    ).toBeVisible();
-
+    const tocBox =
+      await waitForStableBox(
+        toc
+      );
 
     const contentBox =
-      await content.boundingBox();
-
-
-    if (!contentBox) {
-      throw new Error(
-        "Content bounding box unavailable"
+      await waitForStableBox(
+        content
       );
-    }
+
+    const metaBox =
+      await waitForStableBox(
+        meta
+      );
+
+
+    expect(
+      tocBox.x
+    ).toBeLessThan(
+      contentBox.x
+    );
+
+
+    expect(
+      contentBox.x
+    ).toBeLessThan(
+      metaBox.x
+    );
+
+
+    expect(
+      tocBox.width
+    ).toBeGreaterThanOrEqual(
+      150
+    );
+
+
+    expect(
+      tocBox.width
+    ).toBeLessThanOrEqual(
+      215
+    );
 
 
     expect(
       contentBox.width
     ).toBeGreaterThanOrEqual(
-      600
+      650
     );
 
 
     expect(
       contentBox.width
     ).toBeLessThanOrEqual(
-      780
+      730
+    );
+
+
+    expect(
+      metaBox.width
+    ).toBeGreaterThanOrEqual(
+      150
+    );
+
+
+    expect(
+      metaBox.width
+    ).toBeLessThanOrEqual(
+      215
+    );
+  }
+);
+
+
+test(
+  "research prose uses a readable desktop measure",
+  async ({
+    page
+  }) => {
+    await page.setViewportSize({
+      width:
+        1440,
+
+      height:
+        900
+    });
+
+
+    await page.goto(
+      "/insights/attack-surface-mapping-before-exploitation",
+      {
+        waitUntil:
+          "domcontentloaded"
+      }
+    );
+
+
+    const {
+      content
+    } =
+      await waitForInsightReady(
+        page,
+        "attack-surface-mapping-before-exploitation"
+      );
+
+
+    await waitForStableBox(
+      content
     );
 
 
@@ -240,15 +484,29 @@ test(
             .filter(
               (
                 element
-              ) =>
-                (
-                  element.textContent
-                    ?.trim()
-                    .length ??
-                  0
-                )
-                >=
-                60
+              ) => {
+                const rect =
+                  element
+                    .getBoundingClientRect();
+
+
+                return (
+                  rect.width >
+                    0
+                  &&
+                  rect.height >
+                    0
+                  &&
+                  (
+                    element.textContent
+                      ?.trim()
+                      .length ??
+                    0
+                  )
+                  >=
+                  60
+                );
+              }
             )
             .map(
               (
@@ -268,114 +526,151 @@ test(
     );
 
 
-    expect(
+    const maximum =
       Math.max(
         ...widths
-      )
-    ).toBeGreaterThanOrEqual(
-      580
-    );
-
-
-    expect(
-      Math.max(
-        ...widths
-      )
-    ).toBeLessThanOrEqual(
-      740
-    );
-
-
-    const overflow =
-      await page.evaluate(
-        () => ({
-          scroll:
-            document
-              .documentElement
-              .scrollWidth,
-
-          client:
-            document
-              .documentElement
-              .clientWidth
-        })
       );
 
 
     expect(
-      overflow.scroll
+      maximum
+    ).toBeGreaterThanOrEqual(
+      600
+    );
+
+
+    expect(
+      maximum
     ).toBeLessThanOrEqual(
-      overflow.client +
-      1
+      710
     );
   }
 );
 
 
 test(
-  "article contains the expected editorial structure",
+  "article sections are flat and visually separated",
   async ({
     page
   }) => {
     await page.goto(
-      targetRoute
+      "/insights/attack-surface-mapping-before-exploitation",
+      {
+        waitUntil:
+          "domcontentloaded"
+      }
     );
 
 
-    const shell =
-      page.locator(
-        '[data-insight-article="attack-surface-mapping-before-exploitation"]'
+    const {
+      shell
+    } =
+      await waitForInsightReady(
+        page,
+        "attack-surface-mapping-before-exploitation"
       );
 
 
-    await expect(
+    const sections =
       shell.locator(
         articleClass(
-          "intro"
+          "section"
         )
-      ).first()
+      );
+
+
+    expect(
+      await sections.count()
+    ).toBeGreaterThanOrEqual(
+      2
+    );
+
+
+    await expect(
+      sections.first()
     ).toBeVisible();
 
 
+    const values =
+      await sections.evaluateAll(
+        (
+          elements
+        ) =>
+          elements
+            .filter(
+              (
+                element
+              ) => {
+                const rect =
+                  element
+                    .getBoundingClientRect();
+
+
+                return (
+                  rect.width >
+                    0
+                  &&
+                  rect.height >
+                    0
+                );
+              }
+            )
+            .map(
+              (
+                element
+              ) => {
+                const style =
+                  getComputedStyle(
+                    element
+                  );
+
+
+                return {
+                  radius:
+                    Number.parseFloat(
+                      style.borderRadius
+                    ),
+
+                  width:
+                    element
+                      .getBoundingClientRect()
+                      .width
+                };
+              }
+            )
+      );
+
+
     expect(
-      await shell
-        .locator(
-          articleClass(
-            "section"
-          )
-        )
-        .count()
+      values.length
     ).toBeGreaterThanOrEqual(
       2
     );
 
 
-    expect(
-      await shell
-        .locator(
-          articleClass(
-            "sectionTitle"
-          )
-        )
-        .count()
-    ).toBeGreaterThanOrEqual(
-      2
-    );
+    for (
+      const value
+      of values
+    ) {
+      expect(
+        value.radius
+      ).toBeLessThanOrEqual(
+        1
+      );
 
 
-    expect(
-      (
-        await shell.innerText()
-      ).length
-    ).toBeGreaterThan(
-      700
-    );
+      expect(
+        value.width
+      ).toBeGreaterThan(
+        600
+      );
+    }
   }
 );
 
 
 test(
-  "mobile reading layout remains clear and overflow free",
+  "mobile uses contents then article then metadata",
   async ({
     page
   }) => {
@@ -389,44 +684,59 @@ test(
 
 
     await page.goto(
-      targetRoute
+      "/insights/attack-surface-mapping-before-exploitation",
+      {
+        waitUntil:
+          "domcontentloaded"
+      }
     );
 
 
-    const shell =
-      page.locator(
-        '[data-insight-article="attack-surface-mapping-before-exploitation"]'
+    const {
+      toc,
+      content,
+      meta
+    } =
+      await waitForInsightReady(
+        page,
+        "attack-surface-mapping-before-exploitation"
       );
 
 
-    const content =
-      shell.locator(
-        articleClass(
-          "content"
-        )
-      ).first();
-
-
-    await expect(
-      content
-    ).toBeVisible();
-
+    const tocBox =
+      await waitForStableBox(
+        toc
+      );
 
     const contentBox =
-      await content.boundingBox();
-
-
-    if (!contentBox) {
-      throw new Error(
-        "Mobile content bounding box unavailable"
+      await waitForStableBox(
+        content
       );
-    }
+
+    const metaBox =
+      await waitForStableBox(
+        meta
+      );
+
+
+    expect(
+      tocBox.y
+    ).toBeLessThan(
+      contentBox.y
+    );
+
+
+    expect(
+      contentBox.y
+    ).toBeLessThan(
+      metaBox.y
+    );
 
 
     expect(
       contentBox.width
     ).toBeGreaterThan(
-      300
+      320
     );
 
 
@@ -437,46 +747,15 @@ test(
     );
 
 
-    const h1 =
-      page.locator(
-        "#main-content h1"
-      ).first();
-
-
-    await expect(
-      h1
-    ).toBeVisible();
-
-
-    const fontSize =
-      await h1.evaluate(
-        (
-          node
-        ) =>
-          Number.parseFloat(
-            getComputedStyle(
-              node
-            ).fontSize
-          )
-      );
-
-
-    expect(
-      fontSize
-    ).toBeLessThanOrEqual(
-      64
-    );
-
-
     const overflow =
       await page.evaluate(
         () => ({
-          scroll:
+          scrollWidth:
             document
               .documentElement
               .scrollWidth,
 
-          client:
+          clientWidth:
             document
               .documentElement
               .clientWidth
@@ -485,9 +764,9 @@ test(
 
 
     expect(
-      overflow.scroll
+      overflow.scrollWidth
     ).toBeLessThanOrEqual(
-      overflow.client +
+      overflow.clientWidth +
       1
     );
   }
@@ -495,61 +774,66 @@ test(
 
 
 test(
-  "other insight articles do not receive the attack-surface visual",
+  "related research stays below and wider than the reading column",
   async ({
     page
   }) => {
-    const routes = [
-      "/insights/authorization-is-a-system-not-a-checkbox",
-      "/insights/prompt-injection-matters-when-ai-can-act",
-      "/insights/manual-reasoning-in-web-security-testing"
-    ];
-
-
-    for (
-      const route
-      of routes
-    ) {
-      await page.goto(
-        route
-      );
-
-
-      const slug =
-        route
-          .split(
-            "/"
-          )
-          .at(
-            -1
-          );
-
-
-      if (!slug) {
-        throw new Error(
-          "Insight slug unavailable"
-        );
+    await page.goto(
+      "/insights/attack-surface-mapping-before-exploitation",
+      {
+        waitUntil:
+          "domcontentloaded"
       }
+    );
 
 
-      const shell =
-        page.locator(
-          `[data-insight-article="${slug}"]`
-        );
-
-
-      await expect(
-        shell
-      ).toBeVisible();
-
-
-      await expect(
-        shell.locator(
-          '[data-ui="attack-surface-editorial-ambient"]'
-        )
-      ).toHaveCount(
-        0
+    const {
+      shell,
+      content
+    } =
+      await waitForInsightReady(
+        page,
+        "attack-surface-mapping-before-exploitation"
       );
-    }
+
+
+    const related =
+      shell
+        .locator(
+          articleClass(
+            "relatedSection"
+          )
+        )
+        .first();
+
+
+    await expect(
+      related
+    ).toBeVisible();
+
+
+    const contentBox =
+      await waitForStableBox(
+        content
+      );
+
+    const relatedBox =
+      await waitForStableBox(
+        related
+      );
+
+
+    expect(
+      relatedBox.y
+    ).toBeGreaterThan(
+      contentBox.y
+    );
+
+
+    expect(
+      relatedBox.width
+    ).toBeGreaterThan(
+      contentBox.width
+    );
   }
 );

@@ -26,21 +26,16 @@ function read(
 
 
 describe(
-  "attack surface source-class editorial experience",
+  "shared insight detail layout v6",
   () => {
     const page =
       read(
         "src/app/insights/[slug]/page.tsx"
       );
 
-    const baseCss =
+    const css =
       read(
         "src/app/insights/[slug]/article.module.css"
-      );
-
-    const shellCss =
-      read(
-        "src/app/insights/[slug]/attack-surface-shell.module.css"
       );
 
     const layout =
@@ -50,7 +45,7 @@ describe(
 
 
     it(
-      "uses the real article source structure",
+      "uses the discovered source structure",
       () => {
         for (
           const token
@@ -60,7 +55,8 @@ describe(
             "styles.content",
             "styles.metaSide",
             "styles.section",
-            "styles.paragraph"
+            "styles.paragraph",
+            "styles.relatedGrid"
           ]
         ) {
           expect(
@@ -74,164 +70,134 @@ describe(
 
 
     it(
-      "scopes the redesign to attack surface mapping",
+      "applies V6 once and removes attack surface V5",
       () => {
         expect(
-          layout
-        ).toContain(
-          '"attack-surface-mapping-before-exploitation"'
-        );
-
-        expect(
-          layout
-        ).toContain(
-          'data-insight-article='
-        );
-      }
-    );
-
-
-    it(
-      "defines the source-class V5 layout once",
-      () => {
-        expect(
-          baseCss.match(
-            /NB_ATTACK_SURFACE_SOURCE_LAYOUT_V5/g
+          css.match(
+            /NB_INSIGHT_DETAIL_LAYOUT_V6/g
           )?.length
         ).toBe(
           1
         );
 
         expect(
-          baseCss
-        ).toContain(
-          ".layout"
-        );
-
-        expect(
-          baseCss
-        ).toContain(
-          ".content"
-        );
-
-        expect(
-          baseCss
-        ).toContain(
-          ".toc"
-        );
-
-        expect(
-          baseCss
-        ).toContain(
-          ".metaSide"
+          css
+        ).not.toContain(
+          "NB_ATTACK_SURFACE_SOURCE_LAYOUT_V5"
         );
       }
     );
 
 
     it(
-      "gives the research body a real editorial measure",
+      "creates the desktop three-column editorial composition",
       () => {
         expect(
-          baseCss
+          css
         ).toContain(
-          "760px"
+          '"toc content meta"'
         );
 
         expect(
-          baseCss
+          css
+        ).toContain(
+          "190px"
+        );
+
+        expect(
+          css
         ).toContain(
           "720px"
         );
 
         expect(
-          baseCss
+          css
         ).toContain(
-          '"meta toc"'
-        );
-
-        expect(
-          baseCss
-        ).toContain(
-          '"content content"'
+          "sticky"
         );
       }
     );
 
 
     it(
-      "uses flat editorial cards and numbered sections",
+      "creates tablet and mobile reorderings",
       () => {
         expect(
-          baseCss
+          css
+        ).toContain(
+          '"toc content"'
+        );
+
+        expect(
+          css
+        ).toContain(
+          '"toc meta"'
+        );
+
+        expect(
+          css
+        ).toContain(
+          '"toc"'
+        );
+
+        expect(
+          css
+        ).toContain(
+          '"content"'
+        );
+
+        expect(
+          css
+        ).toContain(
+          '"meta"'
+        );
+      }
+    );
+
+
+    it(
+      "keeps sections flat and editorial",
+      () => {
+        expect(
+          css
         ).toContain(
           "counter-reset:"
         );
 
         expect(
-          baseCss
+          css
         ).toContain(
           "counter-increment:"
         );
 
         expect(
-          baseCss
+          css
         ).toContain(
           "decimal-leading-zero"
         );
-
-        expect(
-          baseCss
-        ).toContain(
-          "background:"
-        );
       }
     );
 
 
     it(
-      "keeps the route visual restrained",
+      "uses a generic slug wrapper without route-specific visual code",
       () => {
         expect(
-          shellCss
+          layout
         ).toContain(
-          "NB_ATTACK_SURFACE_EDITORIAL_SHELL_V5"
+          "data-insight-article"
         );
 
         expect(
-          shellCss
-        ).toContain(
-          ".editorialAmbient"
-        );
-
-        expect(
-          shellCss
+          layout
         ).not.toContain(
-          ".surfaceNode"
+          "attackSurfaceArticle"
         );
 
         expect(
-          shellCss
+          layout
         ).not.toContain(
-          ".attackSurfaceVisual"
-        );
-      }
-    );
-
-
-    it(
-      "supports responsive and reduced-motion presentation",
-      () => {
-        expect(
-          baseCss
-        ).toContain(
-          "max-width: 620px"
-        );
-
-        expect(
-          shellCss
-        ).toContain(
-          "prefers-reduced-motion"
+          "attack-surface-shell.module.css"
         );
       }
     );
