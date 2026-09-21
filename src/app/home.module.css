@@ -3277,3 +3277,3131 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_MODERN_HOME_V7
+
+   New homepage direction:
+   - asymmetrical editorial hero
+   - animated security constellation
+   - flatter information architecture
+   - service rows instead of generic cards
+   - modern asymmetric ecosystem grid
+   ========================================================================== */
+
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+
+.modernHero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  min-height:
+    min(
+      780px,
+      calc(
+        100svh - 62px
+      )
+    );
+
+  padding:
+    clamp(
+      4.5rem,
+      8vw,
+      7rem
+    )
+    0
+    0;
+
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.085
+    );
+
+  background:
+    radial-gradient(
+      ellipse at 76% 22%,
+      rgba(
+        var(--brand-violet-rgb),
+        0.18
+      ),
+      transparent 31rem
+    ),
+    radial-gradient(
+      ellipse at 89% 74%,
+      rgba(
+        var(--brand-cyan-rgb),
+        0.07
+      ),
+      transparent 26rem
+    ),
+    linear-gradient(
+      116deg,
+      #07080a 0%,
+      #08090b 48%,
+      #0b0a11 100%
+    );
+}
+
+
+.modernHero::before {
+  position: absolute;
+  z-index: -3;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(
+        var(--brand-blue-rgb),
+        0.035
+      )
+      1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(
+        var(--brand-blue-rgb),
+        0.035
+      )
+      1px,
+      transparent 1px
+    );
+
+  background-size:
+    58px 58px;
+
+  mask-image:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 24%,
+      rgba(
+        0,
+        0,
+        0,
+        0.72
+      ) 100%
+    );
+
+  content: "";
+}
+
+
+.modernHero::after {
+  position: absolute;
+  z-index: -2;
+
+  top: 9%;
+  right: -10%;
+
+  width:
+    min(
+      60vw,
+      840px
+    );
+
+  aspect-ratio: 1;
+
+  border:
+    1px solid
+    rgba(
+      var(--brand-violet-rgb),
+      0.075
+    );
+
+  border-radius:
+    50%;
+
+  box-shadow:
+    0 0 0 90px
+      rgba(
+        var(--brand-violet-rgb),
+        0.018
+      ),
+    0 0 0 180px
+      rgba(
+        var(--brand-cyan-rgb),
+        0.01
+      );
+
+  content: "";
+  pointer-events: none;
+}
+
+
+.heroAtmosphere {
+  position: absolute;
+  z-index: -1;
+
+  top: -15%;
+  right: 8%;
+
+  width: 460px;
+  height: 460px;
+
+  border-radius:
+    50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        var(--brand-violet-rgb),
+        0.14
+      ),
+      transparent 68%
+    );
+
+  filter:
+    blur(22px);
+
+  pointer-events:
+    none;
+}
+
+
+.modernHeroGrid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1.05fr
+    )
+    minmax(
+      390px,
+      0.95fr
+    );
+
+  gap:
+    clamp(
+      3rem,
+      7vw,
+      7.5rem
+    );
+
+  align-items:
+    center;
+}
+
+
+.modernHeroCopy {
+  position: relative;
+  z-index: 2;
+
+  max-width:
+    780px;
+}
+
+
+.heroStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+
+  color:
+    var(--brand-blue);
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.6rem;
+
+  font-weight:
+    560;
+
+  letter-spacing:
+    0.15em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.heroStatusSignal {
+  position: relative;
+
+  width: 7px;
+  height: 7px;
+
+  border:
+    1px solid
+    var(--brand-cyan);
+
+  border-radius:
+    50%;
+}
+
+
+.heroStatusSignal::after {
+  position: absolute;
+
+  inset:
+    1px;
+
+  border-radius:
+    50%;
+
+  background:
+    var(--brand-cyan);
+
+  content: "";
+}
+
+
+.modernHeroTitle {
+  max-width:
+    12.4ch;
+
+  margin:
+    1.25rem 0 0;
+
+  font-size:
+    clamp(
+      3.7rem,
+      7.2vw,
+      6.8rem
+    );
+
+  font-weight:
+    470;
+
+  letter-spacing:
+    -0.078em;
+
+  line-height:
+    0.88;
+
+  text-wrap:
+    balance;
+}
+
+
+.modernHeroLead {
+  max-width:
+    635px;
+
+  margin-top:
+    1.6rem;
+
+  color:
+    var(--color-text-secondary);
+
+  font-size:
+    clamp(
+      0.98rem,
+      1.4vw,
+      1.08rem
+    );
+
+  line-height:
+    1.72;
+}
+
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  align-items:
+    center;
+
+  margin-top:
+    2rem;
+}
+
+
+.heroPrimaryAction {
+  display: inline-flex;
+  min-height: 48px;
+
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  padding:
+    0.75rem
+    1rem;
+
+  border:
+    1px solid
+    rgba(
+      var(--brand-cyan-rgb),
+      0.48
+    );
+
+  border-radius:
+    7px;
+
+  color:
+    #08090b;
+
+  background:
+    var(--brand-cyan);
+
+  font-size:
+    0.74rem;
+
+  font-weight:
+    650;
+
+  text-decoration:
+    none;
+
+  transition:
+    transform 170ms ease,
+    box-shadow 170ms ease;
+}
+
+
+.heroPrimaryAction:hover {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 12px 32px
+    rgba(
+      var(--brand-cyan-rgb),
+      0.12
+    );
+}
+
+
+.heroTextAction {
+  display: inline-flex;
+  min-height: 44px;
+
+  align-items: center;
+  gap: 0.6rem;
+
+  color:
+    var(--color-text);
+
+  font-size:
+    0.75rem;
+
+  text-decoration:
+    none;
+
+  transition:
+    color 150ms ease;
+}
+
+
+.heroTextAction:hover {
+  color:
+    var(--brand-cyan);
+}
+
+
+.heroPrinciples {
+  display: flex;
+  flex-wrap: wrap;
+  gap:
+    0.65rem
+    1.2rem;
+
+  margin-top:
+    2.25rem;
+
+  color:
+    var(--color-text-faint);
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.55rem;
+
+  letter-spacing:
+    0.08em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.heroPrinciples span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+
+.heroPrinciples span::before {
+  width: 3px;
+  height: 3px;
+
+  border-radius:
+    50%;
+
+  background:
+    var(--brand-blue);
+
+  content: "";
+}
+
+
+/* ==========================================================================
+   CONSTELLATION
+   ========================================================================== */
+
+.constellationShell {
+  position: relative;
+  z-index: 2;
+
+  overflow: hidden;
+
+  min-height:
+    505px;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.105
+    );
+
+  border-radius:
+    14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(
+        var(--brand-violet-rgb),
+        0.075
+      ),
+      transparent 44%
+    ),
+    linear-gradient(
+      315deg,
+      rgba(
+        var(--brand-cyan-rgb),
+        0.045
+      ),
+      transparent 35%
+    ),
+    rgba(
+      8,
+      9,
+      12,
+      0.91
+    );
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(
+      255,
+      255,
+      255,
+      0.045
+    ),
+    0 30px 90px
+    rgba(
+      0,
+      0,
+      0,
+      0.18
+    );
+
+  backdrop-filter:
+    blur(12px);
+}
+
+
+.constellationShell::before {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(
+        var(--brand-cyan-rgb),
+        0.13
+      )
+      1px,
+      transparent 1px
+    );
+
+  background-size:
+    26px 26px;
+
+  opacity:
+    0.23;
+
+  content: "";
+  pointer-events: none;
+}
+
+
+.constellationHeader {
+  position: relative;
+  z-index: 10;
+
+  display: flex;
+  min-height: 48px;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding:
+    0.8rem
+    1rem;
+
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.075
+    );
+
+  color:
+    var(--color-text-faint);
+
+  background:
+    rgba(
+      7,
+      8,
+      11,
+      0.68
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.51rem;
+
+  letter-spacing:
+    0.075em;
+}
+
+
+.constellationHeader div {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+
+.constellationDot {
+  width: 5px;
+  height: 5px;
+
+  border-radius:
+    50%;
+
+  background:
+    var(--brand-cyan);
+
+  box-shadow:
+    0 0 12px
+    rgba(
+      var(--brand-cyan-rgb),
+      0.6
+    );
+}
+
+
+.constellationStage {
+  position: relative;
+
+  height:
+    405px;
+
+  overflow: hidden;
+}
+
+
+.radarGlow {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width:
+    265px;
+
+  height:
+    265px;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  border-radius:
+    50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        var(--brand-violet-rgb),
+        0.12
+      ),
+      rgba(
+        var(--brand-cyan-rgb),
+        0.025
+      ) 42%,
+      transparent 70%
+    );
+}
+
+
+.orbitOuter,
+.orbitMiddle,
+.orbitInner {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  border:
+    1px solid
+    rgba(
+      var(--brand-blue-rgb),
+      0.105
+    );
+
+  border-radius:
+    50%;
+}
+
+
+.orbitOuter {
+  width:
+    365px;
+
+  height:
+    365px;
+}
+
+
+.orbitMiddle {
+  width:
+    260px;
+
+  height:
+    260px;
+}
+
+
+.orbitInner {
+  width:
+    150px;
+
+  height:
+    150px;
+}
+
+
+.scanBeam {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width:
+    183px;
+
+  height:
+    1px;
+
+  transform-origin:
+    0 50%;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        var(--brand-cyan-rgb),
+        0.68
+      ),
+      transparent
+    );
+
+  opacity:
+    0.55;
+}
+
+
+.constellationLines {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+
+.constellationLines path {
+  fill: none;
+
+  stroke:
+    rgba(
+      var(--brand-blue-rgb),
+      0.2
+    );
+
+  stroke-width:
+    1;
+}
+
+
+.constellationLines
+.constellationSecondaryLine {
+  stroke:
+    rgba(
+      var(--brand-violet-rgb),
+      0.13
+    );
+
+  stroke-dasharray:
+    4 7;
+}
+
+
+.constellationCore {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  display: grid;
+
+  width:
+    82px;
+
+  height:
+    82px;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  place-items:
+    center;
+
+  border:
+    1px solid
+    rgba(
+      var(--brand-cyan-rgb),
+      0.46
+    );
+
+  border-radius:
+    50%;
+
+  color:
+    var(--brand-cyan);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        var(--brand-cyan-rgb),
+        0.12
+      ),
+      rgba(
+        7,
+        8,
+        11,
+        0.98
+      ) 68%
+    );
+
+  box-shadow:
+    0 0 0 8px
+      rgba(
+        var(--brand-cyan-rgb),
+        0.025
+      ),
+    0 0 42px
+      rgba(
+        var(--brand-cyan-rgb),
+        0.09
+      );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+}
+
+
+.constellationCore span {
+  align-self:
+    end;
+
+  font-size:
+    0.9rem;
+
+  font-weight:
+    650;
+
+  letter-spacing:
+    0.08em;
+}
+
+
+.constellationCore small {
+  align-self:
+    start;
+
+  color:
+    var(--color-text-faint);
+
+  font-size:
+    0.42rem;
+
+  letter-spacing:
+    0.13em;
+}
+
+
+.constellationNode {
+  position: absolute;
+
+  display: flex;
+
+  min-width:
+    76px;
+
+  flex-direction: column;
+
+  gap: 0.2rem;
+
+  padding:
+    0.62rem
+    0.7rem;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.095
+    );
+
+  border-radius:
+    7px;
+
+  color:
+    var(--color-text);
+
+  background:
+    rgba(
+      8,
+      9,
+      12,
+      0.9
+    );
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+
+.constellationNode strong {
+  font-size:
+    0.58rem;
+
+  font-weight:
+    620;
+
+  letter-spacing:
+    0.08em;
+}
+
+
+.constellationNode small {
+  color:
+    var(--color-text-faint);
+
+  font-size:
+    0.43rem;
+
+  letter-spacing:
+    0.04em;
+}
+
+
+.nodePulse {
+  position: absolute;
+
+  top: 0.55rem;
+  right: 0.55rem;
+
+  width: 4px;
+  height: 4px;
+
+  border-radius:
+    50%;
+
+  background:
+    var(--brand-cyan);
+
+  box-shadow:
+    0 0 9px
+    rgba(
+      var(--brand-cyan-rgb),
+      0.65
+    );
+}
+
+
+.nodeApp {
+  top:
+    8%;
+
+  left:
+    21%;
+}
+
+
+.nodeApi {
+  top:
+    11%;
+
+  right:
+    14%;
+}
+
+
+.nodeAuth {
+  top:
+    46%;
+
+  right:
+    4%;
+}
+
+
+.nodeUser {
+  right:
+    22%;
+
+  bottom:
+    7%;
+}
+
+
+.nodeData {
+  left:
+    8%;
+
+  bottom:
+    13%;
+}
+
+
+.constellationCoordinate {
+  position: absolute;
+
+  right:
+    0.8rem;
+
+  bottom:
+    0.7rem;
+
+  display: flex;
+  flex-direction: column;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.2
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.42rem;
+
+  letter-spacing:
+    0.06em;
+
+  text-align: right;
+}
+
+
+.constellationFooter {
+  position: relative;
+  z-index: 10;
+
+  display: flex;
+
+  min-height:
+    50px;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 1rem;
+
+  padding:
+    0.75rem
+    1rem;
+
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    );
+
+  color:
+    var(--color-text-faint);
+
+  background:
+    rgba(
+      7,
+      8,
+      11,
+      0.62
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.48rem;
+
+  letter-spacing:
+    0.07em;
+
+  text-transform:
+    uppercase;
+}
+
+
+/* ==========================================================================
+   HERO TICKER
+   ========================================================================== */
+
+.heroTicker {
+  position: relative;
+
+  overflow: hidden;
+
+  margin-top:
+    clamp(
+      3.5rem,
+      6vw,
+      5rem
+    );
+
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.009
+    );
+}
+
+
+.heroTickerTrack {
+  display: flex;
+
+  width:
+    max-content;
+
+  min-height:
+    43px;
+
+  align-items: center;
+
+  gap:
+    1.5rem;
+
+  padding-inline:
+    1.5rem;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.32
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.49rem;
+
+  letter-spacing:
+    0.12em;
+}
+
+
+.heroTickerTrack i {
+  width: 3px;
+  height: 3px;
+
+  border-radius:
+    50%;
+
+  background:
+    var(--brand-violet);
+}
+
+
+/* ==========================================================================
+   SHARED MODERN SECTION ELEMENTS
+   ========================================================================== */
+
+.modernEyebrow {
+  color:
+    var(--brand-blue);
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.55rem;
+
+  letter-spacing:
+    0.13em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.inlineArrowLink {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 0.55rem;
+
+  color:
+    var(--color-text);
+
+  font-size:
+    0.72rem;
+
+  text-decoration:
+    none;
+
+  transition:
+    color 150ms ease,
+    gap 150ms ease;
+}
+
+
+.inlineArrowLink:hover {
+  gap:
+    0.75rem;
+
+  color:
+    var(--brand-cyan);
+}
+
+
+/* ==========================================================================
+   IDENTITY
+   ========================================================================== */
+
+.identitySection {
+  padding-block:
+    clamp(
+      4.25rem,
+      7vw,
+      6rem
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+}
+
+
+.identityLayout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    minmax(
+      520px,
+      0.92fr
+    );
+
+  gap:
+    clamp(
+      3rem,
+      7vw,
+      7rem
+    );
+
+  align-items:
+    end;
+}
+
+
+.identityCopy {
+  max-width:
+    690px;
+}
+
+
+.identityCopy h2 {
+  max-width:
+    16ch;
+
+  margin-top:
+    0.8rem;
+
+  font-size:
+    clamp(
+      2.15rem,
+      4vw,
+      3.6rem
+    );
+
+  font-weight:
+    490;
+
+  letter-spacing:
+    -0.055em;
+
+  line-height:
+    1.01;
+}
+
+
+.identityCopy > p:not(
+  .modernEyebrow
+) {
+  max-width:
+    620px;
+
+  margin-top:
+    1rem;
+
+  font-size:
+    0.9rem;
+
+  line-height:
+    1.7;
+}
+
+
+.identityCopy
+.inlineArrowLink {
+  margin-top:
+    1.35rem;
+}
+
+
+.identityFacts {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  margin: 0;
+
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.1
+    );
+}
+
+
+.identityFacts div {
+  min-height:
+    102px;
+
+  padding:
+    1rem;
+
+  border-right:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+}
+
+
+.identityFacts div:nth-child(
+  2n
+) {
+  border-right:
+    0;
+}
+
+
+.identityFacts dt {
+  color:
+    var(--color-text-faint);
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.5rem;
+
+  letter-spacing:
+    0.09em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.identityFacts dd {
+  margin:
+    0.65rem
+    0
+    0;
+
+  color:
+    var(--color-text);
+
+  font-size:
+    0.86rem;
+}
+
+
+/* ==========================================================================
+   MODERN SECTION HEADER
+   ========================================================================== */
+
+.modernSectionHeader {
+  display: grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    minmax(
+      280px,
+      0.55fr
+    );
+
+  gap:
+    2rem;
+
+  align-items:
+    end;
+
+  margin-bottom:
+    clamp(
+      2rem,
+      4vw,
+      3rem
+    );
+}
+
+
+.modernSectionHeader h2 {
+  max-width:
+    17ch;
+
+  margin-top:
+    0.75rem;
+
+  font-size:
+    clamp(
+      2.1rem,
+      4vw,
+      3.45rem
+    );
+
+  font-weight:
+    490;
+
+  letter-spacing:
+    -0.055em;
+
+  line-height:
+    1.01;
+}
+
+
+.modernSectionHeader
+.inlineArrowLink {
+  justify-self:
+    end;
+}
+
+
+.sectionHeaderCopy {
+  max-width:
+    480px;
+
+  justify-self:
+    end;
+
+  color:
+    var(--color-text-secondary);
+
+  font-size:
+    0.86rem;
+
+  line-height:
+    1.7;
+}
+
+
+/* ==========================================================================
+   SERVICES
+   ========================================================================== */
+
+.servicesSection {
+  padding-block:
+    clamp(
+      4.5rem,
+      7.5vw,
+      6.5rem
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+}
+
+
+.serviceRows {
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.11
+    );
+}
+
+
+.serviceRow {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    58px
+    minmax(
+      90px,
+      0.45fr
+    )
+    minmax(
+      220px,
+      0.9fr
+    )
+    minmax(
+      280px,
+      1.15fr
+    )
+    34px;
+
+  gap:
+    1.2rem;
+
+  min-height:
+    112px;
+
+  align-items:
+    center;
+
+  padding:
+    1rem
+    0;
+
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.085
+    );
+
+  color:
+    inherit;
+
+  text-decoration:
+    none;
+
+  transition:
+    padding-inline 180ms ease,
+    background 180ms ease;
+}
+
+
+.serviceRow::before {
+  position: absolute;
+
+  top: -1px;
+  bottom: -1px;
+  left: 0;
+
+  width: 2px;
+
+  transform:
+    scaleY(0);
+
+  transform-origin:
+    center;
+
+  background:
+    linear-gradient(
+      var(--brand-cyan),
+      var(--brand-violet)
+    );
+
+  content: "";
+
+  transition:
+    transform 180ms ease;
+}
+
+
+.serviceRow:hover {
+  padding-inline:
+    1rem;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        var(--brand-cyan-rgb),
+        0.035
+      ),
+      transparent 60%
+    );
+}
+
+
+.serviceRow:hover::before {
+  transform:
+    scaleY(1);
+}
+
+
+.serviceIndex {
+  color:
+    var(--brand-cyan);
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.55rem;
+}
+
+
+.serviceEyebrow {
+  color:
+    var(--color-text-faint);
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.5rem;
+
+  letter-spacing:
+    0.08em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.serviceRow strong {
+  max-width:
+    250px;
+
+  font-size:
+    clamp(
+      1.05rem,
+      1.8vw,
+      1.32rem
+    );
+
+  font-weight:
+    540;
+
+  letter-spacing:
+    -0.025em;
+
+  line-height:
+    1.12;
+}
+
+
+.serviceRow p {
+  max-width:
+    520px;
+
+  margin: 0;
+
+  color:
+    var(--color-text-secondary);
+
+  font-size:
+    0.76rem;
+
+  line-height:
+    1.6;
+}
+
+
+.serviceArrow {
+  justify-self:
+    end;
+
+  color:
+    var(--brand-blue);
+
+  transition:
+    transform 180ms ease;
+}
+
+
+.serviceRow:hover
+.serviceArrow {
+  transform:
+    translate(
+      3px,
+      -3px
+    );
+}
+
+
+/* ==========================================================================
+   ECOSYSTEM
+   ========================================================================== */
+
+.ecosystemSection {
+  position: relative;
+
+  padding-block:
+    clamp(
+      4.5rem,
+      7.5vw,
+      6.5rem
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(
+        var(--brand-violet-rgb),
+        0.06
+      ),
+      transparent 28rem
+    );
+}
+
+
+.ecosystemGrid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  grid-auto-rows:
+    minmax(
+      210px,
+      auto
+    );
+
+  gap:
+    0.75rem;
+}
+
+
+.ecosystemCard {
+  position: relative;
+
+  display: flex;
+
+  min-width: 0;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  overflow: hidden;
+
+  padding:
+    1.15rem;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.085
+    );
+
+  border-radius:
+    9px;
+
+  color:
+    inherit;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.012
+    );
+
+  text-decoration:
+    none;
+
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease,
+    background 180ms ease;
+}
+
+
+.ecosystemCard::before {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: 72px;
+  height: 72px;
+
+  border-top:
+    1px solid
+    rgba(
+      var(--brand-cyan-rgb),
+      0.15
+    );
+
+  border-right:
+    1px solid
+    rgba(
+      var(--brand-violet-rgb),
+      0.16
+    );
+
+  content: "";
+
+  opacity:
+    0;
+
+  transition:
+    opacity 180ms ease;
+}
+
+
+.ecosystemCard:hover {
+  transform:
+    translateY(-3px);
+
+  border-color:
+    rgba(
+      var(--brand-blue-rgb),
+      0.22
+    );
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(
+        var(--brand-violet-rgb),
+        0.055
+      ),
+      transparent 50%
+    ),
+    rgba(
+      255,
+      255,
+      255,
+      0.015
+    );
+}
+
+
+.ecosystemCard:hover::before {
+  opacity:
+    1;
+}
+
+
+.ecosystemLarge {
+  grid-column:
+    span 2;
+
+  grid-row:
+    span 2;
+}
+
+
+.ecosystemWide {
+  grid-column:
+    span 2;
+}
+
+
+.ecosystemCardTop {
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  gap: 1rem;
+
+  color:
+    var(--color-text-faint);
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.49rem;
+
+  letter-spacing:
+    0.08em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.ecosystemCardBody {
+  margin-top:
+    auto;
+
+  padding-top:
+    3rem;
+}
+
+
+.ecosystemLarge
+.ecosystemCardBody {
+  max-width:
+    480px;
+}
+
+
+.ecosystemCard h3 {
+  margin: 0;
+
+  font-size:
+    clamp(
+      1.15rem,
+      2vw,
+      1.6rem
+    );
+
+  font-weight:
+    520;
+
+  letter-spacing:
+    -0.035em;
+}
+
+
+.ecosystemLarge h3 {
+  font-size:
+    clamp(
+      1.7rem,
+      3vw,
+      2.6rem
+    );
+}
+
+
+.ecosystemCard p {
+  max-width:
+    370px;
+
+  margin-top:
+    0.7rem;
+
+  color:
+    var(--color-text-secondary);
+
+  font-size:
+    0.76rem;
+
+  line-height:
+    1.6;
+}
+
+
+.ecosystemArrow {
+  position: absolute;
+
+  right: 1.15rem;
+  bottom: 1.05rem;
+
+  color:
+    var(--brand-cyan);
+
+  transition:
+    transform 180ms ease;
+}
+
+
+.ecosystemCard:hover
+.ecosystemArrow {
+  transform:
+    translate(
+      3px,
+      -3px
+    );
+}
+
+
+/* ==========================================================================
+   CONTACT
+   ========================================================================== */
+
+.modernContact {
+  padding-block:
+    clamp(
+      4rem,
+      7vw,
+      5.5rem
+    );
+}
+
+
+.modernContactInner {
+  display: grid;
+
+  grid-template-columns:
+    70px
+    minmax(
+      0,
+      1fr
+    )
+    auto;
+
+  gap:
+    clamp(
+      1.5rem,
+      4vw,
+      4rem
+    );
+
+  align-items:
+    center;
+
+  padding:
+    clamp(
+      2rem,
+      4vw,
+      3.2rem
+    )
+    0;
+
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.12
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+}
+
+
+.contactIndex {
+  align-self:
+    start;
+
+  padding-top:
+    0.15rem;
+
+  color:
+    var(--brand-cyan);
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.58rem;
+}
+
+
+.contactCopy {
+  max-width:
+    760px;
+}
+
+
+.contactCopy h2 {
+  max-width:
+    15ch;
+
+  margin-top:
+    0.8rem;
+
+  font-size:
+    clamp(
+      2.2rem,
+      4.6vw,
+      4rem
+    );
+
+  font-weight:
+    480;
+
+  letter-spacing:
+    -0.06em;
+
+  line-height:
+    0.98;
+}
+
+
+.contactCopy > p:not(
+  .modernEyebrow
+) {
+  max-width:
+    570px;
+
+  margin-top:
+    0.85rem;
+
+  font-size:
+    0.84rem;
+
+  line-height:
+    1.7;
+}
+
+
+.contactActions {
+  display: flex;
+
+  min-width:
+    195px;
+
+  flex-direction:
+    column;
+
+  gap:
+    0.65rem;
+}
+
+
+.contactPrimary,
+.contactSecondary {
+  display: flex;
+
+  min-height:
+    45px;
+
+  align-items: center;
+
+  justify-content:
+    space-between;
+
+  gap: 1rem;
+
+  padding:
+    0.7rem
+    0.85rem;
+
+  border-radius:
+    7px;
+
+  font-size:
+    0.7rem;
+
+  text-decoration:
+    none;
+}
+
+
+.contactPrimary {
+  border:
+    1px solid
+    var(--brand-cyan);
+
+  color:
+    #08090b;
+
+  background:
+    var(--brand-cyan);
+}
+
+
+.contactSecondary {
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.12
+    );
+
+  color:
+    var(--color-text);
+
+  background:
+    transparent;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 1180px) {
+
+  .modernHeroGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      )
+      minmax(
+        350px,
+        0.78fr
+      );
+
+    gap:
+      3rem;
+  }
+
+
+  .modernHeroTitle {
+    font-size:
+      clamp(
+        3.4rem,
+        6.8vw,
+        5.6rem
+      );
+  }
+
+
+  .ecosystemGrid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+
+  .serviceRow {
+    grid-template-columns:
+      45px
+      minmax(
+        85px,
+        0.4fr
+      )
+      minmax(
+        200px,
+        0.8fr
+      )
+      minmax(
+        240px,
+        1fr
+      )
+      30px;
+  }
+
+}
+
+
+@media (max-width: 960px) {
+
+  .modernHero {
+    min-height:
+      auto;
+  }
+
+
+  .modernHeroGrid,
+  .identityLayout {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .modernHeroGrid {
+    gap:
+      3rem;
+  }
+
+
+  .constellationShell {
+    width:
+      min(
+        100%,
+        700px
+      );
+  }
+
+
+  .identityFacts {
+    max-width:
+      700px;
+  }
+
+
+  .modernSectionHeader {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      1rem;
+  }
+
+
+  .modernSectionHeader
+  .inlineArrowLink,
+  .sectionHeaderCopy {
+    justify-self:
+      start;
+  }
+
+
+  .serviceRow {
+    grid-template-columns:
+      42px
+      100px
+      minmax(
+        0,
+        1fr
+      )
+      28px;
+
+    min-height:
+      100px;
+  }
+
+
+  .serviceRow p {
+    grid-column:
+      3 / 4;
+
+    margin-top:
+      -0.35rem;
+  }
+
+
+  .serviceArrow {
+    grid-column:
+      4;
+
+    grid-row:
+      1 / 3;
+  }
+
+
+  .modernContactInner {
+    grid-template-columns:
+      50px
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .contactActions {
+    grid-column:
+      2;
+
+    width:
+      min(
+        100%,
+        350px
+      );
+  }
+
+}
+
+
+@media (max-width: 640px) {
+
+  .modernHero {
+    min-height:
+      auto;
+
+    padding:
+      3.4rem
+      0
+      0;
+  }
+
+
+  .modernHero::before {
+    background-size:
+      38px 38px;
+
+    mask-image:
+      linear-gradient(
+        to bottom,
+        transparent,
+        rgba(
+          0,
+          0,
+          0,
+          0.7
+        )
+      );
+  }
+
+
+  .modernHero::after {
+    top:
+      4%;
+
+    right:
+      -48%;
+
+    width:
+      135vw;
+  }
+
+
+  .heroAtmosphere {
+    right:
+      -50%;
+
+    width:
+      360px;
+
+    height:
+      360px;
+  }
+
+
+  .modernHeroTitle {
+    max-width:
+      12.8ch;
+
+    font-size:
+      clamp(
+        2.8rem,
+        13.2vw,
+        4rem
+      );
+
+    line-height:
+      0.92;
+  }
+
+
+  .modernHeroLead {
+    margin-top:
+      1.25rem;
+
+    font-size:
+      0.92rem;
+  }
+
+
+  .heroActions {
+    align-items:
+      stretch;
+
+    flex-direction:
+      column;
+
+    gap:
+      0.65rem;
+  }
+
+
+  .heroPrimaryAction {
+    width:
+      100%;
+  }
+
+
+  .heroTextAction {
+    justify-content:
+      space-between;
+
+    width:
+      100%;
+
+    padding-inline:
+      0.25rem;
+  }
+
+
+  .heroPrinciples {
+    margin-top:
+      1.6rem;
+  }
+
+
+  .constellationShell {
+    min-height:
+      390px;
+
+    border-radius:
+      10px;
+  }
+
+
+  .constellationStage {
+    height:
+      300px;
+  }
+
+
+  .orbitOuter {
+    width:
+      260px;
+
+    height:
+      260px;
+  }
+
+
+  .orbitMiddle {
+    width:
+      190px;
+
+    height:
+      190px;
+  }
+
+
+  .orbitInner {
+    width:
+      115px;
+
+    height:
+      115px;
+  }
+
+
+  .scanBeam {
+    width:
+      130px;
+  }
+
+
+  .constellationCore {
+    width:
+      66px;
+
+    height:
+      66px;
+  }
+
+
+  .constellationNode {
+    min-width:
+      61px;
+
+    padding:
+      0.5rem;
+  }
+
+
+  .nodeApp {
+    top:
+      6%;
+
+    left:
+      12%;
+  }
+
+
+  .nodeApi {
+    top:
+      7%;
+
+    right:
+      8%;
+  }
+
+
+  .nodeAuth {
+    top:
+      46%;
+
+    right:
+      1%;
+  }
+
+
+  .nodeUser {
+    right:
+      12%;
+
+    bottom:
+      5%;
+  }
+
+
+  .nodeData {
+    left:
+      2%;
+
+    bottom:
+      8%;
+  }
+
+
+  .constellationFooter {
+    gap:
+      0.45rem;
+
+    padding-inline:
+      0.7rem;
+
+    font-size:
+      0.4rem;
+  }
+
+
+  .heroTicker {
+    margin-top:
+      3rem;
+  }
+
+
+  .identitySection,
+  .servicesSection,
+  .ecosystemSection,
+  .modernContact {
+    padding-block:
+      3.8rem;
+  }
+
+
+  .identityFacts {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .identityFacts div,
+  .identityFacts div:nth-child(
+    2n
+  ) {
+    min-height:
+      auto;
+
+    padding:
+      0.85rem
+      0;
+
+    border-right:
+      0;
+  }
+
+
+  .identityCopy h2,
+  .modernSectionHeader h2 {
+    font-size:
+      clamp(
+        2rem,
+        9vw,
+        2.7rem
+      );
+  }
+
+
+  .serviceRow {
+    grid-template-columns:
+      36px
+      minmax(
+        0,
+        1fr
+      )
+      26px;
+
+    gap:
+      0.65rem;
+
+    min-height:
+      auto;
+
+    padding:
+      1rem
+      0;
+  }
+
+
+  .serviceEyebrow {
+    display:
+      none;
+  }
+
+
+  .serviceRow strong {
+    grid-column:
+      2;
+  }
+
+
+  .serviceRow p {
+    grid-column:
+      2 / 4;
+
+    margin-top:
+      0.2rem;
+  }
+
+
+  .serviceArrow {
+    grid-column:
+      3;
+
+    grid-row:
+      1;
+  }
+
+
+  .ecosystemGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    grid-auto-rows:
+      auto;
+  }
+
+
+  .ecosystemLarge,
+  .ecosystemWide {
+    grid-column:
+      auto;
+
+    grid-row:
+      auto;
+  }
+
+
+  .ecosystemCard {
+    min-height:
+      190px;
+  }
+
+
+  .ecosystemLarge h3 {
+    font-size:
+      1.55rem;
+  }
+
+
+  .modernContactInner {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      1.5rem;
+  }
+
+
+  .contactIndex {
+    display:
+      none;
+  }
+
+
+  .contactActions {
+    grid-column:
+      auto;
+
+    width:
+      100%;
+  }
+
+}
+
+
+/* ==========================================================================
+   MOTION
+   ========================================================================== */
+
+@media (
+  prefers-reduced-motion:
+  no-preference
+) {
+
+  .heroAtmosphere {
+    animation:
+      nbModernAtmosphere
+      10s
+      ease-in-out
+      infinite
+      alternate;
+  }
+
+
+  .scanBeam {
+    animation:
+      nbModernScan
+      7s
+      linear
+      infinite;
+  }
+
+
+  .orbitOuter {
+    animation:
+      nbModernOrbit
+      30s
+      linear
+      infinite;
+  }
+
+
+  .orbitMiddle {
+    animation:
+      nbModernOrbitReverse
+      22s
+      linear
+      infinite;
+  }
+
+
+  .nodePulse {
+    animation:
+      nbModernNodePulse
+      2.4s
+      ease-in-out
+      infinite;
+  }
+
+
+  .nodeApi
+  .nodePulse {
+    animation-delay:
+      -0.8s;
+  }
+
+
+  .nodeAuth
+  .nodePulse {
+    animation-delay:
+      -1.6s;
+  }
+
+
+  .nodeUser
+  .nodePulse {
+    animation-delay:
+      -0.4s;
+  }
+
+
+  .nodeData
+  .nodePulse {
+    animation-delay:
+      -1.2s;
+  }
+
+
+  .heroTickerTrack {
+    animation:
+      nbModernTicker
+      34s
+      linear
+      infinite;
+  }
+
+}
+
+
+@keyframes nbModernAtmosphere {
+
+  from {
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      )
+      scale(1);
+  }
+
+  to {
+    transform:
+      translate3d(
+        24px,
+        18px,
+        0
+      )
+      scale(1.08);
+  }
+
+}
+
+
+@keyframes nbModernScan {
+
+  from {
+    transform:
+      rotate(0deg);
+  }
+
+  to {
+    transform:
+      rotate(360deg);
+  }
+
+}
+
+
+@keyframes nbModernOrbit {
+
+  from {
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      rotate(0deg);
+  }
+
+  to {
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      rotate(360deg);
+  }
+
+}
+
+
+@keyframes nbModernOrbitReverse {
+
+  from {
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      rotate(360deg);
+  }
+
+  to {
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      rotate(0deg);
+  }
+
+}
+
+
+@keyframes nbModernNodePulse {
+
+  0%,
+  100% {
+    opacity:
+      0.55;
+
+    transform:
+      scale(1);
+  }
+
+  50% {
+    opacity:
+      1;
+
+    transform:
+      scale(1.65);
+  }
+
+}
+
+
+@keyframes nbModernTicker {
+
+  from {
+    transform:
+      translateX(0);
+  }
+
+  to {
+    transform:
+      translateX(-32%);
+  }
+
+}
+
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+
+  .heroAtmosphere,
+  .scanBeam,
+  .orbitOuter,
+  .orbitMiddle,
+  .nodePulse,
+  .heroTickerTrack {
+    animation:
+      none;
+  }
+
+
+  .heroPrimaryAction:hover,
+  .ecosystemCard:hover {
+    transform:
+      none;
+  }
+
+}

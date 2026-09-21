@@ -6,223 +6,257 @@ import {
 
 import styles from "./home.module.css";
 
+
 const services = [
   {
-    number:
+    index:
       "01",
+
+    eyebrow:
+      "Application",
 
     title:
       "Web Application Security",
 
     description:
-      "Security testing focused on authentication, authorization, business logic and real application attack surfaces.",
+      "Assess authentication, authorization, business logic and the application attack surface.",
 
     href:
       "/services/web-application-pentesting"
   },
   {
-    number:
+    index:
       "02",
+
+    eyebrow:
+      "Interfaces",
 
     title:
       "API Security",
 
     description:
-      "Assessment of REST and GraphQL APIs, object-level access, tokens, authorization and data exposure.",
+      "Examine object access, tokens, GraphQL, authorization boundaries and exposed data.",
 
     href:
       "/services/api-security"
   },
   {
-    number:
+    index:
       "03",
+
+    eyebrow:
+      "Infrastructure",
 
     title:
       "Infrastructure Security",
 
     description:
-      "Review of exposed services, network configuration, credentials, privilege paths and segmentation.",
+      "Review exposed services, credentials, privilege paths, network configuration and segmentation.",
 
     href:
       "/services/infrastructure-security"
   },
   {
-    number:
+    index:
       "04",
+
+    eyebrow:
+      "Capability",
 
     title:
       "Security Training",
 
     description:
-      "Practical cybersecurity education for teams, universities, communities and technical learners.",
+      "Practical security education built around labs, technical reasoning and hands-on exercises.",
 
     href:
       "/services/security-training"
   }
 ] as const;
 
-const destinations = [
+
+const ecosystem = [
   {
     index:
       "01",
 
-    eyebrow:
-      "Company",
-
-    title:
-      "About No Breach",
-
-    description:
-      "Company story, operating principles, ecosystem and milestones.",
-
-    href:
-      "/company"
-  },
-  {
-    index:
-      "02",
-
-    eyebrow:
+    label:
       "Founder",
 
     title:
       "Nouha Ben Brahim",
 
     description:
-      "Founder profile, journey, security work, speaking, writing and public record.",
+      "Founder profile, public security work, speaking and writing.",
 
     href:
-      "/company/founder"
+      "/company/founder",
+
+    size:
+      "large"
   },
   {
     index:
-      "03",
+      "02",
 
-    eyebrow:
-      "Training",
+    label:
+      "Education",
 
     title:
       "Training Hub",
 
     description:
-      "Hands-on cybersecurity programs built around practical technical work.",
+      "Hands-on programs for practical cybersecurity development.",
 
     href:
-      "/training"
+      "/training",
+
+    size:
+      "standard"
   },
   {
     index:
-      "04",
+      "03",
 
-    eyebrow:
+    label:
       "Community",
 
     title:
       "CR4CKOUT",
 
     description:
-      "No Breach's community security initiative, workshops, CTF activity and events.",
+      "Security community activity, workshops and CTF culture.",
 
     href:
-      "/cr4ckout"
+      "/cr4ckout",
+
+    size:
+      "standard"
   },
   {
     index:
-      "05",
+      "04",
 
-    eyebrow:
+    label:
       "Applied work",
 
     title:
       "Internship Projects",
 
     description:
-      "Technical projects developed through No Breach internship programs.",
+      "Technical labs and security projects developed through the internship program.",
 
     href:
-      "/company/internships"
+      "/company/internships",
+
+    size:
+      "wide"
   },
   {
     index:
-      "06",
+      "05",
 
-    eyebrow:
+    label:
       "Public record",
 
     title:
       "Activities & LinkedIn",
 
     description:
-      "Events, workshops, community activity and verified public LinkedIn posts.",
+      "Events, workshops, speaking and verified public LinkedIn activity.",
 
     href:
-      "/activities"
+      "/activities",
+
+    size:
+      "standard"
   },
   {
     index:
-      "07",
+      "06",
 
-    eyebrow:
-      "Knowledge",
+    label:
+      "Research",
 
     title:
       "Technical Insights",
 
     description:
-      "Original writing on application security, offensive security and AI security.",
+      "Original security writing focused on real technical problems.",
 
     href:
-      "/insights"
+      "/insights",
+
+    size:
+      "standard"
   },
   {
     index:
-      "08",
+      "07",
 
-    eyebrow:
-      "Events",
+    label:
+      "Archive",
 
     title:
       "Events Archive",
 
     description:
-      "Published No Breach events and previous community activity.",
+      "Published No Breach events and community activity.",
 
     href:
-      "/events"
+      "/events",
+
+    size:
+      "standard"
   }
 ] as const;
+
 
 export default function HomePage() {
   return (
     <>
       <section
         className={
-          styles.compactHero
+          styles.modernHero
         }
         data-home-section="hero"
       >
+        <div
+          className={
+            styles.heroAtmosphere
+          }
+          aria-hidden="true"
+        />
+
         <Container size="wide">
           <div
             className={
-              styles.compactHeroGrid
+              styles.modernHeroGrid
             }
           >
             <div
               className={
-                styles.compactHeroCopy
+                styles.modernHeroCopy
               }
             >
-              <p
+              <div
                 className={
-                  styles.compactEyebrow
+                  styles.heroStatus
                 }
               >
+                <span
+                  className={
+                    styles.heroStatusSignal
+                  }
+                  aria-hidden="true"
+                />
+
                 Offensive Security / Tunisia
-              </p>
+              </div>
 
               <h1
                 className={
-                  styles.compactHeroTitle
+                  styles.modernHeroTitle
                 }
               >
                 Offensive security built around real-world attack thinking.
@@ -230,24 +264,27 @@ export default function HomePage() {
 
               <p
                 className={
-                  styles.compactHeroText
+                  styles.modernHeroLead
                 }
               >
-                No Breach helps organizations uncover security weaknesses while building practical cybersecurity capability through services, education and community work.
+                No Breach combines offensive security services, practical education and community work to help people understand systems from the perspective that matters most: how they can actually fail.
               </p>
 
               <div
                 className={
-                  styles.compactActions
+                  styles.heroActions
                 }
               >
                 <Link
                   className={
-                    styles.compactPrimaryButton
+                    styles.heroPrimaryAction
                   }
                   href="/services"
                 >
-                  Explore services
+                  <span>
+                    Explore services
+                  </span>
+
                   <span
                     aria-hidden="true"
                   >
@@ -257,129 +294,400 @@ export default function HomePage() {
 
                 <Link
                   className={
-                    styles.compactSecondaryButton
+                    styles.heroTextAction
                   }
                   href="/company"
                 >
                   About No Breach
+
+                  <span
+                    aria-hidden="true"
+                  >
+                    →
+                  </span>
                 </Link>
+              </div>
+
+              <div
+                className={
+                  styles.heroPrinciples
+                }
+                aria-label="No Breach approach"
+              >
+                <span>
+                  Offensive
+                </span>
+
+                <span>
+                  Evidence-led
+                </span>
+
+                <span>
+                  Practical
+                </span>
               </div>
             </div>
 
             <div
               className={
-                styles.compactSignal
+                styles.constellationShell
               }
-              aria-hidden="true"
+              aria-label="No Breach attack surface model"
             >
               <div
                 className={
-                  styles.signalTop
+                  styles.constellationHeader
                 }
               >
-                <span>
-                  NB / ATTACK SURFACE
-                </span>
+                <div>
+                  <span
+                    className={
+                      styles.constellationDot
+                    }
+                    aria-hidden="true"
+                  />
+
+                  <span>
+                    NB / ATTACK SURFACE
+                  </span>
+                </div>
 
                 <span>
-                  ACTIVE
+                  MODEL / 01
                 </span>
               </div>
 
               <div
                 className={
-                  styles.signalGraph
+                  styles.constellationStage
                 }
               >
-                <span
-                  className={`${styles.signalNode} ${styles.signalNodeApp}`}
-                >
-                  APP
-                </span>
+                <div
+                  className={
+                    styles.radarGlow
+                  }
+                  aria-hidden="true"
+                />
 
-                <span
-                  className={`${styles.signalNode} ${styles.signalNodeApi}`}
-                >
-                  API
-                </span>
+                <div
+                  className={
+                    styles.orbitOuter
+                  }
+                  aria-hidden="true"
+                />
 
-                <span
-                  className={`${styles.signalNode} ${styles.signalNodeAuth}`}
-                >
-                  AUTH
-                </span>
+                <div
+                  className={
+                    styles.orbitMiddle
+                  }
+                  aria-hidden="true"
+                />
 
-                <span
-                  className={`${styles.signalNode} ${styles.signalNodeUser}`}
-                >
-                  USER
-                </span>
+                <div
+                  className={
+                    styles.orbitInner
+                  }
+                  aria-hidden="true"
+                />
 
-                <span
-                  className={`${styles.signalNode} ${styles.signalNodeData}`}
-                >
-                  DATA
-                </span>
+                <div
+                  className={
+                    styles.scanBeam
+                  }
+                  aria-hidden="true"
+                />
 
                 <svg
                   className={
-                    styles.signalLines
+                    styles.constellationLines
                   }
-                  viewBox="0 0 500 300"
+                  viewBox="0 0 600 440"
                   preserveAspectRatio="none"
+                  aria-hidden="true"
                 >
-                  <path d="M250 40 L120 125" />
-                  <path d="M250 40 L380 125" />
-                  <path d="M120 125 L250 205" />
-                  <path d="M380 125 L250 205" />
-                  <path d="M250 205 L250 270" />
+                  <path
+                    d="M300 218 L170 92"
+                  />
+
+                  <path
+                    d="M300 218 L435 105"
+                  />
+
+                  <path
+                    d="M300 218 L500 254"
+                  />
+
+                  <path
+                    d="M300 218 L388 365"
+                  />
+
+                  <path
+                    d="M300 218 L118 334"
+                  />
+
+                  <path
+                    d="M170 92 L435 105"
+                    className={
+                      styles.constellationSecondaryLine
+                    }
+                  />
+
+                  <path
+                    d="M118 334 L388 365"
+                    className={
+                      styles.constellationSecondaryLine
+                    }
+                  />
                 </svg>
+
+                <div
+                  className={
+                    styles.constellationCore
+                  }
+                >
+                  <span>
+                    NB
+                  </span>
+
+                  <small>
+                    CORE
+                  </small>
+                </div>
+
+                <div
+                  className={`${styles.constellationNode} ${styles.nodeApp}`}
+                >
+                  <span
+                    className={
+                      styles.nodePulse
+                    }
+                    aria-hidden="true"
+                  />
+
+                  <strong>
+                    APP
+                  </strong>
+
+                  <small>
+                    surface
+                  </small>
+                </div>
+
+                <div
+                  className={`${styles.constellationNode} ${styles.nodeApi}`}
+                >
+                  <span
+                    className={
+                      styles.nodePulse
+                    }
+                    aria-hidden="true"
+                  />
+
+                  <strong>
+                    API
+                  </strong>
+
+                  <small>
+                    objects
+                  </small>
+                </div>
+
+                <div
+                  className={`${styles.constellationNode} ${styles.nodeAuth}`}
+                >
+                  <span
+                    className={
+                      styles.nodePulse
+                    }
+                    aria-hidden="true"
+                  />
+
+                  <strong>
+                    AUTH
+                  </strong>
+
+                  <small>
+                    trust
+                  </small>
+                </div>
+
+                <div
+                  className={`${styles.constellationNode} ${styles.nodeUser}`}
+                >
+                  <span
+                    className={
+                      styles.nodePulse
+                    }
+                    aria-hidden="true"
+                  />
+
+                  <strong>
+                    USER
+                  </strong>
+
+                  <small>
+                    identity
+                  </small>
+                </div>
+
+                <div
+                  className={`${styles.constellationNode} ${styles.nodeData}`}
+                >
+                  <span
+                    className={
+                      styles.nodePulse
+                    }
+                    aria-hidden="true"
+                  />
+
+                  <strong>
+                    DATA
+                  </strong>
+
+                  <small>
+                    impact
+                  </small>
+                </div>
+
+                <div
+                  className={
+                    styles.constellationCoordinate
+                  }
+                  aria-hidden="true"
+                >
+                  <span>
+                    36.8065 N
+                  </span>
+
+                  <span>
+                    10.1815 E
+                  </span>
+                </div>
+              </div>
+
+              <div
+                className={
+                  styles.constellationFooter
+                }
+              >
+                <span>
+                  Attack surface
+                </span>
+
+                <span>
+                  Authorization
+                </span>
+
+                <span>
+                  Evidence
+                </span>
               </div>
             </div>
           </div>
         </Container>
+
+        <div
+          className={
+            styles.heroTicker
+          }
+          aria-hidden="true"
+        >
+          <div
+            className={
+              styles.heroTickerTrack
+            }
+          >
+            <span>
+              WEB APPLICATION SECURITY
+            </span>
+
+            <i />
+
+            <span>
+              API SECURITY
+            </span>
+
+            <i />
+
+            <span>
+              INFRASTRUCTURE SECURITY
+            </span>
+
+            <i />
+
+            <span>
+              SECURITY TRAINING
+            </span>
+
+            <i />
+
+            <span>
+              OFFENSIVE THINKING
+            </span>
+
+            <i />
+
+            <span>
+              WEB APPLICATION SECURITY
+            </span>
+
+            <i />
+
+            <span>
+              API SECURITY
+            </span>
+
+            <i />
+
+            <span>
+              INFRASTRUCTURE SECURITY
+            </span>
+          </div>
+        </div>
       </section>
+
 
       <section
         className={
-          styles.compactFacts
+          styles.identitySection
         }
         data-home-section="company"
       >
         <Container size="wide">
           <div
             className={
-              styles.compactFactGrid
+              styles.identityLayout
             }
           >
             <div
               className={
-                styles.compactCompanyIntro
+                styles.identityCopy
               }
             >
               <p
                 className={
-                  styles.compactEyebrow
+                  styles.modernEyebrow
                 }
               >
-                No Breach
+                01 / No Breach
               </p>
 
-              <h2
-                className={
-                  styles.compactSectionTitle
-                }
-              >
+              <h2>
                 A cybersecurity organization built from offensive security.
               </h2>
 
+              <p>
+                Founded in Tunisia, No Breach brings together security services, hands-on education and cybersecurity community initiatives.
+              </p>
+
               <Link
                 className={
-                  styles.compactTextLink
+                  styles.inlineArrowLink
                 }
                 href="/company"
               >
                 Read the company story
+
                 <span
                   aria-hidden="true"
                 >
@@ -390,7 +698,7 @@ export default function HomePage() {
 
             <dl
               className={
-                styles.compactFactList
+                styles.identityFacts
               }
             >
               <div>
@@ -437,54 +745,52 @@ export default function HomePage() {
         </Container>
       </section>
 
+
       <section
         className={
-          styles.compactSection
+          styles.servicesSection
         }
         data-home-section="services"
       >
         <Container size="wide">
-          <div
+          <header
             className={
-              styles.compactSectionHeader
+              styles.modernSectionHeader
             }
           >
             <div>
               <p
                 className={
-                  styles.compactEyebrow
+                  styles.modernEyebrow
                 }
               >
-                Security services
+                02 / Capabilities
               </p>
 
-              <h2
-                className={
-                  styles.compactSectionTitle
-                }
-              >
-                Examine systems from an attacker&apos;s perspective.
+              <h2>
+                Security work that starts with how systems break.
               </h2>
             </div>
 
             <Link
               className={
-                styles.compactTextLink
+                styles.inlineArrowLink
               }
               href="/services"
             >
-              Full methodology & services
+              Full methodology &amp; services
+
               <span
                 aria-hidden="true"
               >
                 →
               </span>
             </Link>
-          </div>
+          </header>
 
           <div
             className={
-              styles.compactServiceGrid
+              styles.serviceRows
             }
           >
             {services.map(
@@ -493,30 +799,40 @@ export default function HomePage() {
               ) => (
                 <Link
                   className={
-                    styles.compactServiceCard
+                    styles.serviceRow
                   }
                   href={
                     service.href
                   }
                   key={
-                    service.number
+                    service.index
                   }
                 >
                   <span
                     className={
-                      styles.compactCardNumber
+                      styles.serviceIndex
                     }
                   >
                     {
-                      service.number
+                      service.index
                     }
                   </span>
 
-                  <h3>
+                  <span
+                    className={
+                      styles.serviceEyebrow
+                    }
+                  >
+                    {
+                      service.eyebrow
+                    }
+                  </span>
+
+                  <strong>
                     {
                       service.title
                     }
-                  </h3>
+                  </strong>
 
                   <p>
                     {
@@ -526,7 +842,7 @@ export default function HomePage() {
 
                   <span
                     className={
-                      styles.compactCardArrow
+                      styles.serviceArrow
                     }
                     aria-hidden="true"
                   >
@@ -539,102 +855,111 @@ export default function HomePage() {
         </Container>
       </section>
 
+
       <section
         className={
-          styles.compactSection
+          styles.ecosystemSection
         }
         data-home-section="explore"
       >
         <Container size="wide">
-          <div
+          <header
             className={
-              styles.compactSectionHeader
+              styles.modernSectionHeader
             }
           >
             <div>
               <p
                 className={
-                  styles.compactEyebrow
+                  styles.modernEyebrow
                 }
               >
-                Explore No Breach
+                03 / Ecosystem
               </p>
 
-              <h2
-                className={
-                  styles.compactSectionTitle
-                }
-              >
-                Detailed content now lives where it belongs.
+              <h2>
+                Services, education and community—connected by practice.
               </h2>
             </div>
 
             <p
               className={
-                styles.compactSectionIntro
+                styles.sectionHeaderCopy
               }
             >
-              Go deeper into the company, founder, training, technical work, events, public activity and security research without making the homepage carry every detail.
+              Explore the people, programs, technical work and public activity behind No Breach.
             </p>
-          </div>
+          </header>
 
           <div
             className={
-              styles.compactDestinationGrid
+              styles.ecosystemGrid
             }
           >
-            {destinations.map(
+            {ecosystem.map(
               (
-                destination
+                item
               ) => (
                 <Link
-                  className={
-                    styles.compactDestination
-                  }
+                  className={`${styles.ecosystemCard} ${
+                    item.size ===
+                    "large"
+                      ? styles.ecosystemLarge
+                      : item.size ===
+                          "wide"
+                        ? styles.ecosystemWide
+                        : ""
+                  }`}
                   href={
-                    destination.href
+                    item.href
                   }
                   key={
-                    destination.index
+                    item.index
                   }
                 >
                   <div
                     className={
-                      styles.compactDestinationTop
+                      styles.ecosystemCardTop
                     }
                   >
                     <span>
                       {
-                        destination.index
+                        item.index
                       }
                     </span>
 
                     <span>
                       {
-                        destination.eyebrow
+                        item.label
                       }
                     </span>
                   </div>
 
-                  <h3>
-                    {
-                      destination.title
+                  <div
+                    className={
+                      styles.ecosystemCardBody
                     }
-                  </h3>
+                  >
+                    <h3>
+                      {
+                        item.title
+                      }
+                    </h3>
 
-                  <p>
-                    {
-                      destination.description
-                    }
-                  </p>
+                    <p>
+                      {
+                        item.description
+                      }
+                    </p>
+                  </div>
 
                   <span
                     className={
-                      styles.compactDestinationArrow
+                      styles.ecosystemArrow
                     }
                     aria-hidden="true"
                   >
-                    →
+                    ↗
                   </span>
                 </Link>
               )
@@ -643,54 +968,62 @@ export default function HomePage() {
         </Container>
       </section>
 
+
       <section
         className={
-          styles.compactCta
+          styles.modernContact
         }
         data-home-section="contact"
       >
-        <Container>
+        <Container size="wide">
           <div
             className={
-              styles.compactCtaBox
+              styles.modernContactInner
             }
           >
-            <p
+            <div
               className={
-                styles.compactEyebrow
+                styles.contactIndex
               }
             >
-              Start a conversation
-            </p>
-
-            <h2
-              className={
-                styles.compactCtaTitle
-              }
-            >
-              Need a security assessment, training program or collaboration?
-            </h2>
-
-            <p
-              className={
-                styles.compactCtaText
-              }
-            >
-              Tell No Breach what you are trying to secure, teach or build.
-            </p>
+              04
+            </div>
 
             <div
               className={
-                styles.compactActions
+                styles.contactCopy
+              }
+            >
+              <p
+                className={
+                  styles.modernEyebrow
+                }
+              >
+                Start a conversation
+              </p>
+
+              <h2>
+                Secure it. Test it. Understand it.
+              </h2>
+
+              <p>
+                Need a security assessment, training program or technical collaboration? Tell No Breach what you are working on.
+              </p>
+            </div>
+
+            <div
+              className={
+                styles.contactActions
               }
             >
               <Link
                 className={
-                  styles.compactPrimaryButton
+                  styles.contactPrimary
                 }
                 href="/contact"
               >
                 Contact No Breach
+
                 <span
                   aria-hidden="true"
                 >
@@ -700,7 +1033,7 @@ export default function HomePage() {
 
               <Link
                 className={
-                  styles.compactSecondaryButton
+                  styles.contactSecondary
                 }
                 href="/company/internships"
               >
