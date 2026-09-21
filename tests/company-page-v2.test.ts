@@ -26,7 +26,7 @@ function read(
 
 
 describe(
-  "company page v2",
+  "company page v3",
   () => {
     const page =
       read(
@@ -40,38 +40,118 @@ describe(
 
 
     it(
-      "contains the complete company information architecture",
+      "uses the V3 minimalist company architecture",
       () => {
-        for (
-          const section
-          of [
-            "hero",
-            "who-we-are",
-            "story",
-            "what-we-do",
-            "principles",
-            "ecosystem",
-            "timeline",
-            "founder",
-            "team",
-            "cta"
-          ]
-        ) {
-          expect(
-            page
-          ).toContain(
-            `data-company-section="${section}"`
-          );
-        }
+        expect(
+          page
+        ).toContain(
+          'data-company-page="v3"'
+        );
+
+        expect(
+          css.match(
+            /NB_COMPANY_PAGE_V3/g
+          )?.length
+        ).toBe(
+          1
+        );
+
+        expect(
+          css
+        ).not.toContain(
+          "NB_COMPANY_PAGE_V2"
+        );
       }
     );
 
 
     it(
-      "uses exactly the intended three company principles",
+      "removes the large technical company diagrams",
+      () => {
+        expect(
+          page
+        ).not.toContain(
+          'data-ui="company-system-map"'
+        );
+
+        expect(
+          page
+        ).not.toContain(
+          'data-ui="company-ecosystem-map"'
+        );
+
+        expect(
+          css
+        ).not.toContain(
+          ".systemCanvas"
+        );
+
+        expect(
+          css
+        ).not.toContain(
+          ".ecosystemCore"
+        );
+      }
+    );
+
+
+    it(
+      "keeps the company page concise",
+      () => {
+        expect(
+          page
+        ).toContain(
+          "One offensive mindset."
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Test."
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Learn."
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Share."
+        );
+
+
+        const sourceWords =
+          page
+            .replace(
+              /[{}()[\]"'`<>/=;:,.]/g,
+              " "
+            )
+            .split(
+              /\s+/
+            )
+            .filter(
+              Boolean
+            )
+            .length;
+
+
+        expect(
+          sourceWords
+        ).toBeLessThan(
+          1900
+        );
+      }
+    );
+
+
+    it(
+      "keeps the three company principles",
       () => {
         for (
-          const principle
+          const title
           of [
             "Think offensively",
             "Build through practice",
@@ -81,175 +161,74 @@ describe(
           expect(
             page
           ).toContain(
-            principle
+            title
           );
         }
-
-
-        const principlesBlock =
-          page.slice(
-            page.indexOf(
-              "const principles ="
-            ),
-            page.indexOf(
-              "const ecosystem ="
-            )
-          );
-
-
-        expect(
-          (
-            principlesBlock.match(
-              /title:/g
-            )
-            ??
-            []
-          ).length
-        ).toBe(
-          3
-        );
       }
     );
 
 
     it(
-      "uses verified company facts without invented metrics",
-      () => {
-        expect(
-          page
-        ).toContain(
-          '"2023"'
-        );
-
-        expect(
-          page
-        ).toContain(
-          '"Tunis, Tunisia"'
-        );
-
-        expect(
-          page
-        ).toContain(
-          '"Offensive Security"'
-        );
-
-        expect(
-          page
-        ).toContain(
-          '"Services · Education · Community"'
-        );
-
-        expect(
-          page
-        ).not.toMatch(
-          /\b\d+[,+]?\s*(clients|customers|employees|projects|countries)\b/i
-        );
-      }
-    );
-
-
-    it(
-      "defines the company ecosystem destinations in the data model",
+      "preserves verified company facts",
       () => {
         for (
-          const route
+          const value
           of [
-            "/services",
-            "/training",
-            "/cr4ckout",
-            "/activities",
-            "/insights"
+            "2023",
+            "Tunis, Tunisia",
+            "Offensive Security",
+            "Services · Education · Community"
           ]
         ) {
           expect(
             page
           ).toContain(
-            `href:\n      "${route}"`
+            value
           );
         }
 
 
-        expect(
-          page
-        ).toContain(
-          "href={\n                        discipline.href"
-        );
-
-        expect(
-          page
-        ).toContain(
-          "href={\n                        item.href"
-        );
-      }
-    );
-
-
-    it(
-      "links directly to founder team internships and contact",
-      () => {
-        for (
-          const route
-          of [
-            "/company/founder",
-            "/company/team",
-            "/company/internships",
-            "/contact"
-          ]
-        ) {
-          expect(
-            page
-          ).toContain(
-            `href="${route}"`
-          );
-        }
-      }
-    );
-
-
-    it(
-      "does not make unsupported ownership claims",
-      () => {
         expect(
           page
         ).not.toMatch(
           /\bowner\b/i
         );
-
-        expect(
-          page
-        ).toContain(
-          "Founder of No Breach"
-        );
       }
     );
 
 
     it(
-      "implements the full premium company visual system",
+      "uses tighter editorial spacing",
       () => {
-        for (
-          const token
-          of [
-            "NB_COMPANY_PAGE_V2",
-            ".heroVisual",
-            ".systemCanvas",
-            ".sectionFrame",
-            ".disciplineList",
-            ".principlesGrid",
-            ".ecosystemMap",
-            ".timeline",
-            ".founderPanel",
-            ".teamPanel",
-            ".ctaSection",
-            "prefers-reduced-motion"
-          ]
-        ) {
-          expect(
-            css
-          ).toContain(
-            token
-          );
-        }
+        expect(
+          css
+        ).toContain(
+          "1180px"
+        );
+
+        expect(
+          css
+        ).toContain(
+          "min-height:\n    560px"
+        );
+
+        expect(
+          css
+        ).toContain(
+          ".container"
+        );
+
+        expect(
+          css
+        ).toContain(
+          "max-width: 620px"
+        );
+
+        expect(
+          css
+        ).toContain(
+          "prefers-reduced-motion"
+        );
       }
     );
   }

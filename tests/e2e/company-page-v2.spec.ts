@@ -4,13 +4,13 @@ import {
 } from "@playwright/test";
 
 
-async function companyReady(
+async function ready(
   page:
     import("@playwright/test").Page
 ) {
   const company =
     page.locator(
-      '[data-company-page="v2"]'
+      '[data-company-page="v3"]'
     );
 
 
@@ -27,7 +27,7 @@ async function companyReady(
           1,
 
         name:
-          /offensive security at the center/i
+          /security, education and community/i
       }
     )
   ).toBeVisible();
@@ -38,21 +38,17 @@ async function companyReady(
 
 
 test(
-  "company page renders the complete corporate experience",
+  "company V3 renders the streamlined corporate experience",
   async ({
     page
   }) => {
     await page.goto(
-      "/company",
-      {
-        waitUntil:
-          "domcontentloaded"
-      }
+      "/company"
     );
 
 
     const company =
-      await companyReady(
+      await ready(
         page
       );
 
@@ -83,7 +79,7 @@ test(
 
 
 test(
-  "company hero uses a substantial desktop split layout",
+  "hero uses an elegant content and identity split",
   async ({
     page
   }) => {
@@ -97,90 +93,73 @@ test(
 
 
     await page.goto(
-      "/company",
-      {
-        waitUntil:
-          "domcontentloaded"
-      }
+      "/company"
     );
 
 
-    await companyReady(
+    await ready(
       page
     );
 
 
-    const hero =
+    const main =
       page.locator(
-        '[data-company-section="hero"]'
+        '[data-company-ui="hero-main"]'
       );
 
 
-    const visual =
+    const identity =
       page.locator(
-        '[data-ui="company-system-map"]'
+        '[data-company-ui="identity"]'
       );
 
 
     await expect(
-      hero
+      main
     ).toBeVisible();
 
 
     await expect(
-      visual
+      identity
     ).toBeVisible();
 
 
-    const heading =
-      hero.locator(
-        "h1"
-      );
+    const mainBox =
+      await main.boundingBox();
 
-
-    const headingBox =
-      await heading.boundingBox();
-
-    const visualBox =
-      await visual.boundingBox();
+    const identityBox =
+      await identity.boundingBox();
 
 
     if (
-      !headingBox
+      !mainBox
       ||
-      !visualBox
+      !identityBox
     ) {
       throw new Error(
-        "Company hero geometry unavailable"
+        "Company V3 hero geometry unavailable"
       );
     }
 
 
     expect(
-      headingBox.x
+      mainBox.x
     ).toBeLessThan(
-      visualBox.x
+      identityBox.x
     );
 
 
     expect(
-      visualBox.width
+      identityBox.width
     ).toBeGreaterThan(
-      350
-    );
-
-
-    expect(
-      visualBox.height
-    ).toBeGreaterThan(
-      400
+      250
     );
   }
 );
 
 
 test(
-  "company page exposes four factual company blocks",
+  "company page no longer renders large technical diagrams",
   async ({
     page
   }) => {
@@ -189,14 +168,88 @@ test(
     );
 
 
-    await companyReady(
+    await ready(
       page
     );
 
 
-    const hero =
+    await expect(
       page.locator(
-        '[data-company-section="hero"]'
+        '[data-ui="company-system-map"]'
+      )
+    ).toHaveCount(
+      0
+    );
+
+
+    await expect(
+      page.locator(
+        '[data-ui="company-ecosystem-map"]'
+      )
+    ).toHaveCount(
+      0
+    );
+  }
+);
+
+
+test(
+  "company copy is intentionally compact",
+  async ({
+    page
+  }) => {
+    await page.goto(
+      "/company"
+    );
+
+
+    const company =
+      await ready(
+        page
+      );
+
+
+    const text =
+      (
+        await company.innerText()
+      )
+        .trim();
+
+
+    expect(
+      text.length
+    ).toBeGreaterThan(
+      1200
+    );
+
+
+    expect(
+      text.length
+    ).toBeLessThan(
+      4300
+    );
+  }
+);
+
+
+test(
+  "company facts remain visible",
+  async ({
+    page
+  }) => {
+    await page.goto(
+      "/company"
+    );
+
+
+    await ready(
+      page
+    );
+
+
+    const facts =
+      page.locator(
+        '[data-company-ui="facts"]'
       );
 
 
@@ -210,69 +263,12 @@ test(
       ]
     ) {
       await expect(
-        hero.getByText(
+        facts.getByText(
           value,
           {
             exact:
               true
           }
-        ).first()
-      ).toBeVisible();
-    }
-  }
-);
-
-
-test(
-  "company principles stay limited to the intended three",
-  async ({
-    page
-  }) => {
-    await page.goto(
-      "/company"
-    );
-
-
-    const company =
-      await companyReady(
-        page
-      );
-
-
-    const section =
-      company.locator(
-        '[data-company-section="principles"]'
-      );
-
-
-    const principles =
-      section.locator(
-        "article"
-      );
-
-
-    await expect(
-      principles
-    ).toHaveCount(
-      3
-    );
-
-
-    for (
-      const heading
-      of [
-        "Think offensively",
-        "Build through practice",
-        "Share knowledge"
-      ]
-    ) {
-      await expect(
-        section.getByRole(
-          "heading",
-          {
-            name:
-              heading
-          }
         )
       ).toBeVisible();
     }
@@ -281,7 +277,7 @@ test(
 
 
 test(
-  "rendered company links point to the real ecosystem routes",
+  "work section exposes four clean capability rows",
   async ({
     page
   }) => {
@@ -290,48 +286,30 @@ test(
     );
 
 
-    await companyReady(
+    await ready(
       page
     );
 
 
-    for (
-      const href
-      of [
-        "/services",
-        "/training",
-        "/cr4ckout",
-        "/activities",
-        "/insights",
-        "/company/founder",
-        "/company/team",
-        "/company/internships",
-        "/contact"
-      ]
-    ) {
-      const links =
-        page.locator(
-          `a[href="${href}"]`
-        );
-
-
-      expect(
-        await links.count()
-      ).toBeGreaterThanOrEqual(
-        1
+    const work =
+      page.locator(
+        '[data-company-ui="work-list"]'
       );
 
 
-      await expect(
-        links.first()
-      ).toBeVisible();
-    }
+    await expect(
+      work.locator(
+        "a"
+      )
+    ).toHaveCount(
+      4
+    );
   }
 );
 
 
 test(
-  "company timeline exposes the canonical development sequence",
+  "principles remain exactly three",
   async ({
     page
   }) => {
@@ -340,104 +318,56 @@ test(
     );
 
 
-    const company =
-      await companyReady(
-        page
-      );
+    await ready(
+      page
+    );
 
 
-    const timeline =
-      company.locator(
-        '[data-company-section="timeline"]'
+    const principles =
+      page.locator(
+        '[data-company-ui="principles"]'
       );
 
 
     await expect(
-      timeline.locator(
-        "li"
+      principles.locator(
+        "article"
+      )
+    ).toHaveCount(
+      3
+    );
+  }
+);
+
+
+test(
+  "timeline remains compact with five milestones",
+  async ({
+    page
+  }) => {
+    await page.goto(
+      "/company"
+    );
+
+
+    await ready(
+      page
+    );
+
+
+    await expect(
+      page.locator(
+        '[data-company-ui="timeline"] li'
       )
     ).toHaveCount(
       5
     );
-
-
-    for (
-      const milestone
-      of [
-        "No Breach founded",
-        "Training Hub established",
-        "CR4CKOUT launched",
-        "Community and training activities",
-        "Continuing to build"
-      ]
-    ) {
-      await expect(
-        timeline.getByText(
-          milestone,
-          {
-            exact:
-              true
-          }
-        )
-      ).toBeVisible();
-    }
   }
 );
 
 
 test(
-  "founder preview uses the founder title without ownership claims",
-  async ({
-    page
-  }) => {
-    await page.goto(
-      "/company"
-    );
-
-
-    const company =
-      await companyReady(
-        page
-      );
-
-
-    const founder =
-      company.locator(
-        '[data-company-section="founder"]'
-      );
-
-
-    await expect(
-      founder.getByRole(
-        "heading",
-        {
-          name:
-            "Nouha Ben Brahim"
-        }
-      )
-    ).toBeVisible();
-
-
-    await expect(
-      founder.getByText(
-        /founder of no breach/i
-      )
-    ).toBeVisible();
-
-
-    await expect(
-      founder.getByText(
-        /\bowner\b/i
-      )
-    ).toHaveCount(
-      0
-    );
-  }
-);
-
-
-test(
-  "company page remains overflow-free on mobile",
+  "company V3 stays overflow-free on mobile",
   async ({
     page
   }) => {
@@ -451,24 +381,13 @@ test(
 
 
     await page.goto(
-      "/company",
-      {
-        waitUntil:
-          "domcontentloaded"
-      }
+      "/company"
     );
 
 
-    await companyReady(
+    await ready(
       page
     );
-
-
-    await expect(
-      page.locator(
-        '[data-ui="company-system-map"]'
-      )
-    ).toBeVisible();
 
 
     const metrics =
