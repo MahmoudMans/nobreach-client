@@ -18,70 +18,46 @@ export default function FounderOpenGraphImage() {
     (
       <div
         style={{
-          display:
-            "flex",
-          width:
-            "100%",
-          height:
-            "100%",
-          flexDirection:
-            "column",
-          justifyContent:
-            "space-between",
-          padding:
-            "68px 72px",
-          background:
-            "#08090b",
-          color:
-            "#eef2f6",
-          fontFamily:
-            "Arial, sans-serif"
+          display: "flex",
+          width: "100%",
+          height: "100%",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          padding: "68px 72px",
+          background: "#08090b",
+          color: "#eef2f6",
+          fontFamily: "Arial, sans-serif"
         }}
       >
         <div
           style={{
-            display:
-              "flex",
-            width:
-              "100%",
-            alignItems:
-              "center",
-            justifyContent:
-              "space-between"
+            display: "flex",
+            width: "100%",
+            alignItems: "center",
+            justifyContent: "space-between"
           }}
         >
           <div
             style={{
-              display:
-                "flex",
-              alignItems:
-                "center",
-              gap:
-                "14px"
+              display: "flex",
+              alignItems: "center"
             }}
           >
             <div
               style={{
-                display:
-                  "flex",
-                width:
-                  "34px",
-                height:
-                  "34px",
-                alignItems:
-                  "center",
-                justifyContent:
-                  "center",
+                display: "flex",
+                width: "36px",
+                height: "36px",
+                alignItems: "center",
+                justifyContent: "center",
                 border:
-                  "1px solid rgba(161,226,240,0.32)",
-                borderRadius:
-                  "8px",
+                  "1px solid rgba(161,226,240,0.34)",
+                borderRadius: "8px",
                 background:
-                  "rgba(99,51,198,0.18)",
-                color:
-                  "#a1e2f0",
-                fontSize:
-                  "14px"
+                  "rgba(99,51,198,0.20)",
+                color: "#a1e2f0",
+                fontSize: "13px",
+                fontWeight: 700
               }}
             >
               NB
@@ -89,14 +65,12 @@ export default function FounderOpenGraphImage() {
 
             <div
               style={{
-                display:
-                  "flex",
-                fontSize:
-                  "21px",
-                fontWeight:
-                  600,
-                letterSpacing:
-                  "5px"
+                display: "flex",
+                marginLeft: "15px",
+                color: "#eef2f6",
+                fontSize: "21px",
+                fontWeight: 700,
+                letterSpacing: "5px"
               }}
             >
               NO BREACH
@@ -105,82 +79,58 @@ export default function FounderOpenGraphImage() {
 
           <div
             style={{
-              display:
-                "flex",
-              alignItems:
-                "center",
-              gap:
-                "10px",
-              color:
-                "#83b3d7",
-              fontSize:
-                "17px",
-              letterSpacing:
-                "3px"
+              display: "flex",
+              alignItems: "center",
+              color: "#83b3d7",
+              fontSize: "17px",
+              letterSpacing: "3px"
             }}
           >
             <div
               style={{
-                display:
-                  "flex",
-                width:
-                  "7px",
-                height:
-                  "7px",
-                borderRadius:
-                  "999px",
-                background:
-                  "#a1e2f0"
+                display: "flex",
+                width: "7px",
+                height: "7px",
+                marginRight: "10px",
+                borderRadius: "999px",
+                background: "#a1e2f0"
               }}
             />
 
-            FOUNDER
+            <span>
+              FOUNDER
+            </span>
           </div>
         </div>
 
         <div
           style={{
-            display:
-              "flex",
-            width:
-              "100%",
-            flexDirection:
-              "column"
+            display: "flex",
+            width: "100%",
+            flexDirection: "column"
           }}
         >
           <div
             style={{
-              display:
-                "flex",
-              color:
-                "#83b3d7",
-              fontSize:
-                "17px",
-              letterSpacing:
-                "3px",
-              textTransform:
-                "uppercase"
+              display: "flex",
+              color: "#83b3d7",
+              fontSize: "17px",
+              letterSpacing: "3px"
             }}
           >
-            Cybersecurity · Tunisia
+            CYBERSECURITY · TUNISIA
           </div>
 
           <div
             style={{
-              display:
-                "flex",
-              flexDirection:
-                "column",
-              marginTop:
-                "26px",
-              fontSize:
-                "100px",
-              fontWeight:
-                600,
-              lineHeight:
-                0.9,
-              letterSpacing:
-                "-6px"
+              display: "flex",
+              flexDirection: "column",
+              marginTop: "25px",
+              color: "#eef2f6",
+              fontSize: "100px",
+              fontWeight: 600,
+              lineHeight: 0.9,
+              letterSpacing: "-6px"
             }}
           >
             <span>
@@ -194,18 +144,12 @@ export default function FounderOpenGraphImage() {
 
           <div
             style={{
-              display:
-                "flex",
-              maxWidth:
-                "930px",
-              marginTop:
-                "32px",
-              color:
-                "#b8c0ca",
-              fontSize:
-                "24px",
-              lineHeight:
-                1.4
+              display: "flex",
+              maxWidth: "930px",
+              marginTop: "33px",
+              color: "#b8c0ca",
+              fontSize: "24px",
+              lineHeight: 1.4
             }}
           >
             Founder of No Breach · Offensive security · Mentorship · Security education
@@ -214,26 +158,17 @@ export default function FounderOpenGraphImage() {
 
         <div
           style={{
-            display:
-              "flex",
-            width:
-              "100%",
-            flexDirection:
-              "column",
-            gap:
-              "18px"
+            display: "flex",
+            width: "100%",
+            flexDirection: "column"
           }}
         >
           <div
             style={{
-              display:
-                "flex",
-              width:
-                "100%",
-              height:
-                "7px",
-              borderRadius:
-                "999px",
+              display: "flex",
+              width: "100%",
+              height: "7px",
+              borderRadius: "999px",
               background:
                 "linear-gradient(90deg, #6333c6, #7e60b9, #83b3d7, #a1e2f0)"
             }}
@@ -241,18 +176,14 @@ export default function FounderOpenGraphImage() {
 
           <div
             style={{
-              display:
-                "flex",
-              width:
-                "100%",
-              justifyContent:
-                "space-between",
-              color:
-                "#737b86",
-              fontSize:
-                "14px",
-              letterSpacing:
-                "2px"
+              display: "flex",
+              width: "100%",
+              marginTop: "18px",
+              alignItems: "center",
+              justifyContent: "space-between",
+              color: "#737b86",
+              fontSize: "14px",
+              letterSpacing: "2px"
             }}
           >
             <span>
@@ -260,7 +191,7 @@ export default function FounderOpenGraphImage() {
             </span>
 
             <span>
-              NOBREACH.TN
+              FOUNDER PROFILE
             </span>
           </div>
         </div>
