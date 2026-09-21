@@ -146,3 +146,46 @@
     font-size: 0.94rem;
   }
 }
+/* ==========================================================================
+   NB_MINIMALIST_SYSTEM_V1
+   ========================================================================== */
+
+.header,
+.root {
+  margin-bottom:
+    clamp(
+      1.6rem,
+      3vw,
+      2.4rem
+    );
+}
+
+.eyebrow {
+  font-size:
+    0.56rem;
+  letter-spacing:
+    0.12em;
+}
+
+.title {
+  max-width:
+    27ch;
+  font-size:
+    clamp(
+      1.8rem,
+      3.2vw,
+      2.65rem
+    );
+  line-height:
+    1.05;
+}
+
+.description,
+.intro {
+  max-width:
+    680px;
+  font-size:
+    0.88rem;
+  line-height:
+    1.7;
+}

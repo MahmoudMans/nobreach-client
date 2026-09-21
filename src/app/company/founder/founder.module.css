@@ -1203,3 +1203,59 @@
     min-height: 400px;
   }
 }
+/* ==========================================================================
+   NB_MINIMALIST_SYSTEM_V1
+   ========================================================================== */
+
+.hero {
+  padding:
+    clamp(
+      3.5rem,
+      6vw,
+      5rem
+    )
+    0;
+}
+
+.heroTitle {
+  font-size:
+    clamp(
+      2.8rem,
+      5.5vw,
+      4.8rem
+    );
+}
+
+.heroPanel,
+.profileCard,
+.card {
+  border-radius:
+    var(--minimal-radius);
+  box-shadow:
+    none;
+}
+
+.section {
+  padding-block:
+    var(--minimal-section-space);
+}
+
+.sectionHeader {
+  margin-bottom:
+    clamp(
+      1.75rem,
+      3vw,
+      2.5rem
+    );
+}
+
+.journey,
+.journeyGrid,
+.focusGrid,
+.principlesGrid,
+.engagementGrid,
+.mediaGrid,
+.credentialsGrid {
+  gap:
+    var(--minimal-card-gap);
+}

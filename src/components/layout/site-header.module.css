@@ -910,3 +910,49 @@
       translateY(0);
   }
 }
+/* ==========================================================================
+   NB_MINIMALIST_SYSTEM_V1
+   ========================================================================== */
+
+.header {
+  background:
+    rgba(
+      7,
+      8,
+      10,
+      0.88
+    );
+  border-bottom:
+    1px solid
+    var(--minimal-border);
+  box-shadow:
+    none;
+  backdrop-filter:
+    blur(14px);
+}
+
+.inner {
+  min-height:
+    64px;
+}
+
+.dropdown,
+.dropdownPanel,
+.panel {
+  border-radius:
+    var(--minimal-radius);
+  box-shadow:
+    0 14px 40px
+    rgba(
+      0,
+      0,
+      0,
+      0.28
+    );
+}
+
+.drawer,
+.drawerPanel {
+  box-shadow:
+    none;
+}

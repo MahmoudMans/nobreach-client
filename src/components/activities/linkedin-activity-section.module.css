@@ -384,3 +384,55 @@
     transform: none;
   }
 }
+/* ==========================================================================
+   NB_MINIMALIST_SYSTEM_V1
+   ========================================================================== */
+
+.section {
+  padding-block:
+    var(--minimal-section-space);
+  background:
+    transparent;
+}
+
+.header {
+  margin-bottom:
+    2.25rem;
+}
+
+.title {
+  font-size:
+    clamp(
+      1.9rem,
+      3.4vw,
+      2.8rem
+    );
+}
+
+.grid {
+  gap:
+    var(--minimal-card-gap);
+}
+
+.card {
+  min-height:
+    320px;
+  border-radius:
+    var(--minimal-radius);
+  background:
+    var(--minimal-surface);
+  box-shadow:
+    none;
+}
+
+.card::before {
+  opacity:
+    0.45;
+}
+
+.card:hover {
+  transform:
+    none;
+  background:
+    var(--minimal-surface-hover);
+}

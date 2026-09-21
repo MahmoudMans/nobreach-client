@@ -2325,3 +2325,106 @@
     transform: none;
   }
 }
+/* ==========================================================================
+   NB_MINIMALIST_SYSTEM_V1
+   Condensed homepage — less decoration, less height.
+   ========================================================================== */
+
+.compactHero {
+  padding:
+    clamp(
+      3.8rem,
+      7vw,
+      5.5rem
+    )
+    0
+    clamp(
+      3.5rem,
+      6vw,
+      4.75rem
+    );
+}
+
+.compactHero::before {
+  opacity:
+    0.62;
+}
+
+.compactHeroTitle {
+  max-width:
+    16ch;
+  font-size:
+    clamp(
+      3rem,
+      5.8vw,
+      5rem
+    );
+}
+
+.compactHeroText {
+  max-width:
+    620px;
+}
+
+.compactSignal {
+  min-height:
+    360px;
+  border-radius:
+    var(--minimal-radius-large);
+  box-shadow:
+    none;
+}
+
+.signalGraph {
+  height:
+    290px;
+}
+
+.compactFacts,
+.compactSection,
+.compactCta {
+  padding-block:
+    var(--minimal-section-space);
+}
+
+.compactServiceCard {
+  min-height:
+    240px;
+}
+
+.compactDestination {
+  min-height:
+    190px;
+  border-radius:
+    var(--minimal-radius);
+}
+
+.compactCtaBox {
+  border-radius:
+    var(--minimal-radius-large);
+}
+
+@media (max-width: 640px) {
+  .compactHero {
+    padding:
+      3rem 0
+      3.5rem;
+  }
+
+  .compactSignal {
+    min-height:
+      300px;
+  }
+
+  .signalGraph {
+    height:
+      240px;
+  }
+
+  .compactFacts,
+  .compactSection,
+  .compactCta {
+    padding-block:
+      3.5rem;
+  }
+}

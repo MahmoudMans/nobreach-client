@@ -181,3 +181,39 @@
     font-size: 0.69rem;
   }
 }
+/* ==========================================================================
+   NB_MINIMALIST_SYSTEM_V1
+   ========================================================================== */
+
+.footer {
+  padding-block:
+    clamp(
+      2.75rem,
+      5vw,
+      4rem
+    );
+}
+
+.grid,
+.inner {
+  gap:
+    clamp(
+      1.75rem,
+      4vw,
+      3rem
+    );
+}
+
+.footer h2,
+.footer h3 {
+  font-size:
+    0.72rem;
+  letter-spacing:
+    0.08em;
+}
+
+.footer a,
+.footer p {
+  font-size:
+    0.76rem;
+}

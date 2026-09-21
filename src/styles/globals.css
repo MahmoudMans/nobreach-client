@@ -301,3 +301,91 @@ main {
     font-size: 0.95rem;
   }
 }
+/* ==========================================================================
+   NB_MINIMALIST_SYSTEM_V1
+   Global visual restraint.
+   ========================================================================== */
+
+#main-content {
+  overflow: clip;
+}
+
+#main-content :where(h1, h2, h3, p) {
+  text-wrap: pretty;
+}
+
+#main-content h1 {
+  max-width: 19ch;
+  font-size:
+    clamp(
+      2.6rem,
+      5.2vw,
+      4.9rem
+    );
+  font-weight: 520;
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+}
+
+#main-content h2 {
+  max-width: 28ch;
+  font-size:
+    clamp(
+      1.8rem,
+      3.3vw,
+      2.75rem
+    );
+  font-weight: 520;
+  letter-spacing: -0.045em;
+  line-height: 1.04;
+}
+
+#main-content h3 {
+  font-size:
+    clamp(
+      1.05rem,
+      1.5vw,
+      1.3rem
+    );
+  font-weight: 550;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+#main-content p {
+  line-height: 1.7;
+}
+
+#main-content article,
+#main-content aside {
+  box-shadow: none;
+}
+
+#main-content section {
+  scroll-margin-top: 6rem;
+}
+
+#main-content :where(img, video) {
+  border-radius: var(--minimal-radius);
+}
+
+@media (max-width: 640px) {
+  #main-content h1 {
+    font-size:
+      clamp(
+        2.3rem,
+        11vw,
+        3.25rem
+      );
+    letter-spacing: -0.05em;
+  }
+
+  #main-content h2 {
+    font-size:
+      clamp(
+        1.65rem,
+        7.5vw,
+        2.25rem
+      );
+  }
+}

@@ -848,3 +848,81 @@
       );
   }
 }
+/* ==========================================================================
+   NB_MINIMALIST_SYSTEM_V1
+   Shared standard-page restraint.
+   ========================================================================== */
+
+.section {
+  padding-block:
+    var(--minimal-section-space);
+}
+
+.sectionCompact {
+  padding-block:
+    var(--minimal-section-space-small);
+}
+
+.grid,
+.cardGrid,
+.featureGrid,
+.programGrid,
+.serviceGrid,
+.valueGrid,
+.metaGrid {
+  gap:
+    var(--minimal-card-gap);
+}
+
+.card,
+.panel,
+.featureCard,
+.serviceCard,
+.programCard,
+.valueCard,
+.infoCard,
+.metaCard,
+.timelineItem {
+  border-radius:
+    var(--minimal-radius);
+  box-shadow:
+    none;
+  background:
+    var(--minimal-surface);
+}
+
+.card:hover,
+.featureCard:hover,
+.serviceCard:hover,
+.programCard:hover {
+  transform:
+    none;
+  background:
+    var(--minimal-surface-hover);
+}
+
+.split,
+.twoColumn,
+.contentGrid {
+  gap:
+    clamp(
+      2rem,
+      5vw,
+      4.5rem
+    );
+}
+
+.copy,
+.description,
+.intro,
+.lead {
+  max-width:
+    var(--minimal-reading-width);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding-block:
+      var(--minimal-section-space-small);
+  }
+}

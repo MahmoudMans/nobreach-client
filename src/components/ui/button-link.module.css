@@ -75,3 +75,27 @@
     font-size: 0.79rem;
   }
 }
+/* ==========================================================================
+   NB_MINIMALIST_SYSTEM_V1
+   ========================================================================== */
+
+.root,
+.link,
+.button {
+  min-height:
+    44px;
+  border-radius:
+    7px;
+  box-shadow:
+    none;
+  font-size:
+    0.74rem;
+}
+
+.primary:hover,
+.secondary:hover,
+.root:hover,
+.link:hover {
+  transform:
+    none;
+}

@@ -122,3 +122,38 @@
   --ease-emphasized:
     cubic-bezier(0.16, 1, 0.3, 1);
 }
+/* ==========================================================================
+   NB_MINIMALIST_SYSTEM_V1
+   ========================================================================== */
+
+:root {
+  --minimal-section-space:
+    clamp(3.5rem, 6vw, 5rem);
+
+  --minimal-section-space-small:
+    clamp(2.75rem, 5vw, 4rem);
+
+  --minimal-card-gap:
+    clamp(0.7rem, 1.5vw, 1rem);
+
+  --minimal-surface:
+    rgba(255, 255, 255, 0.018);
+
+  --minimal-surface-hover:
+    rgba(255, 255, 255, 0.03);
+
+  --minimal-border:
+    rgba(255, 255, 255, 0.1);
+
+  --minimal-border-strong:
+    rgba(255, 255, 255, 0.16);
+
+  --minimal-radius:
+    8px;
+
+  --minimal-radius-large:
+    10px;
+
+  --minimal-reading-width:
+    720px;
+}

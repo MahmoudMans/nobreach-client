@@ -371,3 +371,69 @@
       );
   }
 }
+/* ==========================================================================
+   NB_MINIMALIST_SYSTEM_V1
+   ========================================================================== */
+
+.hero {
+  padding-block:
+    clamp(
+      3.4rem,
+      6vw,
+      5rem
+    );
+}
+
+.inner,
+.layout,
+.grid {
+  gap:
+    clamp(
+      2rem,
+      5vw,
+      4.5rem
+    );
+}
+
+.eyebrow {
+  font-size:
+    0.58rem;
+  letter-spacing:
+    0.13em;
+}
+
+.title {
+  max-width:
+    18ch;
+  font-size:
+    clamp(
+      2.65rem,
+      5vw,
+      4.8rem
+    );
+  line-height:
+    0.98;
+}
+
+.description,
+.intro,
+.lead {
+  max-width:
+    680px;
+  font-size:
+    0.95rem;
+  line-height:
+    1.7;
+}
+
+.visual {
+  opacity:
+    0.78;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding-block:
+      3.25rem;
+  }
+}
