@@ -10,7 +10,7 @@ async function ready(
 ) {
   const company =
     page.locator(
-      '[data-company-page="v3"]'
+      '[data-company-page="v4"]'
     );
 
 
@@ -27,7 +27,7 @@ async function ready(
           1,
 
         name:
-          /security, education and community/i
+          /offensive security beyond the assessment/i
       }
     )
   ).toBeVisible();
@@ -38,7 +38,7 @@ async function ready(
 
 
 test(
-  "company V3 renders the streamlined corporate experience",
+  "company V4 renders the full visual corporate experience",
   async ({
     page
   }) => {
@@ -79,7 +79,7 @@ test(
 
 
 test(
-  "hero uses an elegant content and identity split",
+  "hero balances copy with a visual profile card",
   async ({
     page
   }) => {
@@ -102,138 +102,71 @@ test(
     );
 
 
-    const main =
+    const copy =
       page.locator(
-        '[data-company-ui="hero-main"]'
+        '[data-company-ui="hero-copy"]'
       );
 
 
-    const identity =
+    const profile =
       page.locator(
-        '[data-company-ui="identity"]'
+        '[data-company-ui="profile-card"]'
       );
 
 
     await expect(
-      main
+      copy
     ).toBeVisible();
 
 
     await expect(
-      identity
+      profile
     ).toBeVisible();
 
 
-    const mainBox =
-      await main.boundingBox();
+    const copyBox =
+      await copy.boundingBox();
 
-    const identityBox =
-      await identity.boundingBox();
+    const profileBox =
+      await profile.boundingBox();
 
 
     if (
-      !mainBox
+      !copyBox
       ||
-      !identityBox
+      !profileBox
     ) {
       throw new Error(
-        "Company V3 hero geometry unavailable"
+        "Company hero geometry unavailable"
       );
     }
 
 
     expect(
-      mainBox.x
+      copyBox.x
     ).toBeLessThan(
-      identityBox.x
+      profileBox.x
     );
 
 
     expect(
-      identityBox.width
+      profileBox.width
     ).toBeGreaterThan(
-      250
+      330
     );
-  }
-);
-
-
-test(
-  "company page no longer renders large technical diagrams",
-  async ({
-    page
-  }) => {
-    await page.goto(
-      "/company"
-    );
-
-
-    await ready(
-      page
-    );
-
-
-    await expect(
-      page.locator(
-        '[data-ui="company-system-map"]'
-      )
-    ).toHaveCount(
-      0
-    );
-
-
-    await expect(
-      page.locator(
-        '[data-ui="company-ecosystem-map"]'
-      )
-    ).toHaveCount(
-      0
-    );
-  }
-);
-
-
-test(
-  "company copy is intentionally compact",
-  async ({
-    page
-  }) => {
-    await page.goto(
-      "/company"
-    );
-
-
-    const company =
-      await ready(
-        page
-      );
-
-
-    const text =
-      (
-        await company.innerText()
-      )
-        .trim();
 
 
     expect(
-      text.length
+      profileBox.height
     ).toBeGreaterThan(
-      1200
-    );
-
-
-    expect(
-      text.length
-    ).toBeLessThan(
-      4300
+      300
     );
   }
 );
 
 
 test(
-  "company facts remain visible",
+  "company profile presents four factual tiles",
   async ({
     page
   }) => {
@@ -251,6 +184,15 @@ test(
       page.locator(
         '[data-company-ui="facts"]'
       );
+
+
+    await expect(
+      facts.locator(
+        "> div"
+      )
+    ).toHaveCount(
+      4
+    );
 
 
     for (
@@ -277,7 +219,7 @@ test(
 
 
 test(
-  "work section exposes four clean capability rows",
+  "company approach uses three visual process cards",
   async ({
     page
   }) => {
@@ -291,15 +233,161 @@ test(
     );
 
 
-    const work =
+    const flow =
       page.locator(
-        '[data-company-ui="work-list"]'
+        '[data-company-ui="approach-flow"]'
       );
 
 
     await expect(
-      work.locator(
-        "a"
+      flow.locator(
+        "article"
+      )
+    ).toHaveCount(
+      3
+    );
+
+
+    for (
+      const heading
+      of [
+        "Test",
+        "Learn",
+        "Share"
+      ]
+    ) {
+      await expect(
+        flow.getByText(
+          heading,
+          {
+            exact:
+              true
+          }
+        )
+      ).toBeVisible();
+    }
+  }
+);
+
+
+test(
+  "company capabilities render as four substantial cards",
+  async ({
+    page
+  }) => {
+    await page.goto(
+      "/company"
+    );
+
+
+    await ready(
+      page
+    );
+
+
+    const cards =
+      page.locator(
+        '[data-company-card="capability"]'
+      );
+
+
+    await expect(
+      cards
+    ).toHaveCount(
+      4
+    );
+
+
+    const firstBox =
+      await cards
+        .first()
+        .boundingBox();
+
+
+    if (!firstBox) {
+      throw new Error(
+        "Capability card geometry unavailable"
+      );
+    }
+
+
+    expect(
+      firstBox.height
+    ).toBeGreaterThan(
+      250
+    );
+  }
+);
+
+
+test(
+  "principles render as exactly three visual cards",
+  async ({
+    page
+  }) => {
+    await page.goto(
+      "/company"
+    );
+
+
+    await ready(
+      page
+    );
+
+
+    const cards =
+      page.locator(
+        '[data-company-card="principle"]'
+      );
+
+
+    await expect(
+      cards
+    ).toHaveCount(
+      3
+    );
+
+
+    for (
+      const title
+      of [
+        "Think offensively",
+        "Build through practice",
+        "Share knowledge"
+      ]
+    ) {
+      await expect(
+        page.getByRole(
+          "heading",
+          {
+            name:
+              title
+          }
+        )
+      ).toBeVisible();
+    }
+  }
+);
+
+
+test(
+  "ecosystem presents four visual destination cards",
+  async ({
+    page
+  }) => {
+    await page.goto(
+      "/company"
+    );
+
+
+    await ready(
+      page
+    );
+
+
+    await expect(
+      page.locator(
+        '[data-company-card="ecosystem"]'
       )
     ).toHaveCount(
       4
@@ -309,39 +397,7 @@ test(
 
 
 test(
-  "principles remain exactly three",
-  async ({
-    page
-  }) => {
-    await page.goto(
-      "/company"
-    );
-
-
-    await ready(
-      page
-    );
-
-
-    const principles =
-      page.locator(
-        '[data-company-ui="principles"]'
-      );
-
-
-    await expect(
-      principles.locator(
-        "article"
-      )
-    ).toHaveCount(
-      3
-    );
-  }
-);
-
-
-test(
-  "timeline remains compact with five milestones",
+  "timeline presents five compact milestone cards",
   async ({
     page
   }) => {
@@ -357,7 +413,7 @@ test(
 
     await expect(
       page.locator(
-        '[data-company-ui="timeline"] li'
+        '[data-company-card="timeline"]'
       )
     ).toHaveCount(
       5
@@ -367,7 +423,81 @@ test(
 
 
 test(
-  "company V3 stays overflow-free on mobile",
+  "founder is presented as a visual profile card",
+  async ({
+    page
+  }) => {
+    await page.goto(
+      "/company"
+    );
+
+
+    await ready(
+      page
+    );
+
+
+    const founder =
+      page.locator(
+        '[data-company-card="founder"]'
+      );
+
+
+    await expect(
+      founder
+    ).toBeVisible();
+
+
+    await expect(
+      founder.getByRole(
+        "heading",
+        {
+          name:
+            "Nouha Ben Brahim"
+        }
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      founder.getByText(
+        /\bowner\b/i
+      )
+    ).toHaveCount(
+      0
+    );
+  }
+);
+
+
+test(
+  "people area uses two destination cards",
+  async ({
+    page
+  }) => {
+    await page.goto(
+      "/company"
+    );
+
+
+    await ready(
+      page
+    );
+
+
+    await expect(
+      page.locator(
+        '[data-company-card="people"]'
+      )
+    ).toHaveCount(
+      2
+    );
+  }
+);
+
+
+test(
+  "company V4 remains overflow-free on mobile",
   async ({
     page
   }) => {

@@ -14,7 +14,7 @@ export const metadata:
     "Company | No Breach",
 
   description:
-    "No Breach is a Tunisia-based cybersecurity company focused on offensive security, hands-on education and community."
+    "No Breach brings together offensive security, hands-on cybersecurity education and community initiatives."
 };
 
 
@@ -45,7 +45,7 @@ const facts = [
 
   {
     label:
-      "Ecosystem",
+      "Model",
 
     value:
       "Services · Education · Community"
@@ -53,10 +53,13 @@ const facts = [
 ];
 
 
-const work = [
+const capabilities = [
   {
     index:
       "01",
+
+    code:
+      "SEC",
 
     title:
       "Security Services",
@@ -72,11 +75,14 @@ const work = [
     index:
       "02",
 
+    code:
+      "LAB",
+
     title:
       "Training Hub",
 
     description:
-      "Hands-on cybersecurity learning through practice.",
+      "Practical cybersecurity learning through hands-on work.",
 
     href:
       "/training"
@@ -86,11 +92,14 @@ const work = [
     index:
       "03",
 
+    code:
+      "CTF",
+
     title:
       "CR4CKOUT",
 
     description:
-      "Technical challenge, experimentation and community.",
+      "Challenge, experimentation and community.",
 
     href:
       "/cr4ckout"
@@ -100,11 +109,14 @@ const work = [
     index:
       "04",
 
+    code:
+      "R&D",
+
     title:
       "Knowledge",
 
     description:
-      "Security insights, activities and shared experience.",
+      "Technical insights and shared security experience.",
 
     href:
       "/insights"
@@ -117,6 +129,9 @@ const principles = [
     index:
       "01",
 
+    code:
+      "ATTACK",
+
     title:
       "Think offensively",
 
@@ -127,6 +142,9 @@ const principles = [
   {
     index:
       "02",
+
+    code:
+      "BUILD",
 
     title:
       "Build through practice",
@@ -139,6 +157,9 @@ const principles = [
     index:
       "03",
 
+    code:
+      "SHARE",
+
     title:
       "Share knowledge",
 
@@ -150,32 +171,56 @@ const principles = [
 
 const ecosystem = [
   {
+    index:
+      "01",
+
     label:
       "Services",
+
+    code:
+      "SEC",
 
     href:
       "/services"
   },
 
   {
+    index:
+      "02",
+
     label:
       "Training",
+
+    code:
+      "LAB",
 
     href:
       "/training"
   },
 
   {
+    index:
+      "03",
+
     label:
       "CR4CKOUT",
+
+    code:
+      "CTF",
 
     href:
       "/cr4ckout"
   },
 
   {
+    index:
+      "04",
+
     label:
       "Insights",
+
+    code:
+      "R&D",
 
     href:
       "/insights"
@@ -227,6 +272,7 @@ const timeline = [
 
 
 function Arrow() {
+
   return (
     <span
       className={
@@ -250,6 +296,7 @@ function SectionLabel({
   label:
     string;
 }) {
+
   return (
     <div
       className={
@@ -262,9 +309,9 @@ function SectionLabel({
         }
       </span>
 
-      <span>
+      <i>
         /
-      </span>
+      </i>
 
       <strong>
         {
@@ -277,12 +324,13 @@ function SectionLabel({
 
 
 export default function CompanyPage() {
+
   return (
     <div
       className={
         styles.page
       }
-      data-company-page="v3"
+      data-company-page="v4"
     >
       <section
         className={
@@ -292,41 +340,43 @@ export default function CompanyPage() {
       >
         <div
           className={
+            styles.heroGlow
+          }
+          aria-hidden="true"
+        />
+
+        <div
+          className={
             styles.heroInner
           }
         >
           <div
             className={
-              styles.heroMain
+              styles.heroCopy
             }
-            data-company-ui="hero-main"
+            data-company-ui="hero-copy"
           >
             <div
               className={
                 styles.kicker
               }
             >
+              <span />
+
               NO BREACH / TUNISIA
             </div>
 
             <h1>
-              Security, education
+              Offensive security
               <span>
-                and community.
+                beyond the assessment.
               </span>
-
-              <em>
-                One offensive mindset.
-              </em>
             </h1>
 
-            <p
-              className={
-                styles.heroIntro
-              }
-            >
-              A cybersecurity organization built from offensive security,
-              connecting practical services, training and community.
+            <p>
+              Security services, practical education
+              and community — connected by one
+              offensive mindset.
             </p>
 
             <div
@@ -337,7 +387,7 @@ export default function CompanyPage() {
               <Link
                 href="/services"
                 className={
-                  styles.primaryLink
+                  styles.primaryButton
                 }
               >
                 Explore services
@@ -348,7 +398,7 @@ export default function CompanyPage() {
               <Link
                 href="/company/founder"
                 className={
-                  styles.secondaryLink
+                  styles.secondaryButton
                 }
               >
                 Founder
@@ -358,29 +408,57 @@ export default function CompanyPage() {
             </div>
           </div>
 
-          <aside
+
+          <div
             className={
-              styles.identity
+              styles.profileCard
             }
-            data-company-ui="identity"
+            data-company-ui="profile-card"
           >
             <div
               className={
-                styles.identityTop
+                styles.profileHeader
               }
             >
-              <span>
+              <div
+                className={
+                  styles.profileLogo
+                }
+              >
                 NB
-              </span>
+              </div>
 
-              <small>
-                COMPANY
-              </small>
+              <div>
+                <span>
+                  COMPANY PROFILE
+                </span>
+
+                <small>
+                  OFFENSIVE SECURITY
+                </small>
+              </div>
             </div>
 
             <div
               className={
-                styles.factList
+                styles.profileSignal
+              }
+              aria-hidden="true"
+            >
+              <span />
+
+              <span />
+
+              <span />
+
+              <span />
+
+              <span />
+            </div>
+
+            <div
+              className={
+                styles.factGrid
               }
               data-company-ui="facts"
             >
@@ -391,7 +469,7 @@ export default function CompanyPage() {
                   ) => (
                     <div
                       className={
-                        styles.fact
+                        styles.factCard
                       }
                       key={
                         fact.label
@@ -413,7 +491,25 @@ export default function CompanyPage() {
                 )
               }
             </div>
-          </aside>
+
+            <div
+              className={
+                styles.profileFooter
+              }
+            >
+              <span>
+                SECURITY
+              </span>
+
+              <span>
+                EDUCATION
+              </span>
+
+              <span>
+                COMMUNITY
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -436,15 +532,21 @@ export default function CompanyPage() {
           </a>
 
           <a
-            href="#work"
+            href="#capabilities"
           >
-            Work
+            Capabilities
           </a>
 
           <a
             href="#principles"
           >
             Principles
+          </a>
+
+          <a
+            href="#ecosystem"
+          >
+            Ecosystem
           </a>
 
           <a
@@ -481,19 +583,74 @@ export default function CompanyPage() {
 
           <div
             className={
-              styles.companyIntro
+              styles.introGrid
             }
           >
-            <h2>
-              A cybersecurity organization
-              built from offensive security.
-            </h2>
+            <div
+              className={
+                styles.statementCard
+              }
+              data-company-card="statement"
+            >
+              <span
+                className={
+                  styles.cardCode
+                }
+              >
+                NB / 01
+              </span>
 
-            <p>
-              No Breach combines security services,
-              hands-on education and community initiatives
-              around practical attack thinking.
-            </p>
+              <h2>
+                A cybersecurity organization
+                built from offensive security.
+              </h2>
+
+              <p>
+                No Breach connects technical security,
+                practical learning and community.
+              </p>
+            </div>
+
+            <div
+              className={
+                styles.mindsetCard
+              }
+              data-company-card="mindset"
+            >
+              <div
+                className={
+                  styles.mindsetVisual
+                }
+                aria-hidden="true"
+              >
+                <span>
+                  TEST
+                </span>
+
+                <span>
+                  LEARN
+                </span>
+
+                <span>
+                  SHARE
+                </span>
+              </div>
+
+              <div
+                className={
+                  styles.mindsetCaption
+                }
+              >
+                <span>
+                  CORE MINDSET
+                </span>
+
+                <p>
+                  Practical attack thinking
+                  across every part of the company.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -517,28 +674,76 @@ export default function CompanyPage() {
 
           <div
             className={
-              styles.storyGrid
+              styles.flow
             }
+            data-company-ui="approach-flow"
           >
-            <h2>
-              Test.
-              <br />
-              Learn.
-              <br />
-              Share.
-            </h2>
+            <article>
+              <span>
+                01
+              </span>
 
-            <p>
-              The same offensive-security foundation connects
-              client work, technical learning and community activity.
-            </p>
+              <strong>
+                Test
+              </strong>
+
+              <p>
+                Examine real attack surfaces.
+              </p>
+            </article>
+
+            <div
+              className={
+                styles.flowArrow
+              }
+              aria-hidden="true"
+            >
+              →
+            </div>
+
+            <article>
+              <span>
+                02
+              </span>
+
+              <strong>
+                Learn
+              </strong>
+
+              <p>
+                Turn practice into capability.
+              </p>
+            </article>
+
+            <div
+              className={
+                styles.flowArrow
+              }
+              aria-hidden="true"
+            >
+              →
+            </div>
+
+            <article>
+              <span>
+                03
+              </span>
+
+              <strong>
+                Share
+              </strong>
+
+              <p>
+                Strengthen the wider ecosystem.
+              </p>
+            </article>
           </div>
         </div>
       </section>
 
 
       <section
-        id="work"
+        id="capabilities"
         className={
           styles.section
         }
@@ -549,30 +754,32 @@ export default function CompanyPage() {
             styles.container
           }
         >
-          <SectionLabel
-            index="03"
-            label="What we do"
-          />
-
           <div
             className={
-              styles.sectionHeading
+              styles.sectionHeader
             }
           >
+            <SectionLabel
+              index="03"
+              label="What we do"
+            />
+
             <h2>
-              Four expressions
-              of one security mindset.
+              Four parts.
+              <span>
+                One security foundation.
+              </span>
             </h2>
           </div>
 
           <div
             className={
-              styles.workList
+              styles.capabilityGrid
             }
-            data-company-ui="work-list"
+            data-company-ui="capability-grid"
           >
             {
-              work.map(
+              capabilities.map(
                 (
                   item
                 ) => (
@@ -581,35 +788,79 @@ export default function CompanyPage() {
                       item.href
                     }
                     className={
-                      styles.workRow
+                      styles.capabilityCard
                     }
+                    data-company-card="capability"
                     key={
                       item.index
                     }
                   >
-                    <span
+                    <div
                       className={
-                        styles.workIndex
+                        styles.capabilityTop
                       }
                     >
-                      {
-                        item.index
-                      }
-                    </span>
+                      <span
+                        className={
+                          styles.capabilityIndex
+                        }
+                      >
+                        {
+                          item.index
+                        }
+                      </span>
 
-                    <h3>
-                      {
-                        item.title
-                      }
-                    </h3>
+                      <span
+                        className={
+                          styles.capabilityCode
+                        }
+                      >
+                        {
+                          item.code
+                        }
+                      </span>
+                    </div>
 
-                    <p>
-                      {
-                        item.description
+                    <div
+                      className={
+                        styles.capabilityVisual
                       }
-                    </p>
+                      aria-hidden="true"
+                    >
+                      <span />
 
-                    <Arrow />
+                      <span />
+
+                      <span />
+
+                      <i />
+                    </div>
+
+                    <div
+                      className={
+                        styles.capabilityCopy
+                      }
+                    >
+                      <h3>
+                        {
+                          item.title
+                        }
+                      </h3>
+
+                      <p>
+                        {
+                          item.description
+                        }
+                      </p>
+                    </div>
+
+                    <div
+                      className={
+                        styles.cardArrow
+                      }
+                    >
+                      <Arrow />
+                    </div>
                   </Link>
                 )
               )
@@ -622,7 +873,7 @@ export default function CompanyPage() {
       <section
         id="principles"
         className={
-          styles.section
+          `${styles.section} ${styles.principleSection}`
         }
         data-company-section="principles"
       >
@@ -631,16 +882,26 @@ export default function CompanyPage() {
             styles.container
           }
         >
-          <SectionLabel
-            index="04"
-            label="Principles"
-          />
+          <div
+            className={
+              styles.sectionHeader
+            }
+          >
+            <SectionLabel
+              index="04"
+              label="Principles"
+            />
+
+            <h2>
+              How we think.
+            </h2>
+          </div>
 
           <div
             className={
-              styles.principles
+              styles.principleGrid
             }
-            data-company-ui="principles"
+            data-company-ui="principle-grid"
           >
             {
               principles.map(
@@ -649,17 +910,39 @@ export default function CompanyPage() {
                 ) => (
                   <article
                     className={
-                      styles.principle
+                      styles.principleCard
                     }
+                    data-company-card="principle"
                     key={
                       principle.index
                     }
                   >
-                    <span>
+                    <div
+                      className={
+                        styles.principleVisual
+                      }
+                      aria-hidden="true"
+                    >
+                      <span>
+                        {
+                          principle.code
+                        }
+                      </span>
+
+                      <i />
+
+                      <i />
+                    </div>
+
+                    <div
+                      className={
+                        styles.principleNumber
+                      }
+                    >
                       {
                         principle.index
                       }
-                    </span>
+                    </div>
 
                     <h3>
                       {
@@ -674,16 +957,17 @@ export default function CompanyPage() {
                     </p>
                   </article>
                 )
-              )
-            }
+                )
+              }
           </div>
         </div>
       </section>
 
 
       <section
+        id="ecosystem"
         className={
-          `${styles.section} ${styles.ecosystemSection}`
+          styles.section
         }
         data-company-section="ecosystem"
       >
@@ -692,27 +976,29 @@ export default function CompanyPage() {
             styles.container
           }
         >
-          <SectionLabel
-            index="05"
-            label="Ecosystem"
-          />
-
           <div
             className={
-              styles.ecosystemHeader
+              styles.sectionHeader
             }
           >
+            <SectionLabel
+              index="05"
+              label="Ecosystem"
+            />
+
             <h2>
-              Connected by one
-              technical foundation.
+              Connected.
+              <span>
+                Not isolated.
+              </span>
             </h2>
           </div>
 
           <div
             className={
-              styles.ecosystemLinks
+              styles.ecosystemGrid
             }
-            data-company-ui="ecosystem-links"
+            data-company-ui="ecosystem-grid"
           >
             {
               ecosystem.map(
@@ -723,21 +1009,61 @@ export default function CompanyPage() {
                     href={
                       item.href
                     }
+                    className={
+                      styles.ecosystemCard
+                    }
+                    data-company-card="ecosystem"
                     key={
-                      item.label
+                      item.index
                     }
                   >
-                    <span>
+                    <span
+                      className={
+                        styles.ecosystemIndex
+                      }
+                    >
+                      {
+                        item.index
+                      }
+                    </span>
+
+                    <div
+                      className={
+                        styles.ecosystemIcon
+                      }
+                      aria-hidden="true"
+                    >
+                      {
+                        item.code
+                      }
+                    </div>
+
+                    <strong>
                       {
                         item.label
                       }
-                    </span>
+                    </strong>
 
                     <Arrow />
                   </Link>
                 )
-              )
+                )
+              }
+          </div>
+
+          <div
+            className={
+              styles.ecosystemLine
             }
+            aria-hidden="true"
+          >
+            <span />
+
+            <strong>
+              NO BREACH
+            </strong>
+
+            <span />
           </div>
         </div>
       </section>
@@ -746,7 +1072,7 @@ export default function CompanyPage() {
       <section
         id="timeline"
         className={
-          styles.section
+          `${styles.section} ${styles.timelineSection}`
         }
         data-company-section="timeline"
       >
@@ -760,11 +1086,11 @@ export default function CompanyPage() {
             label="Timeline"
           />
 
-          <ol
+          <div
             className={
-              styles.timeline
+              styles.timelineGrid
             }
-            data-company-ui="timeline"
+            data-company-ui="timeline-grid"
           >
             {
               timeline.map(
@@ -772,14 +1098,18 @@ export default function CompanyPage() {
                   item,
                   index
                 ) => (
-                  <li
+                  <article
+                    className={
+                      styles.timelineCard
+                    }
+                    data-company-card="timeline"
                     key={
                       `${item.year}-${item.title}`
                     }
                   >
                     <span
                       className={
-                        styles.timelineIndex
+                        styles.timelineNumber
                       }
                     >
                       {
@@ -792,6 +1122,13 @@ export default function CompanyPage() {
                       }
                     </span>
 
+                    <div
+                      className={
+                        styles.timelineDot
+                      }
+                      aria-hidden="true"
+                    />
+
                     <strong>
                       {
                         item.year
@@ -803,11 +1140,11 @@ export default function CompanyPage() {
                         item.title
                       }
                     </p>
-                  </li>
+                  </article>
                 )
-              )
-            }
-          </ol>
+                )
+              }
+          </div>
         </div>
       </section>
 
@@ -831,24 +1168,45 @@ export default function CompanyPage() {
 
           <div
             className={
-              styles.founder
+              styles.founderCard
             }
+            data-company-card="founder"
           >
             <div
               className={
-                styles.monogram
+                styles.founderVisual
               }
               aria-hidden="true"
             >
-              NB
+              <div
+                className={
+                  styles.monogram
+                }
+              >
+                NB
+              </div>
+
+              <div
+                className={
+                  styles.founderGrid
+                }
+              />
+
+              <span>
+                FOUNDER
+              </span>
             </div>
 
             <div
               className={
-                styles.founderCopy
+                styles.founderContent
               }
             >
-              <span>
+              <span
+                className={
+                  styles.founderEyebrow
+                }
+              >
                 FOUNDER OF NO BREACH
               </span>
 
@@ -861,10 +1219,28 @@ export default function CompanyPage() {
                 training and community development.
               </p>
 
+              <div
+                className={
+                  styles.focusTags
+                }
+              >
+                <span>
+                  Offensive Security
+                </span>
+
+                <span>
+                  Training
+                </span>
+
+                <span>
+                  Community
+                </span>
+              </div>
+
               <Link
                 href="/company/founder"
                 className={
-                  styles.inlineLink
+                  styles.inlineAction
                 }
               >
                 Meet the founder
@@ -890,42 +1266,96 @@ export default function CompanyPage() {
         >
           <SectionLabel
             index="08"
-            label="People"
+            label="People & projects"
           />
 
           <div
             className={
-              styles.peopleRow
+              styles.peopleGrid
             }
+            data-company-ui="people-grid"
           >
-            <div>
-              <h2>
-                People and projects
-                behind the work.
-              </h2>
-            </div>
-
-            <div
+            <Link
+              href="/company/team"
               className={
-                styles.peopleLinks
+                styles.peopleCard
               }
+              data-company-card="people"
             >
-              <Link
-                href="/company/team"
+              <div
+                className={
+                  styles.peopleVisual
+                }
+                aria-hidden="true"
               >
-                Team
+                <span>
+                  TEAM
+                </span>
 
-                <Arrow />
-              </Link>
+                <div />
 
-              <Link
-                href="/company/internships"
+                <div />
+
+                <div />
+              </div>
+
+              <div>
+                <span>
+                  COMPANY
+                </span>
+
+                <h3>
+                  Team
+                </h3>
+
+                <p>
+                  People behind the work.
+                </p>
+              </div>
+
+              <Arrow />
+            </Link>
+
+            <Link
+              href="/company/internships"
+              className={
+                styles.peopleCard
+              }
+              data-company-card="people"
+            >
+              <div
+                className={
+                  `${styles.peopleVisual} ${styles.projectVisual}`
+                }
+                aria-hidden="true"
               >
-                Internship projects
+                <span>
+                  LAB
+                </span>
 
-                <Arrow />
-              </Link>
-            </div>
+                <div />
+
+                <div />
+
+                <div />
+              </div>
+
+              <div>
+                <span>
+                  PROJECTS
+                </span>
+
+                <h3>
+                  Internship work
+                </h3>
+
+                <p>
+                  Applied security projects.
+                </p>
+              </div>
+
+              <Arrow />
+            </Link>
           </div>
         </div>
       </section>
@@ -939,25 +1369,46 @@ export default function CompanyPage() {
       >
         <div
           className={
-            styles.ctaInner
+            styles.ctaCard
           }
+          data-company-card="cta"
         >
-          <SectionLabel
-            index="09"
-            label="Connect"
-          />
+          <div
+            className={
+              styles.ctaVisual
+            }
+            aria-hidden="true"
+          >
+            <span>
+              NB
+            </span>
+
+            <i />
+
+            <i />
+
+            <i />
+          </div>
 
           <div
             className={
               styles.ctaContent
             }
           >
+            <SectionLabel
+              index="09"
+              label="Connect"
+            />
+
             <h2>
-              Work with No Breach.
+              Work with
+              <span>
+                No Breach.
+              </span>
             </h2>
 
             <p>
-              Examine your systems from an attacker’s perspective.
+              Examine systems from an attacker’s perspective.
             </p>
 
             <div
@@ -968,7 +1419,7 @@ export default function CompanyPage() {
               <Link
                 href="/services"
                 className={
-                  styles.primaryLink
+                  styles.primaryButton
                 }
               >
                 Explore services
@@ -979,7 +1430,7 @@ export default function CompanyPage() {
               <Link
                 href="/contact"
                 className={
-                  styles.secondaryLink
+                  styles.secondaryButton
                 }
               >
                 Contact

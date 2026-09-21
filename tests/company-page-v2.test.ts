@@ -26,7 +26,7 @@ function read(
 
 
 describe(
-  "company page v3",
+  "company page v4",
   () => {
     const page =
       read(
@@ -40,17 +40,17 @@ describe(
 
 
     it(
-      "uses the V3 minimalist company architecture",
+      "uses the V4 company experience",
       () => {
         expect(
           page
         ).toContain(
-          'data-company-page="v3"'
+          'data-company-page="v4"'
         );
 
         expect(
           css.match(
-            /NB_COMPANY_PAGE_V3/g
+            /NB_COMPANY_PAGE_V4/g
           )?.length
         ).toBe(
           1
@@ -59,109 +59,35 @@ describe(
         expect(
           css
         ).not.toContain(
-          "NB_COMPANY_PAGE_V2"
+          "NB_COMPANY_PAGE_V3"
         );
       }
     );
 
 
     it(
-      "removes the large technical company diagrams",
-      () => {
-        expect(
-          page
-        ).not.toContain(
-          'data-ui="company-system-map"'
-        );
-
-        expect(
-          page
-        ).not.toContain(
-          'data-ui="company-ecosystem-map"'
-        );
-
-        expect(
-          css
-        ).not.toContain(
-          ".systemCanvas"
-        );
-
-        expect(
-          css
-        ).not.toContain(
-          ".ecosystemCore"
-        );
-      }
-    );
-
-
-    it(
-      "keeps the company page concise",
-      () => {
-        expect(
-          page
-        ).toContain(
-          "One offensive mindset."
-        );
-
-        expect(
-          page
-        ).toContain(
-          "Test."
-        );
-
-        expect(
-          page
-        ).toContain(
-          "Learn."
-        );
-
-        expect(
-          page
-        ).toContain(
-          "Share."
-        );
-
-
-        const sourceWords =
-          page
-            .replace(
-              /[{}()[\]"'`<>/=;:,.]/g,
-              " "
-            )
-            .split(
-              /\s+/
-            )
-            .filter(
-              Boolean
-            )
-            .length;
-
-
-        expect(
-          sourceWords
-        ).toBeLessThan(
-          1900
-        );
-      }
-    );
-
-
-    it(
-      "keeps the three company principles",
+      "balances text with visual card architecture",
       () => {
         for (
-          const title
+          const token
           of [
-            "Think offensively",
-            "Build through practice",
-            "Share knowledge"
+            'data-company-ui="profile-card"',
+            'data-company-card="statement"',
+            'data-company-card="mindset"',
+            'data-company-ui="approach-flow"',
+            'data-company-ui="capability-grid"',
+            'data-company-ui="principle-grid"',
+            'data-company-ui="ecosystem-grid"',
+            'data-company-ui="timeline-grid"',
+            'data-company-card="founder"',
+            'data-company-ui="people-grid"',
+            'data-company-card="cta"'
           ]
         ) {
           expect(
             page
           ).toContain(
-            title
+            token
           );
         }
       }
@@ -169,10 +95,87 @@ describe(
 
 
     it(
-      "preserves verified company facts",
+      "keeps four capability cards",
+      () => {
+        const block =
+          page.slice(
+            page.indexOf(
+              "const capabilities ="
+            ),
+            page.indexOf(
+              "const principles ="
+            )
+          );
+
+
+        expect(
+          (
+            block.match(
+              /index:/g
+            )
+            ??
+            []
+          ).length
+        ).toBe(
+          4
+        );
+      }
+    );
+
+
+    it(
+      "keeps exactly three principles",
+      () => {
+        const block =
+          page.slice(
+            page.indexOf(
+              "const principles ="
+            ),
+            page.indexOf(
+              "const ecosystem ="
+            )
+          );
+
+
+        expect(
+          (
+            block.match(
+              /title:/g
+            )
+            ??
+            []
+          ).length
+        ).toBe(
+          3
+        );
+
+
+        expect(
+          page
+        ).toContain(
+          "Think offensively"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Build through practice"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Share knowledge"
+        );
+      }
+    );
+
+
+    it(
+      "keeps verified company facts and no ownership claim",
       () => {
         for (
-          const value
+          const text
           of [
             "2023",
             "Tunis, Tunisia",
@@ -183,7 +186,7 @@ describe(
           expect(
             page
           ).toContain(
-            value
+            text
           );
         }
 
@@ -198,37 +201,31 @@ describe(
 
 
     it(
-      "uses tighter editorial spacing",
+      "implements cards with restrained visual styling",
       () => {
-        expect(
-          css
-        ).toContain(
-          "1180px"
-        );
-
-        expect(
-          css
-        ).toContain(
-          "min-height:\n    560px"
-        );
-
-        expect(
-          css
-        ).toContain(
-          ".container"
-        );
-
-        expect(
-          css
-        ).toContain(
-          "max-width: 620px"
-        );
-
-        expect(
-          css
-        ).toContain(
-          "prefers-reduced-motion"
-        );
+        for (
+          const token
+          of [
+            ".profileCard",
+            ".statementCard",
+            ".mindsetCard",
+            ".capabilityCard",
+            ".principleCard",
+            ".ecosystemCard",
+            ".timelineCard",
+            ".founderCard",
+            ".peopleCard",
+            ".ctaCard",
+            "border-radius:",
+            "prefers-reduced-motion"
+          ]
+        ) {
+          expect(
+            css
+          ).toContain(
+            token
+          );
+        }
       }
     );
   }
