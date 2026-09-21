@@ -1115,3 +1115,199 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_PREMIUM_HERO_SYSTEM_V6
+   Technical lab / internship hero.
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  padding:
+    clamp(
+      4rem,
+      6.5vw,
+      5.8rem
+    )
+    0;
+
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.09
+    );
+
+  background:
+    radial-gradient(
+      circle at 80% 25%,
+      rgba(
+        var(--brand-cyan-rgb),
+        0.085
+      ),
+      transparent 24rem
+    ),
+    radial-gradient(
+      circle at 91% 82%,
+      rgba(
+        var(--brand-violet-rgb),
+        0.13
+      ),
+      transparent 28rem
+    ),
+    #08090b;
+}
+
+
+.hero::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(
+        var(--brand-cyan-rgb),
+        0.035
+      )
+      1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(
+        var(--brand-cyan-rgb),
+        0.035
+      )
+      1px,
+      transparent 1px
+    );
+
+  background-size:
+    42px 42px;
+
+  mask-image:
+    linear-gradient(
+      90deg,
+      transparent 24%,
+      rgba(
+        0,
+        0,
+        0,
+        0.88
+      )
+    );
+
+  content: "";
+}
+
+
+.heroTitle {
+  max-width:
+    13ch;
+
+  font-size:
+    clamp(
+      3.25rem,
+      6vw,
+      5.7rem
+    );
+
+  font-weight:
+    480;
+
+  letter-spacing:
+    -0.068em;
+
+  line-height:
+    0.93;
+}
+
+
+.heroPanel {
+  position: relative;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.11
+    );
+
+  border-radius:
+    10px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(
+        var(--brand-cyan-rgb),
+        0.06
+      ),
+      transparent 45%
+    ),
+    rgba(
+      255,
+      255,
+      255,
+      0.012
+    );
+}
+
+
+.heroPanel::after {
+  position: absolute;
+
+  right: 0;
+  bottom: 0;
+
+  width: 78px;
+  height: 44px;
+
+  border-right:
+    1px solid
+    rgba(
+      var(--brand-violet-rgb),
+      0.38
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      var(--brand-violet-rgb),
+      0.38
+    );
+
+  content: "";
+}
+
+
+@media (max-width: 640px) {
+
+  .hero {
+    padding:
+      3.2rem
+      0;
+  }
+
+
+  .heroTitle {
+    font-size:
+      clamp(
+        2.7rem,
+        12vw,
+        3.7rem
+      );
+  }
+
+}

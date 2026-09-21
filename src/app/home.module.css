@@ -2551,3 +2551,729 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_PREMIUM_HERO_SYSTEM_V6
+   Homepage flagship hero.
+   ========================================================================== */
+
+.compactHero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  min-height:
+    min(
+      720px,
+      calc(
+        100svh - 62px
+      )
+    );
+
+  display: flex;
+  align-items: center;
+
+  padding:
+    clamp(
+      4.2rem,
+      7vw,
+      6rem
+    )
+    0;
+
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.095
+    );
+
+  background:
+    radial-gradient(
+      ellipse at 76% 28%,
+      rgba(
+        var(--brand-violet-rgb),
+        0.17
+      ),
+      transparent 28rem
+    ),
+    radial-gradient(
+      ellipse at 88% 78%,
+      rgba(
+        var(--brand-cyan-rgb),
+        0.075
+      ),
+      transparent 23rem
+    ),
+    linear-gradient(
+      120deg,
+      #08090b 0%,
+      #08090b 54%,
+      rgba(
+        11,
+        11,
+        16,
+        0.98
+      ) 100%
+    );
+}
+
+
+.compactHero::before {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+
+  height: auto;
+
+  background-image:
+    linear-gradient(
+      rgba(
+        var(--brand-blue-rgb),
+        0.045
+      )
+      1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(
+        var(--brand-blue-rgb),
+        0.045
+      )
+      1px,
+      transparent 1px
+    );
+
+  background-size:
+    52px 52px;
+
+  mask-image:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 34%,
+      rgba(
+        0,
+        0,
+        0,
+        0.85
+      ) 100%
+    );
+
+  opacity: 1;
+  content: "";
+}
+
+
+.compactHero::after {
+  position: absolute;
+  z-index: -1;
+
+  top:
+    8%;
+
+  right:
+    max(
+      2rem,
+      calc(
+        (
+          100vw - 1280px
+        ) / 2
+      )
+    );
+
+  width:
+    min(
+      38vw,
+      520px
+    );
+
+  height:
+    70%;
+
+  border-top:
+    1px solid
+    rgba(
+      var(--brand-cyan-rgb),
+      0.19
+    );
+
+  border-right:
+    1px solid
+    rgba(
+      var(--brand-violet-rgb),
+      0.2
+    );
+
+  content: "";
+  pointer-events: none;
+}
+
+
+.compactHeroGrid {
+  position: relative;
+  z-index: 2;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1.1fr
+    )
+    minmax(
+      330px,
+      0.9fr
+    );
+
+  gap:
+    clamp(
+      3.5rem,
+      7vw,
+      7rem
+    );
+}
+
+
+.compactHeroCopy {
+  position: relative;
+
+  max-width:
+    780px;
+
+  padding-left:
+    clamp(
+      1rem,
+      2vw,
+      1.5rem
+    );
+}
+
+
+.compactHeroCopy::before {
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+  left: 0;
+
+  width: 1px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      var(--brand-cyan),
+      rgba(
+        var(--brand-violet-rgb),
+        0.5
+      ) 46%,
+      transparent 88%
+    );
+
+  content: "";
+}
+
+
+.compactEyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+
+  color:
+    var(--brand-blue);
+
+  font-size:
+    0.58rem;
+
+  letter-spacing:
+    0.16em;
+}
+
+
+.compactEyebrow::before {
+  width: 22px;
+  height: 1px;
+
+  background:
+    var(--brand-cyan);
+
+  content: "";
+}
+
+
+.compactHeroTitle {
+  max-width:
+    13.5ch;
+
+  margin-top:
+    1rem;
+
+  font-size:
+    clamp(
+      3.5rem,
+      6.8vw,
+      6.35rem
+    );
+
+  font-weight:
+    480;
+
+  letter-spacing:
+    -0.072em;
+
+  line-height:
+    0.9;
+
+  text-wrap:
+    balance;
+}
+
+
+.compactHeroText {
+  max-width:
+    610px;
+
+  margin-top:
+    1.45rem;
+
+  font-size:
+    clamp(
+      0.95rem,
+      1.3vw,
+      1.04rem
+    );
+
+  line-height:
+    1.74;
+}
+
+
+.compactActions {
+  margin-top:
+    1.9rem;
+}
+
+
+/*
+ * Attack-surface visual.
+ */
+
+.compactSignal {
+  position: relative;
+
+  min-height:
+    420px;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.11
+    );
+
+  border-radius:
+    11px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(
+        var(--brand-violet-rgb),
+        0.095
+      ),
+      transparent 44%
+    ),
+    radial-gradient(
+      circle at 65% 70%,
+      rgba(
+        var(--brand-cyan-rgb),
+        0.045
+      ),
+      transparent 48%
+    ),
+    #0a0b0e;
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(
+      255,
+      255,
+      255,
+      0.035
+    );
+}
+
+
+.compactSignal::before {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(
+        var(--brand-cyan-rgb),
+        0.045
+      )
+      1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(
+        var(--brand-cyan-rgb),
+        0.045
+      )
+      1px,
+      transparent 1px
+    );
+
+  background-size:
+    34px 34px;
+
+  content: "";
+  pointer-events: none;
+}
+
+
+.compactSignal::after {
+  position: absolute;
+
+  right: 1rem;
+  bottom: 1rem;
+
+  width: 72px;
+  height: 42px;
+
+  border-right:
+    1px solid
+    rgba(
+      var(--brand-cyan-rgb),
+      0.3
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      var(--brand-cyan-rgb),
+      0.3
+    );
+
+  content: "";
+  pointer-events: none;
+}
+
+
+.signalTop {
+  position: relative;
+  z-index: 3;
+
+  padding:
+    0.85rem
+    1rem;
+
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  background:
+    rgba(
+      8,
+      9,
+      11,
+      0.72
+    );
+
+  backdrop-filter:
+    blur(8px);
+}
+
+
+.signalGraph {
+  height:
+    350px;
+}
+
+
+.signalLines {
+  opacity:
+    0.86;
+}
+
+
+.signalLines path {
+  stroke:
+    rgba(
+      var(--brand-blue-rgb),
+      0.3
+    );
+
+  stroke-width:
+    1;
+}
+
+
+.signalNode {
+  width:
+    58px;
+
+  height:
+    58px;
+
+  border:
+    1px solid
+    rgba(
+      var(--brand-cyan-rgb),
+      0.3
+    );
+
+  background:
+    rgba(
+      7,
+      9,
+      12,
+      0.94
+    );
+
+  box-shadow:
+    0 0 0 5px
+    rgba(
+      var(--brand-cyan-rgb),
+      0.025
+    );
+
+  font-size:
+    0.54rem;
+
+  letter-spacing:
+    0.06em;
+}
+
+
+@media (
+  prefers-reduced-motion:
+  no-preference
+) {
+
+  .compactSignal::before {
+    animation:
+      nbHomeHeroGridDrift
+      20s
+      linear
+      infinite;
+  }
+
+
+  .signalNode {
+    animation:
+      nbHeroNodeBreathe
+      5s
+      ease-in-out
+      infinite;
+  }
+
+
+  .signalNodeApi,
+  .signalNodeUser {
+    animation-delay:
+      -1.7s;
+  }
+
+
+  .signalNodeAuth,
+  .signalNodeData {
+    animation-delay:
+      -3.2s;
+  }
+
+}
+
+
+@keyframes nbHomeHeroGridDrift {
+
+  from {
+    background-position:
+      0 0,
+      0 0;
+  }
+
+  to {
+    background-position:
+      34px 34px,
+      34px 34px;
+  }
+
+}
+
+
+@keyframes nbHeroNodeBreathe {
+
+  0%,
+  100% {
+    border-color:
+      rgba(
+        var(--brand-cyan-rgb),
+        0.24
+      );
+  }
+
+  50% {
+    border-color:
+      rgba(
+        var(--brand-cyan-rgb),
+        0.52
+      );
+  }
+
+}
+
+
+@media (max-width: 1024px) {
+
+  .compactHero {
+    min-height:
+      auto;
+  }
+
+
+  .compactHeroGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      2.7rem;
+  }
+
+
+  .compactSignal {
+    max-width:
+      720px;
+
+    width:
+      100%;
+  }
+
+
+  .compactHero::after {
+    opacity:
+      0.5;
+  }
+
+}
+
+
+@media (max-width: 640px) {
+
+  .compactHero {
+    min-height:
+      auto;
+
+    padding:
+      3.3rem 0
+      3.8rem;
+  }
+
+
+  .compactHero::before {
+    background-size:
+      38px 38px;
+
+    mask-image:
+      linear-gradient(
+        to bottom,
+        transparent 4%,
+        rgba(
+          0,
+          0,
+          0,
+          0.7
+        ) 100%
+      );
+  }
+
+
+  .compactHero::after {
+    top:
+      1rem;
+
+    right:
+      1rem;
+
+    width:
+      120px;
+
+    height:
+      75px;
+  }
+
+
+  .compactHeroCopy {
+    padding-left:
+      0.9rem;
+  }
+
+
+  .compactHeroTitle {
+    max-width:
+      13ch;
+
+    font-size:
+      clamp(
+        2.75rem,
+        13vw,
+        3.8rem
+      );
+
+    line-height:
+      0.94;
+  }
+
+
+  .compactSignal {
+    min-height:
+      320px;
+  }
+
+
+  .signalGraph {
+    height:
+      255px;
+  }
+
+
+  .signalNode {
+    width:
+      50px;
+
+    height:
+      50px;
+  }
+
+}
+
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+
+  .compactSignal::before,
+  .signalNode {
+    animation:
+      none;
+  }
+
+}

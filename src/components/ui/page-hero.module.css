@@ -518,3 +518,606 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_PREMIUM_HERO_SYSTEM_V6
+
+   No Breach signature hero:
+   quiet technical geometry + restrained brand illumination.
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  padding-block:
+    clamp(
+      3.75rem,
+      6vw,
+      5.4rem
+    );
+
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.04
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.09
+    );
+
+  background:
+    radial-gradient(
+      circle at 84% 24%,
+      rgba(
+        var(--brand-violet-rgb),
+        0.14
+      ),
+      transparent 29rem
+    ),
+    radial-gradient(
+      circle at 72% 86%,
+      rgba(
+        var(--brand-cyan-rgb),
+        0.055
+      ),
+      transparent 22rem
+    ),
+    linear-gradient(
+      180deg,
+      rgba(
+        255,
+        255,
+        255,
+        0.012
+      ),
+      transparent 78%
+    ),
+    #08090b;
+}
+
+
+/*
+ * Technical grid.
+ */
+
+.hero::before {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(
+        var(--brand-blue-rgb),
+        0.038
+      )
+      1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(
+        var(--brand-blue-rgb),
+        0.038
+      )
+      1px,
+      transparent 1px
+    );
+
+  background-size:
+    48px 48px;
+
+  mask-image:
+    linear-gradient(
+      to right,
+      transparent 0%,
+      rgba(
+        0,
+        0,
+        0,
+        0.32
+      ) 40%,
+      rgba(
+        0,
+        0,
+        0,
+        0.95
+      ) 100%
+    );
+
+  content: "";
+  pointer-events: none;
+}
+
+
+/*
+ * Large architectural corner frame.
+ */
+
+.hero::after {
+  position: absolute;
+  z-index: -1;
+
+  top:
+    clamp(
+      1.5rem,
+      4vw,
+      3.5rem
+    );
+
+  right:
+    max(
+      2rem,
+      calc(
+        (
+          100vw - 1280px
+        ) / 2
+      )
+    );
+
+  width:
+    min(
+      31vw,
+      390px
+    );
+
+  height:
+    min(
+      18vw,
+      225px
+    );
+
+  border-top:
+    1px solid
+    rgba(
+      var(--brand-cyan-rgb),
+      0.23
+    );
+
+  border-right:
+    1px solid
+    rgba(
+      var(--brand-violet-rgb),
+      0.2
+    );
+
+  content: "";
+  pointer-events: none;
+}
+
+
+/*
+ * Hero content stays above technical atmosphere.
+ */
+
+.inner,
+.layout,
+.grid {
+  position: relative;
+  z-index: 2;
+}
+
+
+/*
+ * Add a quiet vertical guide to the copy.
+ */
+
+.copy,
+.content {
+  position: relative;
+
+  padding-left:
+    clamp(
+      1rem,
+      2vw,
+      1.5rem
+    );
+}
+
+
+.copy::before,
+.content::before {
+  position: absolute;
+
+  top: 0.25rem;
+  bottom: 0.25rem;
+  left: 0;
+
+  width: 1px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      var(--brand-cyan),
+      rgba(
+        var(--brand-violet-rgb),
+        0.45
+      ) 42%,
+      transparent 88%
+    );
+
+  content: "";
+}
+
+
+/*
+ * Eyebrow.
+ */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+
+  margin-bottom:
+    1rem;
+
+  color:
+    var(--brand-blue);
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.58rem;
+
+  font-weight:
+    560;
+
+  letter-spacing:
+    0.15em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.eyebrow::before {
+  width: 22px;
+  height: 1px;
+
+  background:
+    var(--brand-cyan);
+
+  content: "";
+}
+
+
+/*
+ * Hero title.
+ */
+
+.title {
+  max-width:
+    16ch;
+
+  margin: 0;
+
+  font-size:
+    clamp(
+      3.1rem,
+      5.8vw,
+      5.45rem
+    );
+
+  font-weight:
+    490;
+
+  letter-spacing:
+    -0.062em;
+
+  line-height:
+    0.95;
+
+  text-wrap:
+    balance;
+}
+
+
+/*
+ * Supporting copy.
+ */
+
+.description,
+.intro,
+.lead {
+  max-width:
+    650px;
+
+  margin-top:
+    1.2rem;
+
+  color:
+    var(--color-text-secondary);
+
+  font-size:
+    clamp(
+      0.92rem,
+      1.3vw,
+      1rem
+    );
+
+  line-height:
+    1.72;
+}
+
+
+/*
+ * CTA row.
+ */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+
+  margin-top:
+    1.7rem;
+}
+
+
+/*
+ * Optional visual becomes a quiet security-console surface.
+ */
+
+.visual {
+  position: relative;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.1
+    );
+
+  border-radius:
+    10px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(
+        var(--brand-violet-rgb),
+        0.075
+      ),
+      transparent 47%
+    ),
+    rgba(
+      255,
+      255,
+      255,
+      0.012
+    );
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(
+      255,
+      255,
+      255,
+      0.035
+    );
+
+  opacity: 1;
+}
+
+
+.visual::before {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(
+        var(--brand-cyan-rgb),
+        0.035
+      )
+      1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(
+        var(--brand-cyan-rgb),
+        0.035
+      )
+      1px,
+      transparent 1px
+    );
+
+  background-size:
+    32px 32px;
+
+  content: "";
+  pointer-events: none;
+}
+
+
+/*
+ * Desktop refinement.
+ */
+
+@media (min-width: 1024px) {
+
+  .inner,
+  .layout,
+  .grid {
+    min-height:
+      310px;
+
+    align-items:
+      center;
+  }
+
+}
+
+
+/*
+ * Tablet.
+ */
+
+@media (max-width: 1024px) {
+
+  .hero::after {
+    width:
+      260px;
+
+    height:
+      160px;
+
+    opacity:
+      0.62;
+  }
+
+}
+
+
+/*
+ * Mobile.
+ */
+
+@media (max-width: 640px) {
+
+  .hero {
+    padding-block:
+      3.15rem;
+  }
+
+
+  .hero::before {
+    background-size:
+      38px 38px;
+
+    opacity:
+      0.72;
+
+    mask-image:
+      linear-gradient(
+        to bottom,
+        transparent,
+        rgba(
+          0,
+          0,
+          0,
+          0.75
+        )
+      );
+  }
+
+
+  .hero::after {
+    top:
+      1.2rem;
+
+    right:
+      1rem;
+
+    width:
+      115px;
+
+    height:
+      72px;
+
+    opacity:
+      0.46;
+  }
+
+
+  .copy,
+  .content {
+    padding-left:
+      0.9rem;
+  }
+
+
+  .title {
+    max-width:
+      15ch;
+
+    font-size:
+      clamp(
+        2.55rem,
+        12vw,
+        3.55rem
+      );
+
+    line-height:
+      0.98;
+  }
+
+
+  .description,
+  .intro,
+  .lead {
+    margin-top:
+      1rem;
+  }
+
+}
+
+
+/*
+ * Motion is intentionally extremely subtle.
+ */
+
+@media (
+  prefers-reduced-motion:
+  no-preference
+) {
+
+  .hero::before {
+    animation:
+      nbHeroGridDrift
+      22s
+      linear
+      infinite;
+  }
+
+}
+
+
+@keyframes nbHeroGridDrift {
+
+  from {
+    background-position:
+      0 0,
+      0 0;
+  }
+
+  to {
+    background-position:
+      48px 48px,
+      48px 48px;
+  }
+
+}
+
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+
+  .hero::before {
+    animation:
+      none;
+  }
+
+}
