@@ -99,3 +99,39 @@
   transform:
     none;
 }
+
+
+/* ==========================================================================
+   NB_MINIMALIST_POLISH_V4
+   ========================================================================== */
+
+.root,
+.link,
+.button {
+  min-height:
+    42px;
+  padding-inline:
+    0.9rem;
+  border-radius:
+    6px;
+  box-shadow:
+    none;
+  font-size:
+    0.72rem;
+  font-weight:
+    580;
+}
+
+.primary,
+.secondary {
+  box-shadow:
+    none;
+}
+
+.primary:hover,
+.secondary:hover,
+.root:hover,
+.link:hover {
+  transform:
+    none;
+}

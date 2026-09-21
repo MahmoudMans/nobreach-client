@@ -1259,3 +1259,44 @@
   gap:
     var(--minimal-card-gap);
 }
+
+
+/* ==========================================================================
+   NB_MINIMALIST_POLISH_V4
+   ========================================================================== */
+
+.hero {
+  padding:
+    clamp(
+      3.25rem,
+      5vw,
+      4.5rem
+    )
+    0;
+}
+
+.heroTitle {
+  max-width:
+    15ch;
+  font-weight:
+    500;
+}
+
+.section {
+  padding-block:
+    var(--nb-polish-section);
+}
+
+.heroPanel,
+.profileCard,
+.card {
+  border-radius:
+    var(--nb-polish-radius);
+  background:
+    var(--nb-polish-surface);
+}
+
+.sectionHeader {
+  margin-bottom:
+    2rem;
+}

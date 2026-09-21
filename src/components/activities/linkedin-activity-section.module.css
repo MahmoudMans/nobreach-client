@@ -591,3 +591,39 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_MINIMALIST_POLISH_V4
+   ========================================================================== */
+
+.section {
+  padding-block:
+    var(--nb-polish-section);
+}
+
+.header {
+  margin-bottom:
+    2rem;
+}
+
+.grid {
+  gap:
+    0.75rem;
+}
+
+.card {
+  min-height:
+    290px;
+  padding:
+    1.05rem;
+  border-radius:
+    var(--nb-polish-radius);
+  background:
+    var(--nb-polish-surface);
+}
+
+.card::before {
+  opacity:
+    0.3;
+}

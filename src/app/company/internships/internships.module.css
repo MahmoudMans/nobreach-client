@@ -754,3 +754,49 @@
   border-radius:
     var(--minimal-radius-large);
 }
+
+
+/* ==========================================================================
+   NB_MINIMALIST_POLISH_V4
+   ========================================================================== */
+
+.hero {
+  padding:
+    clamp(
+      3.25rem,
+      5vw,
+      4.5rem
+    )
+    0;
+}
+
+.heroTitle {
+  max-width:
+    15ch;
+  font-weight:
+    500;
+}
+
+.section,
+.cta {
+  padding-block:
+    var(--nb-polish-section);
+}
+
+.project {
+  min-height:
+    450px;
+  border-radius:
+    var(--nb-polish-radius);
+}
+
+.methodCard {
+  min-height:
+    180px;
+}
+
+.ctaBox,
+.safetyBox {
+  border-radius:
+    var(--nb-polish-radius-large);
+}

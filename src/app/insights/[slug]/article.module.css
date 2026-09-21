@@ -591,3 +591,58 @@
   box-shadow:
     none;
 }
+
+
+/* ==========================================================================
+   NB_MINIMALIST_POLISH_V4
+   ========================================================================== */
+
+.hero {
+  padding-block:
+    clamp(
+      3.25rem,
+      5vw,
+      4.5rem
+    );
+}
+
+.article,
+.body,
+.content {
+  max-width:
+    700px;
+}
+
+.article p,
+.body p,
+.content p {
+  line-height:
+    1.8;
+}
+
+.article h2,
+.body h2,
+.content h2 {
+  margin-top:
+    3rem;
+  margin-bottom:
+    1rem;
+}
+
+.article h3,
+.body h3,
+.content h3 {
+  margin-top:
+    2.2rem;
+  margin-bottom:
+    0.8rem;
+}
+
+.toc,
+.sidebar,
+.relatedCard {
+  border-radius:
+    var(--nb-polish-radius);
+  box-shadow:
+    none;
+}

@@ -956,3 +956,92 @@
   box-shadow:
     none;
 }
+
+
+/* ==========================================================================
+   NB_MINIMALIST_POLISH_V4
+   ========================================================================== */
+
+.header {
+  border-bottom-color:
+    rgba(
+      255,
+      255,
+      255,
+      0.085
+    );
+  box-shadow:
+    none;
+  background:
+    rgba(
+      8,
+      9,
+      11,
+      0.91
+    );
+  backdrop-filter:
+    blur(16px);
+}
+
+.inner {
+  min-height:
+    62px;
+}
+
+.nav,
+.navigation {
+  gap:
+    0.15rem;
+}
+
+.nav a,
+.navigation a {
+  font-size:
+    0.72rem;
+}
+
+.dropdown,
+.dropdownPanel,
+.panel {
+  border-color:
+    rgba(
+      255,
+      255,
+      255,
+      0.11
+    );
+  border-radius:
+    8px;
+  background:
+    rgba(
+      10,
+      11,
+      14,
+      0.985
+    );
+  box-shadow:
+    0 18px 50px
+    rgba(
+      0,
+      0,
+      0,
+      0.32
+    );
+}
+
+.drawer,
+.drawerPanel {
+  background:
+    #090a0c;
+  box-shadow:
+    none;
+}
+
+@media (max-width: 1024px) {
+
+  .inner {
+    min-height:
+      60px;
+  }
+
+}

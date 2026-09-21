@@ -157,3 +157,68 @@
   --minimal-reading-width:
     720px;
 }
+
+
+/* ==========================================================================
+   NB_MINIMALIST_POLISH_V4
+   ========================================================================== */
+
+:root {
+  --nb-polish-section:
+    clamp(
+      3.4rem,
+      5.5vw,
+      4.8rem
+    );
+
+  --nb-polish-section-compact:
+    clamp(
+      2.6rem,
+      4vw,
+      3.6rem
+    );
+
+  --nb-polish-content:
+    720px;
+
+  --nb-polish-content-wide:
+    860px;
+
+  --nb-polish-hairline:
+    rgba(
+      255,
+      255,
+      255,
+      0.085
+    );
+
+  --nb-polish-hairline-strong:
+    rgba(
+      255,
+      255,
+      255,
+      0.14
+    );
+
+  --nb-polish-surface:
+    rgba(
+      255,
+      255,
+      255,
+      0.012
+    );
+
+  --nb-polish-surface-hover:
+    rgba(
+      255,
+      255,
+      255,
+      0.026
+    );
+
+  --nb-polish-radius:
+    7px;
+
+  --nb-polish-radius-large:
+    10px;
+}

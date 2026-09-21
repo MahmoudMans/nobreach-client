@@ -437,3 +437,49 @@
       3.25rem;
   }
 }
+
+
+/* ==========================================================================
+   NB_MINIMALIST_POLISH_V4
+   ========================================================================== */
+
+.hero {
+  padding-block:
+    clamp(
+      3.2rem,
+      5vw,
+      4.5rem
+    );
+}
+
+.title {
+  max-width:
+    17ch;
+  font-weight:
+    500;
+  letter-spacing:
+    -0.055em;
+}
+
+.description,
+.intro,
+.lead {
+  max-width:
+    660px;
+  margin-top:
+    1rem;
+}
+
+.visual {
+  opacity:
+    0.66;
+}
+
+@media (max-width: 640px) {
+
+  .hero {
+    padding-block:
+      3rem;
+  }
+
+}

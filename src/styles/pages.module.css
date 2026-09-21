@@ -1366,3 +1366,170 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_MINIMALIST_POLISH_V4
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   SECTION DENSITY
+   -------------------------------------------------------------------------- */
+
+.section,
+.contentSection,
+.detailSection,
+.featureSection,
+.timelineSection,
+.faqSection,
+.ctaSection {
+  padding-block:
+    var(--nb-polish-section);
+}
+
+
+/* --------------------------------------------------------------------------
+   PAGE HERO
+   -------------------------------------------------------------------------- */
+
+.hero,
+.pageHero,
+.detailHero,
+.introHero {
+  padding-block:
+    clamp(
+      3.2rem,
+      5vw,
+      4.4rem
+    );
+}
+
+
+/* --------------------------------------------------------------------------
+   CARD DENSITY
+   -------------------------------------------------------------------------- */
+
+.card,
+.featureCard,
+.serviceCard,
+.programCard,
+.teamCard,
+.activityCard,
+.eventCard,
+.jobCard,
+.infoCard,
+.metaCard,
+.valueCard,
+.detailCard {
+  padding:
+    clamp(
+      1rem,
+      1.8vw,
+      1.35rem
+    );
+  border-radius:
+    var(--nb-polish-radius);
+  background:
+    var(--nb-polish-surface);
+}
+
+
+/* --------------------------------------------------------------------------
+   CARD TYPOGRAPHY
+   -------------------------------------------------------------------------- */
+
+.card p,
+.featureCard p,
+.serviceCard p,
+.programCard p,
+.teamCard p,
+.activityCard p,
+.eventCard p,
+.jobCard p {
+  font-size:
+    0.8rem;
+  line-height:
+    1.65;
+}
+
+
+/* --------------------------------------------------------------------------
+   META
+   -------------------------------------------------------------------------- */
+
+.meta,
+.metadata,
+.metaLine,
+.facts,
+.stats {
+  color:
+    var(--color-text-faint);
+}
+
+
+/* --------------------------------------------------------------------------
+   DIVIDERS
+   -------------------------------------------------------------------------- */
+
+.divider,
+.rule {
+  border-color:
+    var(--nb-polish-hairline);
+}
+
+
+/* --------------------------------------------------------------------------
+   CTA
+   -------------------------------------------------------------------------- */
+
+.cta,
+.ctaBox,
+.callout,
+.contactBox {
+  padding:
+    clamp(
+      1.5rem,
+      3vw,
+      2.4rem
+    );
+  border-radius:
+    var(--nb-polish-radius-large);
+}
+
+
+/* --------------------------------------------------------------------------
+   MOBILE
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 640px) {
+
+  .section,
+  .contentSection,
+  .detailSection,
+  .featureSection,
+  .timelineSection,
+  .faqSection,
+  .ctaSection {
+    padding-block:
+      3.15rem;
+  }
+
+
+  .card,
+  .featureCard,
+  .serviceCard,
+  .programCard,
+  .teamCard,
+  .activityCard,
+  .eventCard,
+  .jobCard,
+  .infoCard,
+  .metaCard,
+  .valueCard,
+  .detailCard {
+    padding:
+      1rem;
+  }
+
+}

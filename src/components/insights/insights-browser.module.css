@@ -787,3 +787,36 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_MINIMALIST_POLISH_V4
+   ========================================================================== */
+
+.grid,
+.articleGrid,
+.results {
+  gap:
+    0.75rem;
+}
+
+.card,
+.articleCard {
+  border-radius:
+    var(--nb-polish-radius);
+  background:
+    var(--nb-polish-surface);
+}
+
+.toolbar,
+.filters,
+.filterBar {
+  border-radius:
+    var(--nb-polish-radius);
+}
+
+.card:hover,
+.articleCard:hover {
+  transform:
+    none;
+}

@@ -189,3 +189,36 @@
   line-height:
     1.7;
 }
+
+
+/* ==========================================================================
+   NB_MINIMALIST_POLISH_V4
+   ========================================================================== */
+
+.header,
+.root {
+  margin-bottom:
+    clamp(
+      1.5rem,
+      2.6vw,
+      2.15rem
+    );
+}
+
+.eyebrow {
+  opacity:
+    0.88;
+}
+
+.title {
+  max-width:
+    25ch;
+}
+
+.description,
+.intro {
+  max-width:
+    650px;
+  margin-top:
+    0.65rem;
+}

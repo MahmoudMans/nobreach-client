@@ -2428,3 +2428,126 @@
       3.5rem;
   }
 }
+
+
+/* ==========================================================================
+   NB_MINIMALIST_POLISH_V4
+   ========================================================================== */
+
+.compactHero {
+  padding:
+    clamp(
+      3.6rem,
+      6vw,
+      4.8rem
+    )
+    0
+    clamp(
+      3.4rem,
+      5vw,
+      4.3rem
+    );
+}
+
+.compactHero::before {
+  opacity:
+    0.4;
+}
+
+.compactHeroTitle {
+  max-width:
+    15ch;
+  font-weight:
+    500;
+}
+
+.compactHeroText {
+  max-width:
+    600px;
+}
+
+.compactSignal {
+  min-height:
+    330px;
+  border-color:
+    var(--nb-polish-hairline);
+  border-radius:
+    var(--nb-polish-radius-large);
+  background-size:
+    42px 42px,
+    42px 42px,
+    auto,
+    auto;
+}
+
+.signalGraph {
+  height:
+    265px;
+}
+
+.signalLines {
+  opacity:
+    0.72;
+}
+
+.compactFacts,
+.compactSection,
+.compactCta {
+  padding-block:
+    var(--nb-polish-section);
+}
+
+.compactServiceCard {
+  min-height:
+    215px;
+  padding:
+    1.1rem;
+}
+
+.compactDestination {
+  min-height:
+    175px;
+  padding:
+    1.05rem;
+}
+
+.compactDestination h3 {
+  margin-top:
+    2.1rem;
+}
+
+.compactCtaBox {
+  padding:
+    clamp(
+      1.7rem,
+      3.5vw,
+      2.6rem
+    );
+}
+
+@media (max-width: 640px) {
+
+  .compactHero {
+    padding:
+      2.8rem 0
+      3.2rem;
+  }
+
+  .compactSignal {
+    min-height:
+      280px;
+  }
+
+  .signalGraph {
+    height:
+      220px;
+  }
+
+  .compactFacts,
+  .compactSection,
+  .compactCta {
+    padding-block:
+      3.15rem;
+  }
+
+}
