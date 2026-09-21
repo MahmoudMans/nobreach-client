@@ -926,3 +926,221 @@
       var(--minimal-section-space-small);
   }
 }
+
+
+/* ==========================================================================
+   NB_MINIMALIST_PAGES_V2
+   ========================================================================== */
+
+/*
+ * Heroes
+ */
+
+.hero,
+.pageHero,
+.detailHero,
+.introHero {
+  padding-block:
+    clamp(
+      3.25rem,
+      5.5vw,
+      4.75rem
+    );
+}
+
+.heroGrid,
+.heroInner,
+.heroContent {
+  gap:
+    clamp(
+      2rem,
+      4vw,
+      3.75rem
+    );
+}
+
+.heroCopy,
+.intro,
+.lead,
+.description {
+  max-width:
+    var(--nb-wide-copy);
+}
+
+
+/*
+ * Sections
+ */
+
+.section,
+.contentSection,
+.detailSection,
+.featureSection,
+.timelineSection,
+.faqSection,
+.ctaSection {
+  padding-block:
+    var(--nb-page-space);
+}
+
+
+/*
+ * Flat surfaces
+ */
+
+.card,
+.panel,
+.featureCard,
+.serviceCard,
+.programCard,
+.teamCard,
+.activityCard,
+.eventCard,
+.jobCard,
+.infoCard,
+.metaCard,
+.valueCard,
+.detailCard,
+.faqItem {
+  border-radius:
+    8px;
+  box-shadow:
+    none;
+  background:
+    var(--nb-flat-surface);
+}
+
+
+/*
+ * Remove floating card behavior.
+ */
+
+.card:hover,
+.featureCard:hover,
+.serviceCard:hover,
+.programCard:hover,
+.teamCard:hover,
+.activityCard:hover,
+.eventCard:hover,
+.jobCard:hover {
+  transform:
+    none;
+  background:
+    var(--nb-flat-surface-hover);
+}
+
+
+/*
+ * Grids
+ */
+
+.grid,
+.cardGrid,
+.serviceGrid,
+.programGrid,
+.teamGrid,
+.activityGrid,
+.eventGrid,
+.valueGrid,
+.featureGrid,
+.metaGrid {
+  gap:
+    clamp(
+      0.75rem,
+      1.4vw,
+      1rem
+    );
+}
+
+
+/*
+ * Split layouts
+ */
+
+.split,
+.twoColumn,
+.contentGrid,
+.detailGrid,
+.overviewGrid {
+  gap:
+    clamp(
+      2rem,
+      5vw,
+      4.25rem
+    );
+}
+
+
+/*
+ * CTAs stay restrained.
+ */
+
+.cta,
+.ctaBox,
+.callout,
+.contactBox {
+  border-radius:
+    9px;
+  box-shadow:
+    none;
+}
+
+
+/*
+ * Timelines use structure, not decoration.
+ */
+
+.timeline,
+.timelineGrid {
+  gap:
+    0;
+}
+
+.timelineItem {
+  border-radius:
+    0;
+  background:
+    transparent;
+}
+
+
+/*
+ * FAQ rows.
+ */
+
+.faqItem {
+  border-right:
+    0;
+  border-left:
+    0;
+  background:
+    transparent;
+}
+
+
+/*
+ * Mobile.
+ */
+
+@media (max-width: 768px) {
+
+  .hero,
+  .pageHero,
+  .detailHero,
+  .introHero {
+    padding-block:
+      3.15rem;
+  }
+
+  .section,
+  .contentSection,
+  .detailSection,
+  .featureSection,
+  .timelineSection,
+  .faqSection,
+  .ctaSection {
+    padding-block:
+      3.25rem;
+  }
+
+}

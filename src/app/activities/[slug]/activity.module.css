@@ -224,3 +224,265 @@
       1fr;
   }
 }
+/* ==========================================================================
+   NB_MINIMALIST_PAGES_V2
+
+   Content-first route styling.
+   ========================================================================== */
+
+
+/* HERO --------------------------------------------------------------- */
+
+.hero,
+.pageHero,
+.detailHero,
+.introHero,
+.header {
+  padding-block:
+    clamp(
+      3.25rem,
+      5.4vw,
+      4.75rem
+    );
+}
+
+.heroGrid,
+.heroInner,
+.heroContent,
+.headerGrid {
+  gap:
+    clamp(
+      2rem,
+      4vw,
+      3.75rem
+    );
+}
+
+.heroTitle,
+.title {
+  max-width:
+    20ch;
+}
+
+.heroDescription,
+.heroText,
+.intro,
+.lead,
+.description {
+  max-width:
+    720px;
+}
+
+
+/* SECTIONS ----------------------------------------------------------- */
+
+.section,
+.contentSection,
+.detailSection,
+.overview,
+.approach,
+.process,
+.methodology,
+.deliverables,
+.engagement,
+.audience,
+.outcomes,
+.curriculum,
+.community,
+.gallery,
+.archive,
+.timelineSection,
+.faqSection,
+.ctaSection {
+  padding-block:
+    clamp(
+      3.25rem,
+      5.4vw,
+      4.75rem
+    );
+}
+
+
+/* GRIDS -------------------------------------------------------------- */
+
+.grid,
+.cards,
+.cardGrid,
+.serviceGrid,
+.programGrid,
+.teamGrid,
+.eventGrid,
+.activityGrid,
+.featureGrid,
+.valueGrid,
+.metaGrid,
+.outcomeGrid,
+.deliverableGrid,
+.processGrid,
+.methodGrid,
+.galleryGrid {
+  gap:
+    clamp(
+      0.7rem,
+      1.4vw,
+      1rem
+    );
+}
+
+
+/* CARDS -------------------------------------------------------------- */
+
+.card,
+.panel,
+.serviceCard,
+.programCard,
+.teamCard,
+.memberCard,
+.eventCard,
+.activityCard,
+.featureCard,
+.valueCard,
+.metaCard,
+.infoCard,
+.processCard,
+.methodCard,
+.outcomeCard,
+.deliverableCard,
+.jobCard,
+.securityCard,
+.contactCard,
+.statCard,
+.galleryCard {
+  border-radius:
+    8px;
+  box-shadow:
+    none;
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.014
+    );
+}
+
+
+/*
+ * No floating-card UI.
+ */
+
+.card:hover,
+.serviceCard:hover,
+.programCard:hover,
+.teamCard:hover,
+.memberCard:hover,
+.eventCard:hover,
+.activityCard:hover,
+.featureCard:hover,
+.jobCard:hover {
+  transform:
+    none;
+  box-shadow:
+    none;
+}
+
+
+/* META --------------------------------------------------------------- */
+
+.meta,
+.metadata,
+.metaGrid,
+.stats,
+.statGrid,
+.facts,
+.factGrid {
+  gap:
+    0;
+}
+
+
+/* TIMELINES ---------------------------------------------------------- */
+
+.timeline {
+  gap:
+    0;
+}
+
+.timelineItem,
+.timelineCard {
+  border-radius:
+    0;
+  box-shadow:
+    none;
+  background:
+    transparent;
+}
+
+
+/* FAQ ---------------------------------------------------------------- */
+
+.faq,
+.faqList {
+  max-width:
+    820px;
+}
+
+.faqItem {
+  border-radius:
+    0;
+  box-shadow:
+    none;
+  background:
+    transparent;
+}
+
+
+/* CTA ---------------------------------------------------------------- */
+
+.cta,
+.ctaBox,
+.contactBox,
+.callout {
+  border-radius:
+    9px;
+  box-shadow:
+    none;
+}
+
+
+/* MOBILE ------------------------------------------------------------- */
+
+@media (max-width: 640px) {
+
+  .hero,
+  .pageHero,
+  .detailHero,
+  .introHero,
+  .header {
+    padding-block:
+      3rem;
+  }
+
+  .section,
+  .contentSection,
+  .detailSection,
+  .overview,
+  .approach,
+  .process,
+  .methodology,
+  .deliverables,
+  .engagement,
+  .audience,
+  .outcomes,
+  .curriculum,
+  .community,
+  .gallery,
+  .archive,
+  .timelineSection,
+  .faqSection,
+  .ctaSection {
+    padding-block:
+      3.25rem;
+  }
+
+}

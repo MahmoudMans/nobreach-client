@@ -389,3 +389,196 @@ main {
       );
   }
 }
+
+
+/* ==========================================================================
+   NB_MINIMALIST_PAGES_V2
+
+   Professional content-first visual language:
+   - quieter surfaces
+   - smaller page rhythm
+   - restrained cards
+   - content hierarchy over decoration
+   ========================================================================== */
+
+#main-content {
+  --nb-page-space:
+    clamp(
+      3.25rem,
+      5.4vw,
+      4.75rem
+    );
+
+  --nb-page-space-compact:
+    clamp(
+      2.5rem,
+      4vw,
+      3.5rem
+    );
+
+  --nb-content-width:
+    720px;
+
+  --nb-wide-copy:
+    820px;
+
+  --nb-line:
+    rgba(
+      255,
+      255,
+      255,
+      0.095
+    );
+
+  --nb-line-strong:
+    rgba(
+      255,
+      255,
+      255,
+      0.15
+    );
+
+  --nb-flat-surface:
+    rgba(
+      255,
+      255,
+      255,
+      0.014
+    );
+
+  --nb-flat-surface-hover:
+    rgba(
+      255,
+      255,
+      255,
+      0.026
+    );
+}
+
+
+/*
+ * Keep the content column calm.
+ */
+
+#main-content
+:where(
+  p,
+  li
+) {
+  max-width:
+    76ch;
+}
+
+
+/*
+ * Section rhythm.
+ *
+ * Only direct page-level sections are affected.
+ */
+
+#main-content
+> section,
+#main-content
+> div
+> section {
+  scroll-margin-top:
+    5rem;
+}
+
+
+/*
+ * Flat professional cards.
+ */
+
+#main-content article {
+  box-shadow:
+    none;
+}
+
+
+/*
+ * Small technical metadata instead of oversized decorations.
+ */
+
+#main-content
+:where(
+  dt,
+  time,
+  code
+) {
+  letter-spacing:
+    0.015em;
+}
+
+
+/*
+ * Horizontal rules are intentionally quiet.
+ */
+
+#main-content hr {
+  height:
+    1px;
+  border:
+    0;
+  background:
+    var(--nb-line);
+}
+
+
+/*
+ * Lists remain readable without becoming visually heavy.
+ */
+
+#main-content
+ul,
+#main-content
+ol {
+  padding-inline-start:
+    1.15rem;
+}
+
+
+/*
+ * Forms should feel operational, not SaaS-heavy.
+ */
+
+#main-content
+:where(
+  input,
+  select,
+  textarea
+) {
+  border-radius:
+    7px;
+  box-shadow:
+    none;
+}
+
+
+/*
+ * Details / FAQ become clean disclosure rows.
+ */
+
+#main-content details {
+  border-radius:
+    0;
+  box-shadow:
+    none;
+}
+
+
+/*
+ * Mobile density.
+ */
+
+@media (max-width: 640px) {
+
+  #main-content {
+    --nb-page-space:
+      3.25rem;
+
+    --nb-page-space-compact:
+      2.5rem;
+  }
+
+}
