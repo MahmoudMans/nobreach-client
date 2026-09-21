@@ -1,3 +1,4 @@
+import { LinkedInActivitySection } from "@/components/activities/linkedin-activity-section";
 import { ActivityGrid } from "@/components/activities/activity-grid";
 import { Container } from "@/components/layout/container";
 import { PageHero } from "@/components/ui/page-hero";
@@ -75,6 +76,8 @@ export default async function ActivitiesPage({
           />
         </Container>
       </section>
-    </>
+
+      <LinkedInActivitySection />
+</>
   );
 }

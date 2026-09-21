@@ -163,9 +163,15 @@ test(
     ).toBeVisible();
 
     await expect(
-      page.getByText(
-        "Red Team Foundations"
+      page
+      .getByRole(
+        "link"
       )
+      .filter({
+        hasText:
+          "Red Team Foundations"
+      })
+      .first()
     ).toBeVisible();
   }
 );
