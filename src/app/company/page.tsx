@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import type {
   Metadata
 } from "next";
@@ -1178,6 +1180,25 @@ export default function CompanyPage() {
               }
               aria-hidden="true"
             >
+
+               <Image
+                 src="/people/ceo.png"
+                 alt=""
+                 fill
+                 sizes="(max-width: 768px) calc(100vw - 2rem), 420px"
+                 className={
+                   styles.founderVisualPhoto
+                 }
+                 data-founder-photo-image="company"
+               />
+
+               <div
+                 className={
+                   styles.founderVisualPhotoShade
+                 }
+                 data-founder-photo-shade="company"
+               />
+
               <div
                 className={
                   styles.monogram

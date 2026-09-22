@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import type {
   Metadata
 } from "next";
@@ -403,6 +405,26 @@ export default function FounderPage() {
               }
               aria-hidden="true"
             >
+
+              <Image
+                src="/people/ceo.png"
+                alt=""
+                fill
+                priority
+                sizes="(max-width: 680px) calc(100vw - 2rem), (max-width: 1024px) 46vw, 520px"
+                className={
+                  styles.founderPortraitPhoto
+                }
+                data-founder-photo-image="profile"
+              />
+
+              <div
+                className={
+                  styles.founderPortraitPhotoShade
+                }
+                data-founder-photo-shade="profile"
+              />
+
               <div
                 className={
                   styles.founderPortraitOrbit

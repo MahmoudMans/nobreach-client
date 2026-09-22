@@ -5252,3 +5252,109 @@ a:hover
   }
 
 }
+
+
+/* ==========================================================================
+   NB_FOUNDER_REAL_PHOTO_V1
+   Real founder portrait layered into the existing V2 visual system.
+   ========================================================================== */
+
+
+.founderPortraitStage {
+  position:
+    relative;
+
+  overflow:
+    hidden;
+
+  isolation:
+    isolate;
+}
+
+
+.founderPortraitPhoto {
+  position:
+    absolute;
+
+  z-index:
+    0;
+
+  inset:
+    0;
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  object-fit:
+    cover;
+
+  object-position:
+    center 18%;
+
+  filter:
+    saturate(
+      0.88
+    )
+    contrast(
+      1.04
+    )
+    brightness(
+      0.88
+    );
+}
+
+
+.founderPortraitPhotoShade {
+  position:
+    absolute;
+
+  z-index:
+    0;
+
+  inset:
+    0;
+
+  pointer-events:
+    none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(
+        7,
+        8,
+        11,
+        0.04
+      )
+      0%,
+      rgba(
+        7,
+        8,
+        11,
+        0.12
+      )
+      46%,
+      rgba(
+        7,
+        8,
+        11,
+        0.7
+      )
+      100%
+    );
+}
+
+
+@media (
+  max-width: 680px
+) {
+
+  .founderPortraitPhoto {
+    object-position:
+      center 16%;
+  }
+
+}
