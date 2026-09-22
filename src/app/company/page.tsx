@@ -333,7 +333,7 @@ export default function CompanyPage() {
         styles.page
       }
       data-company-page="v4"
-      data-company-design="v7"
+      data-company-design="v8"
     >
       <section
         className={

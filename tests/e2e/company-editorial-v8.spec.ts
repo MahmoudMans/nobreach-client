@@ -5,7 +5,7 @@ import {
 
 
 test(
-  "company V7 renders the creative editorial system",
+  "company V8 renders the refined editorial experience",
   async ({
     page
   }) => {
@@ -28,14 +28,10 @@ test(
     );
 
 
-    const root =
-      page.locator(
-        '[data-company-design="v7"]'
-      );
-
-
     await expect(
-      root
+      page.locator(
+        '[data-company-design="v8"]'
+      )
     ).toBeVisible();
 
 
@@ -68,31 +64,27 @@ test(
         .boundingBox();
 
 
-    expect(
-      first
-    ).not.toBeNull();
-
-
-    expect(
-      second
-    ).not.toBeNull();
-
-
     if (
       !first
       ||
       !second
     ) {
+
       throw new Error(
         "Capability geometry unavailable"
       );
+
     }
 
 
     expect(
-      first.width
-    ).toBeGreaterThan(
-      second.width
+      Math.abs(
+        first.width
+        -
+        second.width
+      )
+    ).toBeLessThanOrEqual(
+      4
     );
 
 
@@ -109,7 +101,7 @@ test(
     );
 
 
-    const principleOne =
+    const p1 =
       await principles
         .nth(
           0
@@ -117,7 +109,7 @@ test(
         .boundingBox();
 
 
-    const principleTwo =
+    const p2 =
       await principles
         .nth(
           1
@@ -125,21 +117,48 @@ test(
         .boundingBox();
 
 
+    const p3 =
+      await principles
+        .nth(
+          2
+        )
+        .boundingBox();
+
+
     if (
-      !principleOne
+      !p1
       ||
-      !principleTwo
+      !p2
+      ||
+      !p3
     ) {
+
       throw new Error(
         "Principle geometry unavailable"
       );
+
     }
 
 
     expect(
-      principleTwo.y
-    ).toBeGreaterThan(
-      principleOne.y + 10
+      Math.abs(
+        p1.y
+        -
+        p2.y
+      )
+    ).toBeLessThanOrEqual(
+      4
+    );
+
+
+    expect(
+      Math.abs(
+        p2.y
+        -
+        p3.y
+      )
+    ).toBeLessThanOrEqual(
+      4
     );
 
   }
@@ -147,7 +166,7 @@ test(
 
 
 test(
-  "company V7 preserves the useful content architecture",
+  "company V8 preserves all useful sections",
   async ({
     page
   }) => {
@@ -163,6 +182,13 @@ test(
 
     await expect(
       page.locator(
+        '[data-company-ui="facts"]'
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      page.locator(
         '[data-company-ui="approach-flow"] article'
       )
     ).toHaveCount(
@@ -172,7 +198,7 @@ test(
 
     await expect(
       page.locator(
-        '[data-company-ui="ecosystem-grid"] [data-company-card="ecosystem"]'
+        '[data-company-card="capability"]'
       )
     ).toHaveCount(
       4
@@ -181,7 +207,25 @@ test(
 
     await expect(
       page.locator(
-        '[data-company-ui="timeline-grid"] [data-company-card="timeline"]'
+        '[data-company-card="principle"]'
+      )
+    ).toHaveCount(
+      3
+    );
+
+
+    await expect(
+      page.locator(
+        '[data-company-card="ecosystem"]'
+      )
+    ).toHaveCount(
+      4
+    );
+
+
+    await expect(
+      page.locator(
+        '[data-company-card="timeline"]'
       )
     ).toHaveCount(
       5
@@ -197,7 +241,7 @@ test(
 
     await expect(
       page.locator(
-        '[data-company-ui="people-grid"] [data-company-card="people"]'
+        '[data-company-card="people"]'
       )
     ).toHaveCount(
       2
@@ -208,7 +252,7 @@ test(
 
 
 test(
-  "company V7 remains controlled on mobile",
+  "company V8 remains clean on mobile",
   async ({
     page
   }) => {
@@ -233,7 +277,7 @@ test(
 
     await expect(
       page.locator(
-        '[data-company-design="v7"] h1'
+        '[data-company-design="v8"] h1'
       )
     ).toBeVisible();
 

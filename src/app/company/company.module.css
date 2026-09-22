@@ -5304,960 +5304,45 @@ strong {
 
 
 /* ==========================================================================
-   NB_COMPANY_CREATIVE_V7
+   NB_COMPANY_EDITORIAL_V8
 
    Direction:
-   Offensive-security field dossier.
-   Creative structure without hacker clichés or visual noise.
+   Premium cybersecurity consultancy.
+   Editorial, symmetrical, restrained, architectural.
+   No bento, no staggered gimmicks, no dashboard aesthetic.
    ========================================================================== */
 
 
-:global([data-company-design="v7"]) {
-  --company-v7-cyan:
-    #a1e2f0;
+:global([data-company-design="v8"]) {
+  --company-v8-bg:
+    #08090c;
 
-  --company-v7-blue:
-    #83b3d7;
+  --company-v8-surface:
+    #0c0e13;
 
-  --company-v7-purple:
-    #6333c6;
+  --company-v8-surface-soft:
+    #10131a;
 
-  --company-v7-violet:
-    #7e60b9;
+  --company-v8-text:
+    #f7f9fb;
 
-  --company-v7-bg:
-    #080a0f;
-
-  --company-v7-panel:
-    #0d1118;
-
-  --company-v7-panel-strong:
-    #111621;
-
-  --company-v7-line:
+  --company-v8-muted:
     rgba(
-      161,
-      226,
-      240,
-      0.12
-    );
-
-  --company-v7-line-strong:
-    rgba(
-      161,
-      226,
-      240,
-      0.28
-    );
-
-  --company-v7-text:
-    #f4f7fa;
-
-  --company-v7-muted:
-    rgba(
-      232,
-      238,
-      244,
+      247,
+      249,
+      251,
       0.58
     );
 
-  overflow:
-    clip;
-
-  background:
-    var(
-      --company-v7-bg
-    );
-}
-
-
-/* ==========================================================================
-   HERO — PRESERVE V6 RESTRAINT, ADD EDITORIAL DETAIL
-   ========================================================================== */
-
-
-:global([data-company-design="v7"])
-:global([data-company-hero="v6"]) {
-  border-bottom-color:
+  --company-v8-faint:
     rgba(
-      161,
-      226,
-      240,
-      0.16
-    );
-}
-
-
-:global([data-company-design="v7"])
-.profileCard {
-  border-radius:
-    4px
-    26px
-    4px
-    4px;
-
-  border-color:
-    rgba(
-      161,
-      226,
-      240,
-      0.18
+      247,
+      249,
+      251,
+      0.38
     );
 
-  box-shadow:
-    18px
-    18px
-    0
-    rgba(
-      99,
-      51,
-      198,
-      0.07
-    );
-}
-
-
-:global([data-company-design="v7"])
-.profileCard::before {
-  position:
-    absolute;
-
-  top:
-    -1px;
-
-  right:
-    24px;
-
-  width:
-    72px;
-
-  height:
-    2px;
-
-  display:
-    block;
-
-  content:
-    "";
-
-  background:
-    linear-gradient(
-      90deg,
-      var(--company-v7-cyan),
-      var(--company-v7-purple)
-    );
-}
-
-
-/* ==========================================================================
-   SECTION NAVIGATION — TECHNICAL INDEX RAIL
-   ========================================================================== */
-
-
-:global([data-company-design="v7"])
-.pageNav {
-  position:
-    relative;
-
-  z-index:
-    8;
-
-  background:
-    rgba(
-      8,
-      10,
-      15,
-      0.94
-    );
-
-  border-top:
-    1px solid
-    rgba(
-      255,
-      255,
-      255,
-      0.04
-    );
-
-  border-bottom:
-    1px solid
-    var(--company-v7-line);
-
-  box-shadow:
-    none;
-
-  backdrop-filter:
-    blur(
-      16px
-    );
-}
-
-
-:global([data-company-design="v7"])
-.pageNavInner {
-  min-height:
-    54px;
-
-  gap:
-    0;
-}
-
-
-:global([data-company-design="v7"])
-.pageNavInner
-a {
-  position:
-    relative;
-
-  min-height:
-    54px;
-
-  display:
-    inline-flex;
-
-  align-items:
-    center;
-
-  padding:
-    0
-    1rem;
-
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      0.5
-    );
-
-  font-size:
-    0.68rem;
-
-  font-weight:
-    660;
-
-  letter-spacing:
-    0.11em;
-
-  text-transform:
-    uppercase;
-
-  transition:
-    color
-    160ms
-    ease,
-    background
-    160ms
-    ease;
-}
-
-
-:global([data-company-design="v7"])
-.pageNavInner
-a::after {
-  position:
-    absolute;
-
-  right:
-    1rem;
-
-  bottom:
-    -1px;
-
-  left:
-    1rem;
-
-  height:
-    1px;
-
-  content:
-    "";
-
-  background:
-    var(--company-v7-cyan);
-
-  transform:
-    scaleX(
-      0
-    );
-
-  transform-origin:
-    left;
-
-  transition:
-    transform
-    180ms
-    ease;
-}
-
-
-:global([data-company-design="v7"])
-.pageNavInner
-a:hover {
-  color:
-    var(--company-v7-text);
-
-  background:
-    rgba(
-      161,
-      226,
-      240,
-      0.025
-    );
-}
-
-
-:global([data-company-design="v7"])
-.pageNavInner
-a:hover::after {
-  transform:
-    scaleX(
-      1
-    );
-}
-
-
-/* ==========================================================================
-   GLOBAL SECTION ARCHITECTURE
-   ========================================================================== */
-
-
-:global([data-company-design="v7"])
-.section {
-  position:
-    relative;
-
-  isolation:
-    isolate;
-
-  padding-top:
-    clamp(
-      3.5rem,
-      7vw,
-      6.5rem
-    );
-
-  padding-bottom:
-    clamp(
-      3.5rem,
-      7vw,
-      6.5rem
-    );
-
-  border-top:
-    1px solid
-    rgba(
-      255,
-      255,
-      255,
-      0.035
-    );
-}
-
-
-:global([data-company-design="v7"])
-.section::before {
-  position:
-    absolute;
-
-  top:
-    0;
-
-  left:
-    50%;
-
-  width:
-    min(
-      1280px,
-      calc(
-        100% - 40px
-      )
-    );
-
-  height:
-    1px;
-
-  content:
-    "";
-
-  background:
-    linear-gradient(
-      90deg,
-      var(--company-v7-cyan),
-      rgba(
-        131,
-        179,
-        215,
-        0.15
-      )
-      24%,
-      transparent
-      72%
-    );
-
-  transform:
-    translateX(
-      -50%
-    );
-
-  opacity:
-    0.28;
-}
-
-
-:global([data-company-design="v7"])
-.sectionHeader {
-  max-width:
-    920px;
-
-  margin-bottom:
-    clamp(
-      1.8rem,
-      3vw,
-      2.7rem
-    );
-}
-
-
-:global([data-company-design="v7"])
-.sectionHeader
-h2 {
-  font-size:
-    clamp(
-      2.35rem,
-      5vw,
-      4.5rem
-    );
-
-  font-weight:
-    520;
-
-  line-height:
-    0.98;
-
-  letter-spacing:
-    -0.052em;
-}
-
-
-:global([data-company-design="v7"])
-.sectionHeader
-h2
-span {
-  color:
-    var(--company-v7-cyan);
-}
-
-
-/* ==========================================================================
-   COMPANY STATEMENT — EDITORIAL MANIFESTO
-   ========================================================================== */
-
-
-:global([data-company-design="v7"])
-.introGrid {
-  display:
-    block;
-}
-
-
-:global([data-company-design="v7"])
-.statementCard {
-  position:
-    relative;
-
-  width:
-    100%;
-
-  max-width:
-    1080px;
-
-  min-height:
-    330px;
-
-  display:
-    flex;
-
-  flex-direction:
-    column;
-
-  justify-content:
-    flex-end;
-
-  padding:
-    clamp(
-      2rem,
-      5vw,
-      4.5rem
-    );
-
-  overflow:
-    hidden;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(
-        161,
-        226,
-        240,
-        0.055
-      ),
-      transparent
-      46%
-    ),
-    #0b0e14;
-
-  border:
-    1px solid
-    rgba(
-      161,
-      226,
-      240,
-      0.13
-    );
-
-  border-radius:
-    4px
-    38px
-    4px
-    4px;
-
-  box-shadow:
-    none;
-}
-
-
-:global([data-company-design="v7"])
-.statementCard::before {
-  position:
-    absolute;
-
-  top:
-    0;
-
-  left:
-    0;
-
-  width:
-    4px;
-
-  height:
-    100%;
-
-  content:
-    "";
-
-  background:
-    linear-gradient(
-      180deg,
-      var(--company-v7-cyan),
-      var(--company-v7-purple),
-      transparent
-    );
-}
-
-
-:global([data-company-design="v7"])
-.statementCard::after {
-  position:
-    absolute;
-
-  top:
-    -0.18em;
-
-  right:
-    0.08em;
-
-  z-index:
-    -1;
-
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      0.025
-    );
-
-  content:
-    "01";
-
-  font-size:
-    clamp(
-      9rem,
-      22vw,
-      19rem
-    );
-
-  font-weight:
-    760;
-
-  line-height:
-    1;
-}
-
-
-:global([data-company-design="v7"])
-.statementCard
-h2 {
-  max-width:
-    880px;
-
-  margin:
-    1.25rem
-    0
-    0;
-
-  color:
-    var(--company-v7-text);
-
-  font-size:
-    clamp(
-      2.2rem,
-      5vw,
-      4.8rem
-    );
-
-  font-weight:
-    520;
-
-  line-height:
-    0.98;
-
-  letter-spacing:
-    -0.055em;
-}
-
-
-:global([data-company-design="v7"])
-.statementCard
-p {
-  max-width:
-    650px;
-
-  margin:
-    1.4rem
-    0
-    0;
-
-  color:
-    var(--company-v7-muted);
-
-  font-size:
-    1rem;
-
-  line-height:
-    1.68;
-}
-
-
-/* ==========================================================================
-   APPROACH — CONNECTED SIGNAL PATH
-   ========================================================================== */
-
-
-:global([data-company-design="v7"])
-.storySection {
-  background:
-    #090c12;
-}
-
-
-:global([data-company-design="v7"])
-.flow {
-  position:
-    relative;
-
-  display:
-    grid;
-
-  grid-template-columns:
-    minmax(
-      0,
-      1fr
-    )
-    70px
-    minmax(
-      0,
-      1fr
-    )
-    70px
-    minmax(
-      0,
-      1fr
-    );
-
-  align-items:
-    stretch;
-
-  gap:
-    0;
-}
-
-
-:global([data-company-design="v7"])
-.flow
-article {
-  position:
-    relative;
-
-  min-height:
-    240px;
-
-  display:
-    flex;
-
-  flex-direction:
-    column;
-
-  justify-content:
-    flex-end;
-
-  padding:
-    1.7rem;
-
-  overflow:
-    hidden;
-
-  background:
-    var(--company-v7-panel);
-
-  border:
-    1px solid
-    rgba(
-      255,
-      255,
-      255,
-      0.08
-    );
-
-  border-radius:
-    4px
-    24px
-    4px
-    4px;
-}
-
-
-:global([data-company-design="v7"])
-.flow
-article::before {
-  position:
-    absolute;
-
-  top:
-    20px;
-
-  right:
-    20px;
-
-  width:
-    10px;
-
-  height:
-    10px;
-
-  content:
-    "";
-
-  border:
-    1px solid
-    var(--company-v7-cyan);
-
-  border-radius:
-    50%;
-
-  box-shadow:
-    0
-    0
-    0
-    5px
-    rgba(
-      161,
-      226,
-      240,
-      0.045
-    );
-}
-
-
-:global([data-company-design="v7"])
-.flow
-article
-> span {
-  position:
-    absolute;
-
-  top:
-    1.5rem;
-
-  left:
-    1.5rem;
-
-  color:
-    rgba(
-      161,
-      226,
-      240,
-      0.44
-    );
-
-  font-size:
-    0.7rem;
-
-  letter-spacing:
-    0.12em;
-}
-
-
-:global([data-company-design="v7"])
-.flow
-strong {
-  color:
-    var(--company-v7-text);
-
-  font-size:
-    clamp(
-      1.7rem,
-      3vw,
-      2.5rem
-    );
-
-  font-weight:
-    560;
-
-  letter-spacing:
-    -0.04em;
-}
-
-
-:global([data-company-design="v7"])
-.flow
-p {
-  margin-top:
-    0.7rem;
-
-  color:
-    var(--company-v7-muted);
-}
-
-
-:global([data-company-design="v7"])
-.flowArrow {
-  position:
-    relative;
-
-  display:
-    grid;
-
-  place-items:
-    center;
-
-  overflow:
-    hidden;
-
-  color:
-    transparent;
-}
-
-
-:global([data-company-design="v7"])
-.flowArrow::before {
-  width:
-    100%;
-
-  height:
-    1px;
-
-  content:
-    "";
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(
-        161,
-        226,
-        240,
-        0.16
-      ),
-      var(--company-v7-cyan),
-      rgba(
-        161,
-        226,
-        240,
-        0.16
-      )
-    );
-}
-
-
-:global([data-company-design="v7"])
-.flowArrow::after {
-  position:
-    absolute;
-
-  width:
-    6px;
-
-  height:
-    6px;
-
-  content:
-    "";
-
-  background:
-    var(--company-v7-cyan);
-
-  border-radius:
-    50%;
-}
-
-
-/* ==========================================================================
-   CAPABILITIES — ASYMMETRIC BENTO
-   ========================================================================== */
-
-
-:global([data-company-design="v7"])
-.capabilityGrid {
-  display:
-    grid;
-
-  grid-template-columns:
-    repeat(
-      12,
-      minmax(
-        0,
-        1fr
-      )
-    );
-
-  gap:
-    1rem;
-}
-
-
-:global([data-company-design="v7"])
-.capabilityCard {
-  position:
-    relative;
-
-  min-height:
-    285px;
-
-  padding:
-    1.65rem;
-
-  overflow:
-    hidden;
-
-  background:
-    var(--company-v7-panel);
-
-  border:
-    1px solid
+  --company-v8-line:
     rgba(
       255,
       255,
@@ -6265,268 +5350,730 @@ p {
       0.085
     );
 
+  --company-v8-cyan:
+    #a1e2f0;
+
+  --company-v8-blue:
+    #83b3d7;
+
+  --company-v8-purple:
+    #6333c6;
+
+  --company-v8-violet:
+    #7e60b9;
+
+  overflow:
+    clip;
+
+  background:
+    var(--company-v8-bg);
+
+  color:
+    var(--company-v8-text);
+}
+
+
+/* ==========================================================================
+   HERO
+   Keep the clean V6 hero, refine presentation only.
+   ========================================================================== */
+
+
+:global([data-company-design="v8"])
+:global([data-company-hero="v6"]) {
+  background:
+    #08090c;
+
+  border-bottom:
+    1px solid
+    var(--company-v8-line);
+}
+
+
+:global([data-company-design="v8"])
+.heroInner {
+  align-items:
+    center;
+}
+
+
+:global([data-company-design="v8"])
+.heroCopy
+h1 {
+  max-width:
+    780px;
+
+  letter-spacing:
+    -0.055em;
+}
+
+
+:global([data-company-design="v8"])
+.profileCard {
+  border:
+    0;
+
+  border-top:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.4
+    );
+
+  border-bottom:
+    1px solid
+    var(--company-v8-line);
+
   border-radius:
-    4px
-    28px
-    4px
-    4px;
+    0;
+
+  background:
+    transparent;
 
   box-shadow:
     none;
 
+  backdrop-filter:
+    none;
+}
+
+
+:global([data-company-design="v8"])
+.profileCard::before,
+:global([data-company-design="v8"])
+.profileCard::after {
+  display:
+    none;
+}
+
+
+/* ==========================================================================
+   PAGE NAVIGATION
+   Simple editorial index, no technical control-bar styling.
+   ========================================================================== */
+
+
+:global([data-company-design="v8"])
+.pageNav {
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  background:
+    #08090c;
+
+  border-top:
+    0;
+
+  border-bottom:
+    1px solid
+    var(--company-v8-line);
+
+  box-shadow:
+    none;
+
+  backdrop-filter:
+    none;
+}
+
+
+:global([data-company-design="v8"])
+.pageNavInner {
+  min-height:
+    58px;
+
+  gap:
+    clamp(
+      1rem,
+      2.4vw,
+      2.3rem
+    );
+}
+
+
+:global([data-company-design="v8"])
+.pageNavInner
+a {
+  position:
+    relative;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  min-height:
+    58px;
+
+  padding:
+    0;
+
+  color:
+    var(--company-v8-faint);
+
+  background:
+    transparent;
+
+  font-size:
+    0.72rem;
+
+  font-weight:
+    620;
+
+  letter-spacing:
+    0.08em;
+
+  text-transform:
+    uppercase;
+
   transition:
-    transform
-    180ms
-    ease,
-    border-color
-    180ms
-    ease,
-    background
-    180ms
+    color
+    160ms
     ease;
 }
 
 
-:global([data-company-design="v7"])
-.capabilityCard:nth-child(1),
-:global([data-company-design="v7"])
-.capabilityCard:nth-child(4) {
-  grid-column:
-    span
-    7;
-}
-
-
-:global([data-company-design="v7"])
-.capabilityCard:nth-child(2),
-:global([data-company-design="v7"])
-.capabilityCard:nth-child(3) {
-  grid-column:
-    span
-    5;
-}
-
-
-:global([data-company-design="v7"])
-.capabilityCard::before {
+:global([data-company-design="v8"])
+.pageNavInner
+a::after {
   position:
     absolute;
-
-  top:
-    0;
 
   right:
     0;
 
-  width:
-    80px;
+  bottom:
+    -1px;
+
+  left:
+    0;
 
   height:
-    3px;
+    1px;
 
   content:
     "";
 
   background:
-    linear-gradient(
-      90deg,
-      transparent,
-      var(--company-v7-cyan)
-    );
-}
+    var(--company-v8-cyan);
 
-
-:global([data-company-design="v7"])
-.capabilityCard:nth-child(even)::before {
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      var(--company-v7-purple)
-    );
-}
-
-
-:global([data-company-design="v7"])
-.capabilityVisual {
   opacity:
-    0.58;
+    0;
 
   transform:
-    scale(
-      0.92
-    );
-
-  transform-origin:
-    left
-    center;
-}
-
-
-:global([data-company-design="v7"])
-.capabilityCopy
-h3 {
-  color:
-    var(--company-v7-text);
-
-  font-size:
-    clamp(
-      1.35rem,
-      2vw,
-      1.9rem
-    );
-
-  font-weight:
-    570;
-
-  letter-spacing:
-    -0.04em;
-}
-
-
-:global([data-company-design="v7"])
-.capabilityCopy
-p {
-  max-width:
-    540px;
-
-  color:
-    var(--company-v7-muted);
-
-  line-height:
-    1.62;
-}
-
-
-/* ==========================================================================
-   PRINCIPLES — STAGGERED EDITORIAL CARDS
-   ========================================================================== */
-
-
-:global([data-company-design="v7"])
-.principleSection {
-  background:
-    #090c12;
-}
-
-
-:global([data-company-design="v7"])
-.principleGrid {
-  align-items:
-    start;
-
-  gap:
-    1rem;
-}
-
-
-:global([data-company-design="v7"])
-.principleCard {
-  position:
-    relative;
-
-  min-height:
-    330px;
-
-  padding:
-    1.7rem;
-
-  overflow:
-    hidden;
-
-  background:
-    var(--company-v7-panel);
-
-  border:
-    1px solid
-    rgba(
-      255,
-      255,
-      255,
-      0.08
-    );
-
-  border-radius:
-    4px;
-
-  box-shadow:
     none;
+
+  transition:
+    opacity
+    160ms
+    ease;
 }
 
 
-:global([data-company-design="v7"])
-.principleCard:nth-child(2) {
-  margin-top:
-    28px;
-}
-
-
-:global([data-company-design="v7"])
-.principleCard:nth-child(3) {
-  margin-top:
-    56px;
-}
-
-
-:global([data-company-design="v7"])
-.principleNumber {
-  position:
-    absolute;
-
-  top:
-    0.2rem;
-
-  right:
-    0.65rem;
-
+:global([data-company-design="v8"])
+.pageNavInner
+a:hover {
   color:
-    rgba(
-      255,
-      255,
-      255,
-      0.035
-    );
-
-  font-size:
-    clamp(
-      5rem,
-      9vw,
-      8.5rem
-    );
-
-  font-weight:
-    780;
-
-  line-height:
-    1;
-}
-
-
-:global([data-company-design="v7"])
-.principleVisual {
-  border-color:
-    rgba(
-      161,
-      226,
-      240,
-      0.14
-    );
+    var(--company-v8-text);
 
   background:
     transparent;
 }
 
 
+:global([data-company-design="v8"])
+.pageNavInner
+a:hover::after {
+  opacity:
+    1;
+}
+
+
 /* ==========================================================================
-   ECOSYSTEM — NETWORK NODE SYSTEM
+   GLOBAL SECTION RHYTHM
    ========================================================================== */
 
 
-:global([data-company-design="v7"])
-.ecosystemGrid {
+:global([data-company-design="v8"])
+.section {
   position:
     relative;
 
+  padding-top:
+    clamp(
+      3.6rem,
+      6vw,
+      5.8rem
+    );
+
+  padding-bottom:
+    clamp(
+      3.6rem,
+      6vw,
+      5.8rem
+    );
+
+  background:
+    transparent;
+
+  border-top:
+    0;
+}
+
+
+:global([data-company-design="v8"])
+.section::before,
+:global([data-company-design="v8"])
+.section::after {
+  display:
+    none;
+}
+
+
+:global([data-company-design="v8"])
+.section
+> .container {
+  border-top:
+    1px solid
+    var(--company-v8-line);
+
+  padding-top:
+    clamp(
+      1.6rem,
+      3vw,
+      2.5rem
+    );
+}
+
+
+:global([data-company-design="v8"])
+.sectionHeader {
+  width:
+    100%;
+
+  max-width:
+    900px;
+
+  margin:
+    0
+    0
+    clamp(
+      2rem,
+      4vw,
+      3.2rem
+    );
+
+  display:
+    grid;
+
+  gap:
+    0.85rem;
+
+  justify-items:
+    start;
+
+  text-align:
+    left;
+}
+
+
+:global([data-company-design="v8"])
+.sectionHeader
+h2 {
+  max-width:
+    820px;
+
+  margin:
+    0;
+
+  color:
+    var(--company-v8-text);
+
+  font-size:
+    clamp(
+      2.25rem,
+      4.3vw,
+      4.15rem
+    );
+
+  font-weight:
+    520;
+
+  line-height:
+    0.99;
+
+  letter-spacing:
+    -0.052em;
+
+  text-align:
+    left;
+}
+
+
+:global([data-company-design="v8"])
+.sectionHeader
+h2
+span {
+  display:
+    block;
+
+  color:
+    var(--company-v8-cyan);
+
+  text-align:
+    left;
+}
+
+
+/* ==========================================================================
+   COMPANY STATEMENT
+   No card. Large editorial split.
+   ========================================================================== */
+
+
+:global([data-company-design="v8"])
+.introGrid {
+  display:
+    block;
+
+  width:
+    100%;
+}
+
+
+:global([data-company-design="v8"])
+.statementCard {
+  width:
+    100%;
+
+  max-width:
+    none;
+
+  min-height:
+    0;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1.45fr
+    )
+    minmax(
+      260px,
+      0.55fr
+    );
+
+  grid-template-areas:
+    "code code"
+    "title copy";
+
+  column-gap:
+    clamp(
+      2rem,
+      6vw,
+      6rem
+    );
+
+  row-gap:
+    1.3rem;
+
+  align-items:
+    end;
+
+  padding:
+    0
+    0
+    clamp(
+      2.2rem,
+      4vw,
+      3.3rem
+    );
+
+  overflow:
+    visible;
+
+  border:
+    0;
+
+  border-bottom:
+    1px solid
+    var(--company-v8-line);
+
+  border-radius:
+    0;
+
+  background:
+    transparent;
+
+  box-shadow:
+    none;
+}
+
+
+:global([data-company-design="v8"])
+.statementCard::before,
+:global([data-company-design="v8"])
+.statementCard::after {
+  display:
+    none;
+}
+
+
+:global([data-company-design="v8"])
+.cardCode {
+  grid-area:
+    code;
+}
+
+
+:global([data-company-design="v8"])
+.statementCard
+h2 {
+  grid-area:
+    title;
+
+  max-width:
+    820px;
+
+  margin:
+    0;
+
+  color:
+    var(--company-v8-text);
+
+  font-size:
+    clamp(
+      2.5rem,
+      5.2vw,
+      4.8rem
+    );
+
+  font-weight:
+    500;
+
+  line-height:
+    0.99;
+
+  letter-spacing:
+    -0.055em;
+}
+
+
+:global([data-company-design="v8"])
+.statementCard
+p {
+  grid-area:
+    copy;
+
+  align-self:
+    end;
+
+  max-width:
+    430px;
+
+  margin:
+    0;
+
+  color:
+    var(--company-v8-muted);
+
+  font-size:
+    1rem;
+
+  line-height:
+    1.7;
+}
+
+
+/* ==========================================================================
+   APPROACH
+   One clean horizontal system, not three floating boxes.
+   ========================================================================== */
+
+
+:global([data-company-design="v8"])
+.storySection {
+  background:
+    #08090c;
+}
+
+
+:global([data-company-design="v8"])
+.flow {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    0;
+
+  border-top:
+    1px solid
+    var(--company-v8-line);
+
+  border-bottom:
+    1px solid
+    var(--company-v8-line);
+}
+
+
+:global([data-company-design="v8"])
+.flowArrow {
+  display:
+    none;
+}
+
+
+:global([data-company-design="v8"])
+.flow
+article {
+  position:
+    relative;
+
+  min-height:
+    230px;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  justify-content:
+    space-between;
+
+  padding:
+    1.6rem
+    clamp(
+      1.3rem,
+      2.6vw,
+      2.2rem
+    );
+
+  border:
+    0;
+
+  border-right:
+    1px solid
+    var(--company-v8-line);
+
+  border-radius:
+    0;
+
+  background:
+    transparent;
+
+  box-shadow:
+    none;
+}
+
+
+:global([data-company-design="v8"])
+.flow
+article:last-of-type {
+  border-right:
+    0;
+}
+
+
+:global([data-company-design="v8"])
+.flow
+article::before,
+:global([data-company-design="v8"])
+.flow
+article::after {
+  display:
+    none;
+}
+
+
+:global([data-company-design="v8"])
+.flow
+article
+> span {
+  position:
+    static;
+
+  color:
+    var(--company-v8-cyan);
+
+  font-size:
+    0.69rem;
+
+  font-weight:
+    650;
+
+  letter-spacing:
+    0.12em;
+}
+
+
+:global([data-company-design="v8"])
+.flow
+strong {
+  margin-top:
+    auto;
+
+  color:
+    var(--company-v8-text);
+
+  font-size:
+    clamp(
+      1.8rem,
+      3vw,
+      2.55rem
+    );
+
+  font-weight:
+    520;
+
+  letter-spacing:
+    -0.04em;
+}
+
+
+:global([data-company-design="v8"])
+.flow
+p {
+  max-width:
+    280px;
+
+  margin:
+    0.65rem
+    0
+    0;
+
+  color:
+    var(--company-v8-muted);
+
+  line-height:
+    1.55;
+}
+
+
+/* ==========================================================================
+   CAPABILITIES
+   Balanced 2x2 architecture instead of asymmetric bento.
+   ========================================================================== */
+
+
+:global([data-company-design="v8"])
+.capabilityGrid {
   display:
     grid;
 
@@ -6540,352 +6087,672 @@ p {
     );
 
   gap:
-    1rem;
+    0;
 
-  max-width:
-    1000px;
+  border-top:
+    1px solid
+    var(--company-v8-line);
 
-  margin:
-    0
-    auto;
+  border-left:
+    1px solid
+    var(--company-v8-line);
 }
 
 
-:global([data-company-design="v7"])
-.ecosystemCard {
+:global([data-company-design="v8"])
+.capabilityCard,
+:global([data-company-design="v8"])
+.capabilityCard:nth-child(n) {
+  grid-column:
+    auto;
+
   position:
     relative;
 
   min-height:
-    170px;
+    270px;
 
   display:
-    grid;
+    flex;
 
-  grid-template-columns:
-    auto
-    1fr
-    auto;
-
-  align-items:
-    center;
+  flex-direction:
+    column;
 
   padding:
-    1.4rem;
-
-  background:
-    #0c1017;
-
-  border:
-    1px solid
-    rgba(
-      161,
-      226,
-      240,
-      0.1
+    clamp(
+      1.4rem,
+      2.6vw,
+      2rem
     );
 
+  overflow:
+    hidden;
+
+  border:
+    0;
+
+  border-right:
+    1px solid
+    var(--company-v8-line);
+
+  border-bottom:
+    1px solid
+    var(--company-v8-line);
+
   border-radius:
-    4px
-    22px
-    4px
-    4px;
+    0;
+
+  background:
+    transparent;
 
   box-shadow:
     none;
 
   transition:
-    border-color
-    180ms
-    ease,
-    transform
-    180ms
+    background
+    160ms
     ease;
 }
 
 
-:global([data-company-design="v7"])
-.ecosystemIcon {
-  border-color:
-    rgba(
-      161,
-      226,
-      240,
-      0.22
-    );
-
-  background:
-    rgba(
-      161,
-      226,
-      240,
-      0.035
-    );
+:global([data-company-design="v8"])
+.capabilityCard::before,
+:global([data-company-design="v8"])
+.capabilityCard::after {
+  display:
+    none;
 }
 
 
-:global([data-company-design="v7"])
-.ecosystemLine {
-  position:
-    relative;
+:global([data-company-design="v8"])
+.capabilityTop {
+  margin-bottom:
+    auto;
+}
 
-  max-width:
-    720px;
+
+:global([data-company-design="v8"])
+.capabilityVisual {
+  width:
+    78px;
+
+  height:
+    44px;
 
   margin:
-    2.2rem
-    auto
+    1.5rem
+    0;
+
+  opacity:
+    0.48;
+
+  transform:
+    none;
+}
+
+
+:global([data-company-design="v8"])
+.capabilityCopy
+h3 {
+  margin:
     0;
 
   color:
-    var(--company-v7-text);
+    var(--company-v8-text);
+
+  font-size:
+    clamp(
+      1.45rem,
+      2.4vw,
+      2rem
+    );
+
+  font-weight:
+    540;
+
+  letter-spacing:
+    -0.04em;
 }
 
 
-:global([data-company-design="v7"])
-.ecosystemLine
-strong {
-  padding:
-    0.6rem
-    1rem;
+:global([data-company-design="v8"])
+.capabilityCopy
+p {
+  max-width:
+    520px;
 
-  background:
-    #0b0f16;
+  margin-top:
+    0.7rem;
 
-  border:
-    1px solid
-    var(--company-v7-line-strong);
+  color:
+    var(--company-v8-muted);
 
-  border-radius:
-    999px;
+  line-height:
+    1.6;
+}
 
-  font-size:
-    0.68rem;
 
-  letter-spacing:
-    0.16em;
+:global([data-company-design="v8"])
+.cardArrow {
+  margin-top:
+    1.3rem;
 }
 
 
 /* ==========================================================================
-   TIMELINE — TRACE RAIL
+   PRINCIPLES
+   Aligned, calm, architectural.
    ========================================================================== */
 
 
-:global([data-company-design="v7"])
-.timelineSection {
+:global([data-company-design="v8"])
+.principleSection {
   background:
-    #090c12;
+    #0a0b0f;
 }
 
 
-:global([data-company-design="v7"])
-.timelineGrid {
-  position:
-    relative;
+:global([data-company-design="v8"])
+.principleGrid {
+  display:
+    grid;
 
-  isolation:
-    isolate;
-
-  gap:
-    0.8rem;
-
-  padding-top:
-    2rem;
-}
-
-
-:global([data-company-design="v7"])
-.timelineGrid::before {
-  position:
-    absolute;
-
-  top:
-    2.35rem;
-
-  right:
-    4%;
-
-  left:
-    4%;
-
-  z-index:
-    -1;
-
-  height:
-    1px;
-
-  content:
-    "";
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      var(--company-v7-blue),
-      var(--company-v7-purple),
-      transparent
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(
+        0,
+        1fr
+      )
     );
 
-  opacity:
-    0.48;
+  gap:
+    0;
+
+  align-items:
+    stretch;
+
+  border-top:
+    1px solid
+    var(--company-v8-line);
+
+  border-left:
+    1px solid
+    var(--company-v8-line);
 }
 
 
-:global([data-company-design="v7"])
-.timelineCard {
+:global([data-company-design="v8"])
+.principleCard,
+:global([data-company-design="v8"])
+.principleCard:nth-child(n) {
   position:
     relative;
 
   min-height:
-    200px;
+    300px;
+
+  margin-top:
+    0;
 
   padding:
-    2.2rem
-    1.15rem
-    1.25rem;
-
-  background:
-    #0d1118;
+    1.6rem;
 
   border:
+    0;
+
+  border-right:
     1px solid
-    rgba(
-      255,
-      255,
-      255,
-      0.07
-    );
+    var(--company-v8-line);
+
+  border-bottom:
+    1px solid
+    var(--company-v8-line);
 
   border-radius:
-    3px
-    20px
-    3px
-    3px;
+    0;
+
+  background:
+    transparent;
 
   box-shadow:
     none;
 }
 
 
-:global([data-company-design="v7"])
-.timelineDot {
-  top:
-    -2.02rem;
+:global([data-company-design="v8"])
+.principleNumber {
+  position:
+    static;
 
+  margin:
+    1.3rem
+    0
+    auto;
+
+  color:
+    var(--company-v8-faint);
+
+  font-size:
+    0.72rem;
+
+  font-weight:
+    650;
+
+  line-height:
+    1;
+
+  letter-spacing:
+    0.1em;
+}
+
+
+:global([data-company-design="v8"])
+.principleVisual {
   width:
-    11px;
+    64px;
 
   height:
-    11px;
-
-  background:
-    var(--company-v7-cyan);
+    40px;
 
   border:
-    3px solid
-    #090c12;
+    0;
 
-  box-shadow:
-    0
-    0
-    0
-    1px
+  border-bottom:
+    1px solid
     rgba(
       161,
       226,
       240,
-      0.38
+      0.35
     );
+
+  border-radius:
+    0;
+
+  background:
+    transparent;
 }
 
 
 /* ==========================================================================
-   FOUNDER — STRONG EDITORIAL PORTRAIT
+   ECOSYSTEM
+   Quiet four-column network.
    ========================================================================== */
 
 
-:global([data-company-design="v7"])
+:global([data-company-design="v8"])
+.ecosystemGrid {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  max-width:
+    none;
+
+  margin:
+    0;
+
+  gap:
+    0;
+
+  border-top:
+    1px solid
+    var(--company-v8-line);
+
+  border-left:
+    1px solid
+    var(--company-v8-line);
+}
+
+
+:global([data-company-design="v8"])
+.ecosystemCard {
+  min-height:
+    180px;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  align-items:
+    flex-start;
+
+  justify-content:
+    space-between;
+
+  padding:
+    1.45rem;
+
+  border:
+    0;
+
+  border-right:
+    1px solid
+    var(--company-v8-line);
+
+  border-bottom:
+    1px solid
+    var(--company-v8-line);
+
+  border-radius:
+    0;
+
+  background:
+    transparent;
+
+  box-shadow:
+    none;
+
+  transition:
+    background
+    160ms
+    ease;
+}
+
+
+:global([data-company-design="v8"])
+.ecosystemIcon {
+  width:
+    auto;
+
+  min-width:
+    0;
+
+  height:
+    auto;
+
+  padding:
+    0;
+
+  border:
+    0;
+
+  border-radius:
+    0;
+
+  background:
+    transparent;
+
+  color:
+    var(--company-v8-cyan);
+
+  font-size:
+    0.72rem;
+
+  letter-spacing:
+    0.1em;
+}
+
+
+:global([data-company-design="v8"])
+.ecosystemCard
+strong {
+  color:
+    var(--company-v8-text);
+
+  font-size:
+    1.15rem;
+
+  font-weight:
+    560;
+}
+
+
+:global([data-company-design="v8"])
+.ecosystemLine {
+  max-width:
+    none;
+
+  margin:
+    1.8rem
+    0
+    0;
+
+  gap:
+    1rem;
+
+  color:
+    var(--company-v8-faint);
+}
+
+
+:global([data-company-design="v8"])
+.ecosystemLine
+strong {
+  padding:
+    0;
+
+  border:
+    0;
+
+  border-radius:
+    0;
+
+  background:
+    transparent;
+
+  color:
+    var(--company-v8-cyan);
+
+  font-size:
+    0.7rem;
+
+  letter-spacing:
+    0.14em;
+}
+
+
+/* ==========================================================================
+   TIMELINE
+   Precise horizontal chronology.
+   ========================================================================== */
+
+
+:global([data-company-design="v8"])
+.timelineSection {
+  background:
+    #0a0b0f;
+}
+
+
+:global([data-company-design="v8"])
+.timelineGrid {
+  position:
+    relative;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      5,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    0;
+
+  padding-top:
+    0;
+
+  border-top:
+    1px solid
+    var(--company-v8-line);
+}
+
+
+:global([data-company-design="v8"])
+.timelineGrid::before {
+  display:
+    none;
+}
+
+
+:global([data-company-design="v8"])
+.timelineCard {
+  min-height:
+    220px;
+
+  padding:
+    1.5rem
+    1.1rem;
+
+  border:
+    0;
+
+  border-right:
+    1px solid
+    var(--company-v8-line);
+
+  border-bottom:
+    1px solid
+    var(--company-v8-line);
+
+  border-radius:
+    0;
+
+  background:
+    transparent;
+
+  box-shadow:
+    none;
+}
+
+
+:global([data-company-design="v8"])
+.timelineCard:first-child {
+  border-left:
+    1px solid
+    var(--company-v8-line);
+}
+
+
+:global([data-company-design="v8"])
+.timelineDot {
+  position:
+    static;
+
+  width:
+    7px;
+
+  height:
+    7px;
+
+  margin:
+    1.4rem
+    0
+    auto;
+
+  border:
+    0;
+
+  border-radius:
+    50%;
+
+  background:
+    var(--company-v8-cyan);
+
+  box-shadow:
+    none;
+}
+
+
+/* ==========================================================================
+   FOUNDER
+   Strong split without framing gimmicks.
+   ========================================================================== */
+
+
+:global([data-company-design="v8"])
 .founderCard {
   display:
     grid;
 
   grid-template-columns:
     minmax(
-      280px,
-      0.72fr
+      300px,
+      0.9fr
     )
     minmax(
       0,
-      1.28fr
+      1.1fr
     );
 
   min-height:
-    520px;
+    500px;
 
   overflow:
     hidden;
 
-  background:
-    #0c1017;
-
   border:
+    0;
+
+  border-top:
     1px solid
-    rgba(
-      161,
-      226,
-      240,
-      0.12
-    );
+    var(--company-v8-line);
+
+  border-bottom:
+    1px solid
+    var(--company-v8-line);
 
   border-radius:
-    4px
-    36px
-    4px
-    4px;
+    0;
+
+  background:
+    transparent;
 
   box-shadow:
     none;
 }
 
 
-:global([data-company-design="v7"])
+:global([data-company-design="v8"])
 .founderVisual {
   min-height:
-    520px;
+    500px;
 
   border-right:
     1px solid
-    rgba(
-      161,
-      226,
-      240,
-      0.12
-    );
+    var(--company-v8-line);
+
+  background:
+    #0c0e13;
 }
 
 
-:global([data-company-design="v7"])
+:global([data-company-design="v8"])
 .founderVisualPhoto {
   filter:
     saturate(
-      0.78
+      0.86
     )
     contrast(
-      1.04
+      1.03
     );
 
+  transform:
+    none;
+
   transition:
-    filter
-    220ms
-    ease,
-    transform
-    300ms
-    ease;
+    none;
 }
 
 
-:global([data-company-design="v7"])
+:global([data-company-design="v8"])
 .founderContent {
   display:
     flex;
@@ -6900,113 +6767,157 @@ strong {
     clamp(
       2rem,
       5vw,
-      5rem
+      4.5rem
     );
 }
 
 
-:global([data-company-design="v7"])
+:global([data-company-design="v8"])
 .founderContent
 h2 {
+  max-width:
+    620px;
+
+  margin:
+    0.9rem
+    0
+    1rem;
+
+  color:
+    var(--company-v8-text);
+
   font-size:
     clamp(
       2.4rem,
-      5vw,
-      4.8rem
+      4.8vw,
+      4.5rem
     );
 
   font-weight:
-    530;
+    510;
 
   line-height:
-    0.98;
+    0.99;
 
   letter-spacing:
     -0.052em;
 }
 
 
-/* ==========================================================================
-   PEOPLE / PROJECTS
-   ========================================================================== */
+:global([data-company-design="v8"])
+.founderContent
+p {
+  max-width:
+    560px;
 
+  color:
+    var(--company-v8-muted);
 
-:global([data-company-design="v7"])
-.peopleGrid {
-  gap:
-    1rem;
+  line-height:
+    1.65;
 }
 
 
-:global([data-company-design="v7"])
-.peopleCard {
-  min-height:
-    210px;
+/* ==========================================================================
+   PEOPLE & PROJECTS
+   ========================================================================== */
 
-  padding:
-    1.35rem;
 
-  background:
-    var(--company-v7-panel);
+:global([data-company-design="v8"])
+.peopleGrid {
+  display:
+    grid;
 
-  border:
-    1px solid
-    rgba(
-      255,
-      255,
-      255,
-      0.08
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
     );
 
+  gap:
+    0;
+
+  border-top:
+    1px solid
+    var(--company-v8-line);
+
+  border-left:
+    1px solid
+    var(--company-v8-line);
+}
+
+
+:global([data-company-design="v8"])
+.peopleCard {
+  min-height:
+    220px;
+
+  padding:
+    1.5rem;
+
+  border:
+    0;
+
+  border-right:
+    1px solid
+    var(--company-v8-line);
+
+  border-bottom:
+    1px solid
+    var(--company-v8-line);
+
   border-radius:
-    4px
-    24px
-    4px
-    4px;
+    0;
+
+  background:
+    transparent;
 
   box-shadow:
     none;
 
   transition:
-    transform
-    180ms
-    ease,
-    border-color
-    180ms
+    background
+    160ms
     ease;
 }
 
 
-:global([data-company-design="v7"])
+:global([data-company-design="v8"])
 .peopleVisual {
   background:
+    transparent;
+
+  border:
+    0;
+
+  border-bottom:
+    1px solid
     rgba(
       161,
       226,
       240,
-      0.025
+      0.22
     );
 
-  border-color:
-    rgba(
-      161,
-      226,
-      240,
-      0.11
-    );
+  border-radius:
+    0;
 }
 
 
 /* ==========================================================================
-   CTA — CLOSING STATEMENT
+   CTA
+   Large closing statement, not another card.
    ========================================================================== */
 
 
-:global([data-company-design="v7"])
+:global([data-company-design="v8"])
 .cta {
   padding-top:
     clamp(
-      3.5rem,
+      3.8rem,
       7vw,
       6.5rem
     );
@@ -7019,108 +6930,120 @@ h2 {
     );
 
   background:
-    #07090d;
+    #08090c;
 }
 
 
-:global([data-company-design="v7"])
+:global([data-company-design="v8"])
 .ctaCard {
-  position:
-    relative;
-
   min-height:
-    420px;
+    0;
+
+  display:
+    block;
+
+  padding:
+    clamp(
+      2.2rem,
+      5vw,
+      4rem
+    )
+    0;
 
   overflow:
-    hidden;
-
-  background:
-    linear-gradient(
-      120deg,
-      rgba(
-        99,
-        51,
-        198,
-        0.16
-      ),
-      transparent
-      42%
-    ),
-    #0d1017;
+    visible;
 
   border:
+    0;
+
+  border-top:
     1px solid
     rgba(
       161,
       226,
       240,
-      0.14
+      0.36
     );
 
+  border-bottom:
+    1px solid
+    var(--company-v8-line);
+
   border-radius:
-    4px
-    42px
-    4px
-    4px;
+    0;
+
+  background:
+    transparent;
 
   box-shadow:
     none;
 }
 
 
-:global([data-company-design="v7"])
-.ctaCard::before {
-  position:
-    absolute;
-
-  top:
-    0;
-
-  right:
-    0;
-
-  width:
-    36%;
-
-  height:
-    3px;
-
-  content:
-    "";
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      var(--company-v7-purple),
-      var(--company-v7-cyan)
-    );
+:global([data-company-design="v8"])
+.ctaCard::before,
+:global([data-company-design="v8"])
+.ctaCard::after {
+  display:
+    none;
 }
 
 
-:global([data-company-design="v7"])
+:global([data-company-design="v8"])
+.ctaVisual {
+  display:
+    none;
+}
+
+
+:global([data-company-design="v8"])
+.ctaContent {
+  max-width:
+    960px;
+
+  padding:
+    0;
+}
+
+
+:global([data-company-design="v8"])
 .ctaContent
 h2 {
+  max-width:
+    880px;
+
+  color:
+    var(--company-v8-text);
+
   font-size:
     clamp(
-      2.8rem,
-      6vw,
-      5.6rem
+      2.7rem,
+      5.8vw,
+      5.3rem
     );
 
   font-weight:
-    520;
+    500;
 
   line-height:
-    0.94;
+    0.96;
 
   letter-spacing:
     -0.06em;
 }
 
 
+:global([data-company-design="v8"])
+.ctaContent
+h2
+span {
+  color:
+    var(--company-v8-cyan);
+}
+
+
 /* ==========================================================================
-   HOVER DETAIL
+   REFINED HOVER
    ========================================================================== */
 
 
@@ -7134,41 +7057,24 @@ and
     fine
 ) {
 
-  :global([data-company-design="v7"])
+  :global([data-company-design="v8"])
   .capabilityCard:hover,
-  :global([data-company-design="v7"])
+  :global([data-company-design="v8"])
   .ecosystemCard:hover,
-  :global([data-company-design="v7"])
+  :global([data-company-design="v8"])
   .peopleCard:hover {
     transform:
-      translateY(
-        -4px
-      );
+      none;
 
     border-color:
+      var(--company-v8-line);
+
+    background:
       rgba(
         161,
         226,
         240,
-        0.3
-      );
-  }
-
-
-  :global([data-company-design="v7"])
-  .founderCard:hover
-  .founderVisualPhoto {
-    filter:
-      saturate(
-        0.95
-      )
-      contrast(
-        1.04
-      );
-
-    transform:
-      scale(
-        1.018
+        0.025
       );
   }
 
@@ -7185,26 +7091,37 @@ and
     1024px
 ) {
 
-  :global([data-company-design="v7"])
-  .capabilityCard:nth-child(n) {
-    grid-column:
-      span
-      6;
+  :global([data-company-design="v8"])
+  .ecosystemGrid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
   }
 
 
-  :global([data-company-design="v7"])
-  .principleCard:nth-child(n) {
-    margin-top:
-      0;
+  :global([data-company-design="v8"])
+  .timelineGrid {
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(
+          0,
+          1fr
+        )
+      );
   }
 
 
-  :global([data-company-design="v7"])
+  :global([data-company-design="v8"])
   .founderCard {
     grid-template-columns:
       minmax(
-        260px,
+        280px,
         0.9fr
       )
       minmax(
@@ -7226,7 +7143,7 @@ and
     768px
 ) {
 
-  :global([data-company-design="v7"])
+  :global([data-company-design="v8"])
   .section {
     padding-top:
       3rem;
@@ -7236,7 +7153,7 @@ and
   }
 
 
-  :global([data-company-design="v7"])
+  :global([data-company-design="v8"])
   .pageNavInner {
     overflow-x:
       auto;
@@ -7246,74 +7163,65 @@ and
   }
 
 
-  :global([data-company-design="v7"])
+  :global([data-company-design="v8"])
   .pageNavInner::-webkit-scrollbar {
     display:
       none;
   }
 
 
-  :global([data-company-design="v7"])
+  :global([data-company-design="v8"])
   .statementCard {
-    min-height:
-      280px;
-
-    padding:
-      1.5rem;
-
-    border-radius:
-      4px
-      22px
-      4px
-      4px;
-  }
-
-
-  :global([data-company-design="v7"])
-  .flow {
     grid-template-columns:
       minmax(
         0,
         1fr
       );
 
-    gap:
-      0.65rem;
+    grid-template-areas:
+      "code"
+      "title"
+      "copy";
+
+    row-gap:
+      1rem;
   }
 
 
-  :global([data-company-design="v7"])
+  :global([data-company-design="v8"])
+  .flow {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  :global([data-company-design="v8"])
   .flow
   article {
     min-height:
-      185px;
+      180px;
+
+    border-right:
+      0;
+
+    border-bottom:
+      1px solid
+      var(--company-v8-line);
   }
 
 
-  :global([data-company-design="v7"])
-  .flowArrow {
-    width:
-      1px;
-
-    height:
-      26px;
-
-    justify-self:
-      center;
+  :global([data-company-design="v8"])
+  .flow
+  article:last-of-type {
+    border-bottom:
+      0;
   }
 
 
-  :global([data-company-design="v7"])
-  .flowArrow::before {
-    width:
-      1px;
-
-    height:
-      100%;
-  }
-
-
-  :global([data-company-design="v7"])
+  :global([data-company-design="v8"])
   .capabilityGrid {
     grid-template-columns:
       minmax(
@@ -7323,17 +7231,16 @@ and
   }
 
 
-  :global([data-company-design="v7"])
+  :global([data-company-design="v8"])
+  .capabilityCard,
+  :global([data-company-design="v8"])
   .capabilityCard:nth-child(n) {
-    grid-column:
-      auto;
-
     min-height:
-      240px;
+      230px;
   }
 
 
-  :global([data-company-design="v7"])
+  :global([data-company-design="v8"])
   .principleGrid {
     grid-template-columns:
       minmax(
@@ -7343,17 +7250,19 @@ and
   }
 
 
-  :global([data-company-design="v7"])
+  :global([data-company-design="v8"])
+  .principleCard,
+  :global([data-company-design="v8"])
   .principleCard:nth-child(n) {
     min-height:
-      270px;
+      240px;
 
     margin-top:
       0;
   }
 
 
-  :global([data-company-design="v7"])
+  :global([data-company-design="v8"])
   .ecosystemGrid {
     grid-template-columns:
       minmax(
@@ -7363,14 +7272,14 @@ and
   }
 
 
-  :global([data-company-design="v7"])
+  :global([data-company-design="v8"])
   .ecosystemCard {
     min-height:
       140px;
   }
 
 
-  :global([data-company-design="v7"])
+  :global([data-company-design="v8"])
   .timelineGrid {
     grid-template-columns:
       minmax(
@@ -7378,57 +7287,30 @@ and
         1fr
       );
 
-    gap:
-      0.75rem;
-
-    padding-top:
-      0;
+    border-left:
+      1px solid
+      var(--company-v8-line);
   }
 
 
-  :global([data-company-design="v7"])
-  .timelineGrid::before {
-    top:
-      0;
-
-    bottom:
-      0;
-
-    left:
-      5px;
-
-    width:
-      1px;
-
-    height:
-      auto;
-  }
-
-
-  :global([data-company-design="v7"])
+  :global([data-company-design="v8"])
   .timelineCard {
     min-height:
-      150px;
+      140px;
 
-    margin-left:
-      20px;
-
-    padding:
-      1.3rem;
+    border-left:
+      0;
   }
 
 
-  :global([data-company-design="v7"])
-  .timelineDot {
-    top:
-      1.35rem;
-
-    left:
-      -26px;
+  :global([data-company-design="v8"])
+  .timelineCard:first-child {
+    border-left:
+      0;
   }
 
 
-  :global([data-company-design="v7"])
+  :global([data-company-design="v8"])
   .founderCard {
     grid-template-columns:
       minmax(
@@ -7441,7 +7323,7 @@ and
   }
 
 
-  :global([data-company-design="v7"])
+  :global([data-company-design="v8"])
   .founderVisual {
     min-height:
       390px;
@@ -7451,18 +7333,19 @@ and
 
     border-bottom:
       1px solid
-      var(--company-v7-line);
+      var(--company-v8-line);
   }
 
 
-  :global([data-company-design="v7"])
+  :global([data-company-design="v8"])
   .founderContent {
     padding:
-      1.6rem;
+      1.7rem
+      0.2rem;
   }
 
 
-  :global([data-company-design="v7"])
+  :global([data-company-design="v8"])
   .peopleGrid {
     grid-template-columns:
       minmax(
@@ -7472,16 +7355,11 @@ and
   }
 
 
-  :global([data-company-design="v7"])
+  :global([data-company-design="v8"])
   .ctaCard {
-    min-height:
-      360px;
-
-    border-radius:
-      4px
-      26px
-      4px
-      4px;
+    padding:
+      2.2rem
+      0;
   }
 
 }
@@ -7497,20 +7375,18 @@ and
     reduce
 ) {
 
-  :global([data-company-design="v7"])
-  .capabilityCard,
-  :global([data-company-design="v7"])
-  .ecosystemCard,
-  :global([data-company-design="v7"])
-  .peopleCard,
-  :global([data-company-design="v7"])
-  .founderVisualPhoto,
-  :global([data-company-design="v7"])
+  :global([data-company-design="v8"])
   .pageNavInner
   a,
-  :global([data-company-design="v7"])
+  :global([data-company-design="v8"])
   .pageNavInner
-  a::after {
+  a::after,
+  :global([data-company-design="v8"])
+  .capabilityCard,
+  :global([data-company-design="v8"])
+  .ecosystemCard,
+  :global([data-company-design="v8"])
+  .peopleCard {
     transition:
       none;
   }

@@ -24,34 +24,38 @@ const css =
 
 
 describe(
-  "company creative v7",
+  "company editorial v8",
   () => {
 
     it(
-      "activates V7 once",
+      "uses only the V8 design layer",
       () => {
 
         expect(
-          (
-            page.match(
-              /data-company-design="v7"/g
-            )
-            ?? []
-          )
-        ).toHaveLength(
-          1
+          page
+        ).toContain(
+          'data-company-design="v8"'
         );
 
 
         expect(
-          (
-            css.match(
-              /NB_COMPANY_CREATIVE_V7/g
-            )
-            ?? []
-          )
-        ).toHaveLength(
-          1
+          page
+        ).not.toContain(
+          'data-company-design="v7"'
+        );
+
+
+        expect(
+          css
+        ).toContain(
+          "NB_COMPANY_EDITORIAL_V8"
+        );
+
+
+        expect(
+          css
+        ).not.toContain(
+          "NB_COMPANY_CREATIVE_V7"
         );
 
       }
@@ -59,34 +63,34 @@ describe(
 
 
     it(
-      "uses asymmetric capability bento architecture",
+      "uses a balanced capability grid instead of bento",
       () => {
 
         expect(
           css
         ).toContain(
-          "repeat(\n      12,"
+          ".capabilityGrid"
         );
 
 
         expect(
           css
         ).toContain(
-          ".capabilityCard:nth-child(1)"
+          "repeat(\n      2,"
         );
 
 
         expect(
           css
         ).toContain(
-          "span\n    7"
+          ".capabilityCard:nth-child(n)"
         );
 
 
         expect(
           css
         ).toContain(
-          "span\n    5"
+          "grid-column:\n    auto;"
         );
 
       }
@@ -94,20 +98,20 @@ describe(
 
 
     it(
-      "creates staggered principles and a timeline trace",
+      "keeps principles aligned rather than staggered",
       () => {
 
         expect(
           css
         ).toContain(
-          ".principleCard:nth-child(2)"
+          ".principleCard:nth-child(n)"
         );
 
 
         expect(
           css
         ).toContain(
-          ".timelineGrid::before"
+          "margin-top:\n    0;"
         );
 
       }
@@ -115,27 +119,20 @@ describe(
 
 
     it(
-      "creates the ecosystem and founder editorial systems",
+      "uses flat architectural sections",
       () => {
 
         expect(
           css
         ).toContain(
-          ".ecosystemLine"
+          "border-radius:\n    0;"
         );
 
 
         expect(
           css
         ).toContain(
-          ".founderCard"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          "min-height:\n    520px;"
+          "background:\n    transparent;"
         );
 
       }
@@ -143,7 +140,7 @@ describe(
 
 
     it(
-      "supports mobile and reduced motion",
+      "preserves responsive behavior",
       () => {
 
         expect(
