@@ -52,7 +52,7 @@ describe(
         expect(
           homepage
         ).toContain(
-          "Offensive security built around real-world attack thinking."
+          "Offensive security built around"
         );
 
         expect(

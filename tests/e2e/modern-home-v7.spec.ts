@@ -30,7 +30,7 @@ test(
             1,
 
           name:
-            /offensive security built around real-world attack thinking/i
+            /offensive security built around how real systems fail/i
         }
       )
     ).toBeVisible();

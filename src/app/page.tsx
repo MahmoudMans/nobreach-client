@@ -217,431 +217,298 @@ export default function HomePage() {
     <>
       <section
         className={
-          styles.modernHero
+          styles.heroV8
         }
         data-home-section="hero"
+        data-home-hero="v8"
       >
         <div
           className={
-            styles.heroAtmosphere
+            styles.heroV8Ambient
           }
           aria-hidden="true"
         />
 
-        <Container size="wide">
-          <div
-            className={
-              styles.modernHeroGrid
-            }
-          >
-            <div
-              className={
-                styles.modernHeroCopy
-              }
-            >
-              <div
-                className={
-                  styles.heroStatus
-                }
-              >
-                <span
-                  className={
-                    styles.heroStatusSignal
-                  }
-                  aria-hidden="true"
-                />
-
-                Offensive Security / Tunisia
-              </div>
-
-              <h1
-                className={
-                  styles.modernHeroTitle
-                }
-              >
-                Offensive security built around real-world attack thinking.
-              </h1>
-
-              <p
-                className={
-                  styles.modernHeroLead
-                }
-              >
-                No Breach combines offensive security services, practical education and community work to help people understand systems from the perspective that matters most: how they can actually fail.
-              </p>
-
-              <div
-                className={
-                  styles.heroActions
-                }
-              >
-                <Link
-                  className={
-                    styles.heroPrimaryAction
-                  }
-                  href="/services"
-                >
-                  <span>
-                    Explore services
-                  </span>
-
-                  <span
-                    aria-hidden="true"
-                  >
-                    ↗
-                  </span>
-                </Link>
-
-                <Link
-                  className={
-                    styles.heroTextAction
-                  }
-                  href="/company"
-                >
-                  About No Breach
-
-                  <span
-                    aria-hidden="true"
-                  >
-                    →
-                  </span>
-                </Link>
-              </div>
-
-              <div
-                className={
-                  styles.heroPrinciples
-                }
-                aria-label="No Breach approach"
-              >
-                <span>
-                  Offensive
-                </span>
-
-                <span>
-                  Evidence-led
-                </span>
-
-                <span>
-                  Practical
-                </span>
-              </div>
-            </div>
-
-            <div
-              className={
-                styles.constellationShell
-              }
-              aria-label="No Breach attack surface model"
-            >
-              <div
-                className={
-                  styles.constellationHeader
-                }
-              >
-                <div>
-                  <span
-                    className={
-                      styles.constellationDot
-                    }
-                    aria-hidden="true"
-                  />
-
-                  <span>
-                    NB / ATTACK SURFACE
-                  </span>
-                </div>
-
-                <span>
-                  MODEL / 01
-                </span>
-              </div>
-
-              <div
-                className={
-                  styles.constellationStage
-                }
-              >
-                <div
-                  className={
-                    styles.radarGlow
-                  }
-                  aria-hidden="true"
-                />
-
-                <div
-                  className={
-                    styles.orbitOuter
-                  }
-                  aria-hidden="true"
-                />
-
-                <div
-                  className={
-                    styles.orbitMiddle
-                  }
-                  aria-hidden="true"
-                />
-
-                <div
-                  className={
-                    styles.orbitInner
-                  }
-                  aria-hidden="true"
-                />
-
-                <div
-                  className={
-                    styles.scanBeam
-                  }
-                  aria-hidden="true"
-                />
-
-                <svg
-                  className={
-                    styles.constellationLines
-                  }
-                  viewBox="0 0 600 440"
-                  preserveAspectRatio="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M300 218 L170 92"
-                  />
-
-                  <path
-                    d="M300 218 L435 105"
-                  />
-
-                  <path
-                    d="M300 218 L500 254"
-                  />
-
-                  <path
-                    d="M300 218 L388 365"
-                  />
-
-                  <path
-                    d="M300 218 L118 334"
-                  />
-
-                  <path
-                    d="M170 92 L435 105"
-                    className={
-                      styles.constellationSecondaryLine
-                    }
-                  />
-
-                  <path
-                    d="M118 334 L388 365"
-                    className={
-                      styles.constellationSecondaryLine
-                    }
-                  />
-                </svg>
-
-                <div
-                  className={
-                    styles.constellationCore
-                  }
-                >
-                  <span>
-                    NB
-                  </span>
-
-                  <small>
-                    CORE
-                  </small>
-                </div>
-
-                <div
-                  className={`${styles.constellationNode} ${styles.nodeApp}`}
-                >
-                  <span
-                    className={
-                      styles.nodePulse
-                    }
-                    aria-hidden="true"
-                  />
-
-                  <strong>
-                    APP
-                  </strong>
-
-                  <small>
-                    surface
-                  </small>
-                </div>
-
-                <div
-                  className={`${styles.constellationNode} ${styles.nodeApi}`}
-                >
-                  <span
-                    className={
-                      styles.nodePulse
-                    }
-                    aria-hidden="true"
-                  />
-
-                  <strong>
-                    API
-                  </strong>
-
-                  <small>
-                    objects
-                  </small>
-                </div>
-
-                <div
-                  className={`${styles.constellationNode} ${styles.nodeAuth}`}
-                >
-                  <span
-                    className={
-                      styles.nodePulse
-                    }
-                    aria-hidden="true"
-                  />
-
-                  <strong>
-                    AUTH
-                  </strong>
-
-                  <small>
-                    trust
-                  </small>
-                </div>
-
-                <div
-                  className={`${styles.constellationNode} ${styles.nodeUser}`}
-                >
-                  <span
-                    className={
-                      styles.nodePulse
-                    }
-                    aria-hidden="true"
-                  />
-
-                  <strong>
-                    USER
-                  </strong>
-
-                  <small>
-                    identity
-                  </small>
-                </div>
-
-                <div
-                  className={`${styles.constellationNode} ${styles.nodeData}`}
-                >
-                  <span
-                    className={
-                      styles.nodePulse
-                    }
-                    aria-hidden="true"
-                  />
-
-                  <strong>
-                    DATA
-                  </strong>
-
-                  <small>
-                    impact
-                  </small>
-                </div>
-
-                <div
-                  className={
-                    styles.constellationCoordinate
-                  }
-                  aria-hidden="true"
-                >
-                  <span>
-                    36.8065 N
-                  </span>
-
-                  <span>
-                    10.1815 E
-                  </span>
-                </div>
-              </div>
-
-              <div
-                className={
-                  styles.constellationFooter
-                }
-              >
-                <span>
-                  Attack surface
-                </span>
-
-                <span>
-                  Authorization
-                </span>
-
-                <span>
-                  Evidence
-                </span>
-              </div>
-            </div>
-          </div>
-        </Container>
-
         <div
           className={
-            styles.heroTicker
+            styles.heroV8Frame
           }
-          aria-hidden="true"
         >
           <div
             className={
-              styles.heroTickerTrack
+              styles.heroV8Copy
             }
           >
-            <span>
-              WEB APPLICATION SECURITY
-            </span>
+            <div
+              className={
+                styles.heroV8Kicker
+              }
+            >
+              <span
+                className={
+                  styles.heroV8KickerDot
+                }
+                aria-hidden="true"
+              />
 
-            <i />
+              <span>
+                Offensive Security / Tunisia
+              </span>
+            </div>
 
-            <span>
-              API SECURITY
-            </span>
+            <h1
+              className={
+                styles.heroV8Title
+              }
+            >
+              Offensive security built around
+              <span>
+                how real systems fail.
+              </span>
+            </h1>
 
-            <i />
+            <p
+              className={
+                styles.heroV8Lead
+              }
+            >
+              No Breach helps organizations understand exposure,
+              validate weaknesses and turn security findings into
+              practical decisions.
+            </p>
 
-            <span>
-              INFRASTRUCTURE SECURITY
-            </span>
+            <div
+              className={
+                styles.heroV8Actions
+              }
+            >
+              <Link
+                href="/services"
+                className={
+                  styles.heroV8Primary
+                }
+              >
+                Explore services
 
-            <i />
+                <span
+                  aria-hidden="true"
+                >
+                  ↗
+                </span>
+              </Link>
 
-            <span>
-              SECURITY TRAINING
-            </span>
+              <Link
+                href="/company"
+                className={
+                  styles.heroV8Secondary
+                }
+              >
+                About No Breach
+              </Link>
+            </div>
 
-            <i />
+            <div
+              className={
+                styles.heroV8Statement
+              }
+            >
+              <span
+                aria-hidden="true"
+              >
+                01
+              </span>
 
-            <span>
-              OFFENSIVE THINKING
-            </span>
+              <p>
+                Security, education and community are one connected system.
+              </p>
+            </div>
 
-            <i />
+            <div
+              className={
+                styles.heroV8Capabilities
+              }
+              aria-label="No Breach security focus areas"
+            >
+              <span>
+                Web application
+              </span>
 
-            <span>
-              WEB APPLICATION SECURITY
-            </span>
+              <span>
+                API
+              </span>
 
-            <i />
+              <span>
+                Infrastructure
+              </span>
 
-            <span>
-              API SECURITY
-            </span>
+              <span>
+                Training
+              </span>
+            </div>
+          </div>
 
-            <i />
+          <div
+            className={
+              styles.heroV8Visual
+            }
+            data-home-hero-visual="attack-surface"
+            data-hero-visual="attack-surface"
+            data-hero-art="attack-surface"
+            data-ui="attack-surface-visual"
+            data-attack-surface="true"
+            aria-hidden="true"
+          >
+            <div
+              className={
+                styles.heroV8VisualHeader
+              }
+            >
+              <span>
+                NB / ATTACK SURFACE
+              </span>
 
-            <span>
-              INFRASTRUCTURE SECURITY
-            </span>
+              <span>
+                TUNIS / TN
+              </span>
+            </div>
+
+            <div
+              className={
+                styles.heroV8Surface
+              }
+            >
+              <span
+                className={
+                  `${styles.heroV8Node} ${styles.heroV8NodeApp}`
+                }
+              >
+                APP
+              </span>
+
+              <span
+                className={
+                  `${styles.heroV8Node} ${styles.heroV8NodeApi}`
+                }
+              >
+                API
+              </span>
+
+              <span
+                className={
+                  `${styles.heroV8Node} ${styles.heroV8NodeAuth}`
+                }
+              >
+                AUTH
+              </span>
+
+              <span
+                className={
+                  `${styles.heroV8Node} ${styles.heroV8NodeUser}`
+                }
+              >
+                USER
+              </span>
+
+              <span
+                className={
+                  `${styles.heroV8Node} ${styles.heroV8NodeDb}`
+                }
+              >
+                DB
+              </span>
+
+              <span
+                className={
+                  `${styles.heroV8Node} ${styles.heroV8NodeData}`
+                }
+              >
+                DATA
+              </span>
+
+              <div
+                className={
+                  styles.heroV8Core
+                }
+              >
+                <small>
+                  ATTACK
+                </small>
+
+                <strong>
+                  SURFACE
+                </strong>
+
+                <span>
+                  MAP
+                </span>
+              </div>
+
+              <i
+                className={
+                  `${styles.heroV8Line} ${styles.heroV8LineOne}`
+                }
+              />
+
+              <i
+                className={
+                  `${styles.heroV8Line} ${styles.heroV8LineTwo}`
+                }
+              />
+
+              <i
+                className={
+                  `${styles.heroV8Line} ${styles.heroV8LineThree}`
+                }
+              />
+
+              <i
+                className={
+                  `${styles.heroV8Line} ${styles.heroV8LineFour}`
+                }
+              />
+
+              <i
+                className={
+                  `${styles.heroV8Line} ${styles.heroV8LineFive}`
+                }
+              />
+
+              <i
+                className={
+                  `${styles.heroV8Line} ${styles.heroV8LineSix}`
+                }
+              />
+
+              <div
+                className={
+                  styles.heroV8Orbit
+                }
+              />
+
+              <div
+                className={
+                  styles.heroV8OrbitInner
+                }
+              />
+            </div>
+
+            <div
+              className={
+                styles.heroV8VisualFooter
+              }
+            >
+              <span>
+                Observe
+              </span>
+
+              <span>
+                Validate
+              </span>
+
+              <span>
+                Strengthen
+              </span>
+            </div>
           </div>
         </div>
       </section>
