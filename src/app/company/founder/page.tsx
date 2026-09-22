@@ -1,1026 +1,1214 @@
-import {
-  Breadcrumbs
-} from "@/components/navigation/breadcrumbs";
-import {
-  FounderPersonStructuredData
-} from "@/components/founder/founder-person-structured-data";
-import {
-  Container
-} from "@/components/layout/container";
-import {
-  ButtonLink
-} from "@/components/ui/button-link";
-import {
-  founderProfile
-} from "@/content/founder";
-import {
-  createMetadata
-} from "@/lib/seo";
+import type {
+  Metadata
+} from "next";
+
+import Link from "next/link";
+
 import styles from "./founder.module.css";
 
-export const metadata =
-  createMetadata({
+
+export const metadata:
+  Metadata = {
+
+  title:
+    "Nouha Ben Brahim | Founder of No Breach",
+
+  description:
+    "Nouha Ben Brahim is the founder of No Breach, with a professional focus on offensive security, cybersecurity training and community development."
+};
+
+
+const journey = [
+  {
+    index:
+      "01",
+
+    code:
+      "DEV",
+
     title:
-      "Nouha Ben Brahim | Founder of No Breach",
+      "Development",
 
     description:
-      "Meet Nouha Ben Brahim, founder of No Breach: cybersecurity specialist, mentor, author and speaker focused on offensive security, security education and AI security.",
+      "Technical foundations and understanding how systems are built."
+  },
 
-    path:
-      "/company/founder"
-  });
+  {
+    index:
+      "02",
 
-export default function FounderPage() {
+    code:
+      "SEC",
+
+    title:
+      "Cybersecurity",
+
+    description:
+      "Moving from building systems toward understanding how they fail."
+  },
+
+  {
+    index:
+      "03",
+
+    code:
+      "RES",
+
+    title:
+      "Bug bounty / security research",
+
+    description:
+      "Developing practical vulnerability research and security-testing thinking."
+  },
+
+  {
+    index:
+      "04",
+
+    code:
+      "OFF",
+
+    title:
+      "Offensive security",
+
+    description:
+      "Applying attacker-oriented reasoning to security work and technical education."
+  },
+
+  {
+    index:
+      "05",
+
+    code:
+      "NB",
+
+    title:
+      "No Breach",
+
+    description:
+      "Bringing security services, education and community into one ecosystem."
+  }
+];
+
+
+const expertise = [
+  {
+    index:
+      "01",
+
+    code:
+      "WEB",
+
+    title:
+      "Web Security",
+
+    description:
+      "Application behavior, attack surfaces and security testing."
+  },
+
+  {
+    index:
+      "02",
+
+    code:
+      "API",
+
+    title:
+      "API Security",
+
+    description:
+      "Authentication, authorization and object-level access."
+  },
+
+  {
+    index:
+      "03",
+
+    code:
+      "OFF",
+
+    title:
+      "Offensive Security",
+
+    description:
+      "Attacker-oriented analysis and validation."
+  },
+
+  {
+    index:
+      "04",
+
+    code:
+      "EDU",
+
+    title:
+      "Security Training",
+
+    description:
+      "Hands-on technical learning and mentorship."
+  }
+];
+
+
+const focus = [
+  "Offensive Security",
+  "Security Research",
+  "Training",
+  "Mentorship",
+  "Community"
+];
+
+
+const founderStructuredData = {
+  "@context":
+    "https://schema.org",
+
+  "@type":
+    "Person",
+
+  name:
+    "Nouha Ben Brahim",
+
+  jobTitle:
+    "Founder of No Breach",
+
+  description:
+    "Cybersecurity professional focused on offensive security, practical training and community development.",
+
+  worksFor: {
+    "@type":
+      "Organization",
+
+    name:
+      "No Breach"
+  },
+
+  knowsAbout: [
+    "Offensive Security",
+    "Security Research",
+    "Cybersecurity Training",
+    "Mentorship"
+  ]
+};
+
+
+function Arrow() {
+
+  return (
+    <span
+      className={
+        styles.founderArrow
+      }
+      aria-hidden="true"
+    >
+      ↗
+    </span>
+  );
+}
+
+
+function SectionLabel({
+  index,
+  label
+}: {
+  index:
+    string;
+
+  label:
+    string;
+}) {
+
   return (
     <div
       className={
-        styles.page
+        styles.founderSectionLabel
       }
     >
-      <FounderPersonStructuredData />
+      <span>
+        {
+          index
+        }
+      </span>
 
-      <Breadcrumbs
-        items={[
-          {
-            label:
-              "Company",
-            href:
-              "/company"
-          },
-          {
-            label:
-              "Founder"
-          }
-        ]}
-      />
+      <i>
+        /
+      </i>
+
+      <strong>
+        {
+          label
+        }
+      </strong>
+    </div>
+  );
+}
+
+
+export default function FounderPage() {
+
+  return (
+    <div
+      className={
+        styles.founderPage
+      }
+      data-founder-page="v2"
+    >
+      <script
+        type="application/ld+json"
+      >
+        {
+          JSON.stringify(
+            founderStructuredData
+          )
+        }
+      </script>
+
 
       <section
         className={
-          styles.hero
+          styles.founderHero
         }
+        data-founder-section="hero"
       >
-        <Container size="wide">
+        <div
+          className={
+            styles.founderHeroGlow
+          }
+          aria-hidden="true"
+        />
+
+        <div
+          className={
+            styles.founderHeroInner
+          }
+        >
           <div
             className={
-              styles.heroGrid
+              styles.founderHeroCopy
             }
+            data-founder-ui="hero-copy"
           >
             <div
               className={
-                styles.heroCopy
+                styles.founderKicker
               }
             >
-              <p
-                className={
-                  styles.eyebrow
-                }
-              >
-                Founder / No Breach
-              </p>
+              <span />
 
-              <h1
-                className={
-                  styles.heroTitle
-                }
-              >
-                {
-                  founderProfile.name
-                }
-              </h1>
-
-              <p
-                className={
-                  styles.heroRole
-                }
-              >
-                {
-                  founderProfile.title
-                }
-              </p>
-
-              <p
-                className={
-                  styles.heroSummary
-                }
-              >
-                {
-                  founderProfile.summary
-                }
-              </p>
-
-              <div
-                className={
-                  styles.descriptors
-                }
-              >
-                {founderProfile
-                  .descriptors
-                  .map(
-                    (
-                      descriptor
-                    ) => (
-                      <span
-                        className={
-                          styles.descriptor
-                        }
-                        key={
-                          descriptor
-                        }
-                      >
-                        {
-                          descriptor
-                        }
-                      </span>
-                    )
-                  )}
-              </div>
-
-              <div
-                className={
-                  styles.actions
-                }
-              >
-                <ButtonLink href="/contact">
-                  Contact No Breach
-                </ButtonLink>
-
-                <ButtonLink
-                  href="/company"
-                  variant="secondary"
-                >
-                  About the company
-                </ButtonLink>
-              </div>
+              FOUNDER / NO BREACH
             </div>
 
-            <aside
+            <h1>
+              Nouha
+              <span>
+                Ben Brahim
+              </span>
+            </h1>
+
+            <p
               className={
-                styles.identityCard
+                styles.founderRole
               }
-              aria-label="Founder profile summary"
+            >
+              Founder of No Breach
+            </p>
+
+            <p
+              className={
+                styles.founderIntro
+              }
+            >
+              Cybersecurity professional focused on offensive security,
+              practical training and community development.
+            </p>
+
+            <div
+              className={
+                styles.founderFocus
+              }
+            >
+              {
+                focus.map(
+                  (
+                    item
+                  ) => (
+                    <span
+                      key={
+                        item
+                      }
+                    >
+                      {
+                        item
+                      }
+                    </span>
+                  )
+                )
+              }
+            </div>
+
+            <div
+              className={
+                styles.founderHeroActions
+              }
+            >
+              <Link
+                href="/company"
+                className={
+                  styles.founderPrimaryAction
+                }
+              >
+                About No Breach
+
+                <Arrow />
+              </Link>
+
+              <Link
+                href="/activities"
+                className={
+                  styles.founderSecondaryAction
+                }
+              >
+                Public activity
+
+                <Arrow />
+              </Link>
+            </div>
+          </div>
+
+
+          <div
+            className={
+              styles.founderPortraitCard
+            }
+            data-founder-ui="portrait-card"
+            aria-label="Abstract founder profile artwork"
+          >
+            <div
+              className={
+                styles.founderPortraitHeader
+              }
+            >
+              <span>
+                NB / FOUNDER
+              </span>
+
+              <span>
+                PROFILE
+              </span>
+            </div>
+
+            <div
+              className={
+                styles.founderPortraitStage
+              }
+              aria-hidden="true"
             >
               <div
                 className={
-                  styles.identityTop
+                  styles.founderPortraitOrbit
                 }
-              >
-                <p
-                  className={
-                    styles.identityLabel
-                  }
-                >
-                  NB / Founder
-                </p>
-
-                <span
-                  className={
-                    styles.identityStatus
-                  }
-                >
-                  Public profile
-                </span>
-              </div>
+              />
 
               <div
                 className={
-                  styles.initials
+                  styles.founderPortraitOrbitSecondary
                 }
-                aria-hidden="true"
+              />
+
+              <div
+                className={
+                  styles.founderMonogram
+                }
               >
                 NB
               </div>
 
-              <dl
+              <div
                 className={
-                  styles.identityFooter
+                  styles.founderCrosshair
+                }
+              />
+
+              <span
+                className={
+                  styles.founderPortraitSignalOne
                 }
               >
-                <div
-                  className={
-                    styles.identityDatum
-                  }
-                >
-                  <dt>
-                    Based
-                  </dt>
+                OFFSEC
+              </span>
 
-                  <dd>
-                    {
-                      founderProfile.location
-                    }
-                  </dd>
-                </div>
+              <span
+                className={
+                  styles.founderPortraitSignalTwo
+                }
+              >
+                TRAIN
+              </span>
 
-                <div
-                  className={
-                    styles.identityDatum
-                  }
-                >
-                  <dt>
-                    Founded
-                  </dt>
+              <span
+                className={
+                  styles.founderPortraitSignalThree
+                }
+              >
+                SHARE
+              </span>
+            </div>
 
-                  <dd>
-                    No Breach · 2023
-                  </dd>
-                </div>
+            <div
+              className={
+                styles.founderPortraitFooter
+              }
+            >
+              <div>
+                <span>
+                  ROLE
+                </span>
 
-                <div
-                  className={
-                    styles.identityDatum
-                  }
-                >
-                  <dt>
-                    Security
-                  </dt>
+                <strong>
+                  Founder
+                </strong>
+              </div>
 
-                  <dd>
-                    Offensive security
-                  </dd>
-                </div>
+              <div>
+                <span>
+                  FOCUS
+                </span>
 
-                <div
-                  className={
-                    styles.identityDatum
-                  }
-                >
-                  <dt>
-                    Education
-                  </dt>
-
-                  <dd>
-                    Mentorship & training
-                  </dd>
-                </div>
-              </dl>
-            </aside>
+                <strong>
+                  Offensive Security
+                </strong>
+              </div>
+            </div>
           </div>
-        </Container>
+        </div>
       </section>
 
-      <section
+
+      <nav
         className={
-          styles.section
+          styles.founderNav
         }
+        aria-label="Founder page sections"
       >
-        <Container>
+        <div
+          className={
+            styles.founderNavInner
+          }
+        >
+          <a
+            href="#overview"
+          >
+            Overview
+          </a>
+
+          <a
+            href="#journey"
+          >
+            Journey
+          </a>
+
+          <a
+            href="#expertise"
+          >
+            Expertise
+          </a>
+
+          <a
+            href="#education"
+          >
+            Education
+          </a>
+
+          <a
+            href="#public-work"
+          >
+            Public work
+          </a>
+        </div>
+      </nav>
+
+
+      <section
+        id="overview"
+        className={
+          styles.founderSection
+        }
+        data-founder-section="overview"
+      >
+        <div
+          className={
+            styles.founderContainer
+          }
+        >
+          <SectionLabel
+            index="01"
+            label="Professional overview"
+          />
+
           <div
             className={
-              styles.sectionHeader
+              styles.founderOverviewGrid
             }
           >
-            <p
+            <article
               className={
-                styles.sectionEyebrow
+                styles.founderStatementCard
               }
+              data-founder-card="statement"
             >
-              Profile
-            </p>
+              <span>
+                FOUNDER / SECURITY
+              </span>
 
-            <h2
+              <h2>
+                Security through
+                an attacker’s perspective.
+              </h2>
+
+              <p>
+                The founder profile connects practical offensive-security
+                work with technical education and community development.
+              </p>
+            </article>
+
+            <div
               className={
-                styles.sectionTitle
+                styles.founderOverviewStack
               }
             >
+              <article
+                className={
+                  styles.founderMiniCard
+                }
+                data-founder-card="overview"
+              >
+                <span>
+                  ROLE
+                </span>
+
+                <strong>
+                  Founder
+                </strong>
+
+                <p>
+                  Building the company around practical security.
+                </p>
+              </article>
+
+              <article
+                className={
+                  styles.founderMiniCard
+                }
+                data-founder-card="overview"
+              >
+                <span>
+                  APPROACH
+                </span>
+
+                <strong>
+                  Practice first
+                </strong>
+
+                <p>
+                  Test, learn, demonstrate and share.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section
+        id="journey"
+        className={
+          `${styles.founderSection} ${styles.founderJourneySection}`
+        }
+        data-founder-section="journey"
+      >
+        <div
+          className={
+            styles.founderContainer
+          }
+        >
+          <div
+            className={
+              styles.founderSectionHeader
+            }
+          >
+            <SectionLabel
+              index="02"
+              label="Journey"
+            />
+
+            <h2>
               From programming to offensive security.
             </h2>
           </div>
 
           <div
             className={
-              styles.overviewGrid
+              styles.founderJourney
             }
+            data-founder-ui="journey"
           >
-            <div
-              className={
-                styles.overviewText
-              }
-            >
-              {founderProfile
-                .overview
-                .map(
-                  (
-                    paragraph
-                  ) => (
-                    <p
-                      key={
-                        paragraph
-                      }
-                    >
-                      {
-                        paragraph
-                      }
-                    </p>
-                  )
-                )}
-            </div>
-
-            <blockquote
-              className={
-                styles.quote
-              }
-            >
-              <span
-                className={
-                  styles.quoteMark
-                }
-                aria-hidden="true"
-              >
-                “
-              </span>
-
-              <p
-                className={
-                  styles.quoteText
-                }
-              >
-                {
-                  founderProfile.quote
-                }
-              </p>
-
-              <footer
-                className={
-                  styles.quoteContext
-                }
-              >
-                {
-                  founderProfile.quoteContext
-                }
-              </footer>
-            </blockquote>
-          </div>
-        </Container>
-      </section>
-
-      <section
-        className={
-          styles.section
-        }
-      >
-        <Container>
-          <div
-            className={
-              styles.sectionHeader
-            }
-          >
-            <p
-              className={
-                styles.sectionEyebrow
-              }
-            >
-              Journey
-            </p>
-
-            <h2
-              className={
-                styles.sectionTitle
-              }
-            >
-              A technical path built through experimentation.
-            </h2>
-          </div>
-
-          <div
-            className={
-              styles.journey
-            }
-          >
-            {founderProfile
-              .journey
-              .map(
+            {
+              journey.map(
                 (
-                  item
+                  item,
+                  index
                 ) => (
-                  <article
+                  <div
                     className={
-                      styles.journeyItem
+                      styles.founderJourneyItem
                     }
+                    data-founder-card="journey"
                     key={
                       item.index
                     }
                   >
-                    <span
-                      className={
-                        styles.journeyIndex
-                      }
-                    >
-                      {
-                        item.index
-                      }
-                    </span>
-
-                    <p
-                      className={
-                        styles.journeyLabel
-                      }
-                    >
-                      {
-                        item.label
-                      }
-                    </p>
-
                     <div
                       className={
-                        styles.journeyContent
-                      }
-                    >
-                      <h3
-                        className={
-                          styles.journeyTitle
-                        }
-                      >
-                        {
-                          item.title
-                        }
-                      </h3>
-
-                      <p
-                        className={
-                          styles.journeyDescription
-                        }
-                      >
-                        {
-                          item.description
-                        }
-                      </p>
-                    </div>
-                  </article>
-                )
-              )}
-          </div>
-        </Container>
-      </section>
-
-      <section
-        className={
-          styles.section
-        }
-      >
-        <Container>
-          <div
-            className={
-              styles.sectionHeader
-            }
-          >
-            <p
-              className={
-                styles.sectionEyebrow
-              }
-            >
-              Focus
-            </p>
-
-            <h2
-              className={
-                styles.sectionTitle
-              }
-            >
-              Security, education and attacker thinking.
-            </h2>
-          </div>
-
-          <div
-            className={
-              styles.focusGrid
-            }
-          >
-            {founderProfile
-              .focusAreas
-              .map(
-                (
-                  focus
-                ) => (
-                  <article
-                    className={
-                      styles.focusCard
-                    }
-                    key={
-                      focus.number
-                    }
-                  >
-                    <p
-                      className={
-                        styles.cardNumber
-                      }
-                    >
-                      {
-                        focus.number
-                      }
-                    </p>
-
-                    <h3
-                      className={
-                        styles.focusTitle
-                      }
-                    >
-                      {
-                        focus.title
-                      }
-                    </h3>
-
-                    <p
-                      className={
-                        styles.focusDescription
-                      }
-                    >
-                      {
-                        focus.description
-                      }
-                    </p>
-                  </article>
-                )
-              )}
-          </div>
-        </Container>
-      </section>
-
-      <section
-        className={
-          styles.section
-        }
-      >
-        <Container>
-          <div
-            className={
-              styles.sectionHeader
-            }
-          >
-            <p
-              className={
-                styles.sectionEyebrow
-              }
-            >
-              Method
-            </p>
-
-            <h2
-              className={
-                styles.sectionTitle
-              }
-            >
-              Themes that shape her public security work.
-            </h2>
-          </div>
-
-          <div
-            className={
-              styles.principleGrid
-            }
-          >
-            {founderProfile
-              .principles
-              .map(
-                (
-                  principle
-                ) => (
-                  <article
-                    className={
-                      styles.principleCard
-                    }
-                    key={
-                      principle.label
-                    }
-                  >
-                    <p
-                      className={
-                        styles.cardEyebrow
-                      }
-                    >
-                      Principle
-                    </p>
-
-                    <h3
-                      className={
-                        styles.principleTitle
-                      }
-                    >
-                      {
-                        principle.label
-                      }
-                    </h3>
-
-                    <p
-                      className={
-                        styles.principleDescription
-                      }
-                    >
-                      {
-                        principle.description
-                      }
-                    </p>
-                  </article>
-                )
-              )}
-          </div>
-        </Container>
-      </section>
-
-      <section
-        className={
-          styles.section
-        }
-      >
-        <Container>
-          <div
-            className={
-              styles.sectionHeader
-            }
-          >
-            <p
-              className={
-                styles.sectionEyebrow
-              }
-            >
-              Speaking & mentorship
-            </p>
-
-            <h2
-              className={
-                styles.sectionTitle
-              }
-            >
-              Selected public engagements.
-            </h2>
-          </div>
-
-          <div
-            className={
-              styles.engagements
-            }
-          >
-            {founderProfile
-              .publicEngagements
-              .map(
-                (
-                  engagement
-                ) => (
-                  <article
-                    className={
-                      styles.engagement
-                    }
-                    key={
-                      engagement.event
-                    }
-                  >
-                    <div
-                      className={
-                        styles.engagementMeta
+                        styles.founderJourneyTop
                       }
                     >
                       <span>
                         {
-                          engagement.period
+                          item.index
                         }
                       </span>
 
-                      <span
-                        className={
-                          styles.engagementRole
-                        }
-                      >
+                      <strong>
                         {
-                          engagement.role
+                          item.code
                         }
-                      </span>
+                      </strong>
                     </div>
 
-                    <h3
-                      className={
-                        styles.engagementTitle
-                      }
-                    >
-                      {
-                        engagement.event
-                      }
-                    </h3>
-
-                    <p
-                      className={
-                        styles.engagementOrganization
-                      }
-                    >
-                      {
-                        engagement.organization
-                      }
-                    </p>
-
-                    <p
-                      className={
-                        styles.engagementDetail
-                      }
-                    >
-                      {
-                        engagement.detail
-                      }
-                    </p>
-                  </article>
-                )
-              )}
-          </div>
-        </Container>
-      </section>
-
-      <section
-        className={
-          styles.section
-        }
-      >
-        <Container>
-          <div
-            className={
-              styles.sectionHeader
-            }
-          >
-            <p
-              className={
-                styles.sectionEyebrow
-              }
-            >
-              Writing & media
-            </p>
-
-            <h2
-              className={
-                styles.sectionTitle
-              }
-            >
-              Publishing and conversations beyond the assessment.
-            </h2>
-          </div>
-
-          <div
-            className={
-              styles.mediaGrid
-            }
-          >
-            {founderProfile
-              .writingAndMedia
-              .map(
-                (
-                  item
-                ) => (
-                  <article
-                    className={
-                      styles.mediaCard
-                    }
-                    key={
-                      item.title
-                    }
-                  >
                     <div
                       className={
-                        styles.mediaMeta
+                        styles.founderJourneyVisual
                       }
+                      aria-hidden="true"
                     >
-                      <span
-                        className={
-                          styles.mediaType
-                        }
-                      >
-                        {
-                          item.type
-                        }
-                      </span>
+                      <span />
 
-                      <span>
-                        {
-                          item.date
-                        }
-                      </span>
+                      {
+                        index <
+                        journey.length -
+                          1
+                          ? (
+                              <i>
+                                →
+                              </i>
+                            )
+                          : null
+                      }
                     </div>
 
-                    <h3
-                      className={
-                        styles.mediaTitle
-                      }
-                    >
+                    <h3>
                       {
                         item.title
                       }
                     </h3>
 
-                    <p
+                    <p>
+                      {
+                        item.description
+                      }
+                    </p>
+                  </div>
+                )
+              )
+            }
+          </div>
+        </div>
+      </section>
+
+
+      <section
+        id="expertise"
+        className={
+          styles.founderSection
+        }
+        data-founder-section="expertise"
+      >
+        <div
+          className={
+            styles.founderContainer
+          }
+        >
+          <div
+            className={
+              styles.founderSectionHeader
+            }
+          >
+            <SectionLabel
+              index="03"
+              label="Expertise"
+            />
+
+            <h2>
+              Technical focus.
+            </h2>
+          </div>
+
+          <div
+            className={
+              styles.founderExpertiseGrid
+            }
+            data-founder-ui="expertise-grid"
+          >
+            {
+              expertise.map(
+                (
+                  item
+                ) => (
+                  <article
+                    className={
+                      styles.founderExpertiseCard
+                    }
+                    data-founder-card="expertise"
+                    key={
+                      item.index
+                    }
+                  >
+                    <div
                       className={
-                        styles.mediaDescription
+                        styles.founderExpertiseTop
                       }
                     >
+                      <span>
+                        {
+                          item.index
+                        }
+                      </span>
+
+                      <strong>
+                        {
+                          item.code
+                        }
+                      </strong>
+                    </div>
+
+                    <div
+                      className={
+                        styles.founderExpertiseVisual
+                      }
+                      aria-hidden="true"
+                    >
+                      <span />
+
+                      <span />
+
+                      <i />
+                    </div>
+
+                    <h3>
+                      {
+                        item.title
+                      }
+                    </h3>
+
+                    <p>
                       {
                         item.description
                       }
                     </p>
                   </article>
                 )
-              )}
+              )
+            }
           </div>
-        </Container>
+        </div>
       </section>
 
+
       <section
+        id="education"
         className={
-          styles.section
+          `${styles.founderSection} ${styles.founderEducationSection}`
         }
+        data-founder-section="education"
       >
-        <Container>
+        <div
+          className={
+            styles.founderContainer
+          }
+        >
+          <SectionLabel
+            index="04"
+            label="Teaching & mentorship"
+          />
+
           <div
             className={
-              styles.sectionHeader
+              styles.founderEducationCard
+            }
+            data-founder-card="education"
+          >
+            <div
+              className={
+                styles.founderEducationVisual
+              }
+              aria-hidden="true"
+            >
+              <div
+                className={
+                  styles.founderLabCore
+                }
+              >
+                LAB
+              </div>
+
+              <span>
+                LEARN
+              </span>
+
+              <span>
+                TEST
+              </span>
+
+              <span>
+                BUILD
+              </span>
+            </div>
+
+            <div
+              className={
+                styles.founderEducationCopy
+              }
+            >
+              <span>
+                HANDS-ON LEARNING
+              </span>
+
+              <h2>
+                Learn security
+                by doing security.
+              </h2>
+
+              <p>
+                Training and mentorship focus on practical technical work,
+                experimentation and repeatable reasoning.
+              </p>
+
+              <Link
+                href="/training"
+                className={
+                  styles.founderInlineAction
+                }
+              >
+                Explore Training Hub
+
+                <Arrow />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section
+        id="public-work"
+        className={
+          styles.founderSection
+        }
+        data-founder-section="public-work"
+      >
+        <div
+          className={
+            styles.founderContainer
+          }
+        >
+          <div
+            className={
+              styles.founderSectionHeader
             }
           >
-            <p
-              className={
-                styles.sectionEyebrow
-              }
-            >
-              Credentials
-            </p>
+            <SectionLabel
+              index="05"
+              label="Public work"
+            />
 
-            <h2
-              className={
-                styles.sectionTitle
-              }
-            >
-              Publicly listed professional credentials.
+            <h2>
+              Selected public engagements.
             </h2>
           </div>
 
           <div
             className={
-              styles.credentialList
+              styles.founderEngagementStrip
             }
+            data-founder-ui="engagement-evidence"
           >
-            {founderProfile
-              .credentials
-              .map(
-                (
-                  credential
-                ) => (
-                  <article
-                    className={
-                      styles.credential
-                    }
-                    key={
-                      credential.title
-                    }
-                  >
-                    <h3
-                      className={
-                        styles.credentialTitle
-                      }
-                    >
-                      {
-                        credential.title
-                      }
-                    </h3>
-
-                    <p
-                      className={
-                        styles.credentialIssuer
-                      }
-                    >
-                      {
-                        credential.issuer
-                      }
-                    </p>
-
-                    <p
-                      className={
-                        styles.credentialDetail
-                      }
-                    >
-                      {
-                        credential.detail
-                      }
-                    </p>
-                  </article>
-                )
-              )}
-          </div>
-        </Container>
-      </section>
-
-      <section
-        className={
-          styles.section
-        }
-      >
-        <Container>
-          <div
-            className={
-              styles.researchBox
-            }
-          >
-            <p
+            <div
               className={
-                styles.researchLabel
+                styles.founderEngagementItem
               }
             >
-              Profile accuracy
-            </p>
+              <span>
+                01
+              </span>
 
-            <div>
-              <p
+              <strong>
+                CyberSummit 4.0
+              </strong>
+            </div>
+
+            <div
+              className={
+                styles.founderEngagementItem
+              }
+            >
+              <span>
+                02
+              </span>
+
+              <strong>
+                CyberCamp 5.0
+              </strong>
+            </div>
+
+            <div
+              className={
+                styles.founderEngagementItem
+              }
+            >
+              <span>
+                03
+              </span>
+
+              <strong>
+                The Hackers Line
+              </strong>
+            </div>
+          </div>
+
+
+          <div
+            className={
+              styles.founderPublicGrid
+            }
+          >
+            <Link
+              href="/activities"
+              className={
+                styles.founderPublicCard
+              }
+              data-founder-card="public"
+            >
+              <div
                 className={
-                  styles.researchText
+                  styles.founderPublicVisual
                 }
+                aria-hidden="true"
               >
-                {
-                  founderProfile.researchNote
-                }
-              </p>
+                <span>
+                  ACT
+                </span>
+
+                <i />
+
+                <i />
+
+                <i />
+              </div>
 
               <div
                 className={
-                  styles.sourceList
+                  styles.founderPublicCopy
                 }
-                aria-label="Public research sources"
               >
-                {founderProfile
-                  .publicRecord
-                  .map(
-                    (
-                      source
-                    ) => (
-                      <span
-                        className={
-                          styles.source
-                        }
-                        key={
-                          source
-                        }
-                      >
-                        {
-                          source
-                        }
-                      </span>
-                    )
-                  )}
+                <span>
+                  ACTIVITIES
+                </span>
+
+                <h3>
+                  Public activity
+                </h3>
+
+                <p>
+                  Workshops, training, community and technical activity.
+                </p>
               </div>
-            </div>
+
+              <Arrow />
+            </Link>
+
+
+            <Link
+              href="/insights"
+              className={
+                styles.founderPublicCard
+              }
+              data-founder-card="public"
+            >
+              <div
+                className={
+                  `${styles.founderPublicVisual} ${styles.founderKnowledgeVisual}`
+                }
+                aria-hidden="true"
+              >
+                <span>
+                  R&D
+                </span>
+
+                <i />
+
+                <i />
+
+                <i />
+              </div>
+
+              <div
+                className={
+                  styles.founderPublicCopy
+                }
+              >
+                <span>
+                  KNOWLEDGE
+                </span>
+
+                <h3>
+                  Security insights
+                </h3>
+
+                <p>
+                  Practical technical thinking published by No Breach.
+                </p>
+              </div>
+
+              <Arrow />
+            </Link>
+
+
+            <Link
+              href="/cr4ckout"
+              className={
+                styles.founderPublicCard
+              }
+              data-founder-card="public"
+            >
+              <div
+                className={
+                  `${styles.founderPublicVisual} ${styles.founderCommunityVisual}`
+                }
+                aria-hidden="true"
+              >
+                <span>
+                  CTF
+                </span>
+
+                <i />
+
+                <i />
+
+                <i />
+              </div>
+
+              <div
+                className={
+                  styles.founderPublicCopy
+                }
+              >
+                <span>
+                  COMMUNITY
+                </span>
+
+                <h3>
+                  CR4CKOUT
+                </h3>
+
+                <p>
+                  Technical challenge, experimentation and community.
+                </p>
+              </div>
+
+              <Arrow />
+            </Link>
           </div>
-        </Container>
+        </div>
       </section>
+
 
       <section
         className={
-          styles.cta
+          styles.founderCta
         }
+        data-founder-section="cta"
       >
-        <Container>
+        <div
+          className={
+            styles.founderCtaCard
+          }
+          data-founder-card="cta"
+        >
           <div
             className={
-              styles.ctaBox
+              styles.founderCtaGraphic
+            }
+            aria-hidden="true"
+          >
+            <span>
+              NB
+            </span>
+
+            <i />
+
+            <i />
+
+            <i />
+          </div>
+
+          <div
+            className={
+              styles.founderCtaContent
             }
           >
-            <p
-              className={
-                styles.sectionEyebrow
-              }
-            >
-              No Breach
-            </p>
+            <SectionLabel
+              index="06"
+              label="No Breach"
+            />
 
-            <h2
-              className={
-                styles.ctaTitle
-              }
-            >
-              Offensive security strengthened through practice, education and community.
+            <h2>
+              See the company
+              behind the founder.
             </h2>
 
-            <p
-              className={
-                styles.ctaText
-              }
-            >
-              Explore the organization Nouha founded, its security services and the practical training ecosystem being built around No Breach.
+            <p>
+              Explore No Breach services, training and cybersecurity work.
             </p>
 
             <div
               className={
-                styles.ctaActions
+                styles.founderCtaActions
               }
             >
-              <ButtonLink href="/services">
-                Explore services
-              </ButtonLink>
-
-              <ButtonLink
-                href="/training"
-                variant="secondary"
+              <Link
+                href="/company"
+                className={
+                  styles.founderPrimaryAction
+                }
               >
-                Training Hub
-              </ButtonLink>
+                About No Breach
 
-              <ButtonLink
-                href="/insights"
-                variant="secondary"
+                <Arrow />
+              </Link>
+
+              <Link
+                href="/contact"
+                className={
+                  styles.founderSecondaryAction
+                }
               >
-                Read insights
-              </ButtonLink>
+                Contact
+
+                <Arrow />
+              </Link>
             </div>
           </div>
-        </Container>
+        </div>
       </section>
     </div>
   );

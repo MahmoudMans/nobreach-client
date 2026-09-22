@@ -1820,3 +1820,3435 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_FOUNDER_VISUAL_V2
+
+   Dedicated visual layer for the current founder profile.
+   Older design-system marker blocks above remain intentionally preserved
+   for regression authority.
+   ========================================================================== */
+
+
+.founderPage {
+  --founder-bg:
+    #08090b;
+
+  --founder-surface:
+    #0b0c0f;
+
+  --founder-surface-raised:
+    #0e1014;
+
+  --founder-line:
+    rgba(
+      255,
+      255,
+      255,
+      0.075
+    );
+
+  --founder-line-strong:
+    rgba(
+      255,
+      255,
+      255,
+      0.13
+    );
+
+  --founder-text:
+    rgba(
+      255,
+      255,
+      255,
+      0.94
+    );
+
+  --founder-muted:
+    rgba(
+      255,
+      255,
+      255,
+      0.53
+    );
+
+  --founder-soft:
+    rgba(
+      255,
+      255,
+      255,
+      0.29
+    );
+
+  --founder-blue:
+    #83b3d7;
+
+  --founder-cyan:
+    #a1e2f0;
+
+  --founder-purple:
+    #6333c6;
+
+  --founder-purple-soft:
+    #7e60b9;
+
+  overflow:
+    clip;
+
+  color:
+    var(
+      --founder-text
+    );
+
+  background:
+    var(
+      --founder-bg
+    );
+}
+
+
+.founderArrow {
+  display:
+    inline-block;
+
+  transition:
+    transform
+    140ms
+    ease;
+}
+
+
+a:hover
+.founderArrow {
+  transform:
+    translate(
+      2px,
+      -2px
+    );
+}
+
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+
+
+.founderHero {
+  position:
+    relative;
+
+  overflow:
+    hidden;
+
+  border-bottom:
+    1px solid
+    var(
+      --founder-line
+    );
+}
+
+
+.founderHeroGlow {
+  position:
+    absolute;
+
+  top:
+    -180px;
+
+  right:
+    -130px;
+
+  width:
+    680px;
+
+  height:
+    680px;
+
+  border-radius:
+    50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        99,
+        51,
+        198,
+        0.14
+      ),
+      transparent 68%
+    );
+
+  pointer-events:
+    none;
+}
+
+
+.founderHeroInner {
+  position:
+    relative;
+
+  z-index:
+    1;
+
+  display:
+    grid;
+
+  width:
+    min(
+      calc(
+        100% - 4rem
+      ),
+      1180px
+    );
+
+  min-height:
+    650px;
+
+  margin-inline:
+    auto;
+
+  padding:
+    clamp(
+      4.75rem,
+      8vw,
+      7rem
+    )
+    0;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1.08fr
+    )
+    minmax(
+      380px,
+      0.92fr
+    );
+
+  gap:
+    clamp(
+      3rem,
+      6vw,
+      6rem
+    );
+
+  align-items:
+    center;
+}
+
+
+.founderHeroCopy {
+  max-width:
+    690px;
+}
+
+
+.founderKicker {
+  display:
+    inline-flex;
+
+  margin-bottom:
+    1.4rem;
+
+  gap:
+    0.55rem;
+
+  align-items:
+    center;
+
+  color:
+    var(
+      --founder-blue
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.5rem;
+
+  font-weight:
+    620;
+
+  letter-spacing:
+    0.12em;
+}
+
+
+.founderKicker > span {
+  width:
+    5px;
+
+  height:
+    5px;
+
+  border-radius:
+    50%;
+
+  background:
+    var(
+      --founder-cyan
+    );
+
+  box-shadow:
+    0
+    0
+    15px
+    rgba(
+      161,
+      226,
+      240,
+      0.5
+    );
+}
+
+
+.founderHeroCopy h1 {
+  max-width:
+    8ch;
+
+  margin:
+    0;
+
+  color:
+    var(
+      --founder-text
+    );
+
+  font-size:
+    clamp(
+      4rem,
+      7vw,
+      6.5rem
+    );
+
+  font-weight:
+    445;
+
+  letter-spacing:
+    -0.074em;
+
+  line-height:
+    0.88;
+}
+
+
+.founderHeroCopy h1 span {
+  display:
+    block;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.48
+    );
+}
+
+
+.founderRole {
+  margin:
+    1.7rem
+    0
+    0;
+
+  color:
+    var(
+      --founder-cyan
+    );
+
+  font-size:
+    0.82rem;
+
+  font-weight:
+    540;
+}
+
+
+.founderIntro {
+  max-width:
+    520px;
+
+  margin:
+    0.85rem
+    0
+    0;
+
+  color:
+    var(
+      --founder-muted
+    );
+
+  font-size:
+    0.95rem;
+
+  line-height:
+    1.72;
+}
+
+
+.founderFocus {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    0.4rem;
+
+  margin-top:
+    1.35rem;
+}
+
+
+.founderFocus span {
+  padding:
+    0.32rem
+    0.52rem;
+
+  border:
+    1px solid
+    var(
+      --founder-line
+    );
+
+  border-radius:
+    4px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.48
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.4rem;
+
+  letter-spacing:
+    0.04em;
+}
+
+
+.founderHeroActions {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    0.65rem;
+
+  margin-top:
+    1.9rem;
+}
+
+
+.founderPrimaryAction,
+.founderSecondaryAction {
+  display:
+    inline-flex;
+
+  min-height:
+    44px;
+
+  padding:
+    0
+    0.95rem;
+
+  gap:
+    0.65rem;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  border:
+    1px solid
+    transparent;
+
+  border-radius:
+    5px;
+
+  font-size:
+    0.7rem;
+
+  font-weight:
+    580;
+
+  text-decoration:
+    none;
+}
+
+
+.founderPrimaryAction {
+  color:
+    #08090b;
+
+  background:
+    var(
+      --founder-cyan
+    );
+}
+
+
+.founderSecondaryAction {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.72
+    );
+
+  border-color:
+    var(
+      --founder-line-strong
+    );
+
+  background:
+    transparent;
+}
+
+
+/* ==========================================================================
+   PORTRAIT CARD
+   ========================================================================== */
+
+
+.founderPortraitCard {
+  overflow:
+    hidden;
+
+  border:
+    1px solid
+    var(
+      --founder-line-strong
+    );
+
+  border-radius:
+    10px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(
+        255,
+        255,
+        255,
+        0.032
+      ),
+      rgba(
+        255,
+        255,
+        255,
+        0.006
+      )
+    );
+
+  box-shadow:
+    0
+    36px
+    90px
+    rgba(
+      0,
+      0,
+      0,
+      0.24
+    );
+}
+
+
+.founderPortraitHeader {
+  display:
+    flex;
+
+  min-height:
+    48px;
+
+  padding:
+    0
+    1rem;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  border-bottom:
+    1px solid
+    var(
+      --founder-line
+    );
+
+  color:
+    var(
+      --founder-soft
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.41rem;
+
+  letter-spacing:
+    0.09em;
+}
+
+
+.founderPortraitStage {
+  position:
+    relative;
+
+  display:
+    grid;
+
+  min-height:
+    420px;
+
+  overflow:
+    hidden;
+
+  place-items:
+    center;
+
+  background:
+    radial-gradient(
+      circle at 50% 48%,
+      rgba(
+        99,
+        51,
+        198,
+        0.16
+      ),
+      transparent 48%
+    );
+}
+
+
+.founderPortraitStage::before {
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  background-image:
+    linear-gradient(
+      rgba(
+        131,
+        179,
+        215,
+        0.025
+      )
+      1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(
+        131,
+        179,
+        215,
+        0.025
+      )
+      1px,
+      transparent 1px
+    );
+
+  background-size:
+    36px
+    36px;
+
+  content:
+    "";
+}
+
+
+.founderPortraitOrbit,
+.founderPortraitOrbitSecondary {
+  position:
+    absolute;
+
+  border:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.11
+    );
+
+  border-radius:
+    50%;
+}
+
+
+.founderPortraitOrbit {
+  width:
+    250px;
+
+  height:
+    250px;
+}
+
+
+.founderPortraitOrbitSecondary {
+  width:
+    340px;
+
+  height:
+    340px;
+
+  border-color:
+    rgba(
+      126,
+      96,
+      185,
+      0.1
+    );
+}
+
+
+.founderMonogram {
+  position:
+    relative;
+
+  z-index:
+    3;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.9
+    );
+
+  font-size:
+    clamp(
+      6rem,
+      11vw,
+      9rem
+    );
+
+  font-weight:
+    340;
+
+  letter-spacing:
+    -0.1em;
+}
+
+
+.founderCrosshair {
+  position:
+    absolute;
+
+  top:
+    50%;
+
+  left:
+    50%;
+
+  width:
+    72%;
+
+  height:
+    72%;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+}
+
+
+.founderCrosshair::before,
+.founderCrosshair::after {
+  position:
+    absolute;
+
+  background:
+    rgba(
+      131,
+      179,
+      215,
+      0.09
+    );
+
+  content:
+    "";
+}
+
+
+.founderCrosshair::before {
+  top:
+    50%;
+
+  right:
+    0;
+
+  left:
+    0;
+
+  height:
+    1px;
+}
+
+
+.founderCrosshair::after {
+  top:
+    0;
+
+  bottom:
+    0;
+
+  left:
+    50%;
+
+  width:
+    1px;
+}
+
+
+.founderPortraitSignalOne,
+.founderPortraitSignalTwo,
+.founderPortraitSignalThree {
+  position:
+    absolute;
+
+  z-index:
+    4;
+
+  padding:
+    0.3rem
+    0.45rem;
+
+  border:
+    1px solid
+    var(
+      --founder-line
+    );
+
+  border-radius:
+    4px;
+
+  color:
+    rgba(
+      161,
+      226,
+      240,
+      0.45
+    );
+
+  background:
+    rgba(
+      8,
+      9,
+      11,
+      0.86
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.38rem;
+
+  letter-spacing:
+    0.07em;
+}
+
+
+.founderPortraitSignalOne {
+  top:
+    22%;
+
+  left:
+    10%;
+}
+
+
+.founderPortraitSignalTwo {
+  top:
+    35%;
+
+  right:
+    9%;
+}
+
+
+.founderPortraitSignalThree {
+  right:
+    17%;
+
+  bottom:
+    17%;
+}
+
+
+.founderPortraitFooter {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  border-top:
+    1px solid
+    var(
+      --founder-line
+    );
+}
+
+
+.founderPortraitFooter div {
+  min-height:
+    82px;
+
+  padding:
+    0.9rem
+    1rem;
+
+  border-right:
+    1px solid
+    var(
+      --founder-line
+    );
+}
+
+
+.founderPortraitFooter div:last-child {
+  border-right:
+    0;
+}
+
+
+.founderPortraitFooter span {
+  display:
+    block;
+
+  margin-bottom:
+    0.5rem;
+
+  color:
+    var(
+      --founder-soft
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.39rem;
+
+  letter-spacing:
+    0.08em;
+}
+
+
+.founderPortraitFooter strong {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.7
+    );
+
+  font-size:
+    0.7rem;
+
+  font-weight:
+    500;
+}
+
+
+/* ==========================================================================
+   NAVIGATION
+   ========================================================================== */
+
+
+.founderNav {
+  overflow-x:
+    auto;
+
+  border-bottom:
+    1px solid
+    var(
+      --founder-line
+    );
+}
+
+
+.founderNavInner {
+  display:
+    flex;
+
+  width:
+    min(
+      calc(
+        100% - 4rem
+      ),
+      1180px
+    );
+
+  min-height:
+    50px;
+
+  margin-inline:
+    auto;
+
+  gap:
+    1.6rem;
+
+  align-items:
+    center;
+}
+
+
+.founderNav a {
+  color:
+    var(
+      --founder-soft
+    );
+
+  font-size:
+    0.64rem;
+
+  text-decoration:
+    none;
+}
+
+
+/* ==========================================================================
+   SHARED SECTION SYSTEM
+   ========================================================================== */
+
+
+.founderSection {
+  border-bottom:
+    1px solid
+    var(
+      --founder-line
+    );
+}
+
+
+.founderContainer {
+  width:
+    min(
+      calc(
+        100% - 4rem
+      ),
+      1180px
+    );
+
+  margin-inline:
+    auto;
+
+  padding:
+    clamp(
+      3.5rem,
+      5.8vw,
+      5rem
+    )
+    0;
+}
+
+
+.founderSectionLabel {
+  display:
+    flex;
+
+  margin-bottom:
+    2rem;
+
+  gap:
+    0.5rem;
+
+  align-items:
+    baseline;
+
+  color:
+    var(
+      --founder-soft
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.44rem;
+
+  letter-spacing:
+    0.1em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.founderSectionLabel span {
+  color:
+    var(
+      --founder-cyan
+    );
+}
+
+
+.founderSectionLabel i {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.15
+    );
+
+  font-style:
+    normal;
+}
+
+
+.founderSectionLabel strong {
+  font-weight:
+    550;
+}
+
+
+.founderSectionHeader {
+  display:
+    flex;
+
+  margin-bottom:
+    2.2rem;
+
+  align-items:
+    end;
+
+  justify-content:
+    space-between;
+
+  gap:
+    2rem;
+}
+
+
+.founderSectionHeader
+.founderSectionLabel {
+  margin-bottom:
+    0;
+}
+
+
+.founderSectionHeader h2 {
+  max-width:
+    550px;
+
+  margin:
+    0;
+
+  color:
+    var(
+      --founder-text
+    );
+
+  font-size:
+    clamp(
+      2rem,
+      3.7vw,
+      3.3rem
+    );
+
+  font-weight:
+    465;
+
+  letter-spacing:
+    -0.055em;
+
+  line-height:
+    1;
+
+  text-align:
+    right;
+}
+
+
+.founderSectionHeader h2 span {
+  display:
+    block;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.4
+    );
+}
+
+
+/* ==========================================================================
+   OVERVIEW
+   ========================================================================== */
+
+
+.founderOverviewGrid {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1.25fr
+    )
+    minmax(
+      300px,
+      0.75fr
+    );
+
+  gap:
+    1rem;
+}
+
+
+.founderStatementCard,
+.founderMiniCard {
+  border:
+    1px solid
+    var(
+      --founder-line
+    );
+
+  border-radius:
+    9px;
+
+  background:
+    var(
+      --founder-surface
+    );
+}
+
+
+.founderStatementCard {
+  display:
+    flex;
+
+  min-height:
+    330px;
+
+  padding:
+    clamp(
+      1.5rem,
+      4vw,
+      2.5rem
+    );
+
+  flex-direction:
+    column;
+
+  justify-content:
+    flex-end;
+}
+
+
+.founderStatementCard > span {
+  margin-bottom:
+    auto;
+
+  color:
+    var(
+      --founder-blue
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.42rem;
+
+  letter-spacing:
+    0.1em;
+}
+
+
+.founderStatementCard h2 {
+  max-width:
+    690px;
+
+  margin:
+    0;
+
+  color:
+    var(
+      --founder-text
+    );
+
+  font-size:
+    clamp(
+      2.2rem,
+      4.3vw,
+      3.8rem
+    );
+
+  font-weight:
+    455;
+
+  letter-spacing:
+    -0.06em;
+
+  line-height:
+    0.98;
+}
+
+
+.founderStatementCard p {
+  max-width:
+    510px;
+
+  margin:
+    1rem
+    0
+    0;
+
+  color:
+    var(
+      --founder-muted
+    );
+
+  font-size:
+    0.82rem;
+
+  line-height:
+    1.65;
+}
+
+
+.founderOverviewStack {
+  display:
+    grid;
+
+  gap:
+    1rem;
+}
+
+
+.founderMiniCard {
+  display:
+    flex;
+
+  min-height:
+    160px;
+
+  padding:
+    1.2rem;
+
+  flex-direction:
+    column;
+
+  justify-content:
+    flex-end;
+}
+
+
+.founderMiniCard > span {
+  margin-bottom:
+    auto;
+
+  color:
+    var(
+      --founder-soft
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.4rem;
+
+  letter-spacing:
+    0.09em;
+}
+
+
+.founderMiniCard strong {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.82
+    );
+
+  font-size:
+    1rem;
+
+  font-weight:
+    520;
+}
+
+
+.founderMiniCard p {
+  margin:
+    0.5rem
+    0
+    0;
+
+  color:
+    var(
+      --founder-muted
+    );
+
+  font-size:
+    0.71rem;
+}
+
+
+/* ==========================================================================
+   JOURNEY
+   ========================================================================== */
+
+
+.founderJourneySection {
+  background:
+    #090a0c;
+}
+
+
+.founderJourney {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      5,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    0.65rem;
+}
+
+
+.founderJourneyItem {
+  min-height:
+    280px;
+
+  padding:
+    1rem;
+
+  border:
+    1px solid
+    var(
+      --founder-line
+    );
+
+  border-radius:
+    8px;
+
+  background:
+    var(
+      --founder-surface
+    );
+}
+
+
+.founderJourneyTop {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+}
+
+
+.founderJourneyTop span {
+  color:
+    var(
+      --founder-soft
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.42rem;
+}
+
+
+.founderJourneyTop strong {
+  padding:
+    0.25rem
+    0.4rem;
+
+  border:
+    1px solid
+    var(
+      --founder-line
+    );
+
+  border-radius:
+    4px;
+
+  color:
+    var(
+      --founder-blue
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.39rem;
+
+  letter-spacing:
+    0.06em;
+}
+
+
+.founderJourneyVisual {
+  position:
+    relative;
+
+  display:
+    flex;
+
+  height:
+    92px;
+
+  align-items:
+    center;
+}
+
+
+.founderJourneyVisual > span {
+  width:
+    9px;
+
+  height:
+    9px;
+
+  border:
+    1px solid
+    var(
+      --founder-cyan
+    );
+
+  border-radius:
+    50%;
+
+  box-shadow:
+    0
+    0
+    15px
+    rgba(
+      161,
+      226,
+      240,
+      0.18
+    );
+}
+
+
+.founderJourneyVisual::after {
+  position:
+    absolute;
+
+  right:
+    0;
+
+  left:
+    9px;
+
+  height:
+    1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        161,
+        226,
+        240,
+        0.2
+      ),
+      transparent
+    );
+
+  content:
+    "";
+}
+
+
+.founderJourneyVisual i {
+  position:
+    absolute;
+
+  right:
+    -1rem;
+
+  z-index:
+    3;
+
+  color:
+    rgba(
+      161,
+      226,
+      240,
+      0.28
+    );
+
+  font-size:
+    0.7rem;
+
+  font-style:
+    normal;
+}
+
+
+.founderJourneyItem h3 {
+  margin:
+    0;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.84
+    );
+
+  font-size:
+    0.98rem;
+
+  font-weight:
+    520;
+
+  line-height:
+    1.3;
+}
+
+
+.founderJourneyItem p {
+  margin:
+    0.65rem
+    0
+    0;
+
+  color:
+    var(
+      --founder-muted
+    );
+
+  font-size:
+    0.69rem;
+
+  line-height:
+    1.6;
+}
+
+
+/* ==========================================================================
+   EXPERTISE
+   ========================================================================== */
+
+
+.founderExpertiseGrid {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    1rem;
+}
+
+
+.founderExpertiseCard {
+  min-height:
+    300px;
+
+  overflow:
+    hidden;
+
+  padding:
+    1.2rem;
+
+  border:
+    1px solid
+    var(
+      --founder-line
+    );
+
+  border-radius:
+    9px;
+
+  background:
+    var(
+      --founder-surface
+    );
+}
+
+
+.founderExpertiseTop {
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+}
+
+
+.founderExpertiseTop span {
+  color:
+    var(
+      --founder-soft
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.42rem;
+}
+
+
+.founderExpertiseTop strong {
+  color:
+    var(
+      --founder-blue
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.4rem;
+
+  letter-spacing:
+    0.06em;
+}
+
+
+.founderExpertiseVisual {
+  position:
+    relative;
+
+  height:
+    128px;
+
+  margin:
+    1rem
+    -1.2rem;
+
+  border-top:
+    1px solid
+    var(
+      --founder-line
+    );
+
+  border-bottom:
+    1px solid
+    var(
+      --founder-line
+    );
+
+  background:
+    radial-gradient(
+      circle at 65% 42%,
+      rgba(
+        99,
+        51,
+        198,
+        0.1
+      ),
+      transparent 48%
+    );
+}
+
+
+.founderExpertiseVisual span {
+  position:
+    absolute;
+
+  width:
+    8px;
+
+  height:
+    8px;
+
+  border:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.38
+    );
+
+  border-radius:
+    50%;
+}
+
+
+.founderExpertiseVisual span:nth-child(
+  1
+) {
+  top:
+    35%;
+
+  left:
+    26%;
+}
+
+
+.founderExpertiseVisual span:nth-child(
+  2
+) {
+  top:
+    58%;
+
+  right:
+    28%;
+}
+
+
+.founderExpertiseVisual i {
+  position:
+    absolute;
+
+  top:
+    50%;
+
+  left:
+    26%;
+
+  width:
+    48%;
+
+  height:
+    1px;
+
+  transform:
+    rotate(
+      8deg
+    );
+
+  background:
+    rgba(
+      161,
+      226,
+      240,
+      0.14
+    );
+}
+
+
+.founderExpertiseCard h3 {
+  margin:
+    0;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.85
+    );
+
+  font-size:
+    1.25rem;
+
+  font-weight:
+    500;
+
+  letter-spacing:
+    -0.03em;
+}
+
+
+.founderExpertiseCard p {
+  max-width:
+    340px;
+
+  margin:
+    0.6rem
+    0
+    0;
+
+  color:
+    var(
+      --founder-muted
+    );
+
+  font-size:
+    0.74rem;
+
+  line-height:
+    1.6;
+}
+
+
+/* ==========================================================================
+   EDUCATION
+   ========================================================================== */
+
+
+.founderEducationSection {
+  background:
+    #090a0c;
+}
+
+
+.founderEducationCard {
+  display:
+    grid;
+
+  overflow:
+    hidden;
+
+  grid-template-columns:
+    minmax(
+      320px,
+      0.85fr
+    )
+    minmax(
+      0,
+      1.15fr
+    );
+
+  border:
+    1px solid
+    var(
+      --founder-line
+    );
+
+  border-radius:
+    10px;
+
+  background:
+    var(
+      --founder-surface
+    );
+}
+
+
+.founderEducationVisual {
+  position:
+    relative;
+
+  display:
+    grid;
+
+  min-height:
+    380px;
+
+  overflow:
+    hidden;
+
+  place-items:
+    center;
+
+  border-right:
+    1px solid
+    var(
+      --founder-line
+    );
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        99,
+        51,
+        198,
+        0.14
+      ),
+      transparent 60%
+    );
+}
+
+
+.founderLabCore {
+  display:
+    grid;
+
+  width:
+    110px;
+
+  height:
+    110px;
+
+  place-items:
+    center;
+
+  border:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.2
+    );
+
+  border-radius:
+    50%;
+
+  color:
+    var(
+      --founder-cyan
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.58rem;
+
+  letter-spacing:
+    0.1em;
+}
+
+
+.founderEducationVisual > span {
+  position:
+    absolute;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.31
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.4rem;
+
+  letter-spacing:
+    0.08em;
+}
+
+
+.founderEducationVisual > span:nth-of-type(
+  1
+) {
+  top:
+    17%;
+
+  left:
+    17%;
+}
+
+
+.founderEducationVisual > span:nth-of-type(
+  2
+) {
+  top:
+    32%;
+
+  right:
+    14%;
+}
+
+
+.founderEducationVisual > span:nth-of-type(
+  3
+) {
+  right:
+    25%;
+
+  bottom:
+    15%;
+}
+
+
+.founderEducationCopy {
+  display:
+    flex;
+
+  padding:
+    clamp(
+      1.8rem,
+      5vw,
+      4rem
+    );
+
+  flex-direction:
+    column;
+
+  justify-content:
+    center;
+}
+
+
+.founderEducationCopy > span {
+  color:
+    var(
+      --founder-blue
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.42rem;
+
+  letter-spacing:
+    0.1em;
+}
+
+
+.founderEducationCopy h2 {
+  max-width:
+    520px;
+
+  margin:
+    0.8rem
+    0
+    0;
+
+  color:
+    var(
+      --founder-text
+    );
+
+  font-size:
+    clamp(
+      2.2rem,
+      4.2vw,
+      3.7rem
+    );
+
+  font-weight:
+    455;
+
+  letter-spacing:
+    -0.058em;
+
+  line-height:
+    0.98;
+}
+
+
+.founderEducationCopy p {
+  max-width:
+    470px;
+
+  margin:
+    1rem
+    0
+    0;
+
+  color:
+    var(
+      --founder-muted
+    );
+
+  font-size:
+    0.8rem;
+
+  line-height:
+    1.65;
+}
+
+
+.founderInlineAction {
+  display:
+    inline-flex;
+
+  width:
+    fit-content;
+
+  margin-top:
+    1.4rem;
+
+  gap:
+    0.6rem;
+
+  align-items:
+    center;
+
+  color:
+    var(
+      --founder-cyan
+    );
+
+  font-size:
+    0.68rem;
+
+  text-decoration:
+    none;
+}
+
+
+/* ==========================================================================
+   PUBLIC WORK
+   ========================================================================== */
+
+
+.founderPublicGrid {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    1rem;
+}
+
+
+.founderPublicCard {
+  position:
+    relative;
+
+  min-height:
+    300px;
+
+  overflow:
+    hidden;
+
+  border:
+    1px solid
+    var(
+      --founder-line
+    );
+
+  border-radius:
+    9px;
+
+  color:
+    inherit;
+
+  background:
+    var(
+      --founder-surface
+    );
+
+  text-decoration:
+    none;
+}
+
+
+.founderPublicVisual {
+  position:
+    relative;
+
+  display:
+    grid;
+
+  height:
+    140px;
+
+  place-items:
+    center;
+
+  border-bottom:
+    1px solid
+    var(
+      --founder-line
+    );
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        131,
+        179,
+        215,
+        0.09
+      ),
+      transparent 62%
+    );
+}
+
+
+.founderPublicVisual > span {
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  color:
+    var(
+      --founder-blue
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.5rem;
+
+  letter-spacing:
+    0.12em;
+}
+
+
+.founderPublicVisual i {
+  position:
+    absolute;
+
+  width:
+    7px;
+
+  height:
+    7px;
+
+  border:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.3
+    );
+
+  border-radius:
+    50%;
+}
+
+
+.founderPublicVisual i:nth-of-type(
+  1
+) {
+  top:
+    28%;
+
+  left:
+    22%;
+}
+
+
+.founderPublicVisual i:nth-of-type(
+  2
+) {
+  top:
+    60%;
+
+  right:
+    25%;
+}
+
+
+.founderPublicVisual i:nth-of-type(
+  3
+) {
+  bottom:
+    17%;
+
+  left:
+    42%;
+}
+
+
+.founderKnowledgeVisual {
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        99,
+        51,
+        198,
+        0.11
+      ),
+      transparent 62%
+    );
+}
+
+
+.founderCommunityVisual {
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        126,
+        96,
+        185,
+        0.12
+      ),
+      transparent 62%
+    );
+}
+
+
+.founderPublicCopy {
+  padding:
+    1.1rem;
+}
+
+
+.founderPublicCopy > span {
+  color:
+    var(
+      --founder-soft
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.39rem;
+
+  letter-spacing:
+    0.09em;
+}
+
+
+.founderPublicCopy h3 {
+  margin:
+    0.75rem
+    0
+    0;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.84
+    );
+
+  font-size:
+    1.2rem;
+
+  font-weight:
+    500;
+
+  letter-spacing:
+    -0.03em;
+}
+
+
+.founderPublicCopy p {
+  margin:
+    0.55rem
+    0
+    0;
+
+  color:
+    var(
+      --founder-muted
+    );
+
+  font-size:
+    0.72rem;
+
+  line-height:
+    1.58;
+}
+
+
+.founderPublicCard >
+.founderArrow {
+  position:
+    absolute;
+
+  right:
+    1rem;
+
+  bottom:
+    1rem;
+
+  color:
+    var(
+      --founder-cyan
+    );
+}
+
+
+/* ==========================================================================
+   CTA
+   ========================================================================== */
+
+
+.founderCta {
+  padding:
+    clamp(
+      3.5rem,
+      6vw,
+      5rem
+    )
+    2rem;
+}
+
+
+.founderCtaCard {
+  display:
+    grid;
+
+  width:
+    min(
+      100%,
+      1180px
+    );
+
+  min-height:
+    360px;
+
+  margin-inline:
+    auto;
+
+  overflow:
+    hidden;
+
+  grid-template-columns:
+    minmax(
+      300px,
+      0.75fr
+    )
+    minmax(
+      0,
+      1.25fr
+    );
+
+  border:
+    1px solid
+    var(
+      --founder-line-strong
+    );
+
+  border-radius:
+    10px;
+
+  background:
+    var(
+      --founder-surface
+    );
+}
+
+
+.founderCtaGraphic {
+  position:
+    relative;
+
+  display:
+    grid;
+
+  overflow:
+    hidden;
+
+  place-items:
+    center;
+
+  border-right:
+    1px solid
+    var(
+      --founder-line
+    );
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        99,
+        51,
+        198,
+        0.15
+      ),
+      transparent 62%
+    );
+}
+
+
+.founderCtaGraphic > span {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.84
+    );
+
+  font-size:
+    5.5rem;
+
+  font-weight:
+    340;
+
+  letter-spacing:
+    -0.09em;
+}
+
+
+.founderCtaGraphic i {
+  position:
+    absolute;
+
+  border:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.08
+    );
+
+  border-radius:
+    50%;
+}
+
+
+.founderCtaGraphic i:nth-of-type(
+  1
+) {
+  width:
+    170px;
+
+  height:
+    170px;
+}
+
+
+.founderCtaGraphic i:nth-of-type(
+  2
+) {
+  width:
+    245px;
+
+  height:
+    245px;
+}
+
+
+.founderCtaGraphic i:nth-of-type(
+  3
+) {
+  width:
+    320px;
+
+  height:
+    320px;
+}
+
+
+.founderCtaContent {
+  display:
+    flex;
+
+  padding:
+    clamp(
+      1.8rem,
+      5vw,
+      4rem
+    );
+
+  flex-direction:
+    column;
+
+  justify-content:
+    center;
+}
+
+
+.founderCtaContent
+.founderSectionLabel {
+  margin-bottom:
+    1.35rem;
+}
+
+
+.founderCtaContent h2 {
+  max-width:
+    590px;
+
+  margin:
+    0;
+
+  color:
+    var(
+      --founder-text
+    );
+
+  font-size:
+    clamp(
+      2.4rem,
+      4.6vw,
+      4rem
+    );
+
+  font-weight:
+    455;
+
+  letter-spacing:
+    -0.06em;
+
+  line-height:
+    0.98;
+}
+
+
+.founderCtaContent > p {
+  margin:
+    1rem
+    0
+    0;
+
+  color:
+    var(
+      --founder-muted
+    );
+
+  font-size:
+    0.8rem;
+}
+
+
+.founderCtaActions {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    0.6rem;
+
+  margin-top:
+    1.5rem;
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+
+@media (
+  max-width: 980px
+) {
+
+  .founderHeroInner {
+    width:
+      min(
+        calc(
+          100% - 3rem
+        ),
+        760px
+      );
+
+    min-height:
+      0;
+
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .founderPortraitCard {
+    max-width:
+      620px;
+  }
+
+
+  .founderNavInner,
+  .founderContainer {
+    width:
+      min(
+        calc(
+          100% - 3rem
+        ),
+        760px
+      );
+  }
+
+
+  .founderJourney {
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+
+  .founderJourneyVisual i {
+    display:
+      none;
+  }
+
+
+  .founderPublicGrid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+
+  .founderCta {
+    padding-inline:
+      1.5rem;
+  }
+
+
+  .founderCtaCard {
+    grid-template-columns:
+      270px
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width: 680px
+) {
+
+  .founderHeroInner,
+  .founderNavInner,
+  .founderContainer {
+    width:
+      calc(
+        100% - 1.5rem
+      );
+  }
+
+
+  .founderHeroInner {
+    padding:
+      3.5rem
+      0
+      3rem;
+  }
+
+
+  .founderHeroCopy h1 {
+    font-size:
+      clamp(
+        3.1rem,
+        15vw,
+        4.6rem
+      );
+  }
+
+
+  .founderHeroActions,
+  .founderCtaActions {
+    display:
+      grid;
+
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .founderPrimaryAction,
+  .founderSecondaryAction {
+    width:
+      100%;
+  }
+
+
+  .founderPortraitStage {
+    min-height:
+      340px;
+  }
+
+
+  .founderPortraitOrbit {
+    width:
+      205px;
+
+    height:
+      205px;
+  }
+
+
+  .founderPortraitOrbitSecondary {
+    width:
+      280px;
+
+    height:
+      280px;
+  }
+
+
+  .founderNavInner {
+    width:
+      max-content;
+
+    min-width:
+      calc(
+        100% - 1.5rem
+      );
+
+    margin-inline:
+      0.75rem;
+
+    padding-right:
+      0.75rem;
+  }
+
+
+  .founderContainer {
+    padding:
+      3rem
+      0;
+  }
+
+
+  .founderSectionHeader {
+    display:
+      block;
+  }
+
+
+  .founderSectionHeader
+  .founderSectionLabel {
+    margin-bottom:
+      1.7rem;
+  }
+
+
+  .founderSectionHeader h2 {
+    max-width:
+      100%;
+
+    font-size:
+      clamp(
+        1.9rem,
+        9vw,
+        2.7rem
+      );
+
+    text-align:
+      left;
+  }
+
+
+  .founderOverviewGrid,
+  .founderExpertiseGrid,
+  .founderPublicGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .founderStatementCard {
+    min-height:
+      280px;
+  }
+
+
+  .founderStatementCard h2 {
+    font-size:
+      clamp(
+        2rem,
+        10vw,
+        2.9rem
+      );
+  }
+
+
+  .founderJourney {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+
+  .founderJourneyItem {
+    min-height:
+      245px;
+  }
+
+
+  .founderExpertiseCard {
+    min-height:
+      270px;
+  }
+
+
+  .founderEducationCard {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .founderEducationVisual {
+    min-height:
+      280px;
+
+    border-right:
+      0;
+
+    border-bottom:
+      1px solid
+      var(
+        --founder-line
+      );
+  }
+
+
+  .founderEducationCopy {
+    padding:
+      1.5rem;
+  }
+
+
+  .founderEducationCopy h2 {
+    font-size:
+      clamp(
+        2.1rem,
+        10vw,
+        3rem
+      );
+  }
+
+
+  .founderCta {
+    padding:
+      3rem
+      0.75rem;
+  }
+
+
+  .founderCtaCard {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .founderCtaGraphic {
+    min-height:
+      240px;
+
+    border-right:
+      0;
+
+    border-bottom:
+      1px solid
+      var(
+        --founder-line
+      );
+  }
+
+
+  .founderCtaContent {
+    padding:
+      1.5rem;
+  }
+
+}
+
+
+/* ==========================================================================
+   SMALL MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width: 430px
+) {
+
+  .founderNav {
+    overflow-x:
+      visible;
+  }
+
+
+  .founderNavInner {
+    display:
+      grid;
+
+    width:
+      calc(
+        100% - 1.5rem
+      );
+
+    min-width:
+      0;
+
+    margin-inline:
+      auto;
+
+    padding:
+      0.5rem
+      0;
+
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(
+          0,
+          1fr
+        )
+      );
+
+    gap:
+      0;
+  }
+
+
+  .founderNav a {
+    display:
+      flex;
+
+    min-height:
+      38px;
+
+    padding:
+      0.4rem
+      0.3rem;
+
+    align-items:
+      center;
+
+    font-size:
+      0.56rem;
+
+    line-height:
+      1.2;
+  }
+
+
+  .founderJourney {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .founderJourneyItem {
+    min-height:
+      210px;
+  }
+
+}
+
+
+/* ==========================================================================
+   MOTION
+   ========================================================================== */
+
+
+@media (
+  prefers-reduced-motion:
+  no-preference
+) {
+
+  .founderPortraitOrbit {
+    animation:
+      founderOrbitPulse
+      5s
+      ease-in-out
+      infinite;
+  }
+
+
+  .founderJourneyVisual > span {
+    animation:
+      founderNodePulse
+      4s
+      ease-in-out
+      infinite;
+  }
+
+}
+
+
+@keyframes founderOrbitPulse {
+
+  0%,
+  100% {
+    opacity:
+      0.55;
+
+    transform:
+      scale(
+        1
+      );
+  }
+
+  50% {
+    opacity:
+      1;
+
+    transform:
+      scale(
+        1.025
+      );
+  }
+
+}
+
+
+@keyframes founderNodePulse {
+
+  0%,
+  100% {
+    box-shadow:
+      0
+      0
+      8px
+      rgba(
+        161,
+        226,
+        240,
+        0.08
+      );
+  }
+
+  50% {
+    box-shadow:
+      0
+      0
+      18px
+      rgba(
+        161,
+        226,
+        240,
+        0.28
+      );
+  }
+
+}
+
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+
+  .founderPortraitOrbit,
+  .founderJourneyVisual > span {
+    animation:
+      none !important;
+  }
+
+
+  .founderArrow {
+    transition:
+      none !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   NB_FOUNDER_V2_LEGACY_PROFILE_EVIDENCE_V1
+   ========================================================================== */
+
+
+.founderEngagementStrip {
+  display:
+    grid;
+
+  margin-bottom:
+    1rem;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    0.65rem;
+}
+
+
+.founderEngagementItem {
+  display:
+    flex;
+
+  min-height:
+    76px;
+
+  padding:
+    0.9rem
+    1rem;
+
+  gap:
+    0.8rem;
+
+  align-items:
+    center;
+
+  border:
+    1px solid
+    var(
+      --founder-line
+    );
+
+  border-radius:
+    8px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.012
+    );
+}
+
+
+.founderEngagementItem span {
+  flex:
+    0
+    0
+    auto;
+
+  color:
+    var(
+      --founder-cyan
+    );
+
+  font-family:
+    var(--font-geist-mono),
+    monospace;
+
+  font-size:
+    0.4rem;
+
+  letter-spacing:
+    0.08em;
+}
+
+
+.founderEngagementItem strong {
+  min-width:
+    0;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.72
+    );
+
+  font-size:
+    0.72rem;
+
+  font-weight:
+    500;
+
+  line-height:
+    1.35;
+}
+
+
+@media (
+  max-width: 680px
+) {
+
+  .founderEngagementStrip {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .founderEngagementItem {
+    min-height:
+      64px;
+  }
+
+}
