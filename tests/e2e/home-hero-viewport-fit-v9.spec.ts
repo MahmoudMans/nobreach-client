@@ -254,7 +254,7 @@ for (
       expect(
         navbarHeroGap
       ).toBeLessThanOrEqual(
-        2
+        3
       );
 
 

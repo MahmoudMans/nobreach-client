@@ -5301,3 +5301,2218 @@ strong {
   max-width:
     900px;
 }
+
+
+/* ==========================================================================
+   NB_COMPANY_CREATIVE_V7
+
+   Direction:
+   Offensive-security field dossier.
+   Creative structure without hacker clichés or visual noise.
+   ========================================================================== */
+
+
+:global([data-company-design="v7"]) {
+  --company-v7-cyan:
+    #a1e2f0;
+
+  --company-v7-blue:
+    #83b3d7;
+
+  --company-v7-purple:
+    #6333c6;
+
+  --company-v7-violet:
+    #7e60b9;
+
+  --company-v7-bg:
+    #080a0f;
+
+  --company-v7-panel:
+    #0d1118;
+
+  --company-v7-panel-strong:
+    #111621;
+
+  --company-v7-line:
+    rgba(
+      161,
+      226,
+      240,
+      0.12
+    );
+
+  --company-v7-line-strong:
+    rgba(
+      161,
+      226,
+      240,
+      0.28
+    );
+
+  --company-v7-text:
+    #f4f7fa;
+
+  --company-v7-muted:
+    rgba(
+      232,
+      238,
+      244,
+      0.58
+    );
+
+  overflow:
+    clip;
+
+  background:
+    var(
+      --company-v7-bg
+    );
+}
+
+
+/* ==========================================================================
+   HERO — PRESERVE V6 RESTRAINT, ADD EDITORIAL DETAIL
+   ========================================================================== */
+
+
+:global([data-company-design="v7"])
+:global([data-company-hero="v6"]) {
+  border-bottom-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.16
+    );
+}
+
+
+:global([data-company-design="v7"])
+.profileCard {
+  border-radius:
+    4px
+    26px
+    4px
+    4px;
+
+  border-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.18
+    );
+
+  box-shadow:
+    18px
+    18px
+    0
+    rgba(
+      99,
+      51,
+      198,
+      0.07
+    );
+}
+
+
+:global([data-company-design="v7"])
+.profileCard::before {
+  position:
+    absolute;
+
+  top:
+    -1px;
+
+  right:
+    24px;
+
+  width:
+    72px;
+
+  height:
+    2px;
+
+  display:
+    block;
+
+  content:
+    "";
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--company-v7-cyan),
+      var(--company-v7-purple)
+    );
+}
+
+
+/* ==========================================================================
+   SECTION NAVIGATION — TECHNICAL INDEX RAIL
+   ========================================================================== */
+
+
+:global([data-company-design="v7"])
+.pageNav {
+  position:
+    relative;
+
+  z-index:
+    8;
+
+  background:
+    rgba(
+      8,
+      10,
+      15,
+      0.94
+    );
+
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.04
+    );
+
+  border-bottom:
+    1px solid
+    var(--company-v7-line);
+
+  box-shadow:
+    none;
+
+  backdrop-filter:
+    blur(
+      16px
+    );
+}
+
+
+:global([data-company-design="v7"])
+.pageNavInner {
+  min-height:
+    54px;
+
+  gap:
+    0;
+}
+
+
+:global([data-company-design="v7"])
+.pageNavInner
+a {
+  position:
+    relative;
+
+  min-height:
+    54px;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  padding:
+    0
+    1rem;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.5
+    );
+
+  font-size:
+    0.68rem;
+
+  font-weight:
+    660;
+
+  letter-spacing:
+    0.11em;
+
+  text-transform:
+    uppercase;
+
+  transition:
+    color
+    160ms
+    ease,
+    background
+    160ms
+    ease;
+}
+
+
+:global([data-company-design="v7"])
+.pageNavInner
+a::after {
+  position:
+    absolute;
+
+  right:
+    1rem;
+
+  bottom:
+    -1px;
+
+  left:
+    1rem;
+
+  height:
+    1px;
+
+  content:
+    "";
+
+  background:
+    var(--company-v7-cyan);
+
+  transform:
+    scaleX(
+      0
+    );
+
+  transform-origin:
+    left;
+
+  transition:
+    transform
+    180ms
+    ease;
+}
+
+
+:global([data-company-design="v7"])
+.pageNavInner
+a:hover {
+  color:
+    var(--company-v7-text);
+
+  background:
+    rgba(
+      161,
+      226,
+      240,
+      0.025
+    );
+}
+
+
+:global([data-company-design="v7"])
+.pageNavInner
+a:hover::after {
+  transform:
+    scaleX(
+      1
+    );
+}
+
+
+/* ==========================================================================
+   GLOBAL SECTION ARCHITECTURE
+   ========================================================================== */
+
+
+:global([data-company-design="v7"])
+.section {
+  position:
+    relative;
+
+  isolation:
+    isolate;
+
+  padding-top:
+    clamp(
+      3.5rem,
+      7vw,
+      6.5rem
+    );
+
+  padding-bottom:
+    clamp(
+      3.5rem,
+      7vw,
+      6.5rem
+    );
+
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.035
+    );
+}
+
+
+:global([data-company-design="v7"])
+.section::before {
+  position:
+    absolute;
+
+  top:
+    0;
+
+  left:
+    50%;
+
+  width:
+    min(
+      1280px,
+      calc(
+        100% - 40px
+      )
+    );
+
+  height:
+    1px;
+
+  content:
+    "";
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--company-v7-cyan),
+      rgba(
+        131,
+        179,
+        215,
+        0.15
+      )
+      24%,
+      transparent
+      72%
+    );
+
+  transform:
+    translateX(
+      -50%
+    );
+
+  opacity:
+    0.28;
+}
+
+
+:global([data-company-design="v7"])
+.sectionHeader {
+  max-width:
+    920px;
+
+  margin-bottom:
+    clamp(
+      1.8rem,
+      3vw,
+      2.7rem
+    );
+}
+
+
+:global([data-company-design="v7"])
+.sectionHeader
+h2 {
+  font-size:
+    clamp(
+      2.35rem,
+      5vw,
+      4.5rem
+    );
+
+  font-weight:
+    520;
+
+  line-height:
+    0.98;
+
+  letter-spacing:
+    -0.052em;
+}
+
+
+:global([data-company-design="v7"])
+.sectionHeader
+h2
+span {
+  color:
+    var(--company-v7-cyan);
+}
+
+
+/* ==========================================================================
+   COMPANY STATEMENT — EDITORIAL MANIFESTO
+   ========================================================================== */
+
+
+:global([data-company-design="v7"])
+.introGrid {
+  display:
+    block;
+}
+
+
+:global([data-company-design="v7"])
+.statementCard {
+  position:
+    relative;
+
+  width:
+    100%;
+
+  max-width:
+    1080px;
+
+  min-height:
+    330px;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  justify-content:
+    flex-end;
+
+  padding:
+    clamp(
+      2rem,
+      5vw,
+      4.5rem
+    );
+
+  overflow:
+    hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(
+        161,
+        226,
+        240,
+        0.055
+      ),
+      transparent
+      46%
+    ),
+    #0b0e14;
+
+  border:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.13
+    );
+
+  border-radius:
+    4px
+    38px
+    4px
+    4px;
+
+  box-shadow:
+    none;
+}
+
+
+:global([data-company-design="v7"])
+.statementCard::before {
+  position:
+    absolute;
+
+  top:
+    0;
+
+  left:
+    0;
+
+  width:
+    4px;
+
+  height:
+    100%;
+
+  content:
+    "";
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--company-v7-cyan),
+      var(--company-v7-purple),
+      transparent
+    );
+}
+
+
+:global([data-company-design="v7"])
+.statementCard::after {
+  position:
+    absolute;
+
+  top:
+    -0.18em;
+
+  right:
+    0.08em;
+
+  z-index:
+    -1;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+  content:
+    "01";
+
+  font-size:
+    clamp(
+      9rem,
+      22vw,
+      19rem
+    );
+
+  font-weight:
+    760;
+
+  line-height:
+    1;
+}
+
+
+:global([data-company-design="v7"])
+.statementCard
+h2 {
+  max-width:
+    880px;
+
+  margin:
+    1.25rem
+    0
+    0;
+
+  color:
+    var(--company-v7-text);
+
+  font-size:
+    clamp(
+      2.2rem,
+      5vw,
+      4.8rem
+    );
+
+  font-weight:
+    520;
+
+  line-height:
+    0.98;
+
+  letter-spacing:
+    -0.055em;
+}
+
+
+:global([data-company-design="v7"])
+.statementCard
+p {
+  max-width:
+    650px;
+
+  margin:
+    1.4rem
+    0
+    0;
+
+  color:
+    var(--company-v7-muted);
+
+  font-size:
+    1rem;
+
+  line-height:
+    1.68;
+}
+
+
+/* ==========================================================================
+   APPROACH — CONNECTED SIGNAL PATH
+   ========================================================================== */
+
+
+:global([data-company-design="v7"])
+.storySection {
+  background:
+    #090c12;
+}
+
+
+:global([data-company-design="v7"])
+.flow {
+  position:
+    relative;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    70px
+    minmax(
+      0,
+      1fr
+    )
+    70px
+    minmax(
+      0,
+      1fr
+    );
+
+  align-items:
+    stretch;
+
+  gap:
+    0;
+}
+
+
+:global([data-company-design="v7"])
+.flow
+article {
+  position:
+    relative;
+
+  min-height:
+    240px;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  justify-content:
+    flex-end;
+
+  padding:
+    1.7rem;
+
+  overflow:
+    hidden;
+
+  background:
+    var(--company-v7-panel);
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  border-radius:
+    4px
+    24px
+    4px
+    4px;
+}
+
+
+:global([data-company-design="v7"])
+.flow
+article::before {
+  position:
+    absolute;
+
+  top:
+    20px;
+
+  right:
+    20px;
+
+  width:
+    10px;
+
+  height:
+    10px;
+
+  content:
+    "";
+
+  border:
+    1px solid
+    var(--company-v7-cyan);
+
+  border-radius:
+    50%;
+
+  box-shadow:
+    0
+    0
+    0
+    5px
+    rgba(
+      161,
+      226,
+      240,
+      0.045
+    );
+}
+
+
+:global([data-company-design="v7"])
+.flow
+article
+> span {
+  position:
+    absolute;
+
+  top:
+    1.5rem;
+
+  left:
+    1.5rem;
+
+  color:
+    rgba(
+      161,
+      226,
+      240,
+      0.44
+    );
+
+  font-size:
+    0.7rem;
+
+  letter-spacing:
+    0.12em;
+}
+
+
+:global([data-company-design="v7"])
+.flow
+strong {
+  color:
+    var(--company-v7-text);
+
+  font-size:
+    clamp(
+      1.7rem,
+      3vw,
+      2.5rem
+    );
+
+  font-weight:
+    560;
+
+  letter-spacing:
+    -0.04em;
+}
+
+
+:global([data-company-design="v7"])
+.flow
+p {
+  margin-top:
+    0.7rem;
+
+  color:
+    var(--company-v7-muted);
+}
+
+
+:global([data-company-design="v7"])
+.flowArrow {
+  position:
+    relative;
+
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  overflow:
+    hidden;
+
+  color:
+    transparent;
+}
+
+
+:global([data-company-design="v7"])
+.flowArrow::before {
+  width:
+    100%;
+
+  height:
+    1px;
+
+  content:
+    "";
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        161,
+        226,
+        240,
+        0.16
+      ),
+      var(--company-v7-cyan),
+      rgba(
+        161,
+        226,
+        240,
+        0.16
+      )
+    );
+}
+
+
+:global([data-company-design="v7"])
+.flowArrow::after {
+  position:
+    absolute;
+
+  width:
+    6px;
+
+  height:
+    6px;
+
+  content:
+    "";
+
+  background:
+    var(--company-v7-cyan);
+
+  border-radius:
+    50%;
+}
+
+
+/* ==========================================================================
+   CAPABILITIES — ASYMMETRIC BENTO
+   ========================================================================== */
+
+
+:global([data-company-design="v7"])
+.capabilityGrid {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      12,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    1rem;
+}
+
+
+:global([data-company-design="v7"])
+.capabilityCard {
+  position:
+    relative;
+
+  min-height:
+    285px;
+
+  padding:
+    1.65rem;
+
+  overflow:
+    hidden;
+
+  background:
+    var(--company-v7-panel);
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.085
+    );
+
+  border-radius:
+    4px
+    28px
+    4px
+    4px;
+
+  box-shadow:
+    none;
+
+  transition:
+    transform
+    180ms
+    ease,
+    border-color
+    180ms
+    ease,
+    background
+    180ms
+    ease;
+}
+
+
+:global([data-company-design="v7"])
+.capabilityCard:nth-child(1),
+:global([data-company-design="v7"])
+.capabilityCard:nth-child(4) {
+  grid-column:
+    span
+    7;
+}
+
+
+:global([data-company-design="v7"])
+.capabilityCard:nth-child(2),
+:global([data-company-design="v7"])
+.capabilityCard:nth-child(3) {
+  grid-column:
+    span
+    5;
+}
+
+
+:global([data-company-design="v7"])
+.capabilityCard::before {
+  position:
+    absolute;
+
+  top:
+    0;
+
+  right:
+    0;
+
+  width:
+    80px;
+
+  height:
+    3px;
+
+  content:
+    "";
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--company-v7-cyan)
+    );
+}
+
+
+:global([data-company-design="v7"])
+.capabilityCard:nth-child(even)::before {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--company-v7-purple)
+    );
+}
+
+
+:global([data-company-design="v7"])
+.capabilityVisual {
+  opacity:
+    0.58;
+
+  transform:
+    scale(
+      0.92
+    );
+
+  transform-origin:
+    left
+    center;
+}
+
+
+:global([data-company-design="v7"])
+.capabilityCopy
+h3 {
+  color:
+    var(--company-v7-text);
+
+  font-size:
+    clamp(
+      1.35rem,
+      2vw,
+      1.9rem
+    );
+
+  font-weight:
+    570;
+
+  letter-spacing:
+    -0.04em;
+}
+
+
+:global([data-company-design="v7"])
+.capabilityCopy
+p {
+  max-width:
+    540px;
+
+  color:
+    var(--company-v7-muted);
+
+  line-height:
+    1.62;
+}
+
+
+/* ==========================================================================
+   PRINCIPLES — STAGGERED EDITORIAL CARDS
+   ========================================================================== */
+
+
+:global([data-company-design="v7"])
+.principleSection {
+  background:
+    #090c12;
+}
+
+
+:global([data-company-design="v7"])
+.principleGrid {
+  align-items:
+    start;
+
+  gap:
+    1rem;
+}
+
+
+:global([data-company-design="v7"])
+.principleCard {
+  position:
+    relative;
+
+  min-height:
+    330px;
+
+  padding:
+    1.7rem;
+
+  overflow:
+    hidden;
+
+  background:
+    var(--company-v7-panel);
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  border-radius:
+    4px;
+
+  box-shadow:
+    none;
+}
+
+
+:global([data-company-design="v7"])
+.principleCard:nth-child(2) {
+  margin-top:
+    28px;
+}
+
+
+:global([data-company-design="v7"])
+.principleCard:nth-child(3) {
+  margin-top:
+    56px;
+}
+
+
+:global([data-company-design="v7"])
+.principleNumber {
+  position:
+    absolute;
+
+  top:
+    0.2rem;
+
+  right:
+    0.65rem;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.035
+    );
+
+  font-size:
+    clamp(
+      5rem,
+      9vw,
+      8.5rem
+    );
+
+  font-weight:
+    780;
+
+  line-height:
+    1;
+}
+
+
+:global([data-company-design="v7"])
+.principleVisual {
+  border-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.14
+    );
+
+  background:
+    transparent;
+}
+
+
+/* ==========================================================================
+   ECOSYSTEM — NETWORK NODE SYSTEM
+   ========================================================================== */
+
+
+:global([data-company-design="v7"])
+.ecosystemGrid {
+  position:
+    relative;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    1rem;
+
+  max-width:
+    1000px;
+
+  margin:
+    0
+    auto;
+}
+
+
+:global([data-company-design="v7"])
+.ecosystemCard {
+  position:
+    relative;
+
+  min-height:
+    170px;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    auto
+    1fr
+    auto;
+
+  align-items:
+    center;
+
+  padding:
+    1.4rem;
+
+  background:
+    #0c1017;
+
+  border:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.1
+    );
+
+  border-radius:
+    4px
+    22px
+    4px
+    4px;
+
+  box-shadow:
+    none;
+
+  transition:
+    border-color
+    180ms
+    ease,
+    transform
+    180ms
+    ease;
+}
+
+
+:global([data-company-design="v7"])
+.ecosystemIcon {
+  border-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.22
+    );
+
+  background:
+    rgba(
+      161,
+      226,
+      240,
+      0.035
+    );
+}
+
+
+:global([data-company-design="v7"])
+.ecosystemLine {
+  position:
+    relative;
+
+  max-width:
+    720px;
+
+  margin:
+    2.2rem
+    auto
+    0;
+
+  color:
+    var(--company-v7-text);
+}
+
+
+:global([data-company-design="v7"])
+.ecosystemLine
+strong {
+  padding:
+    0.6rem
+    1rem;
+
+  background:
+    #0b0f16;
+
+  border:
+    1px solid
+    var(--company-v7-line-strong);
+
+  border-radius:
+    999px;
+
+  font-size:
+    0.68rem;
+
+  letter-spacing:
+    0.16em;
+}
+
+
+/* ==========================================================================
+   TIMELINE — TRACE RAIL
+   ========================================================================== */
+
+
+:global([data-company-design="v7"])
+.timelineSection {
+  background:
+    #090c12;
+}
+
+
+:global([data-company-design="v7"])
+.timelineGrid {
+  position:
+    relative;
+
+  isolation:
+    isolate;
+
+  gap:
+    0.8rem;
+
+  padding-top:
+    2rem;
+}
+
+
+:global([data-company-design="v7"])
+.timelineGrid::before {
+  position:
+    absolute;
+
+  top:
+    2.35rem;
+
+  right:
+    4%;
+
+  left:
+    4%;
+
+  z-index:
+    -1;
+
+  height:
+    1px;
+
+  content:
+    "";
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--company-v7-blue),
+      var(--company-v7-purple),
+      transparent
+    );
+
+  opacity:
+    0.48;
+}
+
+
+:global([data-company-design="v7"])
+.timelineCard {
+  position:
+    relative;
+
+  min-height:
+    200px;
+
+  padding:
+    2.2rem
+    1.15rem
+    1.25rem;
+
+  background:
+    #0d1118;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    );
+
+  border-radius:
+    3px
+    20px
+    3px
+    3px;
+
+  box-shadow:
+    none;
+}
+
+
+:global([data-company-design="v7"])
+.timelineDot {
+  top:
+    -2.02rem;
+
+  width:
+    11px;
+
+  height:
+    11px;
+
+  background:
+    var(--company-v7-cyan);
+
+  border:
+    3px solid
+    #090c12;
+
+  box-shadow:
+    0
+    0
+    0
+    1px
+    rgba(
+      161,
+      226,
+      240,
+      0.38
+    );
+}
+
+
+/* ==========================================================================
+   FOUNDER — STRONG EDITORIAL PORTRAIT
+   ========================================================================== */
+
+
+:global([data-company-design="v7"])
+.founderCard {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      280px,
+      0.72fr
+    )
+    minmax(
+      0,
+      1.28fr
+    );
+
+  min-height:
+    520px;
+
+  overflow:
+    hidden;
+
+  background:
+    #0c1017;
+
+  border:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.12
+    );
+
+  border-radius:
+    4px
+    36px
+    4px
+    4px;
+
+  box-shadow:
+    none;
+}
+
+
+:global([data-company-design="v7"])
+.founderVisual {
+  min-height:
+    520px;
+
+  border-right:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.12
+    );
+}
+
+
+:global([data-company-design="v7"])
+.founderVisualPhoto {
+  filter:
+    saturate(
+      0.78
+    )
+    contrast(
+      1.04
+    );
+
+  transition:
+    filter
+    220ms
+    ease,
+    transform
+    300ms
+    ease;
+}
+
+
+:global([data-company-design="v7"])
+.founderContent {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  justify-content:
+    center;
+
+  padding:
+    clamp(
+      2rem,
+      5vw,
+      5rem
+    );
+}
+
+
+:global([data-company-design="v7"])
+.founderContent
+h2 {
+  font-size:
+    clamp(
+      2.4rem,
+      5vw,
+      4.8rem
+    );
+
+  font-weight:
+    530;
+
+  line-height:
+    0.98;
+
+  letter-spacing:
+    -0.052em;
+}
+
+
+/* ==========================================================================
+   PEOPLE / PROJECTS
+   ========================================================================== */
+
+
+:global([data-company-design="v7"])
+.peopleGrid {
+  gap:
+    1rem;
+}
+
+
+:global([data-company-design="v7"])
+.peopleCard {
+  min-height:
+    210px;
+
+  padding:
+    1.35rem;
+
+  background:
+    var(--company-v7-panel);
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  border-radius:
+    4px
+    24px
+    4px
+    4px;
+
+  box-shadow:
+    none;
+
+  transition:
+    transform
+    180ms
+    ease,
+    border-color
+    180ms
+    ease;
+}
+
+
+:global([data-company-design="v7"])
+.peopleVisual {
+  background:
+    rgba(
+      161,
+      226,
+      240,
+      0.025
+    );
+
+  border-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.11
+    );
+}
+
+
+/* ==========================================================================
+   CTA — CLOSING STATEMENT
+   ========================================================================== */
+
+
+:global([data-company-design="v7"])
+.cta {
+  padding-top:
+    clamp(
+      3.5rem,
+      7vw,
+      6.5rem
+    );
+
+  padding-bottom:
+    clamp(
+      4rem,
+      8vw,
+      7rem
+    );
+
+  background:
+    #07090d;
+}
+
+
+:global([data-company-design="v7"])
+.ctaCard {
+  position:
+    relative;
+
+  min-height:
+    420px;
+
+  overflow:
+    hidden;
+
+  background:
+    linear-gradient(
+      120deg,
+      rgba(
+        99,
+        51,
+        198,
+        0.16
+      ),
+      transparent
+      42%
+    ),
+    #0d1017;
+
+  border:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.14
+    );
+
+  border-radius:
+    4px
+    42px
+    4px
+    4px;
+
+  box-shadow:
+    none;
+}
+
+
+:global([data-company-design="v7"])
+.ctaCard::before {
+  position:
+    absolute;
+
+  top:
+    0;
+
+  right:
+    0;
+
+  width:
+    36%;
+
+  height:
+    3px;
+
+  content:
+    "";
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--company-v7-purple),
+      var(--company-v7-cyan)
+    );
+}
+
+
+:global([data-company-design="v7"])
+.ctaContent
+h2 {
+  font-size:
+    clamp(
+      2.8rem,
+      6vw,
+      5.6rem
+    );
+
+  font-weight:
+    520;
+
+  line-height:
+    0.94;
+
+  letter-spacing:
+    -0.06em;
+}
+
+
+/* ==========================================================================
+   HOVER DETAIL
+   ========================================================================== */
+
+
+@media (
+  hover:
+    hover
+)
+and
+(
+  pointer:
+    fine
+) {
+
+  :global([data-company-design="v7"])
+  .capabilityCard:hover,
+  :global([data-company-design="v7"])
+  .ecosystemCard:hover,
+  :global([data-company-design="v7"])
+  .peopleCard:hover {
+    transform:
+      translateY(
+        -4px
+      );
+
+    border-color:
+      rgba(
+        161,
+        226,
+        240,
+        0.3
+      );
+  }
+
+
+  :global([data-company-design="v7"])
+  .founderCard:hover
+  .founderVisualPhoto {
+    filter:
+      saturate(
+        0.95
+      )
+      contrast(
+        1.04
+      );
+
+    transform:
+      scale(
+        1.018
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    1024px
+) {
+
+  :global([data-company-design="v7"])
+  .capabilityCard:nth-child(n) {
+    grid-column:
+      span
+      6;
+  }
+
+
+  :global([data-company-design="v7"])
+  .principleCard:nth-child(n) {
+    margin-top:
+      0;
+  }
+
+
+  :global([data-company-design="v7"])
+  .founderCard {
+    grid-template-columns:
+      minmax(
+        260px,
+        0.9fr
+      )
+      minmax(
+        0,
+        1.1fr
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    768px
+) {
+
+  :global([data-company-design="v7"])
+  .section {
+    padding-top:
+      3rem;
+
+    padding-bottom:
+      3rem;
+  }
+
+
+  :global([data-company-design="v7"])
+  .pageNavInner {
+    overflow-x:
+      auto;
+
+    scrollbar-width:
+      none;
+  }
+
+
+  :global([data-company-design="v7"])
+  .pageNavInner::-webkit-scrollbar {
+    display:
+      none;
+  }
+
+
+  :global([data-company-design="v7"])
+  .statementCard {
+    min-height:
+      280px;
+
+    padding:
+      1.5rem;
+
+    border-radius:
+      4px
+      22px
+      4px
+      4px;
+  }
+
+
+  :global([data-company-design="v7"])
+  .flow {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      0.65rem;
+  }
+
+
+  :global([data-company-design="v7"])
+  .flow
+  article {
+    min-height:
+      185px;
+  }
+
+
+  :global([data-company-design="v7"])
+  .flowArrow {
+    width:
+      1px;
+
+    height:
+      26px;
+
+    justify-self:
+      center;
+  }
+
+
+  :global([data-company-design="v7"])
+  .flowArrow::before {
+    width:
+      1px;
+
+    height:
+      100%;
+  }
+
+
+  :global([data-company-design="v7"])
+  .capabilityGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  :global([data-company-design="v7"])
+  .capabilityCard:nth-child(n) {
+    grid-column:
+      auto;
+
+    min-height:
+      240px;
+  }
+
+
+  :global([data-company-design="v7"])
+  .principleGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  :global([data-company-design="v7"])
+  .principleCard:nth-child(n) {
+    min-height:
+      270px;
+
+    margin-top:
+      0;
+  }
+
+
+  :global([data-company-design="v7"])
+  .ecosystemGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  :global([data-company-design="v7"])
+  .ecosystemCard {
+    min-height:
+      140px;
+  }
+
+
+  :global([data-company-design="v7"])
+  .timelineGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      0.75rem;
+
+    padding-top:
+      0;
+  }
+
+
+  :global([data-company-design="v7"])
+  .timelineGrid::before {
+    top:
+      0;
+
+    bottom:
+      0;
+
+    left:
+      5px;
+
+    width:
+      1px;
+
+    height:
+      auto;
+  }
+
+
+  :global([data-company-design="v7"])
+  .timelineCard {
+    min-height:
+      150px;
+
+    margin-left:
+      20px;
+
+    padding:
+      1.3rem;
+  }
+
+
+  :global([data-company-design="v7"])
+  .timelineDot {
+    top:
+      1.35rem;
+
+    left:
+      -26px;
+  }
+
+
+  :global([data-company-design="v7"])
+  .founderCard {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    min-height:
+      0;
+  }
+
+
+  :global([data-company-design="v7"])
+  .founderVisual {
+    min-height:
+      390px;
+
+    border-right:
+      0;
+
+    border-bottom:
+      1px solid
+      var(--company-v7-line);
+  }
+
+
+  :global([data-company-design="v7"])
+  .founderContent {
+    padding:
+      1.6rem;
+  }
+
+
+  :global([data-company-design="v7"])
+  .peopleGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  :global([data-company-design="v7"])
+  .ctaCard {
+    min-height:
+      360px;
+
+    border-radius:
+      4px
+      26px
+      4px
+      4px;
+  }
+
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  :global([data-company-design="v7"])
+  .capabilityCard,
+  :global([data-company-design="v7"])
+  .ecosystemCard,
+  :global([data-company-design="v7"])
+  .peopleCard,
+  :global([data-company-design="v7"])
+  .founderVisualPhoto,
+  :global([data-company-design="v7"])
+  .pageNavInner
+  a,
+  :global([data-company-design="v7"])
+  .pageNavInner
+  a::after {
+    transition:
+      none;
+  }
+
+}
