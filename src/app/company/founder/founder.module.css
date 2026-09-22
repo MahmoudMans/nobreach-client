@@ -5358,3 +5358,34 @@ a:hover
   }
 
 }
+
+
+/* ==========================================================================
+   NB_NAV_HERO_RHYTHM_V1
+   Keep custom page heroes visually connected to the global navigation.
+   ========================================================================== */
+
+
+.hero {
+  margin-top:
+    0;
+
+  padding-top:
+    clamp(
+      0.9rem,
+      1.7vw,
+      1.35rem
+    );
+}
+
+
+@media (
+  max-width: 768px
+) {
+
+  .hero {
+    padding-top:
+      0.72rem;
+  }
+
+}

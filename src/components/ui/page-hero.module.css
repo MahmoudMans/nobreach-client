@@ -1121,3 +1121,34 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_NAV_HERO_RHYTHM_V1
+   Keep standard page introductions close to the site navigation.
+   ========================================================================== */
+
+
+.hero {
+  margin-top:
+    0;
+
+  padding-top:
+    clamp(
+      0.95rem,
+      1.8vw,
+      1.45rem
+    );
+}
+
+
+@media (
+  max-width: 768px
+) {
+
+  .hero {
+    padding-top:
+      0.8rem;
+  }
+
+}
