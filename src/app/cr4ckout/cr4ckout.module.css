@@ -1,0 +1,1939 @@
+/* ==========================================================================
+   NB_CR4CKOUT_DESIGN_AUTHORITY_V10
+
+   No Breach Concept & Guidelines — Nouha Ben Brahim
+
+   Event expression:
+   slightly more experimental than consulting pages,
+   while remaining premium, clean and controlled.
+   ========================================================================== */
+
+
+.page {
+  --cr-bg:
+    #08090c;
+
+  --cr-bg-alt:
+    #0a0d12;
+
+  --cr-surface:
+    #0d1117;
+
+  --cr-text:
+    #f5f7fa;
+
+  --cr-muted:
+    rgba(
+      245,
+      247,
+      250,
+      0.62
+    );
+
+  --cr-faint:
+    rgba(
+      245,
+      247,
+      250,
+      0.4
+    );
+
+  --cr-line:
+    rgba(
+      255,
+      255,
+      255,
+      0.095
+    );
+
+  --cr-line-soft:
+    rgba(
+      255,
+      255,
+      255,
+      0.055
+    );
+
+  --cr-blue:
+    #83b3d7;
+
+  --cr-cyan:
+    #a1e2f0;
+
+  --cr-violet:
+    #7e60b9;
+
+  --cr-purple:
+    #6333c6;
+
+  overflow:
+    clip;
+
+  background:
+    var(--cr-bg);
+
+  color:
+    var(--cr-text);
+}
+
+
+.eyebrow {
+  margin:
+    0;
+
+  color:
+    var(--cr-cyan);
+
+  font-size:
+    0.7rem;
+
+  font-weight:
+    660;
+
+  letter-spacing:
+    0.13em;
+
+  line-height:
+    1.3;
+
+  text-transform:
+    uppercase;
+}
+
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+
+
+.hero {
+  position:
+    relative;
+
+  padding:
+    clamp(
+      2.6rem,
+      5vw,
+      4.6rem
+    )
+    0
+    clamp(
+      4.5rem,
+      8vw,
+      7rem
+    );
+
+  background:
+    #08090c;
+
+  border-bottom:
+    1px solid
+    var(--cr-line);
+}
+
+
+.hero::before {
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  pointer-events:
+    none;
+
+  content:
+    "";
+
+  background:
+    radial-gradient(
+      circle
+      at
+      82%
+      24%,
+      rgba(
+        99,
+        51,
+        198,
+        0.11
+      ),
+      transparent
+      34%
+    ),
+    radial-gradient(
+      circle
+      at
+      68%
+      60%,
+      rgba(
+        161,
+        226,
+        240,
+        0.055
+      ),
+      transparent
+      32%
+    );
+}
+
+
+.heroTop {
+  position:
+    relative;
+
+  z-index:
+    1;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    1rem;
+
+  padding-bottom:
+    1.2rem;
+
+  border-bottom:
+    1px solid
+    var(--cr-line);
+}
+
+
+.heroCode {
+  color:
+    var(--cr-faint);
+
+  font-size:
+    0.65rem;
+
+  font-weight:
+    650;
+
+  letter-spacing:
+    0.1em;
+}
+
+
+.heroLayout {
+  position:
+    relative;
+
+  z-index:
+    1;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1.12fr
+    )
+    minmax(
+      360px,
+      0.88fr
+    );
+
+  gap:
+    clamp(
+      3rem,
+      8vw,
+      8rem
+    );
+
+  align-items:
+    center;
+
+  padding-top:
+    clamp(
+      2rem,
+      5vw,
+      4rem
+    );
+}
+
+
+.heroCopy {
+  min-width:
+    0;
+}
+
+
+.heroCopy h1 {
+  margin:
+    0;
+
+  color:
+    var(--cr-text);
+
+  font-size:
+    clamp(
+      3.6rem,
+      7.2vw,
+      5.9rem
+    );
+
+  font-weight:
+    475;
+
+  line-height:
+    0.88;
+
+  letter-spacing:
+    -0.072em;
+}
+
+
+.heroStatement {
+  max-width:
+    620px;
+
+  margin:
+    1.45rem
+    0
+    0;
+
+  color:
+    var(--cr-cyan);
+
+  font-size:
+    clamp(
+      1.45rem,
+      2.8vw,
+      2.2rem
+    );
+
+  font-weight:
+    480;
+
+  line-height:
+    1.12;
+
+  letter-spacing:
+    -0.035em;
+}
+
+
+.heroLead {
+  max-width:
+    61ch;
+
+  margin:
+    1.4rem
+    0
+    0;
+
+  color:
+    var(--cr-muted);
+
+  font-size:
+    1.02rem;
+
+  line-height:
+    1.7;
+}
+
+
+.heroActions {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    0.75rem;
+
+  margin-top:
+    2rem;
+}
+
+
+.primaryAction,
+.secondaryAction,
+.hostPrimary,
+.hostSecondary {
+  min-height:
+    46px;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    0.7rem;
+
+  padding:
+    0.78rem
+    1.1rem;
+
+  border:
+    1px solid
+    var(--cr-line);
+
+  text-decoration:
+    none;
+
+  font-size:
+    0.86rem;
+
+  font-weight:
+    650;
+
+  line-height:
+    1;
+
+  transition:
+    transform
+    160ms
+    ease,
+    border-color
+    160ms
+    ease;
+}
+
+
+.primaryAction,
+.hostPrimary {
+  border-color:
+    var(--cr-cyan);
+
+  background:
+    var(--cr-cyan);
+
+  color:
+    #08090c;
+}
+
+
+.secondaryAction,
+.hostSecondary {
+  background:
+    transparent;
+
+  color:
+    var(--cr-text);
+}
+
+
+.heroVisual {
+  min-height:
+    455px;
+
+  display:
+    grid;
+
+  grid-template-rows:
+    auto
+    auto
+    minmax(
+      0,
+      1fr
+    );
+
+  border-top:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.34
+    );
+
+  border-bottom:
+    1px solid
+    var(--cr-line);
+
+  background:
+    rgba(
+      10,
+      13,
+      18,
+      0.4
+    );
+}
+
+
+.visualHeader {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    1rem;
+
+  padding:
+    1rem
+    0;
+
+  color:
+    var(--cr-faint);
+
+  font-size:
+    0.63rem;
+
+  font-weight:
+    650;
+
+  letter-spacing:
+    0.1em;
+
+  border-bottom:
+    1px solid
+    var(--cr-line);
+}
+
+
+.visualSequence {
+  display:
+    grid;
+
+  grid-template-columns:
+    auto
+    1fr
+    auto
+    1fr
+    auto
+    1fr
+    auto;
+
+  gap:
+    0.65rem;
+
+  align-items:
+    center;
+
+  padding:
+    1.2rem
+    0;
+
+  color:
+    var(--cr-text);
+
+  font-size:
+    0.63rem;
+
+  font-weight:
+    680;
+
+  letter-spacing:
+    0.1em;
+}
+
+
+.visualSequence i {
+  height:
+    1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--cr-cyan),
+      var(--cr-purple)
+    );
+}
+
+
+.visualField {
+  position:
+    relative;
+
+  min-height:
+    315px;
+
+  overflow:
+    hidden;
+}
+
+
+.visualField::before {
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  content:
+    "";
+
+  opacity:
+    0.36;
+
+  background-image:
+    linear-gradient(
+      var(--cr-line-soft)
+      1px,
+      transparent
+      1px
+    ),
+    linear-gradient(
+      90deg,
+      var(--cr-line-soft)
+      1px,
+      transparent
+      1px
+    );
+
+  background-size:
+    48px
+    48px;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      black,
+      transparent
+    );
+}
+
+
+.visualField > span {
+  position:
+    absolute;
+
+  z-index:
+    2;
+
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  min-width:
+    70px;
+
+  height:
+    32px;
+
+  padding:
+    0
+    0.65rem;
+
+  border:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.28
+    );
+
+  background:
+    #0a0d12;
+
+  color:
+    var(--cr-cyan);
+
+  font-size:
+    0.62rem;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    0.09em;
+}
+
+
+.visualNodeOne {
+  top:
+    19%;
+
+  left:
+    6%;
+}
+
+
+.visualNodeTwo {
+  top:
+    48%;
+
+  right:
+    8%;
+}
+
+
+.visualNodeThree {
+  bottom:
+    15%;
+
+  left:
+    15%;
+}
+
+
+.visualField > i {
+  position:
+    absolute;
+
+  z-index:
+    1;
+
+  display:
+    block;
+
+  height:
+    1px;
+
+  transform-origin:
+    left;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        161,
+        226,
+        240,
+        0.55
+      ),
+      rgba(
+        99,
+        51,
+        198,
+        0.25
+      )
+    );
+}
+
+
+.visualLineOne {
+  top:
+    30%;
+
+  left:
+    19%;
+
+  width:
+    57%;
+
+  transform:
+    rotate(
+      17deg
+    );
+}
+
+
+.visualLineTwo {
+  top:
+    66%;
+
+  left:
+    27%;
+
+  width:
+    47%;
+
+  transform:
+    rotate(
+      -19deg
+    );
+}
+
+
+.visualField strong {
+  position:
+    absolute;
+
+  top:
+    41%;
+
+  left:
+    50%;
+
+  z-index:
+    3;
+
+  display:
+    grid;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  color:
+    var(--cr-text);
+
+  font-size:
+    clamp(
+      1.45rem,
+      3vw,
+      2.3rem
+    );
+
+  font-weight:
+    490;
+
+  line-height:
+    0.95;
+
+  letter-spacing:
+    -0.045em;
+}
+
+
+.visualField strong small {
+  margin-top:
+    0.35rem;
+
+  color:
+    var(--cr-violet);
+
+  font-size:
+    0.56em;
+
+  font-weight:
+    680;
+
+  letter-spacing:
+    0.12em;
+}
+
+
+/* ==========================================================================
+   EXPERIENCE
+   ========================================================================== */
+
+
+.identity,
+.disciplines,
+.flow,
+.host {
+  padding:
+    clamp(
+      4rem,
+      8vw,
+      7rem
+    )
+    0;
+}
+
+
+.identity,
+.flow {
+  background:
+    var(--cr-bg-alt);
+}
+
+
+.disciplines,
+.host {
+  background:
+    var(--cr-bg);
+}
+
+
+.sectionRule {
+  height:
+    1px;
+
+  margin-bottom:
+    clamp(
+      2.2rem,
+      4vw,
+      3.6rem
+    );
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--cr-cyan),
+      rgba(
+        126,
+        96,
+        185,
+        0.5
+      )
+      38%,
+      transparent
+      76%
+    );
+}
+
+
+.identityLayout {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      0.9fr
+    )
+    minmax(
+      0,
+      1.1fr
+    );
+
+  gap:
+    clamp(
+      3rem,
+      8vw,
+      8rem
+    );
+}
+
+
+.identityHeading h2,
+.sectionHeader h2 {
+  margin:
+    1rem
+    0
+    0;
+
+  color:
+    var(--cr-text);
+
+  font-size:
+    clamp(
+      2.3rem,
+      4.6vw,
+      4.15rem
+    );
+
+  font-weight:
+    490;
+
+  line-height:
+    0.98;
+
+  letter-spacing:
+    -0.055em;
+}
+
+
+.identityHeading h2 span,
+.sectionHeader h2 span {
+  display:
+    block;
+
+  color:
+    var(--cr-cyan);
+}
+
+
+.largeCopy {
+  max-width:
+    680px;
+
+  margin:
+    0;
+
+  color:
+    var(--cr-text);
+
+  font-size:
+    clamp(
+      1.2rem,
+      2vw,
+      1.58rem
+    );
+
+  font-weight:
+    450;
+
+  line-height:
+    1.58;
+
+  letter-spacing:
+    -0.024em;
+}
+
+
+.experiencePrinciples {
+  margin-top:
+    2.4rem;
+
+  border-top:
+    1px solid
+    var(--cr-line);
+}
+
+
+.experiencePrinciples div {
+  display:
+    grid;
+
+  grid-template-columns:
+    54px
+    minmax(
+      0,
+      1fr
+    );
+
+  align-items:
+    center;
+
+  gap:
+    1rem;
+
+  min-height:
+    68px;
+
+  border-bottom:
+    1px solid
+    var(--cr-line);
+}
+
+
+.experiencePrinciples span {
+  color:
+    var(--cr-cyan);
+
+  font-size:
+    0.67rem;
+
+  letter-spacing:
+    0.1em;
+}
+
+
+.experiencePrinciples strong {
+  color:
+    var(--cr-text);
+
+  font-size:
+    0.98rem;
+
+  font-weight:
+    530;
+}
+
+
+/* ==========================================================================
+   DISCIPLINES — FULL WIDTH ROWS
+   ========================================================================== */
+
+
+.sectionHeader {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    minmax(
+      270px,
+      0.42fr
+    );
+
+  gap:
+    3rem;
+
+  align-items:
+    end;
+
+  padding-bottom:
+    2rem;
+
+  border-bottom:
+    1px solid
+    var(--cr-line);
+}
+
+
+.sectionHeader > p {
+  max-width:
+    46ch;
+
+  margin:
+    0;
+
+  color:
+    var(--cr-muted);
+
+  line-height:
+    1.65;
+}
+
+
+.disciplineRows {
+  display:
+    block;
+}
+
+
+.disciplineRow {
+  min-height:
+    150px;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    60px
+    110px
+    minmax(
+      220px,
+      0.8fr
+    )
+    minmax(
+      300px,
+      1.2fr
+    )
+    20px;
+
+  gap:
+    clamp(
+      1rem,
+      2.5vw,
+      2.2rem
+    );
+
+  align-items:
+    center;
+
+  padding:
+    1.5rem
+    0;
+
+  border-bottom:
+    1px solid
+    var(--cr-line);
+}
+
+
+.disciplineIndex {
+  color:
+    var(--cr-cyan);
+
+  font-size:
+    0.68rem;
+
+  letter-spacing:
+    0.1em;
+}
+
+
+.disciplineCode {
+  color:
+    var(--cr-faint);
+
+  font-size:
+    0.66rem;
+
+  font-weight:
+    680;
+
+  letter-spacing:
+    0.1em;
+}
+
+
+.disciplineRow h3 {
+  margin:
+    0;
+
+  color:
+    var(--cr-text);
+
+  font-size:
+    clamp(
+      1.4rem,
+      2.5vw,
+      2.05rem
+    );
+
+  font-weight:
+    510;
+
+  letter-spacing:
+    -0.04em;
+}
+
+
+.disciplineRow p {
+  max-width:
+    620px;
+
+  margin:
+    0;
+
+  color:
+    var(--cr-muted);
+
+  line-height:
+    1.62;
+}
+
+
+.disciplineSignal {
+  justify-self:
+    end;
+
+  color:
+    var(--cr-purple);
+
+  font-size:
+    0.6rem;
+}
+
+
+/* ==========================================================================
+   FLOW
+   ========================================================================== */
+
+
+.flowHeader {
+  padding-bottom:
+    clamp(
+      2.5rem,
+      5vw,
+      4rem
+    );
+}
+
+
+.flowHeader h2 {
+  max-width:
+    1060px;
+
+  margin:
+    1rem
+    0
+    0;
+
+  color:
+    var(--cr-text);
+
+  font-size:
+    clamp(
+      2.7rem,
+      5.8vw,
+      5.2rem
+    );
+
+  font-weight:
+    470;
+
+  line-height:
+    0.94;
+
+  letter-spacing:
+    -0.06em;
+}
+
+
+.flowHeader h2 span {
+  color:
+    var(--cr-violet);
+}
+
+
+.flowRail {
+  border-top:
+    1px solid
+    var(--cr-line);
+}
+
+
+.flowStep {
+  display:
+    grid;
+
+  grid-template-columns:
+    180px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    clamp(
+      1.5rem,
+      5vw,
+      5rem
+    );
+
+  padding:
+    1.6rem
+    0;
+
+  border-bottom:
+    1px solid
+    var(--cr-line);
+}
+
+
+.flowStepIndex {
+  display:
+    grid;
+
+  grid-template-columns:
+    auto
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    1rem;
+
+  align-items:
+    center;
+
+  color:
+    var(--cr-cyan);
+
+  font-size:
+    0.67rem;
+
+  letter-spacing:
+    0.1em;
+}
+
+
+.flowStepIndex i {
+  height:
+    1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--cr-cyan),
+      transparent
+    );
+}
+
+
+.flowStepCopy {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      180px,
+      0.6fr
+    )
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    clamp(
+      1.5rem,
+      4vw,
+      4rem
+    );
+
+  align-items:
+    start;
+}
+
+
+.flowStepCopy h3 {
+  margin:
+    0;
+
+  color:
+    var(--cr-text);
+
+  font-size:
+    1.28rem;
+
+  font-weight:
+    520;
+
+  letter-spacing:
+    -0.03em;
+}
+
+
+.flowStepCopy p {
+  max-width:
+    620px;
+
+  margin:
+    0;
+
+  color:
+    var(--cr-muted);
+
+  line-height:
+    1.62;
+}
+
+
+/* ==========================================================================
+   HOST CTA
+   ========================================================================== */
+
+
+.host {
+  border-top:
+    1px solid
+    var(--cr-line);
+}
+
+
+.hostLayout {
+  display:
+    grid;
+
+  grid-template-columns:
+    70px
+    minmax(
+      0,
+      1fr
+    )
+    auto;
+
+  gap:
+    clamp(
+      1.5rem,
+      4vw,
+      4rem
+    );
+
+  align-items:
+    end;
+
+  padding-top:
+    2rem;
+
+  border-top:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.4
+    );
+}
+
+
+.hostIndex {
+  align-self:
+    start;
+
+  color:
+    var(--cr-cyan);
+
+  font-size:
+    0.7rem;
+
+  letter-spacing:
+    0.1em;
+}
+
+
+.hostCopy {
+  max-width:
+    830px;
+}
+
+
+.hostCopy h2 {
+  margin:
+    0.9rem
+    0
+    1.1rem;
+
+  color:
+    var(--cr-text);
+
+  font-size:
+    clamp(
+      2.6rem,
+      5vw,
+      4.7rem
+    );
+
+  font-weight:
+    480;
+
+  line-height:
+    0.96;
+
+  letter-spacing:
+    -0.058em;
+}
+
+
+.hostCopy > p:not(.eyebrow) {
+  max-width:
+    53ch;
+
+  margin:
+    0;
+
+  color:
+    var(--cr-muted);
+
+  font-size:
+    1.02rem;
+
+  line-height:
+    1.65;
+}
+
+
+.hostActions {
+  display:
+    grid;
+
+  gap:
+    0.7rem;
+
+  justify-items:
+    stretch;
+}
+
+
+/* ==========================================================================
+   HOVER
+   ========================================================================== */
+
+
+@media (
+  hover:
+    hover
+)
+and
+(
+  pointer:
+    fine
+) {
+
+  .primaryAction:hover,
+  .secondaryAction:hover,
+  .hostPrimary:hover,
+  .hostSecondary:hover {
+    transform:
+      translateY(
+        -2px
+      );
+  }
+
+
+  .secondaryAction:hover,
+  .hostSecondary:hover {
+    border-color:
+      rgba(
+        161,
+        226,
+        240,
+        0.5
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    1024px
+) {
+
+  .heroLayout {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      )
+      minmax(
+        300px,
+        0.78fr
+      );
+
+    gap:
+      3rem;
+  }
+
+
+  .heroVisual {
+    min-height:
+      400px;
+  }
+
+
+  .identityLayout {
+    gap:
+      3.5rem;
+  }
+
+
+  .disciplineRow {
+    grid-template-columns:
+      50px
+      90px
+      minmax(
+        0,
+        1fr
+      )
+      20px;
+
+    grid-template-rows:
+      auto
+      auto;
+  }
+
+
+  .disciplineRow p {
+    grid-column:
+      3;
+
+    grid-row:
+      2;
+  }
+
+
+  .disciplineSignal {
+    grid-column:
+      4;
+
+    grid-row:
+      1
+      /
+      span
+      2;
+  }
+
+
+  .hostLayout {
+    grid-template-columns:
+      55px
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .hostActions {
+    grid-column:
+      2;
+  }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    768px
+) {
+
+  .hero,
+  .identity,
+  .disciplines,
+  .flow,
+  .host {
+    padding:
+      3.4rem
+      0;
+  }
+
+
+  .heroTop {
+    align-items:
+      flex-start;
+  }
+
+
+  .heroLayout,
+  .identityLayout,
+  .sectionHeader {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      2.5rem;
+  }
+
+
+  .heroCopy h1 {
+    font-size:
+      clamp(
+        3.2rem,
+        16vw,
+        4.6rem
+      );
+  }
+
+
+  .heroVisual {
+    min-height:
+      380px;
+  }
+
+
+  .visualSequence {
+    grid-template-columns:
+      1fr
+      auto
+      1fr;
+
+    row-gap:
+      0.7rem;
+  }
+
+
+  .visualSequence i:nth-of-type(2),
+  .visualSequence i:nth-of-type(3) {
+    display:
+      none;
+  }
+
+
+  .identityHeading h2,
+  .sectionHeader h2 {
+    font-size:
+      clamp(
+        2.15rem,
+        10.5vw,
+        3.4rem
+      );
+  }
+
+
+  .disciplineRow {
+    min-height:
+      0;
+
+    grid-template-columns:
+      40px
+      minmax(
+        0,
+        1fr
+      )
+      18px;
+
+    grid-template-rows:
+      auto
+      auto
+      auto;
+
+    gap:
+      0.5rem
+      0.8rem;
+
+    padding:
+      1.35rem
+      0;
+  }
+
+
+  .disciplineIndex {
+    grid-column:
+      1;
+
+    grid-row:
+      1;
+  }
+
+
+  .disciplineCode {
+    grid-column:
+      2;
+
+    grid-row:
+      1;
+  }
+
+
+  .disciplineRow h3 {
+    grid-column:
+      2;
+
+    grid-row:
+      2;
+  }
+
+
+  .disciplineRow p {
+    grid-column:
+      2;
+
+    grid-row:
+      3;
+  }
+
+
+  .disciplineSignal {
+    grid-column:
+      3;
+
+    grid-row:
+      1
+      /
+      span
+      3;
+  }
+
+
+  .flowHeader h2 {
+    font-size:
+      clamp(
+        2.5rem,
+        12vw,
+        4rem
+      );
+  }
+
+
+  .flowStep {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      1rem;
+  }
+
+
+  .flowStepIndex {
+    grid-template-columns:
+      36px
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .flowStepCopy {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      0.6rem;
+
+    padding-left:
+      52px;
+  }
+
+
+  .hostLayout {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      1.5rem;
+  }
+
+
+  .hostIndex,
+  .hostCopy,
+  .hostActions {
+    grid-column:
+      1;
+  }
+
+
+  .hostCopy h2 {
+    font-size:
+      clamp(
+        2.3rem,
+        11vw,
+        3.7rem
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   SMALL MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    480px
+) {
+
+  .heroActions,
+  .hostActions {
+    display:
+      grid;
+  }
+
+
+  .primaryAction,
+  .secondaryAction,
+  .hostPrimary,
+  .hostSecondary {
+    width:
+      100%;
+  }
+
+
+  .heroVisual {
+    min-height:
+      350px;
+  }
+
+
+  .visualHeader {
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
+  }
+
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .primaryAction,
+  .secondaryAction,
+  .hostPrimary,
+  .hostSecondary {
+    transition:
+      none;
+  }
+
+}
