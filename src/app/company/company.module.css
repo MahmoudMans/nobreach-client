@@ -5304,29 +5304,26 @@ strong {
 
 
 /* ==========================================================================
-   NB_COMPANY_EDITORIAL_V8
+   NB_COMPANY_NARRATIVE_V9
 
-   Direction:
-   Premium cybersecurity consultancy.
-   Editorial, symmetrical, restrained, architectural.
-   No bento, no staggered gimmicks, no dashboard aesthetic.
+   Design principle:
+   The page is one continuous company narrative.
+   Information changes structure from section to section instead of repeating
+   the same bordered card component.
    ========================================================================== */
 
 
-:global([data-company-design="v8"]) {
-  --company-v8-bg:
+:global([data-company-design="v9"]) {
+  --company-v9-bg:
     #08090c;
 
-  --company-v8-surface:
-    #0c0e13;
+  --company-v9-alt:
+    #0a0c11;
 
-  --company-v8-surface-soft:
-    #10131a;
-
-  --company-v8-text:
+  --company-v9-text:
     #f7f9fb;
 
-  --company-v8-muted:
+  --company-v9-muted:
     rgba(
       247,
       249,
@@ -5334,81 +5331,70 @@ strong {
       0.58
     );
 
-  --company-v8-faint:
+  --company-v9-faint:
     rgba(
       247,
       249,
       251,
-      0.38
+      0.36
     );
 
-  --company-v8-line:
+  --company-v9-line:
     rgba(
       255,
       255,
       255,
-      0.085
+      0.09
     );
 
-  --company-v8-cyan:
+  --company-v9-line-soft:
+    rgba(
+      255,
+      255,
+      255,
+      0.055
+    );
+
+  --company-v9-cyan:
     #a1e2f0;
 
-  --company-v8-blue:
+  --company-v9-blue:
     #83b3d7;
 
-  --company-v8-purple:
+  --company-v9-purple:
     #6333c6;
 
-  --company-v8-violet:
+  --company-v9-violet:
     #7e60b9;
 
   overflow:
     clip;
 
   background:
-    var(--company-v8-bg);
+    var(--company-v9-bg);
 
   color:
-    var(--company-v8-text);
+    var(--company-v9-text);
 }
 
 
 /* ==========================================================================
-   HERO
-   Keep the clean V6 hero, refine presentation only.
+   HERO — KEEP THE CLEAN V6 IDEA
    ========================================================================== */
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 :global([data-company-hero="v6"]) {
   background:
-    #08090c;
+    var(--company-v9-bg);
 
   border-bottom:
     1px solid
-    var(--company-v8-line);
+    var(--company-v9-line);
 }
 
 
-:global([data-company-design="v8"])
-.heroInner {
-  align-items:
-    center;
-}
-
-
-:global([data-company-design="v8"])
-.heroCopy
-h1 {
-  max-width:
-    780px;
-
-  letter-spacing:
-    -0.055em;
-}
-
-
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .profileCard {
   border:
     0;
@@ -5419,12 +5405,12 @@ h1 {
       161,
       226,
       240,
-      0.4
+      0.36
     );
 
   border-bottom:
     1px solid
-    var(--company-v8-line);
+    var(--company-v9-line);
 
   border-radius:
     0;
@@ -5440,22 +5426,56 @@ h1 {
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .profileCard::before,
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .profileCard::after {
   display:
     none;
 }
 
 
+:global([data-company-design="v9"])
+.factGrid {
+  gap:
+    0;
+
+  border-top:
+    1px solid
+    var(--company-v9-line-soft);
+}
+
+
+:global([data-company-design="v9"])
+.factCard {
+  padding:
+    1rem
+    0;
+
+  border:
+    0;
+
+  border-bottom:
+    1px solid
+    var(--company-v9-line-soft);
+
+  border-radius:
+    0;
+
+  background:
+    transparent;
+
+  box-shadow:
+    none;
+}
+
+
 /* ==========================================================================
-   PAGE NAVIGATION
-   Simple editorial index, no technical control-bar styling.
+   NAVIGATION
    ========================================================================== */
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .pageNav {
   position:
     relative;
@@ -5464,14 +5484,14 @@ h1 {
     2;
 
   background:
-    #08090c;
+    var(--company-v9-bg);
 
-  border-top:
+  border:
     0;
 
   border-bottom:
     1px solid
-    var(--company-v8-line);
+    var(--company-v9-line);
 
   box-shadow:
     none;
@@ -5481,25 +5501,28 @@ h1 {
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .pageNavInner {
   min-height:
-    58px;
+    56px;
 
   gap:
     clamp(
-      1rem,
-      2.4vw,
-      2.3rem
+      1.2rem,
+      2.5vw,
+      2.5rem
     );
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .pageNavInner
 a {
   position:
     relative;
+
+  min-height:
+    56px;
 
   display:
     inline-flex;
@@ -5507,38 +5530,30 @@ a {
   align-items:
     center;
 
-  min-height:
-    58px;
-
   padding:
     0;
 
   color:
-    var(--company-v8-faint);
+    var(--company-v9-faint);
 
   background:
     transparent;
 
   font-size:
-    0.72rem;
+    0.69rem;
 
   font-weight:
-    620;
+    650;
 
   letter-spacing:
-    0.08em;
+    0.1em;
 
   text-transform:
     uppercase;
-
-  transition:
-    color
-    160ms
-    ease;
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .pageNavInner
 a::after {
   position:
@@ -5560,33 +5575,22 @@ a::after {
     "";
 
   background:
-    var(--company-v8-cyan);
+    var(--company-v9-cyan);
 
   opacity:
     0;
-
-  transform:
-    none;
-
-  transition:
-    opacity
-    160ms
-    ease;
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .pageNavInner
 a:hover {
   color:
-    var(--company-v8-text);
-
-  background:
-    transparent;
+    var(--company-v9-text);
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .pageNavInner
 a:hover::after {
   opacity:
@@ -5595,63 +5599,63 @@ a:hover::after {
 
 
 /* ==========================================================================
-   GLOBAL SECTION RHYTHM
+   SECTION RHYTHM
    ========================================================================== */
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .section {
   position:
     relative;
 
   padding-top:
     clamp(
-      3.6rem,
+      3.4rem,
       6vw,
       5.8rem
     );
 
   padding-bottom:
     clamp(
-      3.6rem,
+      3.4rem,
       6vw,
       5.8rem
     );
 
+  border:
+    0;
+
   background:
     transparent;
-
-  border-top:
-    0;
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .section::before,
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .section::after {
   display:
     none;
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .section
 > .container {
   border-top:
     1px solid
-    var(--company-v8-line);
+    var(--company-v9-line);
 
   padding-top:
     clamp(
-      1.6rem,
-      3vw,
-      2.5rem
+      1.4rem,
+      2.8vw,
+      2.2rem
     );
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .sectionHeader {
   width:
     100%;
@@ -5665,7 +5669,7 @@ a:hover::after {
     clamp(
       2rem,
       4vw,
-      3.2rem
+      3.25rem
     );
 
   display:
@@ -5682,40 +5686,43 @@ a:hover::after {
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .sectionHeader
 h2 {
+  width:
+    100%;
+
   max-width:
-    820px;
+    850px;
 
   margin:
     0;
 
   color:
-    var(--company-v8-text);
+    var(--company-v9-text);
 
   font-size:
     clamp(
-      2.25rem,
-      4.3vw,
-      4.15rem
+      2.3rem,
+      4.5vw,
+      4.2rem
     );
 
   font-weight:
-    520;
+    500;
 
   line-height:
-    0.99;
+    0.98;
 
   letter-spacing:
-    -0.052em;
+    -0.054em;
 
   text-align:
     left;
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .sectionHeader
 h2
 span {
@@ -5723,7 +5730,7 @@ span {
     block;
 
   color:
-    var(--company-v8-cyan);
+    var(--company-v9-cyan);
 
   text-align:
     left;
@@ -5731,12 +5738,12 @@ span {
 
 
 /* ==========================================================================
-   COMPANY STATEMENT
-   No card. Large editorial split.
+   01 — COMPANY
+   Pure editorial statement. No card.
    ========================================================================== */
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .introGrid {
   display:
     block;
@@ -5746,7 +5753,7 @@ span {
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .statementCard {
   width:
     100%;
@@ -5763,11 +5770,11 @@ span {
   grid-template-columns:
     minmax(
       0,
-      1.45fr
+      1.55fr
     )
     minmax(
-      260px,
-      0.55fr
+      250px,
+      0.45fr
     );
 
   grid-template-areas:
@@ -5776,13 +5783,13 @@ span {
 
   column-gap:
     clamp(
-      2rem,
-      6vw,
-      6rem
+      2.5rem,
+      7vw,
+      7rem
     );
 
   row-gap:
-    1.3rem;
+    1.35rem;
 
   align-items:
     end;
@@ -5791,20 +5798,17 @@ span {
     0
     0
     clamp(
-      2.2rem,
+      2rem,
       4vw,
-      3.3rem
+      3.5rem
     );
-
-  overflow:
-    visible;
 
   border:
     0;
 
   border-bottom:
     1px solid
-    var(--company-v8-line);
+    var(--company-v9-line);
 
   border-radius:
     0;
@@ -5814,99 +5818,102 @@ span {
 
   box-shadow:
     none;
+
+  overflow:
+    visible;
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .statementCard::before,
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .statementCard::after {
   display:
     none;
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .cardCode {
   grid-area:
     code;
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .statementCard
 h2 {
   grid-area:
     title;
 
   max-width:
-    820px;
+    900px;
 
   margin:
     0;
 
   color:
-    var(--company-v8-text);
+    var(--company-v9-text);
 
   font-size:
     clamp(
-      2.5rem,
-      5.2vw,
-      4.8rem
+      2.55rem,
+      5.4vw,
+      5rem
     );
 
   font-weight:
-    500;
+    490;
 
   line-height:
-    0.99;
+    0.97;
 
   letter-spacing:
-    -0.055em;
+    -0.058em;
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .statementCard
 p {
   grid-area:
     copy;
 
-  align-self:
-    end;
-
   max-width:
-    430px;
+    410px;
 
   margin:
     0;
 
   color:
-    var(--company-v8-muted);
+    var(--company-v9-muted);
 
   font-size:
     1rem;
 
   line-height:
-    1.7;
+    1.72;
 }
 
 
 /* ==========================================================================
-   APPROACH
-   One clean horizontal system, not three floating boxes.
+   02 — APPROACH
+   One continuous operating sequence.
    ========================================================================== */
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .storySection {
   background:
-    #08090c;
+    var(--company-v9-alt);
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .flow {
+  position:
+    relative;
+
   display:
     grid;
 
@@ -5922,31 +5929,63 @@ p {
   gap:
     0;
 
+  padding-top:
+    2rem;
+
   border-top:
     1px solid
-    var(--company-v8-line);
-
-  border-bottom:
-    1px solid
-    var(--company-v8-line);
+    var(--company-v9-line);
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
+.flow::before {
+  position:
+    absolute;
+
+  top:
+    2.35rem;
+
+  right:
+    0;
+
+  left:
+    0;
+
+  height:
+    1px;
+
+  content:
+    "";
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--company-v9-cyan),
+      var(--company-v9-blue),
+      var(--company-v9-purple)
+    );
+
+  opacity:
+    0.34;
+}
+
+
+:global([data-company-design="v9"])
 .flowArrow {
   display:
     none;
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .flow
 article {
   position:
     relative;
 
   min-height:
-    230px;
+    250px;
 
   display:
     flex;
@@ -5954,23 +5993,18 @@ article {
   flex-direction:
     column;
 
-  justify-content:
-    space-between;
-
   padding:
-    1.6rem
+    2.4rem
     clamp(
-      1.3rem,
-      2.6vw,
-      2.2rem
-    );
+      1.2rem,
+      3vw,
+      2.5rem
+    )
+    1.7rem
+    0;
 
   border:
     0;
-
-  border-right:
-    1px solid
-    var(--company-v8-line);
 
   border-radius:
     0;
@@ -5983,18 +6017,46 @@ article {
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .flow
-article:last-of-type {
-  border-right:
+article::before {
+  position:
+    absolute;
+
+  top:
+    -0.03rem;
+
+  left:
     0;
+
+  width:
+    9px;
+
+  height:
+    9px;
+
+  display:
+    block;
+
+  content:
+    "";
+
+  border-radius:
+    50%;
+
+  background:
+    var(--company-v9-cyan);
+
+  box-shadow:
+    0
+    0
+    0
+    5px
+    var(--company-v9-alt);
 }
 
 
-:global([data-company-design="v8"])
-.flow
-article::before,
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .flow
 article::after {
   display:
@@ -6002,7 +6064,7 @@ article::after {
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .flow
 article
 > span {
@@ -6010,48 +6072,228 @@ article
     static;
 
   color:
-    var(--company-v8-cyan);
+    var(--company-v9-faint);
 
   font-size:
-    0.69rem;
-
-  font-weight:
-    650;
+    0.7rem;
 
   letter-spacing:
     0.12em;
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .flow
 strong {
   margin-top:
     auto;
 
   color:
-    var(--company-v8-text);
+    var(--company-v9-text);
 
   font-size:
     clamp(
-      1.8rem,
-      3vw,
-      2.55rem
+      2rem,
+      3.5vw,
+      3rem
     );
 
   font-weight:
-    520;
+    500;
 
   letter-spacing:
-    -0.04em;
+    -0.045em;
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .flow
 p {
   max-width:
-    280px;
+    300px;
+
+  margin:
+    0.7rem
+    0
+    0;
+
+  color:
+    var(--company-v9-muted);
+
+  line-height:
+    1.58;
+}
+
+
+/* ==========================================================================
+   03 — CAPABILITIES
+   Service index: four full-width rows, not cards.
+   ========================================================================== */
+
+
+:global([data-company-design="v9"])
+.capabilityGrid {
+  display:
+    block;
+
+  border-top:
+    1px solid
+    var(--company-v9-line);
+}
+
+
+:global([data-company-design="v9"])
+.capabilityCard,
+:global([data-company-design="v9"])
+.capabilityCard:nth-child(n) {
+  width:
+    100%;
+
+  min-height:
+    180px;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    110px
+    minmax(
+      0,
+      1fr
+    )
+    120px
+    36px;
+
+  align-items:
+    center;
+
+  gap:
+    clamp(
+      1rem,
+      2.5vw,
+      2rem
+    );
+
+  padding:
+    clamp(
+      1.4rem,
+      2.5vw,
+      2rem
+    )
+    0;
+
+  border:
+    0;
+
+  border-bottom:
+    1px solid
+    var(--company-v9-line);
+
+  border-radius:
+    0;
+
+  background:
+    transparent;
+
+  box-shadow:
+    none;
+
+  overflow:
+    visible;
+
+  transform:
+    none;
+
+  transition:
+    padding-left
+    180ms
+    ease;
+}
+
+
+:global([data-company-design="v9"])
+.capabilityCard::before,
+:global([data-company-design="v9"])
+.capabilityCard::after {
+  display:
+    none;
+}
+
+
+:global([data-company-design="v9"])
+.capabilityTop {
+  align-self:
+    start;
+
+  margin:
+    0;
+}
+
+
+:global([data-company-design="v9"])
+.capabilityVisual {
+  grid-column:
+    3;
+
+  grid-row:
+    1;
+
+  width:
+    100%;
+
+  height:
+    54px;
+
+  margin:
+    0;
+
+  opacity:
+    0.38;
+
+  transform:
+    none;
+}
+
+
+:global([data-company-design="v9"])
+.capabilityCopy {
+  grid-column:
+    2;
+
+  grid-row:
+    1;
+}
+
+
+:global([data-company-design="v9"])
+.capabilityCopy
+h3 {
+  margin:
+    0;
+
+  color:
+    var(--company-v9-text);
+
+  font-size:
+    clamp(
+      1.55rem,
+      2.8vw,
+      2.3rem
+    );
+
+  font-weight:
+    510;
+
+  letter-spacing:
+    -0.045em;
+}
+
+
+:global([data-company-design="v9"])
+.capabilityCopy
+p {
+  max-width:
+    650px;
 
   margin:
     0.65rem
@@ -6059,255 +6301,101 @@ p {
     0;
 
   color:
-    var(--company-v8-muted);
+    var(--company-v9-muted);
 
   line-height:
-    1.55;
+    1.62;
 }
 
 
-/* ==========================================================================
-   CAPABILITIES
-   Balanced 2x2 architecture instead of asymmetric bento.
-   ========================================================================== */
-
-
-:global([data-company-design="v8"])
-.capabilityGrid {
-  display:
-    grid;
-
-  grid-template-columns:
-    repeat(
-      2,
-      minmax(
-        0,
-        1fr
-      )
-    );
-
-  gap:
-    0;
-
-  border-top:
-    1px solid
-    var(--company-v8-line);
-
-  border-left:
-    1px solid
-    var(--company-v8-line);
-}
-
-
-:global([data-company-design="v8"])
-.capabilityCard,
-:global([data-company-design="v8"])
-.capabilityCard:nth-child(n) {
-  grid-column:
-    auto;
-
-  position:
-    relative;
-
-  min-height:
-    270px;
-
-  display:
-    flex;
-
-  flex-direction:
-    column;
-
-  padding:
-    clamp(
-      1.4rem,
-      2.6vw,
-      2rem
-    );
-
-  overflow:
-    hidden;
-
-  border:
-    0;
-
-  border-right:
-    1px solid
-    var(--company-v8-line);
-
-  border-bottom:
-    1px solid
-    var(--company-v8-line);
-
-  border-radius:
-    0;
-
-  background:
-    transparent;
-
-  box-shadow:
-    none;
-
-  transition:
-    background
-    160ms
-    ease;
-}
-
-
-:global([data-company-design="v8"])
-.capabilityCard::before,
-:global([data-company-design="v8"])
-.capabilityCard::after {
-  display:
-    none;
-}
-
-
-:global([data-company-design="v8"])
-.capabilityTop {
-  margin-bottom:
-    auto;
-}
-
-
-:global([data-company-design="v8"])
-.capabilityVisual {
-  width:
-    78px;
-
-  height:
-    44px;
-
-  margin:
-    1.5rem
-    0;
-
-  opacity:
-    0.48;
-
-  transform:
-    none;
-}
-
-
-:global([data-company-design="v8"])
-.capabilityCopy
-h3 {
-  margin:
-    0;
-
-  color:
-    var(--company-v8-text);
-
-  font-size:
-    clamp(
-      1.45rem,
-      2.4vw,
-      2rem
-    );
-
-  font-weight:
-    540;
-
-  letter-spacing:
-    -0.04em;
-}
-
-
-:global([data-company-design="v8"])
-.capabilityCopy
-p {
-  max-width:
-    520px;
-
-  margin-top:
-    0.7rem;
-
-  color:
-    var(--company-v8-muted);
-
-  line-height:
-    1.6;
-}
-
-
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .cardArrow {
-  margin-top:
-    1.3rem;
+  grid-column:
+    4;
+
+  grid-row:
+    1;
+
+  margin:
+    0;
+
+  justify-self:
+    end;
 }
 
 
 /* ==========================================================================
-   PRINCIPLES
-   Aligned, calm, architectural.
+   04 — PRINCIPLES
+   Manifesto rows instead of repeated panels.
    ========================================================================== */
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .principleSection {
   background:
-    #0a0b0f;
+    var(--company-v9-alt);
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .principleGrid {
+  display:
+    block;
+
+  border-top:
+    1px solid
+    var(--company-v9-line);
+}
+
+
+:global([data-company-design="v9"])
+.principleCard,
+:global([data-company-design="v9"])
+.principleCard:nth-child(n) {
+  min-height:
+    190px;
+
   display:
     grid;
 
   grid-template-columns:
-    repeat(
-      3,
-      minmax(
-        0,
-        1fr
-      )
+    80px
+    minmax(
+      220px,
+      0.7fr
+    )
+    minmax(
+      0,
+      1fr
     );
 
-  gap:
-    0;
-
   align-items:
-    stretch;
+    center;
 
-  border-top:
-    1px solid
-    var(--company-v8-line);
+  gap:
+    clamp(
+      1rem,
+      3vw,
+      3rem
+    );
 
-  border-left:
-    1px solid
-    var(--company-v8-line);
-}
-
-
-:global([data-company-design="v8"])
-.principleCard,
-:global([data-company-design="v8"])
-.principleCard:nth-child(n) {
-  position:
-    relative;
-
-  min-height:
-    300px;
-
-  margin-top:
+  margin:
     0;
 
   padding:
-    1.6rem;
+    clamp(
+      1.6rem,
+      3vw,
+      2.5rem
+    )
+    0;
 
   border:
     0;
 
-  border-right:
-    1px solid
-    var(--company-v8-line);
-
   border-bottom:
     1px solid
-    var(--company-v8-line);
+    var(--company-v9-line);
 
   border-radius:
     0;
@@ -6320,18 +6408,23 @@ p {
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
+.principleVisual {
+  display:
+    none;
+}
+
+
+:global([data-company-design="v9"])
 .principleNumber {
   position:
     static;
 
   margin:
-    1.3rem
-    0
-    auto;
+    0;
 
   color:
-    var(--company-v8-faint);
+    var(--company-v9-cyan);
 
   font-size:
     0.72rem;
@@ -6347,48 +6440,61 @@ p {
 }
 
 
-:global([data-company-design="v8"])
-.principleVisual {
-  width:
-    64px;
-
-  height:
-    40px;
-
-  border:
+:global([data-company-design="v9"])
+.principleCard
+h3 {
+  margin:
     0;
 
-  border-bottom:
-    1px solid
-    rgba(
-      161,
-      226,
-      240,
-      0.35
+  color:
+    var(--company-v9-text);
+
+  font-size:
+    clamp(
+      1.65rem,
+      3vw,
+      2.6rem
     );
 
-  border-radius:
+  font-weight:
+    500;
+
+  letter-spacing:
+    -0.045em;
+}
+
+
+:global([data-company-design="v9"])
+.principleCard
+p {
+  max-width:
+    630px;
+
+  margin:
     0;
 
-  background:
-    transparent;
+  color:
+    var(--company-v9-muted);
+
+  line-height:
+    1.68;
 }
 
 
 /* ==========================================================================
-   ECOSYSTEM
-   Quiet four-column network.
+   05 — ECOSYSTEM
+   Two-sided network, not four cards.
    ========================================================================== */
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .ecosystemGrid {
   display:
     grid;
 
   grid-template-columns:
     repeat(
-      4,
+      2,
       minmax(
         0,
         1fr
@@ -6406,44 +6512,46 @@ p {
 
   border-top:
     1px solid
-    var(--company-v8-line);
-
-  border-left:
-    1px solid
-    var(--company-v8-line);
+    var(--company-v9-line);
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .ecosystemCard {
+  position:
+    relative;
+
   min-height:
-    180px;
+    160px;
 
   display:
-    flex;
+    grid;
 
-  flex-direction:
-    column;
+  grid-template-columns:
+    54px
+    1fr
+    30px;
 
   align-items:
-    flex-start;
+    center;
 
-  justify-content:
-    space-between;
+  gap:
+    1rem;
 
   padding:
-    1.45rem;
+    1.5rem
+    clamp(
+      1rem,
+      3vw,
+      2.5rem
+    );
 
   border:
     0;
 
-  border-right:
-    1px solid
-    var(--company-v8-line);
-
   border-bottom:
     1px solid
-    var(--company-v8-line);
+    var(--company-v9-line);
 
   border-radius:
     0;
@@ -6454,80 +6562,128 @@ p {
   box-shadow:
     none;
 
-  transition:
-    background
-    160ms
-    ease;
+  transform:
+    none;
 }
 
 
-:global([data-company-design="v8"])
-.ecosystemIcon {
-  width:
-    auto;
-
-  min-width:
+:global([data-company-design="v9"])
+.ecosystemCard:nth-child(odd) {
+  padding-left:
     0;
 
-  height:
-    auto;
+  border-right:
+    1px solid
+    var(--company-v9-line);
+}
 
-  padding:
+
+:global([data-company-design="v9"])
+.ecosystemCard:nth-child(even) {
+  padding-right:
     0;
+}
 
-  border:
-    0;
 
-  border-radius:
-    0;
-
-  background:
-    transparent;
-
+:global([data-company-design="v9"])
+.ecosystemIndex {
   color:
-    var(--company-v8-cyan);
+    var(--company-v9-faint);
 
   font-size:
-    0.72rem;
-
-  letter-spacing:
-    0.1em;
+    0.68rem;
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
+.ecosystemIcon {
+  display:
+    none;
+}
+
+
+:global([data-company-design="v9"])
 .ecosystemCard
 strong {
   color:
-    var(--company-v8-text);
+    var(--company-v9-text);
 
   font-size:
-    1.15rem;
+    clamp(
+      1.25rem,
+      2vw,
+      1.65rem
+    );
 
   font-weight:
-    560;
+    520;
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .ecosystemLine {
   max-width:
     none;
 
   margin:
-    1.8rem
+    2rem
     0
     0;
 
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr
+    auto
+    1fr;
+
+  align-items:
+    center;
+
   gap:
     1rem;
-
-  color:
-    var(--company-v8-faint);
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
+.ecosystemLine
+span {
+  height:
+    1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        161,
+        226,
+        240,
+        0.42
+      )
+    );
+}
+
+
+:global([data-company-design="v9"])
+.ecosystemLine
+span:last-child {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        161,
+        226,
+        240,
+        0.42
+      ),
+      transparent
+    );
+}
+
+
+:global([data-company-design="v9"])
 .ecosystemLine
 strong {
   padding:
@@ -6543,288 +6699,37 @@ strong {
     transparent;
 
   color:
-    var(--company-v8-cyan);
+    var(--company-v9-cyan);
 
   font-size:
     0.7rem;
 
+  font-weight:
+    650;
+
   letter-spacing:
-    0.14em;
+    0.15em;
 }
 
 
 /* ==========================================================================
-   TIMELINE
-   Precise horizontal chronology.
+   06 — TIMELINE
+   Alternating chronology around one central line.
    ========================================================================== */
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .timelineSection {
   background:
-    #0a0b0f;
+    var(--company-v9-alt);
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .timelineGrid {
   position:
     relative;
 
-  display:
-    grid;
-
-  grid-template-columns:
-    repeat(
-      5,
-      minmax(
-        0,
-        1fr
-      )
-    );
-
-  gap:
-    0;
-
-  padding-top:
-    0;
-
-  border-top:
-    1px solid
-    var(--company-v8-line);
-}
-
-
-:global([data-company-design="v8"])
-.timelineGrid::before {
-  display:
-    none;
-}
-
-
-:global([data-company-design="v8"])
-.timelineCard {
-  min-height:
-    220px;
-
-  padding:
-    1.5rem
-    1.1rem;
-
-  border:
-    0;
-
-  border-right:
-    1px solid
-    var(--company-v8-line);
-
-  border-bottom:
-    1px solid
-    var(--company-v8-line);
-
-  border-radius:
-    0;
-
-  background:
-    transparent;
-
-  box-shadow:
-    none;
-}
-
-
-:global([data-company-design="v8"])
-.timelineCard:first-child {
-  border-left:
-    1px solid
-    var(--company-v8-line);
-}
-
-
-:global([data-company-design="v8"])
-.timelineDot {
-  position:
-    static;
-
-  width:
-    7px;
-
-  height:
-    7px;
-
-  margin:
-    1.4rem
-    0
-    auto;
-
-  border:
-    0;
-
-  border-radius:
-    50%;
-
-  background:
-    var(--company-v8-cyan);
-
-  box-shadow:
-    none;
-}
-
-
-/* ==========================================================================
-   FOUNDER
-   Strong split without framing gimmicks.
-   ========================================================================== */
-
-
-:global([data-company-design="v8"])
-.founderCard {
-  display:
-    grid;
-
-  grid-template-columns:
-    minmax(
-      300px,
-      0.9fr
-    )
-    minmax(
-      0,
-      1.1fr
-    );
-
-  min-height:
-    500px;
-
-  overflow:
-    hidden;
-
-  border:
-    0;
-
-  border-top:
-    1px solid
-    var(--company-v8-line);
-
-  border-bottom:
-    1px solid
-    var(--company-v8-line);
-
-  border-radius:
-    0;
-
-  background:
-    transparent;
-
-  box-shadow:
-    none;
-}
-
-
-:global([data-company-design="v8"])
-.founderVisual {
-  min-height:
-    500px;
-
-  border-right:
-    1px solid
-    var(--company-v8-line);
-
-  background:
-    #0c0e13;
-}
-
-
-:global([data-company-design="v8"])
-.founderVisualPhoto {
-  filter:
-    saturate(
-      0.86
-    )
-    contrast(
-      1.03
-    );
-
-  transform:
-    none;
-
-  transition:
-    none;
-}
-
-
-:global([data-company-design="v8"])
-.founderContent {
-  display:
-    flex;
-
-  flex-direction:
-    column;
-
-  justify-content:
-    center;
-
-  padding:
-    clamp(
-      2rem,
-      5vw,
-      4.5rem
-    );
-}
-
-
-:global([data-company-design="v8"])
-.founderContent
-h2 {
-  max-width:
-    620px;
-
-  margin:
-    0.9rem
-    0
-    1rem;
-
-  color:
-    var(--company-v8-text);
-
-  font-size:
-    clamp(
-      2.4rem,
-      4.8vw,
-      4.5rem
-    );
-
-  font-weight:
-    510;
-
-  line-height:
-    0.99;
-
-  letter-spacing:
-    -0.052em;
-}
-
-
-:global([data-company-design="v8"])
-.founderContent
-p {
-  max-width:
-    560px;
-
-  color:
-    var(--company-v8-muted);
-
-  line-height:
-    1.65;
-}
-
-
-/* ==========================================================================
-   PEOPLE & PROJECTS
-   ========================================================================== */
-
-
-:global([data-company-design="v8"])
-.peopleGrid {
   display:
     grid;
 
@@ -6840,34 +6745,368 @@ p {
   gap:
     0;
 
-  border-top:
-    1px solid
-    var(--company-v8-line);
+  padding:
+    0;
 
-  border-left:
-    1px solid
-    var(--company-v8-line);
+  border:
+    0;
 }
 
 
-:global([data-company-design="v8"])
-.peopleCard {
+:global([data-company-design="v9"])
+.timelineGrid::before {
+  position:
+    absolute;
+
+  top:
+    0;
+
+  bottom:
+    0;
+
+  left:
+    50%;
+
+  width:
+    1px;
+
+  display:
+    block;
+
+  content:
+    "";
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--company-v9-cyan),
+      rgba(
+        131,
+        179,
+        215,
+        0.3
+      ),
+      var(--company-v9-purple)
+    );
+
+  opacity:
+    0.55;
+}
+
+
+:global([data-company-design="v9"])
+.timelineCard {
+  position:
+    relative;
+
+  width:
+    100%;
+
   min-height:
-    220px;
+    170px;
+
+  display:
+    grid;
+
+  align-content:
+    center;
 
   padding:
-    1.5rem;
+    1.7rem
+    clamp(
+      2rem,
+      5vw,
+      5rem
+    );
 
   border:
     0;
 
-  border-right:
+  border-bottom:
     1px solid
-    var(--company-v8-line);
+    var(--company-v9-line-soft);
+
+  border-radius:
+    0;
+
+  background:
+    transparent;
+
+  box-shadow:
+    none;
+}
+
+
+:global([data-company-design="v9"])
+.timelineCard:nth-child(odd) {
+  grid-column:
+    1;
+
+  text-align:
+    right;
+}
+
+
+:global([data-company-design="v9"])
+.timelineCard:nth-child(even) {
+  grid-column:
+    2;
+
+  text-align:
+    left;
+}
+
+
+:global([data-company-design="v9"])
+.timelineCard:nth-child(even) {
+  transform:
+    translateY(
+      84px
+    );
+}
+
+
+:global([data-company-design="v9"])
+.timelineNumber {
+  color:
+    var(--company-v9-faint);
+}
+
+
+:global([data-company-design="v9"])
+.timelineDot {
+  position:
+    absolute;
+
+  top:
+    50%;
+
+  width:
+    9px;
+
+  height:
+    9px;
+
+  margin:
+    0;
+
+  border:
+    2px solid
+    var(--company-v9-alt);
+
+  border-radius:
+    50%;
+
+  background:
+    var(--company-v9-cyan);
+
+  box-shadow:
+    none;
+
+  transform:
+    translateY(
+      -50%
+    );
+}
+
+
+:global([data-company-design="v9"])
+.timelineCard:nth-child(odd)
+.timelineDot {
+  right:
+    -5px;
+}
+
+
+:global([data-company-design="v9"])
+.timelineCard:nth-child(even)
+.timelineDot {
+  left:
+    -5px;
+}
+
+
+/* ==========================================================================
+   07 — FOUNDER
+   This is intentionally the one strong visual split.
+   ========================================================================== */
+
+
+:global([data-company-design="v9"])
+.founderCard {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      300px,
+      0.92fr
+    )
+    minmax(
+      0,
+      1.08fr
+    );
+
+  min-height:
+    520px;
+
+  overflow:
+    hidden;
+
+  border:
+    0;
+
+  border-top:
+    1px solid
+    var(--company-v9-line);
 
   border-bottom:
     1px solid
-    var(--company-v8-line);
+    var(--company-v9-line);
+
+  border-radius:
+    0;
+
+  background:
+    transparent;
+
+  box-shadow:
+    none;
+}
+
+
+:global([data-company-design="v9"])
+.founderVisual {
+  min-height:
+    520px;
+
+  border-right:
+    1px solid
+    var(--company-v9-line);
+
+  background:
+    #0b0d12;
+}
+
+
+:global([data-company-design="v9"])
+.founderContent {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  justify-content:
+    center;
+
+  padding:
+    clamp(
+      2.2rem,
+      5vw,
+      5rem
+    );
+}
+
+
+:global([data-company-design="v9"])
+.founderContent
+h2 {
+  max-width:
+    620px;
+
+  margin:
+    0.9rem
+    0
+    1rem;
+
+  color:
+    var(--company-v9-text);
+
+  font-size:
+    clamp(
+      2.5rem,
+      5vw,
+      4.7rem
+    );
+
+  font-weight:
+    490;
+
+  line-height:
+    0.97;
+
+  letter-spacing:
+    -0.055em;
+}
+
+
+:global([data-company-design="v9"])
+.founderContent
+p {
+  max-width:
+    560px;
+
+  color:
+    var(--company-v9-muted);
+
+  line-height:
+    1.68;
+}
+
+
+/* ==========================================================================
+   08 — PEOPLE & PROJECTS
+   Directory rows rather than destination cards.
+   ========================================================================== */
+
+
+:global([data-company-design="v9"])
+.peopleGrid {
+  display:
+    block;
+
+  border-top:
+    1px solid
+    var(--company-v9-line);
+}
+
+
+:global([data-company-design="v9"])
+.peopleCard {
+  width:
+    100%;
+
+  min-height:
+    140px;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    130px
+    minmax(
+      0,
+      1fr
+    )
+    36px;
+
+  align-items:
+    center;
+
+  gap:
+    1.5rem;
+
+  padding:
+    1.4rem
+    0;
+
+  border:
+    0;
+
+  border-bottom:
+    1px solid
+    var(--company-v9-line);
 
   border-radius:
     0;
@@ -6878,17 +7117,18 @@ p {
   box-shadow:
     none;
 
-  transition:
-    background
-    160ms
-    ease;
+  transform:
+    none;
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .peopleVisual {
-  background:
-    transparent;
+  width:
+    100px;
+
+  height:
+    72px;
 
   border:
     0;
@@ -6899,27 +7139,55 @@ p {
       161,
       226,
       240,
-      0.22
+      0.32
     );
 
   border-radius:
     0;
+
+  background:
+    transparent;
+}
+
+
+:global([data-company-design="v9"])
+.peopleCard
+h3 {
+  margin:
+    0.25rem
+    0;
+
+  color:
+    var(--company-v9-text);
+
+  font-size:
+    clamp(
+      1.4rem,
+      2.4vw,
+      2rem
+    );
+
+  font-weight:
+    510;
+
+  letter-spacing:
+    -0.04em;
 }
 
 
 /* ==========================================================================
-   CTA
-   Large closing statement, not another card.
+   09 — CTA
+   Typographic ending, not another container card.
    ========================================================================== */
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .cta {
   padding-top:
     clamp(
-      3.8rem,
-      7vw,
-      6.5rem
+      4rem,
+      8vw,
+      7rem
     );
 
   padding-bottom:
@@ -6930,11 +7198,11 @@ p {
     );
 
   background:
-    #08090c;
+    var(--company-v9-bg);
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .ctaCard {
   min-height:
     0;
@@ -6944,14 +7212,11 @@ p {
 
   padding:
     clamp(
-      2.2rem,
+      2.5rem,
       5vw,
       4rem
     )
     0;
-
-  overflow:
-    visible;
 
   border:
     0;
@@ -6962,12 +7227,12 @@ p {
       161,
       226,
       240,
-      0.36
+      0.38
     );
 
   border-bottom:
     1px solid
-    var(--company-v8-line);
+    var(--company-v9-line);
 
   border-radius:
     0;
@@ -6977,73 +7242,71 @@ p {
 
   box-shadow:
     none;
+
+  overflow:
+    visible;
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .ctaCard::before,
-:global([data-company-design="v8"])
-.ctaCard::after {
-  display:
-    none;
-}
-
-
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
+.ctaCard::after,
+:global([data-company-design="v9"])
 .ctaVisual {
   display:
     none;
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .ctaContent {
   max-width:
-    960px;
+    1000px;
 
   padding:
     0;
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .ctaContent
 h2 {
   max-width:
-    880px;
+    900px;
 
   color:
-    var(--company-v8-text);
+    var(--company-v9-text);
 
   font-size:
     clamp(
-      2.7rem,
-      5.8vw,
-      5.3rem
+      2.8rem,
+      6vw,
+      5.5rem
     );
 
   font-weight:
-    500;
+    480;
 
   line-height:
-    0.96;
+    0.95;
 
   letter-spacing:
-    -0.06em;
+    -0.062em;
 }
 
 
-:global([data-company-design="v8"])
+:global([data-company-design="v9"])
 .ctaContent
 h2
 span {
   color:
-    var(--company-v8-cyan);
+    var(--company-v9-cyan);
 }
 
 
 /* ==========================================================================
-   REFINED HOVER
+   DESKTOP INTERACTION
    ========================================================================== */
 
 
@@ -7057,25 +7320,21 @@ and
     fine
 ) {
 
-  :global([data-company-design="v8"])
-  .capabilityCard:hover,
-  :global([data-company-design="v8"])
-  .ecosystemCard:hover,
-  :global([data-company-design="v8"])
-  .peopleCard:hover {
-    transform:
-      none;
+  :global([data-company-design="v9"])
+  .capabilityCard:hover {
+    padding-left:
+      0.65rem;
+  }
 
-    border-color:
-      var(--company-v8-line);
 
-    background:
-      rgba(
-        161,
-        226,
-        240,
-        0.025
-      );
+  :global([data-company-design="v9"])
+  .ecosystemCard:hover
+  strong,
+  :global([data-company-design="v9"])
+  .peopleCard:hover
+  h3 {
+    color:
+      var(--company-v9-cyan);
   }
 
 }
@@ -7091,33 +7350,52 @@ and
     1024px
 ) {
 
-  :global([data-company-design="v8"])
-  .ecosystemGrid {
+  :global([data-company-design="v9"])
+  .capabilityCard,
+  :global([data-company-design="v9"])
+  .capabilityCard:nth-child(n) {
     grid-template-columns:
-      repeat(
-        2,
-        minmax(
-          0,
-          1fr
-        )
+      90px
+      minmax(
+        0,
+        1fr
+      )
+      32px;
+  }
+
+
+  :global([data-company-design="v9"])
+  .capabilityVisual {
+    display:
+      none;
+  }
+
+
+  :global([data-company-design="v9"])
+  .cardArrow {
+    grid-column:
+      3;
+  }
+
+
+  :global([data-company-design="v9"])
+  .principleCard,
+  :global([data-company-design="v9"])
+  .principleCard:nth-child(n) {
+    grid-template-columns:
+      65px
+      minmax(
+        190px,
+        0.7fr
+      )
+      minmax(
+        0,
+        1fr
       );
   }
 
 
-  :global([data-company-design="v8"])
-  .timelineGrid {
-    grid-template-columns:
-      repeat(
-        3,
-        minmax(
-          0,
-          1fr
-        )
-      );
-  }
-
-
-  :global([data-company-design="v8"])
+  :global([data-company-design="v9"])
   .founderCard {
     grid-template-columns:
       minmax(
@@ -7143,7 +7421,7 @@ and
     768px
 ) {
 
-  :global([data-company-design="v8"])
+  :global([data-company-design="v9"])
   .section {
     padding-top:
       3rem;
@@ -7153,7 +7431,7 @@ and
   }
 
 
-  :global([data-company-design="v8"])
+  :global([data-company-design="v9"])
   .pageNavInner {
     overflow-x:
       auto;
@@ -7163,14 +7441,14 @@ and
   }
 
 
-  :global([data-company-design="v8"])
+  :global([data-company-design="v9"])
   .pageNavInner::-webkit-scrollbar {
     display:
       none;
   }
 
 
-  :global([data-company-design="v8"])
+  :global([data-company-design="v9"])
   .statementCard {
     grid-template-columns:
       minmax(
@@ -7188,81 +7466,134 @@ and
   }
 
 
-  :global([data-company-design="v8"])
+  :global([data-company-design="v9"])
   .flow {
     grid-template-columns:
       minmax(
         0,
         1fr
       );
+
+    padding-top:
+      0;
+
+    border-left:
+      1px solid
+      rgba(
+        161,
+        226,
+        240,
+        0.3
+      );
+
+    border-top:
+      0;
   }
 
 
-  :global([data-company-design="v8"])
+  :global([data-company-design="v9"])
+  .flow::before {
+    display:
+      none;
+  }
+
+
+  :global([data-company-design="v9"])
   .flow
   article {
     min-height:
-      180px;
+      185px;
 
-    border-right:
-      0;
-
-    border-bottom:
-      1px solid
-      var(--company-v8-line);
+    padding:
+      1.2rem
+      1.2rem
+      1.8rem;
   }
 
 
-  :global([data-company-design="v8"])
+  :global([data-company-design="v9"])
   .flow
-  article:last-of-type {
-    border-bottom:
-      0;
+  article::before {
+    top:
+      1.45rem;
+
+    left:
+      -5px;
   }
 
 
-  :global([data-company-design="v8"])
-  .capabilityGrid {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-  }
-
-
-  :global([data-company-design="v8"])
+  :global([data-company-design="v9"])
   .capabilityCard,
-  :global([data-company-design="v8"])
+  :global([data-company-design="v9"])
   .capabilityCard:nth-child(n) {
     min-height:
-      230px;
-  }
+      0;
 
-
-  :global([data-company-design="v8"])
-  .principleGrid {
     grid-template-columns:
+      54px
       minmax(
         0,
         1fr
-      );
-  }
+      )
+      28px;
 
+    gap:
+      0.8rem;
 
-  :global([data-company-design="v8"])
-  .principleCard,
-  :global([data-company-design="v8"])
-  .principleCard:nth-child(n) {
-    min-height:
-      240px;
-
-    margin-top:
+    padding:
+      1.5rem
       0;
   }
 
 
-  :global([data-company-design="v8"])
+  :global([data-company-design="v9"])
+  .capabilityCopy {
+    grid-column:
+      2;
+  }
+
+
+  :global([data-company-design="v9"])
+  .principleCard,
+  :global([data-company-design="v9"])
+  .principleCard:nth-child(n) {
+    min-height:
+      0;
+
+    grid-template-columns:
+      48px
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      0.8rem
+      1rem;
+
+    padding:
+      1.5rem
+      0;
+  }
+
+
+  :global([data-company-design="v9"])
+  .principleCard
+  h3 {
+    grid-column:
+      2;
+  }
+
+
+  :global([data-company-design="v9"])
+  .principleCard
+  p {
+    grid-column:
+      2;
+  }
+
+
+  :global([data-company-design="v9"])
   .ecosystemGrid {
     grid-template-columns:
       minmax(
@@ -7272,14 +7603,21 @@ and
   }
 
 
-  :global([data-company-design="v8"])
-  .ecosystemCard {
+  :global([data-company-design="v9"])
+  .ecosystemCard:nth-child(n) {
     min-height:
-      140px;
+      120px;
+
+    padding:
+      1.2rem
+      0;
+
+    border-right:
+      0;
   }
 
 
-  :global([data-company-design="v8"])
+  :global([data-company-design="v9"])
   .timelineGrid {
     grid-template-columns:
       minmax(
@@ -7287,30 +7625,59 @@ and
         1fr
       );
 
-    border-left:
-      1px solid
-      var(--company-v8-line);
+    padding-left:
+      22px;
   }
 
 
-  :global([data-company-design="v8"])
-  .timelineCard {
+  :global([data-company-design="v9"])
+  .timelineGrid::before {
+    left:
+      5px;
+  }
+
+
+  :global([data-company-design="v9"])
+  .timelineCard,
+  :global([data-company-design="v9"])
+  .timelineCard:nth-child(odd),
+  :global([data-company-design="v9"])
+  .timelineCard:nth-child(even) {
+    grid-column:
+      1;
+
     min-height:
-      140px;
+      135px;
 
-    border-left:
-      0;
+    padding:
+      1.3rem
+      0
+      1.3rem
+      1rem;
+
+    text-align:
+      left;
+
+    transform:
+      none;
   }
 
 
-  :global([data-company-design="v8"])
-  .timelineCard:first-child {
-    border-left:
-      0;
+  :global([data-company-design="v9"])
+  .timelineCard:nth-child(odd)
+  .timelineDot,
+  :global([data-company-design="v9"])
+  .timelineCard:nth-child(even)
+  .timelineDot {
+    right:
+      auto;
+
+    left:
+      -21px;
   }
 
 
-  :global([data-company-design="v8"])
+  :global([data-company-design="v9"])
   .founderCard {
     grid-template-columns:
       minmax(
@@ -7323,7 +7690,7 @@ and
   }
 
 
-  :global([data-company-design="v8"])
+  :global([data-company-design="v9"])
   .founderVisual {
     min-height:
       390px;
@@ -7333,32 +7700,47 @@ and
 
     border-bottom:
       1px solid
-      var(--company-v8-line);
+      var(--company-v9-line);
   }
 
 
-  :global([data-company-design="v8"])
+  :global([data-company-design="v9"])
   .founderContent {
     padding:
-      1.7rem
+      1.8rem
       0.2rem;
   }
 
 
-  :global([data-company-design="v8"])
-  .peopleGrid {
+  :global([data-company-design="v9"])
+  .peopleCard {
     grid-template-columns:
+      82px
       minmax(
         0,
         1fr
-      );
+      )
+      28px;
+
+    gap:
+      1rem;
   }
 
 
-  :global([data-company-design="v8"])
+  :global([data-company-design="v9"])
+  .peopleVisual {
+    width:
+      70px;
+
+    height:
+      54px;
+  }
+
+
+  :global([data-company-design="v9"])
   .ctaCard {
     padding:
-      2.2rem
+      2.3rem
       0;
   }
 
@@ -7375,18 +7757,11 @@ and
     reduce
 ) {
 
-  :global([data-company-design="v8"])
-  .pageNavInner
-  a,
-  :global([data-company-design="v8"])
-  .pageNavInner
-  a::after,
-  :global([data-company-design="v8"])
+  :global([data-company-design="v9"])
   .capabilityCard,
-  :global([data-company-design="v8"])
-  .ecosystemCard,
-  :global([data-company-design="v8"])
-  .peopleCard {
+  :global([data-company-design="v9"])
+  .pageNavInner
+  a {
     transition:
       none;
   }

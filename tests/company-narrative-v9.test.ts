@@ -24,38 +24,38 @@ const css =
 
 
 describe(
-  "company editorial v8",
+  "company narrative v9",
   () => {
 
     it(
-      "uses only the V8 design layer",
+      "activates V9 and retires V8",
       () => {
 
         expect(
           page
         ).toContain(
-          'data-company-design="v8"'
+          'data-company-design="v9"'
         );
 
 
         expect(
           page
         ).not.toContain(
-          'data-company-design="v7"'
+          'data-company-design="v8"'
         );
 
 
         expect(
           css
         ).toContain(
-          "NB_COMPANY_EDITORIAL_V8"
+          "NB_COMPANY_NARRATIVE_V9"
         );
 
 
         expect(
           css
         ).not.toContain(
-          "NB_COMPANY_CREATIVE_V7"
+          "NB_COMPANY_EDITORIAL_V8"
         );
 
       }
@@ -63,7 +63,7 @@ describe(
 
 
     it(
-      "uses a balanced capability grid instead of bento",
+      "turns capabilities into full-width rows",
       () => {
 
         expect(
@@ -76,21 +76,14 @@ describe(
         expect(
           css
         ).toContain(
-          "repeat(\n      2,"
+          "display:\n    block;"
         );
 
 
         expect(
           css
         ).toContain(
-          ".capabilityCard:nth-child(n)"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          "grid-column:\n    auto;"
+          "grid-template-columns:\n    110px"
         );
 
       }
@@ -98,20 +91,20 @@ describe(
 
 
     it(
-      "keeps principles aligned rather than staggered",
+      "turns principles into manifesto rows",
       () => {
 
         expect(
           css
         ).toContain(
-          ".principleCard:nth-child(n)"
+          ".principleGrid"
         );
 
 
         expect(
           css
         ).toContain(
-          "margin-top:\n    0;"
+          ".principleVisual {\n  display:"
         );
 
       }
@@ -119,20 +112,27 @@ describe(
 
 
     it(
-      "uses flat architectural sections",
+      "uses an alternating chronology",
       () => {
 
         expect(
           css
         ).toContain(
-          "border-radius:\n    0;"
+          ".timelineGrid::before"
         );
 
 
         expect(
           css
         ).toContain(
-          "background:\n    transparent;"
+          ".timelineCard:nth-child(odd)"
+        );
+
+
+        expect(
+          css
+        ).toContain(
+          ".timelineCard:nth-child(even)"
         );
 
       }
@@ -140,20 +140,20 @@ describe(
 
 
     it(
-      "preserves responsive behavior",
+      "turns people into directory rows",
       () => {
 
         expect(
           css
         ).toContain(
-          "max-width:\n    768px"
+          ".peopleGrid {\n  display:\n    block;"
         );
 
 
         expect(
           css
         ).toContain(
-          "prefers-reduced-motion:"
+          "grid-template-columns:\n    130px"
         );
 
       }
