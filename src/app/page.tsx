@@ -220,6 +220,7 @@ export default function HomePage() {
           styles.heroV8
         }
         data-home-section="hero"
+        data-home-design="authority-v10"
         data-home-hero="v8"
       >
         <div
@@ -519,6 +520,7 @@ export default function HomePage() {
           styles.identitySection
         }
         data-home-section="company"
+        data-home-design="authority-v10"
       >
         <Container size="wide">
           <div
@@ -618,6 +620,7 @@ export default function HomePage() {
           styles.servicesSection
         }
         data-home-section="services"
+        data-home-design="authority-v10"
       >
         <Container size="wide">
           <header
@@ -728,6 +731,7 @@ export default function HomePage() {
           styles.ecosystemSection
         }
         data-home-section="explore"
+        data-home-design="authority-v10"
       >
         <Container size="wide">
           <header
@@ -841,6 +845,7 @@ export default function HomePage() {
           styles.modernContact
         }
         data-home-section="contact"
+        data-home-design="authority-v10"
       >
         <Container size="wide">
           <div

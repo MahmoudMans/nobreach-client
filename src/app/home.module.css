@@ -9074,3 +9074,1630 @@ and (
   }
 
 }
+
+
+/* ==========================================================================
+   NB_HOME_DESIGN_AUTHORITY_V10
+
+   No Breach Concept & Guidelines — Nouha Ben Brahim
+
+   Slightly edgy / Professional / Sleek
+   Cold + neutral
+   Dark-mode base
+   Minimalist high contrast
+   Editorial composition over repeated card UI
+   ========================================================================== */
+
+
+:global([data-home-design="authority-v10"]) {
+  --nb-v10-bg:
+    #08090c;
+
+  --nb-v10-bg-alt:
+    #0a0c11;
+
+  --nb-v10-surface:
+    #0d1016;
+
+  --nb-v10-text:
+    #f6f8fa;
+
+  --nb-v10-muted:
+    rgba(
+      246,
+      248,
+      250,
+      0.61
+    );
+
+  --nb-v10-faint:
+    rgba(
+      246,
+      248,
+      250,
+      0.4
+    );
+
+  --nb-v10-line:
+    rgba(
+      255,
+      255,
+      255,
+      0.095
+    );
+
+  --nb-v10-soft-line:
+    rgba(
+      255,
+      255,
+      255,
+      0.055
+    );
+
+  --nb-v10-blue:
+    #83b3d7;
+
+  --nb-v10-cyan:
+    #a1e2f0;
+
+  --nb-v10-violet:
+    #7e60b9;
+
+  --nb-v10-purple:
+    #6333c6;
+
+  color:
+    var(--nb-v10-text);
+}
+
+
+/* ==========================================================================
+   HERO
+
+   Preserve V8/V9 geometry and content.
+   Refine visual character without affecting the carefully tested viewport fit.
+   ========================================================================== */
+
+
+:global([data-home-design="authority-v10"]).heroV8 {
+  background:
+    #08090c;
+
+  border-bottom:
+    1px solid
+    var(--nb-v10-line);
+}
+
+
+:global([data-home-design="authority-v10"])
+.heroV8Ambient {
+  opacity:
+    0.44;
+
+  filter:
+    saturate(
+      0.8
+    );
+}
+
+
+:global([data-home-design="authority-v10"])
+.heroV8Title {
+  color:
+    var(--nb-v10-text);
+
+  font-weight:
+    500;
+
+  letter-spacing:
+    -0.058em;
+}
+
+
+:global([data-home-design="authority-v10"])
+.heroV8Title
+span {
+  color:
+    var(--nb-v10-cyan);
+}
+
+
+:global([data-home-design="authority-v10"])
+.heroV8Lead {
+  max-width:
+    62ch;
+
+  color:
+    var(--nb-v10-muted);
+
+  line-height:
+    1.66;
+}
+
+
+:global([data-home-design="authority-v10"])
+.heroV8Kicker {
+  color:
+    var(--nb-v10-cyan);
+
+  font-size:
+    0.71rem;
+
+  font-weight:
+    650;
+
+  letter-spacing:
+    0.12em;
+}
+
+
+:global([data-home-design="authority-v10"])
+.heroV8KickerDot {
+  background:
+    var(--nb-v10-cyan);
+
+  box-shadow:
+    none;
+}
+
+
+:global([data-home-design="authority-v10"])
+.heroV8Primary {
+  border-color:
+    var(--nb-v10-cyan);
+
+  background:
+    var(--nb-v10-cyan);
+
+  color:
+    #08090c;
+
+  box-shadow:
+    none;
+}
+
+
+:global([data-home-design="authority-v10"])
+.heroV8Secondary {
+  border-color:
+    var(--nb-v10-line);
+
+  background:
+    transparent;
+
+  color:
+    var(--nb-v10-text);
+
+  box-shadow:
+    none;
+}
+
+
+:global([data-home-design="authority-v10"])
+.heroV8Statement {
+  border-color:
+    var(--nb-v10-line);
+
+  background:
+    transparent;
+}
+
+
+:global([data-home-design="authority-v10"])
+.heroV8Visual {
+  border-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.15
+    );
+
+  background:
+    rgba(
+      13,
+      16,
+      22,
+      0.56
+    );
+
+  box-shadow:
+    none;
+}
+
+
+:global([data-home-design="authority-v10"])
+.heroV8Orbit,
+:global([data-home-design="authority-v10"])
+.heroV8OrbitInner {
+  border-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.14
+    );
+}
+
+
+:global([data-home-design="authority-v10"])
+.heroV8Node {
+  border-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.24
+    );
+
+  background:
+    #0a0d12;
+
+  color:
+    var(--nb-v10-cyan);
+
+  box-shadow:
+    none;
+}
+
+
+/* ==========================================================================
+   SHARED SECTION TYPOGRAPHY
+   ========================================================================== */
+
+
+:global([data-home-design="authority-v10"])
+.modernEyebrow {
+  color:
+    var(--nb-v10-cyan);
+
+  font-size:
+    0.7rem;
+
+  font-weight:
+    660;
+
+  letter-spacing:
+    0.12em;
+
+  text-transform:
+    uppercase;
+}
+
+
+:global([data-home-design="authority-v10"])
+.modernSectionHeader {
+  align-items:
+    end;
+
+  padding-bottom:
+    clamp(
+      1.5rem,
+      3vw,
+      2.4rem
+    );
+
+  border-bottom:
+    1px solid
+    var(--nb-v10-line);
+}
+
+
+:global([data-home-design="authority-v10"])
+.modernSectionHeader
+h2 {
+  max-width:
+    860px;
+
+  color:
+    var(--nb-v10-text);
+
+  font-size:
+    clamp(
+      2.2rem,
+      4.4vw,
+      4rem
+    );
+
+  font-weight:
+    500;
+
+  line-height:
+    0.99;
+
+  letter-spacing:
+    -0.052em;
+}
+
+
+:global([data-home-design="authority-v10"])
+.sectionHeaderCopy {
+  max-width:
+    48ch;
+
+  color:
+    var(--nb-v10-muted);
+
+  line-height:
+    1.65;
+}
+
+
+:global([data-home-design="authority-v10"])
+.inlineArrowLink {
+  color:
+    var(--nb-v10-text);
+
+  font-weight:
+    620;
+}
+
+
+:global([data-home-design="authority-v10"])
+.inlineArrowLink
+span {
+  color:
+    var(--nb-v10-cyan);
+
+  transition:
+    transform
+    160ms
+    ease;
+}
+
+
+/* ==========================================================================
+   COMPANY POSITIONING
+
+   Manifesto + factual matrix.
+   No decorative card wall.
+   ========================================================================== */
+
+
+:global([data-home-design="authority-v10"]).identitySection {
+  padding-top:
+    clamp(
+      4.2rem,
+      8vw,
+      7rem
+    );
+
+  padding-bottom:
+    clamp(
+      4.2rem,
+      8vw,
+      7rem
+    );
+
+  background:
+    var(--nb-v10-bg-alt);
+
+  border-bottom:
+    1px solid
+    var(--nb-v10-line);
+}
+
+
+:global([data-home-design="authority-v10"])
+.identityLayout {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1.35fr
+    )
+    minmax(
+      270px,
+      0.65fr
+    );
+
+  gap:
+    clamp(
+      3rem,
+      8vw,
+      8rem
+    );
+
+  align-items:
+    end;
+
+  padding-top:
+    1.7rem;
+
+  border-top:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.32
+    );
+}
+
+
+:global([data-home-design="authority-v10"])
+.identityCopy {
+  max-width:
+    850px;
+}
+
+
+:global([data-home-design="authority-v10"])
+.identityCopy
+h2 {
+  margin:
+    1rem
+    0
+    1.5rem;
+
+  color:
+    var(--nb-v10-text);
+
+  font-size:
+    clamp(
+      2.5rem,
+      5vw,
+      4.8rem
+    );
+
+  font-weight:
+    490;
+
+  line-height:
+    0.98;
+
+  letter-spacing:
+    -0.056em;
+}
+
+
+:global([data-home-design="authority-v10"])
+.identityCopy
+> p:not(.modernEyebrow) {
+  max-width:
+    62ch;
+
+  color:
+    var(--nb-v10-muted);
+
+  font-size:
+    1rem;
+
+  line-height:
+    1.72;
+}
+
+
+:global([data-home-design="authority-v10"])
+.identityFacts {
+  display:
+    block;
+
+  margin:
+    0;
+
+  padding:
+    0;
+
+  border-top:
+    1px solid
+    var(--nb-v10-line);
+}
+
+
+:global([data-home-design="authority-v10"])
+.identityFacts
+div {
+  display:
+    grid;
+
+  grid-template-columns:
+    100px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    1rem;
+
+  padding:
+    1rem
+    0;
+
+  border:
+    0;
+
+  border-bottom:
+    1px solid
+    var(--nb-v10-line);
+
+  border-radius:
+    0;
+
+  background:
+    transparent;
+
+  box-shadow:
+    none;
+}
+
+
+:global([data-home-design="authority-v10"])
+.identityFacts
+dt {
+  color:
+    var(--nb-v10-faint);
+
+  font-size:
+    0.68rem;
+
+  font-weight:
+    640;
+
+  letter-spacing:
+    0.08em;
+
+  text-transform:
+    uppercase;
+}
+
+
+:global([data-home-design="authority-v10"])
+.identityFacts
+dd {
+  color:
+    var(--nb-v10-text);
+
+  font-size:
+    0.94rem;
+
+  line-height:
+    1.45;
+}
+
+
+/* ==========================================================================
+   SERVICES
+
+   Commercial service index.
+   No service cards.
+   ========================================================================== */
+
+
+:global([data-home-design="authority-v10"]).servicesSection {
+  padding-top:
+    clamp(
+      4rem,
+      7vw,
+      6.5rem
+    );
+
+  padding-bottom:
+    clamp(
+      4rem,
+      7vw,
+      6.5rem
+    );
+
+  background:
+    var(--nb-v10-bg);
+}
+
+
+:global([data-home-design="authority-v10"])
+.serviceRows {
+  border-top:
+    0;
+}
+
+
+:global([data-home-design="authority-v10"])
+.serviceRow {
+  width:
+    100%;
+
+  min-height:
+    155px;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    60px
+    125px
+    minmax(
+      230px,
+      0.85fr
+    )
+    minmax(
+      280px,
+      1.15fr
+    )
+    28px;
+
+  align-items:
+    center;
+
+  gap:
+    clamp(
+      1rem,
+      2.5vw,
+      2.2rem
+    );
+
+  padding:
+    1.6rem
+    0;
+
+  border:
+    0;
+
+  border-bottom:
+    1px solid
+    var(--nb-v10-line);
+
+  border-radius:
+    0;
+
+  background:
+    transparent;
+
+  box-shadow:
+    none;
+
+  transform:
+    none;
+
+  transition:
+    padding-left
+    160ms
+    ease,
+    background
+    160ms
+    ease;
+}
+
+
+:global([data-home-design="authority-v10"])
+.serviceIndex {
+  color:
+    var(--nb-v10-cyan);
+
+  font-size:
+    0.69rem;
+
+  letter-spacing:
+    0.1em;
+}
+
+
+:global([data-home-design="authority-v10"])
+.serviceEyebrow {
+  color:
+    var(--nb-v10-faint);
+
+  font-size:
+    0.7rem;
+
+  font-weight:
+    620;
+
+  letter-spacing:
+    0.08em;
+
+  text-transform:
+    uppercase;
+}
+
+
+:global([data-home-design="authority-v10"])
+.serviceRow
+strong {
+  color:
+    var(--nb-v10-text);
+
+  font-size:
+    clamp(
+      1.35rem,
+      2.4vw,
+      2rem
+    );
+
+  font-weight:
+    520;
+
+  letter-spacing:
+    -0.04em;
+}
+
+
+:global([data-home-design="authority-v10"])
+.serviceRow
+p {
+  max-width:
+    600px;
+
+  margin:
+    0;
+
+  color:
+    var(--nb-v10-muted);
+
+  line-height:
+    1.62;
+}
+
+
+:global([data-home-design="authority-v10"])
+.serviceArrow {
+  justify-self:
+    end;
+
+  color:
+    var(--nb-v10-cyan);
+
+  font-size:
+    1.15rem;
+}
+
+
+/* ==========================================================================
+   ECOSYSTEM
+
+   This is the major change:
+   the previous visual card grid becomes a clean editorial directory.
+   ========================================================================== */
+
+
+:global([data-home-design="authority-v10"]).ecosystemSection {
+  padding-top:
+    clamp(
+      4rem,
+      7vw,
+      6.5rem
+    );
+
+  padding-bottom:
+    clamp(
+      4rem,
+      7vw,
+      6.5rem
+    );
+
+  background:
+    var(--nb-v10-bg-alt);
+
+  border-top:
+    1px solid
+    var(--nb-v10-line);
+}
+
+
+:global([data-home-design="authority-v10"])
+.ecosystemGrid {
+  display:
+    block;
+
+  margin:
+    0;
+
+  border-top:
+    0;
+}
+
+
+:global([data-home-design="authority-v10"])
+.ecosystemCard,
+:global([data-home-design="authority-v10"])
+.ecosystemLarge,
+:global([data-home-design="authority-v10"])
+.ecosystemWide {
+  width:
+    100%;
+
+  min-height:
+    135px;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    180px
+    minmax(
+      0,
+      1fr
+    )
+    32px;
+
+  grid-column:
+    auto;
+
+  grid-row:
+    auto;
+
+  align-items:
+    center;
+
+  gap:
+    clamp(
+      1rem,
+      3vw,
+      3rem
+    );
+
+  padding:
+    1.45rem
+    0;
+
+  border:
+    0;
+
+  border-bottom:
+    1px solid
+    var(--nb-v10-line);
+
+  border-radius:
+    0;
+
+  background:
+    transparent;
+
+  box-shadow:
+    none;
+
+  transform:
+    none;
+
+  transition:
+    padding-left
+    160ms
+    ease;
+}
+
+
+:global([data-home-design="authority-v10"])
+.ecosystemCard::before,
+:global([data-home-design="authority-v10"])
+.ecosystemCard::after {
+  display:
+    none;
+}
+
+
+:global([data-home-design="authority-v10"])
+.ecosystemCardTop {
+  display:
+    grid;
+
+  gap:
+    0.45rem;
+
+  align-self:
+    center;
+}
+
+
+:global([data-home-design="authority-v10"])
+.ecosystemCardTop
+span:first-child {
+  color:
+    var(--nb-v10-cyan);
+
+  font-size:
+    0.67rem;
+
+  letter-spacing:
+    0.1em;
+}
+
+
+:global([data-home-design="authority-v10"])
+.ecosystemCardTop
+span:last-child {
+  color:
+    var(--nb-v10-faint);
+
+  font-size:
+    0.69rem;
+
+  font-weight:
+    620;
+
+  letter-spacing:
+    0.08em;
+
+  text-transform:
+    uppercase;
+}
+
+
+:global([data-home-design="authority-v10"])
+.ecosystemCardBody {
+  min-width:
+    0;
+}
+
+
+:global([data-home-design="authority-v10"])
+.ecosystemCardBody
+h3 {
+  margin:
+    0;
+
+  color:
+    var(--nb-v10-text);
+
+  font-size:
+    clamp(
+      1.4rem,
+      2.5vw,
+      2rem
+    );
+
+  font-weight:
+    510;
+
+  letter-spacing:
+    -0.042em;
+}
+
+
+:global([data-home-design="authority-v10"])
+.ecosystemCardBody
+p {
+  max-width:
+    660px;
+
+  margin:
+    0.55rem
+    0
+    0;
+
+  color:
+    var(--nb-v10-muted);
+
+  line-height:
+    1.6;
+}
+
+
+:global([data-home-design="authority-v10"])
+.ecosystemArrow {
+  justify-self:
+    end;
+
+  color:
+    var(--nb-v10-cyan);
+
+  font-size:
+    1.05rem;
+}
+
+
+/* ==========================================================================
+   CONTACT
+
+   Typographic commercial ending rather than another card.
+   ========================================================================== */
+
+
+:global([data-home-design="authority-v10"]).modernContact {
+  padding-top:
+    clamp(
+      4rem,
+      8vw,
+      7rem
+    );
+
+  padding-bottom:
+    clamp(
+      4rem,
+      8vw,
+      7rem
+    );
+
+  background:
+    var(--nb-v10-bg);
+
+  border-top:
+    1px solid
+    var(--nb-v10-line);
+}
+
+
+:global([data-home-design="authority-v10"])
+.modernContactInner {
+  min-height:
+    320px;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    80px
+    minmax(
+      0,
+      1fr
+    )
+    auto;
+
+  align-items:
+    end;
+
+  gap:
+    clamp(
+      1.5rem,
+      4vw,
+      4rem
+    );
+
+  padding:
+    2rem
+    0
+    0;
+
+  border:
+    0;
+
+  border-top:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.38
+    );
+
+  border-radius:
+    0;
+
+  background:
+    transparent;
+
+  box-shadow:
+    none;
+}
+
+
+:global([data-home-design="authority-v10"])
+.contactIndex {
+  align-self:
+    start;
+
+  color:
+    var(--nb-v10-cyan);
+
+  font-size:
+    0.72rem;
+
+  letter-spacing:
+    0.12em;
+}
+
+
+:global([data-home-design="authority-v10"])
+.contactCopy {
+  max-width:
+    760px;
+}
+
+
+:global([data-home-design="authority-v10"])
+.contactCopy
+h2 {
+  margin:
+    0.8rem
+    0
+    1rem;
+
+  color:
+    var(--nb-v10-text);
+
+  font-size:
+    clamp(
+      2.7rem,
+      5.5vw,
+      5rem
+    );
+
+  font-weight:
+    490;
+
+  line-height:
+    0.96;
+
+  letter-spacing:
+    -0.058em;
+}
+
+
+:global([data-home-design="authority-v10"])
+.contactCopy
+> p:not(.modernEyebrow) {
+  max-width:
+    60ch;
+
+  color:
+    var(--nb-v10-muted);
+
+  line-height:
+    1.68;
+}
+
+
+:global([data-home-design="authority-v10"])
+.contactActions {
+  display:
+    grid;
+
+  gap:
+    0.7rem;
+
+  justify-items:
+    stretch;
+}
+
+
+:global([data-home-design="authority-v10"])
+.contactPrimary {
+  border-color:
+    var(--nb-v10-cyan);
+
+  background:
+    var(--nb-v10-cyan);
+
+  color:
+    #08090c;
+
+  box-shadow:
+    none;
+}
+
+
+:global([data-home-design="authority-v10"])
+.contactSecondary {
+  border-color:
+    var(--nb-v10-line);
+
+  background:
+    transparent;
+
+  color:
+    var(--nb-v10-text);
+
+  box-shadow:
+    none;
+}
+
+
+/* ==========================================================================
+   HOVER — UNDERSTATED BOLDNESS
+   ========================================================================== */
+
+
+@media (
+  hover:
+    hover
+)
+and
+(
+  pointer:
+    fine
+) {
+
+  :global([data-home-design="authority-v10"])
+  .serviceRow:hover,
+  :global([data-home-design="authority-v10"])
+  .ecosystemCard:hover {
+    padding-left:
+      0.55rem;
+  }
+
+
+  :global([data-home-design="authority-v10"])
+  .serviceRow:hover
+  strong,
+  :global([data-home-design="authority-v10"])
+  .ecosystemCard:hover
+  h3 {
+    color:
+      var(--nb-v10-cyan);
+  }
+
+
+  :global([data-home-design="authority-v10"])
+  .inlineArrowLink:hover
+  span {
+    transform:
+      translateX(
+        4px
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    1024px
+) {
+
+  :global([data-home-design="authority-v10"])
+  .identityLayout {
+    grid-template-columns:
+      minmax(
+        0,
+        1.15fr
+      )
+      minmax(
+        250px,
+        0.85fr
+      );
+
+    gap:
+      3rem;
+  }
+
+
+  :global([data-home-design="authority-v10"])
+  .serviceRow {
+    grid-template-columns:
+      52px
+      105px
+      minmax(
+        0,
+        1fr
+      )
+      28px;
+  }
+
+
+  :global([data-home-design="authority-v10"])
+  .serviceRow
+  p {
+    grid-column:
+      3;
+
+    grid-row:
+      2;
+
+    margin-top:
+      -0.5rem;
+  }
+
+
+  :global([data-home-design="authority-v10"])
+  .serviceArrow {
+    grid-column:
+      4;
+
+    grid-row:
+      1
+      /
+      span
+      2;
+  }
+
+
+  :global([data-home-design="authority-v10"])
+  .modernContactInner {
+    grid-template-columns:
+      60px
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  :global([data-home-design="authority-v10"])
+  .contactActions {
+    grid-column:
+      2;
+  }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    768px
+) {
+
+  :global([data-home-design="authority-v10"]).identitySection,
+  :global([data-home-design="authority-v10"]).servicesSection,
+  :global([data-home-design="authority-v10"]).ecosystemSection,
+  :global([data-home-design="authority-v10"]).modernContact {
+    padding-top:
+      3.4rem;
+
+    padding-bottom:
+      3.4rem;
+  }
+
+
+  :global([data-home-design="authority-v10"])
+  .identityLayout {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      2.4rem;
+  }
+
+
+  :global([data-home-design="authority-v10"])
+  .identityCopy
+  h2 {
+    font-size:
+      clamp(
+        2.2rem,
+        11vw,
+        3.5rem
+      );
+  }
+
+
+  :global([data-home-design="authority-v10"])
+  .serviceRow {
+    min-height:
+      0;
+
+    grid-template-columns:
+      42px
+      minmax(
+        0,
+        1fr
+      )
+      24px;
+
+    grid-template-rows:
+      auto
+      auto
+      auto;
+
+    gap:
+      0.5rem
+      0.85rem;
+
+    padding:
+      1.4rem
+      0;
+  }
+
+
+  :global([data-home-design="authority-v10"])
+  .serviceIndex {
+    grid-column:
+      1;
+
+    grid-row:
+      1;
+  }
+
+
+  :global([data-home-design="authority-v10"])
+  .serviceEyebrow {
+    grid-column:
+      2;
+
+    grid-row:
+      1;
+  }
+
+
+  :global([data-home-design="authority-v10"])
+  .serviceRow
+  strong {
+    grid-column:
+      2;
+
+    grid-row:
+      2;
+  }
+
+
+  :global([data-home-design="authority-v10"])
+  .serviceRow
+  p {
+    grid-column:
+      2;
+
+    grid-row:
+      3;
+
+    margin:
+      0;
+  }
+
+
+  :global([data-home-design="authority-v10"])
+  .serviceArrow {
+    grid-column:
+      3;
+
+    grid-row:
+      1
+      /
+      span
+      3;
+  }
+
+
+  :global([data-home-design="authority-v10"])
+  .ecosystemCard,
+  :global([data-home-design="authority-v10"])
+  .ecosystemLarge,
+  :global([data-home-design="authority-v10"])
+  .ecosystemWide {
+    min-height:
+      0;
+
+    grid-template-columns:
+      92px
+      minmax(
+        0,
+        1fr
+      )
+      22px;
+
+    gap:
+      0.8rem;
+
+    padding:
+      1.35rem
+      0;
+  }
+
+
+  :global([data-home-design="authority-v10"])
+  .ecosystemCardBody
+  h3 {
+    font-size:
+      1.28rem;
+  }
+
+
+  :global([data-home-design="authority-v10"])
+  .ecosystemCardBody
+  p {
+    font-size:
+      0.92rem;
+  }
+
+
+  :global([data-home-design="authority-v10"])
+  .modernSectionHeader {
+    display:
+      grid;
+
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      1.25rem;
+  }
+
+
+  :global([data-home-design="authority-v10"])
+  .modernContactInner {
+    min-height:
+      0;
+
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      1.5rem;
+  }
+
+
+  :global([data-home-design="authority-v10"])
+  .contactIndex,
+  :global([data-home-design="authority-v10"])
+  .contactCopy,
+  :global([data-home-design="authority-v10"])
+  .contactActions {
+    grid-column:
+      1;
+  }
+
+
+  :global([data-home-design="authority-v10"])
+  .contactCopy
+  h2 {
+    font-size:
+      clamp(
+        2.3rem,
+        11vw,
+        3.6rem
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   SMALL MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    480px
+) {
+
+  :global([data-home-design="authority-v10"])
+  .ecosystemCard,
+  :global([data-home-design="authority-v10"])
+  .ecosystemLarge,
+  :global([data-home-design="authority-v10"])
+  .ecosystemWide {
+    grid-template-columns:
+      70px
+      minmax(
+        0,
+        1fr
+      )
+      20px;
+  }
+
+
+  :global([data-home-design="authority-v10"])
+  .identityFacts
+  div {
+    grid-template-columns:
+      80px
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  :global([data-home-design="authority-v10"])
+  .serviceRow,
+  :global([data-home-design="authority-v10"])
+  .ecosystemCard,
+  :global([data-home-design="authority-v10"])
+  .inlineArrowLink
+  span {
+    transition:
+      none;
+  }
+
+}
