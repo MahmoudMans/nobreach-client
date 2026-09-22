@@ -335,11 +335,62 @@ export default function CompanyPage() {
       data-company-page="v4"
     >
       <section
+        data-company-hero="v5"
         className={
           styles.hero
         }
         data-company-section="hero"
       >
+
+        <div
+          className={
+            styles.companyHeroV5Backdrop
+          }
+          data-company-hero-decoration="signal-grid"
+          aria-hidden="true"
+        >
+          <div
+            className={
+              styles.companyHeroV5Glow
+            }
+          />
+
+          <div
+            className={
+              styles.companyHeroV5Grid
+            }
+          />
+
+          <div
+            className={
+              styles.companyHeroV5Orbit
+            }
+          >
+            <span
+              className={
+                styles.companyHeroV5OrbitCore
+              }
+            />
+
+            <span
+              className={
+                `${styles.companyHeroV5Signal} ${styles.companyHeroV5SignalOne}`
+              }
+            />
+
+            <span
+              className={
+                `${styles.companyHeroV5Signal} ${styles.companyHeroV5SignalTwo}`
+              }
+            />
+
+            <span
+              className={
+                `${styles.companyHeroV5Signal} ${styles.companyHeroV5SignalThree}`
+              }
+            />
+          </div>
+        </div>
         <div
           className={
             styles.heroGlow

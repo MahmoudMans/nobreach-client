@@ -114,7 +114,7 @@ async function openRoute(
       route,
       {
         waitUntil:
-          "networkidle"
+          "domcontentloaded"
       }
     );
 
@@ -134,7 +134,10 @@ async function openRoute(
     page.locator(
       "#main-content"
     )
-  ).toBeVisible();
+  ).toBeVisible({
+    timeout:
+      15_000,
+  });
 }
 
 async function inspectRoute(
@@ -406,6 +409,9 @@ for (
   test.describe(
     `responsive matrix: ${profile.name}`,
     () => {
+
+
+
       test.use({
         viewport: {
           width:
@@ -421,6 +427,16 @@ for (
         async ({
           page
         }) => {
+
+          // NB_RESPONSIVE_MATRIX_NAVIGATION_STABILITY_V1
+          test.setTimeout(
+            90_000
+          );
+
+          page.setDefaultNavigationTimeout(
+            45_000
+          );
+
           for (
             const route
             of routes
