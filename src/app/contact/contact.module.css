@@ -1,0 +1,2275 @@
+/* ==========================================================================
+   NB_CONTACT_DESIGN_AUTHORITY_V10
+
+   No Breach Concept & Guidelines — Nouha Ben Brahim
+
+   Consultation experience:
+   dark / cold / neutral
+   high contrast
+   editorial structure
+   accessible semantic form controls
+   no generic card wall
+   ========================================================================== */
+
+
+.page {
+  --contact-bg:
+    #08090c;
+
+  --contact-alt:
+    #0a0d12;
+
+  --contact-surface:
+    #0d1117;
+
+  --contact-surface-soft:
+    #0a0e13;
+
+  --contact-text:
+    #f5f7fa;
+
+  --contact-muted:
+    rgba(
+      245,
+      247,
+      250,
+      0.62
+    );
+
+  --contact-faint:
+    rgba(
+      245,
+      247,
+      250,
+      0.4
+    );
+
+  --contact-line:
+    rgba(
+      255,
+      255,
+      255,
+      0.095
+    );
+
+  --contact-line-strong:
+    rgba(
+      255,
+      255,
+      255,
+      0.16
+    );
+
+  --contact-blue:
+    #83b3d7;
+
+  --contact-cyan:
+    #a1e2f0;
+
+  --contact-violet:
+    #7e60b9;
+
+  --contact-purple:
+    #6333c6;
+
+  overflow:
+    clip;
+
+  background:
+    var(--contact-bg);
+
+  color:
+    var(--contact-text);
+}
+
+
+.eyebrow {
+  margin:
+    0;
+
+  color:
+    var(--contact-cyan);
+
+  font-size:
+    0.69rem;
+
+  font-weight:
+    670;
+
+  letter-spacing:
+    0.14em;
+
+  line-height:
+    1.3;
+
+  text-transform:
+    uppercase;
+}
+
+
+.hero {
+  padding:
+    clamp(
+      2.75rem,
+      5vw,
+      4.75rem
+    )
+    0
+    clamp(
+      4rem,
+      7vw,
+      6.5rem
+    );
+
+  border-bottom:
+    1px solid
+    var(--contact-line);
+
+  background:
+    var(--contact-bg);
+}
+
+
+.heroGrid {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1.32fr
+    )
+    minmax(
+      300px,
+      0.68fr
+    );
+
+  gap:
+    clamp(
+      3rem,
+      8vw,
+      8rem
+    );
+
+  align-items:
+    end;
+}
+
+
+.heroCopy {
+  max-width:
+    900px;
+}
+
+
+.heroCopy h1 {
+  margin:
+    0.95rem
+    0
+    0;
+
+  color:
+    var(--contact-text);
+
+  font-size:
+    clamp(
+      4.2rem,
+      9vw,
+      8.5rem
+    );
+
+  font-weight:
+    470;
+
+  line-height:
+    0.86;
+
+  letter-spacing:
+    -0.075em;
+}
+
+
+.heroStatement {
+  margin:
+    1.75rem
+    0
+    0;
+
+  color:
+    var(--contact-cyan);
+
+  font-size:
+    clamp(
+      1.5rem,
+      2.8vw,
+      2.55rem
+    );
+
+  font-weight:
+    480;
+
+  line-height:
+    1.08;
+
+  letter-spacing:
+    -0.045em;
+}
+
+
+.heroLead {
+  max-width:
+    58ch;
+
+  margin:
+    1.2rem
+    0
+    0;
+
+  color:
+    var(--contact-muted);
+
+  font-size:
+    clamp(
+      1rem,
+      1.4vw,
+      1.12rem
+    );
+
+  line-height:
+    1.72;
+}
+
+
+.heroAction,
+.closingAction {
+  min-height:
+    46px;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    0.7rem;
+
+  margin-top:
+    2rem;
+
+  padding:
+    0.78rem
+    1.08rem;
+
+  border:
+    1px solid
+    var(--contact-cyan);
+
+  background:
+    var(--contact-cyan);
+
+  color:
+    #08090c;
+
+  text-decoration:
+    none;
+
+  font-size:
+    0.86rem;
+
+  font-weight:
+    650;
+}
+
+
+.heroAction span,
+.closingAction span {
+  transition:
+    transform
+    160ms
+    ease;
+}
+
+
+.heroAside {
+  min-height:
+    330px;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  padding:
+    1.3rem
+    0
+    0;
+
+  border-top:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.42
+    );
+
+  border-bottom:
+    1px solid
+    var(--contact-line);
+}
+
+
+.heroAsideHeader {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    1rem;
+
+  color:
+    var(--contact-faint);
+
+  font-size:
+    0.65rem;
+
+  font-weight:
+    650;
+
+  letter-spacing:
+    0.11em;
+}
+
+
+.heroAside > p {
+  max-width:
+    37ch;
+
+  margin:
+    2rem
+    0
+    auto;
+
+  color:
+    var(--contact-text);
+
+  font-size:
+    1.13rem;
+
+  line-height:
+    1.58;
+}
+
+
+.signalRail {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    0.35rem;
+
+  margin:
+    2rem
+    0
+    1.3rem;
+}
+
+
+.signalRail span {
+  height:
+    2px;
+
+  background:
+    var(--contact-line);
+}
+
+
+.signalRail span:nth-child(1) {
+  background:
+    var(--contact-cyan);
+}
+
+
+.signalRail span:nth-child(2) {
+  background:
+    var(--contact-blue);
+}
+
+
+.signalRail span:nth-child(3) {
+  background:
+    var(--contact-purple);
+}
+
+
+.heroMeta {
+  margin:
+    0;
+
+  padding:
+    0;
+}
+
+
+.heroMeta div {
+  display:
+    grid;
+
+  grid-template-columns:
+    78px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    1rem;
+
+  padding:
+    0.75rem
+    0;
+
+  border-top:
+    1px solid
+    var(--contact-line);
+}
+
+
+.heroMeta dt {
+  color:
+    var(--contact-faint);
+
+  font-size:
+    0.64rem;
+
+  font-weight:
+    650;
+
+  letter-spacing:
+    0.08em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.heroMeta dd {
+  margin:
+    0;
+
+  color:
+    var(--contact-text);
+
+  font-size:
+    0.84rem;
+}
+
+
+.context,
+.intake,
+.closing {
+  padding:
+    clamp(
+      4rem,
+      7vw,
+      6.5rem
+    )
+    0;
+}
+
+
+.context,
+.closing {
+  background:
+    var(--contact-alt);
+}
+
+
+.intake {
+  background:
+    var(--contact-bg);
+}
+
+
+.sectionRule {
+  height:
+    1px;
+
+  margin-bottom:
+    clamp(
+      2rem,
+      4vw,
+      3.4rem
+    );
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--contact-cyan),
+      var(--contact-purple)
+      38%,
+      transparent
+      78%
+    );
+}
+
+
+.contextLayout {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      0.9fr
+    )
+    minmax(
+      0,
+      1.1fr
+    );
+
+  gap:
+    clamp(
+      3rem,
+      8vw,
+      8rem
+    );
+}
+
+
+.contextHeading h2 {
+  max-width:
+    700px;
+
+  margin:
+    1rem
+    0
+    0;
+
+  color:
+    var(--contact-text);
+
+  font-size:
+    clamp(
+      2.4rem,
+      4.8vw,
+      4.4rem
+    );
+
+  font-weight:
+    490;
+
+  line-height:
+    0.98;
+
+  letter-spacing:
+    -0.055em;
+}
+
+
+.contextCopy {
+  max-width:
+    710px;
+}
+
+
+.largeCopy {
+  margin:
+    0;
+
+  color:
+    var(--contact-text);
+
+  font-size:
+    clamp(
+      1.25rem,
+      2vw,
+      1.7rem
+    );
+
+  line-height:
+    1.55;
+
+  letter-spacing:
+    -0.025em;
+}
+
+
+.intakeHeader {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    minmax(
+      260px,
+      0.4fr
+    );
+
+  gap:
+    3rem;
+
+  align-items:
+    end;
+
+  padding-bottom:
+    2rem;
+
+  border-bottom:
+    1px solid
+    var(--contact-line);
+}
+
+
+.intakeHeader h2 {
+  max-width:
+    900px;
+
+  margin:
+    1rem
+    0
+    0;
+
+  color:
+    var(--contact-text);
+
+  font-size:
+    clamp(
+      2.6rem,
+      5vw,
+      4.8rem
+    );
+
+  font-weight:
+    485;
+
+  line-height:
+    0.96;
+
+  letter-spacing:
+    -0.06em;
+}
+
+
+.intakeHeader > p {
+  max-width:
+    43ch;
+
+  margin:
+    0;
+
+  color:
+    var(--contact-muted);
+
+  line-height:
+    1.65;
+}
+
+
+.intakeLayout {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      235px,
+      0.34fr
+    )
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    clamp(
+      3rem,
+      7vw,
+      7rem
+    );
+
+  align-items:
+    start;
+
+  padding-top:
+    clamp(
+      2.5rem,
+      5vw,
+      4rem
+    );
+}
+
+
+.stageDirectory {
+  position:
+    sticky;
+
+  top:
+    110px;
+}
+
+
+.stageDirectory ol {
+  margin:
+    0;
+
+  padding:
+    0;
+
+  border-top:
+    1px solid
+    var(--contact-line);
+
+  list-style:
+    none;
+}
+
+
+.stageDirectory li {
+  display:
+    grid;
+
+  grid-template-columns:
+    42px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    1rem;
+
+  padding:
+    1.2rem
+    0;
+
+  border-bottom:
+    1px solid
+    var(--contact-line);
+}
+
+
+.stageDirectory li > span {
+  color:
+    var(--contact-cyan);
+
+  font-size:
+    0.66rem;
+
+  letter-spacing:
+    0.1em;
+}
+
+
+.stageDirectory strong {
+  display:
+    block;
+
+  color:
+    var(--contact-text);
+
+  font-size:
+    0.88rem;
+
+  font-weight:
+    620;
+}
+
+
+.stageDirectory p {
+  margin:
+    0.45rem
+    0
+    0;
+
+  color:
+    var(--contact-faint);
+
+  font-size:
+    0.78rem;
+
+  line-height:
+    1.55;
+}
+
+
+.formColumn {
+  min-width:
+    0;
+}
+
+
+.intakeForm {
+  width:
+    100%;
+}
+
+
+.formStage {
+  padding:
+    0
+    0
+    clamp(
+      3rem,
+      6vw,
+      5rem
+    );
+
+  border-bottom:
+    1px solid
+    var(--contact-line);
+}
+
+
+.formStage + .formStage {
+  padding-top:
+    clamp(
+      3rem,
+      6vw,
+      5rem
+    );
+}
+
+
+.formStageHeader {
+  display:
+    grid;
+
+  grid-template-columns:
+    54px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    1rem;
+
+  align-items:
+    start;
+
+  margin-bottom:
+    2.5rem;
+}
+
+
+.formStageHeader > span {
+  color:
+    var(--contact-cyan);
+
+  font-size:
+    0.7rem;
+
+  letter-spacing:
+    0.1em;
+}
+
+
+.formStageHeader p {
+  margin:
+    0;
+
+  color:
+    var(--contact-faint);
+
+  font-size:
+    0.66rem;
+
+  font-weight:
+    650;
+
+  letter-spacing:
+    0.12em;
+}
+
+
+.formStageHeader h3 {
+  margin:
+    0.65rem
+    0
+    0;
+
+  color:
+    var(--contact-text);
+
+  font-size:
+    clamp(
+      1.75rem,
+      3vw,
+      2.75rem
+    );
+
+  font-weight:
+    500;
+
+  line-height:
+    1.02;
+
+  letter-spacing:
+    -0.045em;
+}
+
+
+.questionGroup {
+  margin:
+    0;
+
+  padding:
+    0;
+
+  border:
+    0;
+}
+
+
+.questionGroup + .questionGroup,
+.textQuestion + .questionGroup,
+.questionGroup + .textQuestion {
+  margin-top:
+    2.4rem;
+}
+
+
+.questionGroup legend {
+  width:
+    100%;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    54px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    1rem;
+
+  padding:
+    0
+    0
+    1rem;
+
+  color:
+    var(--contact-text);
+
+  font-size:
+    1rem;
+
+  font-weight:
+    560;
+
+  line-height:
+    1.5;
+}
+
+
+.questionGroup legend > span,
+.questionIndex {
+  color:
+    var(--contact-cyan);
+
+  font-size:
+    0.65rem;
+
+  font-weight:
+    600;
+
+  letter-spacing:
+    0.08em;
+}
+
+
+.optionList {
+  border-top:
+    1px solid
+    var(--contact-line);
+}
+
+
+.option {
+  min-height:
+    64px;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    22px
+    18px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    0.85rem;
+
+  align-items:
+    center;
+
+  padding:
+    0.8rem
+    0;
+
+  border-bottom:
+    1px solid
+    var(--contact-line);
+
+  color:
+    var(--contact-muted);
+
+  cursor:
+    pointer;
+
+  transition:
+    padding-left
+    160ms
+    ease,
+    color
+    160ms
+    ease,
+    background-color
+    160ms
+    ease;
+}
+
+
+.option input {
+  position:
+    absolute;
+
+  width:
+    1px;
+
+  height:
+    1px;
+
+  overflow:
+    hidden;
+
+  clip:
+    rect(
+      0,
+      0,
+      0,
+      0
+    );
+
+  white-space:
+    nowrap;
+}
+
+
+.option::before {
+  content:
+    "→";
+
+  color:
+    var(--contact-faint);
+
+  font-size:
+    0.75rem;
+}
+
+
+.optionIndicator {
+  width:
+    14px;
+
+  height:
+    14px;
+
+  display:
+    block;
+
+  border:
+    1px solid
+    var(--contact-line-strong);
+
+  background:
+    transparent;
+
+  transition:
+    border-color
+    160ms
+    ease,
+    background-color
+    160ms
+    ease,
+    box-shadow
+    160ms
+    ease;
+}
+
+
+.option:has(
+  input[type="radio"]
+)
+.optionIndicator {
+  border-radius:
+    50%;
+}
+
+
+.option:has(
+  input:checked
+) {
+  padding-left:
+    0.5rem;
+
+  background:
+    rgba(
+      161,
+      226,
+      240,
+      0.025
+    );
+
+  color:
+    var(--contact-text);
+}
+
+
+.option:has(
+  input:checked
+)
+.optionIndicator {
+  border-color:
+    var(--contact-cyan);
+
+  background:
+    var(--contact-cyan);
+
+  box-shadow:
+    inset
+    0
+    0
+    0
+    3px
+    var(--contact-bg);
+}
+
+
+.option:has(
+  input:focus-visible
+) {
+  outline:
+    2px solid
+    var(--contact-cyan);
+
+  outline-offset:
+    3px;
+}
+
+
+.textQuestion {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      190px,
+      0.42fr
+    )
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    2rem;
+
+  align-items:
+    center;
+
+  padding:
+    1.25rem
+    0;
+
+  border-top:
+    1px solid
+    var(--contact-line);
+
+  border-bottom:
+    1px solid
+    var(--contact-line);
+}
+
+
+.textQuestion label {
+  display:
+    grid;
+
+  grid-template-columns:
+    42px
+    auto;
+
+  gap:
+    0.25rem
+    0.75rem;
+
+  align-items:
+    center;
+}
+
+
+.textQuestion label strong {
+  color:
+    var(--contact-text);
+
+  font-size:
+    0.94rem;
+
+  font-weight:
+    560;
+}
+
+
+.textQuestion label em {
+  grid-column:
+    2;
+
+  color:
+    var(--contact-faint);
+
+  font-size:
+    0.72rem;
+
+  font-style:
+    normal;
+}
+
+
+.textQuestion input {
+  min-height:
+    48px;
+
+  width:
+    100%;
+
+  padding:
+    0.7rem
+    0.85rem;
+
+  border:
+    1px solid
+    var(--contact-line-strong);
+
+  border-radius:
+    0;
+
+  outline:
+    0;
+
+  background:
+    var(--contact-surface-soft);
+
+  color:
+    var(--contact-text);
+
+  font:
+    inherit;
+}
+
+
+.textQuestion input::placeholder {
+  color:
+    var(--contact-faint);
+}
+
+
+.textQuestion input:focus-visible {
+  border-color:
+    var(--contact-cyan);
+
+  box-shadow:
+    0
+    0
+    0
+    1px
+    var(--contact-cyan);
+}
+
+
+.compactOptions {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  border-top:
+    1px solid
+    var(--contact-line);
+
+  border-left:
+    1px solid
+    var(--contact-line);
+}
+
+
+.compactOption {
+  min-height:
+    68px;
+
+  position:
+    relative;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  padding:
+    0.75rem;
+
+  border-right:
+    1px solid
+    var(--contact-line);
+
+  border-bottom:
+    1px solid
+    var(--contact-line);
+
+  color:
+    var(--contact-muted);
+
+  text-align:
+    center;
+
+  cursor:
+    pointer;
+
+  transition:
+    background-color
+    160ms
+    ease,
+    color
+    160ms
+    ease;
+}
+
+
+.compactOption input {
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  margin:
+    0;
+
+  opacity:
+    0;
+
+  cursor:
+    pointer;
+}
+
+
+.compactOption:has(
+  input:checked
+) {
+  background:
+    var(--contact-cyan);
+
+  color:
+    #08090c;
+}
+
+
+.compactOption:has(
+  input:focus-visible
+) {
+  outline:
+    2px solid
+    var(--contact-cyan);
+
+  outline-offset:
+    3px;
+
+  z-index:
+    1;
+}
+
+
+.formActions {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    0.75rem;
+
+  padding-top:
+    2.5rem;
+}
+
+
+.reviewButton,
+.resetButton {
+  min-height:
+    48px;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    0.7rem;
+
+  padding:
+    0.8rem
+    1.1rem;
+
+  border-radius:
+    0;
+
+  font:
+    inherit;
+
+  font-size:
+    0.86rem;
+
+  font-weight:
+    650;
+
+  cursor:
+    pointer;
+}
+
+
+.reviewButton {
+  border:
+    1px solid
+    var(--contact-cyan);
+
+  background:
+    var(--contact-cyan);
+
+  color:
+    #08090c;
+}
+
+
+.resetButton {
+  border:
+    1px solid
+    var(--contact-line-strong);
+
+  background:
+    transparent;
+
+  color:
+    var(--contact-text);
+}
+
+
+.reviewButton span {
+  transition:
+    transform
+    160ms
+    ease;
+}
+
+
+.reviewStatus {
+  min-height:
+    0;
+}
+
+
+.reviewStatusVisible {
+  margin-top:
+    1.25rem;
+
+  padding:
+    1.1rem
+    1.2rem;
+
+  border-left:
+    2px solid
+    var(--contact-cyan);
+
+  background:
+    rgba(
+      161,
+      226,
+      240,
+      0.035
+    );
+}
+
+
+.reviewStatusVisible strong {
+  color:
+    var(--contact-text);
+
+  font-size:
+    0.9rem;
+}
+
+
+.reviewStatusVisible p {
+  max-width:
+    60ch;
+
+  margin:
+    0.4rem
+    0
+    0;
+
+  color:
+    var(--contact-muted);
+
+  font-size:
+    0.84rem;
+
+  line-height:
+    1.6;
+}
+
+
+.closing {
+  border-top:
+    1px solid
+    var(--contact-line);
+}
+
+
+.closingLayout {
+  padding-top:
+    2rem;
+
+  border-top:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.4
+    );
+}
+
+
+.closingLayout h2 {
+  max-width:
+    940px;
+
+  margin:
+    0.9rem
+    0
+    1rem;
+
+  color:
+    var(--contact-text);
+
+  font-size:
+    clamp(
+      3rem,
+      6vw,
+      5.7rem
+    );
+
+  font-weight:
+    480;
+
+  line-height:
+    0.94;
+
+  letter-spacing:
+    -0.064em;
+}
+
+
+.closingLayout > p:not(.eyebrow) {
+  max-width:
+    58ch;
+
+  margin:
+    0;
+
+  color:
+    var(--contact-muted);
+
+  font-size:
+    1.03rem;
+
+  line-height:
+    1.67;
+}
+
+
+@media (
+  hover:
+    hover
+)
+and
+(
+  pointer:
+    fine
+) {
+
+  .heroAction:hover span,
+  .closingAction:hover span,
+  .reviewButton:hover span {
+    transform:
+      translateX(
+        4px
+      );
+  }
+
+
+  .option:hover {
+    padding-left:
+      0.5rem;
+
+    color:
+      var(--contact-text);
+  }
+
+
+  .compactOption:hover {
+    background:
+      rgba(
+        161,
+        226,
+        240,
+        0.05
+      );
+
+    color:
+      var(--contact-text);
+  }
+
+
+  .compactOption:has(
+    input:checked
+  ):hover {
+    background:
+      var(--contact-cyan);
+
+    color:
+      #08090c;
+  }
+
+}
+
+
+@media (
+  max-width:
+    1024px
+) {
+
+  .heroGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1.12fr
+      )
+      minmax(
+        270px,
+        0.88fr
+      );
+
+    gap:
+      3rem;
+  }
+
+
+  .contextLayout {
+    gap:
+      3.5rem;
+  }
+
+
+  .intakeLayout {
+    grid-template-columns:
+      220px
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      3rem;
+  }
+
+
+  .compactOptions {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+}
+
+
+@media (
+  max-width:
+    768px
+) {
+
+  .hero,
+  .context,
+  .intake,
+  .closing {
+    padding:
+      3.5rem
+      0;
+  }
+
+
+  .heroGrid,
+  .contextLayout,
+  .intakeHeader,
+  .intakeLayout {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .heroGrid,
+  .contextLayout {
+    gap:
+      2.7rem;
+  }
+
+
+  .heroCopy h1 {
+    font-size:
+      clamp(
+        3.8rem,
+        19vw,
+        6rem
+      );
+  }
+
+
+  .heroAside {
+    min-height:
+      0;
+  }
+
+
+  .intakeHeader {
+    gap:
+      1.25rem;
+  }
+
+
+  .intakeLayout {
+    gap:
+      2.5rem;
+  }
+
+
+  .stageDirectory {
+    position:
+      static;
+  }
+
+
+  .stageDirectory ol {
+    display:
+      grid;
+
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+
+  .stageDirectory li {
+    display:
+      block;
+
+    padding:
+      1rem;
+
+    border-right:
+      1px solid
+      var(--contact-line);
+  }
+
+
+  .stageDirectory li:last-child {
+    border-right:
+      0;
+  }
+
+
+  .stageDirectory li > span {
+    display:
+      block;
+
+    margin-bottom:
+      0.7rem;
+  }
+
+
+  .stageDirectory p {
+    display:
+      none;
+  }
+
+
+  .textQuestion {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      1rem;
+  }
+
+
+  .questionGroup legend {
+    grid-template-columns:
+      42px
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .formStageHeader {
+    grid-template-columns:
+      42px
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .closingLayout h2 {
+    font-size:
+      clamp(
+        2.8rem,
+        13vw,
+        4.5rem
+      );
+  }
+
+}
+
+
+@media (
+  max-width:
+    480px
+) {
+
+  .heroAction,
+  .closingAction {
+    width:
+      100%;
+  }
+
+
+  .stageDirectory ol {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .stageDirectory li {
+    display:
+      grid;
+
+    grid-template-columns:
+      34px
+      minmax(
+        0,
+        1fr
+      );
+
+    border-right:
+      0;
+  }
+
+
+  .stageDirectory li > span {
+    margin:
+      0;
+  }
+
+
+  .option {
+    grid-template-columns:
+      18px
+      16px
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      0.65rem;
+  }
+
+
+  .compactOptions {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .formActions {
+    display:
+      grid;
+  }
+
+
+  .reviewButton,
+  .resetButton {
+    width:
+      100%;
+  }
+
+}
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .heroAction span,
+  .closingAction span,
+  .reviewButton span,
+  .option,
+  .optionIndicator,
+  .compactOption {
+    transition:
+      none;
+  }
+
+}
+
+
+/* ==========================================================================
+   NB_CONTACT_V10_ACTIONABILITY_OVERFLOW_RECOVERY_V1
+
+   Runtime recovery:
+   - make custom form controls genuinely actionable
+   - anchor transparent controls to their own labels
+   - eliminate intrinsic fieldset/grid mobile overflow
+   - preserve all V10 content and visual authority
+   ========================================================================== */
+
+
+.option {
+  position:
+    relative;
+
+  min-width:
+    0;
+
+  max-width:
+    100%;
+}
+
+
+/*
+ * The original 1px clipped inputs had no positioned parent.
+ *
+ * Give each native input the full geometry of its own label instead.
+ * It stays visually transparent while remaining the real interactive
+ * control for pointer, keyboard and Playwright actionability.
+ */
+.option input {
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+  margin:
+    0;
+
+  overflow:
+    visible;
+
+  clip:
+    auto;
+
+  opacity:
+    0;
+
+  white-space:
+    normal;
+
+  cursor:
+    pointer;
+
+  z-index:
+    2;
+}
+
+
+.option::before,
+.optionIndicator,
+.option > span:last-child {
+  pointer-events:
+    none;
+}
+
+
+/*
+ * Fieldset has intrinsic UA sizing that can preserve a long min-content
+ * width even when the surrounding CSS Grid uses minmax(0, 1fr).
+ */
+.questionGroup {
+  width:
+    100%;
+
+  min-width:
+    0;
+
+  max-width:
+    100%;
+
+  min-inline-size:
+    0;
+
+  max-inline-size:
+    100%;
+}
+
+
+.intakeForm,
+.formColumn,
+.formStage,
+.formStageHeader,
+.questionGroup,
+.questionGroup legend,
+.optionList,
+.option,
+.textQuestion,
+.compactOptions,
+.compactOption,
+.formActions,
+.reviewStatus,
+.reviewStatusVisible {
+  box-sizing:
+    border-box;
+
+  min-width:
+    0;
+
+  max-width:
+    100%;
+}
+
+
+.formColumn,
+.intakeForm,
+.formStage,
+.optionList,
+.compactOptions,
+.textQuestion {
+  width:
+    100%;
+}
+
+
+.questionGroup legend,
+.option > span:last-child,
+.compactOption span,
+.textQuestion label,
+.textQuestion label strong,
+.reviewStatusVisible p {
+  min-width:
+    0;
+
+  max-width:
+    100%;
+
+  overflow-wrap:
+    anywhere;
+}
+
+
+.textQuestion input {
+  box-sizing:
+    border-box;
+
+  min-width:
+    0;
+
+  max-width:
+    100%;
+}
+
+
+.reviewButton,
+.resetButton {
+  box-sizing:
+    border-box;
+
+  max-width:
+    100%;
+
+  white-space:
+    normal;
+}
+
+
+@media (
+  max-width:
+    768px
+) {
+
+  .intakeLayout,
+  .formColumn,
+  .intakeForm,
+  .formStage,
+  .questionGroup,
+  .optionList,
+  .textQuestion,
+  .compactOptions {
+    width:
+      100%;
+
+    min-width:
+      0;
+
+    max-width:
+      100%;
+  }
+
+
+  .questionGroup legend {
+    width:
+      100%;
+
+    min-width:
+      0;
+
+    max-width:
+      100%;
+  }
+
+
+  .option {
+    width:
+      100%;
+
+    min-width:
+      0;
+
+    max-width:
+      100%;
+  }
+
+}
+
+
+@media (
+  max-width:
+    480px
+) {
+
+  .option > span:last-child,
+  .compactOption span,
+  .questionGroup legend,
+  .reviewButton,
+  .resetButton {
+    overflow-wrap:
+      anywhere;
+
+    white-space:
+      normal;
+  }
+
+
+  .formActions {
+    width:
+      100%;
+  }
+
+
+  .reviewButton,
+  .resetButton {
+    min-width:
+      0;
+  }
+
+}
