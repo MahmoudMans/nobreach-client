@@ -437,13 +437,7 @@ export default function FounderPage() {
                 }
               />
 
-              <div
-                className={
-                  styles.founderMonogram
-                }
-              >
-                NB
-              </div>
+
 
               <div
                 className={

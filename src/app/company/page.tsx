@@ -1199,13 +1199,7 @@ export default function CompanyPage() {
                  data-founder-photo-shade="company"
                />
 
-              <div
-                className={
-                  styles.monogram
-                }
-              >
-                NB
-              </div>
+
 
               <div
                 className={
