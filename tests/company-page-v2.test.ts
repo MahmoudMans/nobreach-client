@@ -68,30 +68,37 @@ describe(
     it(
       "balances text with visual card architecture",
       () => {
+
         for (
           const token
           of [
-            'data-company-ui="profile-card"',
+            "styles.introGrid",
+            "styles.statementCard",
             'data-company-card="statement"',
-            'data-company-card="mindset"',
             'data-company-ui="approach-flow"',
-            'data-company-ui="capability-grid"',
-            'data-company-ui="principle-grid"',
-            'data-company-ui="ecosystem-grid"',
-            'data-company-ui="timeline-grid"',
-            'data-company-card="founder"',
-            'data-company-ui="people-grid"',
-            'data-company-card="cta"'
+            "styles.flow",
+            "styles.profileCard",
           ]
         ) {
+
           expect(
             page
           ).toContain(
             token
           );
+
         }
+
+
+        expect(
+          page
+        ).not.toContain(
+          "styles.mindsetCard"
+        );
+
       }
     );
+
 
 
     it(

@@ -488,23 +488,6 @@ export default function CompanyPage() {
               }
             </div>
 
-            <div
-              className={
-                styles.profileFooter
-              }
-            >
-              <span>
-                SECURITY
-              </span>
-
-              <span>
-                EDUCATION
-              </span>
-
-              <span>
-                COMMUNITY
-              </span>
-            </div>
           </div>
         </div>
       </section>
@@ -607,46 +590,6 @@ export default function CompanyPage() {
               </p>
             </div>
 
-            <div
-              className={
-                styles.mindsetCard
-              }
-              data-company-card="mindset"
-            >
-              <div
-                className={
-                  styles.mindsetVisual
-                }
-                aria-hidden="true"
-              >
-                <span>
-                  TEST
-                </span>
-
-                <span>
-                  LEARN
-                </span>
-
-                <span>
-                  SHARE
-                </span>
-              </div>
-
-              <div
-                className={
-                  styles.mindsetCaption
-                }
-              >
-                <span>
-                  CORE MINDSET
-                </span>
-
-                <p>
-                  Practical attack thinking
-                  across every part of the company.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -1227,24 +1170,6 @@ export default function CompanyPage() {
                 Cybersecurity professional focused on offensive security,
                 training and community development.
               </p>
-
-              <div
-                className={
-                  styles.focusTags
-                }
-              >
-                <span>
-                  Offensive Security
-                </span>
-
-                <span>
-                  Training
-                </span>
-
-                <span>
-                  Community
-                </span>
-              </div>
 
               <Link
                 href="/company/founder"

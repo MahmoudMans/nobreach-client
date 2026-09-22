@@ -5172,3 +5172,132 @@ strong {
   }
 
 }
+
+
+/* ==========================================================================
+   NB_COMPANY_SECTION_TITLES_LEFT_V1
+
+   Company section hierarchy:
+   - section label on the left
+   - large white heading directly below it
+   - no right-aligned display headings
+   ========================================================================== */
+
+
+.sectionHeader {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    );
+
+  justify-items:
+    start;
+
+  align-items:
+    start;
+
+  justify-content:
+    start;
+
+  gap:
+    0.85rem;
+
+  width:
+    100%;
+
+  text-align:
+    left;
+}
+
+
+.sectionHeader > * {
+  justify-self:
+    start;
+}
+
+
+.sectionHeader h2 {
+  width:
+    100%;
+
+  max-width:
+    820px;
+
+  margin:
+    0;
+
+  justify-self:
+    start;
+
+  color:
+    #ffffff;
+
+  text-align:
+    left;
+
+  text-wrap:
+    balance;
+}
+
+
+.sectionHeader h2 span {
+  display:
+    block;
+
+  width:
+    100%;
+
+  margin-left:
+    0;
+
+  text-align:
+    left;
+}
+
+
+@media (
+  max-width: 768px
+) {
+
+  .sectionHeader {
+    gap:
+      0.7rem;
+  }
+
+
+  .sectionHeader h2 {
+    max-width:
+      100%;
+  }
+
+}
+
+
+/* ==========================================================================
+   NB_COMPANY_CONTENT_DEDUP_V1
+
+   The former mindset card repeated the dedicated Approach section.
+   The Company introduction is now intentionally one concise statement.
+   ========================================================================== */
+
+
+.introGrid {
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    );
+}
+
+
+.statementCard {
+  width:
+    100%;
+
+  max-width:
+    900px;
+}
