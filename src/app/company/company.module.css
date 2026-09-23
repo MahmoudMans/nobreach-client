@@ -7767,3 +7767,5368 @@ and
   }
 
 }
+
+
+/* ==========================================================================
+   NB_COMPANY_COMPLETE_DESIGN_AUTHORITY_V10
+
+   NoBreach Company / About design authority.
+
+   Direction:
+   - premium cybersecurity restraint
+   - deep blue-black foundations
+   - cyan first / violet second
+   - editorial rather than card-wall composition
+   - internal-page hero, not homepage-scale hero
+   - normal document flow
+   - decorative layers never consume layout space
+   - 1280px desktop container
+   - 96px desktop section rhythm
+   - 64px mobile section rhythm
+   - explicit responsive transformations
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01 — PAGE FOUNDATION + TOKENS
+   ========================================================================== */
+
+
+.page {
+  --nb-company-bg:
+    #07090d;
+
+  --nb-company-bg-alt:
+    #0b0f16;
+
+  --nb-company-surface-1:
+    #101620;
+
+  --nb-company-surface-2:
+    #151d29;
+
+  --nb-company-surface-3:
+    #1c2634;
+
+  --nb-company-text:
+    #f5f7fa;
+
+  --nb-company-secondary:
+    #c5ced8;
+
+  --nb-company-muted:
+    #8793a3;
+
+  --nb-company-subtle:
+    #667281;
+
+  --nb-company-cyan:
+    #a1e2f0;
+
+  --nb-company-blue:
+    #83b3d7;
+
+  --nb-company-violet:
+    #7e60b9;
+
+  --nb-company-purple:
+    #6333c6;
+
+  --nb-company-border:
+    rgba(
+      161,
+      226,
+      240,
+      0.10
+    );
+
+  --nb-company-border-hover:
+    rgba(
+      161,
+      226,
+      240,
+      0.24
+    );
+
+  --nb-company-divider:
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    );
+
+  --nb-company-container:
+    1280px;
+
+  --nb-company-gutter:
+    32px;
+
+  min-width:
+    0;
+
+  overflow:
+    clip;
+
+  background:
+    var(
+      --nb-company-bg
+    );
+
+  color:
+    var(
+      --nb-company-text
+    );
+}
+
+
+/* ==========================================================================
+   02 — SHARED CONTAINER AUTHORITY
+   ========================================================================== */
+
+
+.container,
+.heroInner,
+.pageNavInner {
+  width:
+    min(
+      calc(
+        100%
+        -
+        (
+          var(
+            --nb-company-gutter,
+            32px
+          )
+          *
+          2
+        )
+      ),
+      var(
+        --nb-company-container,
+        1280px
+      )
+    ) !important;
+
+  max-width:
+    1280px !important;
+
+  margin-right:
+    auto !important;
+
+  margin-left:
+    auto !important;
+
+  padding-right:
+    0 !important;
+
+  padding-left:
+    0 !important;
+
+  box-sizing:
+    border-box;
+}
+
+
+/* ==========================================================================
+   03 — INTERNAL COMPANY HERO
+   ========================================================================== */
+
+
+.page [data-company-section="hero"] {
+  isolation:
+    isolate;
+
+  position:
+    relative !important;
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    140px
+    0
+    96px !important;
+
+  overflow:
+    clip;
+
+  background:
+    radial-gradient(
+      ellipse
+      46%
+      60%
+      at
+      88%
+      30%,
+      rgba(
+        161,
+        226,
+        240,
+        0.085
+      )
+      0%,
+      rgba(
+        131,
+        179,
+        215,
+        0.032
+      )
+      38%,
+      transparent
+      74%
+    ),
+    radial-gradient(
+      ellipse
+      30%
+      38%
+      at
+      100%
+      90%,
+      rgba(
+        126,
+        96,
+        185,
+        0.038
+      )
+      0%,
+      transparent
+      76%
+    ),
+    linear-gradient(
+      180deg,
+      #07090d
+      0%,
+      #090d14
+      56%,
+      #07090d
+      100%
+    ) !important;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --nb-company-divider,
+      rgba(
+        255,
+        255,
+        255,
+        0.07
+      )
+    );
+}
+
+
+/*
+ * Fine technical structure is decoration only.
+ */
+.page [data-company-section="hero"]::before {
+  position:
+    absolute;
+
+  top:
+    0;
+
+  right:
+    0;
+
+  bottom:
+    0;
+
+  z-index:
+    0;
+
+  width:
+    min(
+      52vw,
+      760px
+    );
+
+  background-image:
+    linear-gradient(
+      rgba(
+        161,
+        226,
+        240,
+        0.032
+      )
+      1px,
+      transparent
+      1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(
+        161,
+        226,
+        240,
+        0.032
+      )
+      1px,
+      transparent
+      1px
+    );
+
+  background-size:
+    56px
+    56px;
+
+  -webkit-mask-image:
+    linear-gradient(
+      90deg,
+      transparent
+      0%,
+      rgba(
+        0,
+        0,
+        0,
+        0.28
+      )
+      25%,
+      rgba(
+        0,
+        0,
+        0,
+        0.8
+      )
+      100%
+    );
+
+  mask-image:
+    linear-gradient(
+      90deg,
+      transparent
+      0%,
+      rgba(
+        0,
+        0,
+        0,
+        0.28
+      )
+      25%,
+      rgba(
+        0,
+        0,
+        0,
+        0.8
+      )
+      100%
+    );
+
+  opacity:
+    0.7;
+
+  content:
+    "";
+
+  pointer-events:
+    none;
+}
+
+
+/* ==========================================================================
+   04 — HERO GRID
+   ========================================================================== */
+
+
+.page [data-company-section="hero"]
+.heroInner {
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  display:
+    grid !important;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    minmax(
+      400px,
+      0.92fr
+    ) !important;
+
+  column-gap:
+    clamp(
+      48px,
+      6vw,
+      80px
+    ) !important;
+
+  row-gap:
+    48px !important;
+
+  align-items:
+    center !important;
+}
+
+
+/* ==========================================================================
+   05 — HERO COPY
+   ========================================================================== */
+
+
+.page [data-company-ui="hero-copy"] {
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  width:
+    100%;
+
+  max-width:
+    640px;
+}
+
+
+.page [data-company-ui="hero-copy"]
+.kicker {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  margin:
+    0
+    0
+    12px !important;
+
+  color:
+    var(
+      --nb-company-cyan,
+      #a1e2f0
+    ) !important;
+
+  font-family:
+    "IBM Plex Mono",
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size:
+    0.75rem !important;
+
+  font-weight:
+    600;
+
+  line-height:
+    1.5;
+
+  letter-spacing:
+    0.075em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.page [data-company-ui="hero-copy"]
+.kicker
+> span {
+  width:
+    24px;
+
+  height:
+    1px;
+
+  background:
+    var(
+      --nb-company-cyan,
+      #a1e2f0
+    );
+}
+
+
+.page [data-company-ui="hero-copy"]
+h1 {
+  max-width:
+    680px;
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  margin:
+    0 !important;
+
+  color:
+    var(
+      --nb-company-text,
+      #f5f7fa
+    ) !important;
+
+  font-family:
+    "Space Grotesk",
+    Inter,
+    system-ui,
+    sans-serif;
+
+  font-size:
+    clamp(
+      3rem,
+      4.4vw,
+      3.5rem
+    ) !important;
+
+  font-weight:
+    600 !important;
+
+  line-height:
+    1.107 !important;
+
+  letter-spacing:
+    -0.035em !important;
+
+  text-wrap:
+    balance;
+}
+
+
+.page [data-company-ui="hero-copy"]
+h1
+span {
+  display:
+    block;
+
+  color:
+    var(
+      --nb-company-secondary,
+      #c5ced8
+    ) !important;
+}
+
+
+.page [data-company-ui="hero-copy"]
+> p {
+  max-width:
+    580px;
+
+  margin:
+    20px
+    0
+    0 !important;
+
+  color:
+    var(
+      --nb-company-secondary,
+      #c5ced8
+    ) !important;
+
+  font-size:
+    1.125rem !important;
+
+  line-height:
+    1.67 !important;
+}
+
+
+/* ==========================================================================
+   06 — HERO ACTIONS
+   ========================================================================== */
+
+
+.page [data-company-ui="hero-copy"]
+.heroActions {
+  display:
+    flex !important;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    12px !important;
+
+  margin-top:
+    32px !important;
+}
+
+
+.primaryButton,
+.secondaryButton,
+.primaryAction,
+.secondaryAction {
+  display:
+    inline-flex !important;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    10px;
+
+  min-height:
+    52px !important;
+
+  padding:
+    0
+    24px !important;
+
+  border-radius:
+    10px !important;
+
+  font-size:
+    0.95rem !important;
+
+  font-weight:
+    600 !important;
+
+  text-decoration:
+    none !important;
+
+  transition:
+    transform
+    180ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    ),
+    background
+    180ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    ),
+    border-color
+    180ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+
+.primaryButton,
+.primaryAction {
+  color:
+    #07090d !important;
+
+  background:
+    #a1e2f0 !important;
+
+  border:
+    1px
+    solid
+    #a1e2f0 !important;
+}
+
+
+.secondaryButton,
+.secondaryAction {
+  color:
+    #f5f7fa !important;
+
+  background:
+    transparent !important;
+
+  border:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.24
+    ) !important;
+}
+
+
+.primaryButton:hover,
+.secondaryButton:hover,
+.primaryAction:hover,
+.secondaryAction:hover {
+  transform:
+    translateY(
+      -1px
+    );
+}
+
+
+.primaryButton:hover,
+.primaryAction:hover {
+  background:
+    #b7edf6 !important;
+}
+
+
+.secondaryButton:hover,
+.secondaryAction:hover {
+  background:
+    rgba(
+      161,
+      226,
+      240,
+      0.07
+    ) !important;
+
+  border-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.38
+    ) !important;
+}
+
+
+.primaryButton:focus-visible,
+.secondaryButton:focus-visible,
+.primaryAction:focus-visible,
+.secondaryAction:focus-visible,
+.textAction:focus-visible,
+.inlineAction:focus-visible {
+  outline:
+    2px
+    solid
+    #a1e2f0;
+
+  outline-offset:
+    3px;
+}
+
+
+/* ==========================================================================
+   07 — HERO PROFILE = TECHNICAL VISUAL
+   ========================================================================== */
+
+
+.page [data-company-ui="profile-card"] {
+  isolation:
+    isolate;
+
+  position:
+    relative !important;
+
+  z-index:
+    2;
+
+  width:
+    100% !important;
+
+  max-width:
+    560px !important;
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  justify-self:
+    end;
+
+  margin:
+    0 !important;
+
+  padding:
+    32px !important;
+
+  overflow:
+    hidden;
+
+  color:
+    #f5f7fa;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(
+        16,
+        22,
+        32,
+        0.96
+      ),
+      rgba(
+        11,
+        15,
+        22,
+        0.94
+      )
+    ) !important;
+
+  border:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.12
+    ) !important;
+
+  border-radius:
+    18px !important;
+
+  box-shadow:
+    0
+    16px
+    40px
+    rgba(
+      0,
+      0,
+      0,
+      0.24
+    ) !important;
+}
+
+
+.page [data-company-ui="profile-card"]::before {
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  z-index:
+    -1;
+
+  background-image:
+    linear-gradient(
+      rgba(
+        161,
+        226,
+        240,
+        0.024
+      )
+      1px,
+      transparent
+      1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(
+        161,
+        226,
+        240,
+        0.024
+      )
+      1px,
+      transparent
+      1px
+    );
+
+  background-size:
+    40px
+    40px;
+
+  content:
+    "";
+
+  pointer-events:
+    none;
+}
+
+
+/* ==========================================================================
+   08 — COMPANY PROFILE HEADER
+   ========================================================================== */
+
+
+.profileHeader {
+  display:
+    flex !important;
+
+  align-items:
+    center;
+
+  gap:
+    16px;
+
+  padding-bottom:
+    24px !important;
+
+  border-bottom:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    );
+}
+
+
+.profileLogo {
+  display:
+    grid !important;
+
+  place-items:
+    center;
+
+  width:
+    48px !important;
+
+  height:
+    48px !important;
+
+  flex:
+    0
+    0
+    48px;
+
+  color:
+    #07090d !important;
+
+  background:
+    #a1e2f0 !important;
+
+  border-radius:
+    10px !important;
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
+
+  font-size:
+    0.88rem !important;
+
+  font-weight:
+    700 !important;
+}
+
+
+.profileHeader
+span,
+.profileHeader
+small,
+.profileFooter {
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.profileHeader
+span {
+  display:
+    block;
+
+  color:
+    #c5ced8;
+
+  font-size:
+    0.72rem;
+
+  letter-spacing:
+    0.06em;
+}
+
+
+.profileHeader
+small {
+  display:
+    block;
+
+  margin-top:
+    5px;
+
+  color:
+    #667281;
+
+  font-size:
+    0.62rem;
+
+  letter-spacing:
+    0.05em;
+}
+
+
+/* ==========================================================================
+   09 — PROFILE FACTS / TRUST INFORMATION
+   ========================================================================== */
+
+
+.profileSignal {
+  display:
+    flex !important;
+
+  align-items:
+    end;
+
+  gap:
+    5px;
+
+  height:
+    40px !important;
+
+  margin:
+    24px
+    0 !important;
+}
+
+
+.profileSignal
+span {
+  display:
+    block;
+
+  width:
+    4px;
+
+  background:
+    #83b3d7;
+
+  border-radius:
+    2px;
+}
+
+
+.profileSignal
+span:nth-child(1) {
+  height:
+    8px;
+}
+
+
+.profileSignal
+span:nth-child(2) {
+  height:
+    17px;
+}
+
+
+.profileSignal
+span:nth-child(3) {
+  height:
+    30px;
+}
+
+
+.profileSignal
+span:nth-child(4) {
+  height:
+    21px;
+}
+
+
+.profileSignal
+span:nth-child(5) {
+  height:
+    12px;
+}
+
+
+.page [data-company-ui="facts"] {
+  display:
+    grid !important;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    ) !important;
+
+  gap:
+    0 !important;
+
+  margin:
+    0 !important;
+}
+
+
+.factCard {
+  min-height:
+    0 !important;
+
+  padding:
+    18px
+    0 !important;
+
+  background:
+    transparent !important;
+
+  border:
+    0 !important;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.06
+    ) !important;
+
+  border-radius:
+    0 !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+.factCard:nth-child(
+  odd
+) {
+  padding-right:
+    18px !important;
+}
+
+
+.factCard:nth-child(
+  even
+) {
+  padding-left:
+    18px !important;
+
+  border-left:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.06
+    ) !important;
+}
+
+
+.factCard
+span {
+  display:
+    block;
+
+  color:
+    #667281 !important;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size:
+    0.68rem !important;
+
+  line-height:
+    1.4;
+
+  letter-spacing:
+    0.045em;
+}
+
+
+.factCard
+strong {
+  display:
+    block;
+
+  margin-top:
+    6px;
+
+  color:
+    #c5ced8 !important;
+
+  font-size:
+    1rem !important;
+
+  font-weight:
+    600 !important;
+
+  line-height:
+    1.4;
+}
+
+
+.profileFooter {
+  display:
+    flex !important;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    12px;
+
+  margin-top:
+    24px !important;
+
+  padding-top:
+    18px !important;
+
+  color:
+    #667281 !important;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.06
+    );
+
+  font-size:
+    0.62rem !important;
+
+  letter-spacing:
+    0.04em;
+}
+
+
+/* ==========================================================================
+   10 — COMPANY PAGE NAVIGATION
+   ========================================================================== */
+
+
+.page nav[aria-label="Company sections"] {
+  position:
+    sticky !important;
+
+  top:
+    76px !important;
+
+  z-index:
+    10 !important;
+
+  height:
+    auto !important;
+
+  min-height:
+    52px;
+
+  margin:
+    0 !important;
+
+  background:
+    rgba(
+      7,
+      9,
+      13,
+      0.88
+    ) !important;
+
+  border-top:
+    0 !important;
+
+  border-bottom:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    ) !important;
+
+  -webkit-backdrop-filter:
+    blur(
+      18px
+    );
+
+  backdrop-filter:
+    blur(
+      18px
+    );
+}
+
+
+.page nav[aria-label="Company sections"]
+.pageNavInner {
+  display:
+    flex !important;
+
+  align-items:
+    center;
+
+  gap:
+    28px !important;
+
+  min-height:
+    52px;
+
+  overflow-x:
+    auto;
+
+  scrollbar-width:
+    none;
+}
+
+
+.page nav[aria-label="Company sections"]
+.pageNavInner::-webkit-scrollbar {
+  display:
+    none;
+}
+
+
+.page nav[aria-label="Company sections"]
+a {
+  position:
+    relative;
+
+  flex:
+    0
+    0
+    auto;
+
+  min-height:
+    44px;
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  color:
+    #8793a3 !important;
+
+  font-size:
+    0.82rem !important;
+
+  font-weight:
+    500 !important;
+
+  text-decoration:
+    none !important;
+}
+
+
+.page nav[aria-label="Company sections"]
+a:hover {
+  color:
+    #f5f7fa !important;
+}
+
+
+.page nav[aria-label="Company sections"]
+a:focus-visible {
+  outline:
+    2px
+    solid
+    #a1e2f0;
+
+  outline-offset:
+    2px;
+
+  border-radius:
+    4px;
+}
+
+
+/* ==========================================================================
+   11 — GLOBAL COMPANY SECTION RHYTHM
+   ========================================================================== */
+
+
+.page [data-company-section="who-we-are"],
+.page [data-company-section="story"],
+.page [data-company-section="what-we-do"],
+.page [data-company-section="principles"],
+.page [data-company-section="ecosystem"],
+.page [data-company-section="timeline"],
+.page [data-company-section="founder"],
+.page [data-company-section="team"] {
+  isolation:
+    isolate;
+
+  position:
+    relative !important;
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  max-height:
+    none !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    96px
+    0 !important;
+
+  scroll-margin-top:
+    144px;
+
+  box-sizing:
+    border-box;
+
+  overflow:
+    visible;
+}
+
+
+/* ==========================================================================
+   12 — ALTERNATING DARK FOUNDATIONS
+   ========================================================================== */
+
+
+.page [data-company-section="who-we-are"],
+.page [data-company-section="what-we-do"],
+.page [data-company-section="ecosystem"],
+.page [data-company-section="founder"] {
+  background:
+    #0b0f16 !important;
+}
+
+
+.page [data-company-section="story"],
+.page [data-company-section="principles"],
+.page [data-company-section="timeline"],
+.page [data-company-section="team"] {
+  background:
+    #07090d !important;
+}
+
+
+/* ==========================================================================
+   13 — GENERIC SECTION TYPOGRAPHY
+   ========================================================================== */
+
+
+.page [data-company-section="who-we-are"]
+h2,
+.page [data-company-section="story"]
+h2,
+.page [data-company-section="what-we-do"]
+h2,
+.page [data-company-section="principles"]
+h2,
+.page [data-company-section="ecosystem"]
+h2,
+.page [data-company-section="timeline"]
+h2,
+.page [data-company-section="founder"]
+h2,
+.page [data-company-section="team"]
+h2 {
+  max-width:
+    760px;
+
+  margin-top:
+    0 !important;
+
+  color:
+    #f5f7fa !important;
+
+  font-family:
+    "Space Grotesk",
+    Inter,
+    system-ui,
+    sans-serif;
+
+  font-size:
+    clamp(
+      2rem,
+      3.2vw,
+      2.625rem
+    ) !important;
+
+  font-weight:
+    600 !important;
+
+  line-height:
+    1.19 !important;
+
+  letter-spacing:
+    -0.03em !important;
+
+  text-wrap:
+    balance;
+}
+
+
+.page [data-company-section]
+h3 {
+  color:
+    #c5ced8 !important;
+
+  font-family:
+    "Space Grotesk",
+    Inter,
+    system-ui,
+    sans-serif;
+
+  font-size:
+    1.35rem !important;
+
+  font-weight:
+    600 !important;
+
+  line-height:
+    1.35 !important;
+
+  letter-spacing:
+    -0.018em !important;
+}
+
+
+.page [data-company-section]
+p {
+  color:
+    #8793a3;
+
+  font-size:
+    1rem;
+
+  line-height:
+    1.625;
+}
+
+
+/* ==========================================================================
+   14 — WHO WE ARE = EDITORIAL SPLIT
+   ========================================================================== */
+
+
+.introGrid {
+  display:
+    grid !important;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1.2fr
+    )
+    minmax(
+      320px,
+      0.8fr
+    ) !important;
+
+  gap:
+    clamp(
+      48px,
+      7vw,
+      80px
+    ) !important;
+
+  align-items:
+    start !important;
+
+  margin-top:
+    48px !important;
+}
+
+
+.page [data-company-card="statement"] {
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  padding:
+    0 !important;
+
+  background:
+    transparent !important;
+
+  border:
+    0 !important;
+
+  border-radius:
+    0 !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+.page [data-company-card="statement"]
+h2 {
+  max-width:
+    720px !important;
+}
+
+
+.page [data-company-card="statement"]
+p {
+  max-width:
+    640px;
+
+  margin-top:
+    20px;
+}
+
+
+.page [data-company-card="mindset"] {
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  padding:
+    32px !important;
+
+  background:
+    #101620 !important;
+
+  border:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.1
+    ) !important;
+
+  border-radius:
+    18px !important;
+
+  box-shadow:
+    0
+    8px
+    20px
+    rgba(
+      0,
+      0,
+      0,
+      0.18
+    ) !important;
+}
+
+
+.mindsetVisual {
+  display:
+    grid !important;
+
+  gap:
+    0;
+
+  margin-bottom:
+    28px !important;
+}
+
+
+.mindsetVisual
+span {
+  padding:
+    14px
+    0;
+
+  color:
+    #c5ced8 !important;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.06
+    );
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size:
+    0.75rem !important;
+
+  letter-spacing:
+    0.05em;
+}
+
+
+.mindsetCaption
+> span {
+  color:
+    #83b3d7 !important;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size:
+    0.68rem !important;
+
+  letter-spacing:
+    0.055em;
+}
+
+
+/* ==========================================================================
+   15 — STORY / APPROACH = PROCESS, NOT CARDS
+   ========================================================================== */
+
+
+.page [data-company-ui="approach-flow"] {
+  display:
+    grid !important;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    auto
+    minmax(
+      0,
+      1fr
+    )
+    auto
+    minmax(
+      0,
+      1fr
+    ) !important;
+
+  gap:
+    24px !important;
+
+  align-items:
+    center;
+
+  margin-top:
+    48px !important;
+}
+
+
+.page [data-company-ui="approach-flow"]
+article {
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  padding:
+    28px
+    0
+    0 !important;
+
+  background:
+    transparent !important;
+
+  border:
+    0 !important;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.14
+    ) !important;
+
+  border-radius:
+    0 !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+.page [data-company-ui="approach-flow"]
+article
+> span {
+  color:
+    #83b3d7;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size:
+    0.7rem;
+}
+
+
+.page [data-company-ui="approach-flow"]
+article
+strong {
+  display:
+    block;
+
+  margin-top:
+    14px;
+
+  color:
+    #f5f7fa;
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
+
+  font-size:
+    1.5rem;
+
+  font-weight:
+    600;
+}
+
+
+.page [data-company-ui="approach-flow"]
+article
+p {
+  margin:
+    10px
+    0
+    0;
+
+  color:
+    #8793a3;
+}
+
+
+.flowArrow {
+  color:
+    #667281 !important;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size:
+    1rem;
+}
+
+
+/* ==========================================================================
+   16 — CAPABILITIES
+   ========================================================================== */
+
+
+.page [data-company-ui="capability-grid"] {
+  display:
+    grid !important;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(
+        0,
+        1fr
+      )
+    ) !important;
+
+  gap:
+    24px !important;
+
+  margin-top:
+    56px !important;
+}
+
+
+.page [data-company-card="capability"] {
+  display:
+    flex !important;
+
+  flex-direction:
+    column;
+
+  min-width:
+    0;
+
+  min-height:
+    360px !important;
+
+  height:
+    100% !important;
+
+  padding:
+    28px !important;
+
+  color:
+    inherit;
+
+  background:
+    #101620 !important;
+
+  border:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.1
+    ) !important;
+
+  border-radius:
+    14px !important;
+
+  box-shadow:
+    none !important;
+
+  text-decoration:
+    none !important;
+
+  transform:
+    none;
+
+  transition:
+    transform
+    180ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    ),
+    border-color
+    180ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    ),
+    background
+    180ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+
+.page [data-company-card="capability"]:hover {
+  transform:
+    translateY(
+      -3px
+    );
+
+  background:
+    #131b26 !important;
+
+  border-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.24
+    ) !important;
+}
+
+
+.page [data-company-card="capability"]:focus-visible {
+  outline:
+    2px
+    solid
+    #a1e2f0;
+
+  outline-offset:
+    3px;
+}
+
+
+.capabilityTop {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    16px;
+}
+
+
+.capabilityIndex,
+.capabilityCode {
+  color:
+    #667281 !important;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size:
+    0.66rem !important;
+
+  letter-spacing:
+    0.045em;
+}
+
+
+.capabilityVisual {
+  position:
+    relative;
+
+  height:
+    72px !important;
+
+  margin:
+    28px
+    0 !important;
+
+  opacity:
+    0.68;
+}
+
+
+.capabilityCopy {
+  margin-top:
+    auto;
+}
+
+
+.capabilityCopy
+h3 {
+  margin:
+    0;
+}
+
+
+.capabilityCopy
+p {
+  margin:
+    12px
+    0
+    0;
+
+  color:
+    #8793a3 !important;
+
+  font-size:
+    0.9rem !important;
+
+  line-height:
+    1.6;
+}
+
+
+.cardArrow {
+  margin-top:
+    24px;
+
+  color:
+    #a1e2f0;
+}
+
+
+/* ==========================================================================
+   17 — PRINCIPLES = EDITORIAL ROWS, NOT CARD WALL
+   ========================================================================== */
+
+
+.page [data-company-ui="principle-grid"] {
+  display:
+    grid !important;
+
+  grid-template-columns:
+    1fr !important;
+
+  gap:
+    0 !important;
+
+  margin-top:
+    48px !important;
+}
+
+
+.page [data-company-ui="principle-grid"]
+article {
+  display:
+    grid !important;
+
+  grid-template-columns:
+    72px
+    minmax(
+      220px,
+      0.72fr
+    )
+    minmax(
+      0,
+      1fr
+    ) !important;
+
+  gap:
+    32px !important;
+
+  align-items:
+    start;
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    32px
+    0 !important;
+
+  background:
+    transparent !important;
+
+  border:
+    0 !important;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    ) !important;
+
+  border-radius:
+    0 !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+.principleVisual {
+  display:
+    none !important;
+}
+
+
+.principleNumber {
+  color:
+    #83b3d7 !important;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size:
+    0.72rem !important;
+}
+
+
+.page [data-company-ui="principle-grid"]
+article
+h3 {
+  margin:
+    0 !important;
+
+  font-size:
+    1.4rem !important;
+}
+
+
+.page [data-company-ui="principle-grid"]
+article
+p {
+  max-width:
+    620px;
+
+  margin:
+    0 !important;
+
+  color:
+    #8793a3 !important;
+}
+
+
+/* ==========================================================================
+   18 — ECOSYSTEM = COMPACT CONNECTED DIRECTORY
+   ========================================================================== */
+
+
+.page [data-company-ui="ecosystem-grid"] {
+  display:
+    grid !important;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    ) !important;
+
+  gap:
+    0
+    32px !important;
+
+  margin-top:
+    48px !important;
+}
+
+
+.page [data-company-card="ecosystem"] {
+  display:
+    grid !important;
+
+  grid-template-columns:
+    44px
+    minmax(
+      0,
+      1fr
+    )
+    auto !important;
+
+  gap:
+    16px;
+
+  align-items:
+    center;
+
+  min-height:
+    88px !important;
+
+  height:
+    auto !important;
+
+  padding:
+    18px
+    0 !important;
+
+  color:
+    inherit;
+
+  background:
+    transparent !important;
+
+  border:
+    0 !important;
+
+  border-bottom:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    ) !important;
+
+  border-radius:
+    0 !important;
+
+  box-shadow:
+    none !important;
+
+  text-decoration:
+    none !important;
+}
+
+
+.page [data-company-card="ecosystem"]:hover {
+  border-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.24
+    ) !important;
+}
+
+
+.ecosystemIndex {
+  color:
+    #667281;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size:
+    0.68rem;
+}
+
+
+.ecosystemIcon {
+  display:
+    none !important;
+}
+
+
+.page [data-company-card="ecosystem"]
+strong {
+  color:
+    #c5ced8;
+
+  font-size:
+    1rem;
+
+  font-weight:
+    600;
+}
+
+
+.ecosystemLine {
+  margin-top:
+    40px !important;
+
+  color:
+    #667281 !important;
+}
+
+
+/* ==========================================================================
+   19 — TIMELINE
+   ========================================================================== */
+
+
+.page [data-company-ui="timeline-grid"] {
+  display:
+    grid !important;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(
+        180px,
+        1fr
+      )
+    ) !important;
+
+  gap:
+    0 !important;
+
+  margin-top:
+    48px !important;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.13
+    );
+}
+
+
+.page [data-company-card="timeline"] {
+  position:
+    relative;
+
+  min-height:
+    220px !important;
+
+  height:
+    auto !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    32px
+    24px !important;
+
+  background:
+    transparent !important;
+
+  border:
+    0 !important;
+
+  border-right:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.06
+    ) !important;
+
+  border-radius:
+    0 !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+.page [data-company-card="timeline"]:last-child {
+  border-right:
+    0 !important;
+}
+
+
+.timelineNumber {
+  color:
+    #667281 !important;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size:
+    0.66rem;
+}
+
+
+.timelineDot {
+  width:
+    7px !important;
+
+  height:
+    7px !important;
+
+  margin:
+    20px
+    0 !important;
+
+  background:
+    #a1e2f0 !important;
+
+  border-radius:
+    50%;
+}
+
+
+.page [data-company-card="timeline"]
+strong {
+  color:
+    #c5ced8 !important;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size:
+    0.78rem !important;
+}
+
+
+.page [data-company-card="timeline"]
+p {
+  margin-top:
+    12px;
+
+  color:
+    #8793a3 !important;
+
+  font-size:
+    0.9rem !important;
+}
+
+
+/* ==========================================================================
+   20 — FOUNDER = EDITORIAL PORTRAIT SPLIT
+   ========================================================================== */
+
+
+.page [data-company-card="founder"] {
+  display:
+    grid !important;
+
+  grid-template-columns:
+    minmax(
+      280px,
+      5fr
+    )
+    minmax(
+      0,
+      7fr
+    ) !important;
+
+  gap:
+    clamp(
+      48px,
+      7vw,
+      80px
+    ) !important;
+
+  align-items:
+    center !important;
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  margin-top:
+    48px !important;
+
+  padding:
+    40px
+    0 !important;
+
+  background:
+    transparent !important;
+
+  border:
+    0 !important;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    ) !important;
+
+  border-bottom:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    ) !important;
+
+  border-radius:
+    0 !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+.founderVisual {
+  position:
+    relative;
+
+  width:
+    100%;
+
+  max-width:
+    360px;
+
+  aspect-ratio:
+    4
+    /
+    5;
+
+  overflow:
+    hidden;
+
+  background:
+    #101620;
+
+  border:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.1
+    );
+
+  border-radius:
+    18px;
+}
+
+
+.founderVisual
+img {
+  width:
+    100% !important;
+
+  height:
+    100% !important;
+
+  object-fit:
+    cover !important;
+
+  object-position:
+    center
+    top;
+}
+
+
+.page [data-company-card="founder"]
+p {
+  max-width:
+    680px;
+
+  color:
+    #8793a3 !important;
+}
+
+
+.inlineAction,
+.textAction {
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  gap:
+    8px;
+
+  min-height:
+    44px;
+
+  color:
+    #a1e2f0 !important;
+
+  font-size:
+    0.9rem;
+
+  font-weight:
+    600;
+
+  text-decoration:
+    none;
+}
+
+
+/* ==========================================================================
+   21 — PEOPLE & PROJECTS
+   ========================================================================== */
+
+
+.page [data-company-ui="people-grid"] {
+  display:
+    grid !important;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    ) !important;
+
+  gap:
+    24px !important;
+
+  margin-top:
+    48px !important;
+}
+
+
+.page [data-company-card="people"] {
+  display:
+    grid !important;
+
+  grid-template-columns:
+    96px
+    minmax(
+      0,
+      1fr
+    )
+    auto !important;
+
+  gap:
+    24px;
+
+  align-items:
+    center;
+
+  min-height:
+    160px !important;
+
+  height:
+    100% !important;
+
+  padding:
+    28px !important;
+
+  color:
+    inherit;
+
+  background:
+    #101620 !important;
+
+  border:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.10
+    ) !important;
+
+  border-radius:
+    14px !important;
+
+  box-shadow:
+    none !important;
+
+  text-decoration:
+    none !important;
+
+  transition:
+    transform
+    180ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    ),
+    border-color
+    180ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    ),
+    background
+    180ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+
+.page [data-company-card="people"]:hover {
+  transform:
+    translateY(
+      -3px
+    );
+
+  background:
+    #131b26 !important;
+
+  border-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.24
+    ) !important;
+}
+
+
+.peopleVisual {
+  width:
+    96px !important;
+
+  height:
+    96px !important;
+
+  overflow:
+    hidden;
+
+  background:
+    #0b0f16 !important;
+
+  border:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.08
+    ) !important;
+
+  border-radius:
+    10px !important;
+}
+
+
+.page [data-company-card="people"]
+h3 {
+  margin:
+    5px
+    0
+    0;
+
+  color:
+    #c5ced8 !important;
+
+  font-size:
+    1.25rem !important;
+}
+
+
+.page [data-company-card="people"]
+p {
+  margin:
+    7px
+    0
+    0;
+
+  color:
+    #8793a3 !important;
+
+  font-size:
+    0.88rem !important;
+}
+
+
+/* ==========================================================================
+   22 — FINAL CTA
+   ========================================================================== */
+
+
+.page [data-company-section="cta"] {
+  isolation:
+    isolate;
+
+  position:
+    relative !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    96px
+    32px !important;
+
+  overflow:
+    clip;
+
+  color:
+    #f5f7fa;
+
+  background:
+    #07090d !important;
+}
+
+
+.page [data-company-section="cta"]
+.ctaCard,
+.page [data-company-section="cta"]
+.ctaInner {
+  isolation:
+    isolate;
+
+  position:
+    relative;
+
+  width:
+    min(
+      100%,
+      1280px
+    ) !important;
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  margin:
+    0
+    auto !important;
+
+  padding:
+    80px
+    clamp(
+      32px,
+      7vw,
+      80px
+    ) !important;
+
+  overflow:
+    hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(
+        16,
+        22,
+        32,
+        0.96
+      ),
+      rgba(
+        11,
+        15,
+        22,
+        0.98
+      )
+    ) !important;
+
+  border:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.14
+    ) !important;
+
+  border-radius:
+    24px !important;
+
+  box-shadow:
+    0
+    28px
+    70px
+    rgba(
+      0,
+      0,
+      0,
+      0.28
+    ) !important;
+}
+
+
+.page [data-company-section="cta"]
+.ctaCard::before,
+.page [data-company-section="cta"]
+.ctaInner::before {
+  position:
+    absolute;
+
+  top:
+    -120px;
+
+  right:
+    -80px;
+
+  width:
+    420px;
+
+  height:
+    420px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        161,
+        226,
+        240,
+        0.10
+      ),
+      transparent
+      68%
+    );
+
+  content:
+    "";
+
+  pointer-events:
+    none;
+}
+
+
+.page [data-company-section="cta"]
+h2 {
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  max-width:
+    760px !important;
+
+  margin:
+    0 !important;
+
+  color:
+    #f5f7fa !important;
+
+  font-family:
+    "Space Grotesk",
+    sans-serif;
+
+  font-size:
+    clamp(
+      2.25rem,
+      4vw,
+      3.5rem
+    ) !important;
+
+  font-weight:
+    600 !important;
+
+  line-height:
+    1.12 !important;
+
+  letter-spacing:
+    -0.035em !important;
+
+  text-wrap:
+    balance;
+}
+
+
+.page [data-company-section="cta"]
+h2
+span {
+  color:
+    #a1e2f0 !important;
+}
+
+
+.page [data-company-section="cta"]
+p {
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  max-width:
+    620px;
+
+  color:
+    #c5ced8 !important;
+
+  font-size:
+    1rem !important;
+
+  line-height:
+    1.65;
+}
+
+
+.page [data-company-section="cta"]
+.ctaActions {
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    12px;
+
+  margin-top:
+    32px !important;
+}
+
+
+/* ==========================================================================
+   23 — LARGE DESKTOP
+   ========================================================================== */
+
+
+@media (
+  min-width:
+    1280px
+) {
+
+  .page [data-company-ui="capability-grid"] {
+    grid-template-columns:
+      repeat(
+        4,
+        minmax(
+          0,
+          1fr
+        )
+      ) !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   24 — DESKTOP 1024–1279
+   ========================================================================== */
+
+
+@media (
+  min-width:
+    1024px
+)
+and
+(
+  max-width:
+    1279px
+) {
+
+  .page {
+    --nb-company-gutter:
+      24px;
+  }
+
+
+  .page [data-company-section="hero"] {
+    padding-top:
+      128px !important;
+  }
+
+
+  .page [data-company-section="hero"]
+  .heroInner {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      )
+      minmax(
+        360px,
+        0.82fr
+      ) !important;
+
+    gap:
+      48px !important;
+  }
+
+
+  .page [data-company-ui="capability-grid"] {
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(
+          0,
+          1fr
+        )
+      ) !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   25 — TABLET 768–1023
+   ========================================================================== */
+
+
+@media (
+  min-width:
+    768px
+)
+and
+(
+  max-width:
+    1023px
+) {
+
+  .page {
+    --nb-company-gutter:
+      24px;
+  }
+
+
+  .page [data-company-section="hero"] {
+    padding:
+      112px
+      0
+      80px !important;
+  }
+
+
+  .page [data-company-section="hero"]
+  .heroInner {
+    grid-template-columns:
+      1fr !important;
+
+    gap:
+      48px !important;
+  }
+
+
+  .page [data-company-ui="profile-card"] {
+    max-width:
+      680px !important;
+
+    justify-self:
+      stretch;
+  }
+
+
+  .page [data-company-section="who-we-are"],
+  .page [data-company-section="story"],
+  .page [data-company-section="what-we-do"],
+  .page [data-company-section="principles"],
+  .page [data-company-section="ecosystem"],
+  .page [data-company-section="timeline"],
+  .page [data-company-section="founder"],
+  .page [data-company-section="team"] {
+    padding:
+      80px
+      0 !important;
+  }
+
+
+  .introGrid {
+    grid-template-columns:
+      1fr !important;
+
+    gap:
+      40px !important;
+  }
+
+
+  .page [data-company-ui="approach-flow"] {
+    gap:
+      16px !important;
+  }
+
+
+  .page [data-company-ui="capability-grid"] {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      ) !important;
+  }
+
+
+  .page [data-company-ui="principle-grid"]
+  article {
+    grid-template-columns:
+      56px
+      minmax(
+        0,
+        1fr
+      ) !important;
+
+    gap:
+      24px !important;
+  }
+
+
+  .page [data-company-ui="principle-grid"]
+  article
+  p {
+    grid-column:
+      2;
+  }
+
+
+  .page [data-company-card="founder"] {
+    grid-template-columns:
+      minmax(
+        240px,
+        0.7fr
+      )
+      minmax(
+        0,
+        1fr
+      ) !important;
+
+    gap:
+      48px !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   26 — MOBILE <768
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .page {
+    --nb-company-gutter:
+      20px;
+  }
+
+
+  .page [data-company-section="hero"] {
+    padding:
+      112px
+      0
+      72px !important;
+
+    overflow:
+      hidden;
+  }
+
+
+  .page [data-company-section="hero"]::before {
+    width:
+      100%;
+
+    opacity:
+      0.28;
+
+    -webkit-mask-image:
+      linear-gradient(
+        180deg,
+        transparent,
+        #000
+        35%,
+        transparent
+      );
+
+    mask-image:
+      linear-gradient(
+        180deg,
+        transparent,
+        #000
+        35%,
+        transparent
+      );
+  }
+
+
+  .page [data-company-section="hero"]
+  .heroInner {
+    grid-template-columns:
+      1fr !important;
+
+    gap:
+      40px !important;
+  }
+
+
+  .page [data-company-ui="hero-copy"]
+  h1 {
+    max-width:
+      100%;
+
+    font-size:
+      2.5rem !important;
+
+    line-height:
+      1.15 !important;
+  }
+
+
+  .page [data-company-ui="hero-copy"]
+  > p {
+    max-width:
+      100%;
+
+    font-size:
+      1rem !important;
+
+    line-height:
+      1.625 !important;
+  }
+
+
+  .page [data-company-ui="profile-card"] {
+    max-width:
+      none !important;
+
+    justify-self:
+      stretch;
+
+    padding:
+      24px !important;
+
+    border-radius:
+      14px !important;
+  }
+
+
+  .page nav[aria-label="Company sections"] {
+    top:
+      72px !important;
+  }
+
+
+  .page nav[aria-label="Company sections"]
+  .pageNavInner {
+    gap:
+      22px !important;
+  }
+
+
+  .page [data-company-section="who-we-are"],
+  .page [data-company-section="story"],
+  .page [data-company-section="what-we-do"],
+  .page [data-company-section="principles"],
+  .page [data-company-section="ecosystem"],
+  .page [data-company-section="timeline"],
+  .page [data-company-section="founder"],
+  .page [data-company-section="team"] {
+    padding:
+      64px
+      0 !important;
+
+    scroll-margin-top:
+      128px;
+  }
+
+
+  .page [data-company-section]
+  h2 {
+    max-width:
+      100%;
+
+    font-size:
+      2rem !important;
+
+    line-height:
+      1.19 !important;
+  }
+
+
+  .introGrid {
+    grid-template-columns:
+      1fr !important;
+
+    gap:
+      32px !important;
+  }
+
+
+  .page [data-company-card="mindset"] {
+    padding:
+      24px !important;
+  }
+
+
+  /*
+   * Process becomes vertical.
+   */
+  .page [data-company-ui="approach-flow"] {
+    grid-template-columns:
+      1fr !important;
+
+    gap:
+      0 !important;
+
+    margin-top:
+      36px !important;
+  }
+
+
+  .page [data-company-ui="approach-flow"]
+  article {
+    padding:
+      24px
+      0 !important;
+  }
+
+
+  .flowArrow {
+    display:
+      none !important;
+  }
+
+
+  /*
+   * Capabilities become one column.
+   */
+  .page [data-company-ui="capability-grid"] {
+    grid-template-columns:
+      1fr !important;
+
+    gap:
+      16px !important;
+
+    margin-top:
+      40px !important;
+  }
+
+
+  .page [data-company-card="capability"] {
+    min-height:
+      0 !important;
+
+    padding:
+      24px !important;
+  }
+
+
+  /*
+   * Editorial principles remain flat.
+   */
+  .page [data-company-ui="principle-grid"] {
+    margin-top:
+      36px !important;
+  }
+
+
+  .page [data-company-ui="principle-grid"]
+  article {
+    grid-template-columns:
+      40px
+      minmax(
+        0,
+        1fr
+      ) !important;
+
+    gap:
+      16px !important;
+
+    padding:
+      24px
+      0 !important;
+  }
+
+
+  .page [data-company-ui="principle-grid"]
+  article
+  p {
+    grid-column:
+      1
+      /
+      -1;
+
+    margin-top:
+      4px !important;
+  }
+
+
+  /*
+   * Ecosystem becomes a clean vertical directory.
+   */
+  .page [data-company-ui="ecosystem-grid"] {
+    grid-template-columns:
+      1fr !important;
+
+    gap:
+      0 !important;
+
+    margin-top:
+      36px !important;
+  }
+
+
+  /*
+   * Timeline becomes vertical.
+   */
+  .page [data-company-ui="timeline-grid"] {
+    grid-template-columns:
+      1fr !important;
+
+    margin-top:
+      36px !important;
+
+    border-top:
+      0;
+  }
+
+
+  .page [data-company-card="timeline"] {
+    min-height:
+      0 !important;
+
+    padding:
+      24px
+      0
+      24px
+      28px !important;
+
+    border-right:
+      0 !important;
+
+    border-left:
+      1px
+      solid
+      rgba(
+        161,
+        226,
+        240,
+        0.13
+      ) !important;
+  }
+
+
+  .timelineDot {
+    position:
+      absolute;
+
+    top:
+      32px;
+
+    left:
+      -4px;
+
+    margin:
+      0 !important;
+  }
+
+
+  /*
+   * Founder: text before no overlapping decoration.
+   */
+  .page [data-company-card="founder"] {
+    grid-template-columns:
+      1fr !important;
+
+    gap:
+      32px !important;
+
+    padding:
+      32px
+      0 !important;
+  }
+
+
+  .founderVisual {
+    width:
+      min(
+        100%,
+        360px
+      );
+
+    max-width:
+      360px;
+  }
+
+
+  /*
+   * People stack.
+   */
+  .page [data-company-ui="people-grid"] {
+    grid-template-columns:
+      1fr !important;
+
+    gap:
+      16px !important;
+
+    margin-top:
+      36px !important;
+  }
+
+
+  .page [data-company-card="people"] {
+    grid-template-columns:
+      76px
+      minmax(
+        0,
+        1fr
+      )
+      auto !important;
+
+    gap:
+      18px;
+
+    min-height:
+      0 !important;
+
+    padding:
+      20px !important;
+  }
+
+
+  .peopleVisual {
+    width:
+      76px !important;
+
+    height:
+      76px !important;
+  }
+
+
+  /*
+   * Final CTA.
+   */
+  .page [data-company-section="cta"] {
+    padding:
+      64px
+      20px !important;
+  }
+
+
+  .page [data-company-section="cta"]
+  .ctaCard,
+  .page [data-company-section="cta"]
+  .ctaInner {
+    padding:
+      56px
+      24px !important;
+
+    border-radius:
+      18px !important;
+  }
+
+
+  .page [data-company-section="cta"]
+  h2 {
+    font-size:
+      2.25rem !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   27 — SMALL MOBILE <640
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    639px
+) {
+
+  .page {
+    --nb-company-gutter:
+      16px;
+  }
+
+
+  .page [data-company-section="hero"] {
+    padding-top:
+      104px !important;
+  }
+
+
+  .page [data-company-ui="facts"] {
+    grid-template-columns:
+      1fr !important;
+  }
+
+
+  .factCard:nth-child(
+    odd
+  ),
+  .factCard:nth-child(
+    even
+  ) {
+    padding-right:
+      0 !important;
+
+    padding-left:
+      0 !important;
+
+    border-left:
+      0 !important;
+  }
+
+
+  .profileFooter {
+    flex-wrap:
+      wrap;
+
+    justify-content:
+      flex-start;
+
+    column-gap:
+      16px;
+  }
+
+}
+
+
+/* ==========================================================================
+   28 — VERY SMALL MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    420px
+) {
+
+  .page [data-company-ui="hero-copy"]
+  .heroActions,
+  .page [data-company-section="cta"]
+  .ctaActions {
+    flex-direction:
+      column;
+
+    align-items:
+      stretch;
+  }
+
+
+  .primaryButton,
+  .secondaryButton,
+  .primaryAction,
+  .secondaryAction {
+    width:
+      100%;
+  }
+
+
+  .page [data-company-card="people"] {
+    grid-template-columns:
+      1fr !important;
+  }
+
+
+  .peopleVisual {
+    width:
+      100% !important;
+
+    height:
+      88px !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   29 — REDUCED MOTION
+   ========================================================================== */
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .page [data-company-section="hero"] *,
+  .page [data-company-section="who-we-are"] *,
+  .page [data-company-section="story"] *,
+  .page [data-company-section="what-we-do"] *,
+  .page [data-company-section="principles"] *,
+  .page [data-company-section="ecosystem"] *,
+  .page [data-company-section="timeline"] *,
+  .page [data-company-section="founder"] *,
+  .page [data-company-section="team"] *,
+  .page [data-company-section="cta"] * {
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      0.01ms !important;
+
+    scroll-behavior:
+      auto !important;
+  }
+
+
+  .page [data-company-card="capability"]:hover,
+  .page [data-company-card="people"]:hover {
+    transform:
+      none !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   NB_COMPANY_NARRATIVE_HARMONIZATION_V11
+
+   Company design-system harmonization.
+
+   Important:
+   The current page does not require a dedicated heroGlow DOM element.
+
+   Decorative hero atmosphere is handled entirely with ::before / ::after.
+
+   Goals:
+   - hero element itself keeps background-image: none
+   - decoration stays below content
+   - compact internal hero
+   - capabilities become substantial editorial rows
+   - people becomes a vertical directory
+   - preserve V10 color, typography, section and CTA system
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01 — HERO FOUNDATION
+
+   Keep the real section clean.
+   Legacy V6 contract correctly treats this as the content surface.
+   ========================================================================== */
+
+
+.page
+[data-company-section="hero"] {
+  isolation:
+    isolate;
+
+  position:
+    relative !important;
+
+  background-color:
+    #07090d !important;
+
+  background-image:
+    none !important;
+
+  overflow:
+    clip;
+}
+
+
+/* ==========================================================================
+   02 — HERO ATMOSPHERE
+
+   Decoration belongs in pseudo-elements rather than in content flow.
+   ========================================================================== */
+
+
+.page
+[data-company-section="hero"]::before {
+  position:
+    absolute !important;
+
+  inset:
+    0 !important;
+
+  z-index:
+    0 !important;
+
+  display:
+    block !important;
+
+  width:
+    100% !important;
+
+  height:
+    100% !important;
+
+  background:
+    radial-gradient(
+      ellipse
+      46%
+      60%
+      at
+      88%
+      30%,
+      rgba(
+        161,
+        226,
+        240,
+        0.085
+      )
+      0%,
+      rgba(
+        131,
+        179,
+        215,
+        0.032
+      )
+      38%,
+      transparent
+      74%
+    ),
+    radial-gradient(
+      ellipse
+      30%
+      38%
+      at
+      100%
+      90%,
+      rgba(
+        126,
+        96,
+        185,
+        0.034
+      )
+      0%,
+      transparent
+      76%
+    ),
+    linear-gradient(
+      rgba(
+        161,
+        226,
+        240,
+        0.022
+      )
+      1px,
+      transparent
+      1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(
+        161,
+        226,
+        240,
+        0.022
+      )
+      1px,
+      transparent
+      1px
+    ) !important;
+
+  background-size:
+    auto,
+    auto,
+    56px
+    56px,
+    56px
+    56px !important;
+
+  background-position:
+    center,
+    center,
+    right
+    center,
+    right
+    center;
+
+  -webkit-mask-image:
+    linear-gradient(
+      90deg,
+      rgba(
+        0,
+        0,
+        0,
+        0.08
+      )
+      0%,
+      rgba(
+        0,
+        0,
+        0,
+        0.28
+      )
+      38%,
+      #000
+      100%
+    );
+
+  mask-image:
+    linear-gradient(
+      90deg,
+      rgba(
+        0,
+        0,
+        0,
+        0.08
+      )
+      0%,
+      rgba(
+        0,
+        0,
+        0,
+        0.28
+      )
+      38%,
+      #000
+      100%
+    );
+
+  opacity:
+    0.88;
+
+  content:
+    "" !important;
+
+  pointer-events:
+    none !important;
+}
+
+
+.page
+[data-company-section="hero"]::after {
+  position:
+    absolute !important;
+
+  right:
+    6% !important;
+
+  bottom:
+    0 !important;
+
+  left:
+    6% !important;
+
+  z-index:
+    1 !important;
+
+  display:
+    block !important;
+
+  width:
+    auto !important;
+
+  height:
+    1px !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        161,
+        226,
+        240,
+        0.14
+      ),
+      transparent
+    ) !important;
+
+  content:
+    "" !important;
+
+  pointer-events:
+    none !important;
+}
+
+
+/* ==========================================================================
+   03 — HERO CONTENT ABOVE DECORATION
+   ========================================================================== */
+
+
+.page
+[data-company-section="hero"]
+.heroInner {
+  position:
+    relative !important;
+
+  z-index:
+    2 !important;
+}
+
+
+/* ==========================================================================
+   04 — 1180×820 COMPACTNESS
+
+   Previous V10 runtime:
+   headingTop = 281.55px
+
+   Existing compact contract:
+   headingTop < 278.8px
+
+   Move content upward by a controlled 8px.
+   ========================================================================== */
+
+
+@media (
+  min-width:
+    1024px
+)
+and
+(
+  max-width:
+    1279px
+) {
+
+  .page
+  [data-company-section="hero"] {
+    padding-top:
+      120px !important;
+
+    padding-bottom:
+      88px !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   05 — CAPABILITIES = PREMIUM NARRATIVE SEQUENCE
+
+   Company/About pages should not read as a wall of four equal cards.
+   ========================================================================== */
+
+
+.page
+[data-company-ui="capability-grid"] {
+  display:
+    grid !important;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    ) !important;
+
+  grid-auto-rows:
+    auto !important;
+
+  gap:
+    16px !important;
+
+  width:
+    100%;
+
+  margin-top:
+    48px !important;
+}
+
+
+/* ==========================================================================
+   06 — CAPABILITY ROW
+   ========================================================================== */
+
+
+.page
+[data-company-card="capability"] {
+  display:
+    grid !important;
+
+  grid-template-columns:
+    92px
+    132px
+    minmax(
+      0,
+      1fr
+    )
+    44px !important;
+
+  grid-template-rows:
+    auto !important;
+
+  gap:
+    28px !important;
+
+  align-items:
+    center !important;
+
+  width:
+    100% !important;
+
+  min-width:
+    0 !important;
+
+  min-height:
+    260px !important;
+
+  height:
+    auto !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    32px !important;
+
+  color:
+    inherit;
+
+  background:
+    #101620 !important;
+
+  border:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.10
+    ) !important;
+
+  border-radius:
+    14px !important;
+
+  box-shadow:
+    none !important;
+
+  text-decoration:
+    none !important;
+
+  transition:
+    transform
+    180ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    ),
+    background
+    180ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    ),
+    border-color
+    180ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+
+.page
+[data-company-card="capability"]:hover {
+  transform:
+    translateY(
+      -2px
+    ) !important;
+
+  background:
+    #131b26 !important;
+
+  border-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.24
+    ) !important;
+}
+
+
+/* ==========================================================================
+   07 — CAPABILITY METADATA
+   ========================================================================== */
+
+
+.page
+[data-company-card="capability"]
+.capabilityTop {
+  display:
+    flex !important;
+
+  flex-direction:
+    column;
+
+  align-items:
+    flex-start;
+
+  justify-content:
+    center;
+
+  gap:
+    8px;
+
+  align-self:
+    stretch;
+
+  padding-right:
+    20px;
+
+  border-right:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.06
+    );
+}
+
+
+.page
+[data-company-card="capability"]
+.capabilityIndex {
+  color:
+    #83b3d7 !important;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size:
+    0.72rem !important;
+}
+
+
+.page
+[data-company-card="capability"]
+.capabilityCode {
+  color:
+    #667281 !important;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size:
+    0.64rem !important;
+}
+
+
+/* ==========================================================================
+   08 — CAPABILITY TECHNICAL VISUAL
+   ========================================================================== */
+
+
+.page
+[data-company-card="capability"]
+.capabilityVisual {
+  position:
+    relative;
+
+  width:
+    100% !important;
+
+  height:
+    96px !important;
+
+  margin:
+    0 !important;
+
+  opacity:
+    0.58;
+}
+
+
+/* ==========================================================================
+   09 — CAPABILITY COPY
+   ========================================================================== */
+
+
+.page
+[data-company-card="capability"]
+.capabilityCopy {
+  align-self:
+    center;
+
+  min-width:
+    0;
+
+  margin:
+    0 !important;
+}
+
+
+.page
+[data-company-card="capability"]
+.capabilityCopy
+h3 {
+  max-width:
+    520px;
+
+  margin:
+    0 !important;
+
+  color:
+    #f5f7fa !important;
+
+  font-size:
+    1.45rem !important;
+
+  font-weight:
+    600 !important;
+
+  line-height:
+    1.35 !important;
+}
+
+
+.page
+[data-company-card="capability"]
+.capabilityCopy
+p {
+  max-width:
+    680px;
+
+  margin:
+    12px
+    0
+    0 !important;
+
+  color:
+    #8793a3 !important;
+
+  font-size:
+    0.94rem !important;
+
+  line-height:
+    1.65 !important;
+}
+
+
+.page
+[data-company-card="capability"]
+.cardArrow {
+  align-self:
+    center;
+
+  justify-self:
+    end;
+
+  margin:
+    0 !important;
+
+  color:
+    #a1e2f0 !important;
+}
+
+
+/* ==========================================================================
+   10 — PEOPLE & PROJECTS = DIRECTORY SEQUENCE
+   ========================================================================== */
+
+
+.page
+[data-company-ui="people-grid"] {
+  display:
+    grid !important;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    ) !important;
+
+  grid-auto-rows:
+    auto !important;
+
+  gap:
+    16px !important;
+
+  width:
+    100%;
+
+  margin-top:
+    48px !important;
+}
+
+
+.page
+[data-company-card="people"] {
+  display:
+    grid !important;
+
+  grid-template-columns:
+    112px
+    minmax(
+      0,
+      1fr
+    )
+    44px !important;
+
+  gap:
+    28px !important;
+
+  align-items:
+    center !important;
+
+  width:
+    100% !important;
+
+  min-width:
+    0 !important;
+
+  min-height:
+    160px !important;
+
+  height:
+    auto !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    24px
+    28px !important;
+
+  color:
+    inherit;
+
+  background:
+    #101620 !important;
+
+  border:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.10
+    ) !important;
+
+  border-radius:
+    14px !important;
+
+  box-shadow:
+    none !important;
+
+  text-decoration:
+    none !important;
+
+  transition:
+    transform
+    180ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    ),
+    background
+    180ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    ),
+    border-color
+    180ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+
+.page
+[data-company-card="people"]:hover {
+  transform:
+    translateY(
+      -2px
+    ) !important;
+
+  background:
+    #131b26 !important;
+
+  border-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.24
+    ) !important;
+}
+
+
+.page
+[data-company-card="people"]
+.peopleVisual {
+  width:
+    96px !important;
+
+  height:
+    96px !important;
+
+  margin:
+    0 !important;
+}
+
+
+.page
+[data-company-card="people"]
+h3 {
+  margin:
+    5px
+    0
+    0 !important;
+
+  color:
+    #c5ced8 !important;
+
+  font-size:
+    1.3rem !important;
+}
+
+
+.page
+[data-company-card="people"]
+p {
+  margin:
+    8px
+    0
+    0 !important;
+
+  color:
+    #8793a3 !important;
+
+  font-size:
+    0.9rem !important;
+
+  line-height:
+    1.55 !important;
+}
+
+
+/* ==========================================================================
+   11 — TABLET
+   ========================================================================== */
+
+
+@media (
+  min-width:
+    768px
+)
+and
+(
+  max-width:
+    1023px
+) {
+
+  .page
+  [data-company-card="capability"] {
+    grid-template-columns:
+      78px
+      108px
+      minmax(
+        0,
+        1fr
+      )
+      36px !important;
+
+    gap:
+      20px !important;
+
+    min-height:
+      220px !important;
+
+    padding:
+      28px
+      24px !important;
+  }
+
+
+  .page
+  [data-company-card="people"] {
+    grid-template-columns:
+      96px
+      minmax(
+        0,
+        1fr
+      )
+      36px !important;
+
+    gap:
+      22px !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   12 — MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .page
+  [data-company-section="hero"]::before {
+    background:
+      radial-gradient(
+        ellipse
+        80%
+        38%
+        at
+        100%
+        10%,
+        rgba(
+          161,
+          226,
+          240,
+          0.055
+        ),
+        transparent
+        72%
+      ) !important;
+
+    -webkit-mask-image:
+      none;
+
+    mask-image:
+      none;
+
+    opacity:
+      1;
+  }
+
+
+  .page
+  [data-company-ui="capability-grid"] {
+    gap:
+      16px !important;
+
+    margin-top:
+      40px !important;
+  }
+
+
+  .page
+  [data-company-card="capability"] {
+    display:
+      flex !important;
+
+    flex-direction:
+      column !important;
+
+    align-items:
+      stretch !important;
+
+    gap:
+      0 !important;
+
+    min-height:
+      0 !important;
+
+    padding:
+      24px !important;
+  }
+
+
+  .page
+  [data-company-card="capability"]
+  .capabilityTop {
+    flex-direction:
+      row;
+
+    align-items:
+      center;
+
+    justify-content:
+      space-between;
+
+    padding-right:
+      0;
+
+    padding-bottom:
+      18px;
+
+    border-right:
+      0;
+
+    border-bottom:
+      1px
+      solid
+      rgba(
+        255,
+        255,
+        255,
+        0.06
+      );
+  }
+
+
+  .page
+  [data-company-card="capability"]
+  .capabilityVisual {
+    height:
+      72px !important;
+
+    margin:
+      22px
+      0 !important;
+  }
+
+
+  .page
+  [data-company-card="capability"]
+  .cardArrow {
+    align-self:
+      flex-start;
+
+    margin-top:
+      22px !important;
+  }
+
+
+  .page
+  [data-company-ui="people-grid"] {
+    gap:
+      16px !important;
+
+    margin-top:
+      36px !important;
+  }
+
+
+  .page
+  [data-company-card="people"] {
+    grid-template-columns:
+      76px
+      minmax(
+        0,
+        1fr
+      )
+      32px !important;
+
+    gap:
+      18px !important;
+
+    min-height:
+      0 !important;
+
+    padding:
+      20px !important;
+  }
+
+
+  .page
+  [data-company-card="people"]
+  .peopleVisual {
+    width:
+      76px !important;
+
+    height:
+      76px !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   13 — SMALL MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    420px
+) {
+
+  .page
+  [data-company-card="people"] {
+    grid-template-columns:
+      1fr
+      auto !important;
+
+    gap:
+      16px !important;
+  }
+
+
+  .page
+  [data-company-card="people"]
+  .peopleVisual {
+    grid-column:
+      1
+      /
+      -1;
+
+    width:
+      100% !important;
+
+    height:
+      84px !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   14 — REDUCED MOTION
+   ========================================================================== */
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .page
+  [data-company-card="capability"],
+  .page
+  [data-company-card="people"] {
+    transition:
+      none !important;
+  }
+
+
+  .page
+  [data-company-card="capability"]:hover,
+  .page
+  [data-company-card="people"]:hover {
+    transform:
+      none !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   NB_COMPANY_HERO_STABILITY_V12
+
+   Runtime authority:
+
+   V11 focused run at 1180×820:
+     headingTop = 278.38px
+     contract   = < 278.80px
+
+   Repeated runs:
+     ~279.52px
+
+   The variation is approximately one CSS pixel and comes from fractional
+   layout/font geometry.
+
+   Do not weaken the contract.
+
+   Instead provide a deliberate 8px design margin at the 1024–1279 desktop
+   breakpoint by moving hero content slightly upward.
+
+   No other Company design changes.
+   ========================================================================== */
+
+
+@media (
+  min-width:
+    1024px
+)
+and
+(
+  max-width:
+    1279px
+) {
+
+  .page
+  [data-company-section="hero"] {
+    padding-top:
+      112px !important;
+
+    padding-bottom:
+      88px !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   NB_COMPANY_MOBILE_SECTION_NAV_V13
+
+   Final mobile navigation correction.
+
+   Runtime evidence:
+   At 430px and 390px the Company section navigation remained one long
+   horizontal strip. Interactive anchors including Ecosystem, Timeline
+   and People therefore existed physically outside the viewport.
+
+   Design-system correction:
+   - desktop/tablet nav remains unchanged
+   - mobile nav becomes a compact 3-column grid
+   - all links remain visible
+   - no horizontal scrolling
+   - every target remains at least 44px tall
+   - no link is removed
+   - section order is preserved
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01 — MOBILE SECTION NAV SHELL
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .page
+  nav[aria-label="Company sections"] {
+    min-height:
+      0 !important;
+
+    height:
+      auto !important;
+
+    overflow:
+      visible !important;
+
+    background:
+      rgba(
+        7,
+        9,
+        13,
+        0.94
+      ) !important;
+  }
+
+
+  /* ==========================================================================
+     02 — TWO-ROW / THREE-COLUMN NAVIGATION
+
+     6 destinations naturally become:
+       3 columns
+       ×
+       2 rows
+
+     This preserves discoverability without horizontal scrolling.
+     ========================================================================== */
+
+
+  .page
+  nav[aria-label="Company sections"]
+  .pageNavInner {
+    display:
+      grid !important;
+
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(
+          0,
+          1fr
+        )
+      ) !important;
+
+    grid-auto-flow:
+      row !important;
+
+    gap:
+      4px
+      8px !important;
+
+    align-items:
+      stretch !important;
+
+    width:
+      min(
+        calc(
+          100%
+          -
+          40px
+        ),
+        1280px
+      ) !important;
+
+    min-height:
+      0 !important;
+
+    height:
+      auto !important;
+
+    margin-right:
+      auto !important;
+
+    margin-left:
+      auto !important;
+
+    padding-top:
+      8px !important;
+
+    padding-bottom:
+      8px !important;
+
+    overflow-x:
+      visible !important;
+
+    overflow-y:
+      visible !important;
+
+    scrollbar-width:
+      none;
+  }
+
+
+  /* ==========================================================================
+     03 — LINK GEOMETRY
+     ========================================================================== */
+
+
+  .page
+  nav[aria-label="Company sections"]
+  a {
+    box-sizing:
+      border-box;
+
+    display:
+      inline-flex !important;
+
+    align-items:
+      center !important;
+
+    justify-content:
+      center !important;
+
+    width:
+      100% !important;
+
+    min-width:
+      0 !important;
+
+    max-width:
+      100% !important;
+
+    min-height:
+      44px !important;
+
+    height:
+      auto !important;
+
+    margin:
+      0 !important;
+
+    padding:
+      6px
+      8px !important;
+
+    overflow:
+      hidden;
+
+    color:
+      #8793a3 !important;
+
+    background:
+      transparent;
+
+    border:
+      1px
+      solid
+      transparent;
+
+    border-radius:
+      8px;
+
+    font-size:
+      0.72rem !important;
+
+    font-weight:
+      500 !important;
+
+    line-height:
+      1.25 !important;
+
+    text-align:
+      center;
+
+    text-overflow:
+      ellipsis;
+
+    white-space:
+      normal !important;
+
+    word-break:
+      normal;
+
+    overflow-wrap:
+      anywhere;
+
+    transition:
+      color
+      180ms
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+      background
+      180ms
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+      border-color
+      180ms
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      );
+  }
+
+
+  .page
+  nav[aria-label="Company sections"]
+  a:hover {
+    color:
+      #f5f7fa !important;
+
+    background:
+      rgba(
+        161,
+        226,
+        240,
+        0.055
+      );
+
+    border-color:
+      rgba(
+        161,
+        226,
+        240,
+        0.10
+      );
+  }
+
+
+  .page
+  nav[aria-label="Company sections"]
+  a:focus-visible {
+    outline:
+      2px
+      solid
+      #a1e2f0;
+
+    outline-offset:
+      2px;
+  }
+
+}
+
+
+/* ==========================================================================
+   04 — SMALL MOBILE
+
+   Keep three columns down to 360px.
+   The typography is intentionally compact and each link may use two lines.
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    420px
+) {
+
+  .page
+  nav[aria-label="Company sections"]
+  .pageNavInner {
+    width:
+      calc(
+        100%
+        -
+        32px
+      ) !important;
+
+    gap:
+      4px
+      6px !important;
+  }
+
+
+  .page
+  nav[aria-label="Company sections"]
+  a {
+    padding:
+      6px
+      5px !important;
+
+    font-size:
+      0.68rem !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   05 — REDUCED MOTION
+   ========================================================================== */
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .page
+  nav[aria-label="Company sections"]
+  a {
+    transition:
+      none !important;
+  }
+
+}
