@@ -19,12 +19,12 @@ import {
   createMetadata
 } from "@/lib/seo";
 
-import family from "../company-family.module.css";
 import styles from "./internships.module.css";
 
 
 export const metadata =
   createMetadata({
+
     title:
       "Internship Projects | No Breach",
 
@@ -49,17 +49,77 @@ function Arrow() {
 }
 
 
+function SectionHeading({
+  number,
+  eyebrow,
+  title,
+  description
+}: {
+  number:
+    string;
+
+  eyebrow:
+    string;
+
+  title:
+    string;
+
+  description:
+    string;
+}) {
+
+  return (
+    <header
+      className={
+        styles.sectionHeading
+      }
+    >
+      <p
+        className={
+          styles.sectionEyebrow
+        }
+      >
+        <span>
+          {
+            number
+          }
+        </span>
+
+        {
+          eyebrow
+        }
+      </p>
+
+      <h2>
+        {
+          title
+        }
+      </h2>
+
+      <p
+        className={
+          styles.sectionDescription
+        }
+      >
+        {
+          description
+        }
+      </p>
+    </header>
+  );
+
+}
+
+
 export default function InternshipsPage() {
 
   return (
     <div
       className={
-        `${family.page} ${styles.page}`
+        styles.page
       }
-      data-company-family="v14"
-      data-company-density="v15"
+      data-internship-design="v21"
       data-company-architecture="v18"
-      data-company-family-page="internships"
     >
       <Breadcrumbs
         items={[
@@ -78,231 +138,270 @@ export default function InternshipsPage() {
       />
 
 
+      {/* ================================================================
+          HERO
+          Not counted as a content section.
+         ================================================================ */}
+
       <section
         className={
-          `${family.pageIntro} ${family.compactPageIntro}`
+          styles.hero
         }
+        data-internship-section="hero"
       >
         <Container
           size="wide"
           className={
-            family.container
+            styles.container
           }
         >
           <div
             className={
-              family.pageIntroGrid
+              styles.heroTopline
+            }
+          >
+            <span>
+              No Breach / Internship Projects
+            </span>
+
+            <span>
+              Applied Security Workbench
+            </span>
+          </div>
+
+          <div
+            className={
+              styles.heroGrid
             }
           >
             <div
               className={
-                family.introCopy
+                styles.heroCopy
               }
             >
               <p
                 className={
-                  family.eyebrow
+                  styles.heroEyebrow
                 }
               >
-                No Breach / Internships
+                Build · Test · Detect · Fix · Document
               </p>
 
-              <h1
-                className={
-                  family.title
-                }
-              >
-                Security work built through practice.
+              <h1>
+                Security work
+                <span>
+                  built through practice.
+                </span>
               </h1>
 
               <p
                 className={
-                  family.lead
+                  styles.heroLead
                 }
               >
-                Selected technical work from No Breach internship programs, where interns build labs, investigate security behavior, automate validation, create detections, document findings and verify remediation.
+                Selected technical work from No Breach internship programs, where interns build labs, investigate system behavior, validate security hypotheses, create detections, document findings and verify remediation.
               </p>
-            </div>
 
-            <aside
-              className={
-                family.technicalPanel
-              }
-              aria-label="Internship program overview"
-            >
               <div
                 className={
-                  family.technicalPanelHeader
+                  styles.heroActions
                 }
               >
-                <span
+                <a
+                  href="#projects"
                   className={
-                    family.technicalPanelTitle
+                    styles.primaryAction
                   }
                 >
-                  Applied learning
-                </span>
+                  Explore the projects
 
-                <span
+                  <span
+                    aria-hidden="true"
+                  >
+                    ↓
+                  </span>
+                </a>
+
+                <Link
+                  href="/careers"
                   className={
-                    family.technicalPanelCode
+                    styles.textAction
                   }
                 >
-                  NB / LAB
-                </span>
+                  Careers
+
+                  <Arrow />
+                </Link>
               </div>
-
-              <dl
-                className={
-                  family.metaRail
-                }
-              >
-                {
-                  [
-                    [
-                      "Environment",
-                      "Isolated labs"
-                    ],
-                    [
-                      "Data",
-                      "Synthetic"
-                    ],
-                    [
-                      "Focus",
-                      "Hands-on security"
-                    ],
-                    [
-                      "Output",
-                      "Evidence & reports"
-                    ]
-                  ].map(
-                    (
-                      [
-                        label,
-                        value
-                      ]
-                    ) => (
-                      <div
-                        className={
-                          family.metaItem
-                        }
-                        key={
-                          label
-                        }
-                      >
-                        <dt
-                          className={
-                            family.metaLabel
-                          }
-                        >
-                          {
-                            label
-                          }
-                        </dt>
-
-                        <dd
-                          className={
-                            family.metaValue
-                          }
-                        >
-                          {
-                            value
-                          }
-                        </dd>
-                      </div>
-                    )
-                  )
-                }
-              </dl>
-            </aside>
-          </div>
-        </Container>
-      </section>
-
-
-      <section
-        className={
-          family.section
-        }
-
-        data-company-content-section="projects"
-      >
-        <Container
-          size="wide"
-          className={
-            family.container
-          }
-        >
-          <div
-            className={
-              family.sectionHeader
-            }
-          >
-            <div>
-              <span
-                className={
-                  family.sectionIndex
-                }
-              >
-                01
-              </span>
-
-              <p
-                className={
-                  family.sectionEyebrow
-                }
-              >
-                Selected work
-              </p>
             </div>
 
             <div
               className={
-                family.sectionHeaderCopy
+                styles.heroSystem
               }
+              aria-label="Internship working method"
             >
-              <h2
+              <div
                 className={
-                  family.sectionTitle
+                  styles.heroSystemHeader
                 }
               >
-                Projects developed inside the internship program.
-              </h2>
+                <span>
+                  Method
+                </span>
 
-              <p
-                className={
-                  family.sectionDescription
+                <span>
+                  {
+                    String(
+                      internshipMethod.length
+                    ).padStart(
+                      2,
+                      "0"
+                    )
+                  }
+                  {" "}
+                  stages
+                </span>
+              </div>
+
+              <ol>
+                {
+                  internshipMethod.map(
+                    (
+                      item
+                    ) => (
+                      <li
+                        key={
+                          item.number
+                        }
+                      >
+                        <span>
+                          {
+                            item.number
+                          }
+                        </span>
+
+                        <strong>
+                          {
+                            item.title
+                          }
+                        </strong>
+
+                        <i
+                          aria-hidden="true"
+                        />
+                      </li>
+                    )
+                  )
                 }
-              >
-                The portfolio spans application security, purple teaming, AI security, DevSecOps, vulnerability management, OT/IoT security and network monitoring.
-              </p>
+              </ol>
             </div>
           </div>
 
+          <dl
+            className={
+              styles.heroMetrics
+            }
+          >
+            <div>
+              <dt>
+                Projects
+              </dt>
+
+              <dd>
+                {
+                  String(
+                    internshipProjects.length
+                  ).padStart(
+                    2,
+                    "0"
+                  )
+                }
+              </dd>
+            </div>
+
+            <div>
+              <dt>
+                Method
+              </dt>
+
+              <dd>
+                06 stages
+              </dd>
+            </div>
+
+            <div>
+              <dt>
+                Environment
+              </dt>
+
+              <dd>
+                Isolated labs
+              </dd>
+            </div>
+
+            <div>
+              <dt>
+                Evidence
+              </dt>
+
+              <dd>
+                Reproducible
+              </dd>
+            </div>
+          </dl>
+        </Container>
+      </section>
+
+
+      {/* ================================================================
+          01 — PROJECT INDEX
+         ================================================================ */}
+
+      <section
+        id="projects"
+        className={
+          styles.section
+        }
+        data-company-content-section="projects"
+        data-internship-section="projects"
+      >
+        <Container
+          size="wide"
+          className={
+            styles.container
+          }
+        >
+          <SectionHeading
+            number="01"
+            eyebrow="Project index"
+            title="Technical work, presented as evidence rather than decoration."
+            description="Each project represents a controlled security problem with an environment to understand, work to perform and outputs that make the result reproducible."
+          />
+
           <div
             className={
-              styles.projects
+              styles.projectIndex
             }
+            data-internship-ui="project-index"
           >
             {
               internshipProjects.map(
                 (
                   project
                 ) => (
-                  <article
+                  <details
                     className={
-                      styles.project
+                      styles.projectRow
                     }
-                    id={
-                      project.slug
-                    }
+                    data-internship-project
                     key={
                       project.slug
                     }
                   >
-                    <div
+                    <summary
                       className={
-                        styles.projectIdentity
+                        styles.projectSummary
                       }
                     >
                       <span
@@ -317,72 +416,106 @@ export default function InternshipsPage() {
 
                       <span
                         className={
-                          styles.projectTrack
+                          styles.projectIdentity
                         }
                       >
-                        {
-                          project.track
-                        }
+                        <small>
+                          {
+                            project.track
+                          }
+                        </small>
+
+                        <span
+                          className={
+                            styles.projectTitle
+                          }
+                          role="heading"
+                          aria-level={3}
+                        >
+                          {
+                            project.title
+                          }
+                        </span>
                       </span>
-                    </div>
 
-                    <div
-                      className={
-                        styles.projectSummary
-                      }
-                    >
-                      <h3>
-                        {
-                          project.title
+                      <span
+                        className={
+                          styles.projectSummaryText
                         }
-                      </h3>
-
-                      <p>
+                      >
                         {
                           project.summary
                         }
-                      </p>
+                      </span>
 
-                      <div
+                      <span
                         className={
-                          styles.technologyList
+                          styles.projectTechnology
                         }
-                        aria-label={`${project.title} technologies`}
                       >
                         {
-                          project.technologies.map(
-                            (
-                              technology
-                            ) => (
-                              <span
-                                className={
-                                  styles.technology
-                                }
-                                key={
-                                  technology
-                                }
-                              >
-                                {
-                                  technology
-                                }
-                              </span>
+                          project.technologies
+                            .slice(
+                              0,
+                              3
                             )
-                          )
+                            .join(
+                              " / "
+                            )
                         }
-                      </div>
-                    </div>
+                      </span>
+
+                      <span
+                        className={
+                          styles.projectToggle
+                        }
+                        aria-hidden="true"
+                      >
+                        +
+                      </span>
+                    </summary>
 
                     <div
                       className={
-                        styles.projectEvidence
+                        styles.projectDetails
                       }
                     >
-                      <div>
-                        <p
-                          className={
-                            styles.columnTitle
+                      <div
+                        className={
+                          styles.detailGroup
+                        }
+                      >
+                        <p>
+                          Technologies
+                        </p>
+
+                        <ul>
+                          {
+                            project.technologies.map(
+                              (
+                                technology
+                              ) => (
+                                <li
+                                  key={
+                                    technology
+                                  }
+                                >
+                                  {
+                                    technology
+                                  }
+                                </li>
+                              )
+                            )
                           }
-                        >
+                        </ul>
+                      </div>
+
+                      <div
+                        className={
+                          styles.detailGroup
+                        }
+                      >
+                        <p>
                           Work
                         </p>
 
@@ -407,12 +540,12 @@ export default function InternshipsPage() {
                         </ul>
                       </div>
 
-                      <div>
-                        <p
-                          className={
-                            styles.columnTitle
-                          }
-                        >
+                      <div
+                        className={
+                          styles.detailGroup
+                        }
+                      >
+                        <p>
                           Outputs
                         </p>
 
@@ -420,15 +553,15 @@ export default function InternshipsPage() {
                           {
                             project.outputs.map(
                               (
-                                item
+                                output
                               ) => (
                                 <li
                                   key={
-                                    item
+                                    output
                                   }
                                 >
                                   {
-                                    item
+                                    output
                                   }
                                 </li>
                               )
@@ -437,97 +570,132 @@ export default function InternshipsPage() {
                         </ul>
                       </div>
                     </div>
-                  </article>
+                  </details>
                 )
               )
             }
           </div>
+
+          <p
+            className={
+              styles.projectHint
+            }
+          >
+            Select a project row to inspect technologies, work performed and technical outputs.
+          </p>
         </Container>
       </section>
 
 
+      {/* ================================================================
+          02 — WORKING METHOD
+         ================================================================ */}
+
       <section
         className={
-          `${family.section} ${family.sectionAlt}`
+          `${styles.section} ${styles.sectionAlt}`
         }
-
         data-company-content-section="method"
+        data-internship-section="method"
       >
         <Container
           size="wide"
           className={
-            family.container
+            styles.container
           }
         >
+          <SectionHeading
+            number="02"
+            eyebrow="Working method"
+            title="Internships structured around doing the work."
+            description="The program moves from building a controlled environment to understanding it, validating security behavior, detecting what happened, improving controls and documenting the evidence."
+          />
+
           <div
             className={
-              family.sectionHeader
+              styles.methodIntro
             }
           >
-            <div>
-              <span
-                className={
-                  family.sectionIndex
-                }
-              >
-                02
-              </span>
-
-              <p
-                className={
-                  family.sectionEyebrow
-                }
-              >
-                Approach
-              </p>
-            </div>
+            <p>
+              One continuous technical loop.
+            </p>
 
             <div
               className={
-                family.sectionHeaderCopy
+                styles.methodSequence
               }
+              aria-hidden="true"
             >
-              <h2
-                className={
-                  family.sectionTitle
-                }
-              >
-                Internships structured around doing the work.
-              </h2>
+              <span>
+                BUILD
+              </span>
 
-              <p
-                className={
-                  family.sectionDescription
-                }
-              >
-                Projects are designed around building, understanding, validating and documenting technical systems rather than completing passive exercises.
-              </p>
+              <i />
+
+              <span>
+                UNDERSTAND
+              </span>
+
+              <i />
+
+              <span>
+                VALIDATE
+              </span>
+
+              <i />
+
+              <span>
+                DETECT
+              </span>
+
+              <i />
+
+              <span>
+                FIX
+              </span>
+
+              <i />
+
+              <span>
+                DOCUMENT
+              </span>
             </div>
           </div>
 
-          <div
+          <ol
             className={
-              styles.methodList
+              styles.methodRail
             }
+            data-internship-ui="method-rail"
           >
             {
               internshipMethod.map(
                 (
                   item
                 ) => (
-                  <article
+                  <li
                     className={
-                      styles.methodItem
+                      styles.methodStep
                     }
                     key={
                       item.number
                     }
                   >
-                    <span>
-                      {
-                        item.number
+                    <div
+                      className={
+                        styles.methodMeta
                       }
-                    </span>
+                    >
+                      <span>
+                        {
+                          item.number
+                        }
+                      </span>
+
+                      <i
+                        aria-hidden="true"
+                      />
+                    </div>
 
                     <h3>
                       {
@@ -540,126 +708,229 @@ export default function InternshipsPage() {
                         item.description
                       }
                     </p>
-                  </article>
+                  </li>
                 )
               )
             }
-          </div>
+          </ol>
         </Container>
       </section>
 
 
+      {/* ================================================================
+          03 — PUBLIC SHOWCASE & SAFETY
+         ================================================================ */}
+
       <section
         className={
-          styles.safetySection
+          styles.section
         }
-
         data-company-content-section="public-showcase"
+        data-internship-section="public-showcase"
       >
         <Container
           size="wide"
           className={
-            family.container
+            styles.container
           }
         >
+          <SectionHeading
+            number="03"
+            eyebrow="Public showcase"
+            title="Public by design. Controlled by default."
+            description="The showcase explains learning outcomes and technical process without publishing confidential assessment material or private contributor information."
+          />
+
           <div
             className={
-              styles.safety
+              styles.safetyLayout
             }
+            data-internship-ui="safety-boundaries"
           >
-            <div>
-              <p
-                className={
-                  family.sectionEyebrow
-                }
-              >
-                Public showcase
-              </p>
-
-              <h2>
-                Reproducible work without exposing confidential assessment material.
-              </h2>
-            </div>
-
             <div
               className={
                 styles.safetyCopy
               }
             >
-              <p>
+              <p
+                className={
+                  styles.safetyLabel
+                }
+              >
+                Publication boundary
+              </p>
+
+              <p
+                className={
+                  styles.safetyLead
+                }
+              >
                 {
                   internshipPublicNote
                 }
               </p>
 
-              <p>
+              <p
+                className={
+                  styles.contributorNote
+                }
+              >
                 {
                   internshipContributorNote
                 }
               </p>
             </div>
+
+            <dl
+              className={
+                styles.safetyTerms
+              }
+            >
+              <div>
+                <dt>
+                  01 / Authorized
+                </dt>
+
+                <dd>
+                  Security testing takes place only where the work is permitted.
+                </dd>
+              </div>
+
+              <div>
+                <dt>
+                  02 / Isolated
+                </dt>
+
+                <dd>
+                  Exercises are separated from confidential client and production environments.
+                </dd>
+              </div>
+
+              <div>
+                <dt>
+                  03 / Synthetic
+                </dt>
+
+                <dd>
+                  Public exercises use synthetic or intentionally vulnerable systems.
+                </dd>
+              </div>
+            </dl>
+          </div>
+
+          <div
+            className={
+              styles.destinationRail
+            }
+          >
+            <p>
+              Continue
+            </p>
+
+            <nav
+              aria-label="Continue exploring No Breach"
+            >
+              <Link
+                href="/careers"
+              >
+                <span>
+                  Careers
+                </span>
+
+                <Arrow />
+              </Link>
+
+              <Link
+                href="/training"
+              >
+                <span>
+                  Training
+                </span>
+
+                <Arrow />
+              </Link>
+
+              <Link
+                href="/contact"
+              >
+                <span>
+                  Contact
+                </span>
+
+                <Arrow />
+              </Link>
+            </nav>
           </div>
         </Container>
       </section>
 
 
+      {/* ================================================================
+          CTA — not part of the three-section budget
+         ================================================================ */}
+
       <section
         className={
-          family.finalCta
+          styles.cta
         }
+        data-internship-section="cta"
       >
         <Container
           size="wide"
           className={
-            family.container
+            styles.container
           }
         >
           <div
             className={
-              family.finalCtaInner
+              styles.ctaRule
+            }
+          />
+
+          <div
+            className={
+              styles.ctaLayout
             }
           >
-            <div
-              className={
-                family.finalCtaContent
-              }
-            >
+            <div>
               <p
                 className={
-                  family.sectionEyebrow
+                  styles.sectionEyebrow
                 }
               >
-                Build with No Breach
+                <span>
+                  NB
+                </span>
+
+                Applied learning
               </p>
 
-              <h2
-                className={
-                  family.ctaTitle
-                }
-              >
-                Learn security by building, breaking, detecting and documenting.
+              <h2>
+                Build, break, detect, fix and document.
               </h2>
+            </div>
 
-              <p
-                className={
-                  family.ctaText
-                }
-              >
-                Explore career opportunities and practical security training inside the No Breach ecosystem.
+            <div
+              className={
+                styles.ctaCopy
+              }
+            >
+              <p>
+                Explore opportunities to learn security through complete technical work rather than isolated exercises.
               </p>
 
               <div
                 className={
-                  family.actions
+                  styles.ctaActions
                 }
               >
                 <Link
                   href="/careers"
                   className={
-                    family.primaryAction
+                    styles.primaryAction
                   }
                 >
-                  Careers
+                  Explore careers
 
                   <Arrow />
                 </Link>
@@ -667,10 +938,10 @@ export default function InternshipsPage() {
                 <Link
                   href="/training"
                   className={
-                    family.secondaryAction
+                    styles.textAction
                   }
                 >
-                  Training
+                  Training Hub
 
                   <Arrow />
                 </Link>
