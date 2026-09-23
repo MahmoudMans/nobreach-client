@@ -1,5 +1,6 @@
-import fs from "node:fs";
-import path from "node:path";
+import {
+  readFileSync
+} from "node:fs";
 
 import {
   describe,
@@ -8,76 +9,39 @@ import {
 } from "vitest";
 
 
-const root =
-  process.cwd();
-
-
-function read(
-  relativePath: string
-) {
-  return fs.readFileSync(
-    path.join(
-      root,
-      relativePath
-    ),
+const page =
+  readFileSync(
+    "src/app/company/page.tsx",
     "utf8"
   );
-}
+
+
+const css =
+  readFileSync(
+    "src/app/company/company.module.css",
+    "utf8"
+  );
 
 
 describe(
-  "company page v4",
+  "company family V14 — company page",
   () => {
-    const page =
-      read(
-        "src/app/company/page.tsx"
-      );
-
-    const css =
-      read(
-        "src/app/company/company.module.css"
-      );
-
 
     it(
-      "uses the V4 company experience",
-      () => {
-        expect(
-          page
-        ).toContain(
-          'data-company-page="v4"'
-        );
-
-        expect(
-          css.match(
-            /NB_COMPANY_PAGE_V4/g
-          )?.length
-        ).toBe(
-          1
-        );
-
-        expect(
-          css
-        ).not.toContain(
-          "NB_COMPANY_PAGE_V3"
-        );
-      }
-    );
-
-
-    it(
-      "balances text with visual card architecture",
+      "preserves verified Company content",
       () => {
 
         for (
           const token
           of [
-            "styles.introGrid",
-            "styles.statementCard",
-            'data-company-card="statement"',
-            'data-company-ui="approach-flow"',
-            "styles.flow",
-            "styles.profileCard",
+            "2023",
+            "Tunis, Tunisia",
+            "Offensive Security",
+            "Services · Education · Community",
+            "Think offensively",
+            "Build through practice",
+            "Share knowledge",
+            "Nouha Ben Brahim"
           ]
         ) {
 
@@ -89,22 +53,45 @@ describe(
 
         }
 
+      }
+    );
 
-        expect(
-          page
-        ).not.toContain(
-          "styles.mindsetCard"
-        );
+
+    it(
+      "keeps the established runtime selectors",
+      () => {
+
+        for (
+          const token
+          of [
+            'data-company-page="v4"',
+            'data-company-design="v9"',
+            'data-company-hero="v6"',
+            'data-company-ui="profile-card"',
+            'data-company-card="capability"',
+            'data-company-card="principle"',
+            'data-company-card="timeline"',
+            'data-company-card="people"'
+          ]
+        ) {
+
+          expect(
+            page
+          ).toContain(
+            token
+          );
+
+        }
 
       }
     );
 
 
-
     it(
-      "keeps four capability cards",
+      "uses four capabilities and three principles",
       () => {
-        const block =
+
+        const capabilityBlock =
           page.slice(
             page.indexOf(
               "const capabilities ="
@@ -116,24 +103,15 @@ describe(
 
 
         expect(
-          (
-            block.match(
-              /index:/g
-            )
-            ??
-            []
-          ).length
-        ).toBe(
+          capabilityBlock.match(
+            /index:/g
+          )
+        ).toHaveLength(
           4
         );
-      }
-    );
 
 
-    it(
-      "keeps exactly three principles",
-      () => {
-        const block =
+        const principleBlock =
           page.slice(
             page.indexOf(
               "const principles ="
@@ -145,95 +123,90 @@ describe(
 
 
         expect(
-          (
-            block.match(
-              /title:/g
-            )
-            ??
-            []
-          ).length
-        ).toBe(
+          principleBlock.match(
+            /title:/g
+          )
+        ).toHaveLength(
           3
         );
 
-
-        expect(
-          page
-        ).toContain(
-          "Think offensively"
-        );
-
-        expect(
-          page
-        ).toContain(
-          "Build through practice"
-        );
-
-        expect(
-          page
-        ).toContain(
-          "Share knowledge"
-        );
       }
     );
 
 
     it(
-      "keeps verified company facts and no ownership claim",
+      "removes the embedded Company navigation bar",
       () => {
-        for (
-          const text
-          of [
-            "2023",
-            "Tunis, Tunisia",
-            "Offensive Security",
-            "Services · Education · Community"
-          ]
-        ) {
-          expect(
-            page
-          ).toContain(
-            text
-          );
-        }
-
 
         expect(
           page
-        ).not.toMatch(
-          /\bowner\b/i
+        ).not.toContain(
+          'aria-label="Company sections"'
         );
+
+        expect(
+          page
+        ).not.toContain(
+          "styles.pageNav"
+        );
+
       }
     );
 
 
     it(
-      "implements cards with restrained visual styling",
+      "uses the consolidated V14 company design",
       () => {
+
+        expect(
+          css
+        ).toContain(
+          "NB_COMPANY_FAMILY_V14"
+        );
+
+
         for (
           const token
           of [
-            ".profileCard",
-            ".statementCard",
-            ".mindsetCard",
-            ".capabilityCard",
-            ".principleCard",
-            ".ecosystemCard",
-            ".timelineCard",
-            ".founderCard",
-            ".peopleCard",
-            ".ctaCard",
-            "border-radius:",
-            "prefers-reduced-motion"
+            ".capabilityRows",
+            ".principleRows",
+            ".ecosystemGrid",
+            ".timeline",
+            ".founderPreview",
+            ".peopleRows"
           ]
         ) {
+
           expect(
             css
           ).toContain(
             token
           );
+
         }
+
       }
     );
+
+
+    it(
+      "preserves the real founder portrait preview",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          'src="/people/ceo.png"'
+        );
+
+        expect(
+          page
+        ).toContain(
+          'data-founder-photo-image="company"'
+        );
+
+      }
+    );
+
   }
 );

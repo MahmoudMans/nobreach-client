@@ -1,11 +1,11 @@
 import {
-  readFileSync,
+  readFileSync
 } from "node:fs";
 
 import {
   describe,
   expect,
-  it,
+  it
 } from "vitest";
 
 
@@ -24,136 +24,115 @@ const css =
 
 
 describe(
-  "company narrative v9",
+  "company editorial narrative V14",
   () => {
 
     it(
-      "activates V9 and retires V8",
+      "keeps full-width capability rows",
       () => {
 
         expect(
           page
         ).toContain(
-          'data-company-design="v9"'
+          'data-company-ui="capability-grid"'
         );
 
+        expect(
+          css
+        ).toContain(
+          ".capabilityRows"
+        );
+
+        expect(
+          css
+        ).toContain(
+          ".capabilityRow"
+        );
+
+      }
+    );
+
+
+    it(
+      "keeps principles as manifesto rows",
+      () => {
+
+        expect(
+          css
+        ).toContain(
+          ".principleRows"
+        );
+
+        expect(
+          css
+        ).toContain(
+          ".principleRow"
+        );
+
+      }
+    );
+
+
+    it(
+      "keeps an alternating desktop timeline",
+      () => {
+
+        expect(
+          css
+        ).toContain(
+          ".timeline::before"
+        );
+
+        expect(
+          css
+        ).toContain(
+          ".timelineItem:nth-child("
+        );
+
+      }
+    );
+
+
+    it(
+      "keeps people as directory rows",
+      () => {
+
+        expect(
+          css
+        ).toContain(
+          ".peopleRows"
+        );
+
+        expect(
+          css
+        ).toContain(
+          ".peopleRow"
+        );
+
+      }
+    );
+
+
+    it(
+      "does not use a repeated card grid for every Company section",
+      () => {
 
         expect(
           page
-        ).not.toContain(
-          'data-company-design="v8"'
-        );
-
-
-        expect(
-          css
         ).toContain(
-          "NB_COMPANY_NARRATIVE_V9"
+          "styles.companyStatement"
         );
 
-
         expect(
-          css
-        ).not.toContain(
-          "NB_COMPANY_EDITORIAL_V8"
-        );
-
-      }
-    );
-
-
-    it(
-      "turns capabilities into full-width rows",
-      () => {
-
-        expect(
-          css
+          page
         ).toContain(
-          ".capabilityGrid"
+          "styles.approach"
         );
 
-
         expect(
-          css
+          page
         ).toContain(
-          "display:\n    block;"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          "grid-template-columns:\n    110px"
-        );
-
-      }
-    );
-
-
-    it(
-      "turns principles into manifesto rows",
-      () => {
-
-        expect(
-          css
-        ).toContain(
-          ".principleGrid"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          ".principleVisual {\n  display:"
-        );
-
-      }
-    );
-
-
-    it(
-      "uses an alternating chronology",
-      () => {
-
-        expect(
-          css
-        ).toContain(
-          ".timelineGrid::before"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          ".timelineCard:nth-child(odd)"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          ".timelineCard:nth-child(even)"
-        );
-
-      }
-    );
-
-
-    it(
-      "turns people into directory rows",
-      () => {
-
-        expect(
-          css
-        ).toContain(
-          ".peopleGrid {\n  display:\n    block;"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          "grid-template-columns:\n    130px"
+          "styles.timeline"
         );
 
       }

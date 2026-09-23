@@ -1,0 +1,435 @@
+/* ==========================================================================
+   NB_COMPANY_TEAM_DESIGN_V14
+   ========================================================================== */
+
+
+.page {
+  min-width:
+    0;
+}
+
+
+.teamDirectory {
+  border-top:
+    1px
+    solid
+    var(
+      --company-divider
+    );
+}
+
+
+.teamMember {
+  display:
+    grid;
+
+  grid-template-columns:
+    112px
+    minmax(
+      0,
+      1fr
+    )
+    48px;
+
+  gap:
+    32px;
+
+  align-items:
+    center;
+
+  min-height:
+    240px;
+
+  padding:
+    32px
+    0;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --company-divider
+    );
+}
+
+
+.memberIdentity {
+  display:
+    grid;
+
+  gap:
+    18px;
+
+  align-content:
+    center;
+}
+
+
+.memberIdentity span {
+  color:
+    var(
+      --company-text-subtle
+    );
+
+  font-family:
+    var(
+      --font-company-mono
+    ),
+    monospace;
+
+  font-size:
+    0.68rem;
+}
+
+
+.memberIdentity strong {
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  width:
+    72px;
+
+  height:
+    72px;
+
+  color:
+    var(
+      --company-bg
+    );
+
+  background:
+    var(
+      --company-cyan
+    );
+
+  border-radius:
+    14px;
+
+  font-family:
+    var(
+      --font-company-display
+    ),
+    sans-serif;
+
+  font-size:
+    1.15rem;
+}
+
+
+.memberCopy {
+  max-width:
+    780px;
+}
+
+
+.memberCopy h2 {
+  margin:
+    8px
+    0
+    0;
+
+  color:
+    var(
+      --company-text
+    );
+
+  font-family:
+    var(
+      --font-company-display
+    ),
+    sans-serif;
+
+  font-size:
+    clamp(
+      1.9rem,
+      3vw,
+      2.6rem
+    );
+
+  font-weight:
+    600;
+
+  letter-spacing:
+    -0.035em;
+}
+
+
+.memberCopy > p:not(
+  :first-child
+) {
+  max-width:
+    680px;
+
+  margin:
+    12px
+    0
+    0;
+
+  color:
+    var(
+      --company-text-muted
+    );
+
+  line-height:
+    1.65;
+}
+
+
+.memberAction {
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  width:
+    44px;
+
+  height:
+    44px;
+
+  color:
+    var(
+      --company-cyan
+    );
+
+  border:
+    1px
+    solid
+    var(
+      --company-border
+    );
+
+  border-radius:
+    10px;
+
+  text-decoration:
+    none;
+}
+
+
+.memberAction:hover {
+  background:
+    rgba(
+      161,
+      226,
+      240,
+      0.06
+    );
+
+  border-color:
+    var(
+      --company-border-hover
+    );
+}
+
+
+.memberAction:focus-visible {
+  outline:
+    2px
+    solid
+    var(
+      --company-cyan
+    );
+
+  outline-offset:
+    3px;
+}
+
+
+.policy {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1.1fr
+    )
+    minmax(
+      280px,
+      0.9fr
+    );
+
+  gap:
+    clamp(
+      40px,
+      7vw,
+      88px
+    );
+
+  align-items:
+    end;
+
+  padding:
+    32px
+    0;
+
+  border-top:
+    1px
+    solid
+    var(
+      --company-divider
+    );
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --company-divider
+    );
+}
+
+
+.policy h2 {
+  max-width:
+    680px;
+
+  margin:
+    10px
+    0
+    0;
+
+  color:
+    var(
+      --company-text-secondary
+    );
+
+  font-family:
+    var(
+      --font-company-display
+    ),
+    sans-serif;
+
+  font-size:
+    clamp(
+      1.8rem,
+      3.2vw,
+      2.6rem
+    );
+
+  font-weight:
+    600;
+
+  line-height:
+    1.2;
+
+  letter-spacing:
+    -0.03em;
+}
+
+
+.policy > p {
+  max-width:
+    520px;
+
+  margin:
+    0;
+
+  color:
+    var(
+      --company-text-muted
+    );
+
+  line-height:
+    1.65;
+}
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .teamMember {
+    grid-template-columns:
+      72px
+      minmax(
+        0,
+        1fr
+      )
+      44px;
+
+    gap:
+      16px;
+
+    min-height:
+      0;
+
+    padding:
+      24px
+      0;
+  }
+
+
+  .memberIdentity {
+    gap:
+      12px;
+  }
+
+
+  .memberIdentity strong {
+    width:
+      56px;
+
+    height:
+      56px;
+  }
+
+
+  .memberCopy h2 {
+    font-size:
+      1.55rem;
+  }
+
+
+  .policy {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      24px;
+  }
+
+}
+
+
+@media (
+  max-width:
+    420px
+) {
+
+  .teamMember {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      )
+      44px;
+  }
+
+
+  .memberIdentity {
+    grid-column:
+      1
+      /
+      -1;
+
+    grid-template-columns:
+      auto
+      56px;
+
+    align-items:
+      center;
+
+    justify-content:
+      space-between;
+  }
+
+}

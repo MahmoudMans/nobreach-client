@@ -1,11 +1,19 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import type {
   Metadata
 } from "next";
 
-import Link from "next/link";
+import {
+  Breadcrumbs
+} from "@/components/navigation/breadcrumbs";
 
+import {
+  Container
+} from "@/components/layout/container";
+
+import family from "../company-family.module.css";
 import styles from "./founder.module.css";
 
 
@@ -34,7 +42,6 @@ const journey = [
     description:
       "Technical foundations and understanding how systems are built."
   },
-
   {
     index:
       "02",
@@ -48,7 +55,6 @@ const journey = [
     description:
       "Moving from building systems toward understanding how they fail."
   },
-
   {
     index:
       "03",
@@ -62,7 +68,6 @@ const journey = [
     description:
       "Developing practical vulnerability research and security-testing thinking."
   },
-
   {
     index:
       "04",
@@ -76,7 +81,6 @@ const journey = [
     description:
       "Applying attacker-oriented reasoning to security work and technical education."
   },
-
   {
     index:
       "05",
@@ -107,7 +111,6 @@ const expertise = [
     description:
       "Application behavior, attack surfaces and security testing."
   },
-
   {
     index:
       "02",
@@ -121,7 +124,6 @@ const expertise = [
     description:
       "Authentication, authorization and object-level access."
   },
-
   {
     index:
       "03",
@@ -135,7 +137,6 @@ const expertise = [
     description:
       "Attacker-oriented analysis and validation."
   },
-
   {
     index:
       "04",
@@ -198,51 +199,96 @@ function Arrow() {
 
   return (
     <span
-      className={
-        styles.founderArrow
-      }
       aria-hidden="true"
     >
       ↗
     </span>
   );
+
 }
 
 
-function SectionLabel({
+function SectionHeader({
   index,
-  label
+  eyebrow,
+  title,
+  description
 }: {
   index:
     string;
 
-  label:
+  eyebrow:
+    string;
+
+  title:
+    string;
+
+  description?:
     string;
 }) {
 
   return (
     <div
       className={
-        styles.founderSectionLabel
+        family.sectionHeader
       }
     >
-      <span>
-        {
-          index
-        }
-      </span>
+      <div>
+        <span
+          className={
+            family.sectionIndex
+          }
+        >
+          {
+            index
+          }
+        </span>
 
-      <i>
-        /
-      </i>
+        <p
+          className={
+            family.sectionEyebrow
+          }
+        >
+          {
+            eyebrow
+          }
+        </p>
+      </div>
 
-      <strong>
-        {
-          label
+      <div
+        className={
+          family.sectionHeaderCopy
         }
-      </strong>
+      >
+        <h2
+          className={
+            family.sectionTitle
+          }
+        >
+          {
+            title
+          }
+        </h2>
+
+        {
+          description
+            ? (
+              <p
+                className={
+                  family.sectionDescription
+                }
+              >
+                {
+                  description
+                }
+              </p>
+            )
+            : null
+        }
+      </div>
     </div>
   );
+
 }
 
 
@@ -251,9 +297,10 @@ export default function FounderPage() {
   return (
     <div
       className={
-        styles.founderPage
+        `${family.page} ${styles.founderPage}`
       }
       data-founder-page="v2"
+      data-company-family="v14"
     >
       <script
         type="application/ld+json"
@@ -265,300 +312,230 @@ export default function FounderPage() {
         }
       </script>
 
+      <Breadcrumbs
+        items={[
+          {
+            label:
+              "Company",
+
+            href:
+              "/company"
+          },
+          {
+            label:
+              "Founder"
+          }
+        ]}
+      />
+
 
       <section
         className={
-          styles.founderHero
+          `${family.pageIntro} ${family.compactPageIntro} ${styles.founderHero}`
         }
         data-founder-section="hero"
       >
-        <div
+        <Container
+          size="wide"
           className={
-            styles.founderHeroGlow
-          }
-          aria-hidden="true"
-        />
-
-        <div
-          className={
-            styles.founderHeroInner
+            family.container
           }
         >
           <div
             className={
-              styles.founderHeroCopy
+              `${family.pageIntroGrid} ${styles.founderHeroInner}`
             }
-            data-founder-ui="hero-copy"
           >
             <div
               className={
-                styles.founderKicker
+                family.introCopy
               }
+              data-founder-ui="hero-copy"
             >
-              <span />
+              <p
+                className={
+                  family.eyebrow
+                }
+              >
+                Founder / No Breach
+              </p>
 
-              FOUNDER / NO BREACH
-            </div>
+              <h1
+                className={
+                  family.title
+                }
+              >
+                Nouha Ben Brahim
+              </h1>
 
-            <h1>
-              Nouha
-              <span>
-                Ben Brahim
-              </span>
-            </h1>
+              <p
+                className={
+                  styles.founderRole
+                }
+              >
+                Founder of No Breach
+              </p>
 
-            <p
-              className={
-                styles.founderRole
-              }
-            >
-              Founder of No Breach
-            </p>
+              <p
+                className={
+                  family.lead
+                }
+              >
+                Cybersecurity professional focused on offensive security, practical training and community development.
+              </p>
 
-            <p
-              className={
-                styles.founderIntro
-              }
-            >
-              Cybersecurity professional focused on offensive security,
-              practical training and community development.
-            </p>
-
-            <div
-              className={
-                styles.founderFocus
-              }
-            >
-              {
-                focus.map(
-                  (
-                    item
-                  ) => (
-                    <span
-                      key={
-                        item
-                      }
-                    >
-                      {
-                        item
-                      }
-                    </span>
+              <div
+                className={
+                  family.tags
+                }
+              >
+                {
+                  focus.map(
+                    (
+                      item
+                    ) => (
+                      <span
+                        className={
+                          family.tag
+                        }
+                        key={
+                          item
+                        }
+                      >
+                        {
+                          item
+                        }
+                      </span>
+                    )
                   )
-                )
-              }
-            </div>
-
-            <div
-              className={
-                styles.founderHeroActions
-              }
-            >
-              <Link
-                href="/company"
-                className={
-                  styles.founderPrimaryAction
                 }
-              >
-                About No Breach
-
-                <Arrow />
-              </Link>
-
-              <Link
-                href="/activities"
-                className={
-                  styles.founderSecondaryAction
-                }
-              >
-                Public activity
-
-                <Arrow />
-              </Link>
-            </div>
-          </div>
-
-
-          <div
-            className={
-              styles.founderPortraitCard
-            }
-            data-founder-ui="portrait-card"
-            aria-label="Abstract founder profile artwork"
-          >
-            <div
-              className={
-                styles.founderPortraitHeader
-              }
-            >
-              <span>
-                NB / FOUNDER
-              </span>
-
-              <span>
-                PROFILE
-              </span>
-            </div>
-
-            <div
-              className={
-                styles.founderPortraitStage
-              }
-              aria-hidden="true"
-            >
-
-              <Image
-                src="/people/ceo.png"
-                alt=""
-                fill
-                priority
-                sizes="(max-width: 680px) calc(100vw - 2rem), (max-width: 1024px) 46vw, 520px"
-                className={
-                  styles.founderPortraitPhoto
-                }
-                data-founder-photo-image="profile"
-              />
-
-              <div
-                className={
-                  styles.founderPortraitPhotoShade
-                }
-                data-founder-photo-shade="profile"
-              />
-
-              <div
-                className={
-                  styles.founderPortraitOrbit
-                }
-              />
-
-              <div
-                className={
-                  styles.founderPortraitOrbitSecondary
-                }
-              />
-
-
-
-              <div
-                className={
-                  styles.founderCrosshair
-                }
-              />
-
-              <span
-                className={
-                  styles.founderPortraitSignalOne
-                }
-              >
-                OFFSEC
-              </span>
-
-              <span
-                className={
-                  styles.founderPortraitSignalTwo
-                }
-              >
-                TRAIN
-              </span>
-
-              <span
-                className={
-                  styles.founderPortraitSignalThree
-                }
-              >
-                SHARE
-              </span>
-            </div>
-
-            <div
-              className={
-                styles.founderPortraitFooter
-              }
-            >
-              <div>
-                <span>
-                  ROLE
-                </span>
-
-                <strong>
-                  Founder
-                </strong>
               </div>
 
-              <div>
-                <span>
-                  FOCUS
-                </span>
+              <div
+                className={
+                  family.actions
+                }
+              >
+                <Link
+                  href="/company"
+                  className={
+                    family.primaryAction
+                  }
+                >
+                  About No Breach
 
-                <strong>
-                  Offensive Security
-                </strong>
+                  <Arrow />
+                </Link>
+
+                <Link
+                  href="/activities"
+                  className={
+                    family.secondaryAction
+                  }
+                >
+                  Public activity
+
+                  <Arrow />
+                </Link>
               </div>
             </div>
+
+            <div
+              className={
+                styles.founderPortraitCard
+              }
+              data-founder-ui="portrait-card"
+              aria-label="Founder portrait"
+            >
+              <div
+                className={
+                  styles.founderPortraitHeader
+                }
+              >
+                <span>
+                  NB / FOUNDER
+                </span>
+
+                <span>
+                  PROFILE
+                </span>
+              </div>
+
+              <div
+                className={
+                  styles.founderPortraitStage
+                }
+                aria-hidden="true"
+              >
+                <Image
+                  src="/people/ceo.png"
+                  alt=""
+                  fill
+                  priority
+                  sizes="(max-width: 768px) calc(100vw - 40px), 460px"
+                  className={
+                    styles.founderPortraitPhoto
+                  }
+                  data-founder-photo-image="profile"
+                />
+
+                <div
+                  className={
+                    styles.founderPortraitPhotoShade
+                  }
+                  data-founder-photo-shade="profile"
+                />
+              </div>
+
+              <dl
+                className={
+                  styles.founderPortraitFooter
+                }
+              >
+                <div>
+                  <dt>
+                    Role
+                  </dt>
+
+                  <dd>
+                    Founder
+                  </dd>
+                </div>
+
+                <div>
+                  <dt>
+                    Focus
+                  </dt>
+
+                  <dd>
+                    Offensive Security
+                  </dd>
+                </div>
+              </dl>
+            </div>
           </div>
-        </div>
+        </Container>
       </section>
-
-
-      <nav
-        className={
-          styles.founderNav
-        }
-        aria-label="Founder page sections"
-      >
-        <div
-          className={
-            styles.founderNavInner
-          }
-        >
-          <a
-            href="#overview"
-          >
-            Overview
-          </a>
-
-          <a
-            href="#journey"
-          >
-            Journey
-          </a>
-
-          <a
-            href="#expertise"
-          >
-            Expertise
-          </a>
-
-          <a
-            href="#education"
-          >
-            Education
-          </a>
-
-          <a
-            href="#public-work"
-          >
-            Public work
-          </a>
-        </div>
-      </nav>
 
 
       <section
         id="overview"
         className={
-          styles.founderSection
+          family.section
         }
         data-founder-section="overview"
       >
-        <div
+        <Container
+          size="wide"
           className={
-            styles.founderContainer
+            family.container
           }
         >
-          <SectionLabel
+          <SectionHeader
             index="01"
-            label="Professional overview"
+            eyebrow="Overview"
+            title="From programming to offensive security."
+            description="The progression starts with understanding how systems are built, then moves toward understanding how they fail and how those lessons can be taught."
           />
 
           <div
@@ -572,18 +549,12 @@ export default function FounderPage() {
               }
               data-founder-card="statement"
             >
-              <span>
-                FOUNDER / SECURITY
-              </span>
-
-              <h2>
-                Security through
-                an attacker’s perspective.
-              </h2>
-
-              <p>
-                The founder profile connects practical offensive-security
-                work with technical education and community development.
+              <p
+                className={
+                  styles.overviewStatement
+                }
+              >
+                Practical security work becomes stronger when technical reasoning, experimentation and teaching reinforce each other.
               </p>
             </article>
 
@@ -599,15 +570,15 @@ export default function FounderPage() {
                 data-founder-card="overview"
               >
                 <span>
-                  ROLE
+                  APPROACH
                 </span>
 
                 <strong>
-                  Founder
+                  Attacker-oriented reasoning
                 </strong>
 
                 <p>
-                  Building the company around practical security.
+                  Understand behavior before relying on automation.
                 </p>
               </article>
 
@@ -618,49 +589,41 @@ export default function FounderPage() {
                 data-founder-card="overview"
               >
                 <span>
-                  APPROACH
+                  DIRECTION
                 </span>
 
                 <strong>
-                  Practice first
+                  Security through practice
                 </strong>
 
                 <p>
-                  Test, learn, demonstrate and share.
+                  Build, validate, document and teach repeatable methods.
                 </p>
               </article>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
 
       <section
         id="journey"
         className={
-          `${styles.founderSection} ${styles.founderJourneySection}`
+          `${family.section} ${family.sectionAlt}`
         }
         data-founder-section="journey"
       >
-        <div
+        <Container
+          size="wide"
           className={
-            styles.founderContainer
+            family.container
           }
         >
-          <div
-            className={
-              styles.founderSectionHeader
-            }
-          >
-            <SectionLabel
-              index="02"
-              label="Journey"
-            />
-
-            <h2>
-              From programming to offensive security.
-            </h2>
-          </div>
+          <SectionHeader
+            index="02"
+            eyebrow="Journey"
+            title="A technical path built in layers."
+          />
 
           <div
             className={
@@ -671,10 +634,9 @@ export default function FounderPage() {
             {
               journey.map(
                 (
-                  item,
-                  index
+                  item
                 ) => (
-                  <div
+                  <article
                     className={
                       styles.founderJourneyItem
                     }
@@ -683,91 +645,66 @@ export default function FounderPage() {
                       item.index
                     }
                   >
-                    <div
+                    <span
                       className={
-                        styles.founderJourneyTop
+                        styles.journeyIndex
                       }
                     >
-                      <span>
-                        {
-                          item.index
-                        }
-                      </span>
-
-                      <strong>
-                        {
-                          item.code
-                        }
-                      </strong>
-                    </div>
+                      {
+                        item.index
+                      }
+                    </span>
 
                     <div
                       className={
-                        styles.founderJourneyVisual
+                        styles.journeyLabel
                       }
-                      aria-hidden="true"
                     >
-                      <span />
-
                       {
-                        index <
-                        journey.length -
-                          1
-                          ? (
-                              <i>
-                                →
-                              </i>
-                            )
-                          : null
+                        item.code
                       }
                     </div>
 
-                    <h3>
-                      {
-                        item.title
-                      }
-                    </h3>
+                    <div>
+                      <h3>
+                        {
+                          item.title
+                        }
+                      </h3>
 
-                    <p>
-                      {
-                        item.description
-                      }
-                    </p>
-                  </div>
+                      <p>
+                        {
+                          item.description
+                        }
+                      </p>
+                    </div>
+                  </article>
                 )
               )
             }
           </div>
-        </div>
+        </Container>
       </section>
 
 
       <section
         id="expertise"
         className={
-          styles.founderSection
+          family.section
         }
         data-founder-section="expertise"
       >
-        <div
+        <Container
+          size="wide"
           className={
-            styles.founderContainer
+            family.container
           }
         >
-          <div
-            className={
-              styles.founderSectionHeader
-            }
-          >
-            <SectionLabel
-              index="03"
-              label="Expertise"
-            />
-
-            <h2>
-              Technical focus.
-            </h2>
-          </div>
+          <SectionHeader
+            index="03"
+            eyebrow="Expertise"
+            title="Areas of technical focus."
+          />
 
           <div
             className={
@@ -791,7 +728,7 @@ export default function FounderPage() {
                   >
                     <div
                       className={
-                        styles.founderExpertiseTop
+                        styles.expertiseMeta
                       }
                     >
                       <span>
@@ -800,25 +737,272 @@ export default function FounderPage() {
                         }
                       </span>
 
-                      <strong>
+                      <small>
                         {
                           item.code
                         }
-                      </strong>
+                      </small>
                     </div>
 
-                    <div
-                      className={
-                        styles.founderExpertiseVisual
+                    <div>
+                      <h3>
+                        {
+                          item.title
+                        }
+                      </h3>
+
+                      <p>
+                        {
+                          item.description
+                        }
+                      </p>
+                    </div>
+                  </article>
+                )
+              )
+            }
+          </div>
+        </Container>
+      </section>
+
+
+      <section
+        id="education"
+        className={
+          `${family.section} ${family.sectionAlt}`
+        }
+        data-founder-section="education"
+      >
+        <Container
+          size="wide"
+          className={
+            family.container
+          }
+        >
+          <SectionHeader
+            index="04"
+            eyebrow="Education"
+            title="Learning as part of the security practice."
+          />
+
+          <article
+            className={
+              styles.founderEducationCard
+            }
+            data-founder-card="education"
+          >
+            <div
+              className={
+                styles.educationVisual
+              }
+              aria-hidden="true"
+            >
+              <span>
+                BUILD
+              </span>
+
+              <i />
+
+              <span>
+                TEST
+              </span>
+
+              <i />
+
+              <span>
+                EXPLAIN
+              </span>
+            </div>
+
+            <div
+              className={
+                styles.educationCopy
+              }
+            >
+              <p
+                className={
+                  family.eyebrow
+                }
+              >
+                Hands-on methodology
+              </p>
+
+              <h2>
+                Learn security by doing security.
+              </h2>
+
+              <p>
+                Training and mentorship focus on practical technical work, experimentation and repeatable reasoning.
+              </p>
+
+              <Link
+                href="/training"
+                className={
+                  family.textAction
+                }
+              >
+                Explore Training Hub
+
+                <Arrow />
+              </Link>
+            </div>
+          </article>
+        </Container>
+      </section>
+
+
+      <section
+        id="public-work"
+        className={
+          family.section
+        }
+        data-founder-section="public-work"
+      >
+        <Container
+          size="wide"
+          className={
+            family.container
+          }
+        >
+          <SectionHeader
+            index="05"
+            eyebrow="Public work"
+            title="Selected public engagements."
+            description="Training, community participation and technical knowledge sharing remain visible parts of the work."
+          />
+
+          <div
+            className={
+              styles.founderEngagementStrip
+            }
+            data-founder-ui="engagement-evidence"
+          >
+            {
+              [
+                "CyberSummit 4.0",
+                "CyberCamp 5.0",
+                "The Hackers Line"
+              ].map(
+                (
+                  item,
+                  index
+                ) => (
+                  <div
+                    className={
+                      styles.founderEngagementItem
+                    }
+                    key={
+                      item
+                    }
+                  >
+                    <span>
+                      {
+                        String(
+                          index + 1
+                        ).padStart(
+                          2,
+                          "0"
+                        )
                       }
-                      aria-hidden="true"
+                    </span>
+
+                    <strong>
+                      {
+                        item
+                      }
+                    </strong>
+                  </div>
+                )
+              )
+            }
+          </div>
+
+          <div
+            className={
+              styles.founderPublicGrid
+            }
+          >
+            {
+              [
+                {
+                  code:
+                    "ACT",
+
+                  label:
+                    "Activities",
+
+                  title:
+                    "Public activity",
+
+                  description:
+                    "Workshops, training, community and technical activity.",
+
+                  href:
+                    "/activities"
+                },
+                {
+                  code:
+                    "R&D",
+
+                  label:
+                    "Knowledge",
+
+                  title:
+                    "Security insights",
+
+                  description:
+                    "Practical technical thinking published by No Breach.",
+
+                  href:
+                    "/insights"
+                },
+                {
+                  code:
+                    "CTF",
+
+                  label:
+                    "Community",
+
+                  title:
+                    "CR4CKOUT",
+
+                  description:
+                    "Technical challenge, experimentation and community.",
+
+                  href:
+                    "/cr4ckout"
+                }
+              ].map(
+                (
+                  item
+                ) => (
+                  <Link
+                    href={
+                      item.href
+                    }
+                    className={
+                      styles.founderPublicCard
+                    }
+                    data-founder-card="public"
+                    key={
+                      item.code
+                    }
+                  >
+                    <span
+                      className={
+                        styles.publicCode
+                      }
                     >
-                      <span />
+                      {
+                        item.code
+                      }
+                    </span>
 
-                      <span />
-
-                      <i />
-                    </div>
+                    <small>
+                      {
+                        item.label
+                      }
+                    </small>
 
                     <h3>
                       {
@@ -831,401 +1015,96 @@ export default function FounderPage() {
                         item.description
                       }
                     </p>
-                  </article>
+
+                    <Arrow />
+                  </Link>
                 )
               )
             }
           </div>
-        </div>
-      </section>
-
-
-      <section
-        id="education"
-        className={
-          `${styles.founderSection} ${styles.founderEducationSection}`
-        }
-        data-founder-section="education"
-      >
-        <div
-          className={
-            styles.founderContainer
-          }
-        >
-          <SectionLabel
-            index="04"
-            label="Teaching & mentorship"
-          />
-
-          <div
-            className={
-              styles.founderEducationCard
-            }
-            data-founder-card="education"
-          >
-            <div
-              className={
-                styles.founderEducationVisual
-              }
-              aria-hidden="true"
-            >
-              <div
-                className={
-                  styles.founderLabCore
-                }
-              >
-                LAB
-              </div>
-
-              <span>
-                LEARN
-              </span>
-
-              <span>
-                TEST
-              </span>
-
-              <span>
-                BUILD
-              </span>
-            </div>
-
-            <div
-              className={
-                styles.founderEducationCopy
-              }
-            >
-              <span>
-                HANDS-ON LEARNING
-              </span>
-
-              <h2>
-                Learn security
-                by doing security.
-              </h2>
-
-              <p>
-                Training and mentorship focus on practical technical work,
-                experimentation and repeatable reasoning.
-              </p>
-
-              <Link
-                href="/training"
-                className={
-                  styles.founderInlineAction
-                }
-              >
-                Explore Training Hub
-
-                <Arrow />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      <section
-        id="public-work"
-        className={
-          styles.founderSection
-        }
-        data-founder-section="public-work"
-      >
-        <div
-          className={
-            styles.founderContainer
-          }
-        >
-          <div
-            className={
-              styles.founderSectionHeader
-            }
-          >
-            <SectionLabel
-              index="05"
-              label="Public work"
-            />
-
-            <h2>
-              Selected public engagements.
-            </h2>
-          </div>
-
-          <div
-            className={
-              styles.founderEngagementStrip
-            }
-            data-founder-ui="engagement-evidence"
-          >
-            <div
-              className={
-                styles.founderEngagementItem
-              }
-            >
-              <span>
-                01
-              </span>
-
-              <strong>
-                CyberSummit 4.0
-              </strong>
-            </div>
-
-            <div
-              className={
-                styles.founderEngagementItem
-              }
-            >
-              <span>
-                02
-              </span>
-
-              <strong>
-                CyberCamp 5.0
-              </strong>
-            </div>
-
-            <div
-              className={
-                styles.founderEngagementItem
-              }
-            >
-              <span>
-                03
-              </span>
-
-              <strong>
-                The Hackers Line
-              </strong>
-            </div>
-          </div>
-
-
-          <div
-            className={
-              styles.founderPublicGrid
-            }
-          >
-            <Link
-              href="/activities"
-              className={
-                styles.founderPublicCard
-              }
-              data-founder-card="public"
-            >
-              <div
-                className={
-                  styles.founderPublicVisual
-                }
-                aria-hidden="true"
-              >
-                <span>
-                  ACT
-                </span>
-
-                <i />
-
-                <i />
-
-                <i />
-              </div>
-
-              <div
-                className={
-                  styles.founderPublicCopy
-                }
-              >
-                <span>
-                  ACTIVITIES
-                </span>
-
-                <h3>
-                  Public activity
-                </h3>
-
-                <p>
-                  Workshops, training, community and technical activity.
-                </p>
-              </div>
-
-              <Arrow />
-            </Link>
-
-
-            <Link
-              href="/insights"
-              className={
-                styles.founderPublicCard
-              }
-              data-founder-card="public"
-            >
-              <div
-                className={
-                  `${styles.founderPublicVisual} ${styles.founderKnowledgeVisual}`
-                }
-                aria-hidden="true"
-              >
-                <span>
-                  R&D
-                </span>
-
-                <i />
-
-                <i />
-
-                <i />
-              </div>
-
-              <div
-                className={
-                  styles.founderPublicCopy
-                }
-              >
-                <span>
-                  KNOWLEDGE
-                </span>
-
-                <h3>
-                  Security insights
-                </h3>
-
-                <p>
-                  Practical technical thinking published by No Breach.
-                </p>
-              </div>
-
-              <Arrow />
-            </Link>
-
-
-            <Link
-              href="/cr4ckout"
-              className={
-                styles.founderPublicCard
-              }
-              data-founder-card="public"
-            >
-              <div
-                className={
-                  `${styles.founderPublicVisual} ${styles.founderCommunityVisual}`
-                }
-                aria-hidden="true"
-              >
-                <span>
-                  CTF
-                </span>
-
-                <i />
-
-                <i />
-
-                <i />
-              </div>
-
-              <div
-                className={
-                  styles.founderPublicCopy
-                }
-              >
-                <span>
-                  COMMUNITY
-                </span>
-
-                <h3>
-                  CR4CKOUT
-                </h3>
-
-                <p>
-                  Technical challenge, experimentation and community.
-                </p>
-              </div>
-
-              <Arrow />
-            </Link>
-          </div>
-        </div>
+        </Container>
       </section>
 
 
       <section
         className={
-          styles.founderCta
+          `${family.finalCta} ${styles.founderCta}`
         }
         data-founder-section="cta"
       >
-        <div
+        <Container
+          size="wide"
           className={
-            styles.founderCtaCard
+            family.container
           }
-          data-founder-card="cta"
         >
           <div
             className={
-              styles.founderCtaGraphic
+              `${family.finalCtaInner} ${styles.founderCtaCard}`
             }
-            aria-hidden="true"
+            data-founder-card="cta"
           >
-            <span>
-              NB
-            </span>
-
-            <i />
-
-            <i />
-
-            <i />
-          </div>
-
-          <div
-            className={
-              styles.founderCtaContent
-            }
-          >
-            <SectionLabel
-              index="06"
-              label="No Breach"
-            />
-
-            <h2>
-              See the company
-              behind the founder.
-            </h2>
-
-            <p>
-              Explore No Breach services, training and cybersecurity work.
-            </p>
-
             <div
               className={
-                styles.founderCtaActions
+                family.finalCtaContent
               }
             >
-              <Link
-                href="/company"
+              <p
                 className={
-                  styles.founderPrimaryAction
+                  family.sectionEyebrow
                 }
               >
-                About No Breach
+                Connect
+              </p>
 
-                <Arrow />
-              </Link>
-
-              <Link
-                href="/contact"
+              <h2
                 className={
-                  styles.founderSecondaryAction
+                  family.ctaTitle
                 }
               >
-                Contact
+                Explore the work behind No Breach.
+              </h2>
 
-                <Arrow />
-              </Link>
+              <p
+                className={
+                  family.ctaText
+                }
+              >
+                Learn more about the company, its technical activity and the practical security work built around it.
+              </p>
+
+              <div
+                className={
+                  family.actions
+                }
+              >
+                <Link
+                  href="/company"
+                  className={
+                    family.primaryAction
+                  }
+                >
+                  About No Breach
+
+                  <Arrow />
+                </Link>
+
+                <Link
+                  href="/contact"
+                  className={
+                    family.secondaryAction
+                  }
+                >
+                  Contact
+
+                  <Arrow />
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
+        </Container>
       </section>
     </div>
   );
+
 }

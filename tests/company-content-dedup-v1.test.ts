@@ -1,11 +1,11 @@
 import {
-  readFileSync,
+  readFileSync
 } from "node:fs";
 
 import {
   describe,
   expect,
-  it,
+  it
 } from "vitest";
 
 
@@ -42,7 +42,7 @@ describe(
 
 
     it(
-      "removes the redundant mindset card but keeps the approach",
+      "removes the redundant mindset card but preserves the three-step approach",
       () => {
 
         expect(
@@ -64,15 +64,20 @@ describe(
           of [
             "Test",
             "Learn",
-            "Share",
+            "Share"
           ]
         ) {
 
+          /*
+           * V14 stores these as data and renders semantic H3 headings.
+           * The deduplication contract is about the information and single
+           * approach structure, not a historical <strong> implementation.
+           */
           expect(
             page
           ).toMatch(
             new RegExp(
-              `<strong>\\s*${step}\\s*</strong>`
+              `title:\\s*"${step}"`
             )
           );
 
@@ -104,7 +109,7 @@ describe(
 
 
     it(
-      "keeps the unique company sections",
+      "keeps the unique company information sections",
       () => {
 
         const required = [
@@ -113,7 +118,7 @@ describe(
           'data-company-ui="principle-grid"',
           'data-company-ui="ecosystem-grid"',
           'data-company-ui="timeline-grid"',
-          'data-company-ui="people-grid"',
+          'data-company-ui="people-grid"'
         ];
 
 
@@ -135,20 +140,48 @@ describe(
 
 
     it(
-      "uses the simplified company introduction layout",
+      "uses the V14 simplified editorial introduction without restoring a duplicate card",
       () => {
 
         expect(
           css
         ).toContain(
-          "NB_COMPANY_CONTENT_DEDUP_V1"
+          "NB_COMPANY_FAMILY_V14"
+        );
+
+
+        expect(
+          page
+        ).toContain(
+          "styles.companyStatement"
+        );
+
+
+        expect(
+          page
+        ).toContain(
+          "styles.statementLead"
         );
 
 
         expect(
           css
         ).toContain(
-          "max-width:\n    900px;"
+          ".companyStatement {"
+        );
+
+
+        expect(
+          css
+        ).toContain(
+          ".statementLead {"
+        );
+
+
+        expect(
+          page
+        ).not.toContain(
+          "styles.mindsetCard"
         );
 
       }

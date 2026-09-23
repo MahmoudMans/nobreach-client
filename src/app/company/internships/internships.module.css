@@ -1,1344 +1,707 @@
+/* ==========================================================================
+   NB_COMPANY_INTERNSHIPS_DESIGN_V14
+   ========================================================================== */
+
+
 .page {
-  overflow: clip;
+  min-width:
+    0;
 }
 
-.hero {
-  position: relative;
-  padding:
-    clamp(
-      4.5rem,
-      7vw,
-      6.5rem
-    )
-    0
-    clamp(
-      4rem,
-      7vw,
-      6rem
-    );
-  border-bottom:
-    1px solid
-    var(--border-soft);
-}
 
-.hero::before {
-  position: absolute;
-  inset:
-    0 0 auto;
-  height: 520px;
-  background:
-    radial-gradient(
-      circle at 78% 18%,
-      rgba(
-        var(--brand-violet-rgb),
-        0.17
-      ),
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at 58% 5%,
-      rgba(
-        var(--brand-cyan-rgb),
-        0.07
-      ),
-      transparent 30%
-    );
-  content: "";
-  pointer-events: none;
-}
+/* ==========================================================================
+   PROJECT PORTFOLIO
+   ========================================================================== */
 
-.heroGrid {
-  position: relative;
-  display: grid;
-  grid-template-columns:
-    minmax(0, 1.3fr)
-    minmax(300px, 0.7fr);
-  gap:
-    clamp(
-      3rem,
-      7vw,
-      6rem
-    );
-  align-items: end;
-}
-
-.eyebrow,
-.sectionEyebrow,
-.metaLabel,
-.safetyLabel {
-  color:
-    var(--brand-blue);
-  font-family:
-    var(--font-geist-mono),
-    monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.heroTitle {
-  max-width: 900px;
-  margin-top: 1rem;
-  font-size:
-    clamp(
-      3.2rem,
-      6.4vw,
-      6rem
-    );
-  font-weight: 520;
-  letter-spacing:
-    -0.065em;
-  line-height: 0.94;
-  text-wrap: balance;
-}
-
-.heroText {
-  max-width: 700px;
-  margin-top: 1.45rem;
-  color:
-    var(--color-text-secondary);
-  font-size: 1rem;
-  line-height: 1.75;
-}
-
-.heroPanel {
-  padding: 1.4rem;
-  border:
-    1px solid
-    var(--border-medium);
-  border-radius: 14px;
-  background:
-    linear-gradient(
-      145deg,
-      rgba(
-        var(--brand-violet-rgb),
-        0.13
-      ),
-      transparent 52%
-    ),
-    var(--color-surface);
-}
-
-.heroPanelTitle {
-  margin-top: 3rem;
-  font-size:
-    clamp(
-      1.6rem,
-      2.7vw,
-      2.25rem
-    );
-  font-weight: 520;
-  letter-spacing:
-    -0.04em;
-  line-height: 1.08;
-}
-
-.heroPanelText {
-  margin-top: 0.85rem;
-  color:
-    var(--color-text-secondary);
-  font-size: 0.84rem;
-  line-height: 1.68;
-}
-
-.heroStats {
-  display: grid;
-  grid-template-columns:
-    repeat(
-      2,
-      minmax(0, 1fr)
-    );
-  gap: 0.7rem;
-  margin-top: 2rem;
-}
-
-.heroStat {
-  padding-top: 0.75rem;
-  border-top:
-    1px solid
-    var(--border-soft);
-}
-
-.heroStat dt {
-  color:
-    var(--color-text-faint);
-  font-family:
-    var(--font-geist-mono),
-    monospace;
-  font-size: 0.54rem;
-  text-transform: uppercase;
-}
-
-.heroStat dd {
-  margin-top: 0.35rem;
-  color:
-    var(--color-text);
-  font-size: 0.83rem;
-}
-
-.section {
-  padding-block:
-    clamp(
-      4.5rem,
-      7vw,
-      6rem
-    );
-  border-bottom:
-    1px solid
-    var(--border-soft);
-}
-
-.sectionHeader {
-  display: grid;
-  grid-template-columns:
-    minmax(120px, 0.38fr)
-    minmax(0, 1.62fr);
-  gap: 2.5rem;
-  margin-bottom: 3rem;
-}
-
-.sectionTitle {
-  max-width: 850px;
-  font-size:
-    clamp(
-      2rem,
-      4vw,
-      3.4rem
-    );
-  font-weight: 510;
-  letter-spacing:
-    -0.05em;
-  line-height: 1.04;
-  text-wrap: balance;
-}
-
-.sectionIntro {
-  max-width: 680px;
-  margin-top: 1rem;
-  color:
-    var(--color-text-secondary);
-  font-size: 0.92rem;
-  line-height: 1.72;
-}
 
 .projects {
-  display: grid;
-  grid-template-columns:
-    repeat(
-      2,
-      minmax(0, 1fr)
+  border-top:
+    1px
+    solid
+    var(
+      --company-divider
     );
-  gap: 1rem;
 }
+
 
 .project {
-  display: flex;
-  min-height: 570px;
-  flex-direction: column;
-  padding: 1.45rem;
-  border:
-    1px solid
-    var(--border-soft);
-  border-radius: 14px;
-  background:
-    linear-gradient(
-      150deg,
-      rgba(
-        var(--brand-violet-rgb),
-        0.08
-      ),
-      transparent 40%
-    ),
-    var(--color-surface);
+  display:
+    grid;
+
+  grid-template-columns:
+    88px
+    minmax(
+      280px,
+      0.85fr
+    )
+    minmax(
+      420px,
+      1.15fr
+    );
+
+  gap:
+    clamp(
+      24px,
+      4vw,
+      52px
+    );
+
+  align-items:
+    start;
+
+  padding:
+    32px
+    0;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --company-divider
+    );
 }
 
-.projectTop {
-  display: flex;
-  align-items: center;
-  justify-content:
-    space-between;
-  gap: 1rem;
+
+.projectIdentity {
+  display:
+    grid;
+
+  gap:
+    14px;
 }
+
 
 .projectNumber {
   color:
-    var(--brand-cyan);
+    var(
+      --company-cyan
+    );
+
   font-family:
-    var(--font-geist-mono),
+    var(
+      --font-company-mono
+    ),
     monospace;
-  font-size: 0.6rem;
+
+  font-size:
+    0.72rem;
+
+  font-weight:
+    600;
 }
+
 
 .projectTrack {
-  padding:
-    0.36rem
-    0.56rem;
-  border:
-    1px solid
-    var(--border-soft);
-  border-radius:
-    var(--radius-pill);
   color:
-    var(--color-text-muted);
+    var(
+      --company-text-subtle
+    );
+
   font-family:
-    var(--font-geist-mono),
+    var(
+      --font-company-mono
+    ),
     monospace;
-  font-size: 0.55rem;
+
+  font-size:
+    0.64rem;
+
+  line-height:
+    1.45;
+
+  letter-spacing:
+    0.05em;
+
+  text-transform:
+    uppercase;
 }
 
-.projectTitle {
-  max-width: 580px;
-  margin-top: 3.2rem;
+
+.projectSummary h3 {
+  margin:
+    0;
+
+  color:
+    var(
+      --company-text
+    );
+
+  font-family:
+    var(
+      --font-company-display
+    ),
+    sans-serif;
+
   font-size:
     clamp(
-      1.6rem,
-      2.8vw,
-      2.2rem
+      1.45rem,
+      2.5vw,
+      2rem
     );
-  font-weight: 530;
+
+  font-weight:
+    600;
+
+  line-height:
+    1.2;
+
   letter-spacing:
-    -0.045em;
-  line-height: 1.05;
+    -0.03em;
 }
 
-.projectSummary {
-  max-width: 610px;
-  margin-top: 0.9rem;
+
+.projectSummary > p {
+  max-width:
+    600px;
+
+  margin:
+    12px
+    0
+    0;
+
   color:
-    var(--color-text-secondary);
-  font-size: 0.87rem;
-  line-height: 1.7;
+    var(
+      --company-text-muted
+    );
+
+  font-size:
+    0.92rem;
+
+  line-height:
+    1.65;
 }
+
 
 .technologyList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.38rem;
-  margin-top: 1.35rem;
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    6px;
+
+  margin-top:
+    18px;
 }
+
 
 .technology {
   padding:
-    0.35rem
-    0.5rem;
-  border:
-    1px solid
-    rgba(
-      var(--brand-blue-rgb),
-      0.2
-    );
-  border-radius:
-    6px;
+    5px
+    8px;
+
   color:
-    var(--brand-blue);
+    var(
+      --company-text-muted
+    );
+
+  border:
+    1px
+    solid
+    var(
+      --company-border
+    );
+
+  border-radius:
+    999px;
+
   font-family:
-    var(--font-geist-mono),
+    var(
+      --font-company-mono
+    ),
     monospace;
-  font-size: 0.54rem;
+
+  font-size:
+    0.62rem;
 }
 
-.projectColumns {
-  display: grid;
+
+.projectEvidence {
+  display:
+    grid;
+
   grid-template-columns:
     repeat(
       2,
-      minmax(0, 1fr)
-    );
-  gap: 1.4rem;
-  margin-top: auto;
-  padding-top: 2rem;
-}
-
-.projectColumn {
-  min-width: 0;
-}
-
-.columnTitle {
-  padding-bottom: 0.65rem;
-  border-bottom:
-    1px solid
-    var(--border-soft);
-  color:
-    var(--color-text-faint);
-  font-family:
-    var(--font-geist-mono),
-    monospace;
-  font-size: 0.55rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.list {
-  display: grid;
-  gap: 0.5rem;
-  margin-top: 0.75rem;
-  padding: 0;
-  list-style: none;
-}
-
-.listItem {
-  position: relative;
-  padding-left: 0.85rem;
-  color:
-    var(--color-text-muted);
-  font-size: 0.73rem;
-  line-height: 1.5;
-}
-
-.listItem::before {
-  position: absolute;
-  top: 0.53rem;
-  left: 0;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background:
-    var(--brand-violet);
-  content: "";
-}
-
-.methodGrid {
-  display: grid;
-  grid-template-columns:
-    repeat(
-      3,
-      minmax(0, 1fr)
-    );
-  gap: 1rem;
-}
-
-.methodCard {
-  min-height: 240px;
-  padding: 1.35rem;
-  border:
-    1px solid
-    var(--border-soft);
-  border-radius: 12px;
-  background:
-    var(--color-surface);
-}
-
-.methodNumber {
-  color:
-    var(--brand-lavender);
-  font-family:
-    var(--font-geist-mono),
-    monospace;
-  font-size: 0.6rem;
-}
-
-.methodTitle {
-  margin-top: 3.3rem;
-  font-size: 1.3rem;
-  font-weight: 540;
-  letter-spacing:
-    -0.035em;
-}
-
-.methodDescription {
-  margin-top: 0.75rem;
-  color:
-    var(--color-text-secondary);
-  font-size: 0.82rem;
-  line-height: 1.65;
-}
-
-.safetyBox {
-  display: grid;
-  grid-template-columns:
-    minmax(140px, 0.38fr)
-    minmax(0, 1.62fr);
-  gap: 2.4rem;
-  padding:
-    clamp(
-      1.5rem,
-      4vw,
-      2.25rem
-    );
-  border:
-    1px solid
-    rgba(
-      var(--brand-cyan-rgb),
-      0.18
-    );
-  border-radius: 14px;
-  background:
-    linear-gradient(
-      120deg,
-      rgba(
-        var(--brand-cyan-rgb),
-        0.035
-      ),
-      rgba(
-        var(--brand-violet-rgb),
-        0.045
+      minmax(
+        0,
+        1fr
       )
     );
-}
 
-.safetyContent {
-  display: grid;
-  gap: 1rem;
-}
-
-.safetyText {
-  max-width: 760px;
-  color:
-    var(--color-text-secondary);
-  font-size: 0.9rem;
-  line-height: 1.72;
-}
-
-.cta {
-  padding-block:
-    clamp(
-      4.5rem,
-      7vw,
-      6rem
-    );
-}
-
-.ctaBox {
-  padding:
-    clamp(
-      2rem,
-      5vw,
-      3.5rem
-    );
-  border:
-    1px solid
-    var(--border-medium);
-  border-radius: 16px;
-  background:
-    radial-gradient(
-      circle at 90% 10%,
-      rgba(
-        var(--brand-violet-rgb),
-        0.18
-      ),
-      transparent 42%
-    ),
-    var(--color-surface);
-}
-
-.ctaTitle {
-  max-width: 820px;
-  margin-top: 1rem;
-  font-size:
-    clamp(
-      2rem,
-      4vw,
-      3.45rem
-    );
-  font-weight: 520;
-  letter-spacing:
-    -0.05em;
-  line-height: 1.04;
-}
-
-.ctaText {
-  max-width: 650px;
-  margin-top: 1rem;
-  color:
-    var(--color-text-secondary);
-  font-size: 0.92rem;
-  line-height: 1.7;
-}
-
-.ctaActions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
-  margin-top: 1.6rem;
-}
-
-@media (max-width: 1120px) {
-  .heroGrid {
-    grid-template-columns:
-      minmax(0, 1.15fr)
-      minmax(280px, 0.85fr);
-    gap: 2.5rem;
-  }
-
-  .projects {
-    gap: 0.85rem;
-  }
-
-  .methodGrid {
-    grid-template-columns:
-      repeat(
-        2,
-        minmax(0, 1fr)
-      );
-  }
-}
-
-@media (max-width: 900px) {
-  .heroGrid {
-    grid-template-columns:
-      minmax(0, 1fr);
-  }
-
-  .heroPanel {
-    max-width: 650px;
-  }
-
-  .sectionHeader {
-    grid-template-columns:
-      minmax(0, 1fr);
-    gap: 0.75rem;
-  }
-
-  .projects {
-    grid-template-columns:
-      minmax(0, 1fr);
-  }
-
-  .project {
-    min-height: auto;
-  }
-
-  .safetyBox {
-    grid-template-columns:
-      minmax(0, 1fr);
-    gap: 1rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .hero {
-    padding:
-      3.4rem 0
-      3.75rem;
-  }
-
-  .heroTitle {
-    font-size:
-      clamp(
-        2.55rem,
-        12vw,
-        3.6rem
-      );
-  }
-
-  .section {
-    padding-block: 4rem;
-  }
-
-  .project {
-    padding: 1.2rem;
-  }
-
-  .projectTitle {
-    margin-top: 2.4rem;
-  }
-
-  .projectColumns {
-    grid-template-columns:
-      minmax(0, 1fr);
-    gap: 1.25rem;
-  }
-
-  .methodGrid {
-    grid-template-columns:
-      minmax(0, 1fr);
-  }
-
-  .methodCard {
-    min-height: auto;
-  }
-
-  .methodTitle {
-    margin-top: 2.4rem;
-  }
-
-  .heroStats {
-    grid-template-columns:
-      minmax(0, 1fr);
-  }
-
-  .ctaActions {
-    align-items: stretch;
-  }
-}
-
-@media (max-width: 390px) {
-  .heroTitle {
-    font-size:
-      clamp(
-        2.35rem,
-        12vw,
-        3rem
-      );
-  }
-
-  .projectTrack {
-    max-width: 170px;
-    text-align: right;
-  }
-}
-/* ==========================================================================
-   NB_MINIMALIST_SYSTEM_V1
-   ========================================================================== */
-
-.hero {
-  padding:
-    clamp(
-      3.5rem,
-      6vw,
-      5rem
-    )
-    0;
-}
-
-.heroTitle {
-  max-width:
-    15ch;
-  font-size:
-    clamp(
-      2.8rem,
-      5.5vw,
-      4.8rem
-    );
-}
-
-.heroPanel {
-  border-radius:
-    var(--minimal-radius);
-  background:
-    var(--minimal-surface);
-}
-
-.section {
-  padding-block:
-    var(--minimal-section-space);
-}
-
-.projects {
   gap:
-    var(--minimal-card-gap);
+    28px;
 }
 
-.project {
-  min-height:
-    500px;
-  border-radius:
-    var(--minimal-radius);
-  background:
-    var(--minimal-surface);
-  box-shadow:
+
+.columnTitle {
+  margin:
+    0;
+
+  color:
+    var(
+      --company-blue
+    );
+
+  font-family:
+    var(
+      --font-company-mono
+    ),
+    monospace;
+
+  font-size:
+    0.68rem;
+
+  font-weight:
+    600;
+
+  letter-spacing:
+    0.06em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.projectEvidence ul {
+  display:
+    grid;
+
+  gap:
+    7px;
+
+  margin:
+    14px
+    0
+    0;
+
+  padding:
+    0;
+
+  list-style:
     none;
 }
 
-.project:hover {
-  background:
-    var(--minimal-surface-hover);
-}
 
-.methodCard {
-  min-height:
-    205px;
-  border-radius:
-    var(--minimal-radius);
-  background:
-    var(--minimal-surface);
-}
+.projectEvidence li {
+  position:
+    relative;
 
-.cta {
-  padding-block:
-    var(--minimal-section-space);
-}
+  padding-left:
+    14px;
 
-.ctaBox,
-.safetyBox {
-  border-radius:
-    var(--minimal-radius-large);
-}
-
-
-/* ==========================================================================
-   NB_MINIMALIST_POLISH_V4
-   ========================================================================== */
-
-.hero {
-  padding:
-    clamp(
-      3.25rem,
-      5vw,
-      4.5rem
-    )
-    0;
-}
-
-.heroTitle {
-  max-width:
-    15ch;
-  font-weight:
-    500;
-}
-
-.section,
-.cta {
-  padding-block:
-    var(--nb-polish-section);
-}
-
-.project {
-  min-height:
-    450px;
-  border-radius:
-    var(--nb-polish-radius);
-}
-
-.methodCard {
-  min-height:
-    180px;
-}
-
-.ctaBox,
-.safetyBox {
-  border-radius:
-    var(--nb-polish-radius-large);
-}
-/* ==========================================================================
-   NB_CONTENT_DENSITY_V5
-
-   Route-level content density:
-   all information remains visible.
-   ========================================================================== */
-
-
-/* HERO --------------------------------------------------------------- */
-
-.hero,
-.pageHero,
-.detailHero,
-.introHero {
-  padding-block:
-    clamp(
-      2.8rem,
-      4.5vw,
-      3.9rem
+  color:
+    var(
+      --company-text-muted
     );
-}
 
+  font-size:
+    0.82rem;
 
-/* SECTION ------------------------------------------------------------ */
-
-.section,
-.contentSection,
-.detailSection,
-.overview,
-.story,
-.principles,
-.ecosystem,
-.approach,
-.process,
-.methodology,
-.deliverables,
-.engagement,
-.audience,
-.outcomes,
-.curriculum,
-.community,
-.archive,
-.timelineSection,
-.faqSection,
-.ctaSection {
-  padding-block:
-    clamp(
-      2.8rem,
-      4.4vw,
-      3.8rem
-    );
-}
-
-
-/* HEADER ------------------------------------------------------------- */
-
-.sectionHeader,
-.header,
-.heading {
-  margin-bottom:
-    clamp(
-      1.2rem,
-      2.2vw,
-      1.75rem
-    );
-}
-
-
-/* GRID --------------------------------------------------------------- */
-
-.grid,
-.cards,
-.cardGrid,
-.serviceGrid,
-.programGrid,
-.teamGrid,
-.eventGrid,
-.activityGrid,
-.featureGrid,
-.valueGrid,
-.metaGrid,
-.outcomeGrid,
-.deliverableGrid,
-.processGrid,
-.methodGrid,
-.galleryGrid,
-.projectGrid {
-  gap:
-    0.7rem;
-}
-
-
-/* CARD --------------------------------------------------------------- */
-
-.card,
-.panel,
-.serviceCard,
-.programCard,
-.teamCard,
-.memberCard,
-.eventCard,
-.activityCard,
-.featureCard,
-.valueCard,
-.metaCard,
-.infoCard,
-.processCard,
-.methodCard,
-.outcomeCard,
-.deliverableCard,
-.jobCard,
-.securityCard,
-.contactCard,
-.statCard,
-.galleryCard,
-.project {
-  min-height:
-    auto;
-  padding:
-    1rem;
-}
-
-
-/* COPY --------------------------------------------------------------- */
-
-.description,
-.intro,
-.lead,
-.summary,
-.copy {
-  max-width:
-    720px;
-}
-
-
-.card p,
-.serviceCard p,
-.programCard p,
-.teamCard p,
-.memberCard p,
-.eventCard p,
-.activityCard p,
-.featureCard p,
-.jobCard p,
-.project p {
-  margin-top:
-    0.45rem;
   line-height:
-    1.6;
+    1.5;
 }
 
 
-/* META --------------------------------------------------------------- */
+.projectEvidence li::before {
+  position:
+    absolute;
 
-.meta,
-.metadata,
-.metaGrid,
-.stats,
-.statGrid,
-.facts,
-.factGrid {
-  gap:
+  top:
+    0.72em;
+
+  left:
     0;
-}
 
+  width:
+    4px;
 
-.metaCard,
-.statCard,
-.fact,
-.stat {
-  min-height:
-    auto;
-  padding:
-    0.75rem
-    0.85rem;
-}
+  height:
+    4px;
 
-
-/* TIMELINE ----------------------------------------------------------- */
-
-.timeline,
-.timelineGrid {
-  gap:
-    0;
-}
-
-
-.timelineItem,
-.timelineCard {
-  min-height:
-    auto;
-  padding:
-    0.85rem
-    0;
-}
-
-
-/* PROCESS ------------------------------------------------------------ */
-
-.processGrid,
-.methodGrid,
-.steps,
-.methodologyGrid {
-  gap:
-    0.6rem;
-}
-
-
-.processCard,
-.methodCard,
-.step {
-  min-height:
-    auto;
-}
-
-
-/* FAQ ---------------------------------------------------------------- */
-
-.faq,
-.faqList,
-.accordion {
-  max-width:
-    800px;
-}
-
-
-.faqItem,
-.accordionItem {
-  min-height:
-    auto;
-}
-
-
-/* CTA ---------------------------------------------------------------- */
-
-.cta,
-.ctaBox,
-.contactBox,
-.callout {
-  min-height:
-    auto;
-  padding:
-    clamp(
-      1.4rem,
-      2.8vw,
-      2rem
+  background:
+    var(
+      --company-cyan
     );
-}
 
+  border-radius:
+    50%;
 
-/* MOBILE ------------------------------------------------------------- */
-
-@media (max-width: 640px) {
-
-  .hero,
-  .pageHero,
-  .detailHero,
-  .introHero {
-    padding-block:
-      2.7rem;
-  }
-
-
-  .section,
-  .contentSection,
-  .detailSection,
-  .overview,
-  .story,
-  .principles,
-  .ecosystem,
-  .approach,
-  .process,
-  .methodology,
-  .deliverables,
-  .engagement,
-  .audience,
-  .outcomes,
-  .curriculum,
-  .community,
-  .archive,
-  .timelineSection,
-  .faqSection,
-  .ctaSection {
-    padding-block:
-      2.8rem;
-  }
-
-
-  .card,
-  .panel,
-  .serviceCard,
-  .programCard,
-  .teamCard,
-  .memberCard,
-  .eventCard,
-  .activityCard,
-  .featureCard,
-  .valueCard,
-  .metaCard,
-  .infoCard,
-  .processCard,
-  .methodCard,
-  .outcomeCard,
-  .deliverableCard,
-  .jobCard,
-  .securityCard,
-  .contactCard,
-  .statCard,
-  .galleryCard,
-  .project {
-    padding:
-      0.95rem;
-  }
-
+  content:
+    "";
 }
 
 
 /* ==========================================================================
-   NB_PREMIUM_HERO_SYSTEM_V6
-   Technical lab / internship hero.
+   METHOD
    ========================================================================== */
 
-.hero {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
+
+.methodList {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  column-gap:
+    48px;
+
+  border-top:
+    1px
+    solid
+    var(
+      --company-divider
+    );
+}
+
+
+.methodItem {
+  display:
+    grid;
+
+  grid-template-columns:
+    52px
+    160px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    18px;
+
+  align-items:
+    start;
 
   padding:
-    clamp(
-      4rem,
-      6.5vw,
-      5.8rem
-    )
+    24px
     0;
 
   border-bottom:
-    1px solid
-    rgba(
-      255,
-      255,
-      255,
-      0.09
+    1px
+    solid
+    var(
+      --company-divider
     );
-
-  background:
-    radial-gradient(
-      circle at 80% 25%,
-      rgba(
-        var(--brand-cyan-rgb),
-        0.085
-      ),
-      transparent 24rem
-    ),
-    radial-gradient(
-      circle at 91% 82%,
-      rgba(
-        var(--brand-violet-rgb),
-        0.13
-      ),
-      transparent 28rem
-    ),
-    #08090b;
 }
 
 
-.hero::before {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
+.methodItem > span {
+  color:
+    var(
+      --company-cyan
+    );
 
-  background-image:
-    linear-gradient(
-      rgba(
-        var(--brand-cyan-rgb),
-        0.035
-      )
-      1px,
-      transparent 1px
+  font-family:
+    var(
+      --font-company-mono
     ),
-    linear-gradient(
-      90deg,
-      rgba(
-        var(--brand-cyan-rgb),
-        0.035
-      )
-      1px,
-      transparent 1px
-    );
+    monospace;
 
-  background-size:
-    42px 42px;
-
-  mask-image:
-    linear-gradient(
-      90deg,
-      transparent 24%,
-      rgba(
-        0,
-        0,
-        0,
-        0.88
-      )
-    );
-
-  content: "";
+  font-size:
+    0.68rem;
 }
 
 
-.heroTitle {
+.methodItem h3 {
+  margin:
+    0;
+
+  color:
+    var(
+      --company-text-secondary
+    );
+
+  font-family:
+    var(
+      --font-company-display
+    ),
+    sans-serif;
+
+  font-size:
+    1.15rem;
+
+  font-weight:
+    600;
+}
+
+
+.methodItem p {
+  margin:
+    0;
+
+  color:
+    var(
+      --company-text-muted
+    );
+
+  font-size:
+    0.86rem;
+
+  line-height:
+    1.58;
+}
+
+
+/* ==========================================================================
+   SAFETY
+   ========================================================================== */
+
+
+.safety {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      0.9fr
+    )
+    minmax(
+      320px,
+      1.1fr
+    );
+
+  gap:
+    clamp(
+      40px,
+      7vw,
+      88px
+    );
+
+  align-items:
+    start;
+
+  padding:
+    32px
+    0;
+
+  border-top:
+    1px
+    solid
+    var(
+      --company-divider
+    );
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --company-divider
+    );
+}
+
+
+.safety h2 {
   max-width:
-    13ch;
+    620px;
+
+  margin:
+    12px
+    0
+    0;
+
+  color:
+    var(
+      --company-text-secondary
+    );
+
+  font-family:
+    var(
+      --font-company-display
+    ),
+    sans-serif;
 
   font-size:
     clamp(
-      3.25rem,
-      6vw,
-      5.7rem
+      1.8rem,
+      3vw,
+      2.5rem
     );
 
   font-weight:
-    480;
-
-  letter-spacing:
-    -0.068em;
+    600;
 
   line-height:
-    0.93;
+    1.2;
+
+  letter-spacing:
+    -0.03em;
 }
 
 
-.heroPanel {
-  position: relative;
+.safetyCopy {
+  display:
+    grid;
 
-  overflow: hidden;
-
-  border:
-    1px solid
-    rgba(
-      255,
-      255,
-      255,
-      0.11
-    );
-
-  border-radius:
-    10px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(
-        var(--brand-cyan-rgb),
-        0.06
-      ),
-      transparent 45%
-    ),
-    rgba(
-      255,
-      255,
-      255,
-      0.012
-    );
+  gap:
+    16px;
 }
 
 
-.heroPanel::after {
-  position: absolute;
+.safetyCopy p {
+  margin:
+    0;
 
-  right: 0;
-  bottom: 0;
-
-  width: 78px;
-  height: 44px;
-
-  border-right:
-    1px solid
-    rgba(
-      var(--brand-violet-rgb),
-      0.38
+  color:
+    var(
+      --company-text-muted
     );
 
-  border-bottom:
-    1px solid
-    rgba(
-      var(--brand-violet-rgb),
-      0.38
-    );
-
-  content: "";
+  line-height:
+    1.65;
 }
 
 
-@media (max-width: 640px) {
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
 
-  .hero {
+
+@media (
+  max-width:
+    1100px
+) {
+
+  .project {
+    grid-template-columns:
+      64px
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .projectEvidence {
+    grid-column:
+      2;
+
+    margin-top:
+      8px;
+  }
+
+
+  .methodList {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    column-gap:
+      0;
+  }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .project {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      18px;
+
     padding:
-      3.2rem
+      28px
       0;
   }
 
 
-  .heroTitle {
-    font-size:
-      clamp(
-        2.7rem,
-        12vw,
-        3.7rem
+  .projectIdentity {
+    grid-template-columns:
+      auto
+      1fr;
+
+    align-items:
+      center;
+  }
+
+
+  .projectEvidence {
+    grid-column:
+      auto;
+
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
       );
+
+    gap:
+      24px;
+  }
+
+
+  .methodItem {
+    grid-template-columns:
+      40px
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      10px
+      16px;
+  }
+
+
+  .methodItem p {
+    grid-column:
+      2;
+  }
+
+
+  .safety {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      28px;
   }
 
 }
 
 
 /* ==========================================================================
-   NB_NAV_HERO_RHYTHM_V1
-   Keep custom page heroes visually connected to the global navigation.
+   V14 LEGACY DESIGN-AUTHORITY COMPATIBILITY
+
+   These markers are intentionally retained as historical contract metadata.
+
+   V14 supersedes the previous visual implementations while preserving the
+   design principles those revisions introduced.
+
+   No CSS declarations are attached to these markers.
    ========================================================================== */
 
-
-.hero {
-  margin-top:
-    0;
-
-  padding-top:
-    clamp(
-      0.9rem,
-      1.7vw,
-      1.35rem
-    );
-}
-
-
-@media (
-  max-width: 768px
-) {
-
-  .hero {
-    padding-top:
-      0.72rem;
-  }
-
-}
+/* NB_MINIMALIST_SYSTEM_V1 */
+/* NB_MINIMALIST_POLISH_V4 */
+/* NB_PREMIUM_HERO_SYSTEM_V6 */
+/* NB_NAV_HERO_RHYTHM_V1 */

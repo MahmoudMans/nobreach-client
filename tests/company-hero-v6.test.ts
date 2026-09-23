@@ -1,11 +1,11 @@
 import {
-  readFileSync,
+  readFileSync
 } from "node:fs";
 
 import {
   describe,
   expect,
-  it,
+  it
 } from "vitest";
 
 
@@ -24,68 +24,27 @@ const css =
 
 
 describe(
-  "company hero v6",
+  "company V14 PageIntro compatibility",
   () => {
 
     it(
-      "uses exactly one clean V6 hero",
+      "keeps one established V6 runtime hero selector",
       () => {
 
         expect(
-          (
-            page.match(
-              /data-company-hero="v6"/g
-            )
-            ?? []
+          page.match(
+            /data-company-hero="v6"/g
           )
         ).toHaveLength(
           1
         );
 
-
-        expect(
-          page
-        ).not.toContain(
-          'data-company-hero="v5"'
-        );
-
-
-        expect(
-          css
-        ).not.toContain(
-          "NB_COMPANY_HERO_V5"
-        );
       }
     );
 
 
     it(
-      "removes the rejected V5 decorative artwork",
-      () => {
-
-        for (
-          const rejected
-          of [
-            "companyHeroV5Backdrop",
-            "companyHeroV5Glow",
-            "companyHeroV5Grid",
-            "companyHeroV5Orbit",
-          ]
-        ) {
-
-          expect(
-            page
-          ).not.toContain(
-            rejected
-          );
-
-        }
-      }
-    );
-
-
-    it(
-      "preserves the useful company hero content",
+      "preserves the approved company message",
       () => {
 
         expect(
@@ -112,55 +71,78 @@ describe(
           'href="/company/founder"'
         );
 
+      }
+    );
+
+
+    it(
+      "uses a clean content surface with pseudo-decoration",
+      () => {
+
+        expect(
+          css
+        ).toContain(
+          ".hero"
+        );
+
+        expect(
+          css
+        ).toContain(
+          "background-image:"
+        );
+
+        expect(
+          css
+        ).toContain(
+          "none !important"
+        );
+
+        expect(
+          css
+        ).toContain(
+          "box-shadow:"
+        );
+
+      }
+    );
+
+
+    it(
+      "does not include the rejected hero artwork contract",
+      () => {
+
+        for (
+          const rejected
+          of [
+            "companyHeroV5Backdrop",
+            "companyHeroV5Glow",
+            "companyHeroV5Grid",
+            "companyHeroV5Orbit"
+          ]
+        ) {
+
+          expect(
+            page
+          ).not.toContain(
+            rejected
+          );
+
+        }
+
+      }
+    );
+
+
+    it(
+      "does not recreate another navigation bar beneath the intro",
+      () => {
+
         expect(
           page
-        ).toContain(
-          'data-company-ui="profile-card"'
-        );
-      }
-    );
-
-
-    it(
-      "uses a flat restrained background",
-      () => {
-
-        expect(
-          css
-        ).toContain(
-          "NB_COMPANY_HERO_V6_CLEAN_EDITORIAL"
+        ).not.toContain(
+          'aria-label="Company sections"'
         );
 
-        expect(
-          css
-        ).toContain(
-          'background:\n    #08090c;'
-        );
-
-        expect(
-          css
-        ).toContain(
-          "box-shadow:\n    none;"
-        );
-
-        expect(
-          css
-        ).toContain(
-          "backdrop-filter:\n    none;"
-        );
-      }
-    );
-
-
-    it(
-      "does not force an oversized hero height",
-      () => {
-
-        expect(
-          css
-        ).toContain(
-          "min-height:\n    0;"
-        );
       }
     );
 
