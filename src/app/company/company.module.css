@@ -2621,3 +2621,662 @@ i {
   }
 
 }
+
+
+/* ==========================================================================
+   NB_COMPANY_BALANCED_SECTIONS_V17
+   ========================================================================== */
+
+
+/* ==========================================================================
+   WHO WE ARE / OPERATING MODEL
+   ========================================================================== */
+
+
+.page
+[data-company-section="who-we-are"] {
+  min-height:
+    clamp(
+      460px,
+      58svh,
+      540px
+    );
+
+  padding:
+    36px
+    0;
+}
+
+
+.companyStatement {
+  grid-template-columns:
+    minmax(
+      280px,
+      0.86fr
+    )
+    minmax(
+      0,
+      1.14fr
+    );
+
+  gap:
+    clamp(
+      30px,
+      4.5vw,
+      56px
+    );
+
+  padding-top:
+    18px;
+}
+
+
+.statementCopy {
+  max-width:
+    500px;
+}
+
+
+.statementLead {
+  max-width:
+    490px;
+
+  font-size:
+    clamp(
+      1.5rem,
+      2.15vw,
+      1.85rem
+    );
+}
+
+
+.statementSupport {
+  margin-top:
+    9px;
+}
+
+
+.statementMetaItem {
+  grid-template-columns:
+    34px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    12px;
+
+  padding:
+    11px
+    0;
+}
+
+
+/* ==========================================================================
+   CAPABILITIES
+   ========================================================================== */
+
+
+.capabilityRow {
+  grid-template-columns:
+    56px
+    minmax(
+      0,
+      1fr
+    )
+    76px
+    22px;
+
+  gap:
+    14px;
+
+  min-height:
+    156px;
+
+  padding:
+    15px
+    0;
+}
+
+
+.capabilityRow p {
+  margin-top:
+    5px;
+}
+
+
+.capabilityVisual {
+  height:
+    42px;
+}
+
+
+/* ==========================================================================
+   PRINCIPLES
+   ========================================================================== */
+
+
+.principleRow {
+  grid-template-columns:
+    44px
+    minmax(
+      190px,
+      0.62fr
+    )
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    16px;
+
+  min-height:
+    94px;
+
+  padding:
+    13px
+    0;
+}
+
+
+/* ==========================================================================
+   TIMELINE — HORIZONTAL DESKTOP RAIL
+
+   Previous alternating layout created different visual heights and empty
+   pockets. Five milestones now share one calm horizontal progression.
+   ========================================================================== */
+
+
+@media (
+  min-width:
+    768px
+) {
+
+  .timeline {
+    position:
+      relative;
+
+    display:
+      grid;
+
+    grid-template-columns:
+      repeat(
+        5,
+        minmax(
+          0,
+          1fr
+        )
+      );
+
+    gap:
+      0;
+
+    border-top:
+      0;
+  }
+
+
+  .timeline::before {
+    top:
+      25px;
+
+    right:
+      0;
+
+    bottom:
+      auto;
+
+    left:
+      0;
+
+    width:
+      auto;
+
+    height:
+      1px;
+
+    background:
+      linear-gradient(
+        90deg,
+        var(
+          --company-cyan
+        ),
+        rgba(
+          131,
+          179,
+          215,
+          0.26
+        ),
+        var(
+          --company-purple
+        )
+      );
+
+    opacity:
+      0.45;
+  }
+
+
+  .timelineItem,
+  .timelineItem:nth-child(
+    odd
+  ),
+  .timelineItem:nth-child(
+    even
+  ) {
+    grid-column:
+      auto;
+
+    min-height:
+      176px;
+
+    padding:
+      52px
+      18px
+      18px;
+
+    text-align:
+      left;
+
+    transform:
+      none;
+
+    border-bottom:
+      1px
+      solid
+      var(
+        --company-divider
+      );
+  }
+
+
+  .timelineItem:nth-child(
+    odd
+  )
+  i,
+  .timelineItem:nth-child(
+    even
+  )
+  i {
+    top:
+      21px;
+
+    right:
+      auto;
+
+    left:
+      0;
+
+    transform:
+      none;
+  }
+
+
+  .timelineItem strong {
+    margin-top:
+      8px;
+  }
+
+}
+
+
+/* ==========================================================================
+   FOUNDER PREVIEW
+   ========================================================================== */
+
+
+.founderPreview {
+  grid-template-columns:
+    minmax(
+      240px,
+      300px
+    )
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    clamp(
+      30px,
+      4.5vw,
+      54px
+    );
+
+  padding:
+    18px
+    0;
+}
+
+
+.founderPortrait {
+  max-width:
+    300px;
+}
+
+
+/* ==========================================================================
+   PEOPLE / PROJECTS
+   ========================================================================== */
+
+
+.peopleRow {
+  grid-template-columns:
+    48px
+    minmax(
+      0,
+      1fr
+    )
+    24px;
+
+  gap:
+    14px;
+
+  min-height:
+    88px;
+
+  padding:
+    12px
+    0;
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .page
+  [data-company-section="who-we-are"] {
+    min-height:
+      0;
+
+    padding:
+      30px
+      0;
+  }
+
+
+  .companyStatement {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      18px;
+
+    padding-top:
+      15px;
+  }
+
+
+  .statementLead {
+    font-size:
+      1.4rem;
+  }
+
+
+  .statementMetaItem {
+    padding:
+      10px
+      0;
+  }
+
+
+  .capabilityRow {
+    grid-template-columns:
+      32px
+      minmax(
+        0,
+        1fr
+      )
+      20px;
+
+    gap:
+      8px;
+
+    min-height:
+      0;
+
+    padding:
+      14px
+      0;
+  }
+
+
+  .principleRow {
+    grid-template-columns:
+      28px
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      8px;
+
+    min-height:
+      0;
+
+    padding:
+      13px
+      0;
+  }
+
+
+  .timeline {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    padding-left:
+      18px;
+  }
+
+
+  .timeline::before {
+    top:
+      0;
+
+    right:
+      auto;
+
+    bottom:
+      0;
+
+    left:
+      4px;
+
+    width:
+      1px;
+
+    height:
+      auto;
+  }
+
+
+  .timelineItem,
+  .timelineItem:nth-child(
+    odd
+  ),
+  .timelineItem:nth-child(
+    even
+  ) {
+    grid-column:
+      1;
+
+    min-height:
+      88px;
+
+    padding:
+      13px
+      0
+      13px
+      16px;
+
+    text-align:
+      left;
+
+    transform:
+      none;
+  }
+
+
+  .timelineItem:nth-child(
+    odd
+  )
+  i,
+  .timelineItem:nth-child(
+    even
+  )
+  i {
+    top:
+      17px;
+
+    right:
+      auto;
+
+    left:
+      -18px;
+  }
+
+
+  .founderPreview {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      18px;
+
+    padding:
+      15px
+      0;
+  }
+
+
+  .founderPortrait {
+    max-width:
+      280px;
+  }
+
+
+  .peopleRow {
+    grid-template-columns:
+      30px
+      minmax(
+        0,
+        1fr
+      )
+      20px;
+
+    gap:
+      8px;
+
+    min-height:
+      0;
+
+    padding:
+      13px
+      0;
+  }
+
+}
+
+
+/* ==========================================================================
+   NB_COMPANY_FOUNDER_CADENCE_V17_1
+
+   The shared V17 section cadence lands around 522px at 1440x900.
+
+   The founder preview previously expanded the section to ~628px because its
+   300px-wide 4:5 portrait created a ~375px visual column.
+
+   Reduce only the company-page preview portrait. The dedicated founder page
+   remains unchanged.
+
+   Expected company Founder section:
+   approximately 540–575px at 1440x900.
+   ========================================================================== */
+
+
+@media (
+  min-width:
+    1024px
+) {
+
+  .page
+  [data-company-section="founder"]
+  .founderPreview {
+    grid-template-columns:
+      minmax(
+        220px,
+        250px
+      )
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      clamp(
+        28px,
+        4vw,
+        48px
+      );
+  }
+
+
+  .page
+  [data-company-section="founder"]
+  .founderPortrait {
+    width:
+      250px;
+
+    max-width:
+      250px;
+  }
+
+
+  .page
+  [data-company-section="founder"]
+  .founderCopy {
+    max-width:
+      620px;
+  }
+
+}
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .page
+  [data-company-section="founder"]
+  .founderPortrait {
+    width:
+      min(
+        260px,
+        100%
+      );
+
+    max-width:
+      260px;
+  }
+
+}

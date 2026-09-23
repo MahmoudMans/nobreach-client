@@ -2013,3 +2013,196 @@ div {
   }
 
 }
+
+
+/* ==========================================================================
+   NB_FOUNDER_BALANCED_SECTIONS_V17
+   ========================================================================== */
+
+
+.founderPortraitCard {
+  min-height:
+    436px;
+
+  max-height:
+    520px;
+}
+
+
+.founderPortraitStage {
+  min-height:
+    316px;
+}
+
+
+.founderOverviewGrid {
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    minmax(
+      280px,
+      0.75fr
+    );
+
+  gap:
+    clamp(
+      26px,
+      4vw,
+      46px
+    );
+}
+
+
+.founderStatementCard {
+  padding:
+    16px
+    0;
+}
+
+
+.founderMiniCard {
+  min-height:
+    88px;
+
+  padding:
+    13px
+    0;
+}
+
+
+.founderJourneyItem {
+  grid-template-columns:
+    40px
+    minmax(
+      120px,
+      0.28fr
+    )
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    14px;
+
+  min-height:
+    86px;
+
+  padding:
+    12px
+    0;
+}
+
+
+.founderExpertiseCard {
+  grid-template-columns:
+    40px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    12px;
+
+  min-height:
+    86px;
+
+  padding:
+    12px
+    0;
+}
+
+
+.educationVisual {
+  min-height:
+    190px;
+
+  padding:
+    20px;
+}
+
+
+.educationCopy {
+  padding:
+    24px;
+}
+
+
+.founderEngagementItem {
+  padding:
+    10px
+    12px;
+}
+
+
+.founderPublicGrid {
+  gap:
+    12px;
+
+  margin-top:
+    18px;
+}
+
+
+.founderPublicCard {
+  min-height:
+    158px;
+
+  padding:
+    14px;
+}
+
+
+.founderPublicCard h3 {
+  padding-top:
+    14px;
+}
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .founderPortraitCard {
+    max-height:
+      none;
+  }
+
+
+  .founderPortraitStage {
+    min-height:
+      280px;
+  }
+
+
+  .founderJourneyItem,
+  .founderExpertiseCard {
+    min-height:
+      0;
+
+    padding:
+      12px
+      0;
+  }
+
+
+  .educationVisual {
+    min-height:
+      116px;
+
+    padding:
+      17px;
+  }
+
+
+  .educationCopy {
+    padding:
+      20px
+      17px;
+  }
+
+}

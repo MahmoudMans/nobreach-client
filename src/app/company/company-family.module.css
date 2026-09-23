@@ -2421,3 +2421,460 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_COMPANY_FAMILY_BALANCED_RHYTHM_V17
+
+   Company-family layout rhythm.
+
+   Desktop:
+   - hero occupies the first screen below SiteHeader
+   - deep-page heroes account for Breadcrumb height
+   - normal sections share a 460–540px visual cadence where content permits
+   - content-heavy sections expand naturally
+   - section metadata sits above the title rather than creating an empty rail
+
+   Tablet/mobile:
+   - no forced section heights
+   - natural content flow
+   - compact spacing
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01 — DESKTOP HERO / PAGEINTRO
+   ========================================================================== */
+
+
+@media (
+  min-width:
+    1024px
+) {
+
+  .pageIntro {
+    display:
+      grid;
+
+    align-items:
+      start;
+
+    min-height:
+      calc(
+        100svh
+        -
+        72px
+      );
+
+    padding:
+      clamp(
+        52px,
+        7vh,
+        68px
+      )
+      0
+      36px;
+  }
+
+
+  /*
+   * Deep Company routes include Breadcrumbs above PageIntro.
+   * Account for that extra interface height so the complete first
+   * composition still fits approximately inside one viewport.
+   */
+  .compactPageIntro {
+    min-height:
+      calc(
+        100svh
+        -
+        104px
+      );
+  }
+
+
+  .pageIntro > * {
+    width:
+      100%;
+  }
+
+
+  .pageIntroGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1.15fr
+      )
+      minmax(
+        340px,
+        0.85fr
+      );
+
+    gap:
+      clamp(
+        36px,
+        5vw,
+        64px
+      );
+
+    align-items:
+      center;
+  }
+
+
+  .pageIntroSingle {
+    grid-template-columns:
+      minmax(
+        0,
+        820px
+      );
+  }
+
+
+  /*
+   * Standard informational sections share one cadence.
+   *
+   * min-height does not constrain long content: capabilities,
+   * internship projects, etc. simply grow naturally.
+   */
+  .section {
+    display:
+      grid;
+
+    align-items:
+      center;
+
+    min-height:
+      clamp(
+        460px,
+        58svh,
+        540px
+      );
+
+    padding:
+      36px
+      0;
+
+    scroll-margin-top:
+      72px;
+  }
+
+
+  .section > * {
+    width:
+      100%;
+  }
+
+
+  /*
+   * Previous design:
+   * [01 COMPANY] [large title]
+   *
+   * This produced a large empty left rail.
+   *
+   * V17:
+   * 01 / COMPANY
+   * Section title
+   * Description
+   */
+  .sectionHeader {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      8px;
+
+    max-width:
+      920px;
+
+    margin-bottom:
+      22px;
+  }
+
+
+  .sectionHeader > div:first-child {
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    gap:
+      10px;
+  }
+
+
+  .sectionHeaderCopy {
+    max-width:
+      860px;
+  }
+
+
+  .sectionTitle {
+    max-width:
+      800px;
+
+    font-size:
+      clamp(
+        2rem,
+        2.8vw,
+        2.5rem
+      );
+
+    line-height:
+      1.16;
+  }
+
+
+  .sectionDescription {
+    max-width:
+      700px;
+
+    margin-top:
+      8px;
+  }
+
+
+  .sectionIndex,
+  .sectionEyebrow {
+    display:
+      inline-flex;
+
+    margin:
+      0;
+  }
+
+
+  .sectionIndex::after {
+    margin-left:
+      10px;
+
+    color:
+      var(
+        --company-text-subtle
+      );
+
+    content:
+      "/";
+  }
+
+
+  .finalCta {
+    display:
+      grid;
+
+    align-items:
+      center;
+
+    min-height:
+      360px;
+
+    padding:
+      36px
+      0;
+  }
+
+
+  .finalCtaInner {
+    padding:
+      32px
+      36px;
+  }
+
+}
+
+
+/* ==========================================================================
+   02 — TABLET
+   ========================================================================== */
+
+
+@media (
+  min-width:
+    768px
+)
+and
+(
+  max-width:
+    1023px
+) {
+
+  .pageIntro,
+  .compactPageIntro {
+    min-height:
+      auto;
+
+    padding:
+      32px
+      0
+      38px;
+  }
+
+
+  .section {
+    display:
+      block;
+
+    min-height:
+      0;
+
+    padding:
+      44px
+      0;
+  }
+
+
+  .sectionHeader {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      7px;
+
+    margin-bottom:
+      20px;
+  }
+
+
+  .sectionHeader > div:first-child {
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    gap:
+      9px;
+  }
+
+
+  .sectionIndex::after {
+    margin-left:
+      9px;
+
+    content:
+      "/";
+  }
+
+
+  .finalCta {
+    min-height:
+      0;
+
+    padding:
+      44px
+      0;
+  }
+
+}
+
+
+/* ==========================================================================
+   03 — MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .pageIntro,
+  .compactPageIntro {
+    min-height:
+      0;
+
+    padding-top:
+      18px;
+
+    padding-bottom:
+      28px;
+  }
+
+
+  .section {
+    display:
+      block;
+
+    min-height:
+      0;
+
+    padding:
+      36px
+      0;
+  }
+
+
+  .sectionHeader {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      6px;
+
+    margin-bottom:
+      18px;
+  }
+
+
+  .sectionHeader > div:first-child {
+    display:
+      flex;
+
+    align-items:
+      center;
+
+    gap:
+      8px;
+  }
+
+
+  .sectionIndex::after {
+    margin-left:
+      8px;
+
+    content:
+      "/";
+  }
+
+
+  .sectionTitle {
+    font-size:
+      1.85rem;
+
+    line-height:
+      1.18;
+  }
+
+
+  .sectionDescription {
+    margin-top:
+      7px;
+  }
+
+
+  .finalCta {
+    min-height:
+      0;
+
+    padding:
+      40px
+      0;
+  }
+
+
+  .finalCtaInner {
+    padding:
+      24px
+      18px;
+  }
+
+}
