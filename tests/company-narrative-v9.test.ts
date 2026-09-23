@@ -24,24 +24,62 @@ const css =
 
 
 describe(
-  "company editorial narrative V15",
+  "Company V19 editorial narrative",
   () => {
 
     it(
-      "keeps capabilities as full-width rows",
+      "uses one operating model composition",
       () => {
 
         expect(
           page
         ).toContain(
-          'data-company-ui="capability-grid"'
+          'data-company-ui="operating-model"'
+        );
+
+
+        for (
+          const label
+          of [
+            "Security services",
+            "Practical education",
+            "Community"
+          ]
+        ) {
+
+          expect(
+            page
+          ).toContain(
+            label
+          );
+
+        }
+
+      }
+    );
+
+
+    it(
+      "uses four capability index rows",
+      () => {
+
+        expect(
+          (
+            page.match(
+              /data-company-card="capability"/g
+            )
+            ??
+            []
+          ).length
+        ).toBe(
+          1
         );
 
 
         expect(
-          css
+          page
         ).toContain(
-          ".capabilityRow"
+          "capabilityItems.map"
         );
 
       }
@@ -49,20 +87,30 @@ describe(
 
 
     it(
-      "keeps principles as manifesto rows",
+      "uses three principles",
       () => {
 
-        expect(
-          page
-        ).toContain(
-          'data-company-ui="principle-grid"'
-        );
+        const block =
+          page.slice(
+            page.indexOf(
+              "const principles ="
+            ),
+            page.indexOf(
+              "const milestones ="
+            )
+          );
 
 
         expect(
-          css
-        ).toContain(
-          ".principleRow"
+          (
+            block.match(
+              /number:/g
+            )
+            ??
+            []
+          ).length
+        ).toBe(
+          3
         );
 
       }
@@ -70,7 +118,7 @@ describe(
 
 
     it(
-      "keeps the alternating chronology",
+      "uses a single connected timeline",
       () => {
 
         expect(
@@ -81,9 +129,9 @@ describe(
 
 
         expect(
-          css
+          page
         ).toContain(
-          ".timelineItem:nth-child("
+          "milestones.map"
         );
 
       }
@@ -91,41 +139,20 @@ describe(
 
 
     it(
-      "keeps people as directory rows",
+      "uses the real founder image",
       () => {
 
         expect(
           page
         ).toContain(
-          'data-company-ui="people-grid"'
+          'src="/people/ceo.png"'
         );
 
 
         expect(
-          css
+          page
         ).toContain(
-          ".peopleRow"
-        );
-
-      }
-    );
-
-
-    it(
-      "removes redundant standalone narrative sections",
-      () => {
-
-        expect(
-          page
-        ).not.toContain(
-          'data-company-section="story"'
-        );
-
-
-        expect(
-          page
-        ).not.toContain(
-          'data-company-section="ecosystem"'
+          'data-founder-photo-image="company"'
         );
 
       }

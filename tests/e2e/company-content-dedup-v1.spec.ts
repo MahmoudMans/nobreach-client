@@ -5,23 +5,67 @@ import {
 
 
 test(
-  "company V15 contains only unique primary information blocks",
+  "Company V19 contains only three primary content chapters",
   async ({
     page
   }) => {
 
     await page.goto(
-      "/company",
-      {
-        waitUntil:
-          "domcontentloaded"
-      }
+      "/company"
+    );
+
+
+    const sections =
+      page.locator(
+        '[data-company-content-section]'
+      );
+
+
+    await expect(
+      sections
+    ).toHaveCount(
+      3
+    );
+
+
+    const names =
+      await sections.evaluateAll(
+        elements =>
+          elements.map(
+            element =>
+              element.getAttribute(
+                "data-company-content-section"
+              )
+          )
+      );
+
+
+    expect(
+      names
+    ).toEqual([
+      "identity",
+      "capabilities",
+      "people"
+    ]);
+
+  }
+);
+
+
+test(
+  "Hero and CTA remain outside the content budget",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/company"
     );
 
 
     await expect(
       page.locator(
-        '[data-company-card="mindset"]'
+        '[data-company-section="hero"][data-company-content-section]'
       )
     ).toHaveCount(
       0
@@ -30,55 +74,11 @@ test(
 
     await expect(
       page.locator(
-        '[data-company-section="story"]'
+        '[data-company-section="cta"][data-company-content-section]'
       )
     ).toHaveCount(
       0
     );
-
-
-    await expect(
-      page.locator(
-        '[data-company-section="ecosystem"]'
-      )
-    ).toHaveCount(
-      0
-    );
-
-
-    await expect(
-      page.locator(
-        '[data-company-ui="facts"]'
-      )
-    ).toBeVisible();
-
-
-    await expect(
-      page.locator(
-        '[data-company-ui="capability-grid"]'
-      )
-    ).toBeVisible();
-
-
-    await expect(
-      page.locator(
-        '[data-company-ui="principle-grid"]'
-      )
-    ).toBeVisible();
-
-
-    await expect(
-      page.locator(
-        '[data-company-ui="timeline-grid"]'
-      )
-    ).toBeVisible();
-
-
-    await expect(
-      page.locator(
-        '[data-company-ui="people-grid"]'
-      )
-    ).toBeVisible();
 
   }
 );

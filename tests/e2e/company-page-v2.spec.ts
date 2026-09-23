@@ -5,7 +5,7 @@ import {
 
 
 test(
-  "company V18 presents exactly three real content chapters",
+  "Company V19 renders three editorial chapters",
   async ({
     page
   }) => {
@@ -17,40 +17,18 @@ test(
 
     await expect(
       page.locator(
-        '[data-company-section="hero"]'
+        '[data-company-design-system="v19"]'
       )
     ).toBeVisible();
 
 
-    const sections =
+    await expect(
       page.locator(
         '[data-company-content-section]'
-      );
-
-
-    await expect(
-      sections
+      )
     ).toHaveCount(
       3
     );
-
-
-    for (
-      const name
-      of [
-        "company",
-        "capabilities",
-        "people-journey"
-      ]
-    ) {
-
-      await expect(
-        page.locator(
-          `[data-company-content-section="${name}"]`
-        )
-      ).toBeAttached();
-
-    }
 
 
     await expect(
@@ -64,7 +42,7 @@ test(
 
 
 test(
-  "Company and operating model share the first chapter",
+  "Company identity uses a connected operating model",
   async ({
     page
   }) => {
@@ -76,7 +54,7 @@ test(
 
     const section =
       page.locator(
-        '[data-company-content-section="company"]'
+        '[data-company-content-section="identity"]'
       );
 
 
@@ -88,24 +66,31 @@ test(
     ).toBeVisible();
 
 
-    await expect(
-      section.getByText(
-        "Operating model",
-        {
-          exact:
-            true
-        }
-      )
-    ).toBeVisible();
-
-
-    await expect(
-      section.getByText(
+    for (
+      const text
+      of [
         "Security services",
-        {
-          exact:
-            true
-        }
+        "Practical education",
+        "Community"
+      ]
+    ) {
+
+      await expect(
+        section.getByText(
+          text,
+          {
+            exact:
+              true
+          }
+        )
+      ).toBeVisible();
+
+    }
+
+
+    await expect(
+      section.locator(
+        '[data-company-ui="facts"]'
       )
     ).toBeVisible();
 
@@ -114,10 +99,19 @@ test(
 
 
 test(
-  "Capabilities and principles share the second chapter",
+  "Company capability system uses four compact index rows",
   async ({
     page
   }) => {
+
+    await page.setViewportSize({
+      width:
+        1440,
+
+      height:
+        900
+    });
+
 
     await page.goto(
       "/company"
@@ -133,29 +127,57 @@ test(
     await section.scrollIntoViewIfNeeded();
 
 
-    await expect(
+    const rows =
       section.locator(
         '[data-company-card="capability"]'
-      )
+      );
+
+
+    await expect(
+      rows
     ).toHaveCount(
       4
     );
 
 
-    await expect(
-      section.locator(
-        '[data-company-card="principle"]'
-      )
-    ).toHaveCount(
-      3
-    );
+    const heights =
+      await rows.evaluateAll(
+        elements =>
+          elements.map(
+            element =>
+              element
+                .getBoundingClientRect()
+                .height
+          )
+      );
+
+
+    for (
+      const height
+      of heights
+    ) {
+
+      expect(
+        height
+      ).toBeGreaterThan(
+        80
+      );
+
+
+      expect(
+        height
+      ).toBeLessThan(
+        130
+      );
+
+    }
 
   }
 );
 
 
 test(
-  "Journey founder and people share the third chapter",
+  "Company final chapter combines timeline founder and destinations",
   async ({
     page
   }) => {
@@ -167,7 +189,7 @@ test(
 
     const section =
       page.locator(
-        '[data-company-content-section="people-journey"]'
+        '[data-company-content-section="people"]'
       );
 
 
@@ -185,7 +207,7 @@ test(
 
     await expect(
       section.locator(
-        '[data-company-card="founder"]'
+        '[data-founder-photo-image="company"]'
       )
     ).toBeVisible();
 
@@ -203,7 +225,7 @@ test(
 
 
 test(
-  "company V18 stays overflow free on mobile",
+  "Company V19 stays overflow free on mobile",
   async ({
     page
   }) => {

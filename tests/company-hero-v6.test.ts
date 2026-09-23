@@ -24,18 +24,22 @@ const css =
 
 
 describe(
-  "company V14 PageIntro compatibility",
+  "Company V19 first-screen hero",
   () => {
 
     it(
-      "keeps one established V6 runtime hero selector",
+      "retains one Company hero",
       () => {
 
         expect(
-          page.match(
-            /data-company-hero="v6"/g
-          )
-        ).toHaveLength(
+          (
+            page.match(
+              /data-company-section="hero"/g
+            )
+            ??
+            []
+          ).length
+        ).toBe(
           1
         );
 
@@ -44,7 +48,7 @@ describe(
 
 
     it(
-      "preserves the approved company message",
+      "uses editorial copy instead of a hero profile card",
       () => {
 
         expect(
@@ -53,94 +57,60 @@ describe(
           "Offensive security"
         );
 
-        expect(
-          page
-        ).toContain(
-          "beyond the assessment."
-        );
 
         expect(
           page
         ).toContain(
-          'href="/services"'
+          "built to move beyond"
         );
+
 
         expect(
           page
         ).toContain(
-          'href="/company/founder"'
+          "the assessment."
         );
 
-      }
-    );
-
-
-    it(
-      "uses a clean content surface with pseudo-decoration",
-      () => {
 
         expect(
-          css
+          page
         ).toContain(
-          ".hero"
+          'data-company-ui="signal-system"'
         );
 
-        expect(
-          css
-        ).toContain(
-          "background-image:"
-        );
-
-        expect(
-          css
-        ).toContain(
-          "none !important"
-        );
-
-        expect(
-          css
-        ).toContain(
-          "box-shadow:"
-        );
-
-      }
-    );
-
-
-    it(
-      "does not include the rejected hero artwork contract",
-      () => {
-
-        for (
-          const rejected
-          of [
-            "companyHeroV5Backdrop",
-            "companyHeroV5Glow",
-            "companyHeroV5Grid",
-            "companyHeroV5Orbit"
-          ]
-        ) {
-
-          expect(
-            page
-          ).not.toContain(
-            rejected
-          );
-
-        }
-
-      }
-    );
-
-
-    it(
-      "does not recreate another navigation bar beneath the intro",
-      () => {
 
         expect(
           page
         ).not.toContain(
-          'aria-label="Company sections"'
+          'data-company-ui="profile-card"'
+        );
+
+      }
+    );
+
+
+    it(
+      "uses a viewport-aware desktop hero",
+      () => {
+
+        expect(
+          css
+        ).toContain(
+          "100svh"
+        );
+
+
+        expect(
+          css
+        ).toContain(
+          ".heroMain"
+        );
+
+
+        expect(
+          css
+        ).toContain(
+          ".signalSystem"
         );
 
       }

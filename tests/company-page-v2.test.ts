@@ -24,8 +24,29 @@ const css =
 
 
 describe(
-  "company V18 three-section architecture",
+  "Company V19 editorial system",
   () => {
+
+    it(
+      "activates the V19 company design",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          'data-company-design-system="v19"'
+        );
+
+
+        expect(
+          css
+        ).toContain(
+          "NB_COMPANY_EDITORIAL_SYSTEM_V19"
+        );
+
+      }
+    );
+
 
     it(
       "contains exactly three real content sections",
@@ -41,104 +62,6 @@ describe(
           ).length
         ).toBe(
           3
-        );
-
-      }
-    );
-
-
-    it(
-      "groups Company and the operating model together",
-      () => {
-
-        expect(
-          page
-        ).toContain(
-          'data-company-content-section="company"'
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "Operating model"
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "Security services"
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "Practical education"
-        );
-
-      }
-    );
-
-
-    it(
-      "groups capabilities and principles in one chapter",
-      () => {
-
-        expect(
-          page
-        ).toContain(
-          'data-company-content-section="capabilities"'
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          'data-company-ui="capability-grid"'
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          'data-company-ui="principle-grid"'
-        );
-
-      }
-    );
-
-
-    it(
-      "groups journey founder and people in one chapter",
-      () => {
-
-        expect(
-          page
-        ).toContain(
-          'data-company-content-section="people-journey"'
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          'data-company-ui="timeline-grid"'
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          'data-company-card="founder"'
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          'data-company-ui="people-grid"'
         );
 
       }
@@ -162,11 +85,53 @@ describe(
           'data-company-section="cta"'
         );
 
+      }
+    );
+
+
+    it(
+      "uses the editorial capability and people systems",
+      () => {
+
+        for (
+          const token
+          of [
+            'data-company-ui="signal-system"',
+            'data-company-ui="operating-model"',
+            'data-company-ui="capability-grid"',
+            'data-company-ui="principle-grid"',
+            'data-company-ui="timeline-grid"',
+            'data-company-ui="people-grid"'
+          ]
+        ) {
+
+          expect(
+            page
+          ).toContain(
+            token
+          );
+
+        }
+
+      }
+    );
+
+
+    it(
+      "does not use the rejected hero profile card",
+      () => {
 
         expect(
           page
-        ).not.toMatch(
-          /data-company-section="hero"[^]*data-company-content-section="hero"/
+        ).not.toContain(
+          'data-company-ui="profile-card"'
+        );
+
+
+        expect(
+          page
+        ).not.toContain(
+          "technicalPanel"
         );
 
       }
@@ -174,21 +139,28 @@ describe(
 
 
     it(
-      "uses the V18 grouped layout styling",
+      "keeps the verified company facts and founder portrait",
       () => {
 
-        expect(
-          css
-        ).toContain(
-          "NB_COMPANY_THREE_SECTION_ARCHITECTURE_V18"
-        );
+        for (
+          const value
+          of [
+            "2023",
+            "Tunis, Tunisia",
+            "Offensive Security",
+            "Services · Education · Community",
+            "Nouha Ben Brahim",
+            "/people/ceo.png"
+          ]
+        ) {
 
+          expect(
+            page
+          ).toContain(
+            value
+          );
 
-        expect(
-          css
-        ).toContain(
-          ".peopleFounderGrid"
-        );
+        }
 
       }
     );

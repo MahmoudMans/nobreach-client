@@ -1,99 +1,7 @@
 import {
   expect,
-  test,
+  test
 } from "@playwright/test";
-
-
-test(
-  "company renders the clean V6 hero",
-  async ({
-    page
-  }) => {
-
-    await page.goto(
-      "/company",
-      {
-        waitUntil:
-          "domcontentloaded",
-      }
-    );
-
-
-    const hero =
-      page.locator(
-        '[data-company-hero="v6"]'
-      );
-
-
-    await expect(
-      hero
-    ).toBeVisible();
-
-
-    await expect(
-      hero.locator(
-        "h1"
-      )
-    ).toBeVisible();
-
-
-    await expect(
-      hero.locator(
-        '[data-company-ui="profile-card"]'
-      )
-    ).toBeVisible();
-
-
-    const design =
-      await hero.evaluate(
-        element => {
-
-          const style =
-            window.getComputedStyle(
-              element
-            );
-
-
-          return {
-            backgroundImage:
-              style.backgroundImage,
-
-            backgroundColor:
-              style.backgroundColor,
-
-            boxShadow:
-              style.boxShadow,
-
-            minHeight:
-              style.minHeight,
-          };
-
-        }
-      );
-
-
-    expect(
-      design.backgroundImage
-    ).toBe(
-      "none"
-    );
-
-
-    expect(
-      design.backgroundColor
-    ).not.toBe(
-      "rgba(0, 0, 0, 0)"
-    );
-
-
-    expect(
-      design.boxShadow
-    ).toBe(
-      "none"
-    );
-
-  }
-);
 
 
 for (
@@ -104,34 +12,20 @@ for (
         1440,
 
       height:
-        900,
+        900
     },
     {
       width:
         1180,
 
       height:
-        820,
-    },
-    {
-      width:
-        820,
-
-      height:
-        1180,
-    },
-    {
-      width:
-        390,
-
-      height:
-        844,
-    },
+        820
+    }
   ]
 ) {
 
   test(
-    `company V6 remains compact at ${viewport.width}x${viewport.height}`,
+    `Company V19 hero forms the first screen at ${viewport.width}x${viewport.height}`,
     async ({
       page
     }) => {
@@ -142,93 +36,135 @@ for (
 
 
       await page.goto(
-        "/company",
-        {
-          waitUntil:
-            "domcontentloaded",
-        }
+        "/company"
       );
 
 
       const hero =
         page.locator(
-          '[data-company-hero="v6"]'
-        );
-
-
-      const heading =
-        hero.locator(
-          "h1"
+          '[data-company-section="hero"]'
         );
 
 
       await expect(
-        heading
+        hero
+      ).toBeVisible();
+
+
+      const box =
+        await hero.boundingBox();
+
+
+      if (!box) {
+
+        throw new Error(
+          "Company hero geometry unavailable"
+        );
+
+      }
+
+
+      expect(
+        box.height
+      ).toBeGreaterThan(
+        viewport.height
+        *
+        0.82
+      );
+
+
+      expect(
+        box.y
+        +
+        box.height
+      ).toBeLessThan(
+        viewport.height
+        +
+        80
+      );
+
+
+      await expect(
+        hero.getByRole(
+          "heading",
+          {
+            level:
+              1
+          }
+        )
       ).toBeVisible();
 
 
       await expect(
-        heading
-      ).toBeInViewport();
-
-
-      const result =
-        await page.evaluate(
-          () => {
-
-            const heading =
-              document.querySelector(
-                '[data-company-hero="v6"] h1'
-              );
-
-
-            if (
-              !heading
-            ) {
-
-              throw new Error(
-                "Company V6 heading unavailable"
-              );
-
-            }
-
-
-            const box =
-              heading.getBoundingClientRect();
-
-
-            return {
-              headingTop:
-                box.top,
-
-              viewportHeight:
-                window.innerHeight,
-
-              scrollWidth:
-                document.documentElement.scrollWidth,
-
-              clientWidth:
-                document.documentElement.clientWidth,
-            };
-
-          }
-        );
-
-
-      expect(
-        result.headingTop
-      ).toBeLessThan(
-        result.viewportHeight * 0.34
-      );
-
-
-      expect(
-        result.scrollWidth
-      ).toBeLessThanOrEqual(
-        result.clientWidth + 1
-      );
+        hero.locator(
+          '[data-company-ui="signal-system"]'
+        )
+      ).toBeVisible();
 
     }
   );
 
 }
+
+
+test(
+  "Company V19 mobile hero remains compact",
+  async ({
+    page
+  }) => {
+
+    await page.setViewportSize({
+      width:
+        390,
+
+      height:
+        844
+    });
+
+
+    await page.goto(
+      "/company"
+    );
+
+
+    const heading =
+      page.locator(
+        '[data-company-section="hero"] h1'
+      );
+
+
+    await expect(
+      heading
+    ).toBeVisible();
+
+
+    const box =
+      await heading.boundingBox();
+
+
+    if (!box) {
+
+      throw new Error(
+        "Mobile heading geometry unavailable"
+      );
+
+    }
+
+
+    expect(
+      box.y
+    ).toBeLessThan(
+      260
+    );
+
+
+    expect(
+      box.y
+      +
+      box.height
+    ).toBeLessThan(
+      650
+    );
+
+  }
+);

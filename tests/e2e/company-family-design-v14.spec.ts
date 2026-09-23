@@ -10,7 +10,7 @@ const routes = [
       "/company",
 
     heading:
-      /offensive security beyond the assessment/i,
+      /offensive security built to move beyond the assessment/i,
 
     contentSections:
       3
