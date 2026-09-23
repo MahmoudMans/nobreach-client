@@ -5909,3 +5909,2794 @@ and
   }
 
 }
+
+
+/* ==========================================================================
+   NB_AI_SECURITY_FOUNDATIONS_FULL_DESIGN_V24
+
+   Design authority:
+   NoBreach UI/UX Design System & Website Styling Specification
+
+   Direction:
+   - sleek
+   - professional
+   - slightly edgy
+   - premium cybersecurity
+   - technical without gaming clichés
+   - student focused
+   - conversion oriented
+
+   Brand:
+   #07090D background
+   #0B0F16 secondary
+   #101620 surface 1
+   #151D29 surface 2
+   #1C2634 surface 3
+   #F5F7FA primary text
+   #C5CED8 secondary text
+   #8793A3 muted
+   #A1E2F0 cyan
+   #83B3D7 steel blue
+   #7E60B9 violet
+   #6333C6 purple
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01 — PAGE TOKENS
+   ========================================================================== */
+
+
+.aiSecurity {
+  --nb24-bg:
+    #07090d;
+
+  --nb24-bg-secondary:
+    #0b0f16;
+
+  --nb24-surface-1:
+    #101620;
+
+  --nb24-surface-2:
+    #151d29;
+
+  --nb24-surface-3:
+    #1c2634;
+
+  --nb24-text:
+    #f5f7fa;
+
+  --nb24-text-secondary:
+    #c5ced8;
+
+  --nb24-muted:
+    #8793a3;
+
+  --nb24-cyan:
+    #a1e2f0;
+
+  --nb24-blue:
+    #83b3d7;
+
+  --nb24-violet:
+    #7e60b9;
+
+  --nb24-purple:
+    #6333c6;
+
+  --nb24-success:
+    #42d392;
+
+  --nb24-border:
+    rgba(
+      161,
+      226,
+      240,
+      0.12
+    );
+
+  --nb24-border-hover:
+    rgba(
+      161,
+      226,
+      240,
+      0.28
+    );
+
+  --nb24-border-violet:
+    rgba(
+      126,
+      96,
+      185,
+      0.3
+    );
+
+  --nb24-radius-sm:
+    8px;
+
+  --nb24-radius-md:
+    10px;
+
+  --nb24-radius-lg:
+    14px;
+
+  --nb24-radius-xl:
+    18px;
+
+  --nb24-content:
+    1180px;
+
+  --nb24-reading:
+    720px;
+
+  --nb24-ease:
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+
+  position:
+    relative;
+
+  width:
+    100%;
+
+  min-width:
+    0;
+
+  overflow:
+    clip;
+
+  color:
+    var(
+      --nb24-text
+    );
+
+  background:
+    radial-gradient(
+      circle
+      at
+      18%
+      7%,
+      rgba(
+        161,
+        226,
+        240,
+        0.06
+      ),
+      transparent
+      25%
+    ),
+    radial-gradient(
+      circle
+      at
+      88%
+      22%,
+      rgba(
+        99,
+        51,
+        198,
+        0.075
+      ),
+      transparent
+      23%
+    ),
+    var(
+      --nb24-bg
+    );
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+
+.aiSecurity *,
+.aiSecurity *::before,
+.aiSecurity *::after {
+  box-sizing:
+    border-box;
+}
+
+
+/* ==========================================================================
+   02 — TYPOGRAPHY
+   ========================================================================== */
+
+
+.aiSecurity h1,
+.aiSecurity h2,
+.aiSecurity h3,
+.aiSecurity h4 {
+  color:
+    var(
+      --nb24-text
+    );
+
+  font-family:
+    "Space Grotesk",
+    Manrope,
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
+}
+
+
+.aiSecurity h1 {
+  font-weight:
+    620 !important;
+}
+
+
+.aiSecurity h2 {
+  margin:
+    0
+    0
+    0.75rem !important;
+
+  font-size:
+    clamp(
+      2rem,
+      3.1vw,
+      2.75rem
+    ) !important;
+
+  font-weight:
+    620 !important;
+
+  line-height:
+    1.05 !important;
+
+  letter-spacing:
+    -0.035em !important;
+}
+
+
+.aiSecurity h3 {
+  margin:
+    0
+    0
+    0.4rem !important;
+
+  font-size:
+    clamp(
+      1.15rem,
+      1.7vw,
+      1.45rem
+    ) !important;
+
+  font-weight:
+    610 !important;
+
+  line-height:
+    1.2 !important;
+
+  letter-spacing:
+    -0.018em !important;
+}
+
+
+.aiSecurity h4 {
+  font-size:
+    1.05rem;
+
+  line-height:
+    1.35;
+}
+
+
+.aiSecurity p {
+  color:
+    var(
+      --nb24-text-secondary
+    );
+
+  font-size:
+    1rem;
+
+  line-height:
+    1.625;
+}
+
+
+/* ==========================================================================
+   03 — HERO
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  section[class*="page-hero-module__"][class*="__hero"]
+) {
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  block-size:
+    auto !important;
+
+  min-block-size:
+    0 !important;
+
+  max-height:
+    none !important;
+
+  max-block-size:
+    none !important;
+
+  padding:
+    clamp(
+      2.2rem,
+      4vw,
+      4rem
+    )
+    clamp(
+      1.25rem,
+      4vw,
+      2.5rem
+    )
+    clamp(
+      2.4rem,
+      4vw,
+      4rem
+    ) !important;
+
+  overflow:
+    hidden !important;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --nb24-border
+    );
+
+  background:
+    transparent !important;
+}
+
+
+/* ==========================================================================
+   04 — HERO CONTENT GRID
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__content"]
+) {
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  display:
+    grid !important;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    minmax(
+      260px,
+      340px
+    ) !important;
+
+  grid-template-rows:
+    auto
+    auto
+    auto
+    auto
+    auto !important;
+
+  column-gap:
+    clamp(
+      2rem,
+      5vw,
+      5rem
+    ) !important;
+
+  row-gap:
+    0 !important;
+
+  width:
+    min(
+      100%,
+      var(
+        --nb24-content
+      )
+    ) !important;
+
+  inline-size:
+    min(
+      100%,
+      var(
+        --nb24-content
+      )
+    ) !important;
+
+  max-width:
+    var(
+      --nb24-content
+    ) !important;
+
+  max-inline-size:
+    var(
+      --nb24-content
+    ) !important;
+
+  height:
+    auto !important;
+
+  min-height:
+    0 !important;
+
+  block-size:
+    auto !important;
+
+  min-block-size:
+    0 !important;
+
+  margin:
+    0
+    auto !important;
+}
+
+
+/*
+ * Critical correction from V22:
+ * remove accidental 96px vertical padding from every direct hero child.
+ */
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__content"]
+)
+> * {
+  height:
+    auto !important;
+
+  min-height:
+    0 !important;
+
+  max-height:
+    none !important;
+
+  block-size:
+    auto !important;
+
+  min-block-size:
+    0 !important;
+
+  max-block-size:
+    none !important;
+
+  padding-top:
+    0 !important;
+
+  padding-bottom:
+    0 !important;
+
+  padding-block:
+    0 !important;
+}
+
+
+/* ==========================================================================
+   05 — HERO EYEBROW
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__eyebrow"]
+) {
+  grid-column:
+    1;
+
+  grid-row:
+    1;
+
+  display:
+    inline-flex !important;
+
+  align-items:
+    center;
+
+  width:
+    fit-content !important;
+
+  min-height:
+    26px !important;
+
+  margin:
+    0
+    0
+    0.85rem !important;
+
+  padding:
+    0.25rem
+    0.6rem !important;
+
+  color:
+    var(
+      --nb24-cyan
+    ) !important;
+
+  background:
+    rgba(
+      161,
+      226,
+      240,
+      0.065
+    );
+
+  border:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.16
+    );
+
+  border-radius:
+    999px;
+
+  font-family:
+    "IBM Plex Mono",
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size:
+    0.68rem !important;
+
+  font-weight:
+    650;
+
+  line-height:
+    1 !important;
+
+  letter-spacing:
+    0.075em !important;
+
+  text-transform:
+    uppercase;
+}
+
+
+/* ==========================================================================
+   06 — HERO TITLE
+   ========================================================================== */
+
+
+.aiSecurity.aiSecurity.aiSecurity.aiSecurity h1 {
+  grid-column:
+    1;
+
+  grid-row:
+    2;
+
+  width:
+    100% !important;
+
+  inline-size:
+    100% !important;
+
+  min-width:
+    0 !important;
+
+  max-width:
+    800px !important;
+
+  max-inline-size:
+    800px !important;
+
+  height:
+    auto !important;
+
+  block-size:
+    auto !important;
+
+  min-height:
+    0 !important;
+
+  min-block-size:
+    0 !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    0 !important;
+
+  color:
+    var(
+      --nb24-text
+    ) !important;
+
+  font-size:
+    clamp(
+      3.25rem,
+      4.3vw,
+      4rem
+    ) !important;
+
+  font-weight:
+    630 !important;
+
+  line-height:
+    0.99 !important;
+
+  letter-spacing:
+    -0.045em !important;
+
+  white-space:
+    normal !important;
+
+  word-break:
+    normal !important;
+
+  overflow-wrap:
+    normal !important;
+
+  text-wrap:
+    balance;
+}
+
+
+/* ==========================================================================
+   07 — HERO DESCRIPTION
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__description"]
+) {
+  grid-column:
+    1;
+
+  grid-row:
+    3;
+
+  display:
+    block !important;
+
+  width:
+    min(
+      100%,
+      690px
+    ) !important;
+
+  margin:
+    1.15rem
+    0
+    0 !important;
+
+  padding:
+    0 !important;
+
+  color:
+    var(
+      --nb24-text-secondary
+    ) !important;
+
+  font-size:
+    clamp(
+      1rem,
+      1.25vw,
+      1.1rem
+    ) !important;
+
+  line-height:
+    1.62 !important;
+}
+
+
+/* ==========================================================================
+   08 — HERO ACTION
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__actions"]
+) {
+  grid-column:
+    1;
+
+  grid-row:
+    4;
+
+  display:
+    flex !important;
+
+  flex-flow:
+    row
+    wrap !important;
+
+  gap:
+    0.75rem !important;
+
+  align-items:
+    center !important;
+
+  width:
+    auto !important;
+
+  margin:
+    1.45rem
+    0
+    0 !important;
+
+  padding:
+    0 !important;
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__actions"]
+)
+a,
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__actions"]
+)
+button {
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  min-height:
+    48px !important;
+
+  padding:
+    0.7rem
+    1.35rem !important;
+
+  color:
+    var(
+      --nb24-bg
+    ) !important;
+
+  background:
+    var(
+      --nb24-cyan
+    ) !important;
+
+  border:
+    1px
+    solid
+    var(
+      --nb24-cyan
+    ) !important;
+
+  border-radius:
+    var(
+      --nb24-radius-md
+    ) !important;
+
+  box-shadow:
+    none !important;
+
+  font-weight:
+    650;
+
+  text-decoration:
+    none !important;
+
+  transition:
+    transform
+    180ms
+    var(
+      --nb24-ease
+    ),
+    background
+    180ms
+    var(
+      --nb24-ease
+    ),
+    box-shadow
+    180ms
+    var(
+      --nb24-ease
+    );
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__actions"]
+)
+a:hover,
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__actions"]
+)
+button:hover {
+  transform:
+    translateY(
+      -1px
+    );
+
+  background:
+    #b8edf6 !important;
+
+  box-shadow:
+    0
+    8px
+    26px
+    rgba(
+      161,
+      226,
+      240,
+      0.1
+    ) !important;
+}
+
+
+/* ==========================================================================
+   09 — HERO METADATA PANEL
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+) {
+  grid-column:
+    2;
+
+  grid-row:
+    1
+    /
+    5;
+
+  align-self:
+    center;
+
+  display:
+    grid !important;
+
+  grid-template-columns:
+    1fr !important;
+
+  gap:
+    0 !important;
+
+  width:
+    100% !important;
+
+  height:
+    auto !important;
+
+  min-height:
+    0 !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    0.4rem
+    1.25rem !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(
+        16,
+        22,
+        32,
+        0.94
+      ),
+      rgba(
+        11,
+        15,
+        22,
+        0.94
+      )
+    ) !important;
+
+  border:
+    1px
+    solid
+    var(
+      --nb24-border
+    );
+
+  border-radius:
+    var(
+      --nb24-radius-lg
+    );
+
+  box-shadow:
+    0
+    16px
+    40px
+    rgba(
+      0,
+      0,
+      0,
+      0.18
+    );
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+)
+> * {
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    0.85rem
+    0 !important;
+
+  border-bottom:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.085
+    );
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+)
+> *:last-child {
+  border-bottom:
+    0;
+}
+
+
+/* ==========================================================================
+   10 — COORDINATE
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__coordinate"]
+) {
+  grid-column:
+    2;
+
+  grid-row:
+    5;
+
+  justify-self:
+    end;
+
+  display:
+    block !important;
+
+  width:
+    fit-content !important;
+
+  height:
+    auto !important;
+
+  margin:
+    0.75rem
+    0
+    0 !important;
+
+  padding:
+    0 !important;
+
+  color:
+    var(
+      --nb24-muted
+    ) !important;
+
+  font-family:
+    "IBM Plex Mono",
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size:
+    0.65rem !important;
+
+  line-height:
+    1.3 !important;
+
+  letter-spacing:
+    0.055em !important;
+
+  opacity:
+    0.65;
+}
+
+
+/* ==========================================================================
+   11 — AMBIENT AI VISUAL
+   ========================================================================== */
+
+
+.aiSecurity .aiAmbientVisual {
+  position:
+    absolute !important;
+
+  top:
+    2.5rem !important;
+
+  right:
+    clamp(
+      1rem,
+      3vw,
+      3rem
+    ) !important;
+
+  z-index:
+    0 !important;
+
+  width:
+    min(
+      320px,
+      23vw
+    ) !important;
+
+  height:
+    min(
+      320px,
+      23vw
+    ) !important;
+
+  margin:
+    0 !important;
+
+  opacity:
+    0.09 !important;
+
+  pointer-events:
+    none !important;
+
+  filter:
+    saturate(
+      0.8
+    );
+}
+
+
+/* ==========================================================================
+   12 — BODY SECTIONS
+   ========================================================================== */
+
+
+.aiSecurity section:not(
+  [class*="page-hero-module__"]
+) {
+  position:
+    relative;
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    clamp(
+      3rem,
+      5vw,
+      4.75rem
+    )
+    clamp(
+      1.25rem,
+      4vw,
+      2.5rem
+    ) !important;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.075
+    );
+}
+
+
+.aiSecurity section:not(
+  [class*="page-hero-module__"]
+):nth-of-type(
+  even
+) {
+  background:
+    rgba(
+      11,
+      15,
+      22,
+      0.46
+    );
+}
+
+
+/* ==========================================================================
+   13 — SECTION CONTENT WIDTH
+   ========================================================================== */
+
+
+.aiSecurity
+section:not(
+  [class*="page-hero-module__"]
+)
+> * {
+  width:
+    min(
+      100%,
+      var(
+        --nb24-content
+      )
+    );
+
+  max-width:
+    var(
+      --nb24-content
+    );
+
+  margin-right:
+    auto;
+
+  margin-left:
+    auto;
+}
+
+
+/* ==========================================================================
+   14 — SECTION EYEBROWS / LABELS
+   ========================================================================== */
+
+
+.aiSecurity section small,
+.aiSecurity section [class*="eyebrow"],
+.aiSecurity section [class*="label"] {
+  font-family:
+    "IBM Plex Mono",
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  letter-spacing:
+    0.06em;
+
+  text-transform:
+    uppercase;
+}
+
+
+/* ==========================================================================
+   15 — SUPPORTING COPY
+   ========================================================================== */
+
+
+.aiSecurity section > p,
+.aiSecurity section header > p {
+  max-width:
+    var(
+      --nb24-reading
+    );
+
+  margin:
+    0.55rem
+    0
+    0 !important;
+
+  color:
+    var(
+      --nb24-text-secondary
+    ) !important;
+}
+
+
+/* ==========================================================================
+   16 — METADATA DL
+   ========================================================================== */
+
+
+.aiSecurity dl {
+  display:
+    grid !important;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(
+        170px,
+        1fr
+      )
+    ) !important;
+
+  gap:
+    0 !important;
+
+  width:
+    100%;
+
+  margin:
+    1.5rem
+    0
+    0 !important;
+
+  overflow:
+    hidden;
+
+  background:
+    rgba(
+      16,
+      22,
+      32,
+      0.72
+    );
+
+  border:
+    1px
+    solid
+    var(
+      --nb24-border
+    );
+
+  border-radius:
+    var(
+      --nb24-radius-lg
+    );
+}
+
+
+.aiSecurity dl > div {
+  min-height:
+    0 !important;
+
+  padding:
+    1rem
+    1.15rem !important;
+
+  border-right:
+    1px
+    solid
+    var(
+      --nb24-border
+    );
+
+  border-bottom:
+    0;
+}
+
+
+.aiSecurity dl > div:last-child {
+  border-right:
+    0;
+}
+
+
+.aiSecurity dt {
+  margin:
+    0
+    0
+    0.35rem;
+
+  color:
+    var(
+      --nb24-muted
+    );
+
+  font-family:
+    "IBM Plex Mono",
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size:
+    0.68rem !important;
+
+  font-weight:
+    600;
+
+  line-height:
+    1.25;
+
+  letter-spacing:
+    0.055em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.aiSecurity dd {
+  margin:
+    0 !important;
+
+  color:
+    var(
+      --nb24-text
+    );
+
+  font-size:
+    0.9rem !important;
+
+  font-weight:
+    550;
+
+  line-height:
+    1.4 !important;
+}
+
+
+/* ==========================================================================
+   17 — CARDS / MODULES
+   ========================================================================== */
+
+
+.aiSecurity article {
+  position:
+    relative;
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    1.35rem
+    1.4rem !important;
+
+  overflow:
+    hidden;
+
+  background:
+    var(
+      --nb24-surface-1
+    ) !important;
+
+  border:
+    1px
+    solid
+    var(
+      --nb24-border
+    ) !important;
+
+  border-radius:
+    var(
+      --nb24-radius-lg
+    ) !important;
+
+  box-shadow:
+    0
+    14px
+    36px
+    rgba(
+      0,
+      0,
+      0,
+      0.12
+    ) !important;
+
+  transition:
+    transform
+    200ms
+    var(
+      --nb24-ease
+    ),
+    border-color
+    200ms
+    var(
+      --nb24-ease
+    ),
+    background
+    200ms
+    var(
+      --nb24-ease
+    );
+}
+
+
+.aiSecurity article::before {
+  position:
+    absolute;
+
+  top:
+    -1px;
+
+  left:
+    -1px;
+
+  width:
+    18px;
+
+  height:
+    18px;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.5
+    );
+
+  border-left:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.5
+    );
+
+  content:
+    "";
+}
+
+
+.aiSecurity article:hover {
+  transform:
+    translateY(
+      -2px
+    );
+
+  background:
+    var(
+      --nb24-surface-2
+    ) !important;
+
+  border-color:
+    var(
+      --nb24-border-hover
+    ) !important;
+}
+
+
+/* ==========================================================================
+   18 — LISTS / LEARNING OBJECTIVES
+   ========================================================================== */
+
+
+.aiSecurity ul,
+.aiSecurity ol {
+  display:
+    grid;
+
+  gap:
+    0.65rem;
+
+  margin:
+    1rem
+    0
+    0 !important;
+
+  padding:
+    0 !important;
+
+  list-style:
+    none;
+}
+
+
+.aiSecurity li {
+  position:
+    relative;
+
+  min-height:
+    0 !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    0.8rem
+    0.95rem
+    0.8rem
+    2.25rem !important;
+
+  color:
+    var(
+      --nb24-text-secondary
+    );
+
+  background:
+    rgba(
+      16,
+      22,
+      32,
+      0.58
+    );
+
+  border:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.085
+    );
+
+  border-radius:
+    var(
+      --nb24-radius-md
+    );
+
+  line-height:
+    1.5 !important;
+}
+
+
+.aiSecurity li::before {
+  position:
+    absolute;
+
+  top:
+    1.05rem;
+
+  left:
+    0.9rem;
+
+  width:
+    7px;
+
+  height:
+    7px;
+
+  background:
+    var(
+      --nb24-cyan
+    );
+
+  border-radius:
+    50%;
+
+  box-shadow:
+    0
+    0
+    0
+    4px
+    rgba(
+      161,
+      226,
+      240,
+      0.075
+    );
+
+  content:
+    "";
+}
+
+
+/* ==========================================================================
+   19 — CURRICULUM
+   ========================================================================== */
+
+
+.aiSecurity ol {
+  counter-reset:
+    nb24-module;
+}
+
+
+.aiSecurity ol > li {
+  counter-increment:
+    nb24-module;
+
+  padding-left:
+    3.15rem !important;
+}
+
+
+.aiSecurity ol > li::before {
+  top:
+    0.72rem;
+
+  left:
+    0.8rem;
+
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  width:
+    1.7rem;
+
+  height:
+    1.7rem;
+
+  color:
+    var(
+      --nb24-cyan
+    );
+
+  background:
+    rgba(
+      161,
+      226,
+      240,
+      0.07
+    );
+
+  border:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.16
+    );
+
+  border-radius:
+    8px;
+
+  box-shadow:
+    none;
+
+  font-family:
+    "IBM Plex Mono",
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size:
+    0.65rem;
+
+  font-weight:
+    700;
+
+  content:
+    counter(
+      nb24-module,
+      decimal-leading-zero
+    );
+}
+
+
+/* ==========================================================================
+   20 — FAQ ACCORDION
+   ========================================================================== */
+
+
+.aiSecurity details {
+  margin:
+    0 !important;
+
+  overflow:
+    hidden;
+
+  background:
+    rgba(
+      16,
+      22,
+      32,
+      0.62
+    );
+
+  border:
+    1px
+    solid
+    var(
+      --nb24-border
+    );
+
+  border-radius:
+    var(
+      --nb24-radius-lg
+    );
+}
+
+
+.aiSecurity details + details {
+  margin-top:
+    0.65rem !important;
+}
+
+
+.aiSecurity summary {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  min-height:
+    56px !important;
+
+  padding:
+    0.85rem
+    1rem !important;
+
+  color:
+    var(
+      --nb24-text
+    );
+
+  cursor:
+    pointer;
+
+  font-weight:
+    590;
+
+  line-height:
+    1.4;
+
+  list-style:
+    none;
+}
+
+
+.aiSecurity summary::-webkit-details-marker {
+  display:
+    none;
+}
+
+
+.aiSecurity details[open] {
+  background:
+    var(
+      --nb24-surface-1
+    );
+
+  border-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.2
+    );
+}
+
+
+.aiSecurity details > p,
+.aiSecurity details > div {
+  max-width:
+    var(
+      --nb24-reading
+    );
+
+  margin:
+    0 !important;
+
+  padding:
+    0
+    1rem
+    1rem !important;
+
+  color:
+    var(
+      --nb24-text-secondary
+    );
+}
+
+
+/* ==========================================================================
+   21 — LINKS
+   ========================================================================== */
+
+
+.aiSecurity a:not(
+  [role="button"]
+) {
+  color:
+    var(
+      --nb24-cyan
+    );
+
+  text-underline-offset:
+    0.18em;
+}
+
+
+.aiSecurity a:not(
+  [role="button"]
+):hover {
+  text-decoration:
+    underline;
+}
+
+
+/* ==========================================================================
+   22 — BUTTONS
+   ========================================================================== */
+
+
+.aiSecurity a[role="button"],
+.aiSecurity button {
+  min-height:
+    44px;
+
+  border-radius:
+    var(
+      --nb24-radius-md
+    );
+
+  transition:
+    transform
+    180ms
+    var(
+      --nb24-ease
+    ),
+    border-color
+    180ms
+    var(
+      --nb24-ease
+    ),
+    background
+    180ms
+    var(
+      --nb24-ease
+    );
+}
+
+
+.aiSecurity a[role="button"]:hover,
+.aiSecurity button:hover {
+  transform:
+    translateY(
+      -1px
+    );
+}
+
+
+/* ==========================================================================
+   23 — FOCUS
+   ========================================================================== */
+
+
+.aiSecurity :focus-visible {
+  outline:
+    2px
+    solid
+    var(
+      --nb24-cyan
+    ) !important;
+
+  outline-offset:
+    3px !important;
+
+  box-shadow:
+    0
+    0
+    0
+    3px
+    rgba(
+      161,
+      226,
+      240,
+      0.11
+    );
+}
+
+
+/* ==========================================================================
+   24 — TABLET
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    1023px
+) {
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__content"]
+  ) {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      )
+      minmax(
+        230px,
+        290px
+      ) !important;
+
+    column-gap:
+      2rem !important;
+  }
+
+
+  .aiSecurity.aiSecurity.aiSecurity.aiSecurity h1 {
+    max-width:
+      680px !important;
+
+    font-size:
+      clamp(
+        2.85rem,
+        5.4vw,
+        3.6rem
+      ) !important;
+  }
+
+
+  .aiSecurity .aiAmbientVisual {
+    width:
+      220px !important;
+
+    height:
+      220px !important;
+
+    opacity:
+      0.06 !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   25 — STACKED TABLET / LARGE MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .aiSecurity
+  :global(
+    section[class*="page-hero-module__"][class*="__hero"]
+  ) {
+    padding:
+      1.5rem
+      1.1rem
+      1.75rem !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__content"]
+  ) {
+    display:
+      flex !important;
+
+    flex-direction:
+      column !important;
+
+    gap:
+      0 !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__eyebrow"]
+  ) {
+    order:
+      1 !important;
+
+    margin-bottom:
+      0.75rem !important;
+  }
+
+
+  .aiSecurity.aiSecurity.aiSecurity.aiSecurity h1 {
+    order:
+      2 !important;
+
+    max-width:
+      100% !important;
+
+    max-inline-size:
+      100% !important;
+
+    font-size:
+      clamp(
+        2.55rem,
+        10.6vw,
+        3.15rem
+      ) !important;
+
+    line-height:
+      1 !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__description"]
+  ) {
+    order:
+      3 !important;
+
+    margin-top:
+      0.9rem !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__meta"]
+  ) {
+    order:
+      4 !important;
+
+    grid-column:
+      auto;
+
+    grid-row:
+      auto;
+
+    margin-top:
+      1.25rem !important;
+
+    padding:
+      0.25rem
+      1rem !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__actions"]
+  ) {
+    order:
+      5 !important;
+
+    margin-top:
+      1rem !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__actions"]
+  )
+  a,
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__actions"]
+  )
+  button {
+    width:
+      100%;
+
+    min-height:
+      48px !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__coordinate"]
+  ) {
+    order:
+      6 !important;
+
+    align-self:
+      flex-end;
+
+    margin-top:
+      0.75rem !important;
+  }
+
+
+  .aiSecurity .aiAmbientVisual {
+    display:
+      none !important;
+  }
+
+
+  .aiSecurity section:not(
+    [class*="page-hero-module__"]
+  ) {
+    padding:
+      3rem
+      1.1rem !important;
+  }
+
+
+  .aiSecurity dl {
+    grid-template-columns:
+      1fr
+      1fr !important;
+  }
+
+
+  .aiSecurity dl > div {
+    border-right:
+      1px
+      solid
+      var(
+        --nb24-border
+      );
+
+    border-bottom:
+      1px
+      solid
+      var(
+        --nb24-border
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   26 — MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    639px
+) {
+
+  .aiSecurity section:not(
+    [class*="page-hero-module__"]
+  ) {
+    padding-top:
+      2.6rem !important;
+
+    padding-bottom:
+      2.6rem !important;
+  }
+
+
+  .aiSecurity h2 {
+    font-size:
+      clamp(
+        1.8rem,
+        8vw,
+        2.25rem
+      ) !important;
+  }
+
+
+  .aiSecurity dl {
+    grid-template-columns:
+      1fr !important;
+  }
+
+
+  .aiSecurity dl > div {
+    border-right:
+      0;
+
+    border-bottom:
+      1px
+      solid
+      var(
+        --nb24-border
+      );
+  }
+
+
+  .aiSecurity dl > div:last-child {
+    border-bottom:
+      0;
+  }
+
+
+  .aiSecurity article {
+    padding:
+      1.15rem !important;
+  }
+
+
+  .aiSecurity li {
+    padding:
+      0.75rem
+      0.8rem
+      0.75rem
+      2.15rem !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   27 — 320PX
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    360px
+) {
+
+  .aiSecurity
+  :global(
+    section[class*="page-hero-module__"][class*="__hero"]
+  ) {
+    padding-right:
+      1rem !important;
+
+    padding-left:
+      1rem !important;
+  }
+
+
+  .aiSecurity.aiSecurity.aiSecurity.aiSecurity h1 {
+    font-size:
+      2.3rem !important;
+
+    letter-spacing:
+      -0.038em !important;
+  }
+
+
+  .aiSecurity section:not(
+    [class*="page-hero-module__"]
+  ) {
+    padding-right:
+      1rem !important;
+
+    padding-left:
+      1rem !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   28 — REDUCED MOTION
+   ========================================================================== */
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .aiSecurity *,
+  .aiSecurity *::before,
+  .aiSecurity *::after {
+    scroll-behavior:
+      auto !important;
+
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      0.01ms !important;
+  }
+
+
+  .aiSecurity article:hover,
+  .aiSecurity a:hover,
+  .aiSecurity button:hover {
+    transform:
+      none !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   NB_AI_SECURITY_FOUNDATIONS_META_GRID_V26
+
+   V24 runtime evidence:
+
+     panel width  = 340px
+     panel height = 236px
+     values:
+       Beginner → Intermediate
+       Live sessions
+       3 sessions
+       AVAILABLE
+
+   Four metadata items do not need four full vertical rows.
+
+   Convert the premium metadata surface into a compact 2 × 2 technical grid.
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+) {
+  display:
+    grid !important;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    ) !important;
+
+  grid-template-rows:
+    auto
+    auto !important;
+
+  align-items:
+    stretch !important;
+
+  align-content:
+    start !important;
+
+  width:
+    100% !important;
+
+  min-width:
+    0 !important;
+
+  height:
+    auto !important;
+
+  min-height:
+    0 !important;
+
+  block-size:
+    auto !important;
+
+  min-block-size:
+    0 !important;
+
+  max-height:
+    none !important;
+
+  max-block-size:
+    none !important;
+
+  gap:
+    0 !important;
+
+  padding:
+    0 !important;
+
+  overflow:
+    hidden !important;
+}
+
+
+/* ==========================================================================
+   METADATA CELLS
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+)
+> * {
+  display:
+    flex !important;
+
+  flex-direction:
+    column !important;
+
+  align-items:
+    flex-start !important;
+
+  justify-content:
+    center !important;
+
+  min-width:
+    0 !important;
+
+  min-inline-size:
+    0 !important;
+
+  min-height:
+    58px !important;
+
+  height:
+    auto !important;
+
+  block-size:
+    auto !important;
+
+  min-block-size:
+    58px !important;
+
+  max-height:
+    none !important;
+
+  max-block-size:
+    none !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    0.65rem
+    0.75rem !important;
+
+  border-right:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.09
+    ) !important;
+
+  border-bottom:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.09
+    ) !important;
+
+  overflow-wrap:
+    anywhere;
+}
+
+
+/*
+ * Right column.
+ */
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+)
+> *:nth-child(
+  2n
+) {
+  border-right:
+    0 !important;
+}
+
+
+/*
+ * Final grid row.
+ */
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+)
+> *:nth-last-child(
+  -n + 2
+) {
+  border-bottom:
+    0 !important;
+}
+
+
+/* ==========================================================================
+   METADATA TYPOGRAPHY
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+)
+> *
+small,
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+)
+> *
+span,
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+)
+> *
+strong {
+  max-width:
+    100%;
+
+  margin-top:
+    0;
+
+  margin-bottom:
+    0;
+
+  line-height:
+    1.25;
+}
+
+
+/*
+ * Technical/status labels stay compact.
+ */
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+)
+small {
+  color:
+    var(
+      --nb24-muted
+    );
+
+  font-size:
+    0.62rem;
+
+  letter-spacing:
+    0.045em;
+}
+
+
+/*
+ * Primary values.
+ */
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+)
+strong {
+  color:
+    var(
+      --nb24-text
+    );
+
+  font-size:
+    0.78rem;
+
+  font-weight:
+    620;
+}
+
+
+/* ==========================================================================
+   COMPACT STATUS TREATMENT
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+)
+> *:last-child {
+  color:
+    var(
+      --nb24-success
+    );
+}
+
+
+/* ==========================================================================
+   TABLET / MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__meta"]
+  ) {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      ) !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__meta"]
+  )
+  > * {
+    min-height:
+      54px !important;
+
+    min-block-size:
+      54px !important;
+
+    padding:
+      0.6rem
+      0.65rem !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   VERY NARROW MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    340px
+) {
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__meta"]
+  )
+  > * {
+    min-height:
+      52px !important;
+
+    min-block-size:
+      52px !important;
+
+    padding:
+      0.55rem
+      0.55rem !important;
+
+    font-size:
+      0.74rem;
+  }
+
+}
+
+
+/* ==========================================================================
+   NB_AI_SECURITY_FOUNDATIONS_META_INTRINSIC_V27
+
+   V26 proved the 2x2 grid itself is correct:
+
+     cell 1 = 58px
+     cell 2 = 58px
+     cell 3 = 58px
+     cell 4 = 58px
+
+   Expected intrinsic panel height:
+     ~116px
+
+   Actual panel height:
+     236px
+
+   Cause:
+   an older high-specificity direct-hero-child rule still applies
+   align-self: stretch !important.
+
+   Because the metadata panel spans multiple outer hero grid rows, that
+   stretches the panel to the complete left-column track region.
+
+   V27 overrides only that grid alignment behavior.
+   ========================================================================== */
+
+
+.aiSecurity.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+) {
+  align-self:
+    center !important;
+
+  justify-self:
+    stretch !important;
+
+  place-self:
+    center
+    stretch !important;
+
+  height:
+    max-content !important;
+
+  block-size:
+    max-content !important;
+
+  min-height:
+    0 !important;
+
+  min-block-size:
+    0 !important;
+
+  max-height:
+    none !important;
+
+  max-block-size:
+    none !important;
+
+  overflow:
+    hidden !important;
+}
+
+
+/*
+ * Preserve V26's compact cells.
+ */
+.aiSecurity.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+)
+> * {
+  align-self:
+    stretch !important;
+
+  height:
+    auto !important;
+
+  block-size:
+    auto !important;
+
+  min-height:
+    58px !important;
+
+  min-block-size:
+    58px !important;
+
+  max-height:
+    none !important;
+
+  max-block-size:
+    none !important;
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .aiSecurity.aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__meta"]
+  ) {
+    align-self:
+      stretch !important;
+
+    justify-self:
+      stretch !important;
+
+    place-self:
+      auto
+      stretch !important;
+
+    height:
+      max-content !important;
+
+    block-size:
+      max-content !important;
+  }
+
+}
