@@ -158,61 +158,6 @@ const principles = [
 ];
 
 
-const ecosystem = [
-  {
-    index:
-      "01",
-
-    label:
-      "Services",
-
-    code:
-      "SEC",
-
-    href:
-      "/services"
-  },
-  {
-    index:
-      "02",
-
-    label:
-      "Training",
-
-    code:
-      "LAB",
-
-    href:
-      "/training"
-  },
-  {
-    index:
-      "03",
-
-    label:
-      "CR4CKOUT",
-
-    code:
-      "CTF",
-
-    href:
-      "/cr4ckout"
-  },
-  {
-    index:
-      "04",
-
-    label:
-      "Insights",
-
-    code:
-      "R&D",
-
-    href:
-      "/insights"
-  }
-];
-
 
 const timeline = [
   {
@@ -360,6 +305,7 @@ export default function CompanyPage() {
       data-company-page="v4"
       data-company-design="v9"
       data-company-family="v14"
+      data-company-density="v15"
     >
       <section
         className={
@@ -599,93 +545,6 @@ export default function CompanyPage() {
       </section>
 
 
-      <section
-        className={
-          `${family.section} ${family.sectionAlt}`
-        }
-        data-company-section="story"
-      >
-        <Container
-          size="wide"
-          className={
-            family.container
-          }
-        >
-          <SectionHeader
-            index="02"
-            eyebrow="Approach"
-            title="Test. Learn. Share."
-            description="The work moves from understanding real attack surfaces to building repeatable security capability."
-          />
-
-          <div
-            className={
-              styles.approach
-            }
-            data-company-ui="approach-flow"
-          >
-            {
-              [
-                {
-                  index:
-                    "01",
-                  title:
-                    "Test",
-                  copy:
-                    "Examine real attack surfaces."
-                },
-                {
-                  index:
-                    "02",
-                  title:
-                    "Learn",
-                  copy:
-                    "Turn practice into capability."
-                },
-                {
-                  index:
-                    "03",
-                  title:
-                    "Share",
-                  copy:
-                    "Strengthen the wider security community."
-                }
-              ].map(
-                (
-                  item
-                ) => (
-                  <article
-                    className={
-                      styles.approachStep
-                    }
-                    key={
-                      item.index
-                    }
-                  >
-                    <span>
-                      {
-                        item.index
-                      }
-                    </span>
-
-                    <h3>
-                      {
-                        item.title
-                      }
-                    </h3>
-
-                    <p>
-                      {
-                        item.copy
-                      }
-                    </p>
-                  </article>
-                )
-              )
-            }
-          </div>
-        </Container>
-      </section>
 
 
       <section
@@ -702,7 +561,7 @@ export default function CompanyPage() {
           }
         >
           <SectionHeader
-            index="03"
+            index="02"
             eyebrow="Capabilities"
             title="Four connected parts of the No Breach ecosystem."
             description="Each area has a distinct role, but all are built around practical security understanding."
@@ -800,8 +659,8 @@ export default function CompanyPage() {
           }
         >
           <SectionHeader
-            index="04"
-            eyebrow="Principles"
+            index="03"
+            eyebrow="How we work"
             title="The operating principles stay simple."
           />
 
@@ -851,77 +710,6 @@ export default function CompanyPage() {
       </section>
 
 
-      <section
-        id="ecosystem"
-        className={
-          family.section
-        }
-        data-company-section="ecosystem"
-      >
-        <Container
-          size="wide"
-          className={
-            family.container
-          }
-        >
-          <SectionHeader
-            index="05"
-            eyebrow="Ecosystem"
-            title="Connected, not isolated."
-            description="Services, training, challenge and knowledge remain part of the same No Breach system."
-          />
-
-          <div
-            className={
-              styles.ecosystemGrid
-            }
-            data-company-ui="ecosystem-grid"
-          >
-            {
-              ecosystem.map(
-                (
-                  item
-                ) => (
-                  <Link
-                    href={
-                      item.href
-                    }
-                    className={
-                      styles.ecosystemRow
-                    }
-                    data-company-card="ecosystem"
-                    key={
-                      item.index
-                    }
-                  >
-                    <span>
-                      {
-                        item.index
-                      }
-                    </span>
-
-                    <div>
-                      <small>
-                        {
-                          item.code
-                        }
-                      </small>
-
-                      <strong>
-                        {
-                          item.label
-                        }
-                      </strong>
-                    </div>
-
-                    <Arrow />
-                  </Link>
-                )
-              )
-            }
-          </div>
-        </Container>
-      </section>
 
 
       <section
@@ -938,7 +726,7 @@ export default function CompanyPage() {
           }
         >
           <SectionHeader
-            index="06"
+            index="04"
             eyebrow="Timeline"
             title="Built through successive layers of activity."
           />
@@ -1016,7 +804,7 @@ export default function CompanyPage() {
           }
         >
           <SectionHeader
-            index="07"
+            index="05"
             eyebrow="Founder"
             title="Technical work with a human point of view."
           />
@@ -1101,7 +889,7 @@ export default function CompanyPage() {
           }
         >
           <SectionHeader
-            index="08"
+            index="06"
             eyebrow="People & projects"
             title="Explore the people and applied work behind No Breach."
           />

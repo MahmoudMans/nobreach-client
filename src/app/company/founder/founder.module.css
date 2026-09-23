@@ -1473,3 +1473,282 @@ div {
 /* NB_MINIMALIST_POLISH_V4 */
 /* NB_PREMIUM_HERO_SYSTEM_V6 */
 /* NB_NAV_HERO_RHYTHM_V1 */
+
+
+/* ==========================================================================
+   NB_FOUNDER_DENSITY_V15
+   ========================================================================== */
+
+
+.founderPortraitCard {
+  min-height:
+    470px;
+}
+
+
+.founderPortraitHeader {
+  min-height:
+    44px;
+
+  padding:
+    0
+    15px;
+}
+
+
+.founderPortraitStage {
+  min-height:
+    344px;
+}
+
+
+.founderPortraitFooter div {
+  padding:
+    13px
+    15px;
+}
+
+
+/* Overview */
+
+
+.founderOverviewGrid {
+  gap:
+    clamp(
+      30px,
+      5vw,
+      58px
+    );
+}
+
+
+.founderStatementCard {
+  padding:
+    24px
+    0;
+}
+
+
+.founderMiniCard {
+  min-height:
+    116px;
+
+  padding:
+    18px
+    0;
+}
+
+
+.founderMiniCard strong {
+  margin-top:
+    8px;
+}
+
+
+.founderMiniCard p {
+  margin-top:
+    5px;
+}
+
+
+/* Journey */
+
+
+.founderJourneyItem {
+  grid-template-columns:
+    52px
+    minmax(
+      140px,
+      0.32fr
+    )
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    22px;
+
+  min-height:
+    116px;
+
+  padding:
+    19px
+    0;
+}
+
+
+.founderJourneyItem p {
+  margin-top:
+    6px;
+}
+
+
+/* Expertise */
+
+
+.founderExpertiseGrid {
+  column-gap:
+    32px;
+}
+
+
+.founderExpertiseCard {
+  grid-template-columns:
+    52px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    16px;
+
+  min-height:
+    116px;
+
+  padding:
+    19px
+    0;
+}
+
+
+.founderExpertiseCard p {
+  margin-top:
+    6px;
+}
+
+
+/* Education */
+
+
+.educationVisual {
+  min-height:
+    250px;
+
+  padding:
+    28px;
+}
+
+
+.educationCopy {
+  padding:
+    34px;
+}
+
+
+.educationCopy > p:not(
+  :first-child
+) {
+  margin-top:
+    13px;
+}
+
+
+/* Engagement */
+
+
+.founderEngagementItem {
+  padding:
+    15px
+    18px;
+}
+
+
+.founderPublicGrid {
+  gap:
+    16px;
+
+  margin-top:
+    28px;
+}
+
+
+.founderPublicCard {
+  min-height:
+    202px;
+
+  padding:
+    19px;
+}
+
+
+.founderPublicCard small {
+  margin-top:
+    14px;
+}
+
+
+.founderPublicCard h3 {
+  padding-top:
+    22px;
+}
+
+
+.founderPublicCard p {
+  margin:
+    6px
+    0
+    14px;
+}
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .founderPortraitStage {
+    min-height:
+      330px;
+  }
+
+
+  .founderJourneyItem {
+    min-height:
+      0;
+
+    padding:
+      17px
+      0;
+  }
+
+
+  .founderExpertiseCard {
+    min-height:
+      0;
+
+    padding:
+      17px
+      0;
+  }
+
+
+  .educationVisual {
+    min-height:
+      142px;
+
+    padding:
+      22px;
+  }
+
+
+  .educationCopy {
+    padding:
+      26px
+      20px;
+  }
+
+
+  .founderPublicGrid {
+    margin-top:
+      24px;
+  }
+
+
+  .founderPublicCard {
+    min-height:
+      180px;
+  }
+
+}

@@ -1738,3 +1738,331 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_COMPANY_FAMILY_DENSITY_V15
+
+   Density and continuity refinement.
+
+   Goals:
+   - remove the oversized void between SiteHeader / Breadcrumb / PageIntro
+   - make internal pages begin quickly
+   - reduce unnecessary padding inside surfaces
+   - preserve readable hierarchy rather than compressing typography
+   - keep whitespace purposeful
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   Breadcrumb — metadata, not another page header
+   -------------------------------------------------------------------------- */
+
+
+.fontScope
+:global(nav[aria-label="Breadcrumb"]) {
+  padding:
+    6px
+    0;
+
+  background:
+    transparent;
+
+  border-bottom:
+    0;
+}
+
+
+/* --------------------------------------------------------------------------
+   PageIntro
+   -------------------------------------------------------------------------- */
+
+
+.pageIntro {
+  padding:
+    52px
+    0
+    56px;
+}
+
+
+.pageIntroGrid {
+  gap:
+    clamp(
+      32px,
+      4vw,
+      52px
+    );
+}
+
+
+.introCopy {
+  max-width:
+    650px;
+}
+
+
+.lead {
+  margin-top:
+    16px;
+}
+
+
+.actions {
+  margin-top:
+    24px;
+}
+
+
+/* --------------------------------------------------------------------------
+   Technical panel
+   -------------------------------------------------------------------------- */
+
+
+.technicalPanel {
+  padding:
+    18px;
+
+  border-radius:
+    14px;
+}
+
+
+.technicalPanelHeader {
+  padding-bottom:
+    12px;
+}
+
+
+.metaRail {
+  margin-top:
+    4px;
+}
+
+
+.metaItem {
+  padding:
+    10px
+    0;
+}
+
+
+.metaItem:nth-child(
+  odd
+) {
+  padding-right:
+    12px;
+}
+
+
+.metaItem:nth-child(
+  even
+) {
+  padding-left:
+    12px;
+}
+
+
+.metaValue {
+  margin-top:
+    4px;
+}
+
+
+/* --------------------------------------------------------------------------
+   Sections
+   -------------------------------------------------------------------------- */
+
+
+.section {
+  padding:
+    72px
+    0;
+}
+
+
+.sectionHeader {
+  gap:
+    clamp(
+      22px,
+      4vw,
+      48px
+    );
+
+  margin-bottom:
+    32px;
+}
+
+
+.sectionDescription {
+  margin-top:
+    12px;
+}
+
+
+/* --------------------------------------------------------------------------
+   Tags
+   -------------------------------------------------------------------------- */
+
+
+.tags {
+  margin-top:
+    14px;
+}
+
+
+/* --------------------------------------------------------------------------
+   Final CTA
+   -------------------------------------------------------------------------- */
+
+
+.finalCta {
+  padding:
+    64px
+    0;
+}
+
+
+.finalCtaInner {
+  padding:
+    44px;
+
+  border-radius:
+    18px;
+}
+
+
+.ctaText {
+  margin-top:
+    14px;
+}
+
+
+/* --------------------------------------------------------------------------
+   Tablet
+   -------------------------------------------------------------------------- */
+
+
+@media (
+  max-width:
+    1023px
+) {
+
+  .pageIntro {
+    padding:
+      42px
+      0
+      50px;
+  }
+
+
+  .section {
+    padding:
+      64px
+      0;
+  }
+
+
+  .sectionHeader {
+    margin-bottom:
+      28px;
+  }
+
+
+  .finalCta {
+    padding:
+      56px
+      0;
+  }
+
+
+  .finalCtaInner {
+    padding:
+      38px;
+  }
+
+}
+
+
+/* --------------------------------------------------------------------------
+   Mobile
+   -------------------------------------------------------------------------- */
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .fontScope
+  :global(nav[aria-label="Breadcrumb"]) {
+    padding:
+      4px
+      0;
+  }
+
+
+  .pageIntro,
+  .compactPageIntro {
+    padding-top:
+      28px;
+
+    padding-bottom:
+      44px;
+  }
+
+
+  .pageIntroGrid {
+    gap:
+      24px;
+  }
+
+
+  .lead {
+    margin-top:
+      14px;
+  }
+
+
+  .actions {
+    margin-top:
+      20px;
+  }
+
+
+  .technicalPanel {
+    padding:
+      16px;
+  }
+
+
+  .section {
+    padding:
+      52px
+      0;
+  }
+
+
+  .sectionHeader {
+    gap:
+      8px;
+
+    margin-bottom:
+      26px;
+  }
+
+
+  .finalCta {
+    padding:
+      52px
+      0;
+  }
+
+
+  .finalCtaInner {
+    padding:
+      34px
+      22px;
+  }
+
+}

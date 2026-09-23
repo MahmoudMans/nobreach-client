@@ -1,11 +1,11 @@
 import {
   expect,
-  test,
+  test
 } from "@playwright/test";
 
 
 test(
-  "company presents unique information without repeated blocks",
+  "company V15 contains only unique primary information blocks",
   async ({
     page
   }) => {
@@ -14,21 +14,11 @@ test(
       "/company",
       {
         waitUntil:
-          "domcontentloaded",
+          "domcontentloaded"
       }
     );
 
 
-    await expect(
-      page.locator(
-        '[data-company-card="statement"]'
-      )
-    ).toBeVisible();
-
-
-    /*
-     * The duplicate Core Mindset card has been deliberately retired.
-     */
     await expect(
       page.locator(
         '[data-company-card="mindset"]'
@@ -38,57 +28,22 @@ test(
     );
 
 
-    const approach =
+    await expect(
       page.locator(
-        '[data-company-ui="approach-flow"]'
-      );
-
-
-    await expect(
-      approach
-    ).toBeVisible();
-
-
-    await expect(
-      approach.locator(
-        "article"
+        '[data-company-section="story"]'
       )
     ).toHaveCount(
-      3
+      0
     );
 
 
     await expect(
-      approach.getByText(
-        "Test",
-        {
-          exact:
-            true,
-        }
+      page.locator(
+        '[data-company-section="ecosystem"]'
       )
-    ).toBeVisible();
-
-
-    await expect(
-      approach.getByText(
-        "Learn",
-        {
-          exact:
-            true,
-        }
-      )
-    ).toBeVisible();
-
-
-    await expect(
-      approach.getByText(
-        "Share",
-        {
-          exact:
-            true,
-        }
-      )
-    ).toBeVisible();
+    ).toHaveCount(
+      0
+    );
 
 
     await expect(
@@ -107,7 +62,21 @@ test(
 
     await expect(
       page.locator(
+        '[data-company-ui="principle-grid"]'
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      page.locator(
         '[data-company-ui="timeline-grid"]'
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      page.locator(
+        '[data-company-ui="people-grid"]'
       )
     ).toBeVisible();
 

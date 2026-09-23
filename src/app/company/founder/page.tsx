@@ -301,6 +301,7 @@ export default function FounderPage() {
       }
       data-founder-page="v2"
       data-company-family="v14"
+      data-company-density="v15"
     >
       <script
         type="application/ld+json"

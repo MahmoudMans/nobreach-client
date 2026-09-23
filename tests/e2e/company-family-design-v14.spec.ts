@@ -141,10 +141,8 @@ test(
       of [
         "hero",
         "who-we-are",
-        "story",
         "what-we-do",
         "principles",
-        "ecosystem",
         "timeline",
         "founder",
         "team",

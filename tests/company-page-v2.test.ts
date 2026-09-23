@@ -23,21 +23,26 @@ const css =
   );
 
 
+const familyCss =
+  readFileSync(
+    "src/app/company/company-family.module.css",
+    "utf8"
+  );
+
+
 describe(
-  "company family V14 — company page",
+  "company V15 compact architecture",
   () => {
 
     it(
-      "preserves verified Company content",
+      "keeps the meaningful Company information",
       () => {
 
         for (
           const token
           of [
-            "2023",
             "Tunis, Tunisia",
             "Offensive Security",
-            "Services · Education · Community",
             "Think offensively",
             "Build through practice",
             "Share knowledge",
@@ -58,27 +63,55 @@ describe(
 
 
     it(
-      "keeps the established runtime selectors",
+      "removes duplicate standalone sections",
+      () => {
+
+        expect(
+          page
+        ).not.toContain(
+          'data-company-section="story"'
+        );
+
+
+        expect(
+          page
+        ).not.toContain(
+          'data-company-section="ecosystem"'
+        );
+
+
+        expect(
+          page
+        ).not.toContain(
+          'data-company-ui="ecosystem-grid"'
+        );
+
+      }
+    );
+
+
+    it(
+      "keeps the concise primary architecture",
       () => {
 
         for (
-          const token
+          const marker
           of [
-            'data-company-page="v4"',
-            'data-company-design="v9"',
-            'data-company-hero="v6"',
-            'data-company-ui="profile-card"',
-            'data-company-card="capability"',
-            'data-company-card="principle"',
-            'data-company-card="timeline"',
-            'data-company-card="people"'
+            'data-company-section="hero"',
+            'data-company-section="who-we-are"',
+            'data-company-section="what-we-do"',
+            'data-company-section="principles"',
+            'data-company-section="timeline"',
+            'data-company-section="founder"',
+            'data-company-section="team"',
+            'data-company-section="cta"'
           ]
         ) {
 
           expect(
             page
           ).toContain(
-            token
+            marker
           );
 
         }
@@ -88,46 +121,33 @@ describe(
 
 
     it(
-      "uses four capabilities and three principles",
+      "keeps four capabilities and three operating principles",
       () => {
 
-        const capabilityBlock =
-          page.slice(
-            page.indexOf(
-              "const capabilities ="
-            ),
-            page.indexOf(
-              "const principles ="
-            )
-          );
-
-
         expect(
-          capabilityBlock.match(
-            /index:/g
-          )
-        ).toHaveLength(
-          4
+          (
+            page.match(
+              /data-company-card="capability"/g
+            )
+            ??
+            []
+          ).length
+        ).toBe(
+          1
         );
 
 
-        const principleBlock =
-          page.slice(
-            page.indexOf(
-              "const principles ="
-            ),
-            page.indexOf(
-              "const ecosystem ="
-            )
-          );
+        expect(
+          page
+        ).toContain(
+          "capabilities.map"
+        );
 
 
         expect(
-          principleBlock.match(
-            /title:/g
-          )
-        ).toHaveLength(
-          3
+          page
+        ).toContain(
+          "principles.map"
         );
 
       }
@@ -135,19 +155,27 @@ describe(
 
 
     it(
-      "removes the embedded Company navigation bar",
+      "activates V15 density",
       () => {
 
         expect(
           page
-        ).not.toContain(
-          'aria-label="Company sections"'
+        ).toContain(
+          'data-company-density="v15"'
         );
 
+
         expect(
-          page
-        ).not.toContain(
-          "styles.pageNav"
+          familyCss
+        ).toContain(
+          "NB_COMPANY_FAMILY_DENSITY_V15"
+        );
+
+
+        expect(
+          css
+        ).toContain(
+          "NB_COMPANY_PAGE_DENSITY_V15"
         );
 
       }
@@ -155,54 +183,20 @@ describe(
 
 
     it(
-      "uses the consolidated V14 company design",
+      "uses compact editorial capability rows",
       () => {
 
         expect(
           css
         ).toContain(
-          "NB_COMPANY_FAMILY_V14"
+          "min-height:\n    180px;"
         );
 
 
-        for (
-          const token
-          of [
-            ".capabilityRows",
-            ".principleRows",
-            ".ecosystemGrid",
-            ".timeline",
-            ".founderPreview",
-            ".peopleRows"
-          ]
-        ) {
-
-          expect(
-            css
-          ).toContain(
-            token
-          );
-
-        }
-
-      }
-    );
-
-
-    it(
-      "preserves the real founder portrait preview",
-      () => {
-
         expect(
-          page
+          css
         ).toContain(
-          'src="/people/ceo.png"'
-        );
-
-        expect(
-          page
-        ).toContain(
-          'data-founder-photo-image="company"'
+          "min-height:\n    116px;"
         );
 
       }

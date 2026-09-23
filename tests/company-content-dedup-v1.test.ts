@@ -16,19 +16,12 @@ const page =
   );
 
 
-const css =
-  readFileSync(
-    "src/app/company/company.module.css",
-    "utf8"
-  );
-
-
 describe(
-  "company content deduplication",
+  "company V15 content deduplication",
   () => {
 
     it(
-      "removes repeated hero footer content",
+      "does not restore retired duplicate components",
       () => {
 
         expect(
@@ -37,13 +30,6 @@ describe(
           "styles.profileFooter"
         );
 
-      }
-    );
-
-
-    it(
-      "removes the redundant mindset card but preserves the three-step approach",
-      () => {
 
         expect(
           page
@@ -54,54 +40,29 @@ describe(
 
         expect(
           page
-        ).toContain(
-          'data-company-ui="approach-flow"'
+        ).not.toContain(
+          "styles.focusTags"
         );
-
-
-        for (
-          const step
-          of [
-            "Test",
-            "Learn",
-            "Share"
-          ]
-        ) {
-
-          /*
-           * V14 stores these as data and renders semantic H3 headings.
-           * The deduplication contract is about the information and single
-           * approach structure, not a historical <strong> implementation.
-           */
-          expect(
-            page
-          ).toMatch(
-            new RegExp(
-              `title:\\s*"${step}"`
-            )
-          );
-
-        }
 
       }
     );
 
 
     it(
-      "removes repeated founder focus tags",
+      "removes the separate Approach section",
       () => {
 
         expect(
           page
         ).not.toContain(
-          "styles.focusTags"
+          'data-company-section="story"'
         );
 
 
         expect(
           page
-        ).toContain(
-          "Nouha Ben Brahim"
+        ).not.toContain(
+          'data-company-ui="approach-flow"'
         );
 
       }
@@ -109,22 +70,39 @@ describe(
 
 
     it(
-      "keeps the unique company information sections",
+      "removes the duplicate Ecosystem destination section",
       () => {
 
-        const required = [
-          'data-company-ui="facts"',
-          'data-company-ui="capability-grid"',
-          'data-company-ui="principle-grid"',
-          'data-company-ui="ecosystem-grid"',
-          'data-company-ui="timeline-grid"',
-          'data-company-ui="people-grid"'
-        ];
+        expect(
+          page
+        ).not.toContain(
+          'data-company-section="ecosystem"'
+        );
 
+
+        expect(
+          page
+        ).not.toContain(
+          'data-company-card="ecosystem"'
+        );
+
+      }
+    );
+
+
+    it(
+      "retains unique factual and editorial sections",
+      () => {
 
         for (
           const marker
-          of required
+          of [
+            'data-company-ui="facts"',
+            'data-company-ui="capability-grid"',
+            'data-company-ui="principle-grid"',
+            'data-company-ui="timeline-grid"',
+            'data-company-ui="people-grid"'
+          ]
         ) {
 
           expect(
@@ -140,48 +118,20 @@ describe(
 
 
     it(
-      "uses the V14 simplified editorial introduction without restoring a duplicate card",
+      "retains the founder preview and timeline",
       () => {
 
         expect(
-          css
+          page
         ).toContain(
-          "NB_COMPANY_FAMILY_V14"
+          "Nouha Ben Brahim"
         );
 
 
         expect(
           page
         ).toContain(
-          "styles.companyStatement"
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "styles.statementLead"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          ".companyStatement {"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          ".statementLead {"
-        );
-
-
-        expect(
-          page
-        ).not.toContain(
-          "styles.mindsetCard"
+          "timeline.map"
         );
 
       }

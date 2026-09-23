@@ -57,6 +57,7 @@ export default function InternshipsPage() {
         `${family.page} ${styles.page}`
       }
       data-company-family="v14"
+      data-company-density="v15"
       data-company-family-page="internships"
     >
       <Breadcrumbs
@@ -545,7 +546,7 @@ export default function InternshipsPage() {
 
       <section
         className={
-          family.section
+          styles.safetySection
         }
       >
         <Container

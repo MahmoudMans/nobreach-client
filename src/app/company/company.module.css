@@ -1795,3 +1795,267 @@ i {
   }
 
 }
+
+
+/* ==========================================================================
+   NB_COMPANY_PAGE_DENSITY_V15
+   ========================================================================== */
+
+
+.companyStatement {
+  gap:
+    clamp(
+      28px,
+      5vw,
+      64px
+    );
+
+  padding:
+    24px
+    0;
+}
+
+
+.statementMeta span {
+  padding:
+    9px
+    0;
+}
+
+
+/* Capabilities remain substantial editorial rows without feeling empty. */
+
+
+.capabilityRow {
+  grid-template-columns:
+    76px
+    minmax(
+      0,
+      1fr
+    )
+    104px
+    28px;
+
+  gap:
+    18px;
+
+  min-height:
+    180px;
+
+  padding:
+    20px
+    0;
+}
+
+
+.capabilityRow p {
+  margin-top:
+    7px;
+}
+
+
+.capabilityVisual {
+  height:
+    54px;
+}
+
+
+/* Principles are information rows, not tall cards. */
+
+
+.principleRow {
+  grid-template-columns:
+    60px
+    minmax(
+      210px,
+      0.65fr
+    )
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    24px;
+
+  min-height:
+    116px;
+
+  padding:
+    18px
+    0;
+}
+
+
+/* Timeline stays expressive but no longer consumes unnecessary vertical space. */
+
+
+.timelineItem {
+  min-height:
+    132px;
+
+  padding:
+    20px
+    clamp(
+      28px,
+      4vw,
+      56px
+    );
+}
+
+
+.timelineItem:nth-child(
+  even
+) {
+  transform:
+    translateY(
+      42px
+    );
+}
+
+
+.timelineItem strong {
+  margin-top:
+    12px;
+}
+
+
+/* Founder preview */
+
+
+.founderPreview {
+  gap:
+    clamp(
+      36px,
+      6vw,
+      68px
+    );
+
+  padding:
+    28px
+    0;
+}
+
+
+/* People directory */
+
+
+.peopleRow {
+  min-height:
+    116px;
+
+  padding:
+    18px
+    0;
+}
+
+
+.peopleRow h3 {
+  margin-top:
+    4px;
+}
+
+
+.peopleRow p {
+  margin-top:
+    5px;
+}
+
+
+/* Mobile */
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .companyStatement {
+    gap:
+      22px;
+
+    padding:
+      20px
+      0;
+  }
+
+
+  .capabilityRow {
+    grid-template-columns:
+      42px
+      minmax(
+        0,
+        1fr
+      )
+      22px;
+
+    gap:
+      12px;
+
+    min-height:
+      0;
+
+    padding:
+      19px
+      0;
+  }
+
+
+  .principleRow {
+    grid-template-columns:
+      34px
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      12px;
+
+    min-height:
+      0;
+
+    padding:
+      18px
+      0;
+  }
+
+
+  .timelineItem,
+  .timelineItem:nth-child(
+    odd
+  ),
+  .timelineItem:nth-child(
+    even
+  ) {
+    min-height:
+      108px;
+
+    padding-top:
+      17px;
+
+    padding-bottom:
+      17px;
+  }
+
+
+  .founderPreview {
+    gap:
+      24px;
+
+    padding:
+      22px
+      0;
+  }
+
+
+  .peopleRow {
+    min-height:
+      0;
+
+    padding:
+      17px
+      0;
+  }
+
+}

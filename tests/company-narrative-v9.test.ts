@@ -24,11 +24,11 @@ const css =
 
 
 describe(
-  "company editorial narrative V14",
+  "company editorial narrative V15",
   () => {
 
     it(
-      "keeps full-width capability rows",
+      "keeps capabilities as full-width rows",
       () => {
 
         expect(
@@ -37,11 +37,6 @@ describe(
           'data-company-ui="capability-grid"'
         );
 
-        expect(
-          css
-        ).toContain(
-          ".capabilityRows"
-        );
 
         expect(
           css
@@ -58,10 +53,11 @@ describe(
       () => {
 
         expect(
-          css
+          page
         ).toContain(
-          ".principleRows"
+          'data-company-ui="principle-grid"'
         );
+
 
         expect(
           css
@@ -74,7 +70,7 @@ describe(
 
 
     it(
-      "keeps an alternating desktop timeline",
+      "keeps the alternating chronology",
       () => {
 
         expect(
@@ -82,6 +78,7 @@ describe(
         ).toContain(
           ".timeline::before"
         );
+
 
         expect(
           css
@@ -98,10 +95,11 @@ describe(
       () => {
 
         expect(
-          css
+          page
         ).toContain(
-          ".peopleRows"
+          'data-company-ui="people-grid"'
         );
+
 
         expect(
           css
@@ -114,25 +112,20 @@ describe(
 
 
     it(
-      "does not use a repeated card grid for every Company section",
+      "removes redundant standalone narrative sections",
       () => {
 
         expect(
           page
-        ).toContain(
-          "styles.companyStatement"
+        ).not.toContain(
+          'data-company-section="story"'
         );
+
 
         expect(
           page
-        ).toContain(
-          "styles.approach"
-        );
-
-        expect(
-          page
-        ).toContain(
-          "styles.timeline"
+        ).not.toContain(
+          'data-company-section="ecosystem"'
         );
 
       }

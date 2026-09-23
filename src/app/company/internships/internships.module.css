@@ -705,3 +705,217 @@
 /* NB_MINIMALIST_POLISH_V4 */
 /* NB_PREMIUM_HERO_SYSTEM_V6 */
 /* NB_NAV_HERO_RHYTHM_V1 */
+
+
+/* ==========================================================================
+   NB_COMPANY_INTERNSHIPS_DENSITY_V15
+   ========================================================================== */
+
+
+.project {
+  grid-template-columns:
+    72px
+    minmax(
+      260px,
+      0.84fr
+    )
+    minmax(
+      400px,
+      1.16fr
+    );
+
+  gap:
+    clamp(
+      20px,
+      3.5vw,
+      40px
+    );
+
+  padding:
+    23px
+    0;
+}
+
+
+.projectIdentity {
+  gap:
+    10px;
+}
+
+
+.projectSummary > p {
+  margin-top:
+    8px;
+}
+
+
+.technologyList {
+  margin-top:
+    13px;
+}
+
+
+.projectEvidence {
+  gap:
+    22px;
+}
+
+
+.projectEvidence ul {
+  gap:
+    5px;
+
+  margin-top:
+    10px;
+}
+
+
+/* Method */
+
+
+.methodItem {
+  grid-template-columns:
+    44px
+    145px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    14px;
+
+  padding:
+    17px
+    0;
+}
+
+
+/* Public safety remains meaningful but no longer behaves like a full section. */
+
+
+.safetySection {
+  padding:
+    42px
+    0;
+
+  background:
+    var(
+      --company-bg-alt
+    );
+
+  border-top:
+    1px
+    solid
+    var(
+      --company-divider
+    );
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --company-divider
+    );
+}
+
+
+.safety {
+  gap:
+    clamp(
+      30px,
+      5vw,
+      62px
+    );
+
+  padding:
+    20px
+    0;
+}
+
+
+.safetyCopy {
+  gap:
+    10px;
+}
+
+
+@media (
+  max-width:
+    1100px
+) {
+
+  .project {
+    grid-template-columns:
+      56px
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+}
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .project {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      14px;
+
+    padding:
+      20px
+      0;
+  }
+
+
+  .projectEvidence {
+    gap:
+      18px;
+  }
+
+
+  .methodItem {
+    grid-template-columns:
+      34px
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      8px
+      12px;
+
+    padding:
+      16px
+      0;
+  }
+
+
+  .safetySection {
+    padding:
+      34px
+      0;
+  }
+
+
+  .safety {
+    gap:
+      20px;
+
+    padding:
+      12px
+      0;
+  }
+
+}

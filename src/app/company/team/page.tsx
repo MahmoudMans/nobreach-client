@@ -64,6 +64,7 @@ export default function TeamPage() {
         `${family.page} ${styles.page}`
       }
       data-company-family="v14"
+      data-company-density="v15"
       data-company-family-page="team"
     >
       <Breadcrumbs
@@ -386,42 +387,6 @@ export default function TeamPage() {
       </section>
 
 
-      <section
-        className={
-          `${family.section} ${family.sectionAlt}`
-        }
-      >
-        <Container
-          size="wide"
-          className={
-            family.container
-          }
-        >
-          <div
-            className={
-              styles.policy
-            }
-          >
-            <div>
-              <p
-                className={
-                  family.sectionEyebrow
-                }
-              >
-                Profile policy
-              </p>
-
-              <h2>
-                Additional profiles are published only when current roles are confirmed.
-              </h2>
-            </div>
-
-            <p>
-              This prevents old internship, freelance or social-profile data from being presented as current employment.
-            </p>
-          </div>
-        </Container>
-      </section>
 
 
       <section
