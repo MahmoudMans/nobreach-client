@@ -6025,3 +6025,936 @@ and
   }
 
 }
+
+
+/* ==========================================================================
+   NB_AI_SECURITY_FOUNDATIONS_HERO_ATMOSPHERE_V33
+
+   NoBreach hero atmosphere.
+
+   Direction:
+   - deep blue-black foundation
+   - editorial / premium
+   - restrained cybersecurity intelligence
+   - cyan primary atmosphere
+   - violet secondary atmosphere
+   - fine technical grid
+   - no giant glow blobs
+   - no neon
+   - no Matrix treatment
+   - decoration never consumes layout space
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01 — HERO FOUNDATION
+   ========================================================================== */
+
+
+.aiSecurity
+section[class*="page-hero-module__"][class*="__hero"]:first-of-type {
+  isolation:
+    isolate;
+
+  position:
+    relative !important;
+
+  overflow:
+    hidden !important;
+
+  background-color:
+    #07090d !important;
+
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(
+        7,
+        9,
+        13,
+        1
+      )
+      0%,
+      rgba(
+        8,
+        12,
+        18,
+        1
+      )
+      52%,
+      rgba(
+        7,
+        9,
+        13,
+        1
+      )
+      100%
+    ) !important;
+
+  box-shadow:
+    inset
+    0
+    -1px
+    0
+    rgba(
+      255,
+      255,
+      255,
+      0.055
+    ) !important;
+}
+
+
+/* ==========================================================================
+   02 — ATMOSPHERIC LIGHT LAYER
+
+   Cyan is primary.
+   Violet is secondary and deliberately weaker.
+   ========================================================================== */
+
+
+.aiSecurity
+section[class*="page-hero-module__"][class*="__hero"]:first-of-type::before {
+  position:
+    absolute !important;
+
+  inset:
+    0 !important;
+
+  z-index:
+    0 !important;
+
+  display:
+    block !important;
+
+  width:
+    100% !important;
+
+  height:
+    100% !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    0 !important;
+
+  background:
+    radial-gradient(
+      ellipse
+      48%
+      58%
+      at
+      82%
+      31%,
+      rgba(
+        161,
+        226,
+        240,
+        0.095
+      )
+      0%,
+      rgba(
+        131,
+        179,
+        215,
+        0.052
+      )
+      30%,
+      rgba(
+        131,
+        179,
+        215,
+        0
+      )
+      72%
+    ),
+    radial-gradient(
+      ellipse
+      34%
+      48%
+      at
+      98%
+      78%,
+      rgba(
+        99,
+        51,
+        198,
+        0.055
+      )
+      0%,
+      rgba(
+        126,
+        96,
+        185,
+        0.025
+      )
+      36%,
+      rgba(
+        99,
+        51,
+        198,
+        0
+      )
+      76%
+    ),
+    radial-gradient(
+      ellipse
+      38%
+      32%
+      at
+      8%
+      14%,
+      rgba(
+        131,
+        179,
+        215,
+        0.032
+      )
+      0%,
+      rgba(
+        131,
+        179,
+        215,
+        0
+      )
+      72%
+    );
+
+  opacity:
+    1;
+
+  content:
+    "" !important;
+
+  pointer-events:
+    none !important;
+}
+
+
+/* ==========================================================================
+   03 — TECHNICAL GRID + VIGNETTE
+   ========================================================================== */
+
+
+.aiSecurity
+section[class*="page-hero-module__"][class*="__hero"]:first-of-type::after {
+  position:
+    absolute !important;
+
+  inset:
+    0 !important;
+
+  z-index:
+    0 !important;
+
+  display:
+    block !important;
+
+  width:
+    100% !important;
+
+  height:
+    100% !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    0 !important;
+
+  background-image:
+    linear-gradient(
+      rgba(
+        161,
+        226,
+        240,
+        0.026
+      )
+      1px,
+      transparent
+      1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(
+        161,
+        226,
+        240,
+        0.026
+      )
+      1px,
+      transparent
+      1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(
+        7,
+        9,
+        13,
+        0.04
+      )
+      0%,
+      rgba(
+        7,
+        9,
+        13,
+        0
+      )
+      52%,
+      rgba(
+        7,
+        9,
+        13,
+        0.17
+      )
+      100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(
+        7,
+        9,
+        13,
+        0
+      )
+      65%,
+      rgba(
+        7,
+        9,
+        13,
+        0.48
+      )
+      100%
+    );
+
+  background-size:
+    48px
+    48px,
+    48px
+    48px,
+    100%
+    100%,
+    100%
+    100%;
+
+  background-position:
+    center
+    center;
+
+  opacity:
+    0.78;
+
+  content:
+    "" !important;
+
+  pointer-events:
+    none !important;
+
+  -webkit-mask-image:
+    linear-gradient(
+      to
+      bottom,
+      rgba(
+        0,
+        0,
+        0,
+        0.78
+      )
+      0%,
+      rgba(
+        0,
+        0,
+        0,
+        0.55
+      )
+      68%,
+      rgba(
+        0,
+        0,
+        0,
+        0.12
+      )
+      100%
+    );
+
+  mask-image:
+    linear-gradient(
+      to
+      bottom,
+      rgba(
+        0,
+        0,
+        0,
+        0.78
+      )
+      0%,
+      rgba(
+        0,
+        0,
+        0,
+        0.55
+      )
+      68%,
+      rgba(
+        0,
+        0,
+        0,
+        0.12
+      )
+      100%
+    );
+}
+
+
+/* ==========================================================================
+   04 — CONTENT REMAINS ABOVE ATMOSPHERE
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__content"]
+) {
+  position:
+    relative !important;
+
+  z-index:
+    3 !important;
+}
+
+
+/* ==========================================================================
+   05 — AMBIENT AI GRAPH
+
+   It should look embedded in the atmosphere rather than like a graphic card.
+   ========================================================================== */
+
+
+.aiSecurity .aiAmbientVisual {
+  position:
+    absolute !important;
+
+  z-index:
+    1 !important;
+
+  opacity:
+    0.12 !important;
+
+  filter:
+    saturate(
+      0.8
+    )
+    contrast(
+      0.96
+    );
+
+  mix-blend-mode:
+    screen;
+
+  pointer-events:
+    none !important;
+}
+
+
+/* ==========================================================================
+   06 — NETWORK RINGS
+   ========================================================================== */
+
+
+.aiSecurity .aiOrbitLarge,
+.aiSecurity .aiOrbitSmall {
+  background:
+    transparent !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+.aiSecurity .aiOrbitLarge {
+  border-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.18
+    ) !important;
+}
+
+
+.aiSecurity .aiOrbitSmall {
+  border-color:
+    rgba(
+      126,
+      96,
+      185,
+      0.16
+    ) !important;
+}
+
+
+/* ==========================================================================
+   07 — NETWORK NODES
+   ========================================================================== */
+
+
+.aiSecurity .aiNode {
+  width:
+    6px !important;
+
+  height:
+    6px !important;
+
+  background:
+    #a1e2f0 !important;
+
+  border:
+    1px
+    solid
+    rgba(
+      245,
+      247,
+      250,
+      0.28
+    ) !important;
+
+  box-shadow:
+    0
+    0
+    0
+    4px
+    rgba(
+      161,
+      226,
+      240,
+      0.035
+    ) !important;
+}
+
+
+.aiSecurity .aiNodeFour {
+  background:
+    #7e60b9 !important;
+
+  box-shadow:
+    0
+    0
+    0
+    4px
+    rgba(
+      126,
+      96,
+      185,
+      0.035
+    ) !important;
+}
+
+
+/* ==========================================================================
+   08 — HERO TEXT CONTRAST
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__title"]
+),
+.aiSecurity.aiSecurity h1 {
+  color:
+    #f5f7fa !important;
+
+  text-shadow:
+    0
+    1px
+    18px
+    rgba(
+      0,
+      0,
+      0,
+      0.16
+    );
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__description"]
+) {
+  color:
+    #c5ced8 !important;
+}
+
+
+/* ==========================================================================
+   09 — EYEBROW
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__eyebrow"]
+) {
+  color:
+    #a1e2f0 !important;
+}
+
+
+/*
+ * Keep it technical without creating another pill/card.
+ */
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__eyebrow"]
+)::before {
+  background:
+    linear-gradient(
+      90deg,
+      #a1e2f0,
+      rgba(
+        161,
+        226,
+        240,
+        0.12
+      )
+    ) !important;
+}
+
+
+/* ==========================================================================
+   10 — METADATA RAIL INTEGRATION
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+) {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        16,
+        22,
+        32,
+        0.42
+      ),
+      rgba(
+        16,
+        22,
+        32,
+        0.16
+      )
+    ) !important;
+
+  border-top-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.15
+    ) !important;
+
+  border-bottom-color:
+    rgba(
+      255,
+      255,
+      255,
+      0.065
+    ) !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+/* ==========================================================================
+   11 — CTA CONTRAST
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__actions"]
+)
+a,
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__actions"]
+)
+button {
+  box-shadow:
+    0
+    8px
+    24px
+    rgba(
+      161,
+      226,
+      240,
+      0.07
+    ) !important;
+}
+
+
+/* ==========================================================================
+   12 — CLEAN TRANSITION INTO NEXT SECTION
+   ========================================================================== */
+
+
+.aiSecurity
+section[class*="page-hero-module__"][class*="__hero"]:first-of-type
++
+section {
+  position:
+    relative;
+
+  background:
+    #07090d;
+}
+
+
+/* ==========================================================================
+   13 — TABLET
+
+   Reduce atmospheric strength as available visual area narrows.
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    1023px
+) {
+
+  .aiSecurity
+  section[class*="page-hero-module__"][class*="__hero"]:first-of-type::before {
+    background:
+      radial-gradient(
+        ellipse
+        60%
+        48%
+        at
+        88%
+        26%,
+        rgba(
+          161,
+          226,
+          240,
+          0.075
+        )
+        0%,
+        rgba(
+          131,
+          179,
+          215,
+          0.03
+        )
+        36%,
+        transparent
+        76%
+      ),
+      radial-gradient(
+        ellipse
+        42%
+        42%
+        at
+        100%
+        78%,
+        rgba(
+          99,
+          51,
+          198,
+          0.038
+        )
+        0%,
+        transparent
+        76%
+      );
+  }
+
+
+  .aiSecurity
+  section[class*="page-hero-module__"][class*="__hero"]:first-of-type::after {
+    background-size:
+      40px
+      40px,
+      40px
+      40px,
+      100%
+      100%,
+      100%
+      100%;
+
+    opacity:
+      0.64;
+  }
+
+
+  .aiSecurity .aiAmbientVisual {
+    opacity:
+      0.085 !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   14 — MOBILE
+
+   Text and CTA win over decoration.
+   Keep a very faint background system instead of removing identity entirely.
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .aiSecurity
+  section[class*="page-hero-module__"][class*="__hero"]:first-of-type {
+    background-image:
+      linear-gradient(
+        180deg,
+        #07090d
+        0%,
+        #090d14
+        58%,
+        #07090d
+        100%
+      ) !important;
+  }
+
+
+  .aiSecurity
+  section[class*="page-hero-module__"][class*="__hero"]:first-of-type::before {
+    background:
+      radial-gradient(
+        ellipse
+        76%
+        38%
+        at
+        92%
+        8%,
+        rgba(
+          161,
+          226,
+          240,
+          0.055
+        )
+        0%,
+        rgba(
+          161,
+          226,
+          240,
+          0
+        )
+        74%
+      ),
+      radial-gradient(
+        ellipse
+        64%
+        38%
+        at
+        108%
+        88%,
+        rgba(
+          99,
+          51,
+          198,
+          0.026
+        )
+        0%,
+        transparent
+        74%
+      );
+  }
+
+
+  .aiSecurity
+  section[class*="page-hero-module__"][class*="__hero"]:first-of-type::after {
+    background-image:
+      linear-gradient(
+        rgba(
+          161,
+          226,
+          240,
+          0.018
+        )
+        1px,
+        transparent
+        1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(
+          161,
+          226,
+          240,
+          0.018
+        )
+        1px,
+        transparent
+        1px
+      ),
+      linear-gradient(
+        180deg,
+        transparent
+        60%,
+        rgba(
+          7,
+          9,
+          13,
+          0.44
+        )
+        100%
+      );
+
+    background-size:
+      32px
+      32px,
+      32px
+      32px,
+      100%
+      100%;
+
+    opacity:
+      0.52;
+  }
+
+
+  /*
+   * Existing mobile design already suppresses the larger network illustration.
+   * Reinforce that content remains first.
+   */
+  .aiSecurity .aiAmbientVisual {
+    display:
+      none !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   15 — REDUCED MOTION
+   ========================================================================== */
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .aiSecurity
+  section[class*="page-hero-module__"][class*="__hero"]:first-of-type::before,
+  .aiSecurity
+  section[class*="page-hero-module__"][class*="__hero"]:first-of-type::after,
+  .aiSecurity .aiAmbientVisual {
+    animation:
+      none !important;
+
+    transition:
+      none !important;
+  }
+
+}
