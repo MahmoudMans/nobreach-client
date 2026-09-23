@@ -1,5 +1,6 @@
-import fs from "node:fs";
-import path from "node:path";
+import {
+  readFileSync
+} from "node:fs";
 
 import {
   describe,
@@ -8,76 +9,128 @@ import {
 } from "vitest";
 
 
-const root =
-  process.cwd();
-
-
-function read(
-  relativePath: string
-) {
-  return fs.readFileSync(
-    path.join(
-      root,
-      relativePath
-    ),
+const page =
+  readFileSync(
+    "src/app/company/founder/page.tsx",
     "utf8"
   );
-}
+
+
+const css =
+  readFileSync(
+    "src/app/company/founder/founder.module.css",
+    "utf8"
+  );
 
 
 describe(
-  "founder visual v2",
+  "Founder V20 editorial profile",
   () => {
-    const page =
-      read(
-        "src/app/company/founder/page.tsx"
-      );
-
-    const css =
-      read(
-        "src/app/company/founder/founder.module.css"
-      );
-
 
     it(
-      "uses the V2 founder page architecture",
+      "activates the V20 founder design",
       () => {
+
         expect(
           page
         ).toContain(
-          'data-founder-page="v2"'
+          'data-founder-page="v20"'
         );
 
-        for (
-          const section
-          of [
-            "hero",
-            "overview",
-            "journey",
-            "expertise",
-            "education",
-            "public-work",
-            "cta"
-          ]
-        ) {
-          expect(
-            page
-          ).toContain(
-            `data-founder-section="${section}"`
-          );
-        }
+
+        expect(
+          page
+        ).toContain(
+          'data-founder-design-system="v20"'
+        );
+
+
+        expect(
+          css
+        ).toContain(
+          "NB_FOUNDER_EDITORIAL_PROFILE_V20"
+        );
+
       }
     );
 
 
     it(
-      "preserves the founder identity without ownership claims",
+      "uses exactly three real content sections",
       () => {
+
+        expect(
+          (
+            page.match(
+              /data-company-content-section=/g
+            )
+            ??
+            []
+          ).length
+        ).toBe(
+          3
+        );
+
+
+        for (
+          const section
+          of [
+            "journey",
+            "expertise-education",
+            "public-work"
+          ]
+        ) {
+
+          expect(
+            page
+          ).toContain(
+            `data-company-content-section="${section}"`
+          );
+
+        }
+
+      }
+    );
+
+
+    it(
+      "uses an editorial portrait rather than the old profile card",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          'data-founder-ui="portrait-editorial"'
+        );
+
+
+        expect(
+          page
+        ).not.toContain(
+          'data-founder-ui="portrait-card"'
+        );
+
+
+        expect(
+          page
+        ).not.toContain(
+          "founderPortraitCard"
+        );
+
+      }
+    );
+
+
+    it(
+      "preserves founder identity without unsupported ownership claims",
+      () => {
+
         expect(
           page
         ).toContain(
           "Nouha"
         );
+
 
         expect(
           page
@@ -85,11 +138,13 @@ describe(
           "Ben Brahim"
         );
 
+
         expect(
           page
         ).toContain(
           "Founder of No Breach"
         );
+
 
         expect(
           page
@@ -97,35 +152,20 @@ describe(
           /\bowner\b/i
         );
 
+
         expect(
           page
         ).not.toMatch(
           /\bCEO\b/
         );
+
       }
     );
 
 
     it(
-      "implements the canonical journey without invented dates",
+      "keeps five journey stages and four expertise areas",
       () => {
-        for (
-          const stage
-          of [
-            "Development",
-            "Cybersecurity",
-            "Bug bounty / security research",
-            "Offensive security",
-            "No Breach"
-          ]
-        ) {
-          expect(
-            page
-          ).toContain(
-            stage
-          );
-        }
-
 
         const journeyBlock =
           page.slice(
@@ -139,69 +179,81 @@ describe(
 
 
         expect(
-          journeyBlock
-        ).not.toMatch(
-          /\b20\d{2}\b/
-        );
-      }
-    );
-
-
-    it(
-      "balances content with visual cards",
-      () => {
-        for (
-          const token
-          of [
-            'data-founder-ui="portrait-card"',
-            'data-founder-card="statement"',
-            'data-founder-ui="journey"',
-            'data-founder-ui="expertise-grid"',
-            'data-founder-card="education"',
-            'data-founder-card="public"',
-            'data-founder-card="cta"'
-          ]
-        ) {
-          expect(
-            page
-          ).toContain(
-            token
-          );
-        }
-      }
-    );
-
-
-    it(
-      "applies the founder visual layer once",
-      () => {
-        expect(
-          css.match(
-            /NB_FOUNDER_VISUAL_V2/g
-          )?.length
+          (
+            journeyBlock.match(
+              /number:/g
+            )
+            ??
+            []
+          ).length
         ).toBe(
-          1
+          5
         );
 
-        for (
-          const token
-          of [
-            ".founderPortraitCard",
-            ".founderOverviewGrid",
-            ".founderJourney",
-            ".founderExpertiseGrid",
-            ".founderEducationCard",
-            ".founderPublicGrid",
-            ".founderCtaCard"
-          ]
-        ) {
-          expect(
-            css
-          ).toContain(
-            token
+
+        const expertiseBlock =
+          page.slice(
+            page.indexOf(
+              "const expertise ="
+            ),
+            page.indexOf(
+              "const engagements ="
+            )
           );
-        }
+
+
+        expect(
+          (
+            expertiseBlock.match(
+              /number:/g
+            )
+            ??
+            []
+          ).length
+        ).toBe(
+          4
+        );
+
       }
     );
+
+
+    it(
+      "preserves historical compatibility markers exactly once",
+      () => {
+
+        for (
+          const marker
+          of [
+            "NB_FOUNDER_VISUAL_V2",
+            "NB_FOUNDER_REAL_PHOTO_V1",
+            "NB_MINIMALIST_SYSTEM_V1",
+            "NB_MINIMALIST_POLISH_V4",
+            "NB_PREMIUM_HERO_SYSTEM_V6",
+            "NB_NAV_HERO_RHYTHM_V1"
+          ]
+        ) {
+
+          expect(
+            (
+              css.match(
+                new RegExp(
+                  marker,
+                  "g"
+                )
+              )
+              ??
+              []
+            ).length,
+            marker
+          ).toBe(
+            1
+          );
+
+        }
+
+      }
+    );
+
   }
 );

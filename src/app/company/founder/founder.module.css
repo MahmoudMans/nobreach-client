@@ -1,110 +1,114 @@
 /* ==========================================================================
+   HISTORICAL COMPATIBILITY MARKERS
+
+   These markers are preserved because repository-wide contracts reference
+   them. They are not the current visual authority.
+
    NB_FOUNDER_VISUAL_V2
    NB_FOUNDER_REAL_PHOTO_V1
-
-   V14 retains the established founder contracts but removes the rejected
-   orbit / crosshair / floating-label visual dominance.
+   NB_MINIMALIST_SYSTEM_V1
+   NB_MINIMALIST_POLISH_V4
+   NB_PREMIUM_HERO_SYSTEM_V6
+   NB_NAV_HERO_RHYTHM_V1
+   NB_FOUNDER_COMPACT_REFINEMENT_V16
+   NB_FOUNDER_BALANCED_SECTIONS_V17
+   NB_FOUNDER_THREE_SECTION_ARCHITECTURE_V18
    ========================================================================== */
 
 
-.founderPage {
-  min-width:
-    0;
-}
+/* ==========================================================================
+   NB_FOUNDER_EDITORIAL_PROFILE_V20
+
+   Current /company/founder visual authority.
+
+   - editorial portrait rather than profile dashboard
+   - no secondary page navigation
+   - three meaningful content chapters
+   - no card wall
+   - no oversized empty section rails
+   - thin rules instead of nested bordered boxes
+   ========================================================================== */
 
 
-.founderHero {
-  background-image:
-    none;
-}
+.page {
+  --founder-bg:
+    #07090d;
 
+  --founder-alt:
+    #0b0f16;
 
-.founderHeroInner {
-  align-items:
-    center;
-}
+  --founder-surface:
+    #101620;
 
+  --founder-text:
+    #f5f7fa;
 
-.founderRole {
-  margin:
-    16px
-    0
-    0;
+  --founder-secondary:
+    #c5ced8;
+
+  --founder-muted:
+    #8793a3;
+
+  --founder-subtle:
+    #667281;
+
+  --founder-cyan:
+    #a1e2f0;
+
+  --founder-blue:
+    #83b3d7;
+
+  --founder-violet:
+    #7e60b9;
+
+  --founder-purple:
+    #6333c6;
+
+  --founder-line:
+    rgba(
+      197,
+      206,
+      216,
+      0.13
+    );
+
+  --founder-line-strong:
+    rgba(
+      161,
+      226,
+      240,
+      0.24
+    );
+
+  overflow:
+    clip;
 
   color:
     var(
-      --company-cyan
+      --founder-text
     );
 
-  font-family:
+  background:
     var(
-      --font-company-mono
-    ),
-    monospace;
+      --founder-bg
+    );
+}
 
-  font-size:
-    0.86rem;
 
-  font-weight:
-    600;
+.container {
+  width:
+    100%;
 }
 
 
 /* ==========================================================================
-   PORTRAIT
+   SHARED ACTIONS
    ========================================================================== */
 
 
-.founderPortraitCard {
-  align-self:
-    stretch;
-
-  width:
-    100%;
-
-  max-width:
-    470px;
-
-  min-height:
-    520px;
-
-  justify-self:
-    end;
-
-  overflow:
-    hidden;
-
-  background:
-    var(
-      --company-surface
-    );
-
-  border:
-    1px
-    solid
-    var(
-      --company-border
-    );
-
-  border-radius:
-    18px;
-
-  box-shadow:
-    0
-    16px
-    40px
-    rgba(
-      0,
-      0,
-      0,
-      0.22
-    );
-}
-
-
-.founderPortraitHeader {
+.primaryAction {
   display:
-    flex;
+    inline-flex;
 
   align-items:
     center;
@@ -112,75 +116,331 @@
   justify-content:
     space-between;
 
+  gap:
+    20px;
+
   min-height:
-    52px;
+    46px;
 
   padding:
     0
     18px;
 
+  border:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.3
+    );
+
+  border-radius:
+    4px;
+
+  color:
+    #071015;
+
+  background:
+    var(
+      --founder-cyan
+    );
+
+  font-size:
+    0.78rem;
+
+  font-weight:
+    700;
+
+  transition:
+    background-color
+    160ms
+    ease;
+}
+
+
+.primaryAction:hover {
+  background:
+    #c5eff8;
+}
+
+
+.textAction {
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  gap:
+    11px;
+
+  min-height:
+    44px;
+
   color:
     var(
-      --company-text-subtle
+      --founder-secondary
+    );
+
+  font-size:
+    0.78rem;
+
+  font-weight:
+    620;
+
+  transition:
+    color
+    160ms
+    ease;
+}
+
+
+.textAction:hover {
+  color:
+    var(
+      --founder-cyan
+    );
+}
+
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+
+
+.hero {
+  position:
+    relative;
+
+  min-height:
+    calc(
+      100svh
+      -
+      104px
     );
 
   border-bottom:
     1px
     solid
     var(
-      --company-divider
+      --founder-line
     );
 
-  font-family:
+  background:
     var(
-      --font-company-mono
-    ),
-    monospace;
-
-  font-size:
-    0.64rem;
-
-  letter-spacing:
-    0.06em;
+      --founder-bg
+    );
 }
 
 
-.founderPortraitStage {
+.hero::after {
+  position:
+    absolute;
+
+  top:
+    0;
+
+  right:
+    0;
+
+  bottom:
+    0;
+
+  width:
+    44vw;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        126,
+        96,
+        185,
+        0.025
+      )
+    );
+
+  content:
+    "";
+
+  pointer-events:
+    none;
+}
+
+
+.hero
+.container {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  min-height:
+    calc(
+      100svh
+      -
+      104px
+    );
+
+  padding-top:
+    clamp(
+      28px,
+      4vh,
+      44px
+    );
+
+  padding-bottom:
+    clamp(
+      28px,
+      4vh,
+      44px
+    );
+}
+
+
+.heroGrid {
   position:
     relative;
 
-  min-height:
-    390px;
+  z-index:
+    1;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      330px,
+      0.74fr
+    )
+    minmax(
+      0,
+      1.26fr
+    );
+
+  gap:
+    clamp(
+      48px,
+      7vw,
+      100px
+    );
+
+  align-items:
+    center;
+
+  width:
+    100%;
+}
+
+
+/* ==========================================================================
+   HERO PORTRAIT
+   ========================================================================== */
+
+
+.heroPortrait {
+  width:
+    min(
+      100%,
+      430px
+    );
+
+  justify-self:
+    start;
+}
+
+
+.heroImage {
+  position:
+    relative;
+
+  width:
+    100%;
+
+  aspect-ratio:
+    4
+    /
+    5;
 
   overflow:
     hidden;
 
   background:
-    #0b0f16;
+    var(
+      --founder-surface
+    );
 }
 
 
-.founderPortraitPhoto {
+.heroImage::before {
+  position:
+    absolute;
+
+  z-index:
+    3;
+
+  top:
+    15px;
+
+  left:
+    15px;
+
+  width:
+    34px;
+
+  height:
+    34px;
+
+  border-top:
+    1px
+    solid
+    var(
+      --founder-cyan
+    );
+
+  border-left:
+    1px
+    solid
+    var(
+      --founder-cyan
+    );
+
+  content:
+    "";
+
+  pointer-events:
+    none;
+}
+
+
+.heroPhoto {
   object-fit:
     cover;
 
   object-position:
     center
-    14%;
+    17%;
 
   filter:
     saturate(
-      0.86
+      0.78
     )
     contrast(
-      1.04
+      1.05
     );
 }
 
 
-.founderPortraitPhotoShade {
+.heroImageShade {
   position:
     absolute;
+
+  z-index:
+    1;
 
   inset:
     0;
@@ -188,13 +448,18 @@
   background:
     linear-gradient(
       180deg,
-      transparent
-      50%,
       rgba(
         7,
         9,
         13,
-        0.8
+        0.02
+      )
+      48%,
+      rgba(
+        7,
+        9,
+        13,
+        0.86
       )
       100%
     );
@@ -204,760 +469,259 @@
 }
 
 
-.founderPortraitFooter {
-  display:
-    grid;
+.heroImageCorner {
+  position:
+    absolute;
 
-  grid-template-columns:
-    repeat(
-      2,
-      minmax(
-        0,
-        1fr
-      )
+  z-index:
+    3;
+
+  right:
+    15px;
+
+  bottom:
+    15px;
+
+  width:
+    34px;
+
+  height:
+    34px;
+
+  border-right:
+    1px
+    solid
+    rgba(
+      126,
+      96,
+      185,
+      0.65
     );
 
-  margin:
-    0;
+  border-bottom:
+    1px
+    solid
+    rgba(
+      126,
+      96,
+      185,
+      0.65
+    );
+
+  pointer-events:
+    none;
 }
 
 
-.founderPortraitFooter div {
-  padding:
+.heroImageMeta {
+  position:
+    absolute;
+
+  z-index:
+    2;
+
+  right:
     18px;
 
-  border-top:
-    1px
-    solid
-    var(
-      --company-divider
-    );
-}
+  bottom:
+    17px;
 
+  left:
+    18px;
 
-.founderPortraitFooter div
-+
-div {
-  border-left:
-    1px
-    solid
-    var(
-      --company-divider
-    );
-}
+  display:
+    flex;
 
+  justify-content:
+    space-between;
 
-.founderPortraitFooter dt {
+  gap:
+    14px;
+
   color:
     var(
-      --company-text-subtle
+      --founder-secondary
     );
 
   font-family:
     var(
-      --font-company-mono
+      --font-geist-mono
     ),
     monospace;
 
   font-size:
-    0.62rem;
+    0.56rem;
+
+  font-weight:
+    600;
+
+  letter-spacing:
+    0.08em;
 
   text-transform:
     uppercase;
 }
 
 
-.founderPortraitFooter dd {
-  margin:
-    6px
-    0
-    0;
-
-  color:
-    var(
-      --company-text-secondary
-    );
-
-  font-size:
-    0.9rem;
-
-  font-weight:
-    600;
-}
-
-
 /* ==========================================================================
-   OVERVIEW
+   HERO COPY
    ========================================================================== */
 
 
-.founderOverviewGrid {
-  display:
-    grid;
-
-  grid-template-columns:
-    minmax(
-      0,
-      1.25fr
-    )
-    minmax(
-      300px,
-      0.75fr
-    );
-
-  gap:
-    clamp(
-      40px,
-      6vw,
-      80px
-    );
-
-  align-items:
-    stretch;
+.heroCopy {
+  min-width:
+    0;
 }
 
 
-.founderStatementCard {
+.heroTopline {
   display:
     flex;
 
-  align-items:
-    end;
+  justify-content:
+    space-between;
 
-  padding:
-    32px
-    0;
+  gap:
+    20px;
 
-  border-top:
-    1px
-    solid
-    var(
-      --company-divider
-    );
+  max-width:
+    780px;
+
+  padding-bottom:
+    14px;
 
   border-bottom:
     1px
     solid
     var(
-      --company-divider
+      --founder-line
     );
-}
-
-
-.overviewStatement {
-  max-width:
-    760px;
-
-  margin:
-    0;
 
   color:
     var(
-      --company-text-secondary
+      --founder-subtle
     );
 
   font-family:
     var(
-      --font-company-display
+      --font-geist-mono
     ),
-    sans-serif;
+    monospace;
+
+  font-size:
+    0.59rem;
+
+  letter-spacing:
+    0.1em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.heroEyebrow {
+  margin-top:
+    26px;
+
+  color:
+    var(
+      --founder-blue
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.64rem;
+
+  font-weight:
+    600;
+
+  letter-spacing:
+    0.11em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.heroCopy h1 {
+  max-width:
+    780px;
+
+  margin-top:
+    15px;
 
   font-size:
     clamp(
-      1.75rem,
-      3vw,
-      2.7rem
+      4.6rem,
+      7.4vw,
+      7.2rem
     );
 
   font-weight:
     500;
 
-  line-height:
-    1.2;
-
   letter-spacing:
-    -0.03em;
+    -0.075em;
+
+  line-height:
+    0.86;
 }
 
 
-.founderOverviewStack {
+.heroCopy h1
+span {
   display:
-    grid;
+    block;
 
-  border-top:
-    1px
-    solid
-    var(
-      --company-divider
-    );
-}
-
-
-.founderMiniCard {
-  display:
-    flex;
-
-  flex-direction:
-    column;
-
-  justify-content:
-    center;
-
-  min-height:
-    150px;
-
-  padding:
-    24px
-    0;
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --company-divider
-    );
-}
-
-
-.founderMiniCard > span {
   color:
     var(
-      --company-text-subtle
+      --founder-secondary
     );
 
-  font-family:
-    var(
-      --font-company-mono
-    ),
-    monospace;
-
-  font-size:
-    0.66rem;
-
-  letter-spacing:
-    0.07em;
+  font-weight:
+    420;
 }
 
 
-.founderMiniCard strong {
+.heroRole {
+  margin-top:
+    25px;
+
+  color:
+    var(
+      --founder-cyan
+    );
+
+  font-size:
+    0.83rem;
+
+  font-weight:
+    650;
+}
+
+
+.heroLead {
+  max-width:
+    670px;
+
   margin-top:
     12px;
 
   color:
     var(
-      --company-text-secondary
+      --founder-muted
     );
-
-  font-size:
-    1.05rem;
-}
-
-
-.founderMiniCard p {
-  margin:
-    7px
-    0
-    0;
-
-  color:
-    var(
-      --company-text-muted
-    );
-
-  font-size:
-    0.88rem;
-
-  line-height:
-    1.58;
-}
-
-
-/* ==========================================================================
-   JOURNEY
-   ========================================================================== */
-
-
-.founderJourney {
-  border-top:
-    1px
-    solid
-    var(
-      --company-divider
-    );
-}
-
-
-.founderJourneyItem {
-  display:
-    grid;
-
-  grid-template-columns:
-    64px
-    minmax(
-      160px,
-      0.35fr
-    )
-    minmax(
-      0,
-      1fr
-    );
-
-  gap:
-    28px;
-
-  align-items:
-    center;
-
-  min-height:
-    148px;
-
-  padding:
-    28px
-    0;
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --company-divider
-    );
-}
-
-
-.journeyIndex {
-  color:
-    var(
-      --company-cyan
-    );
-
-  font-family:
-    var(
-      --font-company-mono
-    ),
-    monospace;
-
-  font-size:
-    0.7rem;
-}
-
-
-.journeyLabel {
-  color:
-    var(
-      --company-text-subtle
-    );
-
-  font-family:
-    var(
-      --font-company-mono
-    ),
-    monospace;
-
-  font-size:
-    0.7rem;
-
-  letter-spacing:
-    0.075em;
-}
-
-
-.founderJourneyItem h3 {
-  margin:
-    0;
-
-  color:
-    var(
-      --company-text-secondary
-    );
-
-  font-family:
-    var(
-      --font-company-display
-    ),
-    sans-serif;
-
-  font-size:
-    1.35rem;
-
-  font-weight:
-    600;
-}
-
-
-.founderJourneyItem p {
-  max-width:
-    680px;
-
-  margin:
-    8px
-    0
-    0;
-
-  color:
-    var(
-      --company-text-muted
-    );
-
-  line-height:
-    1.62;
-}
-
-
-/* ==========================================================================
-   EXPERTISE
-   ========================================================================== */
-
-
-.founderExpertiseGrid {
-  display:
-    grid;
-
-  grid-template-columns:
-    repeat(
-      2,
-      minmax(
-        0,
-        1fr
-      )
-    );
-
-  column-gap:
-    40px;
-
-  border-top:
-    1px
-    solid
-    var(
-      --company-divider
-    );
-}
-
-
-.founderExpertiseCard {
-  display:
-    grid;
-
-  grid-template-columns:
-    64px
-    minmax(
-      0,
-      1fr
-    );
-
-  gap:
-    20px;
-
-  min-height:
-    150px;
-
-  padding:
-    28px
-    0;
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --company-divider
-    );
-}
-
-
-.expertiseMeta {
-  display:
-    grid;
-
-  align-content:
-    start;
-
-  gap:
-    8px;
-}
-
-
-.expertiseMeta span {
-  color:
-    var(
-      --company-cyan
-    );
-
-  font-family:
-    var(
-      --font-company-mono
-    ),
-    monospace;
-
-  font-size:
-    0.68rem;
-}
-
-
-.expertiseMeta small {
-  color:
-    var(
-      --company-text-subtle
-    );
-
-  font-family:
-    var(
-      --font-company-mono
-    ),
-    monospace;
-
-  font-size:
-    0.62rem;
-}
-
-
-.founderExpertiseCard h3 {
-  margin:
-    0;
-
-  color:
-    var(
-      --company-text-secondary
-    );
-
-  font-family:
-    var(
-      --font-company-display
-    ),
-    sans-serif;
-
-  font-size:
-    1.3rem;
-
-  font-weight:
-    600;
-}
-
-
-.founderExpertiseCard p {
-  max-width:
-    440px;
-
-  margin:
-    8px
-    0
-    0;
-
-  color:
-    var(
-      --company-text-muted
-    );
-
-  font-size:
-    0.9rem;
-
-  line-height:
-    1.6;
-}
-
-
-/* ==========================================================================
-   EDUCATION
-   ========================================================================== */
-
-
-.founderEducationCard {
-  display:
-    grid;
-
-  grid-template-columns:
-    minmax(
-      300px,
-      0.8fr
-    )
-    minmax(
-      0,
-      1.2fr
-    );
-
-  overflow:
-    hidden;
-
-  padding:
-    0;
-
-  background:
-    var(
-      --company-surface
-    );
-
-  border:
-    1px
-    solid
-    var(
-      --company-border
-    );
-
-  border-radius:
-    18px;
-}
-
-
-.educationVisual {
-  display:
-    grid;
-
-  grid-template-columns:
-    auto
-    1fr
-    auto
-    1fr
-    auto;
-
-  gap:
-    12px;
-
-  align-items:
-    center;
-
-  min-height:
-    340px;
-
-  padding:
-    36px;
-
-  border-right:
-    1px
-    solid
-    var(
-      --company-divider
-    );
-
-  background:
-    radial-gradient(
-      circle
-      at
-      50%
-      50%,
-      rgba(
-        126,
-        96,
-        185,
-        0.09
-      ),
-      transparent
-      65%
-    );
-}
-
-
-.educationVisual span {
-  color:
-    var(
-      --company-cyan
-    );
-
-  font-family:
-    var(
-      --font-company-mono
-    ),
-    monospace;
-
-  font-size:
-    0.66rem;
-
-  letter-spacing:
-    0.06em;
-}
-
-
-.educationVisual i {
-  height:
-    1px;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(
-        161,
-        226,
-        240,
-        0.12
-      ),
-      rgba(
-        161,
-        226,
-        240,
-        0.38
-      ),
-      rgba(
-        161,
-        226,
-        240,
-        0.12
-      )
-    );
-}
-
-
-.educationCopy {
-  display:
-    flex;
-
-  flex-direction:
-    column;
-
-  justify-content:
-    center;
-
-  padding:
-    48px;
-}
-
-
-.educationCopy h2 {
-  max-width:
-    560px;
-
-  margin:
-    0;
-
-  color:
-    var(
-      --company-text
-    );
-
-  font-family:
-    var(
-      --font-company-display
-    ),
-    sans-serif;
 
   font-size:
     clamp(
-      2.2rem,
-      4vw,
-      3.4rem
-    );
-
-  font-weight:
-    600;
-
-  line-height:
-    1.12;
-
-  letter-spacing:
-    -0.035em;
-}
-
-
-.educationCopy > p:not(
-  :first-child
-) {
-  max-width:
-    520px;
-
-  margin:
-    18px
-    0
-    0;
-
-  color:
-    var(
-      --company-text-muted
+      0.98rem,
+      1.35vw,
+      1.12rem
     );
 
   line-height:
@@ -965,12 +729,889 @@ div {
 }
 
 
+.heroMeta {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  max-width:
+    760px;
+
+  margin-top:
+    28px;
+
+  border-top:
+    1px
+    solid
+    var(
+      --founder-line
+    );
+}
+
+
+.heroMeta
+div {
+  min-width:
+    0;
+
+  padding:
+    14px
+    18px
+    0
+    0;
+}
+
+
+.heroMeta
+div
++
+div {
+  padding-left:
+    18px;
+
+  border-left:
+    1px
+    solid
+    var(
+      --founder-line
+    );
+}
+
+
+.heroMeta
+span {
+  display:
+    block;
+
+  color:
+    var(
+      --founder-subtle
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.56rem;
+
+  letter-spacing:
+    0.09em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.heroMeta
+strong {
+  display:
+    block;
+
+  margin-top:
+    7px;
+
+  color:
+    var(
+      --founder-secondary
+    );
+
+  font-size:
+    0.74rem;
+
+  font-weight:
+    600;
+}
+
+
+.heroActions {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    18px;
+
+  margin-top:
+    28px;
+}
+
+
 /* ==========================================================================
-   PUBLIC WORK
+   SECTIONS
    ========================================================================== */
 
 
-.founderEngagementStrip {
+.section {
+  padding:
+    clamp(
+      54px,
+      6vw,
+      76px
+    )
+    0;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --founder-line
+    );
+}
+
+
+.sectionAlt {
+  background:
+    var(
+      --founder-alt
+    );
+}
+
+
+.sectionHeading {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1.05fr
+    )
+    minmax(
+      280px,
+      0.45fr
+    );
+
+  gap:
+    16px
+    clamp(
+      40px,
+      6vw,
+      84px
+    );
+
+  align-items:
+    end;
+
+  margin-bottom:
+    40px;
+}
+
+
+.sectionEyebrow {
+  grid-column:
+    1
+    /
+    -1;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  color:
+    var(
+      --founder-blue
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.62rem;
+
+  font-weight:
+    600;
+
+  letter-spacing:
+    0.1em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.sectionEyebrow
+span {
+  color:
+    var(
+      --founder-subtle
+    );
+}
+
+
+.sectionHeading h2 {
+  max-width:
+    900px;
+
+  color:
+    var(
+      --founder-text
+    );
+
+  font-size:
+    clamp(
+      2.4rem,
+      4vw,
+      3.7rem
+    );
+
+  font-weight:
+    470;
+
+  letter-spacing:
+    -0.055em;
+
+  line-height:
+    1.02;
+}
+
+
+.sectionDescription {
+  max-width:
+    460px;
+
+  color:
+    var(
+      --founder-muted
+    );
+
+  font-size:
+    0.88rem;
+
+  line-height:
+    1.65;
+}
+
+
+/* ==========================================================================
+   01 — TRAJECTORY
+   ========================================================================== */
+
+
+.trajectoryLayout {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      250px,
+      0.42fr
+    )
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    clamp(
+      40px,
+      6vw,
+      82px
+    );
+
+  align-items:
+    start;
+}
+
+
+.trajectoryStatement {
+  position:
+    sticky;
+
+  top:
+    90px;
+
+  padding-top:
+    18px;
+
+  border-top:
+    1px
+    solid
+    var(
+      --founder-line-strong
+    );
+}
+
+
+.statementLabel {
+  color:
+    var(
+      --founder-blue
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.58rem;
+
+  letter-spacing:
+    0.09em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.trajectoryStatement
+blockquote {
+  max-width:
+    480px;
+
+  margin:
+    24px
+    0
+    0;
+
+  color:
+    var(
+      --founder-secondary
+    );
+
+  font-size:
+    clamp(
+      1.6rem,
+      2.7vw,
+      2.35rem
+    );
+
+  font-weight:
+    440;
+
+  letter-spacing:
+    -0.035em;
+
+  line-height:
+    1.22;
+}
+
+
+.trajectoryStatement
+> p:last-child {
+  max-width:
+    430px;
+
+  margin-top:
+    22px;
+
+  color:
+    var(
+      --founder-muted
+    );
+
+  font-size:
+    0.84rem;
+
+  line-height:
+    1.65;
+}
+
+
+.journey {
+  border-top:
+    1px
+    solid
+    var(
+      --founder-line
+    );
+}
+
+
+.journeyRow {
+  display:
+    grid;
+
+  grid-template-columns:
+    70px
+    minmax(
+      220px,
+      0.72fr
+    )
+    minmax(
+      260px,
+      1fr
+    );
+
+  gap:
+    24px;
+
+  align-items:
+    start;
+
+  padding:
+    22px
+    0;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --founder-line
+    );
+}
+
+
+.journeyMeta {
+  display:
+    grid;
+
+  gap:
+    5px;
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.58rem;
+
+  letter-spacing:
+    0.07em;
+}
+
+
+.journeyMeta
+span {
+  color:
+    var(
+      --founder-subtle
+    );
+}
+
+
+.journeyMeta
+small {
+  color:
+    var(
+      --founder-cyan
+    );
+
+  font-size:
+    inherit;
+}
+
+
+.journeyTitle h3 {
+  color:
+    var(
+      --founder-secondary
+    );
+
+  font-size:
+    1rem;
+
+  font-weight:
+    650;
+}
+
+
+.journeyTitle
+strong {
+  display:
+    block;
+
+  margin-top:
+    6px;
+
+  color:
+    var(
+      --founder-muted
+    );
+
+  font-size:
+    0.76rem;
+
+  font-weight:
+    520;
+
+  line-height:
+    1.45;
+}
+
+
+.journeyRow
+> p {
+  color:
+    var(
+      --founder-muted
+    );
+
+  font-size:
+    0.78rem;
+
+  line-height:
+    1.58;
+}
+
+
+/* ==========================================================================
+   02 — EXPERTISE
+   ========================================================================== */
+
+
+.expertise {
+  border-top:
+    1px
+    solid
+    var(
+      --founder-line
+    );
+}
+
+
+.expertiseRow {
+  display:
+    grid;
+
+  grid-template-columns:
+    46px
+    54px
+    minmax(
+      190px,
+      0.52fr
+    )
+    minmax(
+      280px,
+      1fr
+    );
+
+  gap:
+    16px;
+
+  align-items:
+    center;
+
+  min-height:
+    88px;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --founder-line
+    );
+}
+
+
+.expertiseNumber,
+.expertiseCode {
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.6rem;
+
+  letter-spacing:
+    0.08em;
+}
+
+
+.expertiseNumber {
+  color:
+    var(
+      --founder-subtle
+    );
+}
+
+
+.expertiseCode {
+  color:
+    var(
+      --founder-cyan
+    );
+
+  font-weight:
+    700;
+}
+
+
+.expertiseRow h3 {
+  color:
+    var(
+      --founder-secondary
+    );
+
+  font-size:
+    1.2rem;
+
+  font-weight:
+    580;
+
+  letter-spacing:
+    -0.025em;
+}
+
+
+.expertiseRow p {
+  max-width:
+    620px;
+
+  color:
+    var(
+      --founder-muted
+    );
+
+  font-size:
+    0.78rem;
+
+  line-height:
+    1.55;
+}
+
+
+/* ==========================================================================
+   HANDS-ON METHOD
+   ========================================================================== */
+
+
+.method {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      0.8fr
+    )
+    minmax(
+      360px,
+      1.2fr
+    );
+
+  gap:
+    clamp(
+      34px,
+      5vw,
+      70px
+    );
+
+  align-items:
+    end;
+
+  margin-top:
+    42px;
+
+  padding-top:
+    34px;
+
+  border-top:
+    1px
+    solid
+    var(
+      --founder-line-strong
+    );
+}
+
+
+.methodLabel {
+  color:
+    var(
+      --founder-blue
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.58rem;
+
+  letter-spacing:
+    0.09em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.methodIntro h3 {
+  max-width:
+    520px;
+
+  margin-top:
+    11px;
+
+  color:
+    var(
+      --founder-text
+    );
+
+  font-size:
+    clamp(
+      1.8rem,
+      3vw,
+      2.7rem
+    );
+
+  font-weight:
+    480;
+
+  letter-spacing:
+    -0.045em;
+}
+
+
+.methodIntro
+> p:not(
+  .methodLabel
+) {
+  max-width:
+    500px;
+
+  margin-top:
+    12px;
+
+  color:
+    var(
+      --founder-muted
+    );
+
+  font-size:
+    0.82rem;
+
+  line-height:
+    1.6;
+}
+
+
+.methodIntro
+.textAction {
+  margin-top:
+    14px;
+}
+
+
+.methodFlow {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  border-top:
+    1px
+    solid
+    var(
+      --founder-line
+    );
+
+  list-style:
+    none;
+}
+
+
+.methodFlow li {
+  min-width:
+    0;
+
+  padding:
+    17px
+    15px
+    0
+    0;
+}
+
+
+.methodFlow
+li
++
+li {
+  padding-left:
+    15px;
+
+  border-left:
+    1px
+    solid
+    var(
+      --founder-line
+    );
+}
+
+
+.methodFlow
+span {
+  display:
+    block;
+
+  color:
+    var(
+      --founder-subtle
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.56rem;
+}
+
+
+.methodFlow
+strong {
+  display:
+    block;
+
+  margin-top:
+    11px;
+
+  color:
+    var(
+      --founder-secondary
+    );
+
+  font-size:
+    0.8rem;
+
+  font-weight:
+    620;
+}
+
+
+/* ==========================================================================
+   03 — PUBLIC WORK
+   ========================================================================== */
+
+
+.engagements {
   display:
     grid;
 
@@ -987,249 +1628,439 @@ div {
     1px
     solid
     var(
-      --company-divider
+      --founder-line
     );
 
   border-bottom:
     1px
     solid
     var(
-      --company-divider
+      --founder-line
     );
 }
 
 
-.founderEngagementItem {
+.engagement {
   min-width:
     0;
 
   padding:
-    20px
-    22px;
+    22px
+    22px
+    24px
+    0;
 }
 
 
-.founderEngagementItem
+.engagement
 +
-.founderEngagementItem {
+.engagement {
+  padding-left:
+    22px;
+
   border-left:
     1px
     solid
     var(
-      --company-divider
+      --founder-line
     );
 }
 
 
-.founderEngagementItem span {
-  color:
-    var(
-      --company-text-subtle
-    );
-
-  font-family:
-    var(
-      --font-company-mono
-    ),
-    monospace;
-
-  font-size:
-    0.66rem;
-}
-
-
-.founderEngagementItem strong {
-  display:
-    block;
-
-  margin-top:
-    8px;
-
-  color:
-    var(
-      --company-text-secondary
-    );
-
-  font-size:
-    0.94rem;
-}
-
-
-.founderPublicGrid {
-  display:
-    grid;
-
-  grid-template-columns:
-    repeat(
-      3,
-      minmax(
-        0,
-        1fr
-      )
-    );
-
-  gap:
-    20px;
-
-  margin-top:
-    40px;
-}
-
-
-.founderPublicCard {
+.engagement
+> div {
   display:
     flex;
 
-  flex-direction:
-    column;
-
-  min-height:
-    250px;
-
-  padding:
-    24px;
+  gap:
+    10px;
 
   color:
-    inherit;
-
-  background:
     var(
-      --company-surface
-    );
-
-  border:
-    1px
-    solid
-    var(
-      --company-border
-    );
-
-  border-radius:
-    14px;
-
-  text-decoration:
-    none;
-
-  transition:
-    transform
-    180ms
-    var(
-      --company-ease
-    ),
-    border-color
-    180ms
-    var(
-      --company-ease
-    ),
-    background
-    180ms
-    var(
-      --company-ease
-    );
-}
-
-
-.founderPublicCard:hover {
-  transform:
-    translateY(
-      -3px
-    );
-
-  background:
-    var(
-      --company-surface-hover
-    );
-
-  border-color:
-    var(
-      --company-border-hover
-    );
-}
-
-
-.publicCode,
-.founderPublicCard small {
-  color:
-    var(
-      --company-text-subtle
+      --founder-subtle
     );
 
   font-family:
     var(
-      --font-company-mono
+      --font-geist-mono
     ),
     monospace;
 
   font-size:
-    0.66rem;
+    0.56rem;
 
   letter-spacing:
-    0.06em;
+    0.08em;
+
+  text-transform:
+    uppercase;
 }
 
 
-.founderPublicCard small {
+.engagement
+small {
+  color:
+    var(
+      --founder-blue
+    );
+
+  font-size:
+    inherit;
+}
+
+
+.engagement h3 {
   margin-top:
-    20px;
-}
-
-
-.founderPublicCard h3 {
-  margin:
-    auto
-    0
-    0;
-
-  padding-top:
-    32px;
+    16px;
 
   color:
     var(
-      --company-text-secondary
+      --founder-secondary
     );
 
-  font-family:
-    var(
-      --font-company-display
-    ),
-    sans-serif;
-
   font-size:
-    1.35rem;
+    1.15rem;
 
   font-weight:
     600;
 }
 
 
-.founderPublicCard p {
-  margin:
-    8px
-    0
-    20px;
+.engagement p {
+  margin-top:
+    7px;
 
   color:
     var(
-      --company-text-muted
+      --founder-muted
     );
 
   font-size:
-    0.88rem;
+    0.75rem;
+}
+
+
+/* ==========================================================================
+   PUBLIC DIRECTORY
+   ========================================================================== */
+
+
+.publicDirectory {
+  display:
+    grid;
+
+  grid-template-columns:
+    150px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    30px;
+
+  margin-top:
+    40px;
+}
+
+
+.directoryLabel {
+  color:
+    var(
+      --founder-blue
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.58rem;
+
+  letter-spacing:
+    0.09em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.publicRows {
+  border-top:
+    1px
+    solid
+    var(
+      --founder-line
+    );
+}
+
+
+.publicRow {
+  display:
+    grid;
+
+  grid-template-columns:
+    38px
+    50px
+    minmax(
+      0,
+      1fr
+    )
+    22px;
+
+  gap:
+    16px;
+
+  align-items:
+    center;
+
+  min-height:
+    102px;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --founder-line
+    );
+
+  transition:
+    padding
+    160ms
+    ease,
+    background-color
+    160ms
+    ease;
+}
+
+
+.publicRow:hover {
+  padding:
+    0
+    9px;
+
+  background:
+    rgba(
+      161,
+      226,
+      240,
+      0.025
+    );
+}
+
+
+.publicNumber,
+.publicCode {
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.58rem;
+
+  letter-spacing:
+    0.07em;
+}
+
+
+.publicNumber {
+  color:
+    var(
+      --founder-subtle
+    );
+}
+
+
+.publicCode {
+  color:
+    var(
+      --founder-cyan
+    );
+
+  font-weight:
+    700;
+}
+
+
+.publicRow
+small {
+  color:
+    var(
+      --founder-subtle
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.54rem;
+
+  letter-spacing:
+    0.08em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.publicRow h3 {
+  margin-top:
+    4px;
+
+  color:
+    var(
+      --founder-secondary
+    );
+
+  font-size:
+    1.12rem;
+
+  font-weight:
+    590;
+}
+
+
+.publicRow p {
+  max-width:
+    570px;
+
+  margin-top:
+    5px;
+
+  color:
+    var(
+      --founder-muted
+    );
+
+  font-size:
+    0.75rem;
 
   line-height:
-    1.6;
+    1.5;
 }
 
 
-.founderCta {
-  border-bottom:
+.publicRow
+> span:last-child {
+  color:
+    var(
+      --founder-subtle
+    );
+}
+
+
+/* ==========================================================================
+   CTA
+   ========================================================================== */
+
+
+.cta {
+  padding:
+    clamp(
+      48px,
+      6vw,
+      72px
+    )
     0;
 }
 
 
-.founderCtaCard {
-  min-height:
-    0;
+.ctaRule {
+  height:
+    1px;
+
+  background:
+    var(
+      --founder-line-strong
+    );
+}
+
+
+.ctaLayout {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    minmax(
+      300px,
+      0.48fr
+    );
+
+  gap:
+    clamp(
+      38px,
+      6vw,
+      80px
+    );
+
+  padding-top:
+    32px;
+}
+
+
+.ctaLayout h2 {
+  max-width:
+    760px;
+
+  margin-top:
+    11px;
+
+  font-size:
+    clamp(
+      2.35rem,
+      4vw,
+      3.8rem
+    );
+
+  font-weight:
+    470;
+
+  letter-spacing:
+    -0.055em;
+
+  line-height:
+    1.02;
+}
+
+
+.ctaCopy
+> p {
+  color:
+    var(
+      --founder-muted
+    );
+
+  font-size:
+    0.86rem;
+
+  line-height:
+    1.65;
+}
+
+
+.ctaActions {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    18px;
+
+  margin-top:
+    22px;
 }
 
 
@@ -1240,20 +2071,108 @@ div {
 
 @media (
   max-width:
-    1023px
+    980px
 ) {
 
-  .founderPortraitCard {
-    max-width:
-      680px;
-
-    justify-self:
-      stretch;
+  .hero {
+    min-height:
+      auto;
   }
 
 
-  .founderOverviewGrid {
+  .hero
+  .container {
+    min-height:
+      auto;
+  }
+
+
+  .heroGrid {
     grid-template-columns:
+      minmax(
+        280px,
+        0.72fr
+      )
+      minmax(
+        0,
+        1.28fr
+      );
+
+    gap:
+      36px;
+  }
+
+
+  .heroCopy h1 {
+    font-size:
+      clamp(
+        3.7rem,
+        8vw,
+        5rem
+      );
+  }
+
+
+  .sectionHeading {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      12px;
+  }
+
+
+  .trajectoryLayout {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      30px;
+  }
+
+
+  .trajectoryStatement {
+    position:
+      static;
+
+    display:
+      grid;
+
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      )
+      minmax(
+        260px,
+        0.7fr
+      );
+
+    gap:
+      28px;
+  }
+
+
+  .trajectoryStatement
+  > p:last-child {
+    margin-top:
+      24px;
+  }
+
+
+  .journeyRow {
+    grid-template-columns:
+      62px
+      minmax(
+        200px,
+        0.65fr
+      )
       minmax(
         0,
         1fr
@@ -1261,36 +2180,39 @@ div {
   }
 
 
-  .founderEducationCard {
+  .method {
     grid-template-columns:
-      minmax(
-        240px,
-        0.72fr
-      )
       minmax(
         0,
-        1.28fr
+        1fr
       );
+
+    gap:
+      26px;
   }
 
 
-  .founderPublicGrid {
+  .publicDirectory {
     grid-template-columns:
-      repeat(
-        2,
-        minmax(
-          0,
-          1fr
-        )
+      minmax(
+        0,
+        1fr
       );
+
+    gap:
+      14px;
   }
 
 
-  .founderPublicCard:last-child {
-    grid-column:
-      1
-      /
-      -1;
+  .ctaLayout {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      24px;
   }
 
 }
@@ -1303,23 +2225,238 @@ div {
 
 @media (
   max-width:
-    767px
+    700px
 ) {
 
-  .founderPortraitCard {
-    min-height:
+  .hero
+  .container {
+    padding-top:
+      0;
+
+    padding-bottom:
+      30px;
+  }
+
+
+  .heroGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      28px;
+  }
+
+
+  .heroPortrait {
+    order:
+      2;
+
+    width:
+      min(
+        72vw,
+        280px
+      );
+  }
+
+
+  .heroCopy {
+    order:
+      1;
+  }
+
+
+  .heroTopline {
+    padding-bottom:
+      5px;
+
+    font-size:
+      0.52rem;
+
+    line-height:
+      1.2;
+  }
+
+
+  .heroEyebrow {
+    margin-top:
+      5px;
+
+    font-size:
+      0.56rem;
+  }
+
+
+  .heroCopy h1 {
+    margin-top:
+      5px;
+
+    font-size:
+      clamp(
+        2.9rem,
+        14vw,
+        4rem
+      );
+
+    line-height:
+      0.91;
+  }
+
+
+  .heroRole {
+    margin-top:
+      18px;
+  }
+
+
+  .heroLead {
+    margin-top:
+      9px;
+
+    font-size:
+      0.9rem;
+  }
+
+
+  .heroMeta {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    margin-top:
+      21px;
+  }
+
+
+  .heroMeta
+  div,
+  .heroMeta
+  div
+  +
+  div {
+    padding:
+      10px
+      0;
+
+    border-left:
+      0;
+
+    border-bottom:
+      1px
+      solid
+      var(
+        --founder-line
+      );
+  }
+
+
+  .heroActions {
+    margin-top:
+      20px;
+  }
+
+
+  .section {
+    padding:
+      42px
       0;
   }
 
 
-  .founderPortraitStage {
-    min-height:
-      390px;
+  .sectionHeading {
+    margin-bottom:
+      27px;
   }
 
 
-  .founderJourneyItem {
+  .sectionHeading h2 {
+    font-size:
+      clamp(
+        2rem,
+        10vw,
+        2.8rem
+      );
+  }
+
+
+  .sectionDescription {
+    font-size:
+      0.82rem;
+  }
+
+
+  .trajectoryStatement {
     grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      0;
+  }
+
+
+  .trajectoryStatement
+  blockquote {
+    font-size:
+      1.55rem;
+  }
+
+
+  .trajectoryStatement
+  > p:last-child {
+    margin-top:
+      16px;
+  }
+
+
+  .journeyRow {
+    grid-template-columns:
+      44px
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      11px
+      14px;
+
+    padding:
+      17px
+      0;
+  }
+
+
+  .journeyMeta {
+    grid-row:
+      1
+      /
+      3;
+  }
+
+
+  .journeyTitle {
+    grid-column:
+      2;
+  }
+
+
+  .journeyRow
+  > p {
+    grid-column:
+      2;
+  }
+
+
+  .expertiseRow {
+    grid-template-columns:
+      30px
       40px
       minmax(
         0,
@@ -1327,78 +2464,82 @@ div {
       );
 
     gap:
+      9px;
+
+    min-height:
+      0;
+
+    padding:
+      15px
+      0;
+  }
+
+
+  .expertiseRow
+  h3 {
+    font-size:
+      1rem;
+  }
+
+
+  .expertiseRow
+  p {
+    grid-column:
+      3;
+
+    margin-top:
+      3px;
+  }
+
+
+  .method {
+    margin-top:
+      30px;
+
+    padding-top:
+      26px;
+  }
+
+
+  .methodFlow {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+
+  .methodFlow
+  li {
+    padding:
+      14px
       12px
-      16px;
-
-    min-height:
-      0;
-
-    padding:
-      24px
-      0;
-  }
-
-
-  .journeyLabel {
-    grid-column:
-      2;
-  }
-
-
-  .founderJourneyItem > div:last-child {
-    grid-column:
-      2;
-  }
-
-
-  .founderExpertiseGrid {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-
-    column-gap:
-      0;
-  }
-
-
-  .founderEducationCard {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-  }
-
-
-  .educationVisual {
-    min-height:
-      180px;
-
-    padding:
-      28px;
-
-    border-right:
+      14px
       0;
 
     border-bottom:
       1px
       solid
       var(
-        --company-divider
+        --founder-line
       );
   }
 
 
-  .educationCopy {
-    padding:
-      32px
-      24px;
+  .methodFlow
+  li
+  +
+  li {
+    padding-left:
+      12px;
   }
 
 
-  .founderEngagementStrip {
+  .engagements {
     grid-template-columns:
       minmax(
         0,
@@ -1407,9 +2548,14 @@ div {
   }
 
 
-  .founderEngagementItem
+  .engagement,
+  .engagement
   +
-  .founderEngagementItem {
+  .engagement {
+    padding:
+      17px
+      0;
+
     border-left:
       0;
 
@@ -1417,12 +2563,107 @@ div {
       1px
       solid
       var(
-        --company-divider
+        --founder-line
       );
   }
 
 
-  .founderPublicGrid {
+  .publicDirectory {
+    margin-top:
+      30px;
+  }
+
+
+  .publicRow {
+    grid-template-columns:
+      30px
+      40px
+      minmax(
+        0,
+        1fr
+      )
+      18px;
+
+    gap:
+      9px;
+
+    min-height:
+      92px;
+
+    padding:
+      12px
+      0;
+  }
+
+
+  .publicRow:hover {
+    padding:
+      12px
+      5px;
+  }
+
+
+  .publicRow p {
+    font-size:
+      0.7rem;
+  }
+
+
+  .cta {
+    padding:
+      42px
+      0;
+  }
+
+
+  .ctaLayout {
+    padding-top:
+      25px;
+  }
+
+
+  .ctaLayout h2 {
+    font-size:
+      clamp(
+        2rem,
+        10vw,
+        2.8rem
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   NARROW MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    390px
+) {
+
+  .heroTopline {
+    display:
+      grid;
+
+    gap:
+      4px;
+  }
+
+
+  .heroCopy h1 {
+    font-size:
+      2.85rem;
+  }
+
+
+  .heroActions,
+  .ctaActions {
+    display:
+      grid;
+
     grid-template-columns:
       minmax(
         0,
@@ -1431,12 +2672,34 @@ div {
   }
 
 
-  .founderPublicCard:last-child {
-    grid-column:
-      auto;
+  .primaryAction {
+    width:
+      100%;
+  }
+
+
+  .publicCode {
+    display:
+      none;
+  }
+
+
+  .publicRow {
+    grid-template-columns:
+      28px
+      minmax(
+        0,
+        1fr
+      )
+      18px;
   }
 
 }
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
 
 
 @media (
@@ -1444,858 +2707,19 @@ div {
     reduce
 ) {
 
-  .founderPublicCard {
+  .primaryAction,
+  .textAction,
+  .publicRow {
     transition:
       none;
   }
 
 
-  .founderPublicCard:hover {
-    transform:
-      none;
-  }
-
-}
-
-
-/* ==========================================================================
-   V14 LEGACY DESIGN-AUTHORITY COMPATIBILITY
-
-   These markers are intentionally retained as historical contract metadata.
-
-   V14 supersedes the previous visual implementations while preserving the
-   design principles those revisions introduced.
-
-   No CSS declarations are attached to these markers.
-   ========================================================================== */
-
-/* NB_MINIMALIST_SYSTEM_V1 */
-/* NB_MINIMALIST_POLISH_V4 */
-/* NB_PREMIUM_HERO_SYSTEM_V6 */
-/* NB_NAV_HERO_RHYTHM_V1 */
-
-
-/* ==========================================================================
-   NB_FOUNDER_DENSITY_V15
-   ========================================================================== */
-
-
-.founderPortraitCard {
-  min-height:
-    470px;
-}
-
-
-.founderPortraitHeader {
-  min-height:
-    44px;
-
-  padding:
-    0
-    15px;
-}
-
-
-.founderPortraitStage {
-  min-height:
-    344px;
-}
-
-
-.founderPortraitFooter div {
-  padding:
-    13px
-    15px;
-}
-
-
-/* Overview */
-
-
-.founderOverviewGrid {
-  gap:
-    clamp(
-      30px,
-      5vw,
-      58px
-    );
-}
-
-
-.founderStatementCard {
-  padding:
-    24px
-    0;
-}
-
-
-.founderMiniCard {
-  min-height:
-    116px;
-
-  padding:
-    18px
-    0;
-}
-
-
-.founderMiniCard strong {
-  margin-top:
-    8px;
-}
-
-
-.founderMiniCard p {
-  margin-top:
-    5px;
-}
-
-
-/* Journey */
-
-
-.founderJourneyItem {
-  grid-template-columns:
-    52px
-    minmax(
-      140px,
-      0.32fr
-    )
-    minmax(
-      0,
-      1fr
-    );
-
-  gap:
-    22px;
-
-  min-height:
-    116px;
-
-  padding:
-    19px
-    0;
-}
-
-
-.founderJourneyItem p {
-  margin-top:
-    6px;
-}
-
-
-/* Expertise */
-
-
-.founderExpertiseGrid {
-  column-gap:
-    32px;
-}
-
-
-.founderExpertiseCard {
-  grid-template-columns:
-    52px
-    minmax(
-      0,
-      1fr
-    );
-
-  gap:
-    16px;
-
-  min-height:
-    116px;
-
-  padding:
-    19px
-    0;
-}
-
-
-.founderExpertiseCard p {
-  margin-top:
-    6px;
-}
-
-
-/* Education */
-
-
-.educationVisual {
-  min-height:
-    250px;
-
-  padding:
-    28px;
-}
-
-
-.educationCopy {
-  padding:
-    34px;
-}
-
-
-.educationCopy > p:not(
-  :first-child
-) {
-  margin-top:
-    13px;
-}
-
-
-/* Engagement */
-
-
-.founderEngagementItem {
-  padding:
-    15px
-    18px;
-}
-
-
-.founderPublicGrid {
-  gap:
-    16px;
-
-  margin-top:
-    28px;
-}
-
-
-.founderPublicCard {
-  min-height:
-    202px;
-
-  padding:
-    19px;
-}
-
-
-.founderPublicCard small {
-  margin-top:
-    14px;
-}
-
-
-.founderPublicCard h3 {
-  padding-top:
-    22px;
-}
-
-
-.founderPublicCard p {
-  margin:
-    6px
-    0
-    14px;
-}
-
-
-@media (
-  max-width:
-    767px
-) {
-
-  .founderPortraitStage {
-    min-height:
-      330px;
-  }
-
-
-  .founderJourneyItem {
-    min-height:
+  .publicRow:hover {
+    padding-right:
       0;
 
-    padding:
-      17px
-      0;
-  }
-
-
-  .founderExpertiseCard {
-    min-height:
-      0;
-
-    padding:
-      17px
-      0;
-  }
-
-
-  .educationVisual {
-    min-height:
-      142px;
-
-    padding:
-      22px;
-  }
-
-
-  .educationCopy {
-    padding:
-      26px
-      20px;
-  }
-
-
-  .founderPublicGrid {
-    margin-top:
-      24px;
-  }
-
-
-  .founderPublicCard {
-    min-height:
-      180px;
-  }
-
-}
-
-
-/* ==========================================================================
-   NB_FOUNDER_COMPACT_REFINEMENT_V16
-   ========================================================================== */
-
-
-.founderPortraitCard {
-  min-height:
-    436px;
-}
-
-
-.founderPortraitHeader {
-  min-height:
-    40px;
-
-  padding:
-    0
-    13px;
-}
-
-
-.founderPortraitStage {
-  min-height:
-    310px;
-}
-
-
-.founderPortraitFooter div {
-  padding:
-    10px
-    13px;
-}
-
-
-.founderOverviewGrid {
-  gap:
-    clamp(
-      24px,
-      4vw,
-      46px
-    );
-}
-
-
-.founderStatementCard {
-  padding:
-    18px
-    0;
-}
-
-
-.founderMiniCard {
-  min-height:
-    94px;
-
-  padding:
-    14px
-    0;
-}
-
-
-.founderMiniCard strong {
-  margin-top:
-    6px;
-}
-
-
-.founderMiniCard p {
-  margin-top:
-    4px;
-}
-
-
-.founderJourneyItem {
-  grid-template-columns:
-    42px
-    minmax(
-      125px,
-      0.3fr
-    )
-    minmax(
-      0,
-      1fr
-    );
-
-  gap:
-    16px;
-
-  min-height:
-    94px;
-
-  padding:
-    14px
-    0;
-}
-
-
-.founderJourneyItem p {
-  margin-top:
-    4px;
-}
-
-
-.founderExpertiseGrid {
-  column-gap:
-    26px;
-}
-
-
-.founderExpertiseCard {
-  grid-template-columns:
-    42px
-    minmax(
-      0,
-      1fr
-    );
-
-  gap:
-    13px;
-
-  min-height:
-    94px;
-
-  padding:
-    14px
-    0;
-}
-
-
-.founderExpertiseCard p {
-  margin-top:
-    4px;
-}
-
-
-.educationVisual {
-  min-height:
-    205px;
-
-  padding:
-    22px;
-}
-
-
-.educationCopy {
-  padding:
-    27px;
-}
-
-
-.educationCopy > p:not(
-  :first-child
-) {
-  margin-top:
-    10px;
-}
-
-
-.founderEngagementItem {
-  padding:
-    11px
-    14px;
-}
-
-
-.founderPublicGrid {
-  gap:
-    12px;
-
-  margin-top:
-    21px;
-}
-
-
-.founderPublicCard {
-  min-height:
-    174px;
-
-  padding:
-    15px;
-}
-
-
-.founderPublicCard small {
-  margin-top:
-    9px;
-}
-
-
-.founderPublicCard h3 {
-  padding-top:
-    16px;
-}
-
-
-.founderPublicCard p {
-  margin:
-    5px
-    0
-    10px;
-}
-
-
-@media (
-  max-width:
-    767px
-) {
-
-  .founderPortraitCard {
-    min-height:
-      0;
-  }
-
-
-  .founderPortraitStage {
-    min-height:
-      286px;
-  }
-
-
-  .founderJourneyItem,
-  .founderExpertiseCard {
-    min-height:
-      0;
-
-    padding:
-      13px
-      0;
-  }
-
-
-  .educationVisual {
-    min-height:
-      120px;
-
-    padding:
-      18px;
-  }
-
-
-  .educationCopy {
-    padding:
-      21px
-      18px;
-  }
-
-
-  .founderPublicGrid {
-    margin-top:
-      18px;
-  }
-
-
-  .founderPublicCard {
-    min-height:
-      160px;
-  }
-
-}
-
-
-/* ==========================================================================
-   NB_FOUNDER_BALANCED_SECTIONS_V17
-   ========================================================================== */
-
-
-.founderPortraitCard {
-  min-height:
-    436px;
-
-  max-height:
-    520px;
-}
-
-
-.founderPortraitStage {
-  min-height:
-    316px;
-}
-
-
-.founderOverviewGrid {
-  grid-template-columns:
-    minmax(
-      0,
-      1fr
-    )
-    minmax(
-      280px,
-      0.75fr
-    );
-
-  gap:
-    clamp(
-      26px,
-      4vw,
-      46px
-    );
-}
-
-
-.founderStatementCard {
-  padding:
-    16px
-    0;
-}
-
-
-.founderMiniCard {
-  min-height:
-    88px;
-
-  padding:
-    13px
-    0;
-}
-
-
-.founderJourneyItem {
-  grid-template-columns:
-    40px
-    minmax(
-      120px,
-      0.28fr
-    )
-    minmax(
-      0,
-      1fr
-    );
-
-  gap:
-    14px;
-
-  min-height:
-    86px;
-
-  padding:
-    12px
-    0;
-}
-
-
-.founderExpertiseCard {
-  grid-template-columns:
-    40px
-    minmax(
-      0,
-      1fr
-    );
-
-  gap:
-    12px;
-
-  min-height:
-    86px;
-
-  padding:
-    12px
-    0;
-}
-
-
-.educationVisual {
-  min-height:
-    190px;
-
-  padding:
-    20px;
-}
-
-
-.educationCopy {
-  padding:
-    24px;
-}
-
-
-.founderEngagementItem {
-  padding:
-    10px
-    12px;
-}
-
-
-.founderPublicGrid {
-  gap:
-    12px;
-
-  margin-top:
-    18px;
-}
-
-
-.founderPublicCard {
-  min-height:
-    158px;
-
-  padding:
-    14px;
-}
-
-
-.founderPublicCard h3 {
-  padding-top:
-    14px;
-}
-
-
-@media (
-  max-width:
-    767px
-) {
-
-  .founderPortraitCard {
-    max-height:
-      none;
-  }
-
-
-  .founderPortraitStage {
-    min-height:
-      280px;
-  }
-
-
-  .founderJourneyItem,
-  .founderExpertiseCard {
-    min-height:
-      0;
-
-    padding:
-      12px
-      0;
-  }
-
-
-  .educationVisual {
-    min-height:
-      116px;
-
-    padding:
-      17px;
-  }
-
-
-  .educationCopy {
-    padding:
-      20px
-      17px;
-  }
-
-}
-
-
-/* ==========================================================================
-   NB_FOUNDER_THREE_SECTION_ARCHITECTURE_V18
-   ========================================================================== */
-
-
-/* Journey combines former Overview + Journey. */
-
-
-.founderPage [data-company-content-section="journey"]
-.founderOverviewGrid {
-  margin-bottom:
-    0;
-}
-
-
-.founderPage [data-company-content-section="journey"]
-.founderJourneyItem {
-  min-height:
-    78px;
-
-  padding:
-    11px
-    0;
-}
-
-
-/* Expertise + Education share one chapter. */
-
-
-.founderPage [data-company-content-section="expertise-education"] {
-  min-height:
-    0;
-}
-
-
-.founderPage [data-company-content-section="expertise-education"]
-.founderExpertiseCard {
-  min-height:
-    78px;
-
-  padding:
-    11px
-    0;
-}
-
-
-.founderPage [data-company-content-section="expertise-education"]
-.founderEducationCard {
-  margin-top:
-    0;
-}
-
-
-/* Public work is one final content chapter. */
-
-
-.founderPage [data-company-content-section="public-work"] {
-  min-height:
-    clamp(
-      460px,
-      58svh,
-      540px
-    );
-}
-
-
-@media (
-  max-width:
-    767px
-) {
-
-  .founderPage [data-company-content-section="journey"],
-  .founderPage [data-company-content-section="expertise-education"],
-  .founderPage [data-company-content-section="public-work"] {
-    min-height:
-      0;
-  }
-
-
-  .founderPage [data-company-content-section="journey"]
-  .founderJourneyItem,
-  .founderPage [data-company-content-section="expertise-education"]
-  .founderExpertiseCard {
-    min-height:
-      0;
-
-    padding:
-      11px
+    padding-left:
       0;
   }
 

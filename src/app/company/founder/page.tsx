@@ -6,14 +6,13 @@ import type {
 } from "next";
 
 import {
-  Breadcrumbs
-} from "@/components/navigation/breadcrumbs";
-
-import {
   Container
 } from "@/components/layout/container";
 
-import family from "../company-family.module.css";
+import {
+  Breadcrumbs
+} from "@/components/navigation/breadcrumbs";
+
 import styles from "./founder.module.css";
 
 
@@ -30,7 +29,7 @@ export const metadata:
 
 const journey = [
   {
-    index:
+    number:
       "01",
 
     code:
@@ -39,11 +38,14 @@ const journey = [
     title:
       "Development",
 
+    headline:
+      "Understanding how systems are built.",
+
     description:
-      "Technical foundations and understanding how systems are built."
+      "Programming formed the technical foundation for understanding software behavior, structure and implementation."
   },
   {
-    index:
+    number:
       "02",
 
     code:
@@ -52,11 +54,14 @@ const journey = [
     title:
       "Cybersecurity",
 
+    headline:
+      "Moving from construction to failure analysis.",
+
     description:
-      "Moving from building systems toward understanding how they fail."
+      "Security shifted the focus from building systems toward understanding assumptions, weaknesses and attack surfaces."
   },
   {
-    index:
+    number:
       "03",
 
     code:
@@ -65,11 +70,14 @@ const journey = [
     title:
       "Bug bounty / security research",
 
+    headline:
+      "Learning through real application behavior.",
+
     description:
-      "Developing practical vulnerability research and security-testing thinking."
+      "Legal web-security and bug-bounty research reinforced the importance of understanding systems before attempting exploitation."
   },
   {
-    index:
+    number:
       "04",
 
     code:
@@ -78,11 +86,14 @@ const journey = [
     title:
       "Offensive security",
 
+    headline:
+      "Turning attacker thinking into a repeatable method.",
+
     description:
-      "Applying attacker-oriented reasoning to security work and technical education."
+      "Offensive-security work connects technical reasoning, experimentation, validation and practical communication."
   },
   {
-    index:
+    number:
       "05",
 
     code:
@@ -91,15 +102,18 @@ const journey = [
     title:
       "No Breach",
 
+    headline:
+      "Connecting practice, education and community.",
+
     description:
-      "Bringing security services, education and community into one ecosystem."
+      "No Breach brings professional security work together with technical learning and cybersecurity community activity."
   }
 ];
 
 
 const expertise = [
   {
-    index:
+    number:
       "01",
 
     code:
@@ -109,10 +123,10 @@ const expertise = [
       "Web Security",
 
     description:
-      "Application behavior, attack surfaces and security testing."
+      "Application behavior, attack surfaces, trust boundaries and practical security testing."
   },
   {
-    index:
+    number:
       "02",
 
     code:
@@ -122,10 +136,10 @@ const expertise = [
       "API Security",
 
     description:
-      "Authentication, authorization and object-level access."
+      "Authentication, authorization, object-level access and application logic."
   },
   {
-    index:
+    number:
       "03",
 
     code:
@@ -135,10 +149,10 @@ const expertise = [
       "Offensive Security",
 
     description:
-      "Attacker-oriented analysis and validation."
+      "Attacker-oriented reasoning, validation and technical security assessment."
   },
   {
-    index:
+    number:
       "04",
 
     code:
@@ -148,17 +162,103 @@ const expertise = [
       "Security Training",
 
     description:
-      "Hands-on technical learning and mentorship."
+      "Hands-on learning, mentorship and practical technical skill development."
   }
 ];
 
 
-const focus = [
-  "Offensive Security",
-  "Security Research",
-  "Training",
-  "Mentorship",
-  "Community"
+const engagements = [
+  {
+    number:
+      "01",
+
+    type:
+      "Workshop",
+
+    name:
+      "CyberSummit 4.0",
+
+    role:
+      "Workshop trainer"
+  },
+  {
+    number:
+      "02",
+
+    type:
+      "Mentorship",
+
+    name:
+      "CyberCamp 5.0",
+
+    role:
+      "OSINT mentor"
+  },
+  {
+    number:
+      "03",
+
+    type:
+      "Media",
+
+    name:
+      "The Hackers Line",
+
+    role:
+      "Cybersecurity podcast"
+  }
+];
+
+
+const destinations = [
+  {
+    code:
+      "ACT",
+
+    label:
+      "Activities",
+
+    title:
+      "Public activity",
+
+    description:
+      "Workshops, events, training and cybersecurity community activity.",
+
+    href:
+      "/activities"
+  },
+  {
+    code:
+      "R&D",
+
+    label:
+      "Knowledge",
+
+    title:
+      "Security insights",
+
+    description:
+      "Technical writing and practical security thinking published by No Breach.",
+
+    href:
+      "/insights"
+  },
+  {
+    code:
+      "CTF",
+
+    label:
+      "Community",
+
+    title:
+      "CR4CKOUT",
+
+    description:
+      "Technical challenge, experimentation and cybersecurity community.",
+
+    href:
+      "/cr4ckout"
+  }
 ];
 
 
@@ -188,9 +288,10 @@ const founderStructuredData = {
 
   knowsAbout: [
     "Offensive Security",
-    "Security Research",
+    "Web Security",
+    "API Security",
     "Cybersecurity Training",
-    "Mentorship"
+    "Security Research"
   ]
 };
 
@@ -208,13 +309,13 @@ function Arrow() {
 }
 
 
-function SectionHeader({
-  index,
+function SectionHeading({
+  number,
   eyebrow,
   title,
   description
 }: {
-  index:
+  number:
     string;
 
   eyebrow:
@@ -228,65 +329,49 @@ function SectionHeader({
 }) {
 
   return (
-    <div
+    <header
       className={
-        family.sectionHeader
+        styles.sectionHeading
       }
     >
-      <div>
-        <span
-          className={
-            family.sectionIndex
-          }
-        >
+      <p
+        className={
+          styles.sectionEyebrow
+        }
+      >
+        <span>
           {
-            index
+            number
           }
         </span>
 
-        <p
-          className={
-            family.sectionEyebrow
-          }
-        >
-          {
-            eyebrow
-          }
-        </p>
-      </div>
-
-      <div
-        className={
-          family.sectionHeaderCopy
-        }
-      >
-        <h2
-          className={
-            family.sectionTitle
-          }
-        >
-          {
-            title
-          }
-        </h2>
-
         {
-          description
-            ? (
-              <p
-                className={
-                  family.sectionDescription
-                }
-              >
-                {
-                  description
-                }
-              </p>
-            )
-            : null
+          eyebrow
         }
-      </div>
-    </div>
+      </p>
+
+      <h2>
+        {
+          title
+        }
+      </h2>
+
+      {
+        description
+          ? (
+            <p
+              className={
+                styles.sectionDescription
+              }
+            >
+              {
+                description
+              }
+            </p>
+          )
+          : null
+      }
+    </header>
   );
 
 }
@@ -297,22 +382,23 @@ export default function FounderPage() {
   return (
     <div
       className={
-        `${family.page} ${styles.founderPage}`
+        styles.page
       }
-      data-founder-page="v2"
+      data-founder-page="v20"
       data-company-family="v14"
       data-company-density="v15"
       data-company-architecture="v18"
+      data-founder-design-system="v20"
     >
       <script
         type="application/ld+json"
-      >
-        {
-          JSON.stringify(
-            founderStructuredData
-          )
-        }
-      </script>
+        dangerouslySetInnerHTML={{
+          __html:
+            JSON.stringify(
+              founderStructuredData
+            )
+        }}
+      />
 
       <Breadcrumbs
         items={[
@@ -331,50 +417,120 @@ export default function FounderPage() {
       />
 
 
-      {/* HERO */}
+      {/* ================================================================
+          HERO
+          Not counted as one of the three content sections.
+         ================================================================ */}
 
       <section
         className={
-          `${family.pageIntro} ${family.compactPageIntro} ${styles.founderHero}`
+          styles.hero
         }
         data-founder-section="hero"
       >
         <Container
           size="wide"
           className={
-            family.container
+            styles.container
           }
         >
           <div
             className={
-              `${family.pageIntroGrid} ${styles.founderHeroInner}`
+              styles.heroGrid
             }
           >
             <div
               className={
-                family.introCopy
+                styles.heroPortrait
+              }
+              data-founder-ui="portrait-editorial"
+            >
+              <div
+                className={
+                  styles.heroImage
+                }
+              >
+                <Image
+                  src="/people/ceo.png"
+                  alt=""
+                  fill
+                  priority
+                  sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1100px) 42vw, 430px"
+                  className={
+                    styles.heroPhoto
+                  }
+                  data-founder-photo-image="profile"
+                />
+
+                <div
+                  className={
+                    styles.heroImageShade
+                  }
+                  aria-hidden="true"
+                />
+
+                <div
+                  className={
+                    styles.heroImageCorner
+                  }
+                  aria-hidden="true"
+                />
+
+                <div
+                  className={
+                    styles.heroImageMeta
+                  }
+                  aria-hidden="true"
+                >
+                  <span>
+                    NB / Founder
+                  </span>
+
+                  <span>
+                    Tunis
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className={
+                styles.heroCopy
               }
               data-founder-ui="hero-copy"
             >
+              <div
+                className={
+                  styles.heroTopline
+                }
+              >
+                <span>
+                  Founder profile
+                </span>
+
+                <span>
+                  No Breach / Tunisia
+                </span>
+              </div>
+
               <p
                 className={
-                  family.eyebrow
+                  styles.heroEyebrow
                 }
               >
-                Founder / No Breach
+                Offensive security · Education · Community
               </p>
 
-              <h1
-                className={
-                  family.title
-                }
-              >
-                Nouha Ben Brahim
+              <h1>
+                Nouha
+                <span>
+                  Ben Brahim
+                </span>
               </h1>
 
               <p
                 className={
-                  styles.founderRole
+                  styles.heroRole
                 }
               >
                 Founder of No Breach
@@ -382,251 +538,143 @@ export default function FounderPage() {
 
               <p
                 className={
-                  family.lead
+                  styles.heroLead
                 }
               >
-                Cybersecurity professional focused on offensive security, practical training and community development.
+                Cybersecurity professional connecting offensive-security practice with technical education, mentorship and community development.
               </p>
 
               <div
                 className={
-                  family.tags
+                  styles.heroMeta
                 }
               >
-                {
-                  focus.map(
-                    (
-                      item
-                    ) => (
-                      <span
-                        className={
-                          family.tag
-                        }
-                        key={
-                          item
-                        }
-                      >
-                        {
-                          item
-                        }
-                      </span>
-                    )
-                  )
-                }
+                <div>
+                  <span>
+                    Focus
+                  </span>
+
+                  <strong>
+                    Offensive Security
+                  </strong>
+                </div>
+
+                <div>
+                  <span>
+                    Base
+                  </span>
+
+                  <strong>
+                    Tunis, Tunisia
+                  </strong>
+                </div>
+
+                <div>
+                  <span>
+                    Practice
+                  </span>
+
+                  <strong>
+                    Security · Training · Research
+                  </strong>
+                </div>
               </div>
 
               <div
                 className={
-                  family.actions
+                  styles.heroActions
                 }
               >
+                <a
+                  href="#trajectory"
+                  className={
+                    styles.primaryAction
+                  }
+                >
+                  Explore the profile
+
+                  <span
+                    aria-hidden="true"
+                  >
+                    ↓
+                  </span>
+                </a>
+
                 <Link
                   href="/company"
                   className={
-                    family.primaryAction
+                    styles.textAction
                   }
                 >
                   About No Breach
 
                   <Arrow />
                 </Link>
-
-                <Link
-                  href="/activities"
-                  className={
-                    family.secondaryAction
-                  }
-                >
-                  Public activity
-
-                  <Arrow />
-                </Link>
               </div>
-            </div>
-
-            <div
-              className={
-                styles.founderPortraitCard
-              }
-              data-founder-ui="portrait-card"
-              aria-label="Founder portrait"
-            >
-              <div
-                className={
-                  styles.founderPortraitHeader
-                }
-              >
-                <span>
-                  NB / FOUNDER
-                </span>
-
-                <span>
-                  PROFILE
-                </span>
-              </div>
-
-              <div
-                className={
-                  styles.founderPortraitStage
-                }
-                aria-hidden="true"
-              >
-                <Image
-                  src="/people/ceo.png"
-                  alt=""
-                  fill
-                  priority
-                  sizes="(max-width: 768px) calc(100vw - 40px), 460px"
-                  className={
-                    styles.founderPortraitPhoto
-                  }
-                  data-founder-photo-image="profile"
-                />
-
-                <div
-                  className={
-                    styles.founderPortraitPhotoShade
-                  }
-                  data-founder-photo-shade="profile"
-                />
-              </div>
-
-              <dl
-                className={
-                  styles.founderPortraitFooter
-                }
-              >
-                <div>
-                  <dt>
-                    Role
-                  </dt>
-
-                  <dd>
-                    Founder
-                  </dd>
-                </div>
-
-                <div>
-                  <dt>
-                    Focus
-                  </dt>
-
-                  <dd>
-                    Offensive Security
-                  </dd>
-                </div>
-              </dl>
             </div>
           </div>
         </Container>
       </section>
 
 
-      {/* 01 — JOURNEY */}
+      {/* ================================================================
+          01 — TRAJECTORY
+         ================================================================ */}
 
       <section
-        id="journey"
+        id="trajectory"
         className={
-          family.section
+          styles.section
         }
         data-company-content-section="journey"
       >
         <Container
           size="wide"
           className={
-            family.container
+            styles.container
           }
         >
-          <SectionHeader
-            index="01"
-            eyebrow="Journey"
+          <SectionHeading
+            number="01"
+            eyebrow="Trajectory"
             title="From programming to offensive security."
-            description="The progression starts with understanding how systems are built, then moves toward understanding how they fail and how those lessons can be taught."
+            description="A technical path built by moving from how software is created toward how systems behave, fail and can be understood from an attacker’s perspective."
           />
 
           <div
             className={
-              family.subsection
+              styles.trajectoryLayout
             }
-            data-founder-section="overview"
           >
             <div
               className={
-                styles.founderOverviewGrid
+                styles.trajectoryStatement
               }
+              data-founder-section="overview"
             >
-              <article
+              <p
                 className={
-                  styles.founderStatementCard
-                }
-                data-founder-card="statement"
-              >
-                <p
-                  className={
-                    styles.overviewStatement
-                  }
-                >
-                  Practical security work becomes stronger when technical reasoning, experimentation and teaching reinforce each other.
-                </p>
-              </article>
-
-              <div
-                className={
-                  styles.founderOverviewStack
+                  styles.statementLabel
                 }
               >
-                <article
-                  className={
-                    styles.founderMiniCard
-                  }
-                  data-founder-card="overview"
-                >
-                  <span>
-                    APPROACH
-                  </span>
+                Working perspective
+              </p>
 
-                  <strong>
-                    Attacker-oriented reasoning
-                  </strong>
+              <blockquote>
+                At some point, you stop hunting vulnerabilities. You start understanding systems.
+              </blockquote>
 
-                  <p>
-                    Understand behavior before relying on automation.
-                  </p>
-                </article>
-
-                <article
-                  className={
-                    styles.founderMiniCard
-                  }
-                  data-founder-card="overview"
-                >
-                  <span>
-                    DIRECTION
-                  </span>
-
-                  <strong>
-                    Security through practice
-                  </strong>
-
-                  <p>
-                    Build, validate, document and teach repeatable methods.
-                  </p>
-                </article>
-              </div>
+              <p>
+                Practical security work becomes stronger when technical reasoning, experimentation and teaching reinforce each other.
+              </p>
             </div>
-          </div>
 
-          <div
-            className={
-              family.subsection
-            }
-            data-founder-section="journey"
-            data-founder-ui="journey"
-          >
             <div
               className={
-                styles.founderJourney
+                styles.journey
               }
+              data-founder-section="journey"
+              data-founder-ui="journey"
             >
               {
                 journey.map(
@@ -635,111 +683,21 @@ export default function FounderPage() {
                   ) => (
                     <article
                       className={
-                        styles.founderJourneyItem
+                        styles.journeyRow
                       }
                       data-founder-card="journey"
                       key={
-                        item.index
-                      }
-                    >
-                      <span
-                        className={
-                          styles.journeyIndex
-                        }
-                      >
-                        {
-                          item.index
-                        }
-                      </span>
-
-                      <div
-                        className={
-                          styles.journeyLabel
-                        }
-                      >
-                        {
-                          item.code
-                        }
-                      </div>
-
-                      <div>
-                        <h3>
-                          {
-                            item.title
-                          }
-                        </h3>
-
-                        <p>
-                          {
-                            item.description
-                          }
-                        </p>
-                      </div>
-                    </article>
-                  )
-                )
-              }
-            </div>
-          </div>
-        </Container>
-      </section>
-
-
-      {/* 02 — EXPERTISE + EDUCATION */}
-
-      <section
-        id="expertise"
-        className={
-          `${family.section} ${family.sectionAlt}`
-        }
-        data-company-content-section="expertise-education"
-      >
-        <Container
-          size="wide"
-          className={
-            family.container
-          }
-        >
-          <SectionHeader
-            index="02"
-            eyebrow="Expertise & education"
-            title="Technical focus supported by hands-on learning."
-          />
-
-          <div
-            className={
-              family.subsection
-            }
-            data-founder-section="expertise"
-          >
-            <div
-              className={
-                styles.founderExpertiseGrid
-              }
-              data-founder-ui="expertise-grid"
-            >
-              {
-                expertise.map(
-                  (
-                    item
-                  ) => (
-                    <article
-                      className={
-                        styles.founderExpertiseCard
-                      }
-                      data-founder-card="expertise"
-                      key={
-                        item.index
+                        item.number
                       }
                     >
                       <div
                         className={
-                          styles.expertiseMeta
+                          styles.journeyMeta
                         }
                       >
                         <span>
                           {
-                            item.index
+                            item.number
                           }
                         </span>
 
@@ -750,255 +708,102 @@ export default function FounderPage() {
                         </small>
                       </div>
 
-                      <div>
+                      <div
+                        className={
+                          styles.journeyTitle
+                        }
+                      >
                         <h3>
                           {
                             item.title
                           }
                         </h3>
 
-                        <p>
+                        <strong>
                           {
-                            item.description
+                            item.headline
                           }
-                        </p>
+                        </strong>
                       </div>
+
+                      <p>
+                        {
+                          item.description
+                        }
+                      </p>
                     </article>
                   )
                 )
               }
             </div>
           </div>
-
-          <div
-            className={
-              family.subsection
-            }
-          >
-            <article
-              id="education"
-              className={
-                styles.founderEducationCard
-              }
-              data-founder-section="education"
-              data-founder-card="education"
-            >
-              <div
-                className={
-                  styles.educationVisual
-                }
-                aria-hidden="true"
-              >
-                <span>
-                  BUILD
-                </span>
-
-                <i />
-
-                <span>
-                  TEST
-                </span>
-
-                <i />
-
-                <span>
-                  EXPLAIN
-                </span>
-              </div>
-
-              <div
-                className={
-                  styles.educationCopy
-                }
-              >
-                <p
-                  className={
-                    family.eyebrow
-                  }
-                >
-                  Hands-on methodology
-                </p>
-
-                <h2>
-                  Learn security by doing security.
-                </h2>
-
-                <p>
-                  Training and mentorship focus on practical technical work, experimentation and repeatable reasoning.
-                </p>
-
-                <Link
-                  href="/training"
-                  className={
-                    family.textAction
-                  }
-                >
-                  Explore Training Hub
-
-                  <Arrow />
-                </Link>
-              </div>
-            </article>
-          </div>
         </Container>
       </section>
 
 
-      {/* 03 — PUBLIC WORK */}
+      {/* ================================================================
+          02 — PRACTICE
+         ================================================================ */}
 
       <section
-        id="public-work"
         className={
-          family.section
+          `${styles.section} ${styles.sectionAlt}`
         }
-        data-company-content-section="public-work"
-        data-founder-section="public-work"
+        data-company-content-section="expertise-education"
       >
         <Container
           size="wide"
           className={
-            family.container
+            styles.container
           }
         >
-          <SectionHeader
-            index="03"
-            eyebrow="Public work"
-            title="Selected public engagements."
-            description="Training, community participation and technical knowledge sharing remain visible parts of the work."
+          <SectionHeading
+            number="02"
+            eyebrow="Practice"
+            title="Technical depth supported by hands-on learning."
+            description="The same reasoning is applied across application security, offensive testing, research and practical cybersecurity education."
           />
 
           <div
             className={
-              styles.founderEngagementStrip
+              styles.expertise
             }
-            data-founder-ui="engagement-evidence"
+            data-founder-section="expertise"
+            data-founder-ui="expertise-index"
           >
             {
-              [
-                "CyberSummit 4.0",
-                "CyberCamp 5.0",
-                "The Hackers Line"
-              ].map(
-                (
-                  item,
-                  index
-                ) => (
-                  <div
-                    className={
-                      styles.founderEngagementItem
-                    }
-                    key={
-                      item
-                    }
-                  >
-                    <span>
-                      {
-                        String(
-                          index + 1
-                        ).padStart(
-                          2,
-                          "0"
-                        )
-                      }
-                    </span>
-
-                    <strong>
-                      {
-                        item
-                      }
-                    </strong>
-                  </div>
-                )
-              )
-            }
-          </div>
-
-          <div
-            className={
-              styles.founderPublicGrid
-            }
-          >
-            {
-              [
-                {
-                  code:
-                    "ACT",
-
-                  label:
-                    "Activities",
-
-                  title:
-                    "Public activity",
-
-                  description:
-                    "Workshops, training, community and technical activity.",
-
-                  href:
-                    "/activities"
-                },
-                {
-                  code:
-                    "R&D",
-
-                  label:
-                    "Knowledge",
-
-                  title:
-                    "Security insights",
-
-                  description:
-                    "Practical technical thinking published by No Breach.",
-
-                  href:
-                    "/insights"
-                },
-                {
-                  code:
-                    "CTF",
-
-                  label:
-                    "Community",
-
-                  title:
-                    "CR4CKOUT",
-
-                  description:
-                    "Technical challenge, experimentation and community.",
-
-                  href:
-                    "/cr4ckout"
-                }
-              ].map(
+              expertise.map(
                 (
                   item
                 ) => (
-                  <Link
-                    href={
-                      item.href
-                    }
+                  <article
                     className={
-                      styles.founderPublicCard
+                      styles.expertiseRow
                     }
-                    data-founder-card="public"
+                    data-founder-card="expertise"
                     key={
-                      item.code
+                      item.number
                     }
                   >
                     <span
                       className={
-                        styles.publicCode
+                        styles.expertiseNumber
+                      }
+                    >
+                      {
+                        item.number
+                      }
+                    </span>
+
+                    <span
+                      className={
+                        styles.expertiseCode
                       }
                     >
                       {
                         item.code
                       }
                     </span>
-
-                    <small>
-                      {
-                        item.label
-                      }
-                    </small>
 
                     <h3>
                       {
@@ -1011,75 +816,332 @@ export default function FounderPage() {
                         item.description
                       }
                     </p>
-
-                    <Arrow />
-                  </Link>
+                  </article>
                 )
               )
             }
+          </div>
+
+          <div
+            className={
+              styles.method
+            }
+            data-founder-section="education"
+            data-founder-ui="method"
+          >
+            <div
+              className={
+                styles.methodIntro
+              }
+            >
+              <p
+                className={
+                  styles.methodLabel
+                }
+              >
+                Hands-on methodology
+              </p>
+
+              <h3>
+                Learn security by doing security.
+              </h3>
+
+              <p>
+                Training and mentorship focus on complete technical problems rather than passive consumption.
+              </p>
+
+              <Link
+                href="/training"
+                className={
+                  styles.textAction
+                }
+              >
+                Explore Training Hub
+
+                <Arrow />
+              </Link>
+            </div>
+
+            <ol
+              className={
+                styles.methodFlow
+              }
+            >
+              <li>
+                <span>
+                  01
+                </span>
+
+                <strong>
+                  Understand
+                </strong>
+              </li>
+
+              <li>
+                <span>
+                  02
+                </span>
+
+                <strong>
+                  Build
+                </strong>
+              </li>
+
+              <li>
+                <span>
+                  03
+                </span>
+
+                <strong>
+                  Test
+                </strong>
+              </li>
+
+              <li>
+                <span>
+                  04
+                </span>
+
+                <strong>
+                  Explain
+                </strong>
+              </li>
+            </ol>
           </div>
         </Container>
       </section>
 
 
-      {/* CONTACT CTA */}
+      {/* ================================================================
+          03 — PUBLIC WORK
+         ================================================================ */}
 
       <section
         className={
-          `${family.finalCta} ${styles.founderCta}`
+          styles.section
+        }
+        data-company-content-section="public-work"
+        data-founder-section="public-work"
+      >
+        <Container
+          size="wide"
+          className={
+            styles.container
+          }
+        >
+          <SectionHeading
+            number="03"
+            eyebrow="Public work"
+            title="Selected public engagements."
+            description="Technical teaching, community participation and security knowledge sharing form a visible part of the professional profile."
+          />
+
+          <div
+            className={
+              styles.engagements
+            }
+            data-founder-ui="engagement-evidence"
+          >
+            {
+              engagements.map(
+                (
+                  engagement
+                ) => (
+                  <article
+                    className={
+                      styles.engagement
+                    }
+                    key={
+                      engagement.number
+                    }
+                  >
+                    <div>
+                      <span>
+                        {
+                          engagement.number
+                        }
+                      </span>
+
+                      <small>
+                        {
+                          engagement.type
+                        }
+                      </small>
+                    </div>
+
+                    <h3>
+                      {
+                        engagement.name
+                      }
+                    </h3>
+
+                    <p>
+                      {
+                        engagement.role
+                      }
+                    </p>
+                  </article>
+                )
+              )
+            }
+          </div>
+
+          <div
+            className={
+              styles.publicDirectory
+            }
+          >
+            <p
+              className={
+                styles.directoryLabel
+              }
+            >
+              Explore the work
+            </p>
+
+            <div
+              className={
+                styles.publicRows
+              }
+            >
+              {
+                destinations.map(
+                  (
+                    destination,
+                    index
+                  ) => (
+                    <Link
+                      href={
+                        destination.href
+                      }
+                      className={
+                        styles.publicRow
+                      }
+                      data-founder-card="public"
+                      key={
+                        destination.code
+                      }
+                    >
+                      <span
+                        className={
+                          styles.publicNumber
+                        }
+                      >
+                        {
+                          String(
+                            index + 1
+                          ).padStart(
+                            2,
+                            "0"
+                          )
+                        }
+                      </span>
+
+                      <span
+                        className={
+                          styles.publicCode
+                        }
+                      >
+                        {
+                          destination.code
+                        }
+                      </span>
+
+                      <div>
+                        <small>
+                          {
+                            destination.label
+                          }
+                        </small>
+
+                        <h3>
+                          {
+                            destination.title
+                          }
+                        </h3>
+
+                        <p>
+                          {
+                            destination.description
+                          }
+                        </p>
+                      </div>
+
+                      <Arrow />
+                    </Link>
+                  )
+                )
+              }
+            </div>
+          </div>
+        </Container>
+      </section>
+
+
+      {/* ================================================================
+          CTA
+          Does not count as one of the three content sections.
+         ================================================================ */}
+
+      <section
+        className={
+          styles.cta
         }
         data-founder-section="cta"
       >
         <Container
           size="wide"
           className={
-            family.container
+            styles.container
           }
         >
           <div
             className={
-              `${family.finalCtaInner} ${styles.founderCtaCard}`
+              styles.ctaRule
             }
-            data-founder-card="cta"
+          />
+
+          <div
+            className={
+              styles.ctaLayout
+            }
           >
-            <div
-              className={
-                family.finalCtaContent
-              }
-            >
+            <div>
               <p
                 className={
-                  family.sectionEyebrow
+                  styles.sectionEyebrow
                 }
               >
-                Connect
+                <span>
+                  NB
+                </span>
+
+                No Breach
               </p>
 
-              <h2
-                className={
-                  family.ctaTitle
-                }
-              >
-                Explore the work behind No Breach.
+              <h2>
+                Explore the company behind the work.
               </h2>
+            </div>
 
-              <p
-                className={
-                  family.ctaText
-                }
-              >
-                Learn more about the company, its technical activity and the practical security work built around it.
+            <div
+              className={
+                styles.ctaCopy
+              }
+            >
+              <p>
+                Discover No Breach security services, training and technical community activity.
               </p>
 
               <div
                 className={
-                  family.actions
+                  styles.ctaActions
                 }
               >
                 <Link
                   href="/company"
                   className={
-                    family.primaryAction
+                    styles.primaryAction
                   }
                 >
                   About No Breach
@@ -1090,7 +1152,7 @@ export default function FounderPage() {
                 <Link
                   href="/contact"
                   className={
-                    family.secondaryAction
+                    styles.textAction
                   }
                 >
                   Contact
