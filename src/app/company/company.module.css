@@ -2059,3 +2059,565 @@ i {
   }
 
 }
+
+
+/* ==========================================================================
+   NB_COMPANY_OPERATING_MODEL_REFINEMENT_V16
+   ========================================================================== */
+
+
+/* First section should connect directly with the introduction. */
+
+
+.page
+[data-company-section="who-we-are"] {
+  padding-top:
+    36px;
+
+  padding-bottom:
+    44px;
+}
+
+
+/* --------------------------------------------------------------------------
+   Operating model
+
+   Replaces the oversized quotation-like presentation visible in the previous
+   design. Supporting copy now stays subordinate to the section H2.
+   -------------------------------------------------------------------------- */
+
+
+.companyStatement {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      280px,
+      0.78fr
+    )
+    minmax(
+      0,
+      1.22fr
+    );
+
+  gap:
+    clamp(
+      32px,
+      5vw,
+      64px
+    );
+
+  align-items:
+    start;
+
+  padding:
+    22px
+    0
+    0;
+
+  border-top:
+    1px
+    solid
+    var(
+      --company-divider
+    );
+
+  border-bottom:
+    0;
+}
+
+
+.statementCopy {
+  max-width:
+    480px;
+
+  padding:
+    0;
+}
+
+
+.statementKicker {
+  margin:
+    0;
+
+  color:
+    var(
+      --company-cyan
+    );
+
+  font-family:
+    var(
+      --font-company-mono
+    ),
+    monospace;
+
+  font-size:
+    0.65rem;
+
+  font-weight:
+    600;
+
+  line-height:
+    1.4;
+
+  letter-spacing:
+    0.075em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.statementLead {
+  max-width:
+    470px;
+
+  margin:
+    10px
+    0
+    0;
+
+  color:
+    var(
+      --company-text
+    );
+
+  font-family:
+    var(
+      --font-company-display
+    ),
+    sans-serif;
+
+  font-size:
+    clamp(
+      1.5rem,
+      2.25vw,
+      1.95rem
+    );
+
+  font-weight:
+    560;
+
+  line-height:
+    1.22;
+
+  letter-spacing:
+    -0.025em;
+}
+
+
+.statementSupport {
+  max-width:
+    450px;
+
+  margin:
+    11px
+    0
+    0;
+
+  color:
+    var(
+      --company-text-muted
+    );
+
+  font-size:
+    0.86rem;
+
+  line-height:
+    1.58;
+}
+
+
+.statementMeta {
+  display:
+    grid;
+
+  gap:
+    0;
+
+  border-top:
+    1px
+    solid
+    var(
+      --company-divider
+    );
+}
+
+
+.statementMetaItem {
+  display:
+    grid;
+
+  grid-template-columns:
+    36px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    14px;
+
+  align-items:
+    start;
+
+  padding:
+    13px
+    0;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --company-divider
+    );
+}
+
+
+.statementMetaItem > span {
+  padding:
+    1px
+    0
+    0;
+
+  color:
+    var(
+      --company-text-subtle
+    );
+
+  border:
+    0;
+
+  font-family:
+    var(
+      --font-company-mono
+    ),
+    monospace;
+
+  font-size:
+    0.63rem;
+}
+
+
+.statementMetaItem strong {
+  display:
+    block;
+
+  color:
+    var(
+      --company-text-secondary
+    );
+
+  font-size:
+    0.92rem;
+
+  font-weight:
+    600;
+
+  line-height:
+    1.4;
+}
+
+
+.statementMetaItem p {
+  max-width:
+    500px;
+
+  margin:
+    4px
+    0
+    0;
+
+  color:
+    var(
+      --company-text-muted
+    );
+
+  font-size:
+    0.8rem;
+
+  line-height:
+    1.5;
+}
+
+
+/* --------------------------------------------------------------------------
+   Capability rows
+   -------------------------------------------------------------------------- */
+
+
+.capabilityRow {
+  grid-template-columns:
+    62px
+    minmax(
+      0,
+      1fr
+    )
+    84px
+    24px;
+
+  gap:
+    15px;
+
+  min-height:
+    164px;
+
+  padding:
+    17px
+    0;
+}
+
+
+.capabilityRow p {
+  margin-top:
+    5px;
+}
+
+
+.capabilityVisual {
+  height:
+    44px;
+}
+
+
+/* --------------------------------------------------------------------------
+   Principles
+   -------------------------------------------------------------------------- */
+
+
+.principleRow {
+  grid-template-columns:
+    48px
+    minmax(
+      200px,
+      0.62fr
+    )
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    18px;
+
+  min-height:
+    96px;
+
+  padding:
+    14px
+    0;
+}
+
+
+.principleRow h3 {
+  font-size:
+    1.25rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   Founder preview
+   -------------------------------------------------------------------------- */
+
+
+.founderPreview {
+  gap:
+    clamp(
+      28px,
+      4.5vw,
+      52px
+    );
+
+  padding:
+    20px
+    0;
+}
+
+
+.founderPortrait {
+  max-width:
+    330px;
+}
+
+
+/* --------------------------------------------------------------------------
+   People / projects rows
+   -------------------------------------------------------------------------- */
+
+
+.peopleRow {
+  grid-template-columns:
+    56px
+    minmax(
+      0,
+      1fr
+    )
+    28px;
+
+  gap:
+    16px;
+
+  min-height:
+    92px;
+
+  padding:
+    13px
+    0;
+}
+
+
+.peopleRow h3 {
+  margin-top:
+    3px;
+
+  font-size:
+    1.3rem;
+}
+
+
+.peopleRow p {
+  margin-top:
+    4px;
+
+  font-size:
+    0.84rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   Mobile
+   -------------------------------------------------------------------------- */
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .page
+  [data-company-section="who-we-are"] {
+    padding-top:
+      28px;
+
+    padding-bottom:
+      36px;
+  }
+
+
+  .companyStatement {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      21px;
+
+    padding-top:
+      17px;
+  }
+
+
+  .statementLead {
+    font-size:
+      1.45rem;
+  }
+
+
+  .statementMetaItem {
+    grid-template-columns:
+      30px
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      10px;
+
+    padding:
+      11px
+      0;
+  }
+
+
+  .capabilityRow {
+    grid-template-columns:
+      34px
+      minmax(
+        0,
+        1fr
+      )
+      20px;
+
+    gap:
+      9px;
+
+    min-height:
+      0;
+
+    padding:
+      15px
+      0;
+  }
+
+
+  .principleRow {
+    grid-template-columns:
+      30px
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      9px;
+
+    min-height:
+      0;
+
+    padding:
+      14px
+      0;
+  }
+
+
+  .founderPreview {
+    gap:
+      18px;
+
+    padding:
+      17px
+      0;
+  }
+
+
+  .founderPortrait {
+    max-width:
+      300px;
+  }
+
+
+  .peopleRow {
+    grid-template-columns:
+      34px
+      minmax(
+        0,
+        1fr
+      )
+      20px;
+
+    gap:
+      9px;
+
+    min-height:
+      0;
+
+    padding:
+      14px
+      0;
+  }
+
+}

@@ -516,10 +516,26 @@ export default function CompanyPage() {
             >
               <p
                 className={
+                  styles.statementKicker
+                }
+              >
+                Operating model
+              </p>
+
+              <p
+                className={
                   styles.statementLead
                 }
               >
-                Security becomes more useful when assessment, education and shared technical knowledge reinforce each other.
+                Security capability grows when assessment, practice and shared knowledge work together.
+              </p>
+
+              <p
+                className={
+                  styles.statementSupport
+                }
+              >
+                No Breach connects professional security work with practical education and technical community activity.
               </p>
             </article>
 
@@ -527,18 +543,67 @@ export default function CompanyPage() {
               className={
                 styles.statementMeta
               }
+              aria-label="No Breach operating model"
             >
-              <span>
-                SERVICES
-              </span>
+              <div
+                className={
+                  styles.statementMetaItem
+                }
+              >
+                <span>
+                  01
+                </span>
 
-              <span>
-                EDUCATION
-              </span>
+                <div>
+                  <strong>
+                    Security services
+                  </strong>
 
-              <span>
-                COMMUNITY
-              </span>
+                  <p>
+                    Identify real attack surfaces, weaknesses and risk.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                className={
+                  styles.statementMetaItem
+                }
+              >
+                <span>
+                  02
+                </span>
+
+                <div>
+                  <strong>
+                    Practical education
+                  </strong>
+
+                  <p>
+                    Turn security knowledge into repeatable technical skill.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                className={
+                  styles.statementMetaItem
+                }
+              >
+                <span>
+                  03
+                </span>
+
+                <div>
+                  <strong>
+                    Community
+                  </strong>
+
+                  <p>
+                    Exchange knowledge, experience and technical challenge.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </Container>

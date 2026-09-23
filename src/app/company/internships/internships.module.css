@@ -919,3 +919,188 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_INTERNSHIP_COMPACT_REFINEMENT_V16
+   ========================================================================== */
+
+
+.project {
+  grid-template-columns:
+    56px
+    minmax(
+      245px,
+      0.8fr
+    )
+    minmax(
+      360px,
+      1.2fr
+    );
+
+  gap:
+    clamp(
+      16px,
+      2.7vw,
+      30px
+    );
+
+  padding:
+    17px
+    0;
+}
+
+
+.projectIdentity {
+  gap:
+    6px;
+}
+
+
+.projectSummary > p {
+  margin-top:
+    5px;
+}
+
+
+.technologyList {
+  gap:
+    5px;
+
+  margin-top:
+    9px;
+}
+
+
+.technology {
+  padding:
+    4px
+    7px;
+}
+
+
+.projectEvidence {
+  gap:
+    16px;
+}
+
+
+.projectEvidence ul {
+  gap:
+    3px;
+
+  margin-top:
+    7px;
+}
+
+
+.methodItem {
+  grid-template-columns:
+    36px
+    125px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    11px;
+
+  padding:
+    13px
+    0;
+}
+
+
+.safety {
+  gap:
+    clamp(
+      24px,
+      4vw,
+      48px
+    );
+
+  padding:
+    16px
+    0;
+}
+
+
+.safetyCopy {
+  gap:
+    7px;
+}
+
+
+@media (
+  max-width:
+    1100px
+) {
+
+  .project {
+    grid-template-columns:
+      46px
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+}
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .project {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      10px;
+
+    padding:
+      15px
+      0;
+  }
+
+
+  .projectEvidence {
+    gap:
+      14px;
+  }
+
+
+  .methodItem {
+    grid-template-columns:
+      28px
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      6px
+      9px;
+
+    padding:
+      12px
+      0;
+  }
+
+
+  .safety {
+    gap:
+      15px;
+
+    padding:
+      13px
+      0;
+  }
+
+}

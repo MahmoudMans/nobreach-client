@@ -2066,3 +2066,358 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_COMPANY_FAMILY_COMPACT_REFINEMENT_V16
+
+   Final density refinement.
+
+   The Company family should feel compact, editorial and intentional:
+   - no large void below SiteHeader
+   - breadcrumb behaves as metadata
+   - PageIntro begins quickly
+   - supporting surfaces do not feel inflated
+   - section spacing remains readable without blank page-like bands
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   Breadcrumb
+   -------------------------------------------------------------------------- */
+
+
+.fontScope
+:global(nav[aria-label="Breadcrumb"]) {
+  padding:
+    4px
+    0;
+
+  background:
+    transparent;
+
+  border-bottom:
+    0;
+}
+
+
+/* --------------------------------------------------------------------------
+   PageIntro / internal hero
+   -------------------------------------------------------------------------- */
+
+
+.pageIntro {
+  padding:
+    24px
+    0
+    34px;
+}
+
+
+.compactPageIntro {
+  padding-top:
+    24px;
+}
+
+
+.pageIntroGrid {
+  gap:
+    clamp(
+      24px,
+      3.5vw,
+      40px
+    );
+}
+
+
+.eyebrow {
+  margin-bottom:
+    9px;
+}
+
+
+.lead {
+  margin-top:
+    12px;
+}
+
+
+.actions {
+  margin-top:
+    18px;
+}
+
+
+/* --------------------------------------------------------------------------
+   Technical panel
+   -------------------------------------------------------------------------- */
+
+
+.technicalPanel {
+  padding:
+    15px;
+
+  border-radius:
+    12px;
+}
+
+
+.technicalPanelHeader {
+  padding-bottom:
+    10px;
+}
+
+
+.metaRail {
+  margin-top:
+    2px;
+}
+
+
+.metaItem {
+  padding:
+    8px
+    0;
+}
+
+
+.metaItem:nth-child(
+  odd
+) {
+  padding-right:
+    10px;
+}
+
+
+.metaItem:nth-child(
+  even
+) {
+  padding-left:
+    10px;
+}
+
+
+.metaValue {
+  margin-top:
+    3px;
+}
+
+
+/* --------------------------------------------------------------------------
+   Standard section rhythm
+   -------------------------------------------------------------------------- */
+
+
+.section {
+  padding:
+    56px
+    0;
+}
+
+
+.sectionHeader {
+  gap:
+    clamp(
+      18px,
+      3.5vw,
+      40px
+    );
+
+  margin-bottom:
+    24px;
+}
+
+
+.sectionDescription {
+  margin-top:
+    9px;
+}
+
+
+/* --------------------------------------------------------------------------
+   Tags
+   -------------------------------------------------------------------------- */
+
+
+.tags {
+  gap:
+    6px;
+
+  margin-top:
+    11px;
+}
+
+
+.tag {
+  min-height:
+    25px;
+
+  padding:
+    3px
+    7px;
+}
+
+
+/* --------------------------------------------------------------------------
+   Final CTA
+   -------------------------------------------------------------------------- */
+
+
+.finalCta {
+  padding:
+    52px
+    0;
+}
+
+
+.finalCtaInner {
+  padding:
+    34px;
+
+  border-radius:
+    16px;
+}
+
+
+.ctaTitle {
+  margin-top:
+    8px;
+}
+
+
+.ctaText {
+  margin-top:
+    11px;
+}
+
+
+/* --------------------------------------------------------------------------
+   Tablet
+   -------------------------------------------------------------------------- */
+
+
+@media (
+  max-width:
+    1023px
+) {
+
+  .pageIntro,
+  .compactPageIntro {
+    padding-top:
+      22px;
+
+    padding-bottom:
+      32px;
+  }
+
+
+  .section {
+    padding:
+      50px
+      0;
+  }
+
+
+  .sectionHeader {
+    margin-bottom:
+      22px;
+  }
+
+
+  .finalCta {
+    padding:
+      48px
+      0;
+  }
+
+
+  .finalCtaInner {
+    padding:
+      30px;
+  }
+
+}
+
+
+/* --------------------------------------------------------------------------
+   Mobile
+   -------------------------------------------------------------------------- */
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .fontScope
+  :global(nav[aria-label="Breadcrumb"]) {
+    padding:
+      2px
+      0;
+  }
+
+
+  .pageIntro,
+  .compactPageIntro {
+    padding-top:
+      16px;
+
+    padding-bottom:
+      28px;
+  }
+
+
+  .pageIntroGrid {
+    gap:
+      18px;
+  }
+
+
+  .lead {
+    margin-top:
+      10px;
+  }
+
+
+  .actions {
+    margin-top:
+      16px;
+  }
+
+
+  .technicalPanel {
+    padding:
+      13px;
+  }
+
+
+  .section {
+    padding:
+      44px
+      0;
+  }
+
+
+  .sectionHeader {
+    gap:
+      6px;
+
+    margin-bottom:
+      18px;
+  }
+
+
+  .finalCta {
+    padding:
+      44px
+      0;
+  }
+
+
+  .finalCtaInner {
+    padding:
+      26px
+      18px;
+  }
+
+}

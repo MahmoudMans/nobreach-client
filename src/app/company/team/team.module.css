@@ -519,3 +519,107 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_TEAM_COMPACT_REFINEMENT_V16
+   ========================================================================== */
+
+
+.teamMember {
+  grid-template-columns:
+    76px
+    minmax(
+      0,
+      1fr
+    )
+    40px;
+
+  gap:
+    18px;
+
+  min-height:
+    144px;
+
+  padding:
+    17px
+    0;
+}
+
+
+.memberIdentity {
+  gap:
+    8px;
+}
+
+
+.memberIdentity strong {
+  width:
+    54px;
+
+  height:
+    54px;
+
+  border-radius:
+    11px;
+}
+
+
+.memberCopy h2 {
+  margin-top:
+    5px;
+}
+
+
+.memberCopy > p:not(
+  :first-child
+) {
+  margin-top:
+    6px;
+}
+
+
+.memberAction {
+  width:
+    40px;
+
+  height:
+    40px;
+}
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .teamMember {
+    grid-template-columns:
+      52px
+      minmax(
+        0,
+        1fr
+      )
+      38px;
+
+    gap:
+      9px;
+
+    min-height:
+      0;
+
+    padding:
+      14px
+      0;
+  }
+
+
+  .memberIdentity strong {
+    width:
+      44px;
+
+    height:
+      44px;
+  }
+
+}
