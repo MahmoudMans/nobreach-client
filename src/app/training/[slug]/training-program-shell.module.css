@@ -4998,3 +4998,1030 @@ section[class*="page-hero-module__"][class*="__hero"]:first-of-type {
   }
 
 }
+
+
+/* ==========================================================================
+   NB_AI_SECURITY_FOUNDATIONS_SECTION_RHYTHM_V32
+
+   Final section-sizing authority.
+
+   Rules:
+   1. Hero owns the first usable viewport.
+   2. Every following section uses NATURAL content height.
+   3. No body section receives 100vh / 100svh / arbitrary min-height.
+   4. No artificial gaps between adjacent sections.
+   5. Decorative AI graphics never participate in document flow.
+   6. Section vertical rhythm follows the NoBreach design-system scale.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01 — RESPONSIVE TOKENS
+   ========================================================================== */
+
+
+.aiSecurity {
+  --nb32-header-height:
+    76px;
+
+  --nb32-content-width:
+    1200px;
+
+  --nb32-reading-width:
+    760px;
+
+  --nb32-gutter:
+    32px;
+
+  --nb32-section-y:
+    96px;
+
+  --nb32-section-header-gap:
+    40px;
+
+  --nb32-content-gap:
+    24px;
+
+  position:
+    relative !important;
+
+  min-height:
+    0 !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    0 !important;
+}
+
+
+/* ==========================================================================
+   02 — ROOT / ROUTE FRAME CLEAN GEOMETRY
+   ========================================================================== */
+
+
+:global(.routeFrame):has(> .aiSecurity) {
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    0 !important;
+}
+
+
+:global(.routeFrame):has(> .aiSecurity)
+> :not(.aiSecurity) {
+  display:
+    none !important;
+}
+
+
+/*
+ * The AI page root itself is not a section.
+ */
+.aiSecurity::before,
+.aiSecurity::after {
+  display:
+    none !important;
+
+  width:
+    0 !important;
+
+  height:
+    0 !important;
+
+  content:
+    none !important;
+}
+
+
+/* ==========================================================================
+   03 — REMOVE ANY STRUCTURAL CHILD BEFORE THE REAL HERO
+   ========================================================================== */
+
+
+.aiSecurity
+> :not(.aiAmbientVisual):has(
+  ~
+  section[class*="page-hero-module__"][class*="__hero"]
+) {
+  display:
+    none !important;
+
+  width:
+    0 !important;
+
+  height:
+    0 !important;
+
+  min-height:
+    0 !important;
+
+  max-height:
+    0 !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    0 !important;
+}
+
+
+/* ==========================================================================
+   04 — HERO = FIRST USABLE VIEWPORT
+   ========================================================================== */
+
+
+.aiSecurity
+section[class*="page-hero-module__"][class*="__hero"]:first-of-type {
+  position:
+    relative !important;
+
+  z-index:
+    1;
+
+  display:
+    flex !important;
+
+  align-items:
+    center !important;
+
+  width:
+    100% !important;
+
+  min-height:
+    calc(
+      100svh
+      -
+      var(
+        --nb32-header-height
+      )
+    ) !important;
+
+  height:
+    auto !important;
+
+  max-height:
+    none !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    56px
+    var(
+      --nb32-gutter
+    )
+    48px !important;
+
+  scroll-margin-top:
+    var(
+      --nb32-header-height
+    );
+
+  box-sizing:
+    border-box;
+}
+
+
+/*
+ * Modern dynamic viewport support.
+ */
+@supports (
+  height:
+    100dvh
+) {
+
+  .aiSecurity
+  section[class*="page-hero-module__"][class*="__hero"]:first-of-type {
+    min-height:
+      calc(
+        100dvh
+        -
+        var(
+          --nb32-header-height
+        )
+      ) !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   05 — HERO CONTAINER
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__content"]
+) {
+  position:
+    relative !important;
+
+  z-index:
+    2;
+
+  width:
+    100% !important;
+
+  max-width:
+    var(
+      --nb32-content-width
+    ) !important;
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  margin:
+    0
+    auto !important;
+
+  padding:
+    0 !important;
+}
+
+
+/* ==========================================================================
+   06 — HERO TYPOGRAPHIC RHYTHM
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__eyebrow"]
+) {
+  margin:
+    0
+    0
+    12px !important;
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__title"]
+),
+.aiSecurity.aiSecurity h1 {
+  margin:
+    0 !important;
+
+  max-width:
+    760px !important;
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__description"]
+) {
+  max-width:
+    640px !important;
+
+  margin:
+    16px
+    0
+    0 !important;
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__actions"]
+) {
+  margin:
+    24px
+    0
+    0 !important;
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+) {
+  margin:
+    32px
+    0
+    0 !important;
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__coordinate"]
+) {
+  margin:
+    0 !important;
+}
+
+
+/* ==========================================================================
+   07 — AI VISUAL = DECORATIVE ONLY
+   ========================================================================== */
+
+
+.aiSecurity .aiAmbientVisual {
+  position:
+    absolute !important;
+
+  z-index:
+    0 !important;
+
+  margin:
+    0 !important;
+
+  pointer-events:
+    none !important;
+}
+
+
+/* ==========================================================================
+   08 — ALL BODY SECTIONS USE NATURAL HEIGHT
+   ========================================================================== */
+
+
+.aiSecurity
+section:not(
+  [class*="page-hero-module__"]
+) {
+  position:
+    relative;
+
+  width:
+    100% !important;
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  max-height:
+    none !important;
+
+  block-size:
+    auto !important;
+
+  min-block-size:
+    0 !important;
+
+  max-block-size:
+    none !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    var(
+      --nb32-section-y
+    )
+    var(
+      --nb32-gutter
+    ) !important;
+
+  scroll-margin-top:
+    var(
+      --nb32-header-height
+    );
+
+  box-sizing:
+    border-box;
+
+  border-top:
+    0 !important;
+
+  border-bottom:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    ) !important;
+}
+
+
+/*
+ * Absolutely no blank margin between page sections.
+ */
+.aiSecurity
+section:not(
+  [class*="page-hero-module__"]
+)
++
+section:not(
+  [class*="page-hero-module__"]
+) {
+  margin-top:
+    0 !important;
+}
+
+
+/* ==========================================================================
+   09 — SECTION CONTAINER
+   ========================================================================== */
+
+
+.aiSecurity
+section:not(
+  [class*="page-hero-module__"]
+)
+> * {
+  width:
+    100%;
+
+  max-width:
+    var(
+      --nb32-content-width
+    );
+
+  margin-right:
+    auto;
+
+  margin-left:
+    auto;
+}
+
+
+/* ==========================================================================
+   10 — SECTION HEADER
+   ========================================================================== */
+
+
+.aiSecurity
+section:not(
+  [class*="page-hero-module__"]
+)
+> header {
+  display:
+    grid !important;
+
+  grid-template-columns:
+    minmax(
+      200px,
+      0.32fr
+    )
+    minmax(
+      0,
+      0.68fr
+    );
+
+  align-items:
+    start;
+
+  column-gap:
+    64px;
+
+  row-gap:
+    16px;
+
+  width:
+    100%;
+
+  max-width:
+    var(
+      --nb32-content-width
+    );
+
+  margin:
+    0
+    auto
+    var(
+      --nb32-section-header-gap
+    ) !important;
+
+  padding:
+    0 !important;
+}
+
+
+.aiSecurity
+section:not(
+  [class*="page-hero-module__"]
+)
+> header
+h2 {
+  margin:
+    0 !important;
+
+  max-width:
+    14ch;
+}
+
+
+.aiSecurity
+section:not(
+  [class*="page-hero-module__"]
+)
+> header
+p {
+  max-width:
+    var(
+      --nb32-reading-width
+    );
+
+  margin:
+    0 !important;
+}
+
+
+/* ==========================================================================
+   11 — BODY COPY
+   ========================================================================== */
+
+
+.aiSecurity
+section:not(
+  [class*="page-hero-module__"]
+)
+> p {
+  max-width:
+    var(
+      --nb32-reading-width
+    );
+
+  margin-top:
+    0 !important;
+
+  margin-bottom:
+    16px !important;
+}
+
+
+.aiSecurity
+section:not(
+  [class*="page-hero-module__"]
+)
+> p:last-child {
+  margin-bottom:
+    0 !important;
+}
+
+
+/* ==========================================================================
+   12 — LEARNING OBJECTIVES
+   ========================================================================== */
+
+
+.aiSecurity ul {
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    ) !important;
+
+  column-gap:
+    32px !important;
+
+  row-gap:
+    0 !important;
+
+  margin-top:
+    24px !important;
+
+  margin-bottom:
+    0 !important;
+}
+
+
+.aiSecurity ul > li {
+  min-height:
+    0 !important;
+
+  margin:
+    0 !important;
+
+  padding-top:
+    20px !important;
+
+  padding-bottom:
+    20px !important;
+}
+
+
+/* ==========================================================================
+   13 — CURRICULUM
+   ========================================================================== */
+
+
+.aiSecurity ol {
+  margin-top:
+    24px !important;
+
+  margin-bottom:
+    0 !important;
+}
+
+
+.aiSecurity ol > li {
+  min-height:
+    0 !important;
+
+  margin:
+    0 !important;
+
+  padding-top:
+    24px !important;
+
+  padding-bottom:
+    24px !important;
+}
+
+
+/* ==========================================================================
+   14 — CONTENT ARTICLES
+   ========================================================================== */
+
+
+.aiSecurity article {
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  margin:
+    0 !important;
+
+  padding-top:
+    24px !important;
+
+  padding-bottom:
+    24px !important;
+}
+
+
+/* ==========================================================================
+   15 — DESCRIPTION / META GROUPS
+   ========================================================================== */
+
+
+.aiSecurity dl {
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  margin-top:
+    32px !important;
+
+  margin-bottom:
+    0 !important;
+}
+
+
+.aiSecurity dl > div {
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+}
+
+
+/* ==========================================================================
+   16 — FAQ
+   ========================================================================== */
+
+
+.aiSecurity details {
+  width:
+    100%;
+
+  max-width:
+    900px;
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  margin:
+    0 !important;
+}
+
+
+.aiSecurity details + details {
+  margin-top:
+    0 !important;
+}
+
+
+.aiSecurity summary {
+  min-height:
+    60px !important;
+
+  padding-top:
+    16px !important;
+
+  padding-bottom:
+    16px !important;
+}
+
+
+/* ==========================================================================
+   17 — FINAL CTA
+   ========================================================================== */
+
+
+.aiSecurity
+section:last-of-type {
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  padding-top:
+    80px !important;
+
+  padding-bottom:
+    80px !important;
+}
+
+
+/* ==========================================================================
+   18 — TABLET
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    1023px
+) {
+
+  .aiSecurity {
+    --nb32-gutter:
+      24px;
+
+    --nb32-section-y:
+      80px;
+
+    --nb32-section-header-gap:
+      32px;
+  }
+
+
+  .aiSecurity
+  section[class*="page-hero-module__"][class*="__hero"]:first-of-type {
+    padding-top:
+      48px !important;
+
+    padding-bottom:
+      40px !important;
+  }
+
+
+  .aiSecurity
+  section:not(
+    [class*="page-hero-module__"]
+  )
+  > header {
+    column-gap:
+      40px;
+  }
+
+}
+
+
+/* ==========================================================================
+   19 — MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .aiSecurity {
+    --nb32-header-height:
+      72px;
+
+    --nb32-gutter:
+      20px;
+
+    --nb32-section-y:
+      64px;
+
+    --nb32-section-header-gap:
+      24px;
+  }
+
+
+  /*
+   * Hero still owns at least the usable viewport.
+   * If its content is taller, it expands naturally rather than clipping.
+   */
+  .aiSecurity
+  section[class*="page-hero-module__"][class*="__hero"]:first-of-type {
+    min-height:
+      calc(
+        100svh
+        -
+        var(
+          --nb32-header-height
+        )
+      ) !important;
+
+    align-items:
+      flex-start !important;
+
+    padding-top:
+      40px !important;
+
+    padding-bottom:
+      32px !important;
+  }
+
+
+  @supports (
+    height:
+      100dvh
+  ) {
+
+    .aiSecurity
+    section[class*="page-hero-module__"][class*="__hero"]:first-of-type {
+      min-height:
+        calc(
+          100dvh
+          -
+          var(
+            --nb32-header-height
+          )
+        ) !important;
+    }
+
+  }
+
+
+  .aiSecurity
+  section:not(
+    [class*="page-hero-module__"]
+  )
+  > header {
+    display:
+      block !important;
+
+    margin-bottom:
+      var(
+        --nb32-section-header-gap
+      ) !important;
+  }
+
+
+  .aiSecurity
+  section:not(
+    [class*="page-hero-module__"]
+  )
+  > header
+  h2 {
+    max-width:
+      100%;
+  }
+
+
+  .aiSecurity
+  section:not(
+    [class*="page-hero-module__"]
+  )
+  > header
+  p {
+    margin-top:
+      16px !important;
+  }
+
+
+  .aiSecurity ul {
+    grid-template-columns:
+      1fr !important;
+
+    column-gap:
+      0 !important;
+  }
+
+
+  .aiSecurity
+  section:last-of-type {
+    padding-top:
+      64px !important;
+
+    padding-bottom:
+      64px !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   20 — SMALL MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    420px
+) {
+
+  .aiSecurity {
+    --nb32-gutter:
+      16px;
+  }
+
+
+  .aiSecurity
+  section[class*="page-hero-module__"][class*="__hero"]:first-of-type {
+    padding-top:
+      32px !important;
+
+    padding-bottom:
+      28px !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   21 — SHORT LAPTOP HEIGHTS
+
+   Do not artificially crop or force the content inside unusually short
+   browser windows. The minimum viewport rule can naturally expand.
+   ========================================================================== */
+
+
+@media (
+  max-height:
+    680px
+)
+and
+(
+  min-width:
+    768px
+) {
+
+  .aiSecurity
+  section[class*="page-hero-module__"][class*="__hero"]:first-of-type {
+    align-items:
+      flex-start !important;
+
+    padding-top:
+      40px !important;
+
+    padding-bottom:
+      40px !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   22 — REDUCED MOTION
+   ========================================================================== */
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .aiSecurity *,
+  .aiSecurity *::before,
+  .aiSecurity *::after {
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      0.01ms !important;
+
+    scroll-behavior:
+      auto !important;
+  }
+
+}
