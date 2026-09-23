@@ -6958,3 +6958,2773 @@ section {
   }
 
 }
+
+
+/* ==========================================================================
+   NB_AI_SECURITY_FOUNDATIONS_HERO_AUDIENCE_V37
+
+   Final hierarchy refinement.
+
+   HERO
+   - editorial rather than dashboard-like
+   - no full-background technical grid
+   - no giant colored glow
+   - text dominates
+   - AI diagram remains secondary
+   - metadata becomes a quiet information rail
+
+   AUDIENCE
+   - one clear section heading
+   - secondary headings max ~22px
+   - secondary copy muted
+   - no wall of large white text
+   ========================================================================== */
+
+
+/* ==========================================================================
+   HERO — CALMER FOUNDATION
+   ========================================================================== */
+
+
+.aiSecurity
+section[class*="page-hero-module__"][class*="__hero"]:first-of-type {
+  isolation:
+    isolate;
+
+  position:
+    relative !important;
+
+  overflow:
+    hidden !important;
+
+  background:
+    radial-gradient(
+      ellipse
+      34%
+      48%
+      at
+      82%
+      42%,
+      rgba(
+        161,
+        226,
+        240,
+        0.055
+      )
+      0%,
+      rgba(
+        131,
+        179,
+        215,
+        0.02
+      )
+      36%,
+      transparent
+      74%
+    ),
+    linear-gradient(
+      180deg,
+      #07090d
+      0%,
+      #090c12
+      56%,
+      #07090d
+      100%
+    ) !important;
+
+  box-shadow:
+    inset
+    0
+    -1px
+    0
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    ) !important;
+}
+
+
+/*
+ * Remove the V33 grid.
+ * Keep only a controlled cyan atmosphere.
+ */
+.aiSecurity
+section[class*="page-hero-module__"][class*="__hero"]:first-of-type::before {
+  position:
+    absolute !important;
+
+  top:
+    12% !important;
+
+  right:
+    3% !important;
+
+  bottom:
+    auto !important;
+
+  left:
+    auto !important;
+
+  z-index:
+    0 !important;
+
+  display:
+    block !important;
+
+  width:
+    min(
+      34vw,
+      480px
+    ) !important;
+
+  height:
+    72% !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(
+        161,
+        226,
+        240,
+        0
+      ),
+      rgba(
+        161,
+        226,
+        240,
+        0.04
+      )
+      48%,
+      rgba(
+        161,
+        226,
+        240,
+        0
+      )
+    ) !important;
+
+  border-left:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.08
+    );
+
+  border-right:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.04
+    );
+
+  opacity:
+    1 !important;
+
+  content:
+    "" !important;
+
+  pointer-events:
+    none !important;
+}
+
+
+.aiSecurity
+section[class*="page-hero-module__"][class*="__hero"]:first-of-type::after {
+  display:
+    none !important;
+
+  background:
+    none !important;
+
+  content:
+    none !important;
+}
+
+
+/* ==========================================================================
+   HERO CONTENT — EDITORIAL GRID
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__content"]
+) {
+  position:
+    relative !important;
+
+  z-index:
+    3 !important;
+
+  display:
+    grid !important;
+
+  grid-template-columns:
+    minmax(
+      0,
+      700px
+    )
+    minmax(
+      220px,
+      1fr
+    ) !important;
+
+  grid-template-areas:
+    "eyebrow coordinate"
+    "title coordinate"
+    "description coordinate"
+    "actions coordinate"
+    "meta meta" !important;
+
+  column-gap:
+    clamp(
+      48px,
+      7vw,
+      96px
+    ) !important;
+
+  row-gap:
+    0 !important;
+
+  align-items:
+    start !important;
+
+  width:
+    100% !important;
+
+  max-width:
+    1200px !important;
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  margin:
+    0
+    auto !important;
+
+  padding:
+    0 !important;
+}
+
+
+/* ==========================================================================
+   HERO EYEBROW
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__eyebrow"]
+) {
+  grid-area:
+    eyebrow;
+
+  margin:
+    0
+    0
+    12px !important;
+
+  padding:
+    0 !important;
+
+  color:
+    #a1e2f0 !important;
+
+  background:
+    transparent !important;
+
+  border:
+    0 !important;
+
+  border-radius:
+    0 !important;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace !important;
+
+  font-size:
+    0.7rem !important;
+
+  font-weight:
+    650 !important;
+
+  letter-spacing:
+    0.075em !important;
+
+  text-transform:
+    uppercase;
+}
+
+
+/* ==========================================================================
+   HERO TITLE
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__title"]
+),
+.aiSecurity.aiSecurity h1 {
+  grid-area:
+    title;
+
+  width:
+    100% !important;
+
+  max-width:
+    680px !important;
+
+  height:
+    auto !important;
+
+  min-height:
+    0 !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    0 !important;
+
+  color:
+    #f5f7fa !important;
+
+  font-size:
+    clamp(
+      3rem,
+      4.3vw,
+      3.5rem
+    ) !important;
+
+  font-weight:
+    600 !important;
+
+  line-height:
+    1.1 !important;
+
+  letter-spacing:
+    -0.035em !important;
+
+  text-shadow:
+    none !important;
+
+  text-wrap:
+    balance;
+}
+
+
+/* ==========================================================================
+   HERO DESCRIPTION
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__description"]
+) {
+  grid-area:
+    description;
+
+  max-width:
+    620px !important;
+
+  height:
+    auto !important;
+
+  margin:
+    20px
+    0
+    0 !important;
+
+  padding:
+    0 !important;
+
+  color:
+    #c5ced8 !important;
+
+  font-size:
+    1.08rem !important;
+
+  line-height:
+    1.68 !important;
+}
+
+
+/* ==========================================================================
+   HERO ACTIONS
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__actions"]
+) {
+  grid-area:
+    actions;
+
+  display:
+    flex !important;
+
+  flex-wrap:
+    wrap !important;
+
+  align-items:
+    center !important;
+
+  gap:
+    12px !important;
+
+  height:
+    auto !important;
+
+  margin:
+    32px
+    0
+    0 !important;
+
+  padding:
+    0 !important;
+}
+
+
+/* ==========================================================================
+   HERO COORDINATE
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__coordinate"]
+) {
+  grid-area:
+    coordinate;
+
+  position:
+    static !important;
+
+  align-self:
+    start;
+
+  justify-self:
+    end;
+
+  width:
+    auto !important;
+
+  height:
+    auto !important;
+
+  margin:
+    5px
+    0
+    0 !important;
+
+  padding:
+    0 !important;
+
+  color:
+    #667281 !important;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace !important;
+
+  font-size:
+    0.62rem !important;
+
+  letter-spacing:
+    0.05em !important;
+}
+
+
+/* ==========================================================================
+   HERO METADATA — QUIET FULL-WIDTH RAIL
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+) {
+  grid-area:
+    meta;
+
+  display:
+    grid !important;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(
+        0,
+        1fr
+      )
+    ) !important;
+
+  width:
+    100% !important;
+
+  height:
+    auto !important;
+
+  min-height:
+    0 !important;
+
+  margin:
+    48px
+    0
+    0 !important;
+
+  padding:
+    0 !important;
+
+  background:
+    transparent !important;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.14
+    ) !important;
+
+  border-bottom:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.065
+    ) !important;
+
+  border-right:
+    0 !important;
+
+  border-left:
+    0 !important;
+
+  border-radius:
+    0 !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+)
+> * {
+  min-height:
+    70px !important;
+
+  height:
+    auto !important;
+
+  padding:
+    14px
+    18px !important;
+
+  background:
+    transparent !important;
+
+  border:
+    0 !important;
+
+  border-right:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.055
+    ) !important;
+
+  border-radius:
+    0 !important;
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+)
+> *:first-child {
+  padding-left:
+    0 !important;
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+)
+> *:last-child {
+  border-right:
+    0 !important;
+}
+
+
+/* ==========================================================================
+   AI AMBIENT VISUAL
+   ========================================================================== */
+
+
+.aiSecurity .aiAmbientVisual {
+  position:
+    absolute !important;
+
+  top:
+    50% !important;
+
+  right:
+    clamp(
+      40px,
+      7vw,
+      108px
+    ) !important;
+
+  bottom:
+    auto !important;
+
+  left:
+    auto !important;
+
+  z-index:
+    1 !important;
+
+  display:
+    block !important;
+
+  width:
+    clamp(
+      300px,
+      29vw,
+      430px
+    ) !important;
+
+  height:
+    clamp(
+      300px,
+      29vw,
+      430px
+    ) !important;
+
+  margin:
+    0 !important;
+
+  opacity:
+    0.11 !important;
+
+  filter:
+    saturate(
+      0.7
+    );
+
+  transform:
+    translateY(
+      -50%
+    ) !important;
+
+  mix-blend-mode:
+    screen;
+
+  pointer-events:
+    none !important;
+}
+
+
+/* ==========================================================================
+   AUDIENCE SECTION
+   Runtime-discovered direct section.
+   ========================================================================== */
+
+
+.aiSecurity
+>
+section:nth-of-type(2) {
+  position:
+    relative;
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  padding-top:
+    88px !important;
+
+  padding-bottom:
+    88px !important;
+
+  background:
+    #0b0f16 !important;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    ) !important;
+
+  border-bottom:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    ) !important;
+}
+
+
+/* ==========================================================================
+   AUDIENCE MAIN TITLE
+   ========================================================================== */
+
+
+.aiSecurity
+>
+section:nth-of-type(2)
+h2 {
+  max-width:
+    620px !important;
+
+  color:
+    #f5f7fa !important;
+
+  font-size:
+    clamp(
+      2rem,
+      3vw,
+      2.625rem
+    ) !important;
+
+  font-weight:
+    600 !important;
+
+  line-height:
+    1.18 !important;
+
+  letter-spacing:
+    -0.03em !important;
+}
+
+
+/* ==========================================================================
+   AUDIENCE SECONDARY TITLES
+
+   This is the primary requested correction.
+   ========================================================================== */
+
+
+.aiSecurity
+>
+section:nth-of-type(2)
+:is(
+  h3,
+  h4
+) {
+  max-width:
+    440px !important;
+
+  margin-top:
+    0 !important;
+
+  margin-bottom:
+    10px !important;
+
+  color:
+    #c5ced8 !important;
+
+  font-family:
+    "Space Grotesk",
+    Inter,
+    system-ui,
+    sans-serif !important;
+
+  font-size:
+    1.35rem !important;
+
+  font-weight:
+    600 !important;
+
+  line-height:
+    1.3 !important;
+
+  letter-spacing:
+    -0.016em !important;
+
+  text-shadow:
+    none !important;
+}
+
+
+/* ==========================================================================
+   AUDIENCE BODY
+   ========================================================================== */
+
+
+.aiSecurity
+>
+section:nth-of-type(2)
+p {
+  max-width:
+    620px !important;
+
+  color:
+    #8793a3 !important;
+
+  font-size:
+    0.94rem !important;
+
+  font-weight:
+    400 !important;
+
+  line-height:
+    1.65 !important;
+}
+
+
+.aiSecurity
+>
+section:nth-of-type(2)
+strong {
+  color:
+    #c5ced8 !important;
+
+  font-size:
+    0.96rem !important;
+
+  font-weight:
+    600 !important;
+
+  line-height:
+    1.45 !important;
+}
+
+
+/* ==========================================================================
+   AUDIENCE LISTS
+   ========================================================================== */
+
+
+.aiSecurity
+>
+section:nth-of-type(2)
+ul {
+  display:
+    grid !important;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    ) !important;
+
+  column-gap:
+    24px !important;
+
+  row-gap:
+    0 !important;
+
+  margin:
+    28px
+    0
+    0 !important;
+
+  padding:
+    0 !important;
+}
+
+
+.aiSecurity
+>
+section:nth-of-type(2)
+li {
+  min-height:
+    0 !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    14px
+    0
+    14px
+    20px !important;
+
+  color:
+    #aab5c1 !important;
+
+  background:
+    transparent !important;
+
+  border:
+    0 !important;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.055
+    ) !important;
+
+  border-radius:
+    0 !important;
+
+  box-shadow:
+    none !important;
+
+  font-size:
+    0.86rem !important;
+
+  line-height:
+    1.5 !important;
+}
+
+
+/* ==========================================================================
+   AUDIENCE CARDS IF PRESENT
+   ========================================================================== */
+
+
+.aiSecurity
+>
+section:nth-of-type(2)
+article {
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  padding:
+    24px !important;
+
+  background:
+    #101620 !important;
+
+  border:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.1
+    ) !important;
+
+  border-radius:
+    14px !important;
+
+  box-shadow:
+    none !important;
+
+  transform:
+    none !important;
+}
+
+
+.aiSecurity
+>
+section:nth-of-type(2)
+article:hover {
+  transform:
+    translateY(
+      -2px
+    ) !important;
+
+  background:
+    #131b26 !important;
+
+  border-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.2
+    ) !important;
+}
+
+
+/* ==========================================================================
+   TECHNICAL SMALL LABELS
+   ========================================================================== */
+
+
+.aiSecurity
+>
+section:nth-of-type(2)
+small {
+  color:
+    #83b3d7 !important;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace !important;
+
+  font-size:
+    0.68rem !important;
+
+  font-weight:
+    600 !important;
+
+  letter-spacing:
+    0.055em !important;
+
+  text-transform:
+    uppercase;
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    1023px
+) {
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__content"]
+  ) {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      )
+      minmax(
+        180px,
+        0.42fr
+      ) !important;
+
+    column-gap:
+      40px !important;
+  }
+
+
+  .aiSecurity .aiAmbientVisual {
+    right:
+      28px !important;
+
+    width:
+      300px !important;
+
+    height:
+      300px !important;
+
+    opacity:
+      0.075 !important;
+  }
+
+
+  .aiSecurity
+  >
+  section:nth-of-type(2) {
+    padding-top:
+      80px !important;
+
+    padding-bottom:
+      80px !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .aiSecurity
+  section[class*="page-hero-module__"][class*="__hero"]:first-of-type {
+    background:
+      radial-gradient(
+        ellipse
+        72%
+        28%
+        at
+        96%
+        4%,
+        rgba(
+          161,
+          226,
+          240,
+          0.04
+        ),
+        transparent
+        76%
+      ),
+      #07090d !important;
+  }
+
+
+  .aiSecurity
+  section[class*="page-hero-module__"][class*="__hero"]:first-of-type::before {
+    display:
+      none !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__content"]
+  ) {
+    display:
+      flex !important;
+
+    flex-direction:
+      column !important;
+
+    width:
+      100% !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__coordinate"]
+  ) {
+    order:
+      6;
+
+    align-self:
+      flex-end;
+
+    margin-top:
+      16px !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__meta"]
+  ) {
+    order:
+      5;
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      ) !important;
+
+    margin-top:
+      32px !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__meta"]
+  )
+  > * {
+    min-height:
+      62px !important;
+
+    padding:
+      12px !important;
+
+    border-right:
+      1px
+      solid
+      rgba(
+        255,
+        255,
+        255,
+        0.055
+      ) !important;
+
+    border-bottom:
+      1px
+      solid
+      rgba(
+        255,
+        255,
+        255,
+        0.055
+      ) !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__meta"]
+  )
+  > *:nth-child(
+    2n
+  ) {
+    border-right:
+      0 !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__meta"]
+  )
+  > *:nth-last-child(
+    -n + 2
+  ) {
+    border-bottom:
+      0 !important;
+  }
+
+
+  .aiSecurity .aiAmbientVisual {
+    display:
+      none !important;
+  }
+
+
+  .aiSecurity
+  >
+  section:nth-of-type(2) {
+    padding-top:
+      64px !important;
+
+    padding-bottom:
+      64px !important;
+  }
+
+
+  .aiSecurity
+  >
+  section:nth-of-type(2)
+  h2 {
+    font-size:
+      2rem !important;
+  }
+
+
+  .aiSecurity
+  >
+  section:nth-of-type(2)
+  :is(
+    h3,
+    h4
+  ) {
+    font-size:
+      1.22rem !important;
+  }
+
+
+  .aiSecurity
+  >
+  section:nth-of-type(2)
+  ul {
+    grid-template-columns:
+      1fr !important;
+  }
+
+
+  .aiSecurity
+  >
+  section:nth-of-type(2)
+  article {
+    padding:
+      20px !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+  ) {
+
+  .aiSecurity
+  >
+  section:nth-of-type(2)
+  article {
+    transition:
+      none !important;
+  }
+
+
+  .aiSecurity
+  >
+  section:nth-of-type(2)
+  article:hover {
+    transform:
+      none !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   NB_AI_SECURITY_FOUNDATIONS_EDITORIAL_REFINEMENT_V38
+
+   Final simplification after runtime structure discovery.
+
+   Runtime authority:
+   - hero = section 1
+   - who-it-is-for = section 2
+   - audience contains five H2 elements
+
+   Design changes:
+   - remove orbit/network hero illustration entirely
+   - calmer black-blue atmosphere
+   - tighter maximum hero height
+   - editorial single-column information hierarchy
+   - all audience H2 elements become compact secondary headings
+   - no wall of large white text
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01 — HERO SIZE
+
+   Full enough to feel intentional, but not artificially oversized.
+   ========================================================================== */
+
+
+.aiSecurity
+section[class*="page-hero-module__"][class*="__hero"]:first-of-type {
+  display:
+    flex !important;
+
+  align-items:
+    center !important;
+
+  min-height:
+    clamp(
+      620px,
+      calc(
+        100svh
+        -
+        76px
+      ),
+      760px
+    ) !important;
+
+  height:
+    auto !important;
+
+  max-height:
+    none !important;
+
+  padding-top:
+    64px !important;
+
+  padding-bottom:
+    56px !important;
+
+  background:
+    radial-gradient(
+      ellipse
+      38%
+      46%
+      at
+      91%
+      25%,
+      rgba(
+        161,
+        226,
+        240,
+        0.045
+      )
+      0%,
+      rgba(
+        131,
+        179,
+        215,
+        0.018
+      )
+      40%,
+      transparent
+      74%
+    ),
+    radial-gradient(
+      ellipse
+      24%
+      28%
+      at
+      100%
+      100%,
+      rgba(
+        126,
+        96,
+        185,
+        0.018
+      )
+      0%,
+      transparent
+      76%
+    ),
+    linear-gradient(
+      180deg,
+      #07090d
+      0%,
+      #090d13
+      62%,
+      #07090d
+      100%
+    ) !important;
+
+  border-bottom:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    ) !important;
+}
+
+
+/* ==========================================================================
+   02 — REMOVE PREVIOUS DECORATIVE HERO OVERLAYS
+   ========================================================================== */
+
+
+.aiSecurity
+section[class*="page-hero-module__"][class*="__hero"]:first-of-type::before {
+  position:
+    absolute !important;
+
+  top:
+    0 !important;
+
+  right:
+    0 !important;
+
+  bottom:
+    0 !important;
+
+  left:
+    auto !important;
+
+  z-index:
+    0 !important;
+
+  display:
+    block !important;
+
+  width:
+    min(
+      30vw,
+      420px
+    ) !important;
+
+  height:
+    auto !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent
+      8%,
+      rgba(
+        161,
+        226,
+        240,
+        0.025
+      )
+      48%,
+      transparent
+      92%
+    ) !important;
+
+  border-left:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.055
+    );
+
+  border-right:
+    0;
+
+  opacity:
+    1 !important;
+
+  content:
+    "" !important;
+
+  pointer-events:
+    none !important;
+}
+
+
+.aiSecurity
+section[class*="page-hero-module__"][class*="__hero"]:first-of-type::after {
+  position:
+    absolute !important;
+
+  right:
+    6% !important;
+
+  bottom:
+    0 !important;
+
+  left:
+    6% !important;
+
+  z-index:
+    1 !important;
+
+  display:
+    block !important;
+
+  width:
+    auto !important;
+
+  height:
+    1px !important;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        161,
+        226,
+        240,
+        0.12
+      ),
+      transparent
+    ) !important;
+
+  opacity:
+    1 !important;
+
+  content:
+    "" !important;
+
+  pointer-events:
+    none !important;
+}
+
+
+/* ==========================================================================
+   03 — REMOVE AI ORBIT / NETWORK ILLUSTRATION
+
+   The hero no longer needs a dashboard/radar visual.
+   ========================================================================== */
+
+
+.aiSecurity .aiAmbientVisual {
+  display:
+    none !important;
+
+  visibility:
+    hidden !important;
+
+  width:
+    0 !important;
+
+  height:
+    0 !important;
+
+  opacity:
+    0 !important;
+}
+
+
+/* ==========================================================================
+   04 — HERO CONTENT = CLEAN EDITORIAL STACK
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__content"]
+) {
+  position:
+    relative !important;
+
+  z-index:
+    3 !important;
+
+  display:
+    grid !important;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    ) !important;
+
+  grid-template-areas:
+    "eyebrow"
+    "title"
+    "description"
+    "actions"
+    "meta" !important;
+
+  width:
+    100% !important;
+
+  max-width:
+    1120px !important;
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  margin:
+    0
+    auto !important;
+
+  padding:
+    0 !important;
+}
+
+
+/* ==========================================================================
+   05 — HERO EYEBROW
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__eyebrow"]
+) {
+  grid-area:
+    eyebrow;
+
+  margin:
+    0
+    0
+    12px !important;
+
+  padding:
+    0 !important;
+
+  color:
+    #a1e2f0 !important;
+
+  background:
+    transparent !important;
+
+  border:
+    0 !important;
+
+  font-family:
+    "IBM Plex Mono",
+    monospace !important;
+
+  font-size:
+    0.7rem !important;
+
+  font-weight:
+    650 !important;
+
+  line-height:
+    1.4 !important;
+
+  letter-spacing:
+    0.075em !important;
+
+  text-transform:
+    uppercase;
+}
+
+
+/* ==========================================================================
+   06 — HERO TITLE
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__title"]
+),
+.aiSecurity.aiSecurity h1 {
+  grid-area:
+    title;
+
+  max-width:
+    760px !important;
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    0 !important;
+
+  color:
+    #f5f7fa !important;
+
+  font-size:
+    clamp(
+      3rem,
+      4.2vw,
+      3.5rem
+    ) !important;
+
+  font-weight:
+    600 !important;
+
+  line-height:
+    1.1 !important;
+
+  letter-spacing:
+    -0.035em !important;
+
+  text-shadow:
+    none !important;
+
+  text-wrap:
+    balance;
+}
+
+
+/* ==========================================================================
+   07 — HERO DESCRIPTION
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__description"]
+) {
+  grid-area:
+    description;
+
+  max-width:
+    680px !important;
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  margin:
+    20px
+    0
+    0 !important;
+
+  padding:
+    0 !important;
+
+  color:
+    #aeb9c5 !important;
+
+  font-size:
+    1.06rem !important;
+
+  line-height:
+    1.7 !important;
+}
+
+
+/* ==========================================================================
+   08 — HERO ACTION
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__actions"]
+) {
+  grid-area:
+    actions;
+
+  display:
+    flex !important;
+
+  align-items:
+    center !important;
+
+  flex-wrap:
+    wrap !important;
+
+  gap:
+    12px !important;
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  margin:
+    28px
+    0
+    0 !important;
+
+  padding:
+    0 !important;
+}
+
+
+/* ==========================================================================
+   09 — HIDE DECORATIVE COORDINATE
+
+   It was adding another competing technical label.
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__coordinate"]
+) {
+  display:
+    none !important;
+}
+
+
+/* ==========================================================================
+   10 — METADATA RAIL
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+) {
+  grid-area:
+    meta;
+
+  display:
+    grid !important;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(
+        0,
+        1fr
+      )
+    ) !important;
+
+  width:
+    100% !important;
+
+  max-width:
+    1120px !important;
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  margin:
+    44px
+    0
+    0 !important;
+
+  padding:
+    0 !important;
+
+  background:
+    transparent !important;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.13
+    ) !important;
+
+  border-right:
+    0 !important;
+
+  border-bottom:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.065
+    ) !important;
+
+  border-left:
+    0 !important;
+
+  border-radius:
+    0 !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+)
+> * {
+  min-height:
+    68px !important;
+
+  height:
+    auto !important;
+
+  padding:
+    14px
+    18px !important;
+
+  background:
+    transparent !important;
+
+  border:
+    0 !important;
+
+  border-right:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.055
+    ) !important;
+
+  border-radius:
+    0 !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+)
+> *:first-child {
+  padding-left:
+    0 !important;
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+)
+> *:last-child {
+  border-right:
+    0 !important;
+}
+
+
+/* ==========================================================================
+   11 — WHO IT IS FOR SECTION
+   ========================================================================== */
+
+
+.aiSecurity
+>
+section:nth-of-type(2) {
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  max-height:
+    none !important;
+
+  padding-top:
+    72px !important;
+
+  padding-bottom:
+    72px !important;
+
+  background:
+    #0b0f16 !important;
+
+  border-top:
+    0 !important;
+
+  border-bottom:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    ) !important;
+}
+
+
+/* ==========================================================================
+   12 — ALL AUDIENCE H2s ARE SECONDARY
+
+   Runtime showed five H2s in this section.
+   None of them should behave like another hero headline.
+   ========================================================================== */
+
+
+.aiSecurity
+>
+section:nth-of-type(2)
+h2 {
+  width:
+    auto !important;
+
+  max-width:
+    620px !important;
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  margin-top:
+    0 !important;
+
+  margin-bottom:
+    0 !important;
+
+  padding:
+    0 !important;
+
+  color:
+    #c5ced8 !important;
+
+  font-family:
+    "Space Grotesk",
+    Inter,
+    system-ui,
+    sans-serif !important;
+
+  font-size:
+    1.3rem !important;
+
+  font-weight:
+    560 !important;
+
+  line-height:
+    1.38 !important;
+
+  letter-spacing:
+    -0.012em !important;
+
+  text-shadow:
+    none !important;
+}
+
+
+/* ==========================================================================
+   13 — AUDIENCE NUMBERS / LABELS
+   ========================================================================== */
+
+
+.aiSecurity
+>
+section:nth-of-type(2)
+:is(
+  span,
+  small
+) {
+  color:
+    #667281;
+
+  font-size:
+    0.74rem;
+
+  line-height:
+    1.4;
+}
+
+
+/*
+ * Numbered labels gain cyan emphasis without becoming large.
+ */
+.aiSecurity
+>
+section:nth-of-type(2)
+span:first-child {
+  color:
+    #83b3d7;
+}
+
+
+/* ==========================================================================
+   14 — AUDIENCE PARAGRAPHS
+   ========================================================================== */
+
+
+.aiSecurity
+>
+section:nth-of-type(2)
+p {
+  max-width:
+    620px !important;
+
+  color:
+    #8793a3 !important;
+
+  font-size:
+    0.92rem !important;
+
+  font-weight:
+    400 !important;
+
+  line-height:
+    1.65 !important;
+}
+
+
+/* ==========================================================================
+   15 — AUDIENCE DIVIDERS
+
+   Existing structure remains untouched.
+   Give each content group editorial separation instead of scale.
+   ========================================================================== */
+
+
+.aiSecurity
+>
+section:nth-of-type(2)
+h2
++
+* {
+  margin-top:
+    8px;
+}
+
+
+/* ==========================================================================
+   16 — KEEP AUDIENCE CONTENT FLAT
+   ========================================================================== */
+
+
+.aiSecurity
+>
+section:nth-of-type(2)
+article {
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  padding:
+    20px
+    0 !important;
+
+  background:
+    transparent !important;
+
+  border:
+    0 !important;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.06
+    ) !important;
+
+  border-radius:
+    0 !important;
+
+  box-shadow:
+    none !important;
+
+  transform:
+    none !important;
+}
+
+
+/* ==========================================================================
+   17 — TABLET
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    1023px
+) {
+
+  .aiSecurity
+  section[class*="page-hero-module__"][class*="__hero"]:first-of-type {
+    min-height:
+      clamp(
+        600px,
+        calc(
+          100svh
+          -
+          76px
+        ),
+        720px
+      ) !important;
+
+    padding-top:
+      56px !important;
+
+    padding-bottom:
+      48px !important;
+  }
+
+
+  .aiSecurity
+  >
+  section:nth-of-type(2) {
+    padding-top:
+      64px !important;
+
+    padding-bottom:
+      64px !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   18 — MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .aiSecurity
+  section[class*="page-hero-module__"][class*="__hero"]:first-of-type {
+    min-height:
+      0 !important;
+
+    align-items:
+      flex-start !important;
+
+    padding-top:
+      48px !important;
+
+    padding-bottom:
+      48px !important;
+
+    background:
+      radial-gradient(
+        ellipse
+        78%
+        28%
+        at
+        100%
+        0%,
+        rgba(
+          161,
+          226,
+          240,
+          0.035
+        ),
+        transparent
+        75%
+      ),
+      #07090d !important;
+  }
+
+
+  .aiSecurity
+  section[class*="page-hero-module__"][class*="__hero"]:first-of-type::before {
+    display:
+      none !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__content"]
+  ) {
+    display:
+      flex !important;
+
+    flex-direction:
+      column !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__title"]
+  ),
+  .aiSecurity.aiSecurity h1 {
+    max-width:
+      100% !important;
+
+    font-size:
+      2.5rem !important;
+
+    line-height:
+      1.12 !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__description"]
+  ) {
+    max-width:
+      100% !important;
+
+    font-size:
+      1rem !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__meta"]
+  ) {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      ) !important;
+
+    margin-top:
+      32px !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__meta"]
+  )
+  > * {
+    min-height:
+      60px !important;
+
+    padding:
+      12px !important;
+
+    border-right:
+      1px
+      solid
+      rgba(
+        255,
+        255,
+        255,
+        0.055
+      ) !important;
+
+    border-bottom:
+      1px
+      solid
+      rgba(
+        255,
+        255,
+        255,
+        0.055
+      ) !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__meta"]
+  )
+  > *:nth-child(
+    2n
+  ) {
+    border-right:
+      0 !important;
+  }
+
+
+  .aiSecurity
+  >
+  section:nth-of-type(2) {
+    padding-top:
+      56px !important;
+
+    padding-bottom:
+      56px !important;
+  }
+
+
+  .aiSecurity
+  >
+  section:nth-of-type(2)
+  h2 {
+    max-width:
+      100% !important;
+
+    font-size:
+      1.18rem !important;
+
+    line-height:
+      1.4 !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   19 — SMALL MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    420px
+) {
+
+  .aiSecurity
+  section[class*="page-hero-module__"][class*="__hero"]:first-of-type {
+    padding-top:
+      40px !important;
+
+    padding-bottom:
+      40px !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__title"]
+  ),
+  .aiSecurity.aiSecurity h1 {
+    font-size:
+      2.25rem !important;
+  }
+
+
+  .aiSecurity
+  >
+  section:nth-of-type(2) {
+    padding-top:
+      48px !important;
+
+    padding-bottom:
+      48px !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   20 — REDUCED MOTION
+   ========================================================================== */
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .aiSecurity
+  >
+  section:nth-of-type(2)
+  * {
+    animation:
+      none !important;
+
+    transition:
+      none !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   NB_AI_SECURITY_FOUNDATIONS_AUDIENCE_GEOMETRY_V39
+
+   V38 visual tests proved:
+   - hero redesign renders correctly
+   - audience is direct section #2
+   - section #2 contains five H2 elements
+   - V38 typography rules are active
+
+   However the section bounding box reported zero height.
+
+   V39 establishes a real formatting box while preserving:
+   - V38 typography
+   - V38 hero
+   - existing course content
+   - natural responsive height
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01 — REAL SECTION BOX
+   ========================================================================== */
+
+
+.aiSecurity
+>
+section:nth-of-type(2) {
+  position:
+    relative !important;
+
+  display:
+    block !important;
+
+  box-sizing:
+    border-box !important;
+
+  width:
+    100% !important;
+
+  min-width:
+    0 !important;
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  max-height:
+    none !important;
+
+  margin:
+    0 !important;
+
+  padding-top:
+    72px !important;
+
+  padding-bottom:
+    72px !important;
+
+  overflow:
+    visible !important;
+
+  contain:
+    none !important;
+}
+
+
+/* ==========================================================================
+   02 — CONTENT PARTICIPATES IN NORMAL FLOW
+   ========================================================================== */
+
+
+.aiSecurity
+>
+section:nth-of-type(2)
+> * {
+  position:
+    relative;
+
+  z-index:
+    1;
+
+  min-height:
+    0;
+
+  height:
+    auto;
+}
+
+
+/* ==========================================================================
+   03 — AUDIENCE TYPOGRAPHY AUTHORITY
+
+   All five current H2 elements are intentionally secondary.
+   ========================================================================== */
+
+
+.aiSecurity
+>
+section:nth-of-type(2)
+h2 {
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  max-width:
+    620px !important;
+
+  margin-top:
+    0 !important;
+
+  color:
+    #c5ced8 !important;
+
+  font-size:
+    1.3rem !important;
+
+  font-weight:
+    560 !important;
+
+  line-height:
+    1.38 !important;
+
+  letter-spacing:
+    -0.012em !important;
+
+  text-shadow:
+    none !important;
+}
+
+
+/* ==========================================================================
+   04 — NUMBERED AUDIENCE ROW RHYTHM
+   ========================================================================== */
+
+
+.aiSecurity
+>
+section:nth-of-type(2)
+h2
++
+h2 {
+  margin-top:
+    18px !important;
+
+  padding-top:
+    18px !important;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.055
+    );
+}
+
+
+/* ==========================================================================
+   05 — QUIET SUPPORTING TEXT
+   ========================================================================== */
+
+
+.aiSecurity
+>
+section:nth-of-type(2)
+p {
+  color:
+    #8793a3 !important;
+
+  font-size:
+    0.92rem !important;
+
+  line-height:
+    1.65 !important;
+}
+
+
+/* ==========================================================================
+   06 — MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .aiSecurity
+  >
+  section:nth-of-type(2) {
+    padding-top:
+      56px !important;
+
+    padding-bottom:
+      56px !important;
+  }
+
+
+  .aiSecurity
+  >
+  section:nth-of-type(2)
+  h2 {
+    font-size:
+      1.18rem !important;
+
+    line-height:
+      1.42 !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   07 — SMALL MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    420px
+) {
+
+  .aiSecurity
+  >
+  section:nth-of-type(2) {
+    padding-top:
+      48px !important;
+
+    padding-bottom:
+      48px !important;
+  }
+
+}
