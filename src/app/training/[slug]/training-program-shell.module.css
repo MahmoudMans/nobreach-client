@@ -4333,3 +4333,668 @@ button {
   }
 
 }
+
+
+/* ==========================================================================
+   NB_AI_SECURITY_FOUNDATIONS_FIRST_SCREEN_V30
+
+   The generic route frame adds an oversized numbered path presentation:
+
+     01  HOME
+     02  / TRAINING
+     03  / AI SECURITY FOUNDATIONS
+
+   On this course page that duplicates:
+     - active Training navigation
+     - AI Security eyebrow
+     - AI Security Foundations H1
+
+   V30 removes that generic route-context presentation only when the
+   routeFrame directly contains the AI Security Foundations wrapper.
+
+   SiteHeader / navbar are outside routeFrame and remain untouched.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01 — REMOVE LEGACY ROUTE CONTEXT SIBLINGS
+   ========================================================================== */
+
+
+:global(.routeFrame):has(> .aiSecurity)
+> :not(.aiSecurity) {
+  display:
+    none !important;
+
+  visibility:
+    hidden !important;
+
+  width:
+    0 !important;
+
+  height:
+    0 !important;
+
+  min-height:
+    0 !important;
+
+  max-height:
+    0 !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    0 !important;
+
+  overflow:
+    hidden !important;
+}
+
+
+/* ==========================================================================
+   02 — RESET LEGACY ROUTE FRAME GEOMETRY
+   ========================================================================== */
+
+
+:global(.routeFrame):has(> .aiSecurity) {
+  position:
+    relative;
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    0 !important;
+
+  background:
+    transparent !important;
+}
+
+
+:global(.routeFrame):has(> .aiSecurity)::before,
+:global(.routeFrame):has(> .aiSecurity)::after {
+  display:
+    none !important;
+
+  width:
+    0 !important;
+
+  height:
+    0 !important;
+
+  content:
+    none !important;
+}
+
+
+/* ==========================================================================
+   03 — FIRST-SCREEN HERO RHYTHM
+
+   Design-system target:
+   Site header ~76px.
+   Then immediately course purpose / hero.
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  section[class*="page-hero-module__"][class*="__hero"]
+) {
+  margin:
+    0 !important;
+
+  padding-top:
+    56px !important;
+
+  padding-bottom:
+    32px !important;
+}
+
+
+/* ==========================================================================
+   04 — VALUE PROPOSITION PRIORITY
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__content"]
+) {
+  position:
+    relative;
+
+  z-index:
+    2;
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__eyebrow"]
+) {
+  margin-bottom:
+    12px !important;
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__description"]
+) {
+  margin-top:
+    16px !important;
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__actions"]
+) {
+  margin-top:
+    24px !important;
+}
+
+
+/* ==========================================================================
+   05 — META / TRUST RAIL
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+) {
+  margin-top:
+    32px !important;
+}
+
+
+/* ==========================================================================
+   06 — TECHNICAL VISUAL REMAINS SECONDARY
+   ========================================================================== */
+
+
+.aiSecurity .aiAmbientVisual {
+  z-index:
+    0 !important;
+
+  opacity:
+    0.065 !important;
+
+  pointer-events:
+    none !important;
+}
+
+
+/* ==========================================================================
+   07 — TABLET
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    1023px
+) {
+
+  .aiSecurity
+  :global(
+    section[class*="page-hero-module__"][class*="__hero"]
+  ) {
+    padding-top:
+      48px !important;
+
+    padding-bottom:
+      28px !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   08 — MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .aiSecurity
+  :global(
+    section[class*="page-hero-module__"][class*="__hero"]
+  ) {
+    padding-top:
+      40px !important;
+
+    padding-bottom:
+      24px !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__actions"]
+  ) {
+    margin-top:
+      24px !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__meta"]
+  ) {
+    margin-top:
+      24px !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   09 — SMALL MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    420px
+) {
+
+  .aiSecurity
+  :global(
+    section[class*="page-hero-module__"][class*="__hero"]
+  ) {
+    padding-top:
+      32px !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   NB_AI_SECURITY_FOUNDATIONS_WRAPPER_RESET_V31
+
+   V30 runtime evidence:
+
+     routeFrame siblingCount = 0
+     hero top               = 407px
+     H1 top                 = 492px
+
+   Therefore the old numbered route section is already gone.
+
+   The remaining first-screen gap belongs to the AI wrapper itself:
+   - inherited padding / min-height
+   - pseudo-elements
+   - or a flow-positioned child before PageHero.
+
+   V31 creates a clean wrapper boundary.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01 — AI ROOT IS NOT A SECOND HERO
+   ========================================================================== */
+
+
+.aiSecurity {
+  position:
+    relative !important;
+
+  width:
+    100% !important;
+
+  min-width:
+    0 !important;
+
+  height:
+    auto !important;
+
+  min-height:
+    0 !important;
+
+  max-height:
+    none !important;
+
+  block-size:
+    auto !important;
+
+  min-block-size:
+    0 !important;
+
+  max-block-size:
+    none !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    0 !important;
+
+  padding-top:
+    0 !important;
+
+  padding-bottom:
+    0 !important;
+
+  border:
+    0 !important;
+
+  transform:
+    none !important;
+}
+
+
+/* ==========================================================================
+   02 — REMOVE LEGACY ROOT PSEUDO LAYERS THAT OCCUPY FLOW
+   ========================================================================== */
+
+
+.aiSecurity::before,
+.aiSecurity::after {
+  position:
+    absolute !important;
+
+  display:
+    none !important;
+
+  width:
+    0 !important;
+
+  height:
+    0 !important;
+
+  min-height:
+    0 !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    0 !important;
+
+  content:
+    none !important;
+
+  pointer-events:
+    none !important;
+}
+
+
+/* ==========================================================================
+   03 — ANY LEGACY DIRECT CHILD BEFORE PAGEHERO IS NON-STRUCTURAL
+
+   Keep the actual AI ambient visual, because it is deliberately decorative.
+   Any other direct child appearing before the real PageHero is legacy route
+   presentation and should not consume layout.
+   ========================================================================== */
+
+
+.aiSecurity
+> :not(.aiAmbientVisual):has(
+  ~
+  section[class*="page-hero-module__"][class*="__hero"]
+) {
+  display:
+    none !important;
+
+  visibility:
+    hidden !important;
+
+  width:
+    0 !important;
+
+  height:
+    0 !important;
+
+  min-height:
+    0 !important;
+
+  max-height:
+    0 !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    0 !important;
+
+  overflow:
+    hidden !important;
+}
+
+
+/* ==========================================================================
+   04 — AMBIENT VISUAL NEVER PARTICIPATES IN DOCUMENT FLOW
+   ========================================================================== */
+
+
+.aiSecurity
+> .aiAmbientVisual,
+.aiSecurity .aiAmbientVisual {
+  position:
+    absolute !important;
+
+  top:
+    28px !important;
+
+  right:
+    clamp(
+      -48px,
+      -2vw,
+      -12px
+    ) !important;
+
+  bottom:
+    auto !important;
+
+  left:
+    auto !important;
+
+  z-index:
+    0 !important;
+
+  display:
+    block !important;
+
+  margin:
+    0 !important;
+
+  pointer-events:
+    none !important;
+}
+
+
+/* ==========================================================================
+   05 — REAL PAGEHERO IS FIRST STRUCTURAL BLOCK
+   ========================================================================== */
+
+
+.aiSecurity
+>
+section[class*="page-hero-module__"][class*="__hero"],
+.aiSecurity
+section[class*="page-hero-module__"][class*="__hero"]:first-of-type {
+  position:
+    relative !important;
+
+  z-index:
+    1 !important;
+
+  width:
+    100% !important;
+
+  min-height:
+    0 !important;
+
+  height:
+    auto !important;
+
+  margin:
+    0 !important;
+
+  margin-top:
+    0 !important;
+
+  padding-top:
+    48px !important;
+
+  padding-bottom:
+    32px !important;
+}
+
+
+/* ==========================================================================
+   06 — HERO CONTENT START
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__content"]
+) {
+  margin-top:
+    0 !important;
+
+  padding-top:
+    0 !important;
+}
+
+
+/* ==========================================================================
+   07 — CONTROLLED HERO RHYTHM
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__eyebrow"]
+) {
+  margin-top:
+    0 !important;
+
+  margin-bottom:
+    12px !important;
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__title"]
+) {
+  margin-top:
+    0 !important;
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__description"]
+) {
+  margin-top:
+    16px !important;
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__actions"]
+) {
+  margin-top:
+    24px !important;
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+) {
+  margin-top:
+    32px !important;
+}
+
+
+/* ==========================================================================
+   08 — TABLET
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    1023px
+) {
+
+  .aiSecurity
+  >
+  section[class*="page-hero-module__"][class*="__hero"],
+  .aiSecurity
+  section[class*="page-hero-module__"][class*="__hero"]:first-of-type {
+    padding-top:
+      40px !important;
+
+    padding-bottom:
+      28px !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   09 — MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .aiSecurity
+  >
+  section[class*="page-hero-module__"][class*="__hero"],
+  .aiSecurity
+  section[class*="page-hero-module__"][class*="__hero"]:first-of-type {
+    padding-top:
+      32px !important;
+
+    padding-bottom:
+      24px !important;
+  }
+
+
+  .aiSecurity .aiAmbientVisual {
+    display:
+      none !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   10 — SMALL MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    420px
+) {
+
+  .aiSecurity
+  >
+  section[class*="page-hero-module__"][class*="__hero"],
+  .aiSecurity
+  section[class*="page-hero-module__"][class*="__hero"]:first-of-type {
+    padding-top:
+      28px !important;
+  }
+
+}
