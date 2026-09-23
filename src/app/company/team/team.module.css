@@ -719,3 +719,41 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_TEAM_THREE_SECTION_BUDGET_V18
+
+   Team intentionally contains one real content section.
+   Do not create filler sections when the current public directory is small.
+   ========================================================================== */
+
+
+@media (
+  min-width:
+    1024px
+) {
+
+  .page [data-company-content-section="team-directory"] {
+    min-height:
+      clamp(
+        420px,
+        52svh,
+        500px
+      );
+  }
+
+}
+
+
+@media (
+  max-width:
+    1023px
+) {
+
+  .page [data-company-content-section="team-directory"] {
+    min-height:
+      0;
+  }
+
+}

@@ -302,6 +302,7 @@ export default function FounderPage() {
       data-founder-page="v2"
       data-company-family="v14"
       data-company-density="v15"
+      data-company-architecture="v18"
     >
       <script
         type="application/ld+json"
@@ -329,6 +330,8 @@ export default function FounderPage() {
         ]}
       />
 
+
+      {/* HERO */}
 
       <section
         className={
@@ -519,12 +522,14 @@ export default function FounderPage() {
       </section>
 
 
+      {/* 01 — JOURNEY */}
+
       <section
-        id="overview"
+        id="journey"
         className={
           family.section
         }
-        data-founder-section="overview"
+        data-company-content-section="journey"
       >
         <Container
           size="wide"
@@ -534,85 +539,160 @@ export default function FounderPage() {
         >
           <SectionHeader
             index="01"
-            eyebrow="Overview"
+            eyebrow="Journey"
             title="From programming to offensive security."
             description="The progression starts with understanding how systems are built, then moves toward understanding how they fail and how those lessons can be taught."
           />
 
           <div
             className={
-              styles.founderOverviewGrid
+              family.subsection
             }
+            data-founder-section="overview"
           >
-            <article
-              className={
-                styles.founderStatementCard
-              }
-              data-founder-card="statement"
-            >
-              <p
-                className={
-                  styles.overviewStatement
-                }
-              >
-                Practical security work becomes stronger when technical reasoning, experimentation and teaching reinforce each other.
-              </p>
-            </article>
-
             <div
               className={
-                styles.founderOverviewStack
+                styles.founderOverviewGrid
               }
             >
               <article
                 className={
-                  styles.founderMiniCard
+                  styles.founderStatementCard
                 }
-                data-founder-card="overview"
+                data-founder-card="statement"
               >
-                <span>
-                  APPROACH
-                </span>
-
-                <strong>
-                  Attacker-oriented reasoning
-                </strong>
-
-                <p>
-                  Understand behavior before relying on automation.
+                <p
+                  className={
+                    styles.overviewStatement
+                  }
+                >
+                  Practical security work becomes stronger when technical reasoning, experimentation and teaching reinforce each other.
                 </p>
               </article>
 
-              <article
+              <div
                 className={
-                  styles.founderMiniCard
+                  styles.founderOverviewStack
                 }
-                data-founder-card="overview"
               >
-                <span>
-                  DIRECTION
-                </span>
+                <article
+                  className={
+                    styles.founderMiniCard
+                  }
+                  data-founder-card="overview"
+                >
+                  <span>
+                    APPROACH
+                  </span>
 
-                <strong>
-                  Security through practice
-                </strong>
+                  <strong>
+                    Attacker-oriented reasoning
+                  </strong>
 
-                <p>
-                  Build, validate, document and teach repeatable methods.
-                </p>
-              </article>
+                  <p>
+                    Understand behavior before relying on automation.
+                  </p>
+                </article>
+
+                <article
+                  className={
+                    styles.founderMiniCard
+                  }
+                  data-founder-card="overview"
+                >
+                  <span>
+                    DIRECTION
+                  </span>
+
+                  <strong>
+                    Security through practice
+                  </strong>
+
+                  <p>
+                    Build, validate, document and teach repeatable methods.
+                  </p>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <div
+            className={
+              family.subsection
+            }
+            data-founder-section="journey"
+            data-founder-ui="journey"
+          >
+            <div
+              className={
+                styles.founderJourney
+              }
+            >
+              {
+                journey.map(
+                  (
+                    item
+                  ) => (
+                    <article
+                      className={
+                        styles.founderJourneyItem
+                      }
+                      data-founder-card="journey"
+                      key={
+                        item.index
+                      }
+                    >
+                      <span
+                        className={
+                          styles.journeyIndex
+                        }
+                      >
+                        {
+                          item.index
+                        }
+                      </span>
+
+                      <div
+                        className={
+                          styles.journeyLabel
+                        }
+                      >
+                        {
+                          item.code
+                        }
+                      </div>
+
+                      <div>
+                        <h3>
+                          {
+                            item.title
+                          }
+                        </h3>
+
+                        <p>
+                          {
+                            item.description
+                          }
+                        </p>
+                      </div>
+                    </article>
+                  )
+                )
+              }
             </div>
           </div>
         </Container>
       </section>
 
 
+      {/* 02 — EXPERTISE + EDUCATION */}
+
       <section
-        id="journey"
+        id="expertise"
         className={
           `${family.section} ${family.sectionAlt}`
         }
-        data-founder-section="journey"
+        data-company-content-section="expertise-education"
       >
         <Container
           size="wide"
@@ -622,241 +702,156 @@ export default function FounderPage() {
         >
           <SectionHeader
             index="02"
-            eyebrow="Journey"
-            title="A technical path built in layers."
+            eyebrow="Expertise & education"
+            title="Technical focus supported by hands-on learning."
           />
 
           <div
             className={
-              styles.founderJourney
+              family.subsection
             }
-            data-founder-ui="journey"
+            data-founder-section="expertise"
           >
-            {
-              journey.map(
-                (
-                  item
-                ) => (
-                  <article
-                    className={
-                      styles.founderJourneyItem
-                    }
-                    data-founder-card="journey"
-                    key={
-                      item.index
-                    }
-                  >
-                    <span
+            <div
+              className={
+                styles.founderExpertiseGrid
+              }
+              data-founder-ui="expertise-grid"
+            >
+              {
+                expertise.map(
+                  (
+                    item
+                  ) => (
+                    <article
                       className={
-                        styles.journeyIndex
+                        styles.founderExpertiseCard
                       }
-                    >
-                      {
+                      data-founder-card="expertise"
+                      key={
                         item.index
                       }
-                    </span>
-
-                    <div
-                      className={
-                        styles.journeyLabel
-                      }
                     >
-                      {
-                        item.code
-                      }
-                    </div>
-
-                    <div>
-                      <h3>
-                        {
-                          item.title
+                      <div
+                        className={
+                          styles.expertiseMeta
                         }
-                      </h3>
+                      >
+                        <span>
+                          {
+                            item.index
+                          }
+                        </span>
 
-                      <p>
-                        {
-                          item.description
-                        }
-                      </p>
-                    </div>
-                  </article>
+                        <small>
+                          {
+                            item.code
+                          }
+                        </small>
+                      </div>
+
+                      <div>
+                        <h3>
+                          {
+                            item.title
+                          }
+                        </h3>
+
+                        <p>
+                          {
+                            item.description
+                          }
+                        </p>
+                      </div>
+                    </article>
+                  )
                 )
-              )
-            }
+              }
+            </div>
           </div>
-        </Container>
-      </section>
-
-
-      <section
-        id="expertise"
-        className={
-          family.section
-        }
-        data-founder-section="expertise"
-      >
-        <Container
-          size="wide"
-          className={
-            family.container
-          }
-        >
-          <SectionHeader
-            index="03"
-            eyebrow="Expertise"
-            title="Areas of technical focus."
-          />
 
           <div
             className={
-              styles.founderExpertiseGrid
+              family.subsection
             }
-            data-founder-ui="expertise-grid"
           >
-            {
-              expertise.map(
-                (
-                  item
-                ) => (
-                  <article
-                    className={
-                      styles.founderExpertiseCard
-                    }
-                    data-founder-card="expertise"
-                    key={
-                      item.index
-                    }
-                  >
-                    <div
-                      className={
-                        styles.expertiseMeta
-                      }
-                    >
-                      <span>
-                        {
-                          item.index
-                        }
-                      </span>
+            <article
+              id="education"
+              className={
+                styles.founderEducationCard
+              }
+              data-founder-section="education"
+              data-founder-card="education"
+            >
+              <div
+                className={
+                  styles.educationVisual
+                }
+                aria-hidden="true"
+              >
+                <span>
+                  BUILD
+                </span>
 
-                      <small>
-                        {
-                          item.code
-                        }
-                      </small>
-                    </div>
+                <i />
 
-                    <div>
-                      <h3>
-                        {
-                          item.title
-                        }
-                      </h3>
+                <span>
+                  TEST
+                </span>
 
-                      <p>
-                        {
-                          item.description
-                        }
-                      </p>
-                    </div>
-                  </article>
-                )
-              )
-            }
+                <i />
+
+                <span>
+                  EXPLAIN
+                </span>
+              </div>
+
+              <div
+                className={
+                  styles.educationCopy
+                }
+              >
+                <p
+                  className={
+                    family.eyebrow
+                  }
+                >
+                  Hands-on methodology
+                </p>
+
+                <h2>
+                  Learn security by doing security.
+                </h2>
+
+                <p>
+                  Training and mentorship focus on practical technical work, experimentation and repeatable reasoning.
+                </p>
+
+                <Link
+                  href="/training"
+                  className={
+                    family.textAction
+                  }
+                >
+                  Explore Training Hub
+
+                  <Arrow />
+                </Link>
+              </div>
+            </article>
           </div>
         </Container>
       </section>
 
 
-      <section
-        id="education"
-        className={
-          `${family.section} ${family.sectionAlt}`
-        }
-        data-founder-section="education"
-      >
-        <Container
-          size="wide"
-          className={
-            family.container
-          }
-        >
-          <SectionHeader
-            index="04"
-            eyebrow="Education"
-            title="Learning as part of the security practice."
-          />
-
-          <article
-            className={
-              styles.founderEducationCard
-            }
-            data-founder-card="education"
-          >
-            <div
-              className={
-                styles.educationVisual
-              }
-              aria-hidden="true"
-            >
-              <span>
-                BUILD
-              </span>
-
-              <i />
-
-              <span>
-                TEST
-              </span>
-
-              <i />
-
-              <span>
-                EXPLAIN
-              </span>
-            </div>
-
-            <div
-              className={
-                styles.educationCopy
-              }
-            >
-              <p
-                className={
-                  family.eyebrow
-                }
-              >
-                Hands-on methodology
-              </p>
-
-              <h2>
-                Learn security by doing security.
-              </h2>
-
-              <p>
-                Training and mentorship focus on practical technical work, experimentation and repeatable reasoning.
-              </p>
-
-              <Link
-                href="/training"
-                className={
-                  family.textAction
-                }
-              >
-                Explore Training Hub
-
-                <Arrow />
-              </Link>
-            </div>
-          </article>
-        </Container>
-      </section>
-
+      {/* 03 — PUBLIC WORK */}
 
       <section
         id="public-work"
         className={
           family.section
         }
+        data-company-content-section="public-work"
         data-founder-section="public-work"
       >
         <Container
@@ -866,7 +861,7 @@ export default function FounderPage() {
           }
         >
           <SectionHeader
-            index="05"
+            index="03"
             eyebrow="Public work"
             title="Selected public engagements."
             description="Training, community participation and technical knowledge sharing remain visible parts of the work."
@@ -1026,6 +1021,8 @@ export default function FounderPage() {
         </Container>
       </section>
 
+
+      {/* CONTACT CTA */}
 
       <section
         className={

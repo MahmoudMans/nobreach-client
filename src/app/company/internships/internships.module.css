@@ -1289,3 +1289,45 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_INTERNSHIP_THREE_SECTION_ARCHITECTURE_V18
+   ========================================================================== */
+
+
+.page [data-company-content-section="projects"] {
+  min-height:
+    0;
+}
+
+
+.page [data-company-content-section="method"] {
+  min-height:
+    clamp(
+      460px,
+      58svh,
+      540px
+    );
+}
+
+
+.page [data-company-content-section="public-showcase"] {
+  min-height:
+    320px;
+}
+
+
+@media (
+  max-width:
+    1023px
+) {
+
+  .page [data-company-content-section="projects"],
+  .page [data-company-content-section="method"],
+  .page [data-company-content-section="public-showcase"] {
+    min-height:
+      0;
+  }
+
+}

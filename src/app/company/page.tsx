@@ -158,7 +158,6 @@ const principles = [
 ];
 
 
-
 const timeline = [
   {
     year:
@@ -295,6 +294,68 @@ function SectionHeader({
 }
 
 
+function SubsectionHeader({
+  label,
+  title,
+  description
+}: {
+  label:
+    string;
+
+  title:
+    string;
+
+  description?:
+    string;
+}) {
+
+  return (
+    <div
+      className={
+        family.subsectionHeader
+      }
+    >
+      <p
+        className={
+          family.subsectionLabel
+        }
+      >
+        {
+          label
+        }
+      </p>
+
+      <h3
+        className={
+          family.subsectionTitle
+        }
+      >
+        {
+          title
+        }
+      </h3>
+
+      {
+        description
+          ? (
+            <p
+              className={
+                family.subsectionDescription
+              }
+            >
+              {
+                description
+              }
+            </p>
+          )
+          : null
+      }
+    </div>
+  );
+
+}
+
+
 export default function CompanyPage() {
 
   return (
@@ -306,7 +367,12 @@ export default function CompanyPage() {
       data-company-design="v9"
       data-company-family="v14"
       data-company-density="v15"
+      data-company-architecture="v18"
     >
+      {/* ================================================================
+          HERO — NOT INCLUDED IN THREE-SECTION BUDGET
+         ================================================================ */}
+
       <section
         className={
           `${family.pageIntro} ${styles.hero}`
@@ -483,12 +549,16 @@ export default function CompanyPage() {
       </section>
 
 
+      {/* ================================================================
+          01 — COMPANY & OPERATING MODEL
+         ================================================================ */}
+
       <section
-        id="company"
         className={
           family.section
         }
-        data-company-section="who-we-are"
+        data-company-content-section="company"
+        data-company-section="company-operating-model"
       >
         <Container
           size="wide"
@@ -610,14 +680,16 @@ export default function CompanyPage() {
       </section>
 
 
-
+      {/* ================================================================
+          02 — CAPABILITIES + PRINCIPLES
+         ================================================================ */}
 
       <section
-        id="capabilities"
         className={
-          family.section
+          `${family.section} ${family.sectionAlt}`
         }
-        data-company-section="what-we-do"
+        data-company-content-section="capabilities"
+        data-company-section="capabilities-principles"
       >
         <Container
           size="wide"
@@ -628,36 +700,125 @@ export default function CompanyPage() {
           <SectionHeader
             index="02"
             eyebrow="Capabilities"
-            title="Four connected parts of the No Breach ecosystem."
-            description="Each area has a distinct role, but all are built around practical security understanding."
+            title="What No Breach does — and how the work is approached."
+            description="Professional security, hands-on education, challenge and technical knowledge operate as one connected system."
           />
 
           <div
             className={
-              styles.capabilityRows
+              family.subsection
             }
-            data-company-ui="capability-grid"
           >
-            {
-              capabilities.map(
-                (
-                  item
-                ) => (
-                  <Link
-                    href={
-                      item.href
-                    }
-                    className={
-                      styles.capabilityRow
-                    }
-                    data-company-card="capability"
-                    key={
-                      item.index
-                    }
-                  >
-                    <div
+            <SubsectionHeader
+              label="Capabilities"
+              title="Four connected parts of the No Breach ecosystem."
+            />
+
+            <div
+              className={
+                styles.capabilityRows
+              }
+              data-company-ui="capability-grid"
+            >
+              {
+                capabilities.map(
+                  (
+                    item
+                  ) => (
+                    <Link
+                      href={
+                        item.href
+                      }
                       className={
-                        styles.capabilityMeta
+                        styles.capabilityRow
+                      }
+                      data-company-card="capability"
+                      key={
+                        item.index
+                      }
+                    >
+                      <div
+                        className={
+                          styles.capabilityMeta
+                        }
+                      >
+                        <span>
+                          {
+                            item.index
+                          }
+                        </span>
+
+                        <small>
+                          {
+                            item.code
+                          }
+                        </small>
+                      </div>
+
+                      <div>
+                        <h3>
+                          {
+                            item.title
+                          }
+                        </h3>
+
+                        <p>
+                          {
+                            item.description
+                          }
+                        </p>
+                      </div>
+
+                      <div
+                        className={
+                          styles.capabilityVisual
+                        }
+                        aria-hidden="true"
+                      >
+                        <span />
+
+                        <span />
+
+                        <i />
+                      </div>
+
+                      <Arrow />
+                    </Link>
+                  )
+                )
+              }
+            </div>
+          </div>
+
+          <div
+            className={
+              family.subsection
+            }
+          >
+            <SubsectionHeader
+              label="Principles"
+              title="Three principles guide the work."
+              description="The same mindset carries across assessments, education and community activity."
+            />
+
+            <div
+              className={
+                styles.principleRows
+              }
+              data-company-ui="principle-grid"
+            >
+              {
+                principles.map(
+                  (
+                    item
+                  ) => (
+                    <article
+                      className={
+                        styles.principleRow
+                      }
+                      data-company-card="principle"
+                      key={
+                        item.index
                       }
                     >
                       <span>
@@ -666,14 +827,6 @@ export default function CompanyPage() {
                         }
                       </span>
 
-                      <small>
-                        {
-                          item.code
-                        }
-                      </small>
-                    </div>
-
-                    <div>
                       <h3>
                         {
                           item.title
@@ -685,37 +838,26 @@ export default function CompanyPage() {
                           item.description
                         }
                       </p>
-                    </div>
-
-                    <div
-                      className={
-                        styles.capabilityVisual
-                      }
-                      aria-hidden="true"
-                    >
-                      <span />
-
-                      <span />
-
-                      <i />
-                    </div>
-
-                    <Arrow />
-                  </Link>
+                    </article>
+                  )
                 )
-              )
-            }
+              }
+            </div>
           </div>
         </Container>
       </section>
 
 
+      {/* ================================================================
+          03 — JOURNEY + FOUNDER + PEOPLE
+         ================================================================ */}
+
       <section
-        id="principles"
         className={
-          `${family.section} ${family.sectionAlt}`
+          family.section
         }
-        data-company-section="principles"
+        data-company-content-section="people-journey"
+        data-company-section="people-journey"
       >
         <Container
           size="wide"
@@ -725,305 +867,235 @@ export default function CompanyPage() {
         >
           <SectionHeader
             index="03"
-            eyebrow="How we work"
-            title="The operating principles stay simple."
+            eyebrow="Journey & people"
+            title="How No Breach has grown — and the people behind the work."
           />
 
           <div
             className={
-              styles.principleRows
+              family.subsection
             }
-            data-company-ui="principle-grid"
           >
-            {
-              principles.map(
-                (
-                  item
-                ) => (
-                  <article
-                    className={
-                      styles.principleRow
-                    }
-                    data-company-card="principle"
-                    key={
-                      item.index
-                    }
-                  >
-                    <span>
-                      {
-                        item.index
-                      }
-                    </span>
+            <SubsectionHeader
+              label="Journey"
+              title="Built through successive layers of activity."
+            />
 
-                    <h3>
-                      {
-                        item.title
-                      }
-                    </h3>
-
-                    <p>
-                      {
-                        item.description
-                      }
-                    </p>
-                  </article>
-                )
-              )
-            }
-          </div>
-        </Container>
-      </section>
-
-
-
-
-      <section
-        id="timeline"
-        className={
-          `${family.section} ${family.sectionAlt}`
-        }
-        data-company-section="timeline"
-      >
-        <Container
-          size="wide"
-          className={
-            family.container
-          }
-        >
-          <SectionHeader
-            index="04"
-            eyebrow="Timeline"
-            title="Built through successive layers of activity."
-          />
-
-          <div
-            className={
-              styles.timeline
-            }
-            data-company-ui="timeline-grid"
-          >
-            {
-              timeline.map(
-                (
-                  item,
-                  index
-                ) => (
-                  <article
-                    className={
-                      styles.timelineItem
-                    }
-                    data-company-card="timeline"
-                    key={
-                      `${item.year}-${item.title}`
-                    }
-                  >
-                    <span
-                      className={
-                        styles.timelineIndex
-                      }
-                    >
-                      {
-                        String(
-                          index + 1
-                        ).padStart(
-                          2,
-                          "0"
-                        )
-                      }
-                    </span>
-
-                    <i
-                      aria-hidden="true"
-                    />
-
-                    <strong>
-                      {
-                        item.year
-                      }
-                    </strong>
-
-                    <p>
-                      {
-                        item.title
-                      }
-                    </p>
-                  </article>
-                )
-              )
-            }
-          </div>
-        </Container>
-      </section>
-
-
-      <section
-        className={
-          family.section
-        }
-        data-company-section="founder"
-      >
-        <Container
-          size="wide"
-          className={
-            family.container
-          }
-        >
-          <SectionHeader
-            index="05"
-            eyebrow="Founder"
-            title="Technical work with a human point of view."
-          />
-
-          <div
-            className={
-              styles.founderPreview
-            }
-            data-company-card="founder"
-          >
             <div
               className={
-                styles.founderPortrait
+                styles.timeline
               }
-              aria-hidden="true"
+              data-company-ui="timeline-grid"
             >
-              <Image
-                src="/people/ceo.png"
-                alt=""
-                fill
-                sizes="(max-width: 768px) calc(100vw - 40px), 380px"
-                className={
-                  styles.founderPhoto
-                }
-                data-founder-photo-image="company"
+              {
+                timeline.map(
+                  (
+                    item,
+                    index
+                  ) => (
+                    <article
+                      className={
+                        styles.timelineItem
+                      }
+                      data-company-card="timeline"
+                      key={
+                        `${item.year}-${item.title}`
+                      }
+                    >
+                      <span
+                        className={
+                          styles.timelineIndex
+                        }
+                      >
+                        {
+                          String(
+                            index + 1
+                          ).padStart(
+                            2,
+                            "0"
+                          )
+                        }
+                      </span>
+
+                      <i
+                        aria-hidden="true"
+                      />
+
+                      <strong>
+                        {
+                          item.year
+                        }
+                      </strong>
+
+                      <p>
+                        {
+                          item.title
+                        }
+                      </p>
+                    </article>
+                  )
+                )
+              }
+            </div>
+          </div>
+
+          <div
+            className={
+              `${family.subsection} ${styles.peopleFounderGrid}`
+            }
+          >
+            <div>
+              <SubsectionHeader
+                label="Founder"
+                title="Technical work with a human point of view."
               />
 
               <div
                 className={
-                  styles.founderPhotoShade
+                  styles.founderPreview
                 }
-              />
+                data-company-card="founder"
+              >
+                <div
+                  className={
+                    styles.founderPortrait
+                  }
+                  aria-hidden="true"
+                >
+                  <Image
+                    src="/people/ceo.png"
+                    alt=""
+                    fill
+                    sizes="(max-width: 768px) calc(100vw - 40px), 220px"
+                    className={
+                      styles.founderPhoto
+                    }
+                    data-founder-photo-image="company"
+                  />
+
+                  <div
+                    className={
+                      styles.founderPhotoShade
+                    }
+                  />
+                </div>
+
+                <div
+                  className={
+                    styles.founderCopy
+                  }
+                >
+                  <p
+                    className={
+                      family.eyebrow
+                    }
+                  >
+                    Founder of No Breach
+                  </p>
+
+                  <h2>
+                    Nouha Ben Brahim
+                  </h2>
+
+                  <p>
+                    Cybersecurity professional focused on offensive security, training and community development.
+                  </p>
+
+                  <Link
+                    href="/company/founder"
+                    className={
+                      family.textAction
+                    }
+                  >
+                    Meet the founder
+
+                    <Arrow />
+                  </Link>
+                </div>
+              </div>
             </div>
 
             <div
               className={
-                styles.founderCopy
+                styles.peopleColumn
               }
             >
-              <p
+              <SubsectionHeader
+                label="Explore"
+                title="People and applied work."
+              />
+
+              <div
                 className={
-                  family.eyebrow
+                  styles.peopleRows
                 }
+                data-company-ui="people-grid"
               >
-                Founder of No Breach
-              </p>
+                <Link
+                  href="/company/team"
+                  className={
+                    styles.peopleRow
+                  }
+                  data-company-card="people"
+                >
+                  <span>
+                    01
+                  </span>
 
-              <h2>
-                Nouha Ben Brahim
-              </h2>
+                  <div>
+                    <small>
+                      COMPANY
+                    </small>
 
-              <p>
-                Cybersecurity professional focused on offensive security, training and community development.
-              </p>
+                    <h3>
+                      Team
+                    </h3>
 
-              <Link
-                href="/company/founder"
-                className={
-                  family.textAction
-                }
-              >
-                Meet the founder
+                    <p>
+                      Current public profiles behind the work.
+                    </p>
+                  </div>
 
-                <Arrow />
-              </Link>
+                  <Arrow />
+                </Link>
+
+                <Link
+                  href="/company/internships"
+                  className={
+                    styles.peopleRow
+                  }
+                  data-company-card="people"
+                >
+                  <span>
+                    02
+                  </span>
+
+                  <div>
+                    <small>
+                      APPLIED WORK
+                    </small>
+
+                    <h3>
+                      Internship projects
+                    </h3>
+
+                    <p>
+                      Security work developed through hands-on programs.
+                    </p>
+                  </div>
+
+                  <Arrow />
+                </Link>
+              </div>
             </div>
           </div>
         </Container>
       </section>
 
 
-      <section
-        className={
-          `${family.section} ${family.sectionAlt}`
-        }
-        data-company-section="team"
-      >
-        <Container
-          size="wide"
-          className={
-            family.container
-          }
-        >
-          <SectionHeader
-            index="06"
-            eyebrow="People & projects"
-            title="Explore the people and applied work behind No Breach."
-          />
-
-          <div
-            className={
-              styles.peopleRows
-            }
-            data-company-ui="people-grid"
-          >
-            <Link
-              href="/company/team"
-              className={
-                styles.peopleRow
-              }
-              data-company-card="people"
-            >
-              <span>
-                01
-              </span>
-
-              <div>
-                <small>
-                  COMPANY
-                </small>
-
-                <h3>
-                  Team
-                </h3>
-
-                <p>
-                  Current public profiles behind the work.
-                </p>
-              </div>
-
-              <Arrow />
-            </Link>
-
-            <Link
-              href="/company/internships"
-              className={
-                styles.peopleRow
-              }
-              data-company-card="people"
-            >
-              <span>
-                02
-              </span>
-
-              <div>
-                <small>
-                  APPLIED WORK
-                </small>
-
-                <h3>
-                  Internship projects
-                </h3>
-
-                <p>
-                  Security work developed through hands-on programs.
-                </p>
-              </div>
-
-              <Arrow />
-            </Link>
-          </div>
-        </Container>
-      </section>
-
+      {/* ================================================================
+          CONTACT CTA — NOT INCLUDED IN THREE-SECTION BUDGET
+         ================================================================ */}
 
       <section
         className={

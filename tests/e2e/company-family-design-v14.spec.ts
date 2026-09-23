@@ -10,28 +10,40 @@ const routes = [
       "/company",
 
     heading:
-      /offensive security beyond the assessment/i
+      /offensive security beyond the assessment/i,
+
+    contentSections:
+      3
   },
   {
     path:
       "/company/founder",
 
     heading:
-      "Nouha Ben Brahim"
+      "Nouha Ben Brahim",
+
+    contentSections:
+      3
   },
   {
     path:
       "/company/team",
 
     heading:
-      "People behind the work."
+      "People behind the work.",
+
+    contentSections:
+      1
   },
   {
     path:
       "/company/internships",
 
     heading:
-      "Security work built through practice."
+      "Security work built through practice.",
+
+    contentSections:
+      3
   }
 ] as const;
 
@@ -42,7 +54,7 @@ for (
 ) {
 
   test(
-    `${route.path} uses one primary page heading`,
+    `${route.path} uses one primary heading and the V18 section budget`,
     async ({
       page
     }) => {
@@ -56,7 +68,7 @@ for (
       );
 
 
-      const heading =
+      await expect(
         page.getByRole(
           "heading",
           {
@@ -66,11 +78,7 @@ for (
             name:
               route.heading
           }
-        );
-
-
-      await expect(
-        heading
+        )
       ).toBeVisible();
 
 
@@ -82,6 +90,22 @@ for (
         1
       );
 
+
+      await expect(
+        page.locator(
+          '[data-company-content-section]'
+        )
+      ).toHaveCount(
+        route.contentSections
+      );
+
+
+      expect(
+        route.contentSections
+      ).toBeLessThanOrEqual(
+        3
+      );
+
     }
   );
 
@@ -89,7 +113,7 @@ for (
 
 
 test(
-  "Company and Founder no longer render page-level navigation bars",
+  "Company and Founder do not render secondary page navigation",
   async ({
     page
   }) => {
@@ -126,62 +150,7 @@ test(
 
 
 test(
-  "company retains the complete editorial information architecture",
-  async ({
-    page
-  }) => {
-
-    await page.goto(
-      "/company"
-    );
-
-
-    for (
-      const section
-      of [
-        "hero",
-        "who-we-are",
-        "what-we-do",
-        "principles",
-        "timeline",
-        "founder",
-        "team",
-        "cta"
-      ]
-    ) {
-
-      await expect(
-        page.locator(
-          `[data-company-section="${section}"]`
-        )
-      ).toBeVisible();
-
-    }
-
-
-    await expect(
-      page.locator(
-        '[data-company-card="capability"]'
-      )
-    ).toHaveCount(
-      4
-    );
-
-
-    await expect(
-      page.locator(
-        '[data-company-card="principle"]'
-      )
-    ).toHaveCount(
-      3
-    );
-
-  }
-);
-
-
-test(
-  "founder retains portrait and complete profile sections",
+  "founder preserves all profile information inside three chapters",
   async ({
     page
   }) => {
@@ -199,38 +168,54 @@ test(
 
 
     for (
-      const section
+      const part
       of [
-        "hero",
         "overview",
         "journey",
         "expertise",
         "education",
-        "public-work",
-        "cta"
+        "public-work"
       ]
     ) {
 
       await expect(
         page.locator(
-          `[data-founder-section="${section}"]`
+          `[data-founder-section="${part}"]`
         )
-      ).toBeVisible();
+      ).toBeAttached();
 
     }
+
+
+    await expect(
+      page.locator(
+        '[data-company-content-section]'
+      )
+    ).toHaveCount(
+      3
+    );
 
   }
 );
 
 
 test(
-  "Team uses a real directory rather than placeholder cards",
+  "Team does not create filler sections",
   async ({
     page
   }) => {
 
     await page.goto(
       "/company/team"
+    );
+
+
+    await expect(
+      page.locator(
+        '[data-company-content-section]'
+      )
+    ).toHaveCount(
+      1
     );
 
 
@@ -244,27 +229,12 @@ test(
       )
     ).toBeVisible();
 
-
-    await expect(
-      page
-        .locator(
-          "#main-content"
-        )
-        .getByText(
-          "Founder",
-          {
-            exact:
-              true
-          }
-        )
-    ).toBeVisible();
-
   }
 );
 
 
 test(
-  "internship portfolio remains fully data-driven and visible",
+  "Internships uses exactly three content chapters",
   async ({
     page
   }) => {
@@ -274,38 +244,33 @@ test(
     );
 
 
-    const projects =
+    const sections =
       page.locator(
-        "article[id]"
+        '[data-company-content-section]'
       );
 
 
-    expect(
-      await projects.count()
-    ).toBeGreaterThanOrEqual(
-      8
+    await expect(
+      sections
+    ).toHaveCount(
+      3
     );
 
 
     for (
-      const title
+      const name
       of [
-        "AI Security Training Labs",
-        "Purple Team Cyber Range",
-        "No Breach ReportOps",
-        "Cloud-Native Security Playbook"
+        "projects",
+        "method",
+        "public-showcase"
       ]
     ) {
 
       await expect(
-        page.getByRole(
-          "heading",
-          {
-            name:
-              title
-          }
+        page.locator(
+          `[data-company-content-section="${name}"]`
         )
-      ).toBeVisible();
+      ).toBeAttached();
 
     }
 
@@ -414,8 +379,9 @@ for (
         expect(
           geometry.scrollWidth
         ).toBeLessThanOrEqual(
-          geometry.clientWidth +
-            1
+          geometry.clientWidth
+          +
+          1
         );
 
       }

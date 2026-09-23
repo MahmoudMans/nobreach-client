@@ -3280,3 +3280,355 @@ i {
   }
 
 }
+
+
+/* ==========================================================================
+   NB_COMPANY_THREE_SECTION_ARCHITECTURE_V18
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01 — COMPANY
+   ========================================================================== */
+
+
+.page
+[data-company-content-section="company"] {
+  min-height:
+    clamp(
+      460px,
+      58svh,
+      540px
+    );
+}
+
+
+/* ==========================================================================
+   02 — CAPABILITIES + PRINCIPLES
+
+   This is intentionally content-driven and taller than the standard cadence.
+   No blank height is added.
+   ========================================================================== */
+
+
+.page
+[data-company-content-section="capabilities"] {
+  min-height:
+    0;
+}
+
+
+.page
+[data-company-content-section="capabilities"]
+> div {
+  padding-top:
+    14px;
+
+  padding-bottom:
+    14px;
+}
+
+
+.page
+[data-company-content-section="capabilities"]
+.capabilityRows {
+  margin-top:
+    0;
+}
+
+
+.page
+[data-company-content-section="capabilities"]
+.capabilityRow {
+  min-height:
+    136px;
+
+  padding:
+    13px
+    0;
+}
+
+
+.page
+[data-company-content-section="capabilities"]
+.principleRow {
+  min-height:
+    82px;
+
+  padding:
+    11px
+    0;
+}
+
+
+/* ==========================================================================
+   03 — JOURNEY + PEOPLE
+   ========================================================================== */
+
+
+.page
+[data-company-content-section="people-journey"] {
+  min-height:
+    0;
+}
+
+
+.page
+[data-company-content-section="people-journey"]
+> div {
+  padding-top:
+    12px;
+
+  padding-bottom:
+    12px;
+}
+
+
+.peopleFounderGrid {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1.1fr
+    )
+    minmax(
+      320px,
+      0.9fr
+    );
+
+  gap:
+    clamp(
+      28px,
+      4vw,
+      48px
+    );
+
+  align-items:
+    start;
+}
+
+
+.peopleColumn {
+  min-width:
+    0;
+}
+
+
+/* Founder becomes a compact subsection rather than a page-sized section. */
+
+
+.peopleFounderGrid
+.founderPreview {
+  grid-template-columns:
+    180px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    22px;
+
+  align-items:
+    center;
+
+  padding:
+    0;
+
+  border-top:
+    0;
+
+  border-bottom:
+    0;
+}
+
+
+.peopleFounderGrid
+.founderPortrait {
+  width:
+    180px;
+
+  max-width:
+    180px;
+}
+
+
+.peopleFounderGrid
+.founderCopy h2 {
+  font-size:
+    clamp(
+      1.8rem,
+      2.7vw,
+      2.35rem
+    );
+}
+
+
+.peopleFounderGrid
+.founderCopy
+> p:not(
+  :first-child
+) {
+  margin-top:
+    10px;
+
+  font-size:
+    0.88rem;
+}
+
+
+.peopleFounderGrid
+.peopleRow {
+  min-height:
+    84px;
+
+  padding:
+    11px
+    0;
+}
+
+
+/* Timeline remains a horizontal rail from V17. */
+
+
+.page
+[data-company-content-section="people-journey"]
+.timelineItem {
+  min-height:
+    150px;
+
+  padding-top:
+    48px;
+
+  padding-bottom:
+    14px;
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .page
+  [data-company-content-section] {
+    min-height:
+      0;
+  }
+
+
+  .page
+  [data-company-content-section="capabilities"]
+  .capabilityRow {
+    min-height:
+      0;
+
+    padding:
+      13px
+      0;
+  }
+
+
+  .page
+  [data-company-content-section="capabilities"]
+  .principleRow {
+    min-height:
+      0;
+
+    padding:
+      12px
+      0;
+  }
+
+
+  .peopleFounderGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      22px;
+  }
+
+
+  .peopleFounderGrid
+  .founderPreview {
+    grid-template-columns:
+      120px
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      16px;
+  }
+
+
+  .peopleFounderGrid
+  .founderPortrait {
+    width:
+      120px;
+
+    max-width:
+      120px;
+  }
+
+
+  .peopleFounderGrid
+  .founderCopy h2 {
+    font-size:
+      1.55rem;
+  }
+
+
+  .peopleFounderGrid
+  .peopleRow {
+    min-height:
+      0;
+
+    padding:
+      12px
+      0;
+  }
+
+}
+
+
+@media (
+  max-width:
+    420px
+) {
+
+  .peopleFounderGrid
+  .founderPreview {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .peopleFounderGrid
+  .founderPortrait {
+    width:
+      min(
+        220px,
+        100%
+      );
+
+    max-width:
+      220px;
+  }
+
+}

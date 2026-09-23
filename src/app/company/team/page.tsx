@@ -65,6 +65,7 @@ export default function TeamPage() {
       }
       data-company-family="v14"
       data-company-density="v15"
+      data-company-architecture="v18"
       data-company-family-page="team"
     >
       <Breadcrumbs
@@ -219,6 +220,8 @@ export default function TeamPage() {
         className={
           family.section
         }
+
+        data-company-content-section="team-directory"
       >
         <Container
           size="wide"

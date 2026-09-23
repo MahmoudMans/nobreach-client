@@ -58,6 +58,7 @@ export default function InternshipsPage() {
       }
       data-company-family="v14"
       data-company-density="v15"
+      data-company-architecture="v18"
       data-company-family-page="internships"
     >
       <Breadcrumbs
@@ -223,6 +224,8 @@ export default function InternshipsPage() {
         className={
           family.section
         }
+
+        data-company-content-section="projects"
       >
         <Container
           size="wide"
@@ -447,6 +450,8 @@ export default function InternshipsPage() {
         className={
           `${family.section} ${family.sectionAlt}`
         }
+
+        data-company-content-section="method"
       >
         <Container
           size="wide"
@@ -548,6 +553,8 @@ export default function InternshipsPage() {
         className={
           styles.safetySection
         }
+
+        data-company-content-section="public-showcase"
       >
         <Container
           size="wide"

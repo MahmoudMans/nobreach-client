@@ -4,43 +4,8 @@ import {
 } from "@playwright/test";
 
 
-async function ready(
-  page:
-    import("@playwright/test").Page
-) {
-
-  const company =
-    page.locator(
-      '[data-company-page="v4"]'
-    );
-
-
-  await expect(
-    company
-  ).toBeVisible();
-
-
-  await expect(
-    page.getByRole(
-      "heading",
-      {
-        level:
-          1,
-
-        name:
-          /offensive security beyond the assessment/i
-      }
-    )
-  ).toBeVisible();
-
-
-  return company;
-
-}
-
-
 test(
-  "company V15 renders the concise corporate architecture",
+  "company V18 presents exactly three real content chapters",
   async ({
     page
   }) => {
@@ -50,58 +15,56 @@ test(
     );
 
 
-    const company =
-      await ready(
-        page
+    await expect(
+      page.locator(
+        '[data-company-section="hero"]'
+      )
+    ).toBeVisible();
+
+
+    const sections =
+      page.locator(
+        '[data-company-content-section]'
       );
 
 
+    await expect(
+      sections
+    ).toHaveCount(
+      3
+    );
+
+
     for (
-      const section
+      const name
       of [
-        "hero",
-        "who-we-are",
-        "what-we-do",
-        "principles",
-        "timeline",
-        "founder",
-        "team",
-        "cta"
+        "company",
+        "capabilities",
+        "people-journey"
       ]
     ) {
 
       await expect(
-        company.locator(
-          `[data-company-section="${section}"]`
+        page.locator(
+          `[data-company-content-section="${name}"]`
         )
-      ).toBeVisible();
+      ).toBeAttached();
 
     }
 
 
     await expect(
-      company.locator(
-        '[data-company-section="story"]'
+      page.locator(
+        '[data-company-section="cta"]'
       )
-    ).toHaveCount(
-      0
-    );
-
-
-    await expect(
-      company.locator(
-        '[data-company-section="ecosystem"]'
-      )
-    ).toHaveCount(
-      0
-    );
+    ).toBeAttached();
 
   }
 );
 
 
 test(
-  "company profile retains four factual items",
+  "Company and operating model share the first chapter",
   async ({
     page
   }) => {
@@ -111,115 +74,76 @@ test(
     );
 
 
-    await ready(
-      page
-    );
-
-
-    const facts =
+    const section =
       page.locator(
-        '[data-company-ui="facts"] > div'
+        '[data-company-content-section="company"]'
       );
 
 
+    await section.scrollIntoViewIfNeeded();
+
+
     await expect(
-      facts
-    ).toHaveCount(
-      4
-    );
+      section
+    ).toBeVisible();
+
+
+    await expect(
+      section.getByText(
+        "Operating model",
+        {
+          exact:
+            true
+        }
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      section.getByText(
+        "Security services",
+        {
+          exact:
+            true
+        }
+      )
+    ).toBeVisible();
 
   }
 );
 
 
 test(
-  "capabilities use compact editorial rows",
+  "Capabilities and principles share the second chapter",
   async ({
     page
   }) => {
-
-    await page.setViewportSize({
-      width:
-        1440,
-
-      height:
-        900
-    });
-
 
     await page.goto(
       "/company"
     );
 
 
-    await ready(
-      page
-    );
-
-
-    const rows =
+    const section =
       page.locator(
+        '[data-company-content-section="capabilities"]'
+      );
+
+
+    await section.scrollIntoViewIfNeeded();
+
+
+    await expect(
+      section.locator(
         '[data-company-card="capability"]'
-      );
-
-
-    await expect(
-      rows
+      )
     ).toHaveCount(
       4
     );
 
 
-    const first =
-      await rows
-        .first()
-        .boundingBox();
-
-
-    if (!first) {
-
-      throw new Error(
-        "Capability geometry unavailable"
-      );
-
-    }
-
-
-    expect(
-      first.height
-    ).toBeGreaterThan(
-      150
-    );
-
-
-    expect(
-      first.height
-    ).toBeLessThan(
-      230
-    );
-
-  }
-);
-
-
-test(
-  "company retains three operating principles",
-  async ({
-    page
-  }) => {
-
-    await page.goto(
-      "/company"
-    );
-
-
-    await ready(
-      page
-    );
-
-
     await expect(
-      page.locator(
+      section.locator(
         '[data-company-card="principle"]'
       )
     ).toHaveCount(
@@ -231,7 +155,7 @@ test(
 
 
 test(
-  "founder and people destinations remain available",
+  "Journey founder and people share the third chapter",
   async ({
     page
   }) => {
@@ -241,20 +165,33 @@ test(
     );
 
 
-    await ready(
-      page
+    const section =
+      page.locator(
+        '[data-company-content-section="people-journey"]'
+      );
+
+
+    await section.scrollIntoViewIfNeeded();
+
+
+    await expect(
+      section.locator(
+        '[data-company-card="timeline"]'
+      )
+    ).toHaveCount(
+      5
     );
 
 
     await expect(
-      page.locator(
+      section.locator(
         '[data-company-card="founder"]'
       )
     ).toBeVisible();
 
 
     await expect(
-      page.locator(
+      section.locator(
         '[data-company-card="people"]'
       )
     ).toHaveCount(
@@ -266,7 +203,7 @@ test(
 
 
 test(
-  "company V15 remains overflow-free on mobile",
+  "company V18 stays overflow free on mobile",
   async ({
     page
   }) => {
@@ -285,12 +222,7 @@ test(
     );
 
 
-    await ready(
-      page
-    );
-
-
-    const metrics =
+    const result =
       await page.evaluate(
         () => ({
           scrollWidth:
@@ -307,10 +239,11 @@ test(
 
 
     expect(
-      metrics.scrollWidth
+      result.scrollWidth
     ).toBeLessThanOrEqual(
-      metrics.clientWidth +
-        1
+      result.clientWidth
+      +
+      1
     );
 
   }

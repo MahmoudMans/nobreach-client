@@ -2206,3 +2206,97 @@ div {
   }
 
 }
+
+
+/* ==========================================================================
+   NB_FOUNDER_THREE_SECTION_ARCHITECTURE_V18
+   ========================================================================== */
+
+
+/* Journey combines former Overview + Journey. */
+
+
+.founderPage [data-company-content-section="journey"]
+.founderOverviewGrid {
+  margin-bottom:
+    0;
+}
+
+
+.founderPage [data-company-content-section="journey"]
+.founderJourneyItem {
+  min-height:
+    78px;
+
+  padding:
+    11px
+    0;
+}
+
+
+/* Expertise + Education share one chapter. */
+
+
+.founderPage [data-company-content-section="expertise-education"] {
+  min-height:
+    0;
+}
+
+
+.founderPage [data-company-content-section="expertise-education"]
+.founderExpertiseCard {
+  min-height:
+    78px;
+
+  padding:
+    11px
+    0;
+}
+
+
+.founderPage [data-company-content-section="expertise-education"]
+.founderEducationCard {
+  margin-top:
+    0;
+}
+
+
+/* Public work is one final content chapter. */
+
+
+.founderPage [data-company-content-section="public-work"] {
+  min-height:
+    clamp(
+      460px,
+      58svh,
+      540px
+    );
+}
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .founderPage [data-company-content-section="journey"],
+  .founderPage [data-company-content-section="expertise-education"],
+  .founderPage [data-company-content-section="public-work"] {
+    min-height:
+      0;
+  }
+
+
+  .founderPage [data-company-content-section="journey"]
+  .founderJourneyItem,
+  .founderPage [data-company-content-section="expertise-education"]
+  .founderExpertiseCard {
+    min-height:
+      0;
+
+    padding:
+      11px
+      0;
+  }
+
+}

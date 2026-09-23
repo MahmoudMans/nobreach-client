@@ -2878,3 +2878,243 @@ and
   }
 
 }
+
+
+/* ==========================================================================
+   NB_COMPANY_FAMILY_THREE_SECTION_ARCHITECTURE_V18
+
+   Page-budget rule:
+
+   Hero / PageIntro
+        ↓
+   maximum 3 meaningful content sections
+        ↓
+   Final Contact CTA
+        ↓
+   Footer
+
+   Hero and CTA are not counted.
+
+   A page may contain fewer than three content sections when that is more
+   appropriate. Never create filler just to reach the budget.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   GROUPED SUBSECTIONS
+   ========================================================================== */
+
+
+.subsection {
+  min-width:
+    0;
+}
+
+
+.subsection
++
+.subsection {
+  margin-top:
+    30px;
+
+  padding-top:
+    26px;
+
+  border-top:
+    1px
+    solid
+    var(
+      --company-divider
+    );
+}
+
+
+.subsectionHeader {
+  display:
+    grid;
+
+  gap:
+    5px;
+
+  max-width:
+    760px;
+
+  margin-bottom:
+    18px;
+}
+
+
+.subsectionLabel {
+  margin:
+    0;
+
+  color:
+    var(
+      --company-cyan
+    );
+
+  font-family:
+    var(
+      --font-company-mono
+    ),
+    monospace;
+
+  font-size:
+    0.66rem;
+
+  font-weight:
+    600;
+
+  line-height:
+    1.4;
+
+  letter-spacing:
+    0.07em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.subsectionTitle {
+  margin:
+    0;
+
+  color:
+    var(
+      --company-text-secondary
+    );
+
+  font-family:
+    var(
+      --font-company-display
+    ),
+    sans-serif;
+
+  font-size:
+    clamp(
+      1.35rem,
+      2vw,
+      1.7rem
+    );
+
+  font-weight:
+    600;
+
+  line-height:
+    1.25;
+
+  letter-spacing:
+    -0.025em;
+}
+
+
+.subsectionDescription {
+  max-width:
+    650px;
+
+  margin:
+    3px
+    0
+    0;
+
+  color:
+    var(
+      --company-text-muted
+    );
+
+  font-size:
+    0.86rem;
+
+  line-height:
+    1.55;
+}
+
+
+/* ==========================================================================
+   CONTENT SECTION BUDGET
+   ========================================================================== */
+
+
+@media (
+  min-width:
+    1024px
+) {
+
+  .fontScope [data-company-content-section] {
+    scroll-margin-top:
+      72px;
+  }
+
+
+  /*
+   * Short sections retain the V17 cadence.
+   * Grouped/content-heavy sections expand naturally.
+   */
+  .fontScope [data-company-content-section] {
+    min-height:
+      clamp(
+        460px,
+        58svh,
+        540px
+      );
+  }
+
+}
+
+
+@media (
+  max-width:
+    1023px
+) {
+
+  .fontScope [data-company-content-section] {
+    min-height:
+      0;
+  }
+
+
+  .subsection
+  +
+  .subsection {
+    margin-top:
+      24px;
+
+    padding-top:
+      22px;
+  }
+
+}
+
+
+@media (
+  max-width:
+    767px
+) {
+
+  .subsection
+  +
+  .subsection {
+    margin-top:
+      20px;
+
+    padding-top:
+      18px;
+  }
+
+
+  .subsectionHeader {
+    gap:
+      4px;
+
+    margin-bottom:
+      14px;
+  }
+
+
+  .subsectionTitle {
+    font-size:
+      1.25rem;
+  }
+
+}
