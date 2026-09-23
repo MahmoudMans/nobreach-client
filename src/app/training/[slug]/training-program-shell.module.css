@@ -1532,4413 +1532,21 @@
 }
 
 
-/* ==========================================================================
-   NB_AI_SECURITY_FOUNDATIONS_MINIMAL_V11
-
-   Dedicated AI Security Foundations redesign.
-
-   Direction:
-   - minimalist
-   - editorial
-   - technically credible
-   - compact
-   - modern
-   - professional
-
-   The existing program content and shared dynamic training architecture
-   remain unchanged.
-   ========================================================================== */
-
-
-.aiSecurity {
-  --ai11-bg:
-    #08090c;
-
-  --ai11-bg-soft:
-    #0a0c10;
-
-  --ai11-text:
-    #f4f6f8;
-
-  --ai11-muted:
-    rgba(
-      244,
-      246,
-      248,
-      0.62
-    );
-
-  --ai11-faint:
-    rgba(
-      244,
-      246,
-      248,
-      0.36
-    );
-
-  --ai11-line:
-    rgba(
-      255,
-      255,
-      255,
-      0.09
-    );
-
-  --ai11-line-strong:
-    rgba(
-      255,
-      255,
-      255,
-      0.15
-    );
-
-  --ai11-blue:
-    #83b3d7;
-
-  --ai11-cyan:
-    #a1e2f0;
-
-  --ai11-violet:
-    #7e60b9;
-
-  --ai11-purple:
-    #6333c6;
-
-  --ai11-safe:
-    clamp(
-      0.85rem,
-      1.2vw,
-      1.15rem
-    );
-
-  width:
-    100%;
-
-  min-width:
-    0;
-
-  max-width:
-    100%;
-
-  position:
-    relative;
-
-  isolation:
-    isolate;
-
-  overflow:
-    clip;
-
-  background:
-    var(--ai11-bg);
-
-  color:
-    var(--ai11-text);
-}
-
-
-/*
- * Remove the old "AI demo" feeling.
- * A single subtle ambient wash remains for depth.
- */
-.aiSecurity::before {
-  content:
-    "";
-
-  width:
-    min(
-      600px,
-      46vw
-    );
-
-  aspect-ratio:
-    1;
-
-  position:
-    absolute;
-
-  top:
-    -260px;
-
-  right:
-    -170px;
-
-  z-index:
-    -1;
-
-  border:
-    1px solid
-    rgba(
-      161,
-      226,
-      240,
-      0.06
-    );
-
-  border-radius:
-    50%;
-
-  opacity:
-    0.7;
-
-  pointer-events:
-    none;
-}
-
-
-.aiSecurity::after {
-  content:
-    "";
-
-  position:
-    absolute;
-
-  top:
-    0;
-
-  right:
-    0;
-
-  left:
-    0;
-
-  height:
-    1px;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(
-        161,
-        226,
-        240,
-        0.44
-      ),
-      transparent
-    );
-
-  pointer-events:
-    none;
-}
-
-
-/* ==========================================================================
-   UNIVERSAL CONTAINMENT
-   ========================================================================== */
-
-
-.aiSecurity :global(*) {
-  box-sizing:
-    border-box;
-}
-
-
-.aiSecurity :global(main),
-.aiSecurity :global(section),
-.aiSecurity :global(article),
-.aiSecurity :global(header),
-.aiSecurity :global(footer),
-.aiSecurity :global(div),
-.aiSecurity :global(nav),
-.aiSecurity :global(aside),
-.aiSecurity :global(dl),
-.aiSecurity :global(ul),
-.aiSecurity :global(ol) {
-  min-width:
-    0;
-
-  max-width:
-    100%;
-}
-
-
-.aiSecurity :global(img),
-.aiSecurity :global(svg),
-.aiSecurity :global(video) {
-  max-width:
-    100%;
-
-  height:
-    auto;
-}
-
-
-/* ==========================================================================
-   HERO / FIRST IMPRESSION
-   ========================================================================== */
-
-
-.aiSecurity :global(main) {
-  width:
-    100%;
-
-  background:
-    transparent;
-}
-
-
-.aiSecurity :global(section) {
-  width:
-    100%;
-
-  padding-top:
-    clamp(
-      3rem,
-      4.8vw,
-      4.6rem
-    );
-
-  padding-bottom:
-    clamp(
-      3rem,
-      4.8vw,
-      4.6rem
-    );
-
-  border-top:
-    1px solid
-    var(--ai11-line);
-
-  background:
-    transparent;
-}
-
-
-.aiSecurity :global(section:first-of-type) {
-  padding-top:
-    clamp(
-      2rem,
-      3.2vw,
-      3rem
-    );
-
-  border-top:
-    0;
-}
-
-
-.aiSecurity :global(h1) {
-  max-width:
-    14ch;
-
-  margin-top:
-    0.7rem;
-
-  margin-bottom:
-    1rem;
-
-  color:
-    var(--ai11-text);
-
-  font-size:
-    clamp(
-      3.35rem,
-      6.6vw,
-      6.4rem
-    );
-
-  font-weight:
-    435;
-
-  line-height:
-    0.9;
-
-  letter-spacing:
-    -0.067em;
-
-  text-wrap:
-    balance;
-
-  overflow-wrap:
-    anywhere;
-}
-
-
-.aiSecurity :global(h1 + p) {
-  max-width:
-    63ch;
-
-  margin-top:
-    0;
-
-  color:
-    var(--ai11-muted);
-
-  font-size:
-    clamp(
-      1rem,
-      1.35vw,
-      1.1rem
-    );
-
-  line-height:
-    1.7;
-}
-
-
-/*
- * Keep the opening screen compact.
- */
-.aiSecurity :global(section:first-of-type p) {
-  margin-bottom:
-    0.9rem;
-}
-
-
-.aiSecurity :global(section:first-of-type a),
-.aiSecurity :global(section:first-of-type button) {
-  margin-top:
-    0.25rem;
-}
-
-
-/* ==========================================================================
-   TYPOGRAPHY
-   ========================================================================== */
-
-
-.aiSecurity :global(h2) {
-  max-width:
-    18ch;
-
-  margin-top:
-    0;
-
-  margin-bottom:
-    0.85rem;
-
-  color:
-    var(--ai11-text);
-
-  font-size:
-    clamp(
-      2.1rem,
-      3.8vw,
-      3.6rem
-    );
-
-  font-weight:
-    450;
-
-  line-height:
-    0.99;
-
-  letter-spacing:
-    -0.052em;
-
-  text-wrap:
-    balance;
-
-  overflow-wrap:
-    anywhere;
-}
-
-
-.aiSecurity :global(h3) {
-  margin-top:
-    0;
-
-  margin-bottom:
-    0.42rem;
-
-  color:
-    var(--ai11-text);
-
-  font-size:
-    clamp(
-      1rem,
-      1.35vw,
-      1.15rem
-    );
-
-  font-weight:
-    530;
-
-  line-height:
-    1.32;
-
-  letter-spacing:
-    -0.018em;
-}
-
-
-.aiSecurity :global(p) {
-  max-width:
-    68ch;
-
-  color:
-    var(--ai11-muted);
-
-  line-height:
-    1.65;
-
-  overflow-wrap:
-    anywhere;
-}
-
-
-.aiSecurity :global(strong) {
-  color:
-    var(--ai11-text);
-}
-
-
-.aiSecurity :global(small) {
-  color:
-    var(--ai11-faint);
-}
-
-
-/* ==========================================================================
-   PROGRAM METADATA
-   ========================================================================== */
-
-
-.aiSecurity :global(dl) {
-  display:
-    grid;
-
-  grid-template-columns:
-    repeat(
-      auto-fit,
-      minmax(
-        145px,
-        1fr
-      )
-    );
-
-  margin:
-    1.8rem
-    0
-    0;
-
-  padding:
-    0;
-
-  border-top:
-    1px solid
-    var(--ai11-line);
-
-  border-bottom:
-    1px solid
-    var(--ai11-line);
-}
-
-
-.aiSecurity :global(dl > div) {
-  min-width:
-    0;
-
-  padding:
-    0.8rem
-    var(--ai11-safe);
-
-  border-right:
-    1px solid
-    var(--ai11-line);
-}
-
-
-.aiSecurity :global(dl > div:last-child) {
-  border-right:
-    0;
-}
-
-
-.aiSecurity :global(dt) {
-  margin:
-    0;
-
-  color:
-    var(--ai11-faint);
-
-  font-size:
-    0.59rem;
-
-  font-weight:
-    660;
-
-  letter-spacing:
-    0.09em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.aiSecurity :global(dd) {
-  margin:
-    0.28rem
-    0
-    0;
-
-  color:
-    var(--ai11-text);
-
-  font-size:
-    0.84rem;
-
-  line-height:
-    1.45;
-
-  overflow-wrap:
-    anywhere;
-}
-
-
-/* ==========================================================================
-   OVERVIEW / BODY SECTIONS
-   ========================================================================== */
-
-
-.aiSecurity :global(section > header),
-.aiSecurity :global(section > div:first-child) {
-  min-width:
-    0;
-}
-
-
-.aiSecurity :global(section > header p) {
-  margin-top:
-    0.55rem;
-}
-
-
-/*
- * Prefer editorial rules over boxed containers.
- */
-.aiSecurity :global(article) {
-  position:
-    relative;
-
-  margin:
-    0;
-
-  padding:
-    1rem
-    var(--ai11-safe);
-
-  border:
-    0;
-
-  border-top:
-    1px solid
-    var(--ai11-line);
-
-  border-radius:
-    0;
-
-  background:
-    transparent;
-
-  box-shadow:
-    none;
-}
-
-
-.aiSecurity :global(article:last-child) {
-  border-bottom:
-    1px solid
-    var(--ai11-line);
-}
-
-
-.aiSecurity :global(article p) {
-  margin-top:
-    0.42rem;
-
-  margin-bottom:
-    0;
-}
-
-
-/* ==========================================================================
-   LEARNING OBJECTIVES / LISTS
-   ========================================================================== */
-
-
-.aiSecurity :global(ul),
-.aiSecurity :global(ol) {
-  max-width:
-    100%;
-
-  margin-top:
-    1rem;
-
-  margin-bottom:
-    0;
-
-  padding-left:
-    1.25rem;
-}
-
-
-.aiSecurity :global(li) {
-  padding:
-    0.48rem
-    0;
-
-  color:
-    var(--ai11-muted);
-
-  line-height:
-    1.58;
-
-  overflow-wrap:
-    anywhere;
-}
-
-
-.aiSecurity :global(li::marker) {
-  color:
-    var(--ai11-cyan);
-
-  font-size:
-    0.72em;
-}
-
-
-/* ==========================================================================
-   CURRICULUM / MODULES
-   ========================================================================== */
-
-
-/*
- * Nested curriculum articles become an indexed editorial sequence rather
- * than a card grid.
- */
-.aiSecurity :global(section article + article) {
-  margin-top:
-    0;
-}
-
-
-.aiSecurity :global(section article h3) {
-  max-width:
-    42ch;
-}
-
-
-/*
- * Preserve readable module descriptions.
- */
-.aiSecurity :global(section article p) {
-  max-width:
-    62ch;
-}
-
-
-/* ==========================================================================
-   LINKS / ACTIONS
-   ========================================================================== */
-
-
-.aiSecurity :global(a) {
-  text-underline-offset:
-    0.22em;
-}
-
-
-.aiSecurity :global(button),
-.aiSecurity :global(a[role="button"]) {
-  min-height:
-    44px;
-
-  max-width:
-    100%;
-
-  padding:
-    0.72rem
-    1rem;
-
-  border:
-    1px solid
-    var(--ai11-line-strong);
-
-  border-radius:
-    0;
-
-  background:
-    transparent;
-
-  color:
-    var(--ai11-text);
-
-  font: inherit;
-
-  font-size:
-    0.84rem;
-
-  font-weight:
-    640;
-
-  box-shadow:
-    none;
-}
-
-
-/* ==========================================================================
-   FAQ
-   ========================================================================== */
-
-
-.aiSecurity :global(details) {
-  border-top:
-    1px solid
-    var(--ai11-line);
-}
-
-
-.aiSecurity :global(details:last-of-type) {
-  border-bottom:
-    1px solid
-    var(--ai11-line);
-}
-
-
-.aiSecurity :global(summary) {
-  min-height:
-    66px;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    space-between;
-
-  gap:
-    1rem;
-
-  padding:
-    0.75rem
-    var(--ai11-safe);
-
-  color:
-    var(--ai11-text);
-
-  cursor:
-    pointer;
-}
-
-
-.aiSecurity :global(details > p),
-.aiSecurity :global(details > div) {
-  padding-right:
-    var(--ai11-safe);
-
-  padding-bottom:
-    1rem;
-
-  padding-left:
-    var(--ai11-safe);
-}
-
-
-/* ==========================================================================
-   SEPARATION / RHYTHM
-   ========================================================================== */
-
-
-.aiSecurity :global(hr) {
-  height:
-    1px;
-
-  margin:
-    1.6rem
-    0;
-
-  border:
-    0;
-
-  background:
-    var(--ai11-line);
-}
-
-
-.aiSecurity :global(section + section) {
-  margin-top:
-    0;
-}
-
-
-/* ==========================================================================
-   HOVER
-   ========================================================================== */
-
-
-@media (
-  hover:
-    hover
-)
-and
-(
-  pointer:
-    fine
-) {
-
-  .aiSecurity :global(article) {
-    transition:
-      border-color
-      150ms
-      ease;
-  }
-
-
-  .aiSecurity :global(article:hover) {
-    border-color:
-      rgba(
-        161,
-        226,
-        240,
-        0.3
-      );
-  }
-
-
-  .aiSecurity :global(a:hover) {
-    color:
-      var(--ai11-cyan);
-  }
-
-
-  .aiSecurity :global(button:hover),
-  .aiSecurity :global(a[role="button"]:hover) {
-    border-color:
-      rgba(
-        161,
-        226,
-        240,
-        0.5
-      );
-
-    color:
-      var(--ai11-cyan);
-  }
-
-}
-
-
-/* ==========================================================================
-   COMPACT DESKTOP — 1180
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    1180px
-) {
-
-  .aiSecurity :global(section) {
-    padding-top:
-      3.8rem;
-
-    padding-bottom:
-      3.8rem;
-  }
-
-
-  .aiSecurity :global(h1) {
-    font-size:
-      clamp(
-        3.25rem,
-        6.2vw,
-        5.6rem
-      );
-  }
-
-}
-
-
-/* ==========================================================================
-   TABLET — 900
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    900px
-) {
-
-  .aiSecurity {
-    --ai11-safe:
-      0.9rem;
-  }
-
-
-  .aiSecurity :global(dl) {
-    grid-template-columns:
-      repeat(
-        2,
-        minmax(
-          0,
-          1fr
-        )
-      );
-  }
-
-
-  .aiSecurity :global(dl > div:nth-child(2n)) {
-    border-right:
-      0;
-  }
-
-
-  .aiSecurity :global(dl > div:nth-child(n + 3)) {
-    border-top:
-      1px solid
-      var(--ai11-line);
-  }
-
-}
-
-
-/* ==========================================================================
-   MOBILE — 768
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    768px
-) {
-
-  .aiSecurity :global(section) {
-    padding-top:
-      2.9rem;
-
-    padding-bottom:
-      2.9rem;
-  }
-
-
-  .aiSecurity :global(section:first-of-type) {
-    padding-top:
-      1.8rem;
-  }
-
-
-  .aiSecurity :global(h1) {
-    max-width:
-      12ch;
-
-    font-size:
-      clamp(
-        2.85rem,
-        12.5vw,
-        4.7rem
-      );
-
-    line-height:
-      0.92;
-  }
-
-
-  .aiSecurity :global(h2) {
-    max-width:
-      20ch;
-
-    font-size:
-      clamp(
-        2rem,
-        8vw,
-        3.2rem
-      );
-  }
-
-
-  .aiSecurity :global(article) {
-    padding-top:
-      0.9rem;
-
-    padding-bottom:
-      0.9rem;
-  }
-
-
-  .aiSecurity :global(summary) {
-    min-height:
-      60px;
-  }
-
-}
-
-
-/* ==========================================================================
-   LARGE MOBILE — 560
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    560px
-) {
-
-  .aiSecurity :global(dl) {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-  }
-
-
-  .aiSecurity :global(dl > div),
-  .aiSecurity :global(dl > div:nth-child(2n)),
-  .aiSecurity :global(dl > div:nth-child(n + 3)) {
-    border-top:
-      1px solid
-      var(--ai11-line);
-
-    border-right:
-      0;
-  }
-
-
-  .aiSecurity :global(dl > div:first-child) {
-    border-top:
-      0;
-  }
-
-
-  .aiSecurity :global(button),
-  .aiSecurity :global(a[role="button"]) {
-    width:
-      100%;
-
-    justify-content:
-      center;
-
-    text-align:
-      center;
-  }
-
-}
-
-
-/* ==========================================================================
-   SMALL MOBILE — 390
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    390px
-) {
-
-  .aiSecurity {
-    --ai11-safe:
-      0.78rem;
-  }
-
-
-  .aiSecurity :global(section) {
-    padding-top:
-      2.55rem;
-
-    padding-bottom:
-      2.55rem;
-  }
-
-
-  .aiSecurity :global(h1) {
-    font-size:
-      clamp(
-        2.55rem,
-        12vw,
-        3.65rem
-      );
-
-    letter-spacing:
-      -0.058em;
-  }
-
-
-  .aiSecurity :global(h2) {
-    font-size:
-      clamp(
-        1.9rem,
-        8vw,
-        2.75rem
-      );
-  }
-
-
-  .aiSecurity :global(ul),
-  .aiSecurity :global(ol) {
-    padding-left:
-      1.05rem;
-  }
-
-}
-
-
-/* ==========================================================================
-   VERY NARROW MOBILE — 320
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    340px
-) {
-
-  .aiSecurity {
-    --ai11-safe:
-      0.7rem;
-  }
-
-
-  .aiSecurity :global(h1) {
-    font-size:
-      clamp(
-        2.35rem,
-        11.7vw,
-        3.15rem
-      );
-  }
-
-
-  .aiSecurity :global(p),
-  .aiSecurity :global(li),
-  .aiSecurity :global(dd),
-  .aiSecurity :global(summary) {
-    overflow-wrap:
-      anywhere;
-  }
-
-}
-
-
-/* ==========================================================================
-   REDUCED MOTION
-   ========================================================================== */
-
-
-@media (
-  prefers-reduced-motion:
-    reduce
-) {
-
-  .aiSecurity :global(*) {
-    scroll-behavior:
-      auto;
-  }
-
-
-  .aiSecurity :global(article),
-  .aiSecurity :global(a),
-  .aiSecurity :global(button) {
-    transition:
-      none;
-  }
-
-}
-
-
-.aiSecurity .aiAmbientVisual {
-  opacity:
-    0.16;
-
-  filter:
-    saturate(
-      0.72
-    );
-
-  pointer-events:
-    none;
-}
-
-.aiSecurity .aiNode {
-  opacity:
-    0.16;
-
-  filter:
-    saturate(
-      0.72
-    );
-
-  pointer-events:
-    none;
-}
-
-.aiSecurity .aiNodeFive {
-  opacity:
-    0.16;
-
-  filter:
-    saturate(
-      0.72
-    );
-
-  pointer-events:
-    none;
-}
-
-.aiSecurity .aiNodeFour {
-  opacity:
-    0.16;
-
-  filter:
-    saturate(
-      0.72
-    );
-
-  pointer-events:
-    none;
-}
-
-.aiSecurity .aiNodeOne {
-  opacity:
-    0.16;
-
-  filter:
-    saturate(
-      0.72
-    );
-
-  pointer-events:
-    none;
-}
-
-.aiSecurity .aiNodeThree {
-  opacity:
-    0.16;
-
-  filter:
-    saturate(
-      0.72
-    );
-
-  pointer-events:
-    none;
-}
-
-.aiSecurity .aiNodeTwo {
-  opacity:
-    0.16;
-
-  filter:
-    saturate(
-      0.72
-    );
-
-  pointer-events:
-    none;
-}
-
-.aiSecurity .aiOrbitLarge {
-  opacity:
-    0.16;
-
-  filter:
-    saturate(
-      0.72
-    );
-
-  pointer-events:
-    none;
-}
-
-.aiSecurity .aiOrbitSmall {
-  opacity:
-    0.16;
-
-  filter:
-    saturate(
-      0.72
-    );
-
-  pointer-events:
-    none;
-}
-
-
-/* ==========================================================================
-   NB_AI_SECURITY_FOUNDATIONS_HERO_FIT_V13
-
-   Final first-screen fit correction.
-
-   Existing full V11 redesign remains unchanged.
-   The AI course hero is moved slightly higher so its primary heading
-   satisfies the site's established premium hero viewport contract.
-   ========================================================================== */
-
-
-/*
- * V11 used 2–3rem on the first section.
- *
- * This removes roughly 30px of unnecessary top space at desktop width,
- * while preserving enough breathing room below the site navigation.
- */
-.aiSecurity :global(section:first-of-type) {
-  padding-top:
-    clamp(
-      0.85rem,
-      1.15vw,
-      1.1rem
-    );
-
-  padding-bottom:
-    clamp(
-      2.7rem,
-      4vw,
-      3.8rem
-    );
-}
-
-
-/*
- * Tight relationship between course eyebrow / title / summary.
- */
-.aiSecurity :global(section:first-of-type) h1 {
-  margin-top:
-    0.3rem;
-
-  margin-bottom:
-    0.72rem;
-}
-
-
-.aiSecurity :global(section:first-of-type) h1 + p {
-  margin-top:
-    0;
-}
-
-
-/*
- * Do not allow old presentation rules to recreate large vertical gaps
- * inside the first AI-specific section.
- */
-.aiSecurity :global(section:first-of-type) > * {
-  min-width:
-    0;
-}
-
-
-.aiSecurity :global(section:first-of-type) > *:first-child {
-  margin-top:
-    0;
-}
-
-
-/* ==========================================================================
-   COMPACT DESKTOP
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    1180px
-) {
-
-  .aiSecurity :global(section:first-of-type) {
-    padding-top:
-      0.9rem;
-
-    padding-bottom:
-      3rem;
-  }
-
-
-  .aiSecurity :global(section:first-of-type) h1 {
-    margin-top:
-      0.25rem;
-  }
-
-}
-
-
-/* ==========================================================================
-   TABLET
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    900px
-) {
-
-  .aiSecurity :global(section:first-of-type) {
-    padding-top:
-      1rem;
-
-    padding-bottom:
-      2.7rem;
-  }
-
-}
-
-
-/* ==========================================================================
-   MOBILE
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    768px
-) {
-
-  .aiSecurity :global(section:first-of-type) {
-    padding-top:
-      1rem;
-
-    padding-bottom:
-      2.45rem;
-  }
-
-
-  .aiSecurity :global(section:first-of-type) h1 {
-    margin-top:
-      0.25rem;
-
-    margin-bottom:
-      0.65rem;
-  }
-
-}
-
-
-/* ==========================================================================
-   NARROW MOBILE
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    390px
-) {
-
-  .aiSecurity :global(section:first-of-type) {
-    padding-top:
-      0.85rem;
-
-    padding-bottom:
-      2.2rem;
-  }
-
-}
-
-
-/* ==========================================================================
-   NB_AI_SECURITY_FOUNDATIONS_RENDERED_HERO_V16
-
-   Runtime evidence from V13:
-     H1 top    = 351.36px
-     H1 height = 510px
-     H1 bottom = 861.36px
-
-   Source inspection also proved that training/[slug]/page.tsx does not
-   directly render the <h1>. The title comes from a deeper shared component.
-
-   V16 therefore uses the rendered DOM structure instead of guessing which
-   source component owns the hero.
-
-   Scope:
-   .aiSecurity only.
-   Other training routes remain unchanged.
-   ========================================================================== */
-
-
-/* ==========================================================================
-   HERO CONTENT ANCESTORS
-
-   Any DIV or HEADER inside the first program section that contains the H1
-   is part of the title's rendered layout chain.
-
-   Expanding every such wrapper removes inherited narrow-column constraints
-   regardless of which shared React component generated them.
-   ========================================================================== */
-
-
-.aiSecurity section:first-of-type div:has(h1),
-.aiSecurity section:first-of-type header:has(h1) {
-  width:
-    100% !important;
-
-  min-width:
-    0 !important;
-
-  max-width:
-    1040px !important;
-
-  flex:
-    1 1 100% !important;
-
-  flex-basis:
-    100% !important;
-
-  grid-column:
-    1
-    /
-    -1 !important;
-
-  justify-self:
-    stretch !important;
-}
-
-
-/*
- * If one of the H1 ancestors is itself a grid, collapse only that
- * AI-specific title path into one useful editorial column.
- */
-.aiSecurity section:first-of-type div:has(h1) {
-  grid-template-columns:
-    minmax(
-      0,
-      1fr
-    ) !important;
-}
-
-
-/* ==========================================================================
-   TITLE
-   ========================================================================== */
-
-
-.aiSecurity section:first-of-type h1 {
-  width:
-    100% !important;
-
-  min-width:
-    0 !important;
-
-  max-width:
-    1040px !important;
-
-  margin-top:
-    0.25rem !important;
-
-  margin-bottom:
-    0.7rem !important;
-
-  padding:
-    0 !important;
-
-  font-size:
-    clamp(
-      3.55rem,
-      4.9vw,
-      4.75rem
-    ) !important;
-
-  line-height:
-    0.95 !important;
-
-  letter-spacing:
-    -0.052em !important;
-
-  overflow-wrap:
-    normal !important;
-
-  word-break:
-    normal !important;
-
-  hyphens:
-    none !important;
-
-  text-wrap:
-    balance;
-}
-
-
-/*
- * Do not allow nested title markup to reintroduce arbitrary wrapping.
- */
-.aiSecurity section:first-of-type h1 * {
-  max-width:
-    100% !important;
-
-  overflow-wrap:
-    normal !important;
-
-  word-break:
-    normal !important;
-
-  hyphens:
-    none !important;
-}
-
-
-/* ==========================================================================
-   HERO DESCRIPTION
-   ========================================================================== */
-
-
-.aiSecurity section:first-of-type h1 + p {
-  width:
-    100% !important;
-
-  max-width:
-    720px !important;
-
-  margin-top:
-    0 !important;
-
-  margin-bottom:
-    0.85rem !important;
-
-  overflow-wrap:
-    normal;
-
-  word-break:
-    normal;
-}
-
-
-/* ==========================================================================
-   AMBIENT AI ART
-
-   Keep it as a visual signature, but it must not reserve layout width.
-   ========================================================================== */
-
-
-.aiSecurity .aiAmbientVisual {
-  width:
-    min(
-      350px,
-      27vw
-    ) !important;
-
-  height:
-    min(
-      350px,
-      27vw
-    ) !important;
-
-  position:
-    absolute !important;
-
-  top:
-    1.6rem !important;
-
-  right:
-    clamp(
-      1rem,
-      4vw,
-      4rem
-    ) !important;
-
-  bottom:
-    auto !important;
-
-  left:
-    auto !important;
-
-  z-index:
-    -1 !important;
-
-  margin:
-    0 !important;
-
-  opacity:
-    0.075 !important;
-
-  pointer-events:
-    none !important;
-}
-
-
-/* ==========================================================================
-   FIRST PROGRAM SECTION
-   ========================================================================== */
-
-
-.aiSecurity section:first-of-type {
-  width:
-    100% !important;
-
-  min-width:
-    0 !important;
-
-  max-width:
-    100% !important;
-
-  min-height:
-    0 !important;
-
-  padding-top:
-    0.8rem !important;
-
-  padding-bottom:
-    2.55rem !important;
-}
-
-
-/* ==========================================================================
-   COMPACT DESKTOP
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    1180px
-) {
-
-  .aiSecurity section:first-of-type div:has(h1),
-  .aiSecurity section:first-of-type header:has(h1) {
-    max-width:
-      930px !important;
-  }
-
-
-  .aiSecurity section:first-of-type h1 {
-    max-width:
-      930px !important;
-
-    font-size:
-      clamp(
-        3.3rem,
-        5.2vw,
-        4.35rem
-      ) !important;
-  }
-
-
-  .aiSecurity .aiAmbientVisual {
-    width:
-      270px !important;
-
-    height:
-      270px !important;
-
-    opacity:
-      0.06 !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   TABLET
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    900px
-) {
-
-  .aiSecurity section:first-of-type div:has(h1),
-  .aiSecurity section:first-of-type header:has(h1) {
-    max-width:
-      100% !important;
-  }
-
-
-  .aiSecurity section:first-of-type h1 {
-    max-width:
-      760px !important;
-
-    font-size:
-      clamp(
-        2.95rem,
-        7.5vw,
-        3.95rem
-      ) !important;
-  }
-
-
-  .aiSecurity .aiAmbientVisual {
-    width:
-      210px !important;
-
-    height:
-      210px !important;
-
-    right:
-      -55px !important;
-
-    opacity:
-      0.045 !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   MOBILE
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    768px
-) {
-
-  .aiSecurity .aiAmbientVisual {
-    display:
-      none !important;
-  }
-
-
-  .aiSecurity section:first-of-type {
-    padding-top:
-      0.85rem !important;
-
-    padding-bottom:
-      2.25rem !important;
-  }
-
-
-  .aiSecurity section:first-of-type div:has(h1),
-  .aiSecurity section:first-of-type header:has(h1),
-  .aiSecurity section:first-of-type h1 {
-    width:
-      100% !important;
-
-    max-width:
-      100% !important;
-  }
-
-
-  .aiSecurity section:first-of-type h1 {
-    margin-top:
-      0.2rem !important;
-
-    margin-bottom:
-      0.65rem !important;
-
-    font-size:
-      clamp(
-        2.65rem,
-        10.5vw,
-        3.8rem
-      ) !important;
-
-    line-height:
-      0.96 !important;
-
-    letter-spacing:
-      -0.048em !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   SMALL MOBILE
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    480px
-) {
-
-  .aiSecurity section:first-of-type h1 {
-    font-size:
-      clamp(
-        2.4rem,
-        10.2vw,
-        3.1rem
-      ) !important;
-
-    line-height:
-      0.97 !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   320PX CLASS
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    340px
-) {
-
-  .aiSecurity section:first-of-type {
-    padding-top:
-      0.75rem !important;
-
-    padding-bottom:
-      2rem !important;
-  }
-
-
-  .aiSecurity section:first-of-type h1 {
-    font-size:
-      2.28rem !important;
-
-    letter-spacing:
-      -0.04em !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   NB_AI_SECURITY_FOUNDATIONS_TITLE_WIDTH_V17
-
-   Runtime authority from V16:
-
-     H1 x              = 250.31px
-     H1 width          = 349.09px
-     H1 height         = 510px
-     H1 approximate    = 7.6 lines
-
-     Immediate parent:
-       width           = 1040px
-       display         = flex
-
-   Therefore:
-   - parent width is no longer the problem;
-   - the H1 itself is retaining a narrow logical inline-size / flex sizing
-     contract from the shared PageHero.
-
-   V17 overrides the title itself using both physical and logical dimensions.
-   ========================================================================== */
-
-
-/* ==========================================================================
-   IMMEDIATE H1 FLEX PARENT
-   ========================================================================== */
-
-
-.aiSecurity div:has(> h1),
-.aiSecurity header:has(> h1) {
-  width:
-    100% !important;
-
-  inline-size:
-    100% !important;
-
-  min-width:
-    0 !important;
-
-  min-inline-size:
-    0 !important;
-
-  max-width:
-    1040px !important;
-
-  max-inline-size:
-    1040px !important;
-
-  align-items:
-    stretch !important;
-
-  justify-items:
-    stretch !important;
-}
-
-
-/* ==========================================================================
-   THE ACTUAL AI COURSE H1
-
-   Deliberately not dependent on section:first-of-type.
-   There is one H1 on this AI training detail route.
-   ========================================================================== */
-
-
-.aiSecurity.aiSecurity h1 {
-  display:
-    block !important;
-
-  width:
-    100% !important;
-
-  inline-size:
-    100% !important;
-
-  min-width:
-    0 !important;
-
-  min-inline-size:
-    0 !important;
-
-  max-width:
-    1040px !important;
-
-  max-inline-size:
-    1040px !important;
-
-  flex:
-    0 1 100% !important;
-
-  flex-basis:
-    100% !important;
-
-  align-self:
-    stretch !important;
-
-  justify-self:
-    stretch !important;
-
-  margin:
-    0.25rem
-    0
-    0.72rem !important;
-
-  padding:
-    0 !important;
-
-  font-size:
-    clamp(
-      3.55rem,
-      4.9vw,
-      4.75rem
-    ) !important;
-
-  line-height:
-    0.95 !important;
-
-  letter-spacing:
-    -0.052em !important;
-
-  overflow-wrap:
-    normal !important;
-
-  word-break:
-    normal !important;
-
-  hyphens:
-    none !important;
-
-  text-wrap:
-    balance;
-}
-
-
-/*
- * Protect against a shared title element/span carrying its own logical width.
- */
-.aiSecurity.aiSecurity h1 > * {
-  display:
-    inline !important;
-
-  width:
-    auto !important;
-
-  inline-size:
-    auto !important;
-
-  min-width:
-    0 !important;
-
-  min-inline-size:
-    0 !important;
-
-  max-width:
-    none !important;
-
-  max-inline-size:
-    none !important;
-
-  overflow-wrap:
-    normal !important;
-
-  word-break:
-    normal !important;
-
-  hyphens:
-    none !important;
-}
-
-
-/* ==========================================================================
-   HERO LEAD
-   ========================================================================== */
-
-
-.aiSecurity.aiSecurity h1 + p {
-  width:
-    100% !important;
-
-  inline-size:
-    100% !important;
-
-  max-width:
-    720px !important;
-
-  max-inline-size:
-    720px !important;
-
-  margin-top:
-    0 !important;
-
-  overflow-wrap:
-    normal;
-
-  word-break:
-    normal;
-}
-
-
-/* ==========================================================================
-   TABLET
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    900px
-) {
-
-  .aiSecurity div:has(> h1),
-  .aiSecurity header:has(> h1) {
-    max-width:
-      100% !important;
-
-    max-inline-size:
-      100% !important;
-  }
-
-
-  .aiSecurity.aiSecurity h1 {
-    max-width:
-      760px !important;
-
-    max-inline-size:
-      760px !important;
-
-    font-size:
-      clamp(
-        2.95rem,
-        7.4vw,
-        3.9rem
-      ) !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   MOBILE
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    768px
-) {
-
-  .aiSecurity.aiSecurity h1 {
-    width:
-      100% !important;
-
-    inline-size:
-      100% !important;
-
-    max-width:
-      100% !important;
-
-    max-inline-size:
-      100% !important;
-
-    flex-basis:
-      100% !important;
-
-    font-size:
-      clamp(
-        2.6rem,
-        10.2vw,
-        3.7rem
-      ) !important;
-
-    line-height:
-      0.97 !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   SMALL MOBILE
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    480px
-) {
-
-  .aiSecurity.aiSecurity h1 {
-    font-size:
-      clamp(
-        2.38rem,
-        10vw,
-        3rem
-      ) !important;
-
-    letter-spacing:
-      -0.044em !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   320PX CLASS
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    340px
-) {
-
-  .aiSecurity.aiSecurity h1 {
-    font-size:
-      2.25rem !important;
-
-    letter-spacing:
-      -0.038em !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   NB_AI_SECURITY_FOUNDATIONS_FLEX_AXIS_V18
-
-   V17 runtime evidence:
-
-   H1:
-     display          block
-     width            349px
-     inline-size      349px
-     max-width        1040px
-     flex-basis       100%
-     align-self       stretch
-
-   Immediate parent:
-     width            1040px
-     display          flex
-     align-items      stretch
-
-   The H1 therefore remains narrow because the PageHero content wrapper is
-   distributing its direct children along the horizontal flex main axis.
-
-   V18 changes that immediate AI-only hero content parent to a vertical stack.
-   ========================================================================== */
-
-
-/* ==========================================================================
-   ACTUAL H1 PARENT
-   ========================================================================== */
-
-
-.aiSecurity.aiSecurity div:has(> h1),
-.aiSecurity.aiSecurity header:has(> h1) {
-  display:
-    flex !important;
-
-  flex-direction:
-    column !important;
-
-  flex-wrap:
-    nowrap !important;
-
-  align-items:
-    stretch !important;
-
-  justify-content:
-    flex-start !important;
-
-  width:
-    100% !important;
-
-  inline-size:
-    100% !important;
-
-  min-width:
-    0 !important;
-
-  min-inline-size:
-    0 !important;
-
-  max-width:
-    1040px !important;
-
-  max-inline-size:
-    1040px !important;
-
-  gap:
-    0 !important;
-
-  column-gap:
-    0 !important;
-
-  row-gap:
-    0 !important;
-}
-
-
-/*
- * Every normal direct hero-content child gets its own row.
- *
- * The AI visual has already been taken out of layout flow by V16.
- */
-.aiSecurity.aiSecurity div:has(> h1) > *:not(.aiAmbientVisual),
-.aiSecurity.aiSecurity header:has(> h1) > *:not(.aiAmbientVisual) {
-  width:
-    100% !important;
-
-  inline-size:
-    100% !important;
-
-  min-width:
-    0 !important;
-
-  min-inline-size:
-    0 !important;
-
-  max-width:
-    100% !important;
-
-  max-inline-size:
-    100% !important;
-
-  flex:
-    0 0 auto !important;
-
-  flex-basis:
-    auto !important;
-
-  align-self:
-    stretch !important;
-}
-
-
-/* ==========================================================================
-   FINAL H1 AUTHORITY
-   ========================================================================== */
-
-
-.aiSecurity.aiSecurity.aiSecurity h1 {
-  display:
-    block !important;
-
-  width:
-    100% !important;
-
-  inline-size:
-    100% !important;
-
-  min-width:
-    0 !important;
-
-  min-inline-size:
-    0 !important;
-
-  max-width:
-    1040px !important;
-
-  max-inline-size:
-    1040px !important;
-
-  flex:
-    none !important;
-
-  align-self:
-    stretch !important;
-
-  margin:
-    0.25rem
-    0
-    0.72rem !important;
-
-  padding:
-    0 !important;
-
-  font-size:
-    clamp(
-      3.55rem,
-      4.9vw,
-      4.75rem
-    ) !important;
-
-  line-height:
-    0.95 !important;
-
-  letter-spacing:
-    -0.052em !important;
-
-  overflow-wrap:
-    normal !important;
-
-  word-break:
-    normal !important;
-
-  hyphens:
-    none !important;
-
-  text-wrap:
-    balance;
-}
-
-
-/* ==========================================================================
-   HERO DESCRIPTION / ASSOCIATED CONTENT
-   ========================================================================== */
-
-
-.aiSecurity.aiSecurity.aiSecurity h1 + p {
-  width:
-    100% !important;
-
-  inline-size:
-    100% !important;
-
-  max-width:
-    720px !important;
-
-  max-inline-size:
-    720px !important;
-
-  margin-top:
-    0 !important;
-
-  margin-bottom:
-    0.85rem !important;
-
-  overflow-wrap:
-    normal;
-
-  word-break:
-    normal;
-}
-
-
-/* ==========================================================================
-   AMBIENT VISUAL REMAINS NON-STRUCTURAL
-   ========================================================================== */
-
-
-.aiSecurity.aiSecurity .aiAmbientVisual {
-  position:
-    absolute !important;
-
-  flex:
-    none !important;
-
-  margin:
-    0 !important;
-
-  pointer-events:
-    none !important;
-}
-
-
-/* ==========================================================================
-   COMPACT DESKTOP
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    1180px
-) {
-
-  .aiSecurity.aiSecurity div:has(> h1),
-  .aiSecurity.aiSecurity header:has(> h1) {
-    max-width:
-      930px !important;
-
-    max-inline-size:
-      930px !important;
-  }
-
-
-  .aiSecurity.aiSecurity.aiSecurity h1 {
-    max-width:
-      930px !important;
-
-    max-inline-size:
-      930px !important;
-
-    font-size:
-      clamp(
-        3.3rem,
-        5.2vw,
-        4.35rem
-      ) !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   TABLET
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    900px
-) {
-
-  .aiSecurity.aiSecurity div:has(> h1),
-  .aiSecurity.aiSecurity header:has(> h1) {
-    max-width:
-      100% !important;
-
-    max-inline-size:
-      100% !important;
-  }
-
-
-  .aiSecurity.aiSecurity.aiSecurity h1 {
-    max-width:
-      760px !important;
-
-    max-inline-size:
-      760px !important;
-
-    font-size:
-      clamp(
-        2.95rem,
-        7.4vw,
-        3.9rem
-      ) !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   MOBILE
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    768px
-) {
-
-  .aiSecurity.aiSecurity.aiSecurity h1 {
-    max-width:
-      100% !important;
-
-    max-inline-size:
-      100% !important;
-
-    font-size:
-      clamp(
-        2.6rem,
-        10.2vw,
-        3.7rem
-      ) !important;
-
-    line-height:
-      0.97 !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   SMALL MOBILE
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    480px
-) {
-
-  .aiSecurity.aiSecurity.aiSecurity h1 {
-    font-size:
-      clamp(
-        2.38rem,
-        10vw,
-        3rem
-      ) !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   320PX CLASS
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    340px
-) {
-
-  .aiSecurity.aiSecurity.aiSecurity h1 {
-    font-size:
-      2.25rem !important;
-
-    letter-spacing:
-      -0.038em !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   NB_AI_SECURITY_FOUNDATIONS_TITLE_NORMALIZATION_V19
-
-   Runtime authority from V18:
-
-     parent width          1040px
-     parent flex-direction column
-     H1 width              1016px
-     H1 height             510px
-     H1 line-height        67.032px
-
-   Width and flex architecture are therefore correct.
-
-   The remaining fixed 510px box comes from the shared PageHero title layer
-   itself or title descendants.
-
-   V19:
-   - removes H1 fixed/min block sizing
-   - normalizes split-title descendants
-   - preserves normal word wrapping
-   - keeps the likely eyebrow directly before the title
-   - places the H1 at the front of the AI hero content stack
-   ========================================================================== */
-
-
-/* ==========================================================================
-   H1 BLOCK SIZE RESET
-   ========================================================================== */
-
-
-.aiSecurity.aiSecurity.aiSecurity.aiSecurity h1 {
-  display:
-    block !important;
-
-  width:
-    100% !important;
-
-  inline-size:
-    100% !important;
-
-  min-width:
-    0 !important;
-
-  min-inline-size:
-    0 !important;
-
-  max-width:
-    1040px !important;
-
-  max-inline-size:
-    1040px !important;
-
-  height:
-    auto !important;
-
-  block-size:
-    auto !important;
-
-  min-height:
-    0 !important;
-
-  min-block-size:
-    0 !important;
-
-  max-height:
-    none !important;
-
-  max-block-size:
-    none !important;
-
-  aspect-ratio:
-    auto !important;
-
-  contain:
-    none !important;
-
-  flex:
-    none !important;
-
-  flex-basis:
-    auto !important;
-
-  align-self:
-    stretch !important;
-
-  order:
-    -10 !important;
-
-  margin:
-    0.25rem
-    0
-    0.72rem !important;
-
-  padding:
-    0 !important;
-
-  font-size:
-    clamp(
-      3.55rem,
-      4.9vw,
-      4.75rem
-    ) !important;
-
-  line-height:
-    0.95 !important;
-
-  letter-spacing:
-    -0.052em !important;
-
-  white-space:
-    normal !important;
-
-  overflow:
-    visible !important;
-
-  overflow-wrap:
-    normal !important;
-
-  word-break:
-    normal !important;
-
-  hyphens:
-    none !important;
-
-  text-wrap:
-    balance;
-}
-
-
-/* ==========================================================================
-   PRESERVE THE ELEMENT DIRECTLY BEFORE H1 AS THE EYEBROW / LABEL
-
-   This maintains the conventional:
-     eyebrow
-     title
-     summary
-   sequence while pushing larger visual/meta siblings later in the stack.
-   ========================================================================== */
-
-
-.aiSecurity.aiSecurity div:has(> h1) > :has(+ h1),
-.aiSecurity.aiSecurity header:has(> h1) > :has(+ h1) {
-  order:
-    -20 !important;
-
-  flex:
-    none !important;
-
-  height:
-    auto !important;
-
-  block-size:
-    auto !important;
-
-  min-height:
-    0 !important;
-
-  min-block-size:
-    0 !important;
-}
-
-
-/* ==========================================================================
-   SPLIT-TEXT / ANIMATION CHILD NORMALIZATION
-
-   If the shared PageHero renders the title using spans, wrappers, or motion
-   elements, they become normal inline typography on this route only.
-   ========================================================================== */
-
-
-.aiSecurity.aiSecurity.aiSecurity.aiSecurity h1 > *,
-.aiSecurity.aiSecurity.aiSecurity.aiSecurity h1 span,
-.aiSecurity.aiSecurity.aiSecurity.aiSecurity h1 strong,
-.aiSecurity.aiSecurity.aiSecurity.aiSecurity h1 em {
-  display:
-    inline !important;
-
-  position:
-    static !important;
-
-  inset:
-    auto !important;
-
-  width:
-    auto !important;
-
-  inline-size:
-    auto !important;
-
-  min-width:
-    0 !important;
-
-  min-inline-size:
-    0 !important;
-
-  max-width:
-    none !important;
-
-  max-inline-size:
-    none !important;
-
-  height:
-    auto !important;
-
-  block-size:
-    auto !important;
-
-  min-height:
-    0 !important;
-
-  min-block-size:
-    0 !important;
-
-  max-height:
-    none !important;
-
-  max-block-size:
-    none !important;
-
-  margin:
-    0 !important;
-
-  padding:
-    0 !important;
-
-  transform:
-    none !important;
-
-  translate:
-    none !important;
-
-  rotate:
-    none !important;
-
-  scale:
-    none !important;
-
-  white-space:
-    normal !important;
-
-  overflow:
-    visible !important;
-
-  overflow-wrap:
-    normal !important;
-
-  word-break:
-    normal !important;
-
-  hyphens:
-    none !important;
-
-  line-height:
-    inherit !important;
-
-  letter-spacing:
-    inherit !important;
-}
-
-
-/* ==========================================================================
-   IMMEDIATE H1 PARENT
-   ========================================================================== */
-
-
-.aiSecurity.aiSecurity div:has(> h1),
-.aiSecurity.aiSecurity header:has(> h1) {
-  min-height:
-    0 !important;
-
-  min-block-size:
-    0 !important;
-
-  height:
-    auto !important;
-
-  block-size:
-    auto !important;
-
-  max-height:
-    none !important;
-
-  max-block-size:
-    none !important;
-}
-
-
-/* ==========================================================================
-   DESCRIPTION
-   ========================================================================== */
-
-
-.aiSecurity.aiSecurity.aiSecurity.aiSecurity h1 + p {
-  order:
-    0 !important;
-
-  height:
-    auto !important;
-
-  min-height:
-    0 !important;
-
-  block-size:
-    auto !important;
-
-  min-block-size:
-    0 !important;
-
-  width:
-    100% !important;
-
-  inline-size:
-    100% !important;
-
-  max-width:
-    720px !important;
-
-  max-inline-size:
-    720px !important;
-
-  margin-top:
-    0 !important;
-
-  margin-bottom:
-    0.85rem !important;
-}
-
-
-/* ==========================================================================
-   MOBILE
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    768px
-) {
-
-  .aiSecurity.aiSecurity.aiSecurity.aiSecurity h1 {
-    max-width:
-      100% !important;
-
-    max-inline-size:
-      100% !important;
-
-    font-size:
-      clamp(
-        2.6rem,
-        10.2vw,
-        3.7rem
-      ) !important;
-
-    line-height:
-      0.97 !important;
-
-    order:
-      -10 !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   SMALL MOBILE
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    480px
-) {
-
-  .aiSecurity.aiSecurity.aiSecurity.aiSecurity h1 {
-    font-size:
-      clamp(
-        2.38rem,
-        10vw,
-        3rem
-      ) !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   320PX
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    340px
-) {
-
-  .aiSecurity.aiSecurity.aiSecurity.aiSecurity h1 {
-    font-size:
-      2.25rem !important;
-
-    letter-spacing:
-      -0.038em !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   NB_AI_SECURITY_FOUNDATIONS_COMPACT_DENSITY_V21
-
-   Purpose:
-   - remove excessive empty space
-   - undo experimental hero ordering
-   - reduce oversized section rhythm
-   - make metadata and curriculum compact
-   - keep the page minimal without feeling empty
-   ========================================================================== */
-
-
-/* ==========================================================================
-   PAGE DENSITY TOKENS
-   ========================================================================== */
-
-
-.aiSecurity {
-  --ai21-section-y:
-    clamp(
-      1.7rem,
-      2.5vw,
-      2.35rem
-    );
-
-  --ai21-row-y:
-    0.72rem;
-
-  --ai21-gap:
-    clamp(
-      0.65rem,
-      1vw,
-      0.9rem
-    );
-
-  --ai21-content:
-    1120px;
-}
-
-
-/* ==========================================================================
-   PAGE HERO — REMOVE THE GIANT EMPTY AREA
-   ========================================================================== */
-
-
-.aiSecurity
-:global(
-  section[class*="page-hero-module__"][class*="__hero"]
-) {
-  min-height:
-    0 !important;
-
-  height:
-    auto !important;
-
-  block-size:
-    auto !important;
-
-  min-block-size:
-    0 !important;
-
-  max-height:
-    none !important;
-
-  max-block-size:
-    none !important;
-
-  padding-top:
-    clamp(
-      1.1rem,
-      1.8vw,
-      1.6rem
-    ) !important;
-
-  padding-bottom:
-    clamp(
-      1.35rem,
-      2.2vw,
-      1.9rem
-    ) !important;
-
-  align-items:
-    flex-start !important;
-
-  overflow:
-    visible !important;
-}
-
-
-.aiSecurity
-:global(
-  [class*="page-hero-module__"][class*="__content"]
-) {
-  width:
-    100% !important;
-
-  inline-size:
-    100% !important;
-
-  min-width:
-    0 !important;
-
-  min-inline-size:
-    0 !important;
-
-  max-width:
-    var(
-      --ai21-content
-    ) !important;
-
-  max-inline-size:
-    var(
-      --ai21-content
-    ) !important;
-
-  height:
-    auto !important;
-
-  block-size:
-    auto !important;
-
-  min-height:
-    0 !important;
-
-  min-block-size:
-    0 !important;
-
-  max-height:
-    none !important;
-
-  max-block-size:
-    none !important;
-
-  display:
-    grid !important;
-
-  grid-template-columns:
-    minmax(
-      0,
-      1fr
-    ) !important;
-
-  align-items:
-    start !important;
-
-  justify-items:
-    stretch !important;
-
-  gap:
-    0.55rem !important;
-}
-
-
-/*
- * V19 temporarily used explicit order values to isolate the hero bug.
- * The title problem is solved now, so restore normal document order.
- */
-.aiSecurity
-:global(
-  [class*="page-hero-module__"][class*="__content"]
-)
-> * {
-  order:
-    initial !important;
-
-  min-height:
-    0 !important;
-
-  min-block-size:
-    0 !important;
-
-  height:
-    auto !important;
-
-  block-size:
-    auto !important;
-
-  max-height:
-    none !important;
-
-  max-block-size:
-    none !important;
-
-  margin-top:
-    0 !important;
-
-  margin-bottom:
-    0 !important;
-}
-
-
-/* ==========================================================================
-   HERO TITLE
-   ========================================================================== */
-
-
-.aiSecurity.aiSecurity.aiSecurity.aiSecurity h1 {
-  width:
-    100% !important;
-
-  inline-size:
-    100% !important;
-
-  max-width:
-    980px !important;
-
-  max-inline-size:
-    980px !important;
-
-  height:
-    auto !important;
-
-  block-size:
-    auto !important;
-
-  min-height:
-    0 !important;
-
-  min-block-size:
-    0 !important;
-
-  order:
-    initial !important;
-
-  margin:
-    0.2rem
-    0
-    0.3rem !important;
-
-  font-size:
-    clamp(
-      3.1rem,
-      4.25vw,
-      4.15rem
-    ) !important;
-
-  line-height:
-    0.94 !important;
-
-  letter-spacing:
-    -0.05em !important;
-}
-
-
-.aiSecurity.aiSecurity.aiSecurity.aiSecurity h1 + p {
-  width:
-    min(
-      100%,
-      700px
-    ) !important;
-
-  inline-size:
-    min(
-      100%,
-      700px
-    ) !important;
-
-  order:
-    initial !important;
-
-  margin:
-    0 !important;
-
-  color:
-    rgba(
-      244,
-      246,
-      248,
-      0.65
-    );
-
-  font-size:
-    1rem;
-
-  line-height:
-    1.52;
-}
-
-
-/* ==========================================================================
-   AMBIENT VISUAL — QUIET AND NON-STRUCTURAL
-   ========================================================================== */
-
-
-.aiSecurity .aiAmbientVisual {
-  width:
-    240px !important;
-
-  height:
-    240px !important;
-
-  top:
-    0.75rem !important;
-
-  right:
-    2rem !important;
-
-  opacity:
-    0.045 !important;
-
-  margin:
-    0 !important;
-
-  pointer-events:
-    none !important;
-}
-
-
-/* ==========================================================================
-   ALL PAGE SECTIONS — MUCH TIGHTER
-   ========================================================================== */
-
-
-.aiSecurity section {
-  min-height:
-    0 !important;
-
-  height:
-    auto !important;
-
-  padding-top:
-    var(
-      --ai21-section-y
-    ) !important;
-
-  padding-bottom:
-    var(
-      --ai21-section-y
-    ) !important;
-
-  margin-top:
-    0 !important;
-
-  margin-bottom:
-    0 !important;
-}
-
-
-.aiSecurity section + section {
-  margin-top:
-    0 !important;
-}
-
-
-.aiSecurity section:first-of-type {
-  padding-top:
-    clamp(
-      1.1rem,
-      1.8vw,
-      1.6rem
-    ) !important;
-
-  padding-bottom:
-    clamp(
-      1.35rem,
-      2.2vw,
-      1.9rem
-    ) !important;
-}
-
-
-/* ==========================================================================
-   SECTION HEADERS
-   ========================================================================== */
-
-
-.aiSecurity section > header {
-  margin:
-    0
-    0
-    0.8rem !important;
-
-  padding:
-    0 !important;
-}
-
-
-.aiSecurity h2 {
-  margin:
-    0
-    0
-    0.45rem !important;
-
-  max-width:
-    22ch !important;
-
-  font-size:
-    clamp(
-      1.8rem,
-      2.8vw,
-      2.65rem
-    ) !important;
-
-  line-height:
-    1 !important;
-
-  letter-spacing:
-    -0.042em !important;
-}
-
-
-.aiSecurity h3 {
-  margin:
-    0
-    0
-    0.25rem !important;
-
-  font-size:
-    clamp(
-      0.98rem,
-      1.2vw,
-      1.1rem
-    ) !important;
-
-  line-height:
-    1.28 !important;
-}
-
-
-/* ==========================================================================
-   PARAGRAPHS
-   ========================================================================== */
-
-
-.aiSecurity p {
-  margin-top:
-    0 !important;
-
-  margin-bottom:
-    0.55rem !important;
-
-  line-height:
-    1.52 !important;
-}
-
-
-.aiSecurity p:last-child {
-  margin-bottom:
-    0 !important;
-}
-
-
-/* ==========================================================================
-   METADATA
-   ========================================================================== */
-
-
-.aiSecurity dl {
-  margin:
-    0.85rem
-    0
-    0 !important;
-
-  padding:
-    0 !important;
-}
-
-
-.aiSecurity dl > div {
-  min-height:
-    0 !important;
-
-  padding:
-    0.55rem
-    0.75rem !important;
-}
-
-
-.aiSecurity dt {
-  font-size:
-    0.56rem !important;
-
-  line-height:
-    1.2 !important;
-}
-
-
-.aiSecurity dd {
-  margin-top:
-    0.2rem !important;
-
-  font-size:
-    0.8rem !important;
-
-  line-height:
-    1.35 !important;
-}
-
-
-/* ==========================================================================
-   ARTICLES / MODULES / CONTENT ROWS
-   ========================================================================== */
-
-
-.aiSecurity article {
-  min-height:
-    0 !important;
-
-  height:
-    auto !important;
-
-  margin:
-    0 !important;
-
-  padding:
-    0.72rem
-    0.8rem !important;
-}
-
-
-.aiSecurity article + article {
-  margin-top:
-    0 !important;
-}
-
-
-.aiSecurity article p {
-  margin-top:
-    0.25rem !important;
-
-  margin-bottom:
-    0 !important;
-}
-
-
-/* ==========================================================================
-   OBJECTIVES / PREREQUISITES / LISTS
-   ========================================================================== */
-
-
-.aiSecurity ul,
-.aiSecurity ol {
-  margin-top:
-    0.6rem !important;
-
-  margin-bottom:
-    0 !important;
-}
-
-
-.aiSecurity li {
-  padding-top:
-    0.28rem !important;
-
-  padding-bottom:
-    0.28rem !important;
-
-  line-height:
-    1.48 !important;
-}
-
-
-.aiSecurity li + li {
-  margin-top:
-    0 !important;
-}
-
-
-/* ==========================================================================
-   FAQ
-   ========================================================================== */
-
-
-.aiSecurity details {
-  min-height:
-    0 !important;
-
-  margin:
-    0 !important;
-}
-
-
-.aiSecurity summary {
-  min-height:
-    48px !important;
-
-  padding:
-    0.55rem
-    0.75rem !important;
-
-  line-height:
-    1.35 !important;
-}
-
-
-.aiSecurity details > p,
-.aiSecurity details > div {
-  padding-right:
-    0.75rem !important;
-
-  padding-bottom:
-    0.7rem !important;
-
-  padding-left:
-    0.75rem !important;
-}
-
-
-/* ==========================================================================
-   CTA / ACTIONS
-   ========================================================================== */
-
-
-.aiSecurity a[role="button"],
-.aiSecurity button {
-  min-height:
-    40px !important;
-
-  padding:
-    0.58rem
-    0.85rem !important;
-}
-
-
-/* ==========================================================================
-   GENERAL STRUCTURAL DENSITY
-   ========================================================================== */
-
-
-.aiSecurity article,
-.aiSecurity dl,
-.aiSecurity details,
-.aiSecurity nav,
-.aiSecurity aside {
-  max-height:
-    none !important;
-
-  max-block-size:
-    none !important;
-}
-
-
-.aiSecurity hr {
-  margin:
-    1rem
-    0 !important;
-}
-
-
-/* ==========================================================================
-   COMPACT DESKTOP
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    1180px
-) {
-
-  .aiSecurity {
-    --ai21-section-y:
-      1.8rem;
-  }
-
-
-  .aiSecurity .aiAmbientVisual {
-    width:
-      190px !important;
-
-    height:
-      190px !important;
-  }
-
-
-  .aiSecurity.aiSecurity.aiSecurity.aiSecurity h1 {
-    font-size:
-      clamp(
-        2.9rem,
-        4.9vw,
-        3.8rem
-      ) !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   TABLET
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    900px
-) {
-
-  .aiSecurity {
-    --ai21-section-y:
-      1.65rem;
-  }
-
-
-  .aiSecurity
-  :global(
-    [class*="page-hero-module__"][class*="__content"]
-  ) {
-    gap:
-      0.48rem !important;
-  }
-
-
-  .aiSecurity dl > div {
-    padding:
-      0.5rem
-      0.65rem !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   MOBILE
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    768px
-) {
-
-  .aiSecurity {
-    --ai21-section-y:
-      1.45rem;
-  }
-
-
-  .aiSecurity
-  :global(
-    section[class*="page-hero-module__"][class*="__hero"]
-  ) {
-    padding-top:
-      0.85rem !important;
-
-    padding-bottom:
-      1.25rem !important;
-  }
-
-
-  .aiSecurity.aiSecurity.aiSecurity.aiSecurity h1 {
-    margin-bottom:
-      0.4rem !important;
-
-    font-size:
-      clamp(
-        2.45rem,
-        9.3vw,
-        3.3rem
-      ) !important;
-  }
-
-
-  .aiSecurity h2 {
-    font-size:
-      clamp(
-        1.7rem,
-        6.5vw,
-        2.35rem
-      ) !important;
-  }
-
-
-  .aiSecurity article {
-    padding:
-      0.65rem
-      0.7rem !important;
-  }
-
-
-  .aiSecurity summary {
-    min-height:
-      46px !important;
-
-    padding:
-      0.5rem
-      0.65rem !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   SMALL MOBILE
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    480px
-) {
-
-  .aiSecurity {
-    --ai21-section-y:
-      1.3rem;
-  }
-
-
-  .aiSecurity.aiSecurity.aiSecurity.aiSecurity h1 {
-    font-size:
-      clamp(
-        2.25rem,
-        9vw,
-        2.85rem
-      ) !important;
-  }
-
-
-  .aiSecurity dl {
-    margin-top:
-      0.65rem !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   320PX
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    340px
-  ) {
-
-  .aiSecurity {
-    --ai21-section-y:
-      1.2rem;
-  }
-
-
-  .aiSecurity.aiSecurity.aiSecurity.aiSecurity h1 {
-    font-size:
-      2.15rem !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   NB_AI_SECURITY_FOUNDATIONS_HERO_PADDING_V23
-
-   V22 runtime diagnostic proved that the remaining oversized hero came from
-   five direct PageHero children receiving 96px top AND 96px bottom padding:
-
-     eyebrow      207px high
-     description  242px high
-     meta         226px high
-     actions      239px high
-     coordinate   208px high
-
-   The H1 itself was already only ~59px high.
-
-   V23 removes those inherited 96px padding values and replaces them with
-   intentional compact spacing.
-   ========================================================================== */
-
-
-/* ==========================================================================
-   EYEBROW
-   ========================================================================== */
-
-
-.aiSecurity
-:global(
-  [class*="page-hero-module__"][class*="__eyebrow"]
-) {
-  display:
-    inline-flex !important;
-
-  width:
-    fit-content !important;
-
-  inline-size:
-    fit-content !important;
-
-  height:
-    auto !important;
-
-  block-size:
-    auto !important;
-
-  min-height:
-    0 !important;
-
-  min-block-size:
-    0 !important;
-
-  max-height:
-    none !important;
-
-  max-block-size:
-    none !important;
-
-  padding:
-    0 !important;
-
-  padding-block:
-    0 !important;
-
-  padding-inline:
-    0 !important;
-
-  margin:
-    0
-    0
-    0.2rem !important;
-
-  align-items:
-    center !important;
-
-  line-height:
-    1.25 !important;
-}
-
-
-/* ==========================================================================
-   DESCRIPTION
-   ========================================================================== */
-
-
-.aiSecurity
-:global(
-  [class*="page-hero-module__"][class*="__description"]
-) {
-  display:
-    block !important;
-
-  width:
-    min(
-      100%,
-      700px
-    ) !important;
-
-  inline-size:
-    min(
-      100%,
-      700px
-    ) !important;
-
-  height:
-    auto !important;
-
-  block-size:
-    auto !important;
-
-  min-height:
-    0 !important;
-
-  min-block-size:
-    0 !important;
-
-  max-height:
-    none !important;
-
-  max-block-size:
-    none !important;
-
-  padding:
-    0 !important;
-
-  padding-block:
-    0 !important;
-
-  padding-inline:
-    0 !important;
-
-  margin:
-    0.1rem
-    0
-    0 !important;
-
-  line-height:
-    1.5 !important;
-}
-
-
-/* ==========================================================================
-   METADATA
-   ========================================================================== */
-
-
-.aiSecurity
-:global(
-  [class*="page-hero-module__"][class*="__meta"]
-) {
-  display:
-    flex !important;
-
-  flex-flow:
-    row
-    wrap !important;
-
-  align-items:
-    center !important;
-
-  justify-content:
-    flex-start !important;
-
-  width:
-    100% !important;
-
-  inline-size:
-    100% !important;
-
-  height:
-    auto !important;
-
-  block-size:
-    auto !important;
-
-  min-height:
-    0 !important;
-
-  min-block-size:
-    0 !important;
-
-  max-height:
-    none !important;
-
-  max-block-size:
-    none !important;
-
-  gap:
-    0.35rem
-    0.8rem !important;
-
-  padding:
-    0.55rem
-    0
-    0 !important;
-
-  padding-block-start:
-    0.55rem !important;
-
-  padding-block-end:
-    0 !important;
-
-  padding-inline:
-    0 !important;
-
-  margin:
-    0 !important;
-}
-
-
-/*
- * Keep individual metadata values compact too.
- */
-.aiSecurity
-:global(
-  [class*="page-hero-module__"][class*="__meta"]
-)
-> * {
-  min-height:
-    0 !important;
-
-  min-block-size:
-    0 !important;
-
-  height:
-    auto !important;
-
-  block-size:
-    auto !important;
-
-  padding-top:
-    0.25rem !important;
-
-  padding-bottom:
-    0.25rem !important;
-
-  margin-top:
-    0 !important;
-
-  margin-bottom:
-    0 !important;
-}
-
-
-/* ==========================================================================
-   ACTIONS
-   ========================================================================== */
-
-
-.aiSecurity
-:global(
-  [class*="page-hero-module__"][class*="__actions"]
-) {
-  display:
-    flex !important;
-
-  flex-flow:
-    row
-    wrap !important;
-
-  align-items:
-    center !important;
-
-  justify-content:
-    flex-start !important;
-
-  width:
-    100% !important;
-
-  inline-size:
-    100% !important;
-
-  height:
-    auto !important;
-
-  block-size:
-    auto !important;
-
-  min-height:
-    0 !important;
-
-  min-block-size:
-    0 !important;
-
-  max-height:
-    none !important;
-
-  max-block-size:
-    none !important;
-
-  gap:
-    0.55rem !important;
-
-  padding:
-    0.7rem
-    0
-    0 !important;
-
-  padding-block-start:
-    0.7rem !important;
-
-  padding-block-end:
-    0 !important;
-
-  padding-inline:
-    0 !important;
-
-  margin:
-    0 !important;
-}
-
-
-/* ==========================================================================
-   COORDINATE
-   ========================================================================== */
-
-
-.aiSecurity
-:global(
-  [class*="page-hero-module__"][class*="__coordinate"]
-) {
-  display:
-    block !important;
-
-  width:
-    fit-content !important;
-
-  inline-size:
-    fit-content !important;
-
-  height:
-    auto !important;
-
-  block-size:
-    auto !important;
-
-  min-height:
-    0 !important;
-
-  min-block-size:
-    0 !important;
-
-  max-height:
-    none !important;
-
-  max-block-size:
-    none !important;
-
-  padding:
-    0 !important;
-
-  padding-block:
-    0 !important;
-
-  padding-inline:
-    0 !important;
-
-  margin:
-    0.65rem
-    0
-    0 !important;
-
-  line-height:
-    1.25 !important;
-
-  opacity:
-    0.55;
-}
-
-
-/* ==========================================================================
-   CONTENT WRAPPER
-   ========================================================================== */
-
-
-.aiSecurity
-:global(
-  [class*="page-hero-module__"][class*="__content"]
-) {
-  height:
-    auto !important;
-
-  block-size:
-    auto !important;
-
-  min-height:
-    0 !important;
-
-  min-block-size:
-    0 !important;
-
-  max-height:
-    none !important;
-
-  max-block-size:
-    none !important;
-
-  gap:
-    0.4rem !important;
-}
-
-
-/* ==========================================================================
-   HERO ITSELF
-   ========================================================================== */
-
-
-.aiSecurity
-:global(
-  section[class*="page-hero-module__"][class*="__hero"]
-) {
-  height:
-    auto !important;
-
-  block-size:
-    auto !important;
-
-  min-height:
-    0 !important;
-
-  min-block-size:
-    0 !important;
-
-  max-height:
-    none !important;
-
-  max-block-size:
-    none !important;
-
-  padding-top:
-    1rem !important;
-
-  padding-bottom:
-    1.1rem !important;
-}
-
-
-/* ==========================================================================
-   MOBILE
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    768px
-) {
-
-  .aiSecurity
-  :global(
-    [class*="page-hero-module__"][class*="__meta"]
-  ) {
-    gap:
-      0.3rem
-      0.6rem !important;
-
-    padding-top:
-      0.45rem !important;
-  }
-
-
-  .aiSecurity
-  :global(
-    [class*="page-hero-module__"][class*="__actions"]
-  ) {
-    padding-top:
-      0.55rem !important;
-  }
-
-
-  .aiSecurity
-  :global(
-    [class*="page-hero-module__"][class*="__coordinate"]
-  ) {
-    margin-top:
-      0.5rem !important;
-  }
-
-
-  .aiSecurity
-  :global(
-    section[class*="page-hero-module__"][class*="__hero"]
-  ) {
-    padding-top:
-      0.8rem !important;
-
-    padding-bottom:
-      0.9rem !important;
-  }
-
-}
-
 
 /* ==========================================================================
-   NB_AI_SECURITY_FOUNDATIONS_FULL_DESIGN_V24
+   NB_AI_SECURITY_FOUNDATIONS_PROFESSIONAL_LAYOUT_V28
 
-   Design authority:
-   NoBreach UI/UX Design System & Website Styling Specification
+   ONE consolidated presentation layer for AI Security Foundations.
 
-   Direction:
-   - sleek
-   - professional
-   - slightly edgy
+   Design goals:
    - premium cybersecurity
-   - technical without gaming clichés
-   - student focused
-   - conversion oriented
-
-   Brand:
-   #07090D background
-   #0B0F16 secondary
-   #101620 surface 1
-   #151D29 surface 2
-   #1C2634 surface 3
-   #F5F7FA primary text
-   #C5CED8 secondary text
-   #8793A3 muted
-   #A1E2F0 cyan
-   #83B3D7 steel blue
-   #7E60B9 violet
-   #6333C6 purple
+   - professional academy
+   - editorial hierarchy
+   - low-to-medium density
+   - no dashboard appearance
+   - no card wall
+   - no excessive whitespace
+   - no accumulated override conflicts
    ========================================================================== */
 
 
@@ -5948,46 +1556,43 @@ and
 
 
 .aiSecurity {
-  --nb24-bg:
+  --ai-bg:
     #07090d;
 
-  --nb24-bg-secondary:
+  --ai-bg-secondary:
     #0b0f16;
 
-  --nb24-surface-1:
+  --ai-surface:
     #101620;
 
-  --nb24-surface-2:
+  --ai-surface-elevated:
     #151d29;
 
-  --nb24-surface-3:
-    #1c2634;
-
-  --nb24-text:
+  --ai-text:
     #f5f7fa;
 
-  --nb24-text-secondary:
+  --ai-text-secondary:
     #c5ced8;
 
-  --nb24-muted:
+  --ai-muted:
     #8793a3;
 
-  --nb24-cyan:
+  --ai-cyan:
     #a1e2f0;
 
-  --nb24-blue:
+  --ai-blue:
     #83b3d7;
 
-  --nb24-violet:
+  --ai-violet:
     #7e60b9;
 
-  --nb24-purple:
+  --ai-purple:
     #6333c6;
 
-  --nb24-success:
+  --ai-success:
     #42d392;
 
-  --nb24-border:
+  --ai-border:
     rgba(
       161,
       226,
@@ -5995,41 +1600,32 @@ and
       0.12
     );
 
-  --nb24-border-hover:
+  --ai-border-strong:
     rgba(
       161,
       226,
       240,
-      0.28
+      0.22
     );
 
-  --nb24-border-violet:
+  --ai-border-muted:
     rgba(
-      126,
-      96,
-      185,
-      0.3
+      255,
+      255,
+      255,
+      0.07
     );
 
-  --nb24-radius-sm:
-    8px;
+  --ai-content:
+    1160px;
 
-  --nb24-radius-md:
-    10px;
+  --ai-reading:
+    760px;
 
-  --nb24-radius-lg:
-    14px;
+  --ai-radius:
+    12px;
 
-  --nb24-radius-xl:
-    18px;
-
-  --nb24-content:
-    1180px;
-
-  --nb24-reading:
-    720px;
-
-  --nb24-ease:
+  --ai-ease:
     cubic-bezier(
       0.22,
       1,
@@ -6051,40 +1647,40 @@ and
 
   color:
     var(
-      --nb24-text
+      --ai-text
     );
 
   background:
     radial-gradient(
       circle
       at
-      18%
-      7%,
-      rgba(
-        161,
-        226,
-        240,
-        0.06
-      ),
-      transparent
-      25%
-    ),
-    radial-gradient(
-      circle
-      at
-      88%
-      22%,
+      82%
+      4%,
       rgba(
         99,
         51,
         198,
-        0.075
+        0.055
       ),
       transparent
-      23%
+      26rem
+    ),
+    radial-gradient(
+      circle
+      at
+      12%
+      0%,
+      rgba(
+        161,
+        226,
+        240,
+        0.035
+      ),
+      transparent
+      24rem
     ),
     var(
-      --nb24-bg
+      --ai-bg
     );
 
   font-family:
@@ -6117,7 +1713,7 @@ and
 .aiSecurity h4 {
   color:
     var(
-      --nb24-text
+      --ai-text
     );
 
   font-family:
@@ -6138,22 +1734,20 @@ and
 
 .aiSecurity h2 {
   margin:
-    0
-    0
-    0.75rem !important;
+    0 !important;
 
   font-size:
     clamp(
       2rem,
-      3.1vw,
-      2.75rem
+      3vw,
+      2.7rem
     ) !important;
 
   font-weight:
     620 !important;
 
   line-height:
-    1.05 !important;
+    1.08 !important;
 
   letter-spacing:
     -0.035em !important;
@@ -6162,53 +1756,38 @@ and
 
 .aiSecurity h3 {
   margin:
-    0
-    0
-    0.4rem !important;
+    0 !important;
 
   font-size:
-    clamp(
-      1.15rem,
-      1.7vw,
-      1.45rem
-    ) !important;
+    1.12rem !important;
 
   font-weight:
-    610 !important;
+    620 !important;
 
   line-height:
-    1.2 !important;
+    1.35 !important;
 
   letter-spacing:
-    -0.018em !important;
-}
-
-
-.aiSecurity h4 {
-  font-size:
-    1.05rem;
-
-  line-height:
-    1.35;
+    -0.012em !important;
 }
 
 
 .aiSecurity p {
   color:
     var(
-      --nb24-text-secondary
+      --ai-text-secondary
     );
 
   font-size:
     1rem;
 
   line-height:
-    1.625;
+    1.65;
 }
 
 
 /* ==========================================================================
-   03 — HERO
+   03 — HERO SHELL
    ========================================================================== */
 
 
@@ -6216,11 +1795,17 @@ and
 :global(
   section[class*="page-hero-module__"][class*="__hero"]
 ) {
+  position:
+    relative;
+
   min-height:
     0 !important;
 
   height:
     auto !important;
+
+  max-height:
+    none !important;
 
   block-size:
     auto !important;
@@ -6228,46 +1813,42 @@ and
   min-block-size:
     0 !important;
 
-  max-height:
-    none !important;
-
   max-block-size:
     none !important;
 
+  margin:
+    0 !important;
+
   padding:
     clamp(
-      2.2rem,
-      4vw,
-      4rem
+      3.25rem,
+      5.2vw,
+      4.75rem
     )
     clamp(
       1.25rem,
       4vw,
       2.5rem
     )
-    clamp(
-      2.4rem,
-      4vw,
-      4rem
-    ) !important;
+    2.25rem !important;
 
   overflow:
     hidden !important;
+
+  background:
+    transparent !important;
 
   border-bottom:
     1px
     solid
     var(
-      --nb24-border
+      --ai-border
     );
-
-  background:
-    transparent !important;
 }
 
 
 /* ==========================================================================
-   04 — HERO CONTENT GRID
+   04 — HERO CONTENT
    ========================================================================== */
 
 
@@ -6282,59 +1863,31 @@ and
     2;
 
   display:
-    grid !important;
+    flex !important;
 
-  grid-template-columns:
-    minmax(
-      0,
-      1fr
-    )
-    minmax(
-      260px,
-      340px
-    ) !important;
+  flex-direction:
+    column !important;
 
-  grid-template-rows:
-    auto
-    auto
-    auto
-    auto
-    auto !important;
+  align-items:
+    flex-start !important;
 
-  column-gap:
-    clamp(
-      2rem,
-      5vw,
-      5rem
-    ) !important;
+  justify-content:
+    flex-start !important;
 
-  row-gap:
+  gap:
     0 !important;
 
   width:
     min(
       100%,
       var(
-        --nb24-content
-      )
-    ) !important;
-
-  inline-size:
-    min(
-      100%,
-      var(
-        --nb24-content
+        --ai-content
       )
     ) !important;
 
   max-width:
     var(
-      --nb24-content
-    ) !important;
-
-  max-inline-size:
-    var(
-      --nb24-content
+      --ai-content
     ) !important;
 
   height:
@@ -6343,27 +1896,44 @@ and
   min-height:
     0 !important;
 
+  max-height:
+    none !important;
+
   block-size:
     auto !important;
 
   min-block-size:
     0 !important;
 
+  max-block-size:
+    none !important;
+
   margin:
     0
     auto !important;
+
+  padding:
+    0 !important;
 }
 
 
 /*
- * Critical correction from V22:
- * remove accidental 96px vertical padding from every direct hero child.
+ * Clean slate for shared PageHero direct children.
  */
 .aiSecurity
 :global(
   [class*="page-hero-module__"][class*="__content"]
 )
 > * {
+  flex:
+    none !important;
+
+  order:
+    initial !important;
+
+  width:
+    auto;
+
   height:
     auto !important;
 
@@ -6390,6 +1960,9 @@ and
 
   padding-block:
     0 !important;
+
+  transform:
+    none;
 }
 
 
@@ -6402,12 +1975,6 @@ and
 :global(
   [class*="page-hero-module__"][class*="__eyebrow"]
 ) {
-  grid-column:
-    1;
-
-  grid-row:
-    1;
-
   display:
     inline-flex !important;
 
@@ -6417,43 +1984,27 @@ and
   width:
     fit-content !important;
 
-  min-height:
-    26px !important;
-
   margin:
     0
     0
-    0.85rem !important;
+    1rem !important;
 
   padding:
-    0.25rem
-    0.6rem !important;
+    0 !important;
 
   color:
     var(
-      --nb24-cyan
+      --ai-cyan
     ) !important;
 
   background:
-    rgba(
-      161,
-      226,
-      240,
-      0.065
-    );
+    transparent !important;
 
   border:
-    1px
-    solid
-    rgba(
-      161,
-      226,
-      240,
-      0.16
-    );
+    0 !important;
 
   border-radius:
-    999px;
+    0 !important;
 
   font-family:
     "IBM Plex Mono",
@@ -6462,19 +2013,42 @@ and
     monospace;
 
   font-size:
-    0.68rem !important;
+    0.72rem !important;
 
   font-weight:
     650;
 
   line-height:
-    1 !important;
+    1.4 !important;
 
   letter-spacing:
-    0.075em !important;
+    0.085em !important;
 
   text-transform:
     uppercase;
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__eyebrow"]
+)::before {
+  width:
+    1.4rem;
+
+  height:
+    1px;
+
+  margin-right:
+    0.6rem;
+
+  background:
+    var(
+      --ai-cyan
+    );
+
+  content:
+    "";
 }
 
 
@@ -6483,36 +2057,31 @@ and
    ========================================================================== */
 
 
-.aiSecurity.aiSecurity.aiSecurity.aiSecurity h1 {
-  grid-column:
-    1;
-
-  grid-row:
-    2;
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__title"]
+),
+.aiSecurity.aiSecurity h1 {
+  display:
+    block !important;
 
   width:
-    100% !important;
-
-  inline-size:
-    100% !important;
-
-  min-width:
-    0 !important;
+    min(
+      100%,
+      850px
+    ) !important;
 
   max-width:
-    800px !important;
-
-  max-inline-size:
-    800px !important;
+    850px !important;
 
   height:
     auto !important;
 
-  block-size:
-    auto !important;
-
   min-height:
     0 !important;
+
+  block-size:
+    auto !important;
 
   min-block-size:
     0 !important;
@@ -6525,24 +2094,24 @@ and
 
   color:
     var(
-      --nb24-text
+      --ai-text
     ) !important;
 
   font-size:
     clamp(
-      3.25rem,
-      4.3vw,
-      4rem
+      3.15rem,
+      5vw,
+      4.5rem
     ) !important;
 
   font-weight:
-    630 !important;
+    620 !important;
 
   line-height:
-    0.99 !important;
+    0.98 !important;
 
   letter-spacing:
-    -0.045em !important;
+    -0.05em !important;
 
   white-space:
     normal !important;
@@ -6567,23 +2136,26 @@ and
 :global(
   [class*="page-hero-module__"][class*="__description"]
 ) {
-  grid-column:
-    1;
-
-  grid-row:
-    3;
-
   display:
     block !important;
 
   width:
     min(
       100%,
-      690px
+      700px
     ) !important;
 
+  max-width:
+    700px !important;
+
+  height:
+    auto !important;
+
+  min-height:
+    0 !important;
+
   margin:
-    1.15rem
+    1.25rem
     0
     0 !important;
 
@@ -6592,18 +2164,18 @@ and
 
   color:
     var(
-      --nb24-text-secondary
+      --ai-text-secondary
     ) !important;
 
   font-size:
     clamp(
       1rem,
-      1.25vw,
-      1.1rem
+      1.3vw,
+      1.12rem
     ) !important;
 
   line-height:
-    1.62 !important;
+    1.65 !important;
 }
 
 
@@ -6616,12 +2188,6 @@ and
 :global(
   [class*="page-hero-module__"][class*="__actions"]
 ) {
-  grid-column:
-    1;
-
-  grid-row:
-    4;
-
   display:
     flex !important;
 
@@ -6629,17 +2195,20 @@ and
     row
     wrap !important;
 
-  gap:
-    0.75rem !important;
-
   align-items:
     center !important;
+
+  gap:
+    0.75rem !important;
 
   width:
     auto !important;
 
+  height:
+    auto !important;
+
   margin:
-    1.45rem
+    1.5rem
     0
     0 !important;
 
@@ -6675,26 +2244,22 @@ button {
     1.35rem !important;
 
   color:
-    var(
-      --nb24-bg
-    ) !important;
+    #07090d !important;
 
   background:
     var(
-      --nb24-cyan
+      --ai-cyan
     ) !important;
 
   border:
     1px
     solid
     var(
-      --nb24-cyan
+      --ai-cyan
     ) !important;
 
   border-radius:
-    var(
-      --nb24-radius-md
-    ) !important;
+    10px !important;
 
   box-shadow:
     none !important;
@@ -6709,17 +2274,17 @@ button {
     transform
     180ms
     var(
-      --nb24-ease
+      --ai-ease
     ),
     background
     180ms
     var(
-      --nb24-ease
+      --ai-ease
     ),
     box-shadow
     180ms
     var(
-      --nb24-ease
+      --ai-ease
     );
 }
 
@@ -6745,7 +2310,7 @@ button:hover {
   box-shadow:
     0
     8px
-    26px
+    28px
     rgba(
       161,
       226,
@@ -6756,7 +2321,7 @@ button:hover {
 
 
 /* ==========================================================================
-   09 — HERO METADATA PANEL
+   09 — COURSE METADATA RAIL
    ========================================================================== */
 
 
@@ -6764,25 +2329,23 @@ button:hover {
 :global(
   [class*="page-hero-module__"][class*="__meta"]
 ) {
-  grid-column:
-    2;
-
-  grid-row:
-    1
-    /
-    5;
-
-  align-self:
-    center;
-
   display:
     grid !important;
 
   grid-template-columns:
-    1fr !important;
+    repeat(
+      4,
+      minmax(
+        0,
+        1fr
+      )
+    ) !important;
 
-  gap:
-    0 !important;
+  align-items:
+    stretch !important;
+
+  align-self:
+    stretch !important;
 
   width:
     100% !important;
@@ -6793,52 +2356,48 @@ button:hover {
   min-height:
     0 !important;
 
+  max-height:
+    none !important;
+
   margin:
+    2.35rem
+    0
     0 !important;
 
   padding:
-    0.4rem
-    1.25rem !important;
+    0 !important;
+
+  overflow:
+    visible !important;
 
   background:
-    linear-gradient(
-      145deg,
-      rgba(
-        16,
-        22,
-        32,
-        0.94
-      ),
-      rgba(
-        11,
-        15,
-        22,
-        0.94
-      )
-    ) !important;
+    transparent !important;
 
-  border:
+  border-top:
     1px
     solid
     var(
-      --nb24-border
-    );
+      --ai-border-strong
+    ) !important;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --ai-border
+    ) !important;
+
+  border-right:
+    0 !important;
+
+  border-left:
+    0 !important;
 
   border-radius:
-    var(
-      --nb24-radius-lg
-    );
+    0 !important;
 
   box-shadow:
-    0
-    16px
-    40px
-    rgba(
-      0,
-      0,
-      0,
-      0.18
-    );
+    none !important;
 }
 
 
@@ -6847,8 +2406,23 @@ button:hover {
   [class*="page-hero-module__"][class*="__meta"]
 )
 > * {
-  min-height:
+  display:
+    flex !important;
+
+  flex-direction:
+    column !important;
+
+  align-items:
+    flex-start !important;
+
+  justify-content:
+    center !important;
+
+  min-width:
     0 !important;
+
+  min-height:
+    72px !important;
 
   height:
     auto !important;
@@ -6857,17 +2431,31 @@ button:hover {
     0 !important;
 
   padding:
-    0.85rem
+    0.9rem
+    1.15rem !important;
+
+  background:
+    transparent !important;
+
+  border:
     0 !important;
 
-  border-bottom:
+  border-right:
     1px
     solid
-    rgba(
-      161,
-      226,
-      240,
-      0.085
+    var(
+      --ai-border-muted
+    ) !important;
+
+  border-radius:
+    0 !important;
+
+  box-shadow:
+    none !important;
+
+  color:
+    var(
+      --ai-text
     );
 }
 
@@ -6876,51 +2464,36 @@ button:hover {
 :global(
   [class*="page-hero-module__"][class*="__meta"]
 )
-> *:last-child {
-  border-bottom:
-    0;
+> *:first-child {
+  padding-left:
+    0 !important;
 }
-
-
-/* ==========================================================================
-   10 — COORDINATE
-   ========================================================================== */
 
 
 .aiSecurity
 :global(
-  [class*="page-hero-module__"][class*="__coordinate"]
-) {
-  grid-column:
-    2;
+  [class*="page-hero-module__"][class*="__meta"]
+)
+> *:last-child {
+  border-right:
+    0 !important;
+}
 
-  grid-row:
-    5;
 
-  justify-self:
-    end;
-
-  display:
-    block !important;
-
-  width:
-    fit-content !important;
-
-  height:
-    auto !important;
-
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+)
+small {
   margin:
-    0.75rem
     0
-    0 !important;
-
-  padding:
-    0 !important;
+    0
+    0.3rem;
 
   color:
     var(
-      --nb24-muted
-    ) !important;
+      --ai-muted
+    );
 
   font-family:
     "IBM Plex Mono",
@@ -6929,7 +2502,100 @@ button:hover {
     monospace;
 
   font-size:
-    0.65rem !important;
+    0.64rem;
+
+  font-weight:
+    600;
+
+  line-height:
+    1.2;
+
+  letter-spacing:
+    0.05em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+)
+strong,
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__meta"]
+)
+span {
+  margin:
+    0;
+
+  color:
+    var(
+      --ai-text
+    );
+
+  font-size:
+    0.82rem;
+
+  font-weight:
+    570;
+
+  line-height:
+    1.35;
+}
+
+
+/* ==========================================================================
+   10 — COORDINATE LABEL
+   ========================================================================== */
+
+
+.aiSecurity
+:global(
+  [class*="page-hero-module__"][class*="__coordinate"]
+) {
+  position:
+    absolute !important;
+
+  top:
+    0.2rem;
+
+  right:
+    0;
+
+  display:
+    block !important;
+
+  width:
+    auto !important;
+
+  height:
+    auto !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    0 !important;
+
+  color:
+    var(
+      --ai-muted
+    ) !important;
+
+  background:
+    transparent !important;
+
+  font-family:
+    "IBM Plex Mono",
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size:
+    0.62rem !important;
 
   line-height:
     1.3 !important;
@@ -6938,12 +2604,12 @@ button:hover {
     0.055em !important;
 
   opacity:
-    0.65;
+    0.55;
 }
 
 
 /* ==========================================================================
-   11 — AMBIENT AI VISUAL
+   11 — AMBIENT VISUAL
    ========================================================================== */
 
 
@@ -6952,52 +2618,203 @@ button:hover {
     absolute !important;
 
   top:
-    2.5rem !important;
+    2.25rem;
 
   right:
     clamp(
-      1rem,
-      3vw,
-      3rem
-    ) !important;
+      -5rem,
+      -2vw,
+      -1rem
+    );
 
   z-index:
-    0 !important;
+    0;
+
+  display:
+    block;
 
   width:
-    min(
-      320px,
-      23vw
-    ) !important;
+    clamp(
+      240px,
+      27vw,
+      390px
+    );
 
   height:
-    min(
-      320px,
-      23vw
-    ) !important;
+    clamp(
+      240px,
+      27vw,
+      390px
+    );
 
   margin:
-    0 !important;
+    0;
 
   opacity:
-    0.09 !important;
+    0.09;
 
   pointer-events:
-    none !important;
+    none;
+}
 
-  filter:
-    saturate(
-      0.8
+
+.aiSecurity .aiOrbitLarge,
+.aiSecurity .aiOrbitSmall {
+  position:
+    absolute;
+
+  top:
+    50%;
+
+  left:
+    50%;
+
+  border:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.2
+    );
+
+  border-radius:
+    50%;
+
+  transform:
+    translate(
+      -50%,
+      -50%
     );
 }
 
 
+.aiSecurity .aiOrbitLarge {
+  width:
+    86%;
+
+  height:
+    86%;
+}
+
+
+.aiSecurity .aiOrbitSmall {
+  width:
+    56%;
+
+  height:
+    56%;
+
+  border-color:
+    rgba(
+      126,
+      96,
+      185,
+      0.24
+    );
+}
+
+
+.aiSecurity .aiNode {
+  position:
+    absolute;
+
+  width:
+    7px;
+
+  height:
+    7px;
+
+  background:
+    var(
+      --ai-cyan
+    );
+
+  border:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.28
+    );
+
+  border-radius:
+    50%;
+
+  box-shadow:
+    0
+    0
+    0
+    5px
+    rgba(
+      161,
+      226,
+      240,
+      0.05
+    );
+}
+
+
+.aiSecurity .aiNodeOne {
+  top:
+    8%;
+
+  left:
+    49%;
+}
+
+
+.aiSecurity .aiNodeTwo {
+  top:
+    34%;
+
+  right:
+    6%;
+}
+
+
+.aiSecurity .aiNodeThree {
+  right:
+    22%;
+
+  bottom:
+    10%;
+}
+
+
+.aiSecurity .aiNodeFour {
+  bottom:
+    16%;
+
+  left:
+    14%;
+
+  background:
+    var(
+      --ai-violet
+    );
+}
+
+
+.aiSecurity .aiNodeFive {
+  top:
+    30%;
+
+  left:
+    7%;
+}
+
+
 /* ==========================================================================
-   12 — BODY SECTIONS
+   12 — BODY SECTION FOUNDATION
    ========================================================================== */
 
 
-.aiSecurity section:not(
+.aiSecurity
+section:not(
   [class*="page-hero-module__"]
 ) {
   position:
@@ -7014,7 +2831,7 @@ button:hover {
 
   padding:
     clamp(
-      3rem,
+      3.5rem,
       5vw,
       4.75rem
     )
@@ -7024,36 +2841,25 @@ button:hover {
       2.5rem
     ) !important;
 
-  border-top:
+  background:
+    transparent !important;
+
+  border:
+    0 !important;
+
+  border-bottom:
     1px
     solid
-    rgba(
-      161,
-      226,
-      240,
-      0.075
-    );
+    var(
+      --ai-border-muted
+    ) !important;
+
+  border-radius:
+    0 !important;
+
+  box-shadow:
+    none !important;
 }
-
-
-.aiSecurity section:not(
-  [class*="page-hero-module__"]
-):nth-of-type(
-  even
-) {
-  background:
-    rgba(
-      11,
-      15,
-      22,
-      0.46
-    );
-}
-
-
-/* ==========================================================================
-   13 — SECTION CONTENT WIDTH
-   ========================================================================== */
 
 
 .aiSecurity
@@ -7065,13 +2871,13 @@ section:not(
     min(
       100%,
       var(
-        --nb24-content
+        --ai-content
       )
     );
 
   max-width:
     var(
-      --nb24-content
+      --ai-content
     );
 
   margin-right:
@@ -7083,18 +2889,121 @@ section:not(
 
 
 /* ==========================================================================
-   14 — SECTION EYEBROWS / LABELS
+   13 — SECTION HEADER
    ========================================================================== */
 
 
-.aiSecurity section small,
-.aiSecurity section [class*="eyebrow"],
-.aiSecurity section [class*="label"] {
+.aiSecurity
+section:not(
+  [class*="page-hero-module__"]
+)
+> header {
+  display:
+    grid !important;
+
+  grid-template-columns:
+    minmax(
+      180px,
+      0.32fr
+    )
+    minmax(
+      0,
+      0.68fr
+    );
+
+  gap:
+    clamp(
+      2rem,
+      5vw,
+      5rem
+    );
+
+  align-items:
+    start;
+
+  margin:
+    0
+    auto
+    2rem !important;
+
+  padding:
+    0 !important;
+}
+
+
+.aiSecurity
+section:not(
+  [class*="page-hero-module__"]
+)
+> header
+h2 {
+  max-width:
+    13ch;
+}
+
+
+.aiSecurity
+section:not(
+  [class*="page-hero-module__"]
+)
+> header
+p {
+  max-width:
+    var(
+      --ai-reading
+    );
+
+  margin:
+    0.2rem
+    0
+    0 !important;
+
+  color:
+    var(
+      --ai-text-secondary
+    ) !important;
+
+  font-size:
+    1rem;
+
+  line-height:
+    1.65;
+}
+
+
+/* ==========================================================================
+   14 — SECTION LABELS
+   ========================================================================== */
+
+
+.aiSecurity
+section:not(
+  [class*="page-hero-module__"]
+)
+small,
+.aiSecurity
+section:not(
+  [class*="page-hero-module__"]
+)
+[class*="eyebrow"],
+.aiSecurity
+section:not(
+  [class*="page-hero-module__"]
+)
+[class*="label"] {
+  color:
+    var(
+      --ai-muted
+    );
+
   font-family:
     "IBM Plex Mono",
     "SFMono-Regular",
     Consolas,
     monospace;
+
+  font-size:
+    0.68rem;
 
   letter-spacing:
     0.06em;
@@ -7105,31 +3014,40 @@ section:not(
 
 
 /* ==========================================================================
-   15 — SUPPORTING COPY
+   15 — READING COPY
    ========================================================================== */
 
 
-.aiSecurity section > p,
-.aiSecurity section header > p {
+.aiSecurity
+section:not(
+  [class*="page-hero-module__"]
+)
+> p {
   max-width:
     var(
-      --nb24-reading
+      --ai-reading
     );
 
-  margin:
-    0.55rem
-    0
+  margin-top:
     0 !important;
 
-  color:
-    var(
-      --nb24-text-secondary
-    ) !important;
+  margin-bottom:
+    1rem !important;
+}
+
+
+.aiSecurity
+section:not(
+  [class*="page-hero-module__"]
+)
+> p:last-child {
+  margin-bottom:
+    0 !important;
 }
 
 
 /* ==========================================================================
-   16 — METADATA DL
+   16 — GENERIC DESCRIPTION LIST
    ========================================================================== */
 
 
@@ -7139,9 +3057,9 @@ section:not(
 
   grid-template-columns:
     repeat(
-      auto-fit,
+      4,
       minmax(
-        170px,
+        0,
         1fr
       )
     ) !important;
@@ -7154,57 +3072,78 @@ section:not(
 
   margin:
     1.5rem
-    0
+    auto
     0 !important;
 
-  overflow:
-    hidden;
+  padding:
+    0 !important;
 
   background:
-    rgba(
-      16,
-      22,
-      32,
-      0.72
-    );
+    transparent !important;
 
-  border:
+  border-top:
     1px
     solid
     var(
-      --nb24-border
+      --ai-border
     );
 
-  border-radius:
+  border-bottom:
+    1px
+    solid
     var(
-      --nb24-radius-lg
+      --ai-border
     );
+
+  border-right:
+    0;
+
+  border-left:
+    0;
+
+  border-radius:
+    0 !important;
+
+  box-shadow:
+    none !important;
 }
 
 
 .aiSecurity dl > div {
   min-height:
+    72px !important;
+
+  margin:
     0 !important;
 
   padding:
     1rem
     1.15rem !important;
 
+  background:
+    transparent !important;
+
+  border:
+    0 !important;
+
   border-right:
     1px
     solid
     var(
-      --nb24-border
-    );
+      --ai-border-muted
+    ) !important;
+}
 
-  border-bottom:
-    0;
+
+.aiSecurity dl > div:first-child {
+  padding-left:
+    0 !important;
 }
 
 
 .aiSecurity dl > div:last-child {
   border-right:
-    0;
+    0 !important;
 }
 
 
@@ -7216,7 +3155,7 @@ section:not(
 
   color:
     var(
-      --nb24-muted
+      --ai-muted
     );
 
   font-family:
@@ -7226,16 +3165,13 @@ section:not(
     monospace;
 
   font-size:
-    0.68rem !important;
+    0.65rem;
 
   font-weight:
     600;
 
-  line-height:
-    1.25;
-
   letter-spacing:
-    0.055em;
+    0.05em;
 
   text-transform:
     uppercase;
@@ -7248,22 +3184,274 @@ section:not(
 
   color:
     var(
-      --nb24-text
+      --ai-text
     );
 
   font-size:
-    0.9rem !important;
+    0.88rem !important;
 
   font-weight:
-    550;
+    560;
 
   line-height:
-    1.4 !important;
+    1.4;
 }
 
 
 /* ==========================================================================
-   17 — CARDS / MODULES
+   17 — LEARNING LISTS
+   ========================================================================== */
+
+
+.aiSecurity ul {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  column-gap:
+    2.5rem;
+
+  row-gap:
+    0;
+
+  margin:
+    1rem
+    auto
+    0 !important;
+
+  padding:
+    0 !important;
+
+  list-style:
+    none;
+}
+
+
+.aiSecurity ul > li {
+  position:
+    relative;
+
+  min-height:
+    0 !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    1rem
+    0
+    1rem
+    1.75rem !important;
+
+  color:
+    var(
+      --ai-text-secondary
+    );
+
+  background:
+    transparent !important;
+
+  border:
+    0 !important;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --ai-border-muted
+    ) !important;
+
+  border-radius:
+    0 !important;
+
+  box-shadow:
+    none !important;
+
+  line-height:
+    1.55;
+}
+
+
+.aiSecurity ul > li::before {
+  position:
+    absolute;
+
+  top:
+    1.45rem;
+
+  left:
+    0;
+
+  width:
+    6px;
+
+  height:
+    6px;
+
+  background:
+    var(
+      --ai-cyan
+    );
+
+  border-radius:
+    50%;
+
+  content:
+    "";
+}
+
+
+/* ==========================================================================
+   18 — CURRICULUM
+   ========================================================================== */
+
+
+.aiSecurity ol {
+  counter-reset:
+    ai-module;
+
+  display:
+    block;
+
+  margin:
+    1rem
+    auto
+    0 !important;
+
+  padding:
+    0 !important;
+
+  list-style:
+    none;
+}
+
+
+.aiSecurity ol > li {
+  counter-increment:
+    ai-module;
+
+  position:
+    relative;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    52px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    1.2rem;
+
+  min-height:
+    0 !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    1.35rem
+    0 !important;
+
+  color:
+    var(
+      --ai-text-secondary
+    );
+
+  background:
+    transparent !important;
+
+  border:
+    0 !important;
+
+  border-top:
+    1px
+    solid
+    var(
+      --ai-border
+    ) !important;
+
+  border-radius:
+    0 !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+.aiSecurity ol > li:last-child {
+  border-bottom:
+    1px
+    solid
+    var(
+      --ai-border
+    ) !important;
+}
+
+
+.aiSecurity ol > li::before {
+  display:
+    block;
+
+  width:
+    auto;
+
+  height:
+    auto;
+
+  color:
+    var(
+      --ai-cyan
+    );
+
+  background:
+    transparent;
+
+  border:
+    0;
+
+  border-radius:
+    0;
+
+  box-shadow:
+    none;
+
+  font-family:
+    "IBM Plex Mono",
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size:
+    0.72rem;
+
+  font-weight:
+    650;
+
+  line-height:
+    1.7;
+
+  content:
+    counter(
+      ai-module,
+      decimal-leading-zero
+    );
+}
+
+
+/* ==========================================================================
+   19 — ARTICLE / MODULE ROWS
    ========================================================================== */
 
 
@@ -7282,323 +3470,105 @@ section:not(
 
   padding:
     1.35rem
-    1.4rem !important;
+    0 !important;
 
   overflow:
-    hidden;
+    visible;
 
   background:
-    var(
-      --nb24-surface-1
-    ) !important;
+    transparent !important;
 
   border:
-    1px
-    solid
-    var(
-      --nb24-border
-    ) !important;
-
-  border-radius:
-    var(
-      --nb24-radius-lg
-    ) !important;
-
-  box-shadow:
-    0
-    14px
-    36px
-    rgba(
-      0,
-      0,
-      0,
-      0.12
-    ) !important;
-
-  transition:
-    transform
-    200ms
-    var(
-      --nb24-ease
-    ),
-    border-color
-    200ms
-    var(
-      --nb24-ease
-    ),
-    background
-    200ms
-    var(
-      --nb24-ease
-    );
-}
-
-
-.aiSecurity article::before {
-  position:
-    absolute;
-
-  top:
-    -1px;
-
-  left:
-    -1px;
-
-  width:
-    18px;
-
-  height:
-    18px;
+    0 !important;
 
   border-top:
     1px
     solid
-    rgba(
-      161,
-      226,
-      240,
-      0.5
-    );
+    var(
+      --ai-border
+    ) !important;
 
-  border-left:
+  border-radius:
+    0 !important;
+
+  box-shadow:
+    none !important;
+
+  transform:
+    none !important;
+}
+
+
+.aiSecurity article:last-child {
+  border-bottom:
     1px
     solid
-    rgba(
-      161,
-      226,
-      240,
-      0.5
-    );
+    var(
+      --ai-border
+    ) !important;
+}
 
-  content:
-    "";
+
+.aiSecurity article::before {
+  display:
+    none !important;
 }
 
 
 .aiSecurity article:hover {
   transform:
-    translateY(
-      -2px
-    );
+    none !important;
 
   background:
-    var(
-      --nb24-surface-2
-    ) !important;
+    transparent !important;
 
   border-color:
     var(
-      --nb24-border-hover
+      --ai-border-strong
+    ) !important;
+}
+
+
+.aiSecurity article p {
+  max-width:
+    720px;
+
+  margin:
+    0.45rem
+    0
+    0 !important;
+}
+
+
+/* ==========================================================================
+   20 — TECHNICAL SUPPORTING SECTIONS
+   ========================================================================== */
+
+
+.aiSecurity
+section:nth-of-type(
+  5
+),
+.aiSecurity
+section:nth-of-type(
+  6
+),
+.aiSecurity
+section:nth-of-type(
+  7
+) {
+  background:
+    rgba(
+      11,
+      15,
+      22,
+      0.36
     ) !important;
 }
 
 
 /* ==========================================================================
-   18 — LISTS / LEARNING OBJECTIVES
-   ========================================================================== */
-
-
-.aiSecurity ul,
-.aiSecurity ol {
-  display:
-    grid;
-
-  gap:
-    0.65rem;
-
-  margin:
-    1rem
-    0
-    0 !important;
-
-  padding:
-    0 !important;
-
-  list-style:
-    none;
-}
-
-
-.aiSecurity li {
-  position:
-    relative;
-
-  min-height:
-    0 !important;
-
-  margin:
-    0 !important;
-
-  padding:
-    0.8rem
-    0.95rem
-    0.8rem
-    2.25rem !important;
-
-  color:
-    var(
-      --nb24-text-secondary
-    );
-
-  background:
-    rgba(
-      16,
-      22,
-      32,
-      0.58
-    );
-
-  border:
-    1px
-    solid
-    rgba(
-      161,
-      226,
-      240,
-      0.085
-    );
-
-  border-radius:
-    var(
-      --nb24-radius-md
-    );
-
-  line-height:
-    1.5 !important;
-}
-
-
-.aiSecurity li::before {
-  position:
-    absolute;
-
-  top:
-    1.05rem;
-
-  left:
-    0.9rem;
-
-  width:
-    7px;
-
-  height:
-    7px;
-
-  background:
-    var(
-      --nb24-cyan
-    );
-
-  border-radius:
-    50%;
-
-  box-shadow:
-    0
-    0
-    0
-    4px
-    rgba(
-      161,
-      226,
-      240,
-      0.075
-    );
-
-  content:
-    "";
-}
-
-
-/* ==========================================================================
-   19 — CURRICULUM
-   ========================================================================== */
-
-
-.aiSecurity ol {
-  counter-reset:
-    nb24-module;
-}
-
-
-.aiSecurity ol > li {
-  counter-increment:
-    nb24-module;
-
-  padding-left:
-    3.15rem !important;
-}
-
-
-.aiSecurity ol > li::before {
-  top:
-    0.72rem;
-
-  left:
-    0.8rem;
-
-  display:
-    grid;
-
-  place-items:
-    center;
-
-  width:
-    1.7rem;
-
-  height:
-    1.7rem;
-
-  color:
-    var(
-      --nb24-cyan
-    );
-
-  background:
-    rgba(
-      161,
-      226,
-      240,
-      0.07
-    );
-
-  border:
-    1px
-    solid
-    rgba(
-      161,
-      226,
-      240,
-      0.16
-    );
-
-  border-radius:
-    8px;
-
-  box-shadow:
-    none;
-
-  font-family:
-    "IBM Plex Mono",
-    "SFMono-Regular",
-    Consolas,
-    monospace;
-
-  font-size:
-    0.65rem;
-
-  font-weight:
-    700;
-
-  content:
-    counter(
-      nb24-module,
-      decimal-leading-zero
-    );
-}
-
-
-/* ==========================================================================
-   20 — FAQ ACCORDION
+   21 — FAQ
    ========================================================================== */
 
 
@@ -7606,38 +3576,41 @@ section:not(
   margin:
     0 !important;
 
-  overflow:
-    hidden;
-
   background:
-    rgba(
-      16,
-      22,
-      32,
-      0.62
-    );
+    transparent !important;
 
   border:
+    0 !important;
+
+  border-top:
     1px
     solid
     var(
-      --nb24-border
-    );
+      --ai-border
+    ) !important;
 
   border-radius:
-    var(
-      --nb24-radius-lg
-    );
+    0 !important;
+
+  box-shadow:
+    none !important;
 }
 
 
-.aiSecurity details + details {
-  margin-top:
-    0.65rem !important;
+.aiSecurity details:last-child {
+  border-bottom:
+    1px
+    solid
+    var(
+      --ai-border
+    ) !important;
 }
 
 
 .aiSecurity summary {
+  position:
+    relative;
+
   display:
     flex;
 
@@ -7645,22 +3618,27 @@ section:not(
     center;
 
   min-height:
-    56px !important;
+    58px !important;
+
+  margin:
+    0 !important;
 
   padding:
-    0.85rem
-    1rem !important;
+    0.9rem
+    2.5rem
+    0.9rem
+    0 !important;
 
   color:
     var(
-      --nb24-text
+      --ai-text
     );
 
   cursor:
     pointer;
 
   font-weight:
-    590;
+    580;
 
   line-height:
     1.4;
@@ -7676,19 +3654,42 @@ section:not(
 }
 
 
-.aiSecurity details[open] {
-  background:
+.aiSecurity summary::after {
+  position:
+    absolute;
+
+  top:
+    50%;
+
+  right:
+    0;
+
+  color:
     var(
-      --nb24-surface-1
+      --ai-muted
     );
 
-  border-color:
-    rgba(
-      161,
-      226,
-      240,
-      0.2
+  font-family:
+    "IBM Plex Mono",
+    monospace;
+
+  font-size:
+    1rem;
+
+  transform:
+    translateY(
+      -50%
     );
+
+  content:
+    "+";
+}
+
+
+.aiSecurity details[open]
+summary::after {
+  content:
+    "−";
 }
 
 
@@ -7696,7 +3697,7 @@ section:not(
 .aiSecurity details > div {
   max-width:
     var(
-      --nb24-reading
+      --ai-reading
     );
 
   margin:
@@ -7704,31 +3705,143 @@ section:not(
 
   padding:
     0
-    1rem
-    1rem !important;
+    0
+    1.15rem !important;
 
   color:
     var(
-      --nb24-text-secondary
+      --ai-text-secondary
     );
 }
 
 
 /* ==========================================================================
-   21 — LINKS
+   22 — FINAL CTA SECTION
+   ========================================================================== */
+
+
+.aiSecurity
+section:last-of-type {
+  padding-top:
+    clamp(
+      3.75rem,
+      6vw,
+      5.5rem
+    ) !important;
+
+  padding-bottom:
+    clamp(
+      3.75rem,
+      6vw,
+      5.5rem
+    ) !important;
+
+  background:
+    linear-gradient(
+      110deg,
+      rgba(
+        161,
+        226,
+        240,
+        0.035
+      ),
+      rgba(
+        99,
+        51,
+        198,
+        0.045
+      )
+    ) !important;
+
+  border-bottom:
+    0 !important;
+}
+
+
+.aiSecurity
+section:last-of-type
+h2 {
+  max-width:
+    720px;
+
+  font-size:
+    clamp(
+      2.15rem,
+      3.7vw,
+      3.2rem
+    ) !important;
+}
+
+
+.aiSecurity
+section:last-of-type
+p {
+  max-width:
+    640px;
+}
+
+
+.aiSecurity
+section:last-of-type
+a,
+.aiSecurity
+section:last-of-type
+button {
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  min-height:
+    48px;
+
+  margin-top:
+    1.35rem;
+
+  padding:
+    0.7rem
+    1.35rem;
+
+  color:
+    #07090d;
+
+  background:
+    var(
+      --ai-cyan
+    );
+
+  border:
+    1px
+    solid
+    var(
+      --ai-cyan
+    );
+
+  border-radius:
+    10px;
+
+  font-weight:
+    650;
+
+  text-decoration:
+    none;
+}
+
+
+/* ==========================================================================
+   23 — LINKS
    ========================================================================== */
 
 
 .aiSecurity a:not(
   [role="button"]
 ) {
-  color:
-    var(
-      --nb24-cyan
-    );
-
   text-underline-offset:
-    0.18em;
+    0.2em;
 }
 
 
@@ -7741,50 +3854,7 @@ section:not(
 
 
 /* ==========================================================================
-   22 — BUTTONS
-   ========================================================================== */
-
-
-.aiSecurity a[role="button"],
-.aiSecurity button {
-  min-height:
-    44px;
-
-  border-radius:
-    var(
-      --nb24-radius-md
-    );
-
-  transition:
-    transform
-    180ms
-    var(
-      --nb24-ease
-    ),
-    border-color
-    180ms
-    var(
-      --nb24-ease
-    ),
-    background
-    180ms
-    var(
-      --nb24-ease
-    );
-}
-
-
-.aiSecurity a[role="button"]:hover,
-.aiSecurity button:hover {
-  transform:
-    translateY(
-      -1px
-    );
-}
-
-
-/* ==========================================================================
-   23 — FOCUS
+   24 — ACCESSIBILITY FOCUS
    ========================================================================== */
 
 
@@ -7793,7 +3863,7 @@ section:not(
     2px
     solid
     var(
-      --nb24-cyan
+      --ai-cyan
     ) !important;
 
   outline-offset:
@@ -7808,13 +3878,13 @@ section:not(
       161,
       226,
       240,
-      0.11
+      0.12
     );
 }
 
 
 /* ==========================================================================
-   24 — TABLET
+   25 — TABLET
    ========================================================================== */
 
 
@@ -7825,52 +3895,64 @@ section:not(
 
   .aiSecurity
   :global(
-    [class*="page-hero-module__"][class*="__content"]
+    section[class*="page-hero-module__"][class*="__hero"]
   ) {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      )
-      minmax(
-        230px,
-        290px
-      ) !important;
-
-    column-gap:
-      2rem !important;
+    padding-top:
+      3rem !important;
   }
 
 
-  .aiSecurity.aiSecurity.aiSecurity.aiSecurity h1 {
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__title"]
+  ),
+  .aiSecurity.aiSecurity h1 {
     max-width:
-      680px !important;
+      720px !important;
 
     font-size:
       clamp(
         2.85rem,
-        5.4vw,
-        3.6rem
+        6vw,
+        3.8rem
       ) !important;
   }
 
 
   .aiSecurity .aiAmbientVisual {
     width:
-      220px !important;
+      270px;
 
     height:
-      220px !important;
+      270px;
 
     opacity:
-      0.06 !important;
+      0.06;
+  }
+
+
+  .aiSecurity dl {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      ) !important;
+  }
+
+
+  .aiSecurity dl > div:first-child {
+    padding-left:
+      1.15rem !important;
   }
 
 }
 
 
 /* ==========================================================================
-   25 — STACKED TABLET / LARGE MOBILE
+   26 — MOBILE / STACKED
    ========================================================================== */
 
 
@@ -7884,54 +3966,28 @@ section:not(
     section[class*="page-hero-module__"][class*="__hero"]
   ) {
     padding:
-      1.5rem
+      2.15rem
       1.1rem
-      1.75rem !important;
+      1.5rem !important;
   }
 
 
   .aiSecurity
   :global(
-    [class*="page-hero-module__"][class*="__content"]
-  ) {
-    display:
-      flex !important;
-
-    flex-direction:
-      column !important;
-
-    gap:
-      0 !important;
-  }
-
-
-  .aiSecurity
-  :global(
-    [class*="page-hero-module__"][class*="__eyebrow"]
-  ) {
-    order:
-      1 !important;
-
-    margin-bottom:
-      0.75rem !important;
-  }
-
-
-  .aiSecurity.aiSecurity.aiSecurity.aiSecurity h1 {
-    order:
-      2 !important;
+    [class*="page-hero-module__"][class*="__title"]
+  ),
+  .aiSecurity.aiSecurity h1 {
+    width:
+      100% !important;
 
     max-width:
       100% !important;
 
-    max-inline-size:
-      100% !important;
-
     font-size:
       clamp(
-        2.55rem,
-        10.6vw,
-        3.15rem
+        2.5rem,
+        10.5vw,
+        3.2rem
       ) !important;
 
     line-height:
@@ -7943,32 +3999,7 @@ section:not(
   :global(
     [class*="page-hero-module__"][class*="__description"]
   ) {
-    order:
-      3 !important;
-
     margin-top:
-      0.9rem !important;
-  }
-
-
-  .aiSecurity
-  :global(
-    [class*="page-hero-module__"][class*="__meta"]
-  ) {
-    order:
-      4 !important;
-
-    grid-column:
-      auto;
-
-    grid-row:
-      auto;
-
-    margin-top:
-      1.25rem !important;
-
-    padding:
-      0.25rem
       1rem !important;
   }
 
@@ -7977,11 +4008,11 @@ section:not(
   :global(
     [class*="page-hero-module__"][class*="__actions"]
   ) {
-    order:
-      5 !important;
+    width:
+      100% !important;
 
     margin-top:
-      1rem !important;
+      1.25rem !important;
   }
 
 
@@ -7997,9 +4028,86 @@ section:not(
   button {
     width:
       100%;
+  }
 
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__meta"]
+  ) {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      ) !important;
+
+    margin-top:
+      1.75rem !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__meta"]
+  )
+  > * {
     min-height:
-      48px !important;
+      64px !important;
+
+    padding:
+      0.8rem
+      0.75rem !important;
+
+    border-right:
+      1px
+      solid
+      var(
+        --ai-border-muted
+      ) !important;
+
+    border-bottom:
+      1px
+      solid
+      var(
+        --ai-border-muted
+      ) !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__meta"]
+  )
+  > *:nth-child(
+    2n
+  ) {
+    border-right:
+      0 !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__meta"]
+  )
+  > *:nth-last-child(
+    -n + 2
+  ) {
+    border-bottom:
+      0 !important;
+  }
+
+
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__meta"]
+  )
+  > *:first-child {
+    padding-left:
+      0.75rem !important;
   }
 
 
@@ -8007,8 +4115,8 @@ section:not(
   :global(
     [class*="page-hero-module__"][class*="__coordinate"]
   ) {
-    order:
-      6 !important;
+    position:
+      static !important;
 
     align-self:
       flex-end;
@@ -8020,11 +4128,12 @@ section:not(
 
   .aiSecurity .aiAmbientVisual {
     display:
-      none !important;
+      none;
   }
 
 
-  .aiSecurity section:not(
+  .aiSecurity
+  section:not(
     [class*="page-hero-module__"]
   ) {
     padding:
@@ -8033,34 +4142,64 @@ section:not(
   }
 
 
-  .aiSecurity dl {
-    grid-template-columns:
-      1fr
-      1fr !important;
+  .aiSecurity
+  section:not(
+    [class*="page-hero-module__"]
+  )
+  > header {
+    display:
+      block !important;
+
+    margin-bottom:
+      1.5rem !important;
   }
 
 
-  .aiSecurity dl > div {
-    border-right:
-      1px
-      solid
-      var(
-        --nb24-border
+  .aiSecurity
+  section:not(
+    [class*="page-hero-module__"]
+  )
+  > header
+  h2 {
+    max-width:
+      100%;
+  }
+
+
+  .aiSecurity
+  section:not(
+    [class*="page-hero-module__"]
+  )
+  > header
+  p {
+    margin-top:
+      0.75rem !important;
+  }
+
+
+  .aiSecurity ul {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .aiSecurity ol > li {
+    grid-template-columns:
+      40px
+      minmax(
+        0,
+        1fr
       );
 
-    border-bottom:
-      1px
-      solid
-      var(
-        --nb24-border
-      );
+    gap:
+      0.8rem;
   }
 
 }
 
 
 /* ==========================================================================
-   26 — MOBILE
+   27 — SMALL MOBILE
    ========================================================================== */
 
 
@@ -8069,7 +4208,36 @@ section:not(
     639px
 ) {
 
-  .aiSecurity section:not(
+  .aiSecurity dl {
+    grid-template-columns:
+      1fr !important;
+  }
+
+
+  .aiSecurity dl > div {
+    min-height:
+      64px !important;
+
+    border-right:
+      0 !important;
+
+    border-bottom:
+      1px
+      solid
+      var(
+        --ai-border-muted
+      ) !important;
+  }
+
+
+  .aiSecurity dl > div:last-child {
+    border-bottom:
+      0 !important;
+  }
+
+
+  .aiSecurity
+  section:not(
     [class*="page-hero-module__"]
   ) {
     padding-top:
@@ -8079,61 +4247,11 @@ section:not(
       2.6rem !important;
   }
 
-
-  .aiSecurity h2 {
-    font-size:
-      clamp(
-        1.8rem,
-        8vw,
-        2.25rem
-      ) !important;
-  }
-
-
-  .aiSecurity dl {
-    grid-template-columns:
-      1fr !important;
-  }
-
-
-  .aiSecurity dl > div {
-    border-right:
-      0;
-
-    border-bottom:
-      1px
-      solid
-      var(
-        --nb24-border
-      );
-  }
-
-
-  .aiSecurity dl > div:last-child {
-    border-bottom:
-      0;
-  }
-
-
-  .aiSecurity article {
-    padding:
-      1.15rem !important;
-  }
-
-
-  .aiSecurity li {
-    padding:
-      0.75rem
-      0.8rem
-      0.75rem
-      2.15rem !important;
-  }
-
 }
 
 
 /* ==========================================================================
-   27 — 320PX
+   28 — 320PX
    ========================================================================== */
 
 
@@ -8154,16 +4272,21 @@ section:not(
   }
 
 
-  .aiSecurity.aiSecurity.aiSecurity.aiSecurity h1 {
+  .aiSecurity
+  :global(
+    [class*="page-hero-module__"][class*="__title"]
+  ),
+  .aiSecurity.aiSecurity h1 {
     font-size:
       2.3rem !important;
 
     letter-spacing:
-      -0.038em !important;
+      -0.04em !important;
   }
 
 
-  .aiSecurity section:not(
+  .aiSecurity
+  section:not(
     [class*="page-hero-module__"]
   ) {
     padding-right:
@@ -8177,7 +4300,7 @@ section:not(
 
 
 /* ==========================================================================
-   28 — REDUCED MOTION
+   29 — REDUCED MOTION
    ========================================================================== */
 
 
@@ -8203,500 +4326,10 @@ section:not(
   }
 
 
-  .aiSecurity article:hover,
   .aiSecurity a:hover,
   .aiSecurity button:hover {
     transform:
       none !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   NB_AI_SECURITY_FOUNDATIONS_META_GRID_V26
-
-   V24 runtime evidence:
-
-     panel width  = 340px
-     panel height = 236px
-     values:
-       Beginner → Intermediate
-       Live sessions
-       3 sessions
-       AVAILABLE
-
-   Four metadata items do not need four full vertical rows.
-
-   Convert the premium metadata surface into a compact 2 × 2 technical grid.
-   ========================================================================== */
-
-
-.aiSecurity
-:global(
-  [class*="page-hero-module__"][class*="__meta"]
-) {
-  display:
-    grid !important;
-
-  grid-template-columns:
-    repeat(
-      2,
-      minmax(
-        0,
-        1fr
-      )
-    ) !important;
-
-  grid-template-rows:
-    auto
-    auto !important;
-
-  align-items:
-    stretch !important;
-
-  align-content:
-    start !important;
-
-  width:
-    100% !important;
-
-  min-width:
-    0 !important;
-
-  height:
-    auto !important;
-
-  min-height:
-    0 !important;
-
-  block-size:
-    auto !important;
-
-  min-block-size:
-    0 !important;
-
-  max-height:
-    none !important;
-
-  max-block-size:
-    none !important;
-
-  gap:
-    0 !important;
-
-  padding:
-    0 !important;
-
-  overflow:
-    hidden !important;
-}
-
-
-/* ==========================================================================
-   METADATA CELLS
-   ========================================================================== */
-
-
-.aiSecurity
-:global(
-  [class*="page-hero-module__"][class*="__meta"]
-)
-> * {
-  display:
-    flex !important;
-
-  flex-direction:
-    column !important;
-
-  align-items:
-    flex-start !important;
-
-  justify-content:
-    center !important;
-
-  min-width:
-    0 !important;
-
-  min-inline-size:
-    0 !important;
-
-  min-height:
-    58px !important;
-
-  height:
-    auto !important;
-
-  block-size:
-    auto !important;
-
-  min-block-size:
-    58px !important;
-
-  max-height:
-    none !important;
-
-  max-block-size:
-    none !important;
-
-  margin:
-    0 !important;
-
-  padding:
-    0.65rem
-    0.75rem !important;
-
-  border-right:
-    1px
-    solid
-    rgba(
-      161,
-      226,
-      240,
-      0.09
-    ) !important;
-
-  border-bottom:
-    1px
-    solid
-    rgba(
-      161,
-      226,
-      240,
-      0.09
-    ) !important;
-
-  overflow-wrap:
-    anywhere;
-}
-
-
-/*
- * Right column.
- */
-.aiSecurity
-:global(
-  [class*="page-hero-module__"][class*="__meta"]
-)
-> *:nth-child(
-  2n
-) {
-  border-right:
-    0 !important;
-}
-
-
-/*
- * Final grid row.
- */
-.aiSecurity
-:global(
-  [class*="page-hero-module__"][class*="__meta"]
-)
-> *:nth-last-child(
-  -n + 2
-) {
-  border-bottom:
-    0 !important;
-}
-
-
-/* ==========================================================================
-   METADATA TYPOGRAPHY
-   ========================================================================== */
-
-
-.aiSecurity
-:global(
-  [class*="page-hero-module__"][class*="__meta"]
-)
-> *
-small,
-.aiSecurity
-:global(
-  [class*="page-hero-module__"][class*="__meta"]
-)
-> *
-span,
-.aiSecurity
-:global(
-  [class*="page-hero-module__"][class*="__meta"]
-)
-> *
-strong {
-  max-width:
-    100%;
-
-  margin-top:
-    0;
-
-  margin-bottom:
-    0;
-
-  line-height:
-    1.25;
-}
-
-
-/*
- * Technical/status labels stay compact.
- */
-.aiSecurity
-:global(
-  [class*="page-hero-module__"][class*="__meta"]
-)
-small {
-  color:
-    var(
-      --nb24-muted
-    );
-
-  font-size:
-    0.62rem;
-
-  letter-spacing:
-    0.045em;
-}
-
-
-/*
- * Primary values.
- */
-.aiSecurity
-:global(
-  [class*="page-hero-module__"][class*="__meta"]
-)
-strong {
-  color:
-    var(
-      --nb24-text
-    );
-
-  font-size:
-    0.78rem;
-
-  font-weight:
-    620;
-}
-
-
-/* ==========================================================================
-   COMPACT STATUS TREATMENT
-   ========================================================================== */
-
-
-.aiSecurity
-:global(
-  [class*="page-hero-module__"][class*="__meta"]
-)
-> *:last-child {
-  color:
-    var(
-      --nb24-success
-    );
-}
-
-
-/* ==========================================================================
-   TABLET / MOBILE
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    767px
-) {
-
-  .aiSecurity
-  :global(
-    [class*="page-hero-module__"][class*="__meta"]
-  ) {
-    grid-template-columns:
-      repeat(
-        2,
-        minmax(
-          0,
-          1fr
-        )
-      ) !important;
-  }
-
-
-  .aiSecurity
-  :global(
-    [class*="page-hero-module__"][class*="__meta"]
-  )
-  > * {
-    min-height:
-      54px !important;
-
-    min-block-size:
-      54px !important;
-
-    padding:
-      0.6rem
-      0.65rem !important;
-  }
-
-}
-
-
-/* ==========================================================================
-   VERY NARROW MOBILE
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    340px
-) {
-
-  .aiSecurity
-  :global(
-    [class*="page-hero-module__"][class*="__meta"]
-  )
-  > * {
-    min-height:
-      52px !important;
-
-    min-block-size:
-      52px !important;
-
-    padding:
-      0.55rem
-      0.55rem !important;
-
-    font-size:
-      0.74rem;
-  }
-
-}
-
-
-/* ==========================================================================
-   NB_AI_SECURITY_FOUNDATIONS_META_INTRINSIC_V27
-
-   V26 proved the 2x2 grid itself is correct:
-
-     cell 1 = 58px
-     cell 2 = 58px
-     cell 3 = 58px
-     cell 4 = 58px
-
-   Expected intrinsic panel height:
-     ~116px
-
-   Actual panel height:
-     236px
-
-   Cause:
-   an older high-specificity direct-hero-child rule still applies
-   align-self: stretch !important.
-
-   Because the metadata panel spans multiple outer hero grid rows, that
-   stretches the panel to the complete left-column track region.
-
-   V27 overrides only that grid alignment behavior.
-   ========================================================================== */
-
-
-.aiSecurity.aiSecurity
-:global(
-  [class*="page-hero-module__"][class*="__meta"]
-) {
-  align-self:
-    center !important;
-
-  justify-self:
-    stretch !important;
-
-  place-self:
-    center
-    stretch !important;
-
-  height:
-    max-content !important;
-
-  block-size:
-    max-content !important;
-
-  min-height:
-    0 !important;
-
-  min-block-size:
-    0 !important;
-
-  max-height:
-    none !important;
-
-  max-block-size:
-    none !important;
-
-  overflow:
-    hidden !important;
-}
-
-
-/*
- * Preserve V26's compact cells.
- */
-.aiSecurity.aiSecurity
-:global(
-  [class*="page-hero-module__"][class*="__meta"]
-)
-> * {
-  align-self:
-    stretch !important;
-
-  height:
-    auto !important;
-
-  block-size:
-    auto !important;
-
-  min-height:
-    58px !important;
-
-  min-block-size:
-    58px !important;
-
-  max-height:
-    none !important;
-
-  max-block-size:
-    none !important;
-}
-
-
-/* ==========================================================================
-   MOBILE
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    767px
-) {
-
-  .aiSecurity.aiSecurity
-  :global(
-    [class*="page-hero-module__"][class*="__meta"]
-  ) {
-    align-self:
-      stretch !important;
-
-    justify-self:
-      stretch !important;
-
-    place-self:
-      auto
-      stretch !important;
-
-    height:
-      max-content !important;
-
-    block-size:
-      max-content !important;
   }
 
 }
