@@ -140,6 +140,13 @@ export function InsightsBrowser({
     ];
 
   return (
+    <div
+      className={
+        styles.resourceSystem
+      }
+      data-insights-browser-system="resources"
+    >
+      (
     <>
       <div
         className={
@@ -411,5 +418,7 @@ export function InsightsBrowser({
         </div>
       )}
     </>
+  )
+    </div>
   );
 }

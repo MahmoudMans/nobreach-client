@@ -820,3 +820,493 @@
   transform:
     none;
 }
+
+
+/* ==========================================================================
+   NB_INSIGHTS_RESOURCE_BROWSER_V1
+
+   NoBreach Resources pattern:
+   - category/search controls remain functional
+   - first research item receives featured emphasis when semantic article
+     markup is available
+   - remaining content is quieter and editorial
+   - no consecutive heavy card walls
+   ========================================================================== */
+
+
+.resourceSystem {
+  --resource-base:
+    #07090d;
+
+  --resource-surface:
+    #0b0f16;
+
+  --resource-card:
+    #101620;
+
+  --resource-elevated:
+    #151d29;
+
+  --resource-cyan:
+    #a1e2f0;
+
+  --resource-blue:
+    #83b3d7;
+
+  --resource-purple:
+    #7e60b9;
+
+  --resource-text:
+    #f5f7fa;
+
+  --resource-muted:
+    #8e9aaa;
+
+  --resource-subtle:
+    #667281;
+
+  --resource-line:
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+  min-width:
+    0;
+
+  padding:
+    96px
+    24px;
+
+  background:
+    var(
+      --resource-surface
+    );
+
+  color:
+    var(
+      --resource-text
+    );
+}
+
+
+/* --------------------------------------------------------------------------
+   Existing browser controls become a single contextual resource toolbar.
+   -------------------------------------------------------------------------- */
+
+
+.resourceSystem :global(form),
+.resourceSystem :global([role="search"]) {
+  width:
+    min(
+      100%,
+      1280px
+    );
+
+  margin:
+    0 auto
+    48px;
+
+  padding:
+    18px
+    0;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.18
+    );
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --resource-line
+    );
+
+  background:
+    transparent;
+}
+
+
+.resourceSystem :global(input),
+.resourceSystem :global(select) {
+  min-height:
+    48px;
+
+  border:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.1
+    ) !important;
+
+  border-radius:
+    10px !important;
+
+  background:
+    #0b111a !important;
+
+  color:
+    var(
+      --resource-text
+    ) !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+.resourceSystem :global(input:focus),
+.resourceSystem :global(select:focus) {
+  border-color:
+    var(
+      --resource-cyan
+    ) !important;
+
+  outline:
+    2px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.2
+    );
+
+  outline-offset:
+    1px;
+}
+
+
+.resourceSystem :global(button) {
+  min-height:
+    44px;
+
+  border-radius:
+    10px;
+
+  box-shadow:
+    none;
+
+  transition:
+    border-color
+    180ms
+    ease,
+    background-color
+    180ms
+    ease,
+    color
+    180ms
+    ease;
+}
+
+
+.resourceSystem :global(button:focus-visible),
+.resourceSystem :global(a:focus-visible) {
+  outline:
+    2px
+    solid
+    var(
+      --resource-cyan
+    );
+
+  outline-offset:
+    3px;
+}
+
+
+/* --------------------------------------------------------------------------
+   Main content width.
+   -------------------------------------------------------------------------- */
+
+
+.resourceSystem > * {
+  max-width:
+    1280px;
+
+  margin-right:
+    auto;
+
+  margin-left:
+    auto;
+}
+
+
+/* --------------------------------------------------------------------------
+   Article cards become editorial resources rather than a wall of boxes.
+   -------------------------------------------------------------------------- */
+
+
+.resourceSystem :global(article) {
+  border:
+    0 !important;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --resource-line
+    ) !important;
+
+  border-radius:
+    0 !important;
+
+  background:
+    transparent !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+/* First semantic article becomes the featured resource. */
+
+
+.resourceSystem :global(article:first-of-type) {
+  position:
+    relative;
+
+  padding:
+    32px !important;
+
+  border:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.12
+    ) !important;
+
+  border-radius:
+    14px !important;
+
+  background:
+    var(
+      --resource-card
+    ) !important;
+}
+
+
+.resourceSystem :global(article:first-of-type h2),
+.resourceSystem :global(article:first-of-type h3) {
+  max-width:
+    760px;
+
+  color:
+    var(
+      --resource-text
+    ) !important;
+
+  font-family:
+    var(
+      --font-space-grotesk,
+      "Space Grotesk"
+    ),
+    sans-serif;
+
+  font-size:
+    clamp(
+      2rem,
+      3.3vw,
+      3.3rem
+    ) !important;
+
+  font-weight:
+    520 !important;
+
+  letter-spacing:
+    -0.05em !important;
+
+  line-height:
+    1.02 !important;
+}
+
+
+.resourceSystem :global(article:first-of-type p) {
+  max-width:
+    720px;
+
+  color:
+    var(
+      --resource-muted
+    ) !important;
+
+  line-height:
+    1.6 !important;
+}
+
+
+/* Secondary resources remain restrained editorial rows/cards. */
+
+
+.resourceSystem :global(article:not(:first-of-type)) {
+  padding:
+    26px
+    0 !important;
+}
+
+
+.resourceSystem :global(article:not(:first-of-type) h2),
+.resourceSystem :global(article:not(:first-of-type) h3) {
+  color:
+    var(
+      --resource-text
+    ) !important;
+
+  font-family:
+    var(
+      --font-space-grotesk,
+      "Space Grotesk"
+    ),
+    sans-serif;
+
+  font-weight:
+    530 !important;
+
+  letter-spacing:
+    -0.035em !important;
+}
+
+
+.resourceSystem :global(article:not(:first-of-type) p) {
+  color:
+    var(
+      --resource-muted
+    ) !important;
+
+  line-height:
+    1.55 !important;
+}
+
+
+/* Article links use one consistent interaction language. */
+
+
+.resourceSystem :global(a[href^="/insights/"]) {
+  color:
+    inherit;
+
+  text-decoration:
+    none;
+}
+
+
+.resourceSystem :global(a[href^="/insights/"]:hover) {
+  color:
+    var(
+      --resource-cyan
+    );
+}
+
+
+/* Prevent legacy cards from becoming visually over-boxed. */
+
+
+.resourceSystem :global([class*="card"]) {
+  box-shadow:
+    none !important;
+}
+
+
+/* --------------------------------------------------------------------------
+   Tablet.
+   -------------------------------------------------------------------------- */
+
+
+@media (
+  max-width:
+    980px
+) {
+
+  .resourceSystem {
+    padding:
+      80px
+      24px;
+  }
+
+
+  .resourceSystem :global(article:first-of-type) {
+    padding:
+      28px !important;
+  }
+
+}
+
+
+/* --------------------------------------------------------------------------
+   Mobile — recompose, do not squeeze.
+   -------------------------------------------------------------------------- */
+
+
+@media (
+  max-width:
+    640px
+) {
+
+  .resourceSystem {
+    padding:
+      64px
+      16px;
+  }
+
+
+  .resourceSystem :global(form),
+  .resourceSystem :global([role="search"]) {
+    margin-bottom:
+      36px;
+
+    padding:
+      14px
+      0;
+  }
+
+
+  .resourceSystem :global(article:first-of-type) {
+    padding:
+      22px !important;
+  }
+
+
+  .resourceSystem :global(article:first-of-type h2),
+  .resourceSystem :global(article:first-of-type h3) {
+    font-size:
+      clamp(
+        1.8rem,
+        9vw,
+        2.5rem
+      ) !important;
+  }
+
+
+  .resourceSystem :global(article:not(:first-of-type)) {
+    padding:
+      22px
+      0 !important;
+  }
+
+}
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .resourceSystem :global(button) {
+    transition:
+      none;
+  }
+
+}

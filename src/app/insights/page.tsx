@@ -1,14 +1,10 @@
-import { Breadcrumbs } from "@/components/navigation/breadcrumbs";
+
 import { InsightsBrowser } from "@/components/insights/insights-browser";
-import { ButtonLink } from "@/components/ui/button-link";
-import { Container } from "@/components/layout/container";
-import { PageHero } from "@/components/ui/page-hero";
-import {
-  isInsightFilter,
-  type InsightFilter
-} from "@/lib/insight-filter";
+
+import { isInsightFilter, type InsightFilter } from "@/lib/insight-filter";
 import { createMetadata } from "@/lib/seo";
-import pages from "@/styles/pages.module.css";
+
+import indexStyles from "./insights-index.module.css";
 
 export const metadata =
   createMetadata({
@@ -64,49 +60,159 @@ export default async function InsightsPage({
     );
 
   return (
-    <>
-      <Breadcrumbs
-        items={[
-          {
-            label:
-              "Insights"
-          }
-        ]}
-      />
-
-      <PageHero
-        eyebrow="Knowledge"
-        title="Security thinking worth publishing."
-        description="Technical writing about web security, APIs, offensive-security methodology and the changing security boundaries around AI-enabled applications."
-        meta={[
-          "Web Security",
-          "API Security",
-          "Offensive Security",
-          "AI Security"
-        ]}
-        actions={
-          <ButtonLink
-            href="/feed.xml"
-            variant="secondary"
-          >
-            RSS feed
-          </ButtonLink>
+    <div
+      className={
+        indexStyles.page
+      }
+      data-insights-index="resource-system"
+    >
+      <section
+        className={
+          indexStyles.pageIntro
         }
-      />
+        data-insights-index-section="intro"
+      >
+        <div
+          className={
+            indexStyles.pageIntroDecoration
+          }
+          aria-hidden="true"
+        />
+
+        <div
+          className={
+            indexStyles.pageIntroInner
+          }
+        >
+          <div
+            className={
+              indexStyles.pageIntroCopy
+            }
+          >
+            <p
+              className={
+                indexStyles.eyebrow
+              }
+            >
+              NOBREACH / RESEARCH
+            </p>
+
+            <h1>
+              Security thinking worth publishing.
+            </h1>
+
+            <p
+              className={
+                indexStyles.introLead
+              }
+            >
+              Practical security research, field notes and
+              technical thinking across application security,
+              AI systems and offensive testing.
+            </p>
+          </div>
+
+          <aside
+            className={
+              indexStyles.researchFocus
+            }
+            aria-label="Research focus"
+          >
+            <p
+              className={
+                indexStyles.focusLabel
+              }
+            >
+              RESEARCH FOCUS
+            </p>
+
+            <div
+              className={
+                indexStyles.focusRows
+              }
+            >
+              <span>
+                Application security
+              </span>
+
+              <span>
+                AI security
+              </span>
+
+              <span>
+                Security testing
+              </span>
+            </div>
+          </aside>
+        </div>
+      </section>
 
       <section
         className={
-          pages.section
+          indexStyles.resources
         }
+        data-insights-index-section="resources"
+        aria-label="Research library"
       >
-        <Container>
+        <div
+          className={
+            indexStyles.currentContent
+          }
+        >
           <InsightsBrowser
             initialCategory={
               initialCategory
             }
           />
-        </Container>
+        </div>
       </section>
-    </>
+
+      <section
+        className={
+          indexStyles.followSection
+        }
+        data-insights-index-section="follow"
+      >
+        <div
+          className={
+            indexStyles.followInner
+          }
+        >
+          <div>
+            <p
+              className={
+                indexStyles.followEyebrow
+              }
+            >
+              NOBREACH RESEARCH
+            </p>
+
+            <h2>
+              Follow the research.
+            </h2>
+
+            <p>
+              Keep up with new NoBreach security thinking,
+              technical notes and published research.
+            </p>
+          </div>
+
+          <a
+            className={
+              indexStyles.feedAction
+            }
+            href="/feed.xml"
+          >
+            Open research feed
+
+            <span
+              aria-hidden="true"
+            >
+              →
+            </span>
+          </a>
+        </div>
+      </section>
+    </div>
   );
 }
