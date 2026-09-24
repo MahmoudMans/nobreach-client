@@ -15429,3 +15429,19 @@ a:hover {
   }
 
 }
+
+
+/* ==========================================================================
+   NB_WEB_EXPLOIT_SINGLE_HEADER_V31
+
+   Web Exploitation uses only the global site header.
+   The route breadcrumb is intentionally removed from this presentation so
+   the hero begins directly below the primary navigation.
+   ========================================================================== */
+
+
+.webExploit
+> nav[aria-label="Breadcrumb"] {
+  display:
+    none !important;
+}
