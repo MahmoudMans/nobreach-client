@@ -20398,3 +20398,23 @@ details {
   }
 
 }
+
+
+/* ==========================================================================
+   NB_WEB_EXPLOIT_V35_CUSTOM_BODY_TAKEOVER
+
+   V35 preserves only the existing Web Exploitation hero.
+   The generic seven-section course body remains available to other training
+   routes but is not rendered visually for Web Exploitation.
+   ========================================================================== */
+
+
+.webExploit
+> section:nth-of-type(
+  n + 2
+):nth-of-type(
+  -n + 8
+) {
+  display:
+    none !important;
+}

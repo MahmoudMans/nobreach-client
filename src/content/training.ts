@@ -124,73 +124,50 @@ export const trainingPrograms:
       status:
         "available",
       objectives: [
-        "Develop a repeatable web-testing methodology",
-        "Analyze authentication and authorization behavior",
-        "Identify useful attack-surface relationships",
-        "Connect individual weaknesses into realistic attack paths",
-        "Improve evidence and technical communication"
-      ],
+      "Build a behavior map before testing for vulnerabilities.",
+      "Model identity, state, data flow and privilege as connected trust boundaries.",
+      "Turn unusual application behavior into clear testable hypotheses.",
+      "Challenge workflows by changing sequence, role, object and state.",
+      "Validate impact with minimal, reproducible evidence."
+    ],
       modules: [
-        {
-          number: "01",
-          title:
-            "Application Mapping",
-          description:
-            "Understand routes, identities, state and application behavior."
-        },
-        {
-          number: "02",
-          title:
-            "Authentication",
-          description:
-            "Analyze login, recovery, session and account workflows."
-        },
-        {
-          number: "03",
-          title:
-            "Authorization",
-          description:
-            "Test object and function boundaries across user roles."
-        },
-        {
-          number: "04",
-          title:
-            "Input & Data Flow",
-          description:
-            "Trace user-controlled data through application behavior."
-        },
-        {
-          number: "05",
-          title:
-            "Business Logic",
-          description:
-            "Challenge assumptions embedded in workflows and state transitions."
-        },
-        {
-          number: "06",
-          title:
-            "Attack Chains",
-          description:
-            "Combine technical observations into meaningful exploitation paths."
-        }
-      ],
+      {
+        number: "01",
+        title: "Observe",
+        description: "Reconstruct the application from the outside: routes, roles, state transitions, data movement and browser behavior."
+      },
+      {
+        number: "02",
+        title: "Model",
+        description: "Identify trust boundaries, hidden assumptions and places where identity, objects or state should constrain behavior."
+      },
+      {
+        number: "03",
+        title: "Challenge",
+        description: "Design focused experiments that vary sequence, privilege, input and application state instead of spraying payloads."
+      },
+      {
+        number: "04",
+        title: "Prove",
+        description: "Connect observations into realistic attack paths, confirm impact and capture evidence another tester can reproduce."
+      }
+    ],
       prerequisites: [
-        "Basic HTTP knowledge",
-        "Familiarity with web applications",
-        "Some exposure to common web-security concepts"
-      ],
+      "Comfort reading HTTP requests and responses.",
+      "Basic browser DevTools or intercepting-proxy usage.",
+      "Basic web-application concepts; advanced exploitation experience is not required."
+    ],
       audience: [
-        "Web-security learners",
-        "Bug bounty practitioners",
-        "Junior application-security professionals",
-        "Developers studying offensive web security"
-      ],
+      "Practitioners who can read an HTTP exchange and want to understand the application behind it.",
+      "Developers learning how identity, state and trust boundaries fail across real workflows.",
+      "Security testers moving from checklist-driven testing to hypothesis-driven investigation."
+    ],
       outcomes: [
-        "A repeatable application-mapping process",
-        "Stronger authorization-testing reasoning",
-        "Improved business-logic analysis",
-        "Better evidence and attack-chain communication"
-      ]
+      "A reusable application-behavior map.",
+      "A hypothesis-driven testing workflow.",
+      "Stronger trust-boundary and attack-path reasoning.",
+      "Cleaner reproduction notes and security evidence."
+    ]
     },
     {
       slug:

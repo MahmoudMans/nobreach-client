@@ -3,6 +3,7 @@ import type {
 } from "react";
 
 import styles from "./training-program-shell.module.css";
+import { WebExploitationV35 } from "./web-exploitation-v35";
 
 
 export default async function TrainingProgramLayout({
@@ -407,7 +408,9 @@ return (
                 {
                   children
                 }
-              </div>
+
+              <WebExploitationV35 />
+            </div>
             )
             : children
       }
