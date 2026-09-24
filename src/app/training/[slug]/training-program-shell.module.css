@@ -13969,3 +13969,1463 @@ a:hover {
   }
 
 }
+
+
+/* ==========================================================================
+   NB_WEB_EXPLOIT_EDITORIAL_COURSE_V30
+
+
+
+   Complete visual replacement for Web Exploitation Techniques.
+
+   Direction:
+   - premium editorial course page
+   - typography first
+   - calm asymmetric composition
+   - no fake dashboard
+   - no flowchart
+   - no diagram boxes
+   - no terminal wallpaper
+   - no repeated card wall
+   ========================================================================== */
+
+
+.webExploit {
+  --web30-bg:
+    #07090d;
+
+  --web30-soft:
+    #0a0d13;
+
+  --web30-surface:
+    #0d1118;
+
+  --web30-text:
+    #f5f7fa;
+
+  --web30-secondary:
+    #c5ced8;
+
+  --web30-muted:
+    #8793a3;
+
+  --web30-subtle:
+    #667281;
+
+  --web30-cyan:
+    #a1e2f0;
+
+  --web30-blue:
+    #83b3d7;
+
+  --web30-violet:
+    #7e60b9;
+
+  --web30-line:
+    rgba(
+      197,
+      206,
+      216,
+      0.13
+    );
+
+  --web30-line-strong:
+    rgba(
+      161,
+      226,
+      240,
+      0.23
+    );
+
+  color:
+    var(
+      --web30-text
+    );
+
+  background:
+    var(
+      --web30-bg
+    );
+
+  counter-reset:
+    editorial-section;
+}
+
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+
+
+.webExploit
+> section:first-of-type {
+  position:
+    relative;
+
+  min-height:
+    590px !important;
+
+  padding-top:
+    clamp(
+      42px,
+      5vw,
+      66px
+    ) !important;
+
+  padding-bottom:
+    42px !important;
+
+  overflow:
+    hidden;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --web30-line
+    ) !important;
+
+  background:
+    var(
+      --web30-bg
+    ) !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+.webExploit
+> section:first-of-type::before {
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent
+      0%,
+      transparent
+      67%,
+      rgba(
+        131,
+        179,
+        215,
+        0.025
+      )
+      67%,
+      rgba(
+        126,
+        96,
+        185,
+        0.035
+      )
+      100%
+    );
+
+  content:
+    "";
+
+  pointer-events:
+    none;
+}
+
+
+.webExploit
+> section:first-of-type::after {
+  position:
+    absolute;
+
+  top:
+    34px;
+
+  right:
+    clamp(
+      24px,
+      4vw,
+      64px
+    );
+
+  width:
+    min(
+      27vw,
+      360px
+    );
+
+  height:
+    1px;
+
+  background:
+    var(
+      --web30-line-strong
+    );
+
+  content:
+    "";
+
+  pointer-events:
+    none;
+}
+
+
+.webExploit
+> section:first-of-type
+> * {
+  position:
+    relative;
+
+  z-index:
+    2;
+}
+
+
+.webExploit
+> section:first-of-type
+h1 {
+  width:
+    min(
+      100%,
+      820px
+    ) !important;
+
+  max-width:
+    820px !important;
+
+  margin-top:
+    8px !important;
+
+  color:
+    var(
+      --web30-text
+    ) !important;
+
+  font-size:
+    clamp(
+      3.5rem,
+      5.5vw,
+      5rem
+    ) !important;
+
+  font-weight:
+    500 !important;
+
+  letter-spacing:
+    -0.07em !important;
+
+  line-height:
+    0.91 !important;
+
+  text-wrap:
+    balance;
+}
+
+
+.webExploit
+> section:first-of-type
+p {
+  max-width:
+    640px !important;
+
+  color:
+    var(
+      --web30-muted
+    ) !important;
+
+  font-size:
+    0.92rem !important;
+
+  line-height:
+    1.68 !important;
+}
+
+
+.webExploit
+> section:first-of-type
+dl {
+  width:
+    min(
+      100%,
+      760px
+    ) !important;
+
+  max-width:
+    760px !important;
+
+  margin-top:
+    26px !important;
+
+  border-top:
+    1px
+    solid
+    var(
+      --web30-line-strong
+    ) !important;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --web30-line
+    ) !important;
+}
+
+
+.webExploit
+> section:first-of-type
+dl
+> div {
+  min-height:
+    56px !important;
+
+  border:
+    0 !important;
+
+  border-right:
+    1px
+    solid
+    var(
+      --web30-line
+    ) !important;
+
+  border-radius:
+    0 !important;
+
+  background:
+    transparent !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+/* ==========================================================================
+   REMOVE THE OLD SECURITY-DIAGRAM LOOK
+   ========================================================================== */
+
+
+.webExploitVisual {
+  position:
+    absolute;
+
+  z-index:
+    4;
+
+  top:
+    98px;
+
+  right:
+    clamp(
+      26px,
+      5vw,
+      78px
+    );
+
+  width:
+    min(
+      26vw,
+      330px
+    );
+
+  padding:
+    21px
+    0
+    0
+    22px;
+
+  border:
+    0;
+
+  border-left:
+    1px
+    solid
+    var(
+      --web30-line-strong
+    );
+
+  background:
+    transparent;
+
+  pointer-events:
+    none;
+}
+
+
+/* Old flow header becomes a tiny editorial imprint. */
+
+.webExploitVisualHeader {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  min-height:
+    24px;
+
+  padding:
+    0
+    0
+    12px;
+
+  border:
+    0;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --web30-line
+    );
+
+  color:
+    var(
+      --web30-subtle
+    );
+}
+
+
+.webExploitVisualHeader
+span:first-child {
+  font-size:
+    0;
+}
+
+
+.webExploitVisualHeader
+span:first-child::after {
+  color:
+    var(
+      --web30-cyan
+    );
+
+  content:
+    "APPLICATION STUDY";
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.52rem;
+
+  font-weight:
+    650;
+
+  letter-spacing:
+    0.09em;
+}
+
+
+.webExploitVisualHeader
+span:last-child {
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.48rem;
+
+  letter-spacing:
+    0.08em;
+}
+
+
+/* No arrows. No connector diagram. Just a typographic system index. */
+
+.webExploitFlow {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    0;
+
+  padding:
+    14px
+    0;
+
+  border:
+    0;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --web30-line
+    );
+}
+
+
+.webExploitFlow
+> i {
+  display:
+    none;
+}
+
+
+.webExploitEndpoint,
+.webExploitApplication {
+  display:
+    grid;
+
+  grid-template-columns:
+    30px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    8px;
+
+  align-items:
+    center;
+
+  min-height:
+    37px;
+
+  padding:
+    0;
+
+  border:
+    0 !important;
+
+  background:
+    transparent !important;
+
+  text-align:
+    left;
+}
+
+
+.webExploitEndpoint
+span {
+  display:
+    block;
+
+  width:
+    auto;
+
+  height:
+    auto;
+
+  border:
+    0;
+
+  color:
+    var(
+      --web30-subtle
+    );
+
+  background:
+    transparent;
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.46rem;
+}
+
+
+.webExploitEndpoint
+strong {
+  margin:
+    0;
+
+  color:
+    var(
+      --web30-secondary
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.55rem;
+
+  font-weight:
+    600;
+
+  letter-spacing:
+    0.055em;
+}
+
+
+.webExploitApplication
+strong {
+  color:
+    var(
+      --web30-cyan
+    );
+}
+
+
+/* Boundary labels are now a restrained taxonomy, not UI widgets. */
+
+.webExploitBoundaries {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  border:
+    0;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --web30-line
+    );
+}
+
+
+.webExploitBoundaries
+span {
+  position:
+    relative;
+
+  padding:
+    10px
+    8px
+    10px
+    0;
+
+  border:
+    0 !important;
+
+  color:
+    var(
+      --web30-blue
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.47rem;
+
+  letter-spacing:
+    0.075em;
+
+  text-align:
+    left;
+}
+
+
+.webExploitBoundaries
+span::before {
+  display:
+    none;
+}
+
+
+.webExploitVisualFooter {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    8px;
+
+  min-height:
+    38px;
+
+  color:
+    var(
+      --web30-subtle
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.45rem;
+
+  letter-spacing:
+    0.07em;
+}
+
+
+.webExploitVisualFooter
+i {
+  flex:
+    1;
+
+  height:
+    1px;
+
+  background:
+    var(
+      --web30-line
+    );
+}
+
+
+/* ==========================================================================
+   EDITORIAL COURSE SECTIONS
+   ========================================================================== */
+
+
+.webExploit
+> section:not(
+  :first-of-type
+) {
+  position:
+    relative;
+
+  counter-increment:
+    editorial-section;
+
+  padding-top:
+    clamp(
+      55px,
+      6vw,
+      82px
+    ) !important;
+
+  padding-bottom:
+    clamp(
+      55px,
+      6vw,
+      82px
+    ) !important;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --web30-line
+    ) !important;
+
+  background:
+    var(
+      --web30-bg
+    ) !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  even
+) {
+  background:
+    var(
+      --web30-soft
+    ) !important;
+}
+
+
+.webExploit
+> section:not(
+  :first-of-type
+)::before {
+  position:
+    absolute;
+
+  top:
+    22px;
+
+  left:
+    clamp(
+      20px,
+      4vw,
+      60px
+    );
+
+  color:
+    var(
+      --web30-subtle
+    );
+
+  content:
+    "SECTION / "
+    counter(
+      editorial-section,
+      decimal-leading-zero
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.48rem;
+
+  letter-spacing:
+    0.1em;
+}
+
+
+.webExploit
+> section:not(
+  :first-of-type
+)
+h2 {
+  max-width:
+    850px !important;
+
+  color:
+    var(
+      --web30-text
+    ) !important;
+
+  font-size:
+    clamp(
+      2.15rem,
+      3.5vw,
+      3.45rem
+    ) !important;
+
+  font-weight:
+    470 !important;
+
+  letter-spacing:
+    -0.055em !important;
+
+  line-height:
+    1.02 !important;
+
+  text-wrap:
+    balance;
+}
+
+
+.webExploit
+> section:not(
+  :first-of-type
+)
+h3 {
+  color:
+    var(
+      --web30-secondary
+    ) !important;
+
+  font-weight:
+    590 !important;
+
+  letter-spacing:
+    -0.025em !important;
+}
+
+
+.webExploit
+> section:not(
+  :first-of-type
+)
+p {
+  max-width:
+    760px;
+
+  color:
+    var(
+      --web30-muted
+    ) !important;
+
+  line-height:
+    1.65 !important;
+}
+
+
+/* ==========================================================================
+   NO CARD WALL
+   ========================================================================== */
+
+
+.webExploit
+[class*="card"],
+.webExploit
+[class*="Card"],
+.webExploit
+article {
+  border:
+    0 !important;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --web30-line
+    ) !important;
+
+  border-radius:
+    0 !important;
+
+  background:
+    transparent !important;
+
+  box-shadow:
+    none !important;
+
+  backdrop-filter:
+    none !important;
+}
+
+
+.webExploit
+article {
+  padding:
+    20px
+    0 !important;
+}
+
+
+.webExploit
+> section:not(
+  :first-of-type
+)
+[class*="grid"] {
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    ) !important;
+
+  gap:
+    0 !important;
+
+  border-top:
+    1px
+    solid
+    var(
+      --web30-line-strong
+    );
+}
+
+
+/* ==========================================================================
+   NUMBERED EDITORIAL LISTS
+   ========================================================================== */
+
+
+.webExploit
+ul,
+.webExploit
+ol {
+  counter-reset:
+    web30-row;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    0;
+
+  margin-top:
+    22px !important;
+
+  padding:
+    0 !important;
+
+  border-top:
+    1px
+    solid
+    var(
+      --web30-line-strong
+    );
+
+  list-style:
+    none !important;
+}
+
+
+.webExploit
+li {
+  counter-increment:
+    web30-row;
+
+  position:
+    relative;
+
+  min-height:
+    54px;
+
+  margin:
+    0 !important;
+
+  padding:
+    15px
+    12px
+    15px
+    52px !important;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --web30-line
+    );
+
+  color:
+    var(
+      --web30-secondary
+    ) !important;
+
+  background:
+    transparent !important;
+}
+
+
+.webExploit
+li::before {
+  position:
+    absolute;
+
+  top:
+    16px;
+
+  left:
+    4px;
+
+  width:
+    32px;
+
+  height:
+    auto;
+
+  border:
+    0;
+
+  color:
+    var(
+      --web30-subtle
+    );
+
+  background:
+    transparent;
+
+  content:
+    counter(
+      web30-row,
+      decimal-leading-zero
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.5rem;
+
+  letter-spacing:
+    0.05em;
+}
+
+
+/* ==========================================================================
+   META
+   ========================================================================== */
+
+
+.webExploit
+dt {
+  color:
+    var(
+      --web30-subtle
+    ) !important;
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace !important;
+
+  font-size:
+    0.51rem !important;
+
+  letter-spacing:
+    0.075em !important;
+
+  text-transform:
+    uppercase;
+}
+
+
+.webExploit
+dd {
+  color:
+    var(
+      --web30-secondary
+    ) !important;
+}
+
+
+/* ==========================================================================
+   FAQ
+   ========================================================================== */
+
+
+.webExploit
+details {
+  border:
+    0 !important;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --web30-line
+    ) !important;
+
+  border-radius:
+    0 !important;
+
+  background:
+    transparent !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+.webExploit
+details:first-of-type {
+  border-top:
+    1px
+    solid
+    var(
+      --web30-line-strong
+    ) !important;
+}
+
+
+.webExploit
+summary {
+  min-height:
+    68px;
+
+  color:
+    var(
+      --web30-secondary
+    ) !important;
+}
+
+
+/* ==========================================================================
+   FINAL CTA
+   ========================================================================== */
+
+
+.webExploit
+> section:last-of-type {
+  position:
+    relative;
+
+  background:
+    #080a0f !important;
+}
+
+
+.webExploit
+> section:last-of-type::after {
+  position:
+    absolute;
+
+  top:
+    0;
+
+  right:
+    0;
+
+  width:
+    34%;
+
+  height:
+    1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(
+        --web30-cyan
+      ),
+      var(
+        --web30-violet
+      )
+    );
+
+  content:
+    "";
+}
+
+
+.webExploit
+> section:not(
+  :first-of-type
+)
+a {
+  color:
+    var(
+      --web30-secondary
+    );
+
+  transition:
+    color
+    150ms
+    ease;
+}
+
+
+.webExploit
+> section:not(
+  :first-of-type
+)
+a:hover {
+  color:
+    var(
+      --web30-cyan
+    );
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    1100px
+) {
+
+  .webExploitVisual {
+    display:
+      none;
+  }
+
+
+  .webExploit
+  > section:first-of-type {
+    min-height:
+      0 !important;
+  }
+
+
+  .webExploit
+  > section:first-of-type
+  h1 {
+    width:
+      min(
+        100%,
+        900px
+      ) !important;
+
+    max-width:
+      900px !important;
+  }
+
+
+  .webExploit
+  > section:first-of-type
+  p {
+    max-width:
+      720px !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    640px
+) {
+
+  .webExploit
+  > section:first-of-type {
+    min-height:
+      0 !important;
+
+    padding-top:
+      18px !important;
+
+    padding-bottom:
+      32px !important;
+  }
+
+
+  .webExploit
+  > section:first-of-type::before,
+  .webExploit
+  > section:first-of-type::after {
+    display:
+      none;
+  }
+
+
+  .webExploit
+  > section:first-of-type
+  h1 {
+    width:
+      100% !important;
+
+    max-width:
+      100% !important;
+
+    margin-top:
+      5px !important;
+
+    font-size:
+      clamp(
+        2.55rem,
+        12vw,
+        3.45rem
+      ) !important;
+
+    line-height:
+      0.96 !important;
+  }
+
+
+  .webExploit
+  > section:not(
+    :first-of-type
+  ) {
+    padding-top:
+      42px !important;
+
+    padding-bottom:
+      42px !important;
+  }
+
+
+  .webExploit
+  > section:not(
+    :first-of-type
+  )::before {
+    top:
+      14px;
+
+    left:
+      18px;
+  }
+
+
+  .webExploit
+  > section:not(
+    :first-of-type
+  )
+  h2 {
+    font-size:
+      clamp(
+        1.9rem,
+        9vw,
+        2.55rem
+      ) !important;
+  }
+
+
+  .webExploit
+  article {
+    padding:
+      15px
+      0 !important;
+  }
+
+
+  .webExploit
+  li {
+    min-height:
+      0;
+
+    padding-top:
+      12px !important;
+
+    padding-bottom:
+      12px !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   NARROW
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    390px
+) {
+
+  .webExploit
+  > section:first-of-type
+  h1 {
+    font-size:
+      2.4rem !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .webExploit
+  a {
+    transition:
+      none !important;
+  }
+
+}
