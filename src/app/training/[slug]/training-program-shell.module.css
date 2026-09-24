@@ -17321,3 +17321,1700 @@ h2 {
   }
 
 }
+
+
+/* ==========================================================================
+   NB_WEB_EXPLOIT_COMPACT_DARK_BODY_V33
+
+   Compact redesign for the Web Exploitation body.
+
+   Goals:
+   - remove the white background entirely
+   - dramatically reduce vertical page length
+   - section 02 becomes a compact audience index
+   - section 03 becomes a 2x2 objective matrix
+   - section 04 becomes a horizontal module syllabus
+   - preserve the V30 hero
+   - preserve the V31 single-header treatment
+   - preserve all canonical TrainingProgram content
+   ========================================================================== */
+
+
+/* ==========================================================================
+   BODY RHYTHM
+   ========================================================================== */
+
+
+.webExploit {
+  --v33-bg:
+    #07090d;
+
+  --v33-bg-raised:
+    #0a0e14;
+
+  --v33-bg-soft:
+    #0c1118;
+
+  --v33-text:
+    #f5f7fa;
+
+  --v33-secondary:
+    #c5ced8;
+
+  --v33-muted:
+    #8793a3;
+
+  --v33-subtle:
+    #667281;
+
+  --v33-cyan:
+    #a1e2f0;
+
+  --v33-blue:
+    #83b3d7;
+
+  --v33-violet:
+    #7e60b9;
+
+  --v33-line:
+    rgba(
+      197,
+      206,
+      216,
+      0.13
+    );
+
+  --v33-line-strong:
+    rgba(
+      161,
+      226,
+      240,
+      0.26
+    );
+}
+
+
+.webExploit
+> section:not(
+  :first-of-type
+) {
+  min-height:
+    0 !important;
+
+  padding:
+    46px
+    0 !important;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --v33-line
+    ) !important;
+
+  background:
+    var(
+      --v33-bg
+    ) !important;
+
+  color:
+    var(
+      --v33-text
+    ) !important;
+}
+
+
+.webExploit
+> section:not(
+  :first-of-type
+)::before {
+  top:
+    16px !important;
+}
+
+
+.webExploit
+> section:not(
+  :first-of-type
+)
+h2 {
+  color:
+    var(
+      --v33-text
+    ) !important;
+
+  font-size:
+    clamp(
+      1.75rem,
+      2.5vw,
+      2.65rem
+    ) !important;
+
+  line-height:
+    1.04 !important;
+}
+
+
+.webExploit
+> section:not(
+  :first-of-type
+)
+h3 {
+  color:
+    var(
+      --v33-secondary
+    ) !important;
+}
+
+
+.webExploit
+> section:not(
+  :first-of-type
+)
+p {
+  color:
+    var(
+      --v33-muted
+    ) !important;
+
+  line-height:
+    1.55 !important;
+}
+
+
+/* ==========================================================================
+   SECTION 02 / AUDIENCE
+   COMPACT PROFILE INDEX
+   ========================================================================== */
+
+
+.webExploit
+> section:nth-of-type(
+  2
+) {
+  padding:
+    54px
+    0
+    48px !important;
+
+  background:
+    var(
+      --v33-bg-raised
+    ) !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  2
+)::before {
+  color:
+    var(
+      --v33-cyan
+    ) !important;
+
+  content:
+    "01  /  AUDIENCE" !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  2
+)
+[class*="grid"] {
+  display:
+    grid !important;
+
+  grid-template-columns:
+    minmax(
+      240px,
+      0.72fr
+    )
+    minmax(
+      0,
+      1.28fr
+    ) !important;
+
+  gap:
+    clamp(
+      30px,
+      5vw,
+      70px
+    ) !important;
+
+  align-items:
+    start;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  2
+)
+h2:first-of-type {
+  max-width:
+    440px !important;
+
+  font-size:
+    clamp(
+      2rem,
+      3vw,
+      3rem
+    ) !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  2
+)
+h2:not(
+  :first-of-type
+) {
+  position:
+    relative;
+
+  min-height:
+    54px;
+
+  max-width:
+    none !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    15px
+    12px
+    15px
+    42px !important;
+
+  border:
+    0 !important;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --v33-line
+    ) !important;
+
+  color:
+    var(
+      --v33-secondary
+    ) !important;
+
+  background:
+    transparent !important;
+
+  font-size:
+    0.98rem !important;
+
+  font-weight:
+    520 !important;
+
+  letter-spacing:
+    -0.015em !important;
+
+  line-height:
+    1.3 !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  2
+)
+h2:not(
+  :first-of-type
+)::before {
+  top:
+    17px !important;
+
+  left:
+    0 !important;
+
+  color:
+    var(
+      --v33-subtle
+    ) !important;
+}
+
+
+/* ==========================================================================
+   SECTION 03 / OBJECTIVES
+   DARK 2×2 LEARNING MATRIX
+   ========================================================================== */
+
+
+.webExploit
+> section:nth-of-type(
+  3
+) {
+  padding:
+    50px
+    0 !important;
+
+  color:
+    var(
+      --v33-text
+    ) !important;
+
+  background:
+    #090d13 !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  3
+)::before {
+  color:
+    var(
+      --v33-blue
+    ) !important;
+
+  content:
+    "02  /  LEARNING OBJECTIVES" !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  3
+)
+h2,
+.webExploit
+> section:nth-of-type(
+  3
+)
+h3 {
+  color:
+    var(
+      --v33-text
+    ) !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  3
+)
+p {
+  color:
+    var(
+      --v33-muted
+    ) !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  3
+)
+ul,
+.webExploit
+> section:nth-of-type(
+  3
+)
+ol {
+  counter-reset:
+    v33-objective;
+
+  display:
+    grid !important;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    ) !important;
+
+  gap:
+    0;
+
+  width:
+    100%;
+
+  max-width:
+    none !important;
+
+  margin:
+    16px
+    0
+    0 !important;
+
+  padding:
+    0 !important;
+
+  border:
+    1px
+    solid
+    var(
+      --v33-line
+    ) !important;
+
+  border-right:
+    0 !important;
+
+  border-bottom:
+    0 !important;
+
+  background:
+    transparent !important;
+
+  list-style:
+    none !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  3
+)
+li {
+  counter-increment:
+    v33-objective;
+
+  display:
+    grid !important;
+
+  grid-template-columns:
+    38px
+    minmax(
+      0,
+      1fr
+    ) !important;
+
+  gap:
+    13px;
+
+  align-items:
+    start;
+
+  min-height:
+    104px !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    21px
+    18px !important;
+
+  border:
+    0 !important;
+
+  border-right:
+    1px
+    solid
+    var(
+      --v33-line
+    ) !important;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --v33-line
+    ) !important;
+
+  color:
+    var(
+      --v33-secondary
+    ) !important;
+
+  background:
+    transparent !important;
+
+  font-size:
+    0.96rem !important;
+
+  line-height:
+    1.45 !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  3
+)
+li::before {
+  position:
+    static !important;
+
+  display:
+    block !important;
+
+  width:
+    auto !important;
+
+  height:
+    auto !important;
+
+  border:
+    0 !important;
+
+  color:
+    var(
+      --v33-cyan
+    ) !important;
+
+  background:
+    transparent !important;
+
+  content:
+    counter(
+      v33-objective,
+      decimal-leading-zero
+    ) !important;
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.49rem !important;
+
+  letter-spacing:
+    0.07em;
+}
+
+
+/* ==========================================================================
+   SECTION 04 / CURRICULUM
+   HORIZONTAL MODULE SYLLABUS
+   ========================================================================== */
+
+
+.webExploit
+> section:nth-of-type(
+  4
+) {
+  padding:
+    54px
+    0 !important;
+
+  background:
+    var(
+      --v33-bg-soft
+    ) !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  4
+)::before {
+  color:
+    var(
+      --v33-violet
+    ) !important;
+
+  content:
+    "03  /  CURRICULUM" !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  4
+)
+[class*="grid"] {
+  display:
+    grid !important;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(
+        0,
+        1fr
+      )
+    ) !important;
+
+  gap:
+    0 !important;
+
+  margin-top:
+    22px !important;
+
+  border:
+    0 !important;
+
+  border-top:
+    1px
+    solid
+    var(
+      --v33-line-strong
+    ) !important;
+
+  border-left:
+    1px
+    solid
+    var(
+      --v33-line
+    ) !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  4
+)
+article {
+  display:
+    block !important;
+
+  min-height:
+    205px !important;
+
+  margin:
+    0 !important;
+
+  padding:
+    23px
+    22px !important;
+
+  border:
+    0 !important;
+
+  border-right:
+    1px
+    solid
+    var(
+      --v33-line
+    ) !important;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --v33-line
+    ) !important;
+
+  border-radius:
+    0 !important;
+
+  background:
+    transparent !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  4
+)
+article::before {
+  display:
+    block;
+
+  margin-bottom:
+    30px;
+
+  color:
+    var(
+      --v33-subtle
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.5rem;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  4
+)
+article
+h3 {
+  margin:
+    0
+    0
+    10px !important;
+
+  padding:
+    0 !important;
+
+  border:
+    0 !important;
+
+  color:
+    var(
+      --v33-text
+    ) !important;
+
+  font-size:
+    clamp(
+      1.18rem,
+      1.65vw,
+      1.52rem
+    ) !important;
+
+  line-height:
+    1.1 !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  4
+)
+article
+p {
+  margin:
+    0 !important;
+
+  padding:
+    0 !important;
+
+  color:
+    var(
+      --v33-muted
+    ) !important;
+
+  font-size:
+    0.86rem !important;
+
+  line-height:
+    1.55 !important;
+}
+
+
+/* Fallback when curriculum items are not articles. */
+
+.webExploit
+> section:nth-of-type(
+  4
+)
+h3:not(
+  article
+  h3
+) {
+  min-height:
+    0;
+
+  margin:
+    0 !important;
+
+  padding:
+    18px
+    0
+    7px !important;
+
+  border:
+    0 !important;
+
+  border-top:
+    1px
+    solid
+    var(
+      --v33-line
+    ) !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  4
+)
+h3
++
+p {
+  padding-bottom:
+    16px !important;
+}
+
+
+/* ==========================================================================
+   SECTION 05 / OUTCOMES
+   KEEP CONTENT, REDUCE HEIGHT
+   ========================================================================== */
+
+
+.webExploit
+> section:nth-of-type(
+  5
+) {
+  padding:
+    46px
+    0 !important;
+
+  background:
+    #080b10 !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  5
+)
+li {
+  min-height:
+    102px !important;
+
+  padding:
+    42px
+    20px
+    18px !important;
+}
+
+
+/* ==========================================================================
+   SECTION 06 / PREREQUISITES
+   ========================================================================== */
+
+
+.webExploit
+> section:nth-of-type(
+  6
+) {
+  padding:
+    40px
+    0 !important;
+
+  background:
+    #090c11 !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  6
+)
+li {
+  min-height:
+    52px !important;
+
+  padding-top:
+    13px !important;
+
+  padding-bottom:
+    13px !important;
+}
+
+
+/* ==========================================================================
+   SECTION 07 / RELATED RESEARCH
+   ========================================================================== */
+
+
+.webExploit
+> section:nth-of-type(
+  7
+) {
+  padding:
+    48px
+    0 !important;
+
+  background:
+    #0a0e14 !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  7
+)
+article {
+  padding:
+    22px
+    0 !important;
+}
+
+
+/* ==========================================================================
+   SECTION 08 / CTA
+   ========================================================================== */
+
+
+.webExploit
+> section:nth-of-type(
+  8
+) {
+  padding:
+    58px
+    0 !important;
+
+  background:
+    #07090d !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  8
+)
+h2 {
+  max-width:
+    720px !important;
+
+  font-size:
+    clamp(
+      2.1rem,
+      3.3vw,
+      3.35rem
+    ) !important;
+}
+
+
+/* ==========================================================================
+   REMOVE LIGHT SURFACES FROM COMPLETE COURSE BODY
+   ========================================================================== */
+
+
+.webExploit
+> section:not(
+  :first-of-type
+)
+[class*="card"],
+.webExploit
+> section:not(
+  :first-of-type
+)
+[class*="Card"],
+.webExploit
+> section:not(
+  :first-of-type
+)
+article,
+.webExploit
+> section:not(
+  :first-of-type
+)
+details {
+  background:
+    transparent !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    900px
+) {
+
+  .webExploit
+  > section:nth-of-type(
+    2
+  )
+  [class*="grid"] {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      ) !important;
+
+    gap:
+      20px !important;
+  }
+
+
+  .webExploit
+  > section:nth-of-type(
+    4
+  )
+  [class*="grid"] {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      ) !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    640px
+) {
+
+  .webExploit
+  > section:not(
+    :first-of-type
+  ) {
+    padding:
+      43px
+      0 !important;
+  }
+
+
+  .webExploit
+  > section:not(
+    :first-of-type
+  )::before {
+    top:
+      13px !important;
+
+    left:
+      18px !important;
+  }
+
+
+  .webExploit
+  > section:nth-of-type(
+    2
+  )
+  h2:not(
+    :first-of-type
+  ) {
+    min-height:
+      48px;
+
+    padding:
+      12px
+      8px
+      12px
+      36px !important;
+  }
+
+
+  .webExploit
+  > section:nth-of-type(
+    3
+  )
+  ul,
+  .webExploit
+  > section:nth-of-type(
+    3
+  )
+  ol {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      ) !important;
+  }
+
+
+  .webExploit
+  > section:nth-of-type(
+    3
+  )
+  li {
+    min-height:
+      72px !important;
+
+    padding:
+      16px
+      14px !important;
+  }
+
+
+  .webExploit
+  > section:nth-of-type(
+    4
+  )
+  [class*="grid"] {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      ) !important;
+  }
+
+
+  .webExploit
+  > section:nth-of-type(
+    4
+  )
+  article {
+    min-height:
+      0 !important;
+
+    padding:
+      19px
+      16px !important;
+  }
+
+
+  .webExploit
+  > section:nth-of-type(
+    4
+  )
+  article::before {
+    margin-bottom:
+      18px;
+  }
+
+
+  .webExploit
+  > section:nth-of-type(
+    5
+  )
+  li {
+    min-height:
+      86px !important;
+  }
+
+
+  .webExploit
+  > section:nth-of-type(
+    8
+  ) {
+    padding:
+      50px
+      0 !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   NB_WEB_EXPLOIT_V33_DENSITY_RECOVERY
+
+   Stronger density correction after real-browser measurement:
+   sections 02–04 measured 2073.72px combined.
+
+   Target:
+   < 1650px combined on 1440×900.
+
+   No content is hidden.
+   No fixed clipping heights.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   SECTION 02 — AUDIENCE
+   SHORT COMPACT DIRECTORY
+   ========================================================================== */
+
+
+.webExploit
+> section:nth-of-type(
+  2
+) {
+  padding:
+    34px
+    0
+    30px !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  2
+)::before {
+  top:
+    10px !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  2
+)
+[class*="grid"] {
+  gap:
+    24px !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  2
+)
+h2:first-of-type {
+  max-width:
+    390px !important;
+
+  font-size:
+    clamp(
+      1.85rem,
+      2.6vw,
+      2.65rem
+    ) !important;
+
+  line-height:
+    1.01 !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  2
+)
+h2:not(
+  :first-of-type
+) {
+  min-height:
+    40px !important;
+
+  padding:
+    9px
+    6px
+    9px
+    34px !important;
+
+  font-size:
+    0.9rem !important;
+
+  line-height:
+    1.22 !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  2
+)
+h2:not(
+  :first-of-type
+)::before {
+  top:
+    11px !important;
+
+  font-size:
+    0.46rem !important;
+}
+
+
+/* ==========================================================================
+   SECTION 03 — OBJECTIVES
+   DENSE DARK MATRIX
+   ========================================================================== */
+
+
+.webExploit
+> section:nth-of-type(
+  3
+) {
+  padding:
+    34px
+    0 !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  3
+)::before {
+  top:
+    10px !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  3
+)
+ul,
+.webExploit
+> section:nth-of-type(
+  3
+)
+ol {
+  margin-top:
+    9px !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  3
+)
+li {
+  grid-template-columns:
+    31px
+    minmax(
+      0,
+      1fr
+    ) !important;
+
+  gap:
+    10px !important;
+
+  min-height:
+    72px !important;
+
+  padding:
+    14px
+    14px !important;
+
+  font-size:
+    0.88rem !important;
+
+  line-height:
+    1.34 !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  3
+)
+li::before {
+  font-size:
+    0.45rem !important;
+}
+
+
+/* ==========================================================================
+   SECTION 04 — CURRICULUM
+   SHORT HORIZONTAL SYLLABUS
+   ========================================================================== */
+
+
+.webExploit
+> section:nth-of-type(
+  4
+) {
+  padding:
+    36px
+    0 !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  4
+)::before {
+  top:
+    10px !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  4
+)
+[class*="grid"] {
+  margin-top:
+    12px !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  4
+)
+article {
+  min-height:
+    142px !important;
+
+  padding:
+    17px
+    17px !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  4
+)
+article::before {
+  margin-bottom:
+    14px !important;
+
+  font-size:
+    0.45rem !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  4
+)
+article
+h3 {
+  margin-bottom:
+    7px !important;
+
+  font-size:
+    clamp(
+      1.02rem,
+      1.35vw,
+      1.3rem
+    ) !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  4
+)
+article
+p {
+  font-size:
+    0.8rem !important;
+
+  line-height:
+    1.42 !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  4
+)
+h3:not(
+  article
+  h3
+) {
+  padding:
+    12px
+    0
+    5px !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  4
+)
+h3
++
+p {
+  padding-bottom:
+    11px !important;
+}
+
+
+/* ==========================================================================
+   REST OF PAGE
+   ALSO REDUCE UNNECESSARY LENGTH
+   ========================================================================== */
+
+
+.webExploit
+> section:nth-of-type(
+  5
+) {
+  padding:
+    32px
+    0 !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  5
+)
+li {
+  min-height:
+    78px !important;
+
+  padding:
+    34px
+    16px
+    13px !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  5
+)
+li::before {
+  top:
+    14px !important;
+
+  left:
+    16px !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  6
+) {
+  padding:
+    29px
+    0 !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  6
+)
+li {
+  min-height:
+    44px !important;
+
+  padding:
+    10px
+    18px
+    10px
+    0 !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  7
+) {
+  padding:
+    34px
+    0 !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  7
+)
+article {
+  padding:
+    16px
+    0 !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  8
+) {
+  padding:
+    42px
+    0 !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  8
+)
+h2 {
+  font-size:
+    clamp(
+      1.95rem,
+      2.8vw,
+      2.85rem
+    ) !important;
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    640px
+) {
+
+  .webExploit
+  > section:nth-of-type(
+    2
+  ),
+  .webExploit
+  > section:nth-of-type(
+    3
+  ),
+  .webExploit
+  > section:nth-of-type(
+    4
+  ) {
+    padding:
+      36px
+      0 !important;
+  }
+
+
+  .webExploit
+  > section:nth-of-type(
+    2
+  )
+  h2:not(
+    :first-of-type
+  ) {
+    min-height:
+      0 !important;
+
+    padding:
+      9px
+      4px
+      9px
+      32px !important;
+  }
+
+
+  .webExploit
+  > section:nth-of-type(
+    3
+  )
+  li {
+    min-height:
+      58px !important;
+
+    padding:
+      11px
+      12px !important;
+  }
+
+
+  .webExploit
+  > section:nth-of-type(
+    4
+  )
+  article {
+    min-height:
+      0 !important;
+
+    padding:
+      14px
+      12px !important;
+  }
+
+
+  .webExploit
+  > section:nth-of-type(
+    5
+  ),
+  .webExploit
+  > section:nth-of-type(
+    6
+  ),
+  .webExploit
+  > section:nth-of-type(
+    7
+  ) {
+    padding:
+      32px
+      0 !important;
+  }
+
+
+  .webExploit
+  > section:nth-of-type(
+    8
+  ) {
+    padding:
+      40px
+      0 !important;
+  }
+
+}
