@@ -4,211 +4,562 @@ import {
 } from "@playwright/test";
 
 
-test(
-  "AI Security Foundations uses its dedicated premium presentation",
-  async ({
-    page
-  }) => {
-    await page.goto(
-      "/training/ai-security-foundations"
-    );
-
-    const shell =
-      page.locator(
-        '[data-training-program="ai-security-foundations"]'
-      );
-
-    await expect(
-      shell
-    ).toBeVisible();
-
-    await expect(
-      page.getByRole(
-        "heading",
-        {
-          level:
-            1,
-
-          name:
-            /ai security foundations/i
-        }
-      )
-    ).toBeVisible();
-
-    await expect(
-      shell.locator(
-        '[data-ui="ai-security-visual"]'
-      )
-    ).toBeAttached();
-  }
-);
+const route =
+  "/training/ai-security-foundations";
 
 
 test(
-  "AI training content remains substantial and readable",
+  "AI Security V39 renders four visible sections",
   async ({
     page
   }) => {
-    await page.goto(
-      "/training/ai-security-foundations"
-    );
 
-    const main =
-      page.locator(
-        "#main-content"
-      );
-
-    await expect(
-      main
-    ).toBeVisible();
-
-    await expect(
-      main.getByRole(
-        "heading",
-        {
-          level:
-            1,
-
-          name:
-            /ai security foundations/i
-        }
-      )
-    ).toBeVisible();
-
-
-    /*
-     * Do not encode editorial wording such as "Audience".
-     *
-     * The underlying training template is data-driven and its
-     * section labels may evolve independently of the visual layer.
-     * What matters here is that the program retains a substantial
-     * multi-section information architecture.
-     */
-
-    const visibleSections =
-      main.locator(
-        "section:visible"
-      );
-
-    const visibleSectionCount =
-      await visibleSections.count();
-
-
-    expect(
-      visibleSectionCount
-    ).toBeGreaterThanOrEqual(
-      3
-    );
-
-
-    const visibleSecondaryHeadings =
-      main.locator(
-        "h2:visible"
-      );
-
-    const secondaryHeadingCount =
-      await visibleSecondaryHeadings.count();
-
-
-    expect(
-      secondaryHeadingCount
-    ).toBeGreaterThanOrEqual(
-      3
-    );
-
-
-    /*
-     * Ensure meaningful program content is actually present rather
-     * than validating a shell containing only headings.
-     */
-
-    const mainText =
-      (
-        await main.innerText()
-      ).trim();
-
-
-    expect(
-      mainText.length
-    ).toBeGreaterThan(
-      450
-    );
-
-
-    /*
-     * The page should expose multiple structured information items:
-     * curriculum/objectives/prerequisites/outcomes are represented
-     * through lists, cards or metadata depending on program data.
-     */
-
-    const structuredItems =
-      main.locator(
-        "li:visible, article:visible, dt:visible"
-      );
-
-    expect(
-      await structuredItems.count()
-    ).toBeGreaterThanOrEqual(
-      3
-    );
-  }
-);
-
-
-test(
-  "AI training route remains compact and overflow-free on mobile",
-  async ({
-    page
-  }) => {
     await page.setViewportSize({
+      width:
+        1440,
+
+      height:
+        900
+    });
+
+
+    await page.goto(
+      route
+    );
+
+
+    const root =
+      page.locator(
+        '[data-ai-security-design="v39"]'
+      );
+
+
+    await expect(
+      root
+    ).toBeVisible();
+
+
+    const sections =
+      root.locator(
+        ":scope > section[data-ai-v39-section]"
+      );
+
+
+    await expect(
+      sections
+    ).toHaveCount(
+      4
+    );
+
+
+    for (
+      let index = 0;
+      index < 4;
+      index += 1
+    ) {
+
+      await expect(
+        sections.nth(
+          index
+        )
+      ).toBeVisible();
+
+    }
+
+  }
+);
+
+
+test(
+  "AI Security V39 uses the new hero",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      route
+    );
+
+
+    const hero =
+      page.locator(
+        '[data-ai-v39-section="hero"]'
+      );
+
+
+    await expect(
+      hero
+    ).toBeVisible();
+
+
+    await expect(
+      hero.getByRole(
+        "heading",
+        {
+          level:
+            1,
+
+          name:
+            "AI Security Foundations"
+        }
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      hero.getByText(
+        "Secure the system around the model."
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      hero.getByText(
+        "MODEL ≠ SYSTEM"
+      )
+    ).toBeVisible();
+
+  }
+);
+
+
+test(
+  "AI Security V39 preserves canonical audience and objectives",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      route
+    );
+
+
+    const surface =
+      page.locator(
+        '[data-ai-v39-section="surface"]'
+      );
+
+
+    await expect(
+      surface.getByRole(
+        "heading",
+        {
+          level:
+            2,
+
+          name:
+            /designed for learners building practical security capability/i
+        }
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      surface.getByText(
+        "Application-security learners"
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      surface.getByText(
+        /understand tool-calling and permission boundaries/i
+      )
+    ).toBeVisible();
+
+  }
+);
+
+
+test(
+  "AI Security V39 presents the three curriculum boundaries",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      route
+    );
+
+
+    const program =
+      page.locator(
+        '[data-ai-v39-section="program"]'
+      );
+
+
+    for (
+      const name
+      of [
+        "AI Application Attack Surface",
+        "Prompt Injection",
+        "Tool-Using Systems"
+      ]
+    ) {
+
+      await expect(
+        program.getByRole(
+          "heading",
+          {
+            level:
+              3,
+
+            name,
+
+            exact:
+              true
+          }
+        )
+      ).toBeVisible();
+
+    }
+
+
+    await expect(
+      program.getByText(
+        /AI application trust boundaries/i
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      program.getByText(
+        /no advanced machine-learning background required/i
+      )
+    ).toBeVisible();
+
+  }
+);
+
+
+test(
+  "AI Security V39 uses one research note instead of the old article section",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      route
+    );
+
+
+    const note =
+      page.locator(
+        '[data-ai-v39-section="note"]'
+      );
+
+
+    await expect(
+      note
+    ).toBeVisible();
+
+
+    const research =
+      note.getByRole(
+        "link",
+        {
+          name:
+            /prompt injection matters most when AI can act/i
+        }
+      );
+
+
+    await expect(
+      research
+    ).toBeVisible();
+
+
+    await expect(
+      research
+    ).toHaveAttribute(
+      "href",
+      "/insights/prompt-injection-matters-when-ai-can-act"
+    );
+
+
+    await expect(
+      note.getByText(
+        /build practical security capability/i
+      )
+    ).toBeVisible();
+
+  }
+);
+
+
+test(
+  "AI Security V39 removes the legacy ambient visual",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      route
+    );
+
+
+    const root =
+      page.locator(
+        '[data-ai-security-design="v39"]'
+      );
+
+
+    await expect(
+      root
+    ).toBeVisible();
+
+
+    const oldVisual =
+      root.locator(
+        '[class*="aiAmbientVisual"]'
+      );
+
+
+    if (
+      await oldVisual.count()
+      >
+      0
+    ) {
+
+      await expect(
+        oldVisual.first()
+      ).toBeHidden();
+
+    }
+
+  }
+);
+
+
+test(
+  "AI Security V39 body stays dark",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      route
+    );
+
+
+    const sections =
+      page.locator(
+        "[data-ai-v39-section]"
+      );
+
+
+    await expect(
+      sections
+    ).toHaveCount(
+      4
+    );
+
+
+    for (
+      let index = 0;
+      index < 4;
+      index += 1
+    ) {
+
+      const section =
+        sections.nth(
+          index
+        );
+
+
+      const state =
+        await section.evaluate(
+          (
+            element
+          ) => {
+
+            const style =
+              getComputedStyle(
+                element
+              );
+
+
+            return {
+              backgroundColor:
+                style.backgroundColor,
+
+              backgroundImage:
+                style.backgroundImage
+            };
+
+          }
+        );
+
+
+      const channels =
+        state
+          .backgroundColor
+          .match(
+            /\d+/g
+          )
+          ?.slice(
+            0,
+            3
+          )
+          .map(
+            Number
+          )
+        ??
+        [];
+
+
+      if (
+        state.backgroundImage
+        ===
+        "none"
+        &&
+        channels.length
+        ===
+        3
+      ) {
+
+        expect(
+          Math.max(
+            ...channels
+          )
+        ).toBeLessThan(
+          70
+        );
+
+      }
+
+    }
+
+  }
+);
+
+
+test(
+  "V39 remains isolated from the other training programs",
+  async ({
+    page
+  }) => {
+
+    for (
+      const otherRoute
+      of [
+        "/training/red-team-foundations",
+        "/training/web-exploitation-techniques"
+      ]
+    ) {
+
+      await page.goto(
+        otherRoute
+      );
+
+
+      await expect(
+        page.locator(
+          "[data-ai-v39-section]"
+        )
+      ).toHaveCount(
+        0
+      );
+
+    }
+
+  }
+);
+
+
+for (
+  const viewport
+  of [
+    {
+      name:
+        "desktop",
+
+      width:
+        1440,
+
+      height:
+        900
+    },
+    {
+      name:
+        "compact",
+
+      width:
+        1180,
+
+      height:
+        820
+    },
+    {
+      name:
+        "tablet",
+
+      width:
+        820,
+
+      height:
+        1180
+    },
+    {
+      name:
+        "mobile",
+
       width:
         390,
 
       height:
         844
-    });
+    },
+    {
+      name:
+        "narrow",
 
-    await page.goto(
-      "/training/ai-security-foundations"
-    );
+      width:
+        360,
 
-    await expect(
-      page.locator(
-        "#main-content h1"
-      )
-    ).toBeVisible();
+      height:
+        800
+    }
+  ]
+) {
 
-    const metrics =
-      await page.evaluate(
-        () => {
-          const heading =
-            document.querySelector(
-              "#main-content h1"
-            );
+  test(
+    `AI Security V39 remains contained at ${viewport.name}`,
+    async ({
+      page
+    }) => {
 
-          if (!heading) {
-            throw new Error(
-              "Missing training heading"
-            );
+      await page.setViewportSize({
+        width:
+          viewport.width,
+
+        height:
+          viewport.height
+      });
+
+
+      await page.goto(
+        route
+      );
+
+
+      await expect(
+        page.getByRole(
+          "heading",
+          {
+            level:
+              1,
+
+            name:
+              "AI Security Foundations"
           }
+        )
+      ).toBeVisible();
 
-          const headingRect =
-            heading.getBoundingClientRect();
 
-          return {
-            h1Size:
-              Number.parseFloat(
-                getComputedStyle(
-                  heading
-                ).fontSize
-              ),
-
-            h1Top:
-              headingRect.top,
-
-            h1Bottom:
-              headingRect.bottom,
-
+      const geometry =
+        await page.evaluate(
+          () => ({
             scrollWidth:
               document
                 .documentElement
@@ -217,123 +568,119 @@ test(
             clientWidth:
               document
                 .documentElement
-                .clientWidth
-          };
-        }
-      );
+                .clientWidth,
 
-    expect(
-      metrics.h1Size
-    ).toBeLessThanOrEqual(
-      64
-    );
+            pageHeight:
+              document
+                .documentElement
+                .scrollHeight
+          })
+        );
 
-    expect(
-      metrics.h1Top
-    ).toBeLessThan(
-      600
-    );
 
-    expect(
-      metrics.h1Bottom
-    ).toBeLessThan(
-      840
-    );
-
-    expect(
-      metrics.scrollWidth
-    ).toBeLessThanOrEqual(
-      metrics.clientWidth +
+      expect(
+        geometry.scrollWidth
+      ).toBeLessThanOrEqual(
+        geometry.clientWidth
+        +
         1
-    );
-  }
-);
-
-
-test(
-  "AI security visual remains decorative and non-interactive",
-  async ({
-    page
-  }) => {
-    await page.goto(
-      "/training/ai-security-foundations"
-    );
-
-    const visual =
-      page.locator(
-        '[data-ui="ai-security-visual"]'
       );
 
-    await expect(
-      visual
-    ).toBeAttached();
 
-    await expect(
-      visual
-    ).toHaveAttribute(
-      "aria-hidden",
-      "true"
-    );
+      if (
+        viewport.width
+        >=
+        1180
+      ) {
 
-    const interactiveChildren =
-      visual.locator(
-        "a, button, input, select, textarea"
-      );
-
-    await expect(
-      interactiveChildren
-    ).toHaveCount(
-      0
-    );
-  }
-);
-
-
-test(
-  "other training programs do not receive the AI-specific treatment",
-  async ({
-    page
-  }) => {
-    for (
-      const route
-      of [
-        "/training/red-team-foundations",
-        "/training/web-exploitation-techniques"
-      ]
-    ) {
-      await page.goto(
-        route
-      );
-
-      const slug =
-        route.split(
-          "/"
-        ).at(
-          -1
+        expect(
+          geometry.pageHeight
+        ).toBeLessThan(
+          3900
         );
 
-      if (!slug) {
-        throw new Error(
-          "Training slug missing"
-        );
       }
 
-      const shell =
-        page.locator(
-          `[data-training-program="${slug}"]`
-        );
-
-      await expect(
-        shell
-      ).toBeVisible();
-
-      await expect(
-        shell.locator(
-          '[data-ui="ai-security-visual"]'
-        )
-      ).toHaveCount(
-        0
-      );
     }
+  );
+
+}
+
+
+test(
+  "AI Security V39 replaces the generic training DOM",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      route
+    );
+
+
+    const root =
+      page.locator(
+        '[data-ai-security-design="v39"]'
+      );
+
+
+    await expect(
+      root
+    ).toBeVisible();
+
+
+    /*
+     * The AI route must contain exactly the four V39 sections as direct
+     * section children — not eight hidden generic course sections plus V39.
+     */
+
+    const directSections =
+      root.locator(
+        ":scope > section"
+      );
+
+
+    await expect(
+      directSections
+    ).toHaveCount(
+      4
+    );
+
+
+    await expect(
+      root.locator(
+        ':scope > section[data-ai-v39-section="hero"]'
+      )
+    ).toHaveCount(
+      1
+    );
+
+
+    await expect(
+      root.locator(
+        ':scope > section[data-ai-v39-section="surface"]'
+      )
+    ).toHaveCount(
+      1
+    );
+
+
+    await expect(
+      root.locator(
+        ':scope > section[data-ai-v39-section="program"]'
+      )
+    ).toHaveCount(
+      1
+    );
+
+
+    await expect(
+      root.locator(
+        ':scope > section[data-ai-v39-section="note"]'
+      )
+    ).toHaveCount(
+      1
+    );
+
   }
 );

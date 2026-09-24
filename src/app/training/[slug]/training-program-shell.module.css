@@ -1532,7 +1532,6 @@
 }
 
 
-
 /* ==========================================================================
    NB_AI_SECURITY_FOUNDATIONS_PROFESSIONAL_LAYOUT_V28
 
@@ -13975,7 +13974,6 @@ a:hover {
    NB_WEB_EXPLOIT_EDITORIAL_COURSE_V30
 
 
-
    Complete visual replacement for Web Exploitation Techniques.
 
    Direction:
@@ -20417,4 +20415,94 @@ details {
 ) {
   display:
     none !important;
+}
+
+
+/* ==========================================================================
+   NB_AI_SECURITY_CONTROL_SURFACE_V39
+
+
+.aiSecurityV39Shell {
+  position:
+    relative;
+
+  isolation:
+    isolate;
+
+  overflow:
+    clip;
+
+  background:
+    #07090d;
+
+  color:
+    #f5f7fa;
+}
+
+
+   The legacy AI detail page keeps its source markup for the shared route
+   architecture, but V39 replaces all eight visible generic sections with
+   the dedicated four-section AI Security control surface.
+   ========================================================================== */
+
+
+/* Hide generic hero + seven generic body sections. */
+
+
+/* Remove the old route breadcrumb when it is inside the AI shell. */
+
+.aiSecurityV39Shell[data-ai-security-design="v39"]
+> nav[aria-label="Breadcrumb"] {
+  display:
+    none !important;
+}
+
+
+/* Remove the previous ambient / orbit / network visual language. */
+
+.aiSecurityV39Shell[data-ai-security-design="v39"]
+.aiAmbientVisual,
+.aiSecurityV39Shell[data-ai-security-design="v39"]
+.aiOrbitLarge,
+.aiSecurityV39Shell[data-ai-security-design="v39"]
+.aiOrbitSmall,
+.aiSecurityV39Shell[data-ai-security-design="v39"]
+.aiNode,
+.aiSecurityV39Shell[data-ai-security-design="v39"]
+.aiNodeOne,
+.aiSecurityV39Shell[data-ai-security-design="v39"]
+.aiNodeTwo,
+.aiSecurityV39Shell[data-ai-security-design="v39"]
+.aiNodeThree,
+.aiSecurityV39Shell[data-ai-security-design="v39"]
+.aiNodeFour,
+.aiSecurityV39Shell[data-ai-security-design="v39"]
+.aiNodeFive {
+  display:
+    none !important;
+}
+
+
+.aiSecurityV39Shell[data-ai-security-design="v39"]::before,
+.aiSecurityV39Shell[data-ai-security-design="v39"]::after {
+  display:
+    none !important;
+
+  content:
+    none !important;
+}
+
+
+/*
+ * Explicitly prevent the historical AI body rules from creating light
+ * surfaces around the new V39 sections.
+ */
+
+.aiSecurityV39Shell[data-ai-security-design="v39"]
+> section[data-ai-v39-section] {
+  min-height:
+    0;
+
+  color-scheme:
+    dark;
 }
