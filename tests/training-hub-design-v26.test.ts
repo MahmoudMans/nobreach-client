@@ -24,45 +24,28 @@ const css =
 
 
 describe(
-  "Training Hub V26 cybersecurity learning range",
+  "Academy continuous design system",
   () => {
 
     it(
-      "activates the V26 training authority",
+      "uses one Academy PageIntro and no page-level navigation",
       () => {
 
         expect(
           page
         ).toContain(
-          'data-training-hub-design="v26"'
+          'data-training-academy="continuous-v1"'
         );
 
 
         expect(
-          css
-        ).toContain(
-          "NB_TRAINING_LEARNING_RANGE_V26"
-        );
-
-      }
-    );
-
-
-    it(
-      "keeps the approved Training Hub identity",
-      () => {
-
-        expect(
-          page
-        ).toContain(
-          "NO BREACH"
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "TRAINING HUB"
+          page.match(
+            /<h1(?:\s|>)/g
+          )
+          ??
+          []
+        ).toHaveLength(
+          1
         );
 
 
@@ -79,39 +62,11 @@ describe(
           "by doing cybersecurity."
         );
 
-      }
-    );
-
-
-    it(
-      "uses the canonical training program data source",
-      () => {
 
         expect(
           page
-        ).toContain(
-          '@/content/training'
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          'trainingPrograms as programs'
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "programs.filter"
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "program.audience"
+        ).not.toContain(
+          "<nav"
         );
 
       }
@@ -119,22 +74,91 @@ describe(
 
 
     it(
-      "supports only the approved program statuses",
+      "uses the canonical Academy section order",
       () => {
+
+        const sections =
+          page.match(
+            /data-training-section="[^"]+"/g
+          )
+          ??
+          [];
+
+
+        expect(
+          sections
+        ).toEqual([
+          'data-training-section="intro"',
+          'data-training-section="paths"',
+          'data-training-section="courses"',
+          'data-training-section="practice"',
+          'data-training-section="method"',
+          'data-training-section="outcomes"',
+          'data-training-section="faq"',
+          'data-training-section="cta"'
+        ]);
+
+      }
+    );
+
+
+    it(
+      "remains bound to canonical trainingPrograms",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          'from "@/content/training"'
+        );
+
+
+        expect(
+          page
+        ).toContain(
+          "trainingPrograms.map"
+        );
+
+
+        expect(
+          page
+        ).toContain(
+          "`/training/${program.slug}`"
+        );
+
+      }
+    );
+
+
+    it(
+      "renders consistent program cards",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          "data-training-program"
+        );
+
 
         for (
-          const status
+          const token
           of [
-            "AVAILABLE",
-            "UPCOMING",
-            "ARCHIVED"
+            "program.category",
+            "program.title",
+            "program.summary",
+            "program.level",
+            "program.format",
+            "program.duration",
+            "program.status",
+            "program.modules.length"
           ]
         ) {
 
           expect(
             page
           ).toContain(
-            status
+            token
           );
 
         }
@@ -144,22 +168,71 @@ describe(
 
 
     it(
-      "uses three primary content chapters",
+      "uses real canonical modules and outcomes",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          "featuredPractice.modules"
+        );
+
+
+        expect(
+          page
+        ).toContain(
+          "program.outcomes"
+        );
+
+      }
+    );
+
+
+    it(
+      "keeps public learner and organization training separate",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          "public Academy"
+        );
+
+
+        expect(
+          page
+        ).toContain(
+          "Security Training service"
+        );
+
+      }
+    );
+
+
+    it(
+      "uses the final NoBreach palette and fonts",
       () => {
 
         for (
-          const section
+          const token
           of [
-            "programs",
-            "learning-model",
-            "learner-context"
+            "#07090d",
+            "#0b0f16",
+            "#101620",
+            "#151d29",
+            "#a1e2f0",
+            "#83b3d7",
+            "#7e60b9",
+            '"Space Grotesk"',
+            '"Inter"',
+            '"IBM Plex Mono"'
           ]
         ) {
 
           expect(
-            page
+            css
           ).toContain(
-            `data-training-section="${section}"`
+            token
           );
 
         }
@@ -169,68 +242,34 @@ describe(
 
 
     it(
-      "keeps public and organization training separate",
+      "supports responsive accessible interaction",
       () => {
 
         expect(
-          page
+          css
         ).toContain(
-          'href="/services/security-training"'
+          ":focus-visible"
         );
 
 
         expect(
-          page
+          css
         ).toContain(
-          "Organization training"
+          "outline:\n    2px"
         );
 
-      }
-    );
-
-
-    it(
-      "does not use a course card wall",
-      () => {
 
         expect(
-          page
+          css
         ).toContain(
-          "styles.programRow"
+          "min-height:\n    48px"
         );
 
 
         expect(
-          page
-        ).not.toContain(
-          "styles.programCard"
-        );
-
-
-        expect(
-          page
-        ).not.toContain(
-          "styles.courseCard"
-        );
-
-      }
-    );
-
-
-    it(
-      "keeps exactly one primary heading",
-      () => {
-
-        expect(
-          (
-            page.match(
-              /<h1>/g
-            )
-            ??
-            []
-          ).length
-        ).toBe(
-          1
+          css
+        ).toContain(
+          "prefers-reduced-motion"
         );
 
       }

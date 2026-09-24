@@ -1,234 +1,217 @@
 /* ==========================================================================
-   NB_TRAINING_LEARNING_RANGE_V26
+   NB_ACADEMY_CONTINUOUS_DESIGN_V1
 
-   Dedicated public learner experience.
+   Academy landing:
+   PageIntro
+   LearningPaths
+   FeaturedCourses
+   HandsOnPractice
+   LearningMethod
+   StudentOutcomes
+   FAQ
+   AcademyCTA
 
-   - strongly separated from consulting pages
-   - practice-loop hero
-   - data-driven program dossiers
-   - learning philosophy / flow
-   - audience + mentorship
-   - data-driven archive
-   - no course card wall
+   Same NoBreach design system.
+   No second navbar.
+   No white section.
+   No empty spacer.
+   No repeated course-card wall.
    ========================================================================== */
 
 
 .page {
-  --hub-bg:
+  --academy-base:
     #07090d;
 
-  --hub-alt:
-    #0a0d13;
+  --academy-surface:
+    #0b0f16;
 
-  --hub-surface:
+  --academy-card:
     #101620;
 
-  --hub-text:
-    #f5f7fa;
+  --academy-elevated:
+    #151d29;
 
-  --hub-secondary:
-    #c5ced8;
-
-  --hub-muted:
-    #8793a3;
-
-  --hub-subtle:
-    #667281;
-
-  --hub-cyan:
+  --academy-cyan:
     #a1e2f0;
 
-  --hub-blue:
+  --academy-blue:
     #83b3d7;
 
-  --hub-violet:
+  --academy-purple:
     #7e60b9;
 
-  --hub-purple:
-    #6333c6;
+  --academy-text:
+    #f5f7fa;
 
-  --hub-line:
+  --academy-muted:
+    #8e9aaa;
+
+  --academy-subtle:
+    #667281;
+
+  --academy-line:
     rgba(
-      197,
-      206,
-      216,
-      0.13
+      255,
+      255,
+      255,
+      0.08
     );
 
-  --hub-line-strong:
+  --academy-cyan-line:
     rgba(
       161,
       226,
       240,
-      0.24
+      0.12
     );
+
+  min-width:
+    0;
 
   overflow:
     clip;
 
-  color:
-    var(
-      --hub-text
-    );
-
   background:
     var(
-      --hub-bg
+      --academy-base
     );
+
+  color:
+    var(
+      --academy-text
+    );
+
+  font-family:
+    var(
+      --font-inter,
+      "Inter"
+    ),
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 }
 
 
-.container {
-  width:
-    100%;
+.page h1,
+.page h2,
+.page h3 {
+  font-family:
+    var(
+      --font-space-grotesk,
+      "Space Grotesk"
+    ),
+    var(
+      --font-inter,
+      "Inter"
+    ),
+    sans-serif;
 }
 
 
-/* ==========================================================================
-   ACTIONS
-   ========================================================================== */
+.eyebrow {
+  margin:
+    0;
+
+  color:
+    var(
+      --academy-cyan
+    );
+
+  font-family:
+    var(
+      --font-ibm-plex-mono,
+      "IBM Plex Mono"
+    ),
+    monospace;
+
+  font-size:
+    0.66rem;
+
+  font-weight:
+    650;
+
+  letter-spacing:
+    0.12em;
+
+  line-height:
+    1.4;
+
+  text-transform:
+    uppercase;
+}
 
 
-.primaryAction {
-  display:
-    inline-flex;
+.page a {
+  outline:
+    none;
+}
 
-  align-items:
-    center;
 
-  justify-content:
-    space-between;
-
-  gap:
-    18px;
-
-  min-height:
-    46px;
-
-  padding:
-    0
-    18px;
-
-  border:
-    1px
+.page a:focus-visible,
+.page summary:focus-visible {
+  outline:
+    2px
     solid
-    rgba(
-      161,
-      226,
-      240,
-      0.3
-    );
-
-  border-radius:
-    4px;
-
-  color:
-    #071015;
-
-  background:
     var(
-      --hub-cyan
+      --academy-cyan
     );
 
-  font-size:
-    0.78rem;
-
-  font-weight:
-    700;
-
-  transition:
-    background-color
-    160ms
-    ease;
-}
-
-
-.primaryAction:hover {
-  background:
-    #c5eff8;
-}
-
-
-.textAction,
-.inlineAction {
-  display:
-    inline-flex;
-
-  align-items:
-    center;
-
-  gap:
-    11px;
-
-  min-height:
-    44px;
-
-  color:
-    var(
-      --hub-secondary
-    );
-
-  font-size:
-    0.78rem;
-
-  font-weight:
-    620;
-
-  transition:
-    color
-    160ms
-    ease;
-}
-
-
-.textAction:hover,
-.inlineAction:hover {
-  color:
-    var(
-      --hub-cyan
-    );
+  outline-offset:
+    3px;
 }
 
 
 /* ==========================================================================
-   HERO
+   PAGE INTRO
    ========================================================================== */
 
 
-.hero {
+.pageIntro {
   position:
     relative;
 
-  min-height:
-    min(
-      760px,
-      calc(
-        100svh
-        -
-        104px
-      )
-    );
+  isolation:
+    isolate;
+
+  overflow:
+    hidden;
+
+  padding:
+    96px
+    0
+    88px;
 
   border-bottom:
     1px
     solid
     var(
-      --hub-line
+      --academy-line
     );
 
   background:
     var(
-      --hub-bg
+      --academy-base
     );
 }
 
 
-.hero::before {
+.introDecoration {
   position:
     absolute;
 
+  z-index:
+    0;
+
   inset:
     0;
+
+  pointer-events:
+    none;
+
+  opacity:
+    0.42;
 
   background-image:
     linear-gradient(
@@ -236,7 +219,7 @@
         161,
         226,
         240,
-        0.025
+        0.022
       )
       1px,
       transparent
@@ -248,7 +231,420 @@
         161,
         226,
         240,
-        0.025
+        0.022
+      )
+      1px,
+      transparent
+      1px
+    ),
+    radial-gradient(
+      circle
+      at
+      82%
+      28%,
+      rgba(
+        126,
+        96,
+        185,
+        0.1
+      ),
+      transparent
+      27%
+    );
+
+  background-size:
+    64px
+    64px,
+    64px
+    64px,
+    auto;
+}
+
+
+.introGrid {
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      6fr
+    )
+    minmax(
+      0,
+      6fr
+    );
+
+  gap:
+    clamp(
+      56px,
+      6vw,
+      72px
+    );
+
+  align-items:
+    start;
+}
+
+
+.introCopy {
+  max-width:
+    620px;
+}
+
+
+.introCopy h1 {
+  max-width:
+    620px;
+
+  margin:
+    15px
+    0
+    0;
+
+  color:
+    var(
+      --academy-text
+    );
+
+  font-size:
+    clamp(
+      3.2rem,
+      5.2vw,
+      4.8rem
+    );
+
+  font-weight:
+    520;
+
+  letter-spacing:
+    -0.065em;
+
+  line-height:
+    0.96;
+
+  text-wrap:
+    balance;
+}
+
+
+.introLead {
+  max-width:
+    580px;
+
+  margin:
+    21px
+    0
+    0;
+
+  color:
+    var(
+      --academy-muted
+    );
+
+  font-size:
+    0.98rem;
+
+  line-height:
+    1.66;
+}
+
+
+.introActions,
+.ctaActions {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    12px;
+
+  margin-top:
+    30px;
+}
+
+
+.primaryButton,
+.secondaryButton {
+  display:
+    inline-flex;
+
+  min-height:
+    48px;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    10px;
+
+  padding:
+    0
+    18px;
+
+  border-radius:
+    10px;
+
+  font-size:
+    0.81rem;
+
+  font-weight:
+    650;
+
+  text-decoration:
+    none;
+
+  transition:
+    border-color
+    180ms
+    ease,
+    background-color
+    180ms
+    ease,
+    color
+    180ms
+    ease,
+    transform
+    180ms
+    ease;
+}
+
+
+.primaryButton {
+  border:
+    1px
+    solid
+    var(
+      --academy-cyan
+    );
+
+  background:
+    var(
+      --academy-cyan
+    );
+
+  color:
+    var(
+      --academy-base
+    );
+}
+
+
+.primaryButton:hover {
+  border-color:
+    #c2f0f8;
+
+  background:
+    #c2f0f8;
+
+  transform:
+    translateY(
+      -1px
+    );
+}
+
+
+.secondaryButton {
+  border:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.34
+    );
+
+  background:
+    transparent;
+
+  color:
+    var(
+      --academy-cyan
+    );
+}
+
+
+.secondaryButton:hover {
+  border-color:
+    var(
+      --academy-cyan
+    );
+
+  background:
+    rgba(
+      161,
+      226,
+      240,
+      0.05
+    );
+}
+
+
+.introMeta {
+  margin:
+    22px
+    0
+    0;
+
+  color:
+    #596473;
+
+  font-family:
+    var(
+      --font-ibm-plex-mono,
+      "IBM Plex Mono"
+    ),
+    monospace;
+
+  font-size:
+    0.61rem;
+
+  letter-spacing:
+    0.07em;
+
+  text-transform:
+    uppercase;
+}
+
+
+/* ==========================================================================
+   INTRO TECHNICAL SIGNAL
+   ========================================================================== */
+
+
+.learningSignal {
+  min-height:
+    370px;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.26
+    );
+
+  border-right:
+    1px
+    solid
+    var(
+      --academy-line
+    );
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --academy-line
+    );
+
+  border-left:
+    1px
+    solid
+    var(
+      --academy-line
+    );
+
+  background:
+    rgba(
+      11,
+      15,
+      22,
+      0.64
+    );
+}
+
+
+.signalHeader {
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  gap:
+    24px;
+
+  padding:
+    14px
+    17px;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --academy-line
+    );
+
+  color:
+    var(
+      --academy-subtle
+    );
+
+  font-family:
+    var(
+      --font-ibm-plex-mono,
+      "IBM Plex Mono"
+    ),
+    monospace;
+
+  font-size:
+    0.58rem;
+
+  letter-spacing:
+    0.09em;
+}
+
+
+.signalCore {
+  display:
+    grid;
+
+  min-height:
+    245px;
+
+  place-items:
+    center;
+
+  align-content:
+    center;
+
+  gap:
+    17px;
+
+  background-image:
+    linear-gradient(
+      rgba(
+        255,
+        255,
+        255,
+        0.024
+      )
+      1px,
+      transparent
+      1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(
+        255,
+        255,
+        255,
+        0.024
       )
       1px,
       transparent
@@ -256,130 +652,21 @@
     );
 
   background-size:
-    68px
-    68px;
-
-  mask-image:
-    linear-gradient(
-      to bottom,
-      rgba(
-        0,
-        0,
-        0,
-        0.5
-      ),
-      transparent
-      82%
-    );
-
-  content:
-    "";
-
-  pointer-events:
-    none;
+    42px
+    42px;
 }
 
 
-.hero::after {
-  position:
-    absolute;
-
-  top:
-    0;
-
-  right:
-    0;
-
-  bottom:
-    0;
-
-  width:
-    min(
-      48vw,
-      780px
-    );
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(
-        99,
-        51,
-        198,
-        0.032
-      )
-    );
-
-  content:
-    "";
-
-  pointer-events:
-    none;
-}
-
-
-.hero
-.container {
-  position:
-    relative;
-
-  z-index:
-    1;
-
-  display:
-    grid;
-
-  grid-template-rows:
-    auto
-    1fr
-    auto;
-
-  min-height:
-    inherit;
-
-  padding-top:
-    16px;
-
-  padding-bottom:
-    17px;
-}
-
-
-.heroTopline {
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    space-between;
-
-  gap:
-    20px;
-
-  min-height:
-    22px;
-
-  padding-bottom:
-    4px;
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --hub-line
-    );
-
+.signalCore span {
   color:
     var(
-      --hub-subtle
+      --academy-subtle
     );
 
   font-family:
     var(
-      --font-geist-mono
+      --font-ibm-plex-mono,
+      "IBM Plex Mono"
     ),
     monospace;
 
@@ -391,952 +678,262 @@
 }
 
 
-.heroTopline
-span:last-child {
+.signalCore strong {
   color:
     var(
-      --hub-blue
+      --academy-text
+    );
+
+  font-size:
+    clamp(
+      3.2rem,
+      6vw,
+      5.1rem
+    );
+
+  font-weight:
+    520;
+
+  letter-spacing:
+    -0.07em;
+}
+
+
+.signalFlow {
+  display:
+    flex;
+
+  min-height:
+    64px;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  gap:
+    12px;
+
+  padding:
+    0
+    16px;
+
+  border-top:
+    1px
+    solid
+    var(
+      --academy-line
+    );
+
+  color:
+    var(
+      --academy-blue
+    );
+
+  font-family:
+    var(
+      --font-ibm-plex-mono,
+      "IBM Plex Mono"
+    ),
+    monospace;
+
+  font-size:
+    0.54rem;
+
+  letter-spacing:
+    0.07em;
+}
+
+
+.signalFlow i {
+  width:
+    20px;
+
+  height:
+    1px;
+
+  background:
+    rgba(
+      161,
+      226,
+      240,
+      0.3
     );
 }
 
 
-.heroGrid {
+/* ==========================================================================
+   COMMON SECTION HEADER
+   ========================================================================== */
+
+
+.sectionHeader,
+.courseHeader {
   display:
     grid;
 
   grid-template-columns:
     minmax(
       0,
-      1.16fr
+      1.25fr
     )
     minmax(
-      360px,
-      0.64fr
+      280px,
+      0.75fr
     );
 
   gap:
-    clamp(
-      52px,
-      7vw,
-      104px
-    );
+    56px;
 
   align-items:
-    start;
+    end;
 
-  padding:
-    clamp(
-      12px,
-      2vh,
-      18px
-    )
+  margin-bottom:
+    52px;
+}
+
+
+.sectionHeader > div,
+.courseHeader > div {
+  max-width:
+    720px;
+}
+
+
+.sectionHeader h2,
+.courseHeader h2,
+.methodIntro h2,
+.faqIntro h2,
+.ctaCopy h2 {
+  margin:
+    12px
     0
-    clamp(
-      30px,
-      4vh,
-      42px
-    );
-}
+    0;
 
-
-.heroEyebrow {
   color:
     var(
-      --hub-cyan
+      --academy-text
     );
 
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
   font-size:
-    0.63rem;
+    clamp(
+      2.5rem,
+      4.1vw,
+      4rem
+    );
 
   font-weight:
-    650;
+    520;
 
   letter-spacing:
-    0.11em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.heroCopy h1 {
-  max-width:
-    930px;
-
-  margin-top:
-    7px;
-
-  font-size:
-    clamp(
-      4rem,
-      6.2vw,
-      6rem
-    );
-
-  font-weight:
-    500;
-
-  letter-spacing:
-    -0.07em;
+    -0.06em;
 
   line-height:
-    0.91;
+    0.98;
+
+  text-wrap:
+    balance;
 }
 
 
-.heroCopy h1
-span {
-  display:
-    block;
+.sectionHeader > p,
+.courseHeader > p {
+  max-width:
+    440px;
+
+  margin:
+    0;
 
   color:
     var(
-      --hub-secondary
-    );
-
-  font-weight:
-    420;
-}
-
-
-.heroLead {
-  max-width:
-    680px;
-
-  margin-top:
-    24px;
-
-  color:
-    var(
-      --hub-muted
+      --academy-muted
     );
 
   font-size:
-    clamp(
-      0.98rem,
-      1.35vw,
-      1.11rem
-    );
+    0.89rem;
 
   line-height:
-    1.65;
-}
-
-
-.heroActions {
-  display:
-    flex;
-
-  flex-wrap:
-    wrap;
-
-  gap:
-    18px;
-
-  margin-top:
-    27px;
+    1.62;
 }
 
 
 /* ==========================================================================
-   PRACTICE LOOP
+   LEARNING PATHS — EDITORIAL, NOT NAVBAR
    ========================================================================== */
 
 
-.practiceLoop {
-  border-top:
-    1px
-    solid
-    var(
-      --hub-line-strong
-    );
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --hub-line
-    );
-}
-
-
-.loopHeader {
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    space-between;
-
-  min-height:
-    40px;
-
-  color:
-    var(
-      --hub-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.55rem;
-
-  letter-spacing:
-    0.08em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.loopCanvas {
-  position:
-    relative;
-
-  min-height:
-    310px;
-
-  border-top:
-    1px
-    solid
-    var(
-      --hub-line
-    );
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --hub-line
-    );
-}
-
-
-.loopCore,
-.loopNode {
-  position:
-    absolute;
-
-  z-index:
-    2;
-
-  display:
-    grid;
-
-  place-content:
-    center;
-
-  text-align:
-    center;
+.paths {
+  padding:
+    96px
+    0;
 
   background:
     var(
-      --hub-bg
+      --academy-base
     );
 }
 
 
-.loopCore {
-  top:
-    50%;
-
-  left:
-    50%;
-
-  width:
-    126px;
-
-  height:
-    126px;
-
-  border:
+.pathRows {
+  border-top:
     1px
     solid
     rgba(
       161,
       226,
       240,
-      0.34
-    );
-
-  border-radius:
-    50%;
-
-  transform:
-    translate(
-      -50%,
-      -50%
+      0.2
     );
 }
 
 
-.loopCore::before,
-.loopCore::after {
-  position:
-    absolute;
-
-  border:
-    1px
-    solid
-    var(
-      --hub-line
-    );
-
-  border-radius:
-    50%;
-
-  content:
-    "";
-}
-
-
-.loopCore::before {
-  inset:
-    13px;
-}
-
-
-.loopCore::after {
-  inset:
-    27px;
-}
-
-
-.loopCore
-span,
-.loopCore
-strong {
-  position:
-    relative;
-
-  z-index:
-    2;
-}
-
-
-.loopCore
-span {
-  color:
-    var(
-      --hub-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.48rem;
-}
-
-
-.loopCore
-strong {
-  margin-top:
-    7px;
-
-  color:
-    var(
-      --hub-cyan
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.58rem;
-
-  letter-spacing:
-    0.06em;
-}
-
-
-.loopNode {
-  width:
-    104px;
-
-  min-height:
-    48px;
-
-  border:
-    1px
-    solid
-    var(
-      --hub-line
-    );
-}
-
-
-.loopNode
-span {
-  color:
-    var(
-      --hub-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.47rem;
-}
-
-
-.loopNode
-strong {
-  margin-top:
-    4px;
-
-  color:
-    var(
-      --hub-secondary
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.52rem;
-
-  letter-spacing:
-    0.05em;
-}
-
-
-.loopNodeLearn {
-  top:
-    28px;
-
-  left:
-    0;
-}
-
-
-.loopNodeBuild {
-  top:
-    28px;
-
-  right:
-    0;
-}
-
-
-.loopNodeTest {
-  bottom:
-    28px;
-
-  left:
-    0;
-}
-
-
-.loopNodeExplain {
-  right:
-    0;
-
-  bottom:
-    28px;
-}
-
-
-.loopLine {
-  position:
-    absolute;
-
-  z-index:
-    1;
-
-  width:
-    31%;
-
-  height:
-    1px;
-
-  background:
-    linear-gradient(
-      90deg,
-      var(
-        --hub-line
-      ),
-      var(
-        --hub-line-strong
-      )
-    );
-}
-
-
-.loopLineOne {
-  top:
-    97px;
-
-  left:
-    83px;
-
-  transform:
-    rotate(
-      30deg
-    );
-}
-
-
-.loopLineTwo {
-  top:
-    97px;
-
-  right:
-    83px;
-
-  transform:
-    rotate(
-      -30deg
-    );
-}
-
-
-.loopLineThree {
-  bottom:
-    97px;
-
-  left:
-    83px;
-
-  transform:
-    rotate(
-      -30deg
-    );
-}
-
-
-.loopLineFour {
-  right:
-    83px;
-
-  bottom:
-    97px;
-
-  transform:
-    rotate(
-      30deg
-    );
-}
-
-
-.loopFooter {
+.pathRow {
   display:
     grid;
 
   grid-template-columns:
-    auto
-    1fr
-    auto
-    1fr
-    auto;
-
-  gap:
-    10px;
-
-  align-items:
-    center;
-
-  min-height:
-    46px;
-
-  color:
-    var(
-      --hub-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.5rem;
-
-  letter-spacing:
-    0.06em;
-}
-
-
-.loopFooter
-i {
-  height:
-    1px;
-
-  background:
-    var(
-      --hub-line
-    );
-}
-
-
-.loopFooter
-strong {
-  color:
-    var(
-      --hub-cyan
-    );
-
-  font-size:
-    inherit;
-}
-
-
-/* ==========================================================================
-   HERO META
-   ========================================================================== */
-
-
-.heroMeta {
-  display:
-    grid;
-
-  grid-template-columns:
-    repeat(
-      4,
-      minmax(
-        0,
-        1fr
-      )
-    );
-
-  border-top:
-    1px
-    solid
-    var(
-      --hub-line
-    );
-}
-
-
-.heroMeta
-div {
-  padding:
-    13px
-    18px
-    0
-    0;
-}
-
-
-.heroMeta
-div
-+
-div {
-  padding-left:
-    18px;
-
-  border-left:
-    1px
-    solid
-    var(
-      --hub-line
-    );
-}
-
-
-.heroMeta
-dt {
-  color:
-    var(
-      --hub-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.52rem;
-
-  letter-spacing:
-    0.07em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.heroMeta
-dd {
-  margin:
-    6px
-    0
-    0;
-
-  color:
-    var(
-      --hub-secondary
-    );
-
-  font-size:
-    0.72rem;
-
-  font-weight:
-    600;
-}
-
-
-/* ==========================================================================
-   SHARED SECTIONS
-   ========================================================================== */
-
-
-.section {
-  padding:
-    clamp(
-      54px,
-      6vw,
-      76px
+    64px
+    minmax(
+      120px,
+      0.45fr
     )
-    0;
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --hub-line
-    );
-}
-
-
-.sectionAlt {
-  background:
-    var(
-      --hub-alt
-    );
-}
-
-
-.sectionHeading {
-  display:
-    grid;
-
-  grid-template-columns:
     minmax(
       0,
-      1.06fr
+      1fr
     )
-    minmax(
-      280px,
-      0.44fr
-    );
+    44px;
 
   gap:
-    15px
-    clamp(
-      40px,
-      6vw,
-      84px
-    );
-
-  align-items:
-    end;
-
-  margin-bottom:
-    39px;
-}
-
-
-.sectionEyebrow {
-  grid-column:
-    1
-    /
-    -1;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  gap:
-    10px;
-
-  color:
-    var(
-      --hub-cyan
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.6rem;
-
-  font-weight:
-    650;
-
-  letter-spacing:
-    0.1em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.sectionEyebrow
-span {
-  color:
-    var(
-      --hub-subtle
-    );
-}
-
-
-.sectionHeading h2 {
-  max-width:
-    920px;
-
-  color:
-    var(
-      --hub-text
-    );
-
-  font-size:
-    clamp(
-      2.4rem,
-      4vw,
-      3.65rem
-    );
-
-  font-weight:
-    470;
-
-  letter-spacing:
-    -0.055em;
-
-  line-height:
-    1.02;
-}
-
-
-.sectionDescription {
-  max-width:
-    480px;
-
-  color:
-    var(
-      --hub-muted
-    );
-
-  font-size:
-    0.86rem;
-
-  line-height:
-    1.65;
-}
-
-
-/* ==========================================================================
-   PROGRAM INDEX
-   ========================================================================== */
-
-
-.programIndex {
-  border-top:
-    1px
-    solid
-    var(
-      --hub-line-strong
-    );
-}
-
-
-.programRow {
-  padding:
-    0;
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --hub-line
-    );
-}
-
-
-.programLink {
-  display:
-    grid;
-
-  grid-template-columns:
-    42px
-    minmax(
-      200px,
-      0.58fr
-    )
-    minmax(
-      260px,
-      0.95fr
-    )
-    minmax(
-      260px,
-      0.72fr
-    )
-    90px
-    22px;
-
-  gap:
-    16px;
+    20px;
 
   align-items:
     center;
 
   min-height:
-    126px;
+    106px;
 
-  padding:
-    17px
-    0;
+  border-bottom:
+    1px
+    solid
+    var(
+      --academy-line
+    );
+
+  color:
+    inherit;
+
+  text-decoration:
+    none;
 
   transition:
-    padding
-    160ms
-    ease,
     background-color
-    160ms
+    180ms
     ease;
 }
 
 
-.programLink:hover {
-  padding-right:
-    8px;
-
-  padding-left:
-    8px;
-
+.pathRow:hover {
   background:
     rgba(
       161,
@@ -1347,44 +944,39 @@ span {
 }
 
 
-.programNumber {
+.pathIndex {
   color:
     var(
-      --hub-subtle
+      --academy-purple
     );
 
   font-family:
     var(
-      --font-geist-mono
+      --font-ibm-plex-mono,
+      "IBM Plex Mono"
     ),
     monospace;
 
   font-size:
-    0.56rem;
+    0.62rem;
 }
 
 
-.programIdentity {
-  min-width:
-    0;
-}
-
-
-.programIdentity
-> span {
+.pathCategory {
   color:
     var(
-      --hub-blue
+      --academy-blue
     );
 
   font-family:
     var(
-      --font-geist-mono
+      --font-ibm-plex-mono,
+      "IBM Plex Mono"
     ),
     monospace;
 
   font-size:
-    0.52rem;
+    0.61rem;
 
   letter-spacing:
     0.07em;
@@ -1394,48 +986,88 @@ span {
 }
 
 
-.programIdentity h3 {
-  margin-top:
-    7px;
+.pathRow > div {
+  display:
+    flex;
 
+  min-width:
+    0;
+
+  align-items:
+    baseline;
+
+  justify-content:
+    space-between;
+
+  gap:
+    20px;
+}
+
+
+.pathRow strong {
   color:
     var(
-      --hub-secondary
+      --academy-text
     );
 
   font-size:
     clamp(
-      1.1rem,
-      1.65vw,
-      1.38rem
+      1.25rem,
+      2vw,
+      1.65rem
     );
 
   font-weight:
-    600;
+    540;
 
   letter-spacing:
-    -0.03em;
-
-  line-height:
-    1.2;
+    -0.035em;
 }
 
 
-.programSummary {
+.pathRow > div span {
   color:
     var(
-      --hub-muted
+      --academy-muted
     );
 
   font-size:
     0.75rem;
-
-  line-height:
-    1.55;
 }
 
 
-.programMetadata {
+.pathArrow {
+  color:
+    var(
+      --academy-cyan
+    );
+
+  text-align:
+    right;
+}
+
+
+/* ==========================================================================
+   FEATURED COURSES
+   ========================================================================== */
+
+
+.programs {
+  scroll-margin-top:
+    100px;
+
+  padding:
+    96px
+    0;
+
+  background:
+    var(
+      --academy-surface
+    );
+}
+
+
+.programGrid {
   display:
     grid;
 
@@ -1449,863 +1081,50 @@ span {
     );
 
   gap:
-    12px;
-}
-
-
-.programMetadata
-dt {
-  color:
-    var(
-      --hub-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.47rem;
-
-  letter-spacing:
-    0.06em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.programMetadata
-dd {
-  overflow:
-    hidden;
-
-  margin:
-    5px
-    0
-    0;
-
-  color:
-    var(
-      --hub-secondary
-    );
-
-  font-size:
-    0.65rem;
-
-  font-weight:
-    560;
-
-  text-overflow:
-    ellipsis;
-}
-
-
-.programStatus {
-  display:
-    inline-flex;
-
-  align-items:
-    center;
-
-  gap:
-    7px;
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.51rem;
-
-  font-weight:
-    650;
-
-  letter-spacing:
-    0.06em;
-}
-
-
-.programStatus::before {
-  width:
-    5px;
-
-  height:
-    5px;
-
-  border-radius:
-    50%;
-
-  content:
-    "";
-}
-
-
-.statusAvailable {
-  color:
-    var(
-      --hub-cyan
-    );
-}
-
-
-.statusAvailable::before {
-  background:
-    var(
-      --hub-cyan
-    );
-}
-
-
-.statusUpcoming {
-  color:
-    var(
-      --hub-blue
-    );
-}
-
-
-.statusUpcoming::before {
-  background:
-    var(
-      --hub-blue
-    );
-}
-
-
-.statusArchived {
-  color:
-    var(
-      --hub-subtle
-    );
-}
-
-
-.statusArchived::before {
-  background:
-    var(
-      --hub-subtle
-    );
-}
-
-
-.statusDefault {
-  color:
-    var(
-      --hub-muted
-    );
-}
-
-
-.statusDefault::before {
-  background:
-    var(
-      --hub-muted
-    );
-}
-
-
-.programLink
-> span:last-child {
-  color:
-    var(
-      --hub-subtle
-    );
-
-  text-align:
-    right;
-}
-
-
-.programEmpty {
-  display:
-    grid;
-
-  grid-template-columns:
-    100px
-    minmax(
-      0,
-      1fr
-    );
-
-  gap:
     20px;
 
-  padding:
-    24px
+  grid-auto-rows:
+    1fr;
+}
+
+
+.programCard {
+  display:
+    flex;
+
+  min-width:
     0;
 
-  border-bottom:
-    1px
-    solid
-    var(
-      --hub-line
-    );
-}
-
-
-.programEmpty
-span {
-  color:
-    var(
-      --hub-blue
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.54rem;
-}
-
-
-.programEmpty
-strong {
-  color:
-    var(
-      --hub-secondary
-    );
-
-  font-size:
-    0.92rem;
-
-  font-weight:
-    560;
-}
-
-
-/* ==========================================================================
-   LEARNING PHILOSOPHY
-   ========================================================================== */
-
-
-.philosophyLayout {
-  display:
-    grid;
-
-  grid-template-columns:
-    minmax(
-      270px,
-      0.44fr
-    )
-    minmax(
-      0,
-      1fr
-    );
-
-  gap:
-    clamp(
-      42px,
-      6vw,
-      84px
-    );
-}
-
-
-.philosophyStatement {
-  padding-top:
-    18px;
-
-  border-top:
-    1px
-    solid
-    var(
-      --hub-line-strong
-    );
-}
-
-
-.philosophyStatement
-> p {
-  color:
-    var(
-      --hub-cyan
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.56rem;
-
-  letter-spacing:
-    0.08em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.philosophyStatement
-blockquote {
-  max-width:
-    470px;
-
-  margin:
-    24px
-    0
-    0;
-
-  color:
-    var(
-      --hub-secondary
-    );
-
-  font-size:
-    clamp(
-      1.55rem,
-      2.55vw,
-      2.25rem
-    );
-
-  font-weight:
-    450;
-
-  letter-spacing:
-    -0.035em;
-
-  line-height:
-    1.22;
-}
-
-
-.philosophyStatement
-> span {
-  display:
-    block;
-
-  margin-top:
-    22px;
-
-  color:
-    var(
-      --hub-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.51rem;
-
-  letter-spacing:
-    0.08em;
-}
-
-
-.principleIndex {
-  border-top:
-    1px
-    solid
-    var(
-      --hub-line
-    );
-}
-
-
-.principleRow {
-  display:
-    grid;
-
-  grid-template-columns:
-    38px
-    50px
-    minmax(
-      180px,
-      0.4fr
-    )
-    minmax(
-      0,
-      1fr
-    );
-
-  gap:
-    14px;
-
-  align-items:
-    center;
-
-  min-height:
-    92px;
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --hub-line
-    );
-}
-
-
-.principleRow
-> span,
-.principleRow
-small {
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.54rem;
-}
-
-
-.principleRow
-> span {
-  color:
-    var(
-      --hub-subtle
-    );
-}
-
-
-.principleRow
-small {
-  color:
-    var(
-      --hub-cyan
-    );
-
-  font-weight:
-    700;
-}
-
-
-.principleRow h3 {
-  color:
-    var(
-      --hub-secondary
-    );
-
-  font-size:
-    0.97rem;
-
-  font-weight:
-    600;
-}
-
-
-.principleRow p {
-  color:
-    var(
-      --hub-muted
-    );
-
-  font-size:
-    0.73rem;
-
-  line-height:
-    1.52;
-}
-
-
-/* ==========================================================================
-   LEARNING FLOW
-   ========================================================================== */
-
-
-.learningFlow {
-  display:
-    grid;
-
-  grid-template-columns:
-    auto
-    1fr
-    auto
-    1fr
-    auto
-    1fr
-    auto
-    1fr
-    auto;
-
-  gap:
-    12px;
-
-  align-items:
-    center;
-
-  margin-top:
-    40px;
-
-  padding:
-    18px
-    0;
-
-  border-top:
-    1px
-    solid
-    var(
-      --hub-line
-    );
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --hub-line
-    );
-}
-
-
-.learningFlow
-div {
-  display:
-    grid;
-
-  gap:
-    5px;
-}
-
-
-.learningFlow
-span {
-  color:
-    var(
-      --hub-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.49rem;
-}
-
-
-.learningFlow
-strong {
-  color:
-    var(
-      --hub-secondary
-    );
-
-  font-size:
-    0.72rem;
-
-  font-weight:
-    600;
-}
-
-
-.learningFlow
-> i {
   height:
-    1px;
+    100%;
+
+  flex-direction:
+    column;
+
+  padding:
+    24px;
+
+  border:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.1
+    );
+
+  border-radius:
+    14px;
 
   background:
     var(
-      --hub-line-strong
+      --academy-card
     );
 }
 
 
-/* ==========================================================================
-   CONTEXT
-   ========================================================================== */
-
-
-.contextGrid {
-  display:
-    grid;
-
-  grid-template-columns:
-    minmax(
-      0,
-      1fr
-    )
-    minmax(
-      300px,
-      0.66fr
-    );
-
-  gap:
-    clamp(
-      44px,
-      6vw,
-      84px
-    );
-
-  padding-top:
-    27px;
-
-  border-top:
-    1px
-    solid
-    var(
-      --hub-line-strong
-    );
-}
-
-
-.subsectionLabel {
-  color:
-    var(
-      --hub-cyan
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.56rem;
-
-  letter-spacing:
-    0.08em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.audienceIndex {
-  display:
-    grid;
-
-  grid-template-columns:
-    repeat(
-      2,
-      minmax(
-        0,
-        1fr
-      )
-    );
-
-  margin-top:
-    17px;
-
-  border-top:
-    1px
-    solid
-    var(
-      --hub-line
-    );
-}
-
-
-.audienceIndex
-div {
-  display:
-    grid;
-
-  grid-template-columns:
-    34px
-    minmax(
-      0,
-      1fr
-    );
-
-  gap:
-    10px;
-
-  align-items:
-    center;
-
-  min-height:
-    64px;
-
-  padding-right:
-    18px;
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --hub-line
-    );
-}
-
-
-.audienceIndex
-div:nth-child(
-  even
-) {
-  padding-right:
-    0;
-
-  padding-left:
-    18px;
-
-  border-left:
-    1px
-    solid
-    var(
-      --hub-line
-    );
-}
-
-
-.audienceIndex
-span {
-  color:
-    var(
-      --hub-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.52rem;
-}
-
-
-.audienceIndex
-strong {
-  color:
-    var(
-      --hub-secondary
-    );
-
-  font-size:
-    0.76rem;
-
-  font-weight:
-    570;
-
-  line-height:
-    1.35;
-}
-
-
-.mentorshipArea {
-  padding-top:
-    17px;
-
-  border-top:
-    1px
-    solid
-    var(
-      --hub-line
-    );
-}
-
-
-.mentorshipArea h3 {
-  max-width:
-    520px;
-
-  margin-top:
-    14px;
-
-  color:
-    var(
-      --hub-secondary
-    );
-
-  font-size:
-    clamp(
-      1.55rem,
-      2.5vw,
-      2.15rem
-    );
-
-  font-weight:
-    480;
-
-  letter-spacing:
-    -0.04em;
-
-  line-height:
-    1.16;
-}
-
-
-.mentorshipArea
-> p:not(
-  .subsectionLabel
-) {
-  max-width:
-    500px;
-
-  margin-top:
-    13px;
-
-  color:
-    var(
-      --hub-muted
-    );
-
-  font-size:
-    0.76rem;
-
-  line-height:
-    1.58;
-}
-
-
-.mentorshipArea
-.inlineAction {
-  margin-top:
-    15px;
-}
-
-
-/* ==========================================================================
-   ARCHIVE + FAQ
-   ========================================================================== */
-
-
-.archiveFaqGrid {
-  display:
-    grid;
-
-  grid-template-columns:
-    repeat(
-      2,
-      minmax(
-        0,
-        1fr
-      )
-    );
-
-  gap:
-    clamp(
-      44px,
-      6vw,
-      84px
-    );
-
-  margin-top:
-    46px;
-
-  padding-top:
-    29px;
-
-  border-top:
-    1px
-    solid
-    var(
-      --hub-line-strong
-    );
-}
-
-
-.archiveHeader {
+.programTop {
   display:
     flex;
 
@@ -2316,25 +1135,64 @@ strong {
     space-between;
 
   gap:
-    20px;
+    18px;
 }
 
 
-.archiveHeader
-> span {
+.programNumber {
   color:
     var(
-      --hub-subtle
+      --academy-purple
     );
 
   font-family:
     var(
-      --font-geist-mono
+      --font-ibm-plex-mono,
+      "IBM Plex Mono"
     ),
     monospace;
 
   font-size:
-    0.51rem;
+    0.61rem;
+}
+
+
+.status {
+  display:
+    inline-flex;
+
+  min-height:
+    28px;
+
+  align-items:
+    center;
+
+  padding:
+    0
+    9px;
+
+  border:
+    1px
+    solid
+    var(
+      --academy-line
+    );
+
+  border-radius:
+    999px;
+
+  color:
+    #b9c3cf;
+
+  font-family:
+    var(
+      --font-ibm-plex-mono,
+      "IBM Plex Mono"
+    ),
+    monospace;
+
+  font-size:
+    0.55rem;
 
   letter-spacing:
     0.06em;
@@ -2344,175 +1202,1074 @@ strong {
 }
 
 
-.archiveRows,
-.faqList {
-  margin-top:
-    13px;
-
-  border-top:
-    1px
-    solid
-    var(
-      --hub-line
+.status[data-status="available"] {
+  border-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.25
     );
-}
 
-
-.archiveRow {
-  display:
-    grid;
-
-  grid-template-columns:
-    34px
-    minmax(
-      0,
-      1fr
-    )
-    75px
-    20px;
-
-  gap:
-    12px;
-
-  align-items:
-    center;
-
-  min-height:
-    73px;
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --hub-line
-    );
-}
-
-
-.archiveRow
-> span:first-child {
   color:
     var(
-      --hub-subtle
+      --academy-cyan
+    );
+}
+
+
+.status[data-status="upcoming"] {
+  color:
+    var(
+      --academy-blue
+    );
+}
+
+
+.status[data-status="archived"] {
+  color:
+    var(
+      --academy-subtle
+    );
+}
+
+
+.programCategory {
+  margin:
+    32px
+    0
+    0;
+
+  color:
+    var(
+      --academy-blue
     );
 
   font-family:
     var(
-      --font-geist-mono
+      --font-ibm-plex-mono,
+      "IBM Plex Mono"
     ),
     monospace;
 
   font-size:
-    0.51rem;
-}
-
-
-.archiveRow
-small {
-  display:
-    block;
-
-  color:
-    var(
-      --hub-blue
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.47rem;
+    0.6rem;
 
   letter-spacing:
-    0.05em;
+    0.08em;
 
   text-transform:
     uppercase;
 }
 
 
-.archiveRow
-strong {
-  display:
-    block;
-
-  margin-top:
-    4px;
+.programCard h3 {
+  margin:
+    12px
+    0
+    0;
 
   color:
     var(
-      --hub-secondary
+      --academy-text
     );
 
   font-size:
-    0.75rem;
+    clamp(
+      1.55rem,
+      2.2vw,
+      2rem
+    );
 
   font-weight:
-    590;
+    540;
+
+  letter-spacing:
+    -0.045em;
+
+  line-height:
+    1.06;
 }
 
 
-.archiveRow
-> span:nth-last-child(
-  2
-) {
+.programSummary {
+  margin:
+    14px
+    0
+    0;
+
   color:
     var(
-      --hub-subtle
+      --academy-muted
     );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
 
   font-size:
-    0.47rem;
+    0.86rem;
+
+  line-height:
+    1.58;
 }
 
 
-.archiveRow
-> span:last-child {
-  color:
-    var(
-      --hub-subtle
-    );
-}
+.programMeta {
+  display:
+    grid;
 
+  gap:
+    0;
 
-.archiveEmpty {
-  margin-top:
-    13px;
-
-  padding:
-    20px
+  margin:
+    30px
+    0
     0;
 
   border-top:
     1px
     solid
     var(
-      --hub-line
+      --academy-line
+    );
+}
+
+
+.programMeta > div {
+  display:
+    flex;
+
+  min-height:
+    45px;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    18px;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --academy-line
+    );
+}
+
+
+.programMeta dt {
+  color:
+    var(
+      --academy-subtle
+    );
+
+  font-family:
+    var(
+      --font-ibm-plex-mono,
+      "IBM Plex Mono"
+    ),
+    monospace;
+
+  font-size:
+    0.56rem;
+
+  letter-spacing:
+    0.07em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.programMeta dd {
+  margin:
+    0;
+
+  color:
+    #c7d0da;
+
+  font-size:
+    0.72rem;
+
+  text-align:
+    right;
+}
+
+
+.programFooter {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    18px;
+
+  margin-top:
+    auto;
+
+  padding-top:
+    26px;
+}
+
+
+.programFooter > span {
+  color:
+    var(
+      --academy-subtle
+    );
+
+  font-family:
+    var(
+      --font-ibm-plex-mono,
+      "IBM Plex Mono"
+    ),
+    monospace;
+
+  font-size:
+    0.57rem;
+}
+
+
+.programFooter a {
+  display:
+    inline-flex;
+
+  min-height:
+    44px;
+
+  align-items:
+    center;
+
+  gap:
+    8px;
+
+  color:
+    var(
+      --academy-cyan
+    );
+
+  font-size:
+    0.76rem;
+
+  font-weight:
+    620;
+
+  text-decoration:
+    none;
+}
+
+
+/* ==========================================================================
+   HANDS-ON PRACTICE
+   ========================================================================== */
+
+
+.practice {
+  padding:
+    96px
+    0;
+
+  background:
+    var(
+      --academy-base
+    );
+}
+
+
+.practiceLayout {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      7fr
+    )
+    minmax(
+      0,
+      5fr
+    );
+
+  gap:
+    20px;
+}
+
+
+.featuredPractice {
+  padding:
+    30px;
+
+  border:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.12
+    );
+
+  border-radius:
+    14px;
+
+  background:
+    var(
+      --academy-card
+    );
+}
+
+
+.practiceTopline,
+.supportingHeader {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    16px;
+
+  color:
+    var(
+      --academy-subtle
+    );
+
+  font-family:
+    var(
+      --font-ibm-plex-mono,
+      "IBM Plex Mono"
+    ),
+    monospace;
+
+  font-size:
+    0.57rem;
+
+  letter-spacing:
+    0.07em;
+}
+
+
+.featuredPractice h3 {
+  margin:
+    36px
+    0
+    0;
+
+  color:
+    var(
+      --academy-text
+    );
+
+  font-size:
+    clamp(
+      2rem,
+      3.6vw,
+      3.4rem
+    );
+
+  font-weight:
+    520;
+
+  letter-spacing:
+    -0.055em;
+
+  line-height:
+    1;
+}
+
+
+.featuredPractice > p {
+  max-width:
+    620px;
+
+  margin:
+    17px
+    0
+    0;
+
+  color:
+    var(
+      --academy-muted
+    );
+
+  font-size:
+    0.88rem;
+
+  line-height:
+    1.58;
+}
+
+
+.moduleList {
+  margin:
+    34px
+    0
+    0;
+
+  padding:
+    0;
+
+  border-top:
+    1px
+    solid
+    var(
+      --academy-line
+    );
+
+  list-style:
+    none;
+}
+
+
+.moduleList li {
+  display:
+    grid;
+
+  grid-template-columns:
+    48px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    16px;
+
+  padding:
+    19px
+    0;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --academy-line
+    );
+}
+
+
+.moduleList li > span {
+  color:
+    var(
+      --academy-purple
+    );
+
+  font-family:
+    var(
+      --font-ibm-plex-mono,
+      "IBM Plex Mono"
+    ),
+    monospace;
+
+  font-size:
+    0.61rem;
+}
+
+
+.moduleList strong {
+  color:
+    #dce3ea;
+
+  font-size:
+    0.88rem;
+
+  font-weight:
+    610;
+}
+
+
+.moduleList p {
+  margin:
+    7px
+    0
+    0;
+
+  color:
+    var(
+      --academy-muted
+    );
+
+  font-size:
+    0.8rem;
+
+  line-height:
+    1.5;
+}
+
+
+.practiceAction {
+  display:
+    inline-flex;
+
+  min-height:
+    44px;
+
+  align-items:
+    center;
+
+  gap:
+    9px;
+
+  margin-top:
+    23px;
+
+  color:
+    var(
+      --academy-cyan
+    );
+
+  font-size:
+    0.78rem;
+
+  font-weight:
+    620;
+
+  text-decoration:
+    none;
+}
+
+
+.supportingPractice {
+  display:
+    grid;
+
+  gap:
+    20px;
+}
+
+
+.supportingPractice article {
+  display:
+    flex;
+
+  min-height:
+    0;
+
+  flex-direction:
+    column;
+
+  padding:
+    25px;
+
+  border:
+    1px
+    solid
+    var(
+      --academy-line
+    );
+
+  border-radius:
+    14px;
+
+  background:
+    rgba(
+      16,
+      22,
+      32,
+      0.62
+    );
+}
+
+
+.supportingPractice h3 {
+  margin:
+    28px
+    0
+    0;
+
+  color:
+    var(
+      --academy-text
+    );
+
+  font-size:
+    1.45rem;
+
+  font-weight:
+    540;
+
+  letter-spacing:
+    -0.04em;
+}
+
+
+.supportingPractice article > p {
+  margin:
+    11px
+    0
+    0;
+
+  color:
+    var(
+      --academy-muted
+    );
+
+  font-size:
+    0.82rem;
+
+  line-height:
+    1.55;
+}
+
+
+.supportingPractice a {
+  display:
+    inline-flex;
+
+  min-height:
+    44px;
+
+  align-items:
+    center;
+
+  gap:
+    8px;
+
+  margin-top:
+    auto;
+
+  padding-top:
+    20px;
+
+  color:
+    var(
+      --academy-cyan
+    );
+
+  font-size:
+    0.75rem;
+
+  font-weight:
+    620;
+
+  text-decoration:
+    none;
+}
+
+
+/* ==========================================================================
+   LEARNING METHOD
+   ========================================================================== */
+
+
+.method {
+  padding:
+    96px
+    0;
+
+  background:
+    var(
+      --academy-surface
+    );
+}
+
+
+.methodIntro {
+  max-width:
+    720px;
+
+  margin-bottom:
+    54px;
+}
+
+
+.methodIntro > p:last-child {
+  max-width:
+    620px;
+
+  margin:
+    17px
+    0
+    0;
+
+  color:
+    var(
+      --academy-muted
+    );
+
+  font-size:
+    0.89rem;
+
+  line-height:
+    1.62;
+}
+
+
+.methodTrack {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  margin:
+    0;
+
+  padding:
+    0;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.2
+    );
+
+  list-style:
+    none;
+}
+
+
+.methodTrack li {
+  min-height:
+    230px;
+
+  padding:
+    26px;
+
+  border-right:
+    1px
+    solid
+    var(
+      --academy-line
     );
 
   border-bottom:
     1px
     solid
     var(
-      --hub-line
+      --academy-line
     );
+}
+
+
+.methodTrack li:first-child {
+  border-left:
+    1px
+    solid
+    var(
+      --academy-line
+    );
+}
+
+
+.methodTrack li > span {
+  color:
+    var(
+      --academy-purple
+    );
+
+  font-family:
+    var(
+      --font-ibm-plex-mono,
+      "IBM Plex Mono"
+    ),
+    monospace;
+
+  font-size:
+    0.61rem;
+}
+
+
+.methodTrack strong {
+  display:
+    block;
+
+  margin-top:
+    44px;
 
   color:
     var(
-      --hub-muted
+      --academy-text
     );
 
   font-size:
-    0.76rem;
+    1.35rem;
+
+  font-weight:
+    550;
+
+  letter-spacing:
+    -0.035em;
+}
+
+
+.methodTrack p {
+  margin:
+    10px
+    0
+    0;
+
+  color:
+    var(
+      --academy-muted
+    );
+
+  font-size:
+    0.8rem;
+
+  line-height:
+    1.55;
+}
+
+
+/* ==========================================================================
+   OUTCOMES
+   ========================================================================== */
+
+
+.outcomes {
+  padding:
+    96px
+    0;
+
+  background:
+    var(
+      --academy-base
+    );
+}
+
+
+.outcomeColumns {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  border-top:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.2
+    );
+}
+
+
+.outcomeColumns article {
+  padding:
+    28px;
+
+  border-right:
+    1px
+    solid
+    var(
+      --academy-line
+    );
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --academy-line
+    );
+}
+
+
+.outcomeColumns article:first-child {
+  border-left:
+    1px
+    solid
+    var(
+      --academy-line
+    );
+}
+
+
+.outcomeNumber {
+  color:
+    var(
+      --academy-purple
+    );
+
+  font-family:
+    var(
+      --font-ibm-plex-mono,
+      "IBM Plex Mono"
+    ),
+    monospace;
+
+  font-size:
+    0.61rem;
+}
+
+
+.outcomeCategory {
+  margin:
+    27px
+    0
+    0;
+
+  color:
+    var(
+      --academy-blue
+    );
+
+  font-family:
+    var(
+      --font-ibm-plex-mono,
+      "IBM Plex Mono"
+    ),
+    monospace;
+
+  font-size:
+    0.59rem;
+
+  letter-spacing:
+    0.07em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.outcomeColumns h3 {
+  margin:
+    10px
+    0
+    0;
+
+  color:
+    var(
+      --academy-text
+    );
+
+  font-size:
+    1.35rem;
+
+  font-weight:
+    540;
+
+  letter-spacing:
+    -0.035em;
+}
+
+
+.outcomeColumns ul {
+  display:
+    grid;
+
+  gap:
+    12px;
+
+  margin:
+    24px
+    0
+    0;
+
+  padding:
+    0;
+
+  list-style:
+    none;
+}
+
+
+.outcomeColumns li {
+  position:
+    relative;
+
+  padding-left:
+    17px;
+
+  color:
+    var(
+      --academy-muted
+    );
+
+  font-size:
+    0.8rem;
+
+  line-height:
+    1.5;
+}
+
+
+.outcomeColumns li::before {
+  position:
+    absolute;
+
+  top:
+    0.65em;
+
+  left:
+    0;
+
+  width:
+    5px;
+
+  height:
+    5px;
+
+  border-radius:
+    50%;
+
+  background:
+    var(
+      --academy-cyan
+    );
+
+  content:
+    "";
+}
+
+
+.outcomeColumns a {
+  display:
+    inline-flex;
+
+  min-height:
+    44px;
+
+  align-items:
+    center;
+
+  gap:
+    8px;
+
+  margin-top:
+    24px;
+
+  color:
+    var(
+      --academy-cyan
+    );
+
+  font-size:
+    0.75rem;
+
+  font-weight:
+    620;
+
+  text-decoration:
+    none;
 }
 
 
@@ -2521,165 +2278,193 @@ strong {
    ========================================================================== */
 
 
+.faq {
+  padding:
+    96px
+    0;
+
+  background:
+    var(
+      --academy-surface
+    );
+}
+
+
+.faqLayout {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      4fr
+    )
+    minmax(
+      0,
+      8fr
+    );
+
+  gap:
+    clamp(
+      56px,
+      8vw,
+      110px
+    );
+
+  align-items:
+    start;
+}
+
+
+.faqIntro {
+  max-width:
+    440px;
+}
+
+
+.faqIntro > p:last-child {
+  margin:
+    17px
+    0
+    0;
+
+  color:
+    var(
+      --academy-muted
+    );
+
+  font-size:
+    0.87rem;
+
+  line-height:
+    1.6;
+}
+
+
+.faqList {
+  max-width:
+    860px;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.2
+    );
+}
+
+
 .faqItem {
   border-bottom:
     1px
     solid
     var(
-      --hub-line
+      --academy-line
     );
 }
 
 
-.faqItem
-summary {
+.faqItem summary {
   display:
-    grid;
+    flex;
 
-  grid-template-columns:
-    32px
-    minmax(
-      0,
-      1fr
-    )
-    20px;
-
-  gap:
-    12px;
+  min-height:
+    70px;
 
   align-items:
     center;
 
-  min-height:
-    72px;
+  justify-content:
+    space-between;
+
+  gap:
+    24px;
+
+  color:
+    #d6dde5;
 
   cursor:
     pointer;
+
+  font-size:
+    0.9rem;
+
+  font-weight:
+    560;
 
   list-style:
     none;
 }
 
 
-.faqItem
-summary::-webkit-details-marker {
+.faqItem summary::-webkit-details-marker {
   display:
     none;
 }
 
 
-.faqItem
-summary
-> span {
+.faqItem summary span:last-child {
   color:
     var(
-      --hub-subtle
+      --academy-cyan
     );
 
   font-family:
     var(
-      --font-geist-mono
+      --font-ibm-plex-mono,
+      "IBM Plex Mono"
     ),
     monospace;
-
-  font-size:
-    0.51rem;
 }
 
 
-.faqItem
-summary
-strong {
-  color:
-    var(
-      --hub-secondary
-    );
+.faqItem p {
+  max-width:
+    720px;
 
-  font-size:
-    0.79rem;
+  margin:
+    0;
 
-  font-weight:
-    590;
-}
-
-
-.faqItem
-summary
-i {
-  color:
-    var(
-      --hub-cyan
-    );
-
-  font-style:
-    normal;
-
-  transition:
-    transform
-    160ms
-    ease;
-}
-
-
-.faqItem[open]
-summary
-i {
-  transform:
-    rotate(
-      45deg
-    );
-}
-
-
-.faqItem
-> p {
   padding:
     0
-    30px
-    18px
-    44px;
+    46px
+    22px
+    0;
 
   color:
     var(
-      --hub-muted
+      --academy-muted
     );
 
   font-size:
-    0.73rem;
+    0.84rem;
 
   line-height:
-    1.55;
+    1.62;
 }
 
 
 /* ==========================================================================
-   CTA
+   FINAL CTA
    ========================================================================== */
 
 
 .cta {
   padding:
-    clamp(
-      48px,
-      6vw,
-      72px
-    )
+    96px
     0;
-}
-
-
-.ctaRule {
-  height:
-    1px;
 
   background:
     var(
-      --hub-line-strong
+      --academy-base
     );
 }
 
 
-.ctaLayout {
+.ctaInner {
   display:
     grid;
 
@@ -2688,145 +2473,68 @@ i {
       0,
       1fr
     )
-    minmax(
-      320px,
-      0.5fr
-    );
+    auto;
 
   gap:
-    clamp(
-      40px,
-      6vw,
-      84px
+    64px;
+
+  align-items:
+    end;
+
+  padding:
+    44px
+    0;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.25
     );
 
-  padding-top:
-    31px;
+  border-bottom:
+    1px
+    solid
+    var(
+      --academy-line
+    );
 }
 
 
-.ctaLayout h2 {
+.ctaCopy {
   max-width:
-    780px;
-
-  margin-top:
-    11px;
-
-  font-size:
-    clamp(
-      2.35rem,
-      4vw,
-      3.8rem
-    );
-
-  font-weight:
-    470;
-
-  letter-spacing:
-    -0.055em;
-
-  line-height:
-    1.02;
+    720px;
 }
 
 
-.ctaCopy
-> p {
+.ctaCopy > p:last-child {
+  max-width:
+    580px;
+
+  margin:
+    17px
+    0
+    0;
+
   color:
     var(
-      --hub-muted
+      --academy-muted
     );
 
   font-size:
-    0.85rem;
+    0.9rem;
 
   line-height:
-    1.65;
+    1.6;
 }
 
 
 .ctaActions {
-  display:
-    flex;
-
-  flex-wrap:
-    wrap;
-
-  gap:
-    16px;
-
   margin-top:
-    22px;
-}
-
-
-/* ==========================================================================
-   COMPACT DESKTOP
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    1120px
-) {
-
-  .heroGrid {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      )
-      minmax(
-        320px,
-        0.58fr
-      );
-
-    gap:
-      44px;
-  }
-
-
-  .heroCopy h1 {
-    font-size:
-      clamp(
-        3.65rem,
-        6vw,
-        5rem
-      );
-  }
-
-
-  .programLink {
-    grid-template-columns:
-      36px
-      minmax(
-        190px,
-        0.55fr
-      )
-      minmax(
-        250px,
-        1fr
-      )
-      minmax(
-        220px,
-        0.7fr
-      )
-      84px
-      20px;
-  }
-
-
-  .programMetadata {
-    grid-template-columns:
-      repeat(
-        2,
-        minmax(
-          0,
-          1fr
-        )
-      );
-  }
-
+    0;
 }
 
 
@@ -2837,45 +2545,55 @@ i {
 
 @media (
   max-width:
-    920px
+    980px
 ) {
 
-  .hero {
-    min-height:
-      auto;
-  }
-
-
-  .hero
-  .container {
-    min-height:
-      auto;
-  }
-
-
-  .heroGrid {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-
-    gap:
-      34px;
-
+  .pageIntro {
     padding:
-      36px
+      80px
       0;
   }
 
 
-  .practiceLoop {
-    max-width:
-      700px;
+  .introGrid,
+  .practiceLayout,
+  .faqLayout,
+  .ctaInner {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
   }
 
 
-  .sectionHeading {
+  .introGrid {
+    gap:
+      46px;
+  }
+
+
+  .learningSignal {
+    max-width:
+      720px;
+  }
+
+
+  .paths,
+  .programs,
+  .practice,
+  .method,
+  .outcomes,
+  .faq,
+  .cta {
+    padding:
+      80px
+      0;
+  }
+
+
+  .sectionHeader,
+  .courseHeader {
     grid-template-columns:
       minmax(
         0,
@@ -2883,66 +2601,82 @@ i {
       );
 
     gap:
-      12px;
+      22px;
   }
 
 
-  .programLink {
+  .programGrid {
     grid-template-columns:
-      34px
-      minmax(
-        190px,
-        0.6fr
-      )
-      minmax(
-        0,
-        1fr
-      )
-      82px
-      20px;
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
   }
 
 
-  .programMetadata {
-    display:
-      none;
+  .programCard:last-child {
+    grid-column:
+      1
+      /
+      -1;
+
+    max-width:
+      calc(
+        50% - 10px
+      );
   }
 
 
-  .philosophyLayout {
+  .methodTrack {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+
+  .methodTrack li:nth-child(
+    3
+  ) {
+    border-left:
+      1px
+      solid
+      var(
+        --academy-line
+      );
+  }
+
+
+  .outcomeColumns {
     grid-template-columns:
       minmax(
         0,
         1fr
       );
+  }
 
+
+  .outcomeColumns article,
+  .outcomeColumns article:first-child {
+    border-left:
+      1px
+      solid
+      var(
+        --academy-line
+      );
+  }
+
+
+  .ctaInner {
     gap:
       30px;
-  }
-
-
-  .contextGrid,
-  .archiveFaqGrid {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-
-    gap:
-      32px;
-  }
-
-
-  .ctaLayout {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-
-    gap:
-      24px;
   }
 
 }
@@ -2958,288 +2692,143 @@ i {
     640px
 ) {
 
-  .hero
-  .container {
-    padding-top:
-      0;
-
-    padding-bottom:
-      27px;
-  }
-
-
-  .heroTopline {
-    display:
-      none;
-  }
-
-
-  .heroGrid {
-    gap:
-      26px;
-
+  .pageIntro {
     padding:
-      8px
-      0
-      28px;
+      64px
+      0;
   }
 
 
-  .heroEyebrow {
-    font-size:
-      0.54rem;
+  .introDecoration {
+    opacity:
+      0.22;
 
-    line-height:
-      1.4;
-  }
-
-
-  .heroCopy h1 {
-    margin-top:
-      5px;
-
-    font-size:
-      clamp(
-        2.75rem,
-        13vw,
-        3.75rem
-      );
-
-    line-height:
-      0.95;
-  }
-
-
-  .heroLead {
-    margin-top:
-      16px;
-
-    font-size:
-      0.88rem;
-  }
-
-
-  .heroActions {
-    margin-top:
-      18px;
-  }
-
-
-  .loopCanvas {
-    min-height:
-      250px;
-  }
-
-
-  .loopNode {
-    width:
-      82px;
-
-    min-height:
-      42px;
-  }
-
-
-  .loopNode
-  strong {
-    font-size:
-      0.45rem;
-  }
-
-
-  .loopCore {
-    width:
-      104px;
-
-    height:
-      104px;
-  }
-
-
-  .loopLine {
-    display:
-      none;
-  }
-
-
-  .loopFooter {
-    grid-template-columns:
-      auto
-      1fr
-      auto;
-  }
-
-
-  .loopFooter
-  i:nth-of-type(
-    2
-  ),
-  .loopFooter
-  span:last-child {
-    display:
-      none;
-  }
-
-
-  .heroMeta {
-    grid-template-columns:
-      repeat(
-        2,
-        minmax(
-          0,
-          1fr
+    background-image:
+      linear-gradient(
+        rgba(
+          161,
+          226,
+          240,
+          0.018
         )
+        1px,
+        transparent
+        1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(
+          161,
+          226,
+          240,
+          0.018
+        )
+        1px,
+        transparent
+        1px
       );
+
+    background-size:
+      68px
+      68px;
   }
 
 
-  .heroMeta
-  div {
-    padding:
-      11px
-      10px
-      11px
-      0;
-
-    border-bottom:
-      1px
-      solid
-      var(
-        --hub-line
-      );
-  }
-
-
-  .heroMeta
-  div:nth-child(
-    odd
-  ) {
-    padding-left:
-      0;
-
-    border-left:
-      0;
-  }
-
-
-  .section {
-    padding:
-      42px
-      0;
-  }
-
-
-  .sectionHeading {
-    margin-bottom:
-      27px;
-  }
-
-
-  .sectionHeading h2 {
+  .introCopy h1 {
     font-size:
       clamp(
-        2rem,
-        10vw,
-        2.8rem
+        2.8rem,
+        13vw,
+        3.7rem
       );
   }
 
 
-  .sectionDescription {
-    font-size:
-      0.81rem;
+  .introActions,
+  .ctaActions {
+    width:
+      100%;
+
+    flex-direction:
+      column;
   }
 
 
-  .programLink {
+  .primaryButton,
+  .secondaryButton {
+    width:
+      100%;
+  }
+
+
+  .learningSignal {
+    min-height:
+      320px;
+  }
+
+
+  .signalCore {
+    min-height:
+      200px;
+  }
+
+
+  .signalFlow {
+    flex-wrap:
+      wrap;
+
+    padding:
+      14px;
+  }
+
+
+  .signalFlow i {
+    width:
+      12px;
+  }
+
+
+  .paths,
+  .programs,
+  .practice,
+  .method,
+  .outcomes,
+  .faq,
+  .cta {
+    padding:
+      64px
+      0;
+  }
+
+
+  .sectionHeader h2,
+  .courseHeader h2,
+  .methodIntro h2,
+  .faqIntro h2,
+  .ctaCopy h2 {
+    font-size:
+      clamp(
+        2.25rem,
+        10.5vw,
+        3rem
+      );
+  }
+
+
+  .pathRow {
     grid-template-columns:
-      28px
+      36px
       minmax(
         0,
         1fr
       )
-      18px;
+      24px;
 
     gap:
-      9px;
+      10px;
 
     min-height:
-      0;
-
-    padding:
-      16px
-      0;
-  }
-
-
-  .programIdentity {
-    grid-column:
-      2;
-  }
-
-
-  .programSummary {
-    grid-column:
-      2;
-
-    font-size:
-      0.71rem;
-  }
-
-
-  .programMetadata {
-    display:
-      grid;
-
-    grid-column:
-      2;
-
-    grid-template-columns:
-      repeat(
-        2,
-        minmax(
-          0,
-          1fr
-        )
-      );
-
-    margin-top:
-      2px;
-  }
-
-
-  .programStatus {
-    grid-column:
-      2;
-
-    margin-top:
-      3px;
-  }
-
-
-  .programLink
-  > span:last-child {
-    grid-column:
-      3;
-
-    grid-row:
-      1
-      /
-      5;
-  }
-
-
-  .principleRow {
-    grid-template-columns:
-      28px
-      38px
-      minmax(
-        0,
-        1fr
-      );
-
-    gap:
-      9px;
+      94px;
 
     padding:
       14px
@@ -3247,73 +2836,153 @@ i {
   }
 
 
-  .principleRow p {
+  .pathCategory {
     grid-column:
-      3;
-
-    font-size:
-      0.7rem;
+      2;
   }
 
 
-  .learningFlow {
+  .pathRow > div {
+    grid-column:
+      2;
+
+    display:
+      grid;
+
+    gap:
+      5px;
+  }
+
+
+  .pathArrow {
+    grid-column:
+      3;
+
+    grid-row:
+      1
+      /
+      span
+      2;
+  }
+
+
+  .programGrid {
     grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .programCard:last-child {
+    grid-column:
+      auto;
+
+    max-width:
+      none;
+  }
+
+
+  .programCard,
+  .featuredPractice,
+  .supportingPractice article {
+    padding:
+      22px;
+  }
+
+
+  .programFooter {
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
+  }
+
+
+  .moduleList li {
+    grid-template-columns:
+      38px
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .methodTrack {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .methodTrack li,
+  .methodTrack li:first-child,
+  .methodTrack li:nth-child(
+    3
+  ) {
+    display:
+      grid;
+
+    grid-template-columns:
+      42px
       minmax(
         0,
         1fr
       );
 
     gap:
+      8px
+      14px;
+
+    min-height:
+      0;
+
+    padding:
+      21px
+      0;
+
+    border-right:
+      0;
+
+    border-bottom:
+      1px
+      solid
+      var(
+        --academy-line
+      );
+
+    border-left:
       0;
   }
 
 
-  .learningFlow
-  > i {
-    width:
-      1px;
-
-    height:
-      17px;
-
-    margin-left:
-      4px;
+  .methodTrack strong {
+    margin-top:
+      0;
   }
 
 
-  .learningFlow
-  div {
-    grid-template-columns:
-      30px
-      minmax(
-        0,
-        1fr
-      );
+  .methodTrack p {
+    grid-column:
+      2;
 
-    align-items:
-      center;
-
-    min-height:
-      36px;
+    margin-top:
+      2px;
   }
 
 
-  .audienceIndex {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-  }
-
-
-  .audienceIndex
-  div,
-  .audienceIndex
-  div:nth-child(
-    even
-  ) {
+  .outcomeColumns article,
+  .outcomeColumns article:first-child {
     padding:
+      24px
+      0;
+
+    border-right:
       0;
 
     border-left:
@@ -3321,92 +2990,25 @@ i {
   }
 
 
-  .cta {
+  .faqLayout {
+    gap:
+      38px;
+  }
+
+
+  .faqItem summary {
+    min-height:
+      66px;
+
+    font-size:
+      0.86rem;
+  }
+
+
+  .ctaInner {
     padding:
-      42px
+      34px
       0;
-  }
-
-
-  .ctaLayout {
-    padding-top:
-      25px;
-  }
-
-
-  .ctaLayout h2 {
-    font-size:
-      clamp(
-        2rem,
-        10vw,
-        2.8rem
-      );
-  }
-
-}
-
-
-/* ==========================================================================
-   NARROW MOBILE
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    390px
-) {
-
-  .heroCopy h1 {
-    font-size:
-      2.62rem;
-  }
-
-
-  .heroActions,
-  .ctaActions {
-    display:
-      grid;
-
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-  }
-
-
-  .primaryAction {
-    width:
-      100%;
-  }
-
-
-  .programMetadata {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-  }
-
-
-  .archiveRow {
-    grid-template-columns:
-      28px
-      minmax(
-        0,
-        1fr
-      )
-      18px;
-  }
-
-
-  .archiveRow
-  > span:nth-last-child(
-    2
-  ) {
-    display:
-      none;
   }
 
 }
@@ -3422,24 +3024,17 @@ i {
     reduce
 ) {
 
-  .primaryAction,
-  .textAction,
-  .inlineAction,
-  .programLink,
-  .faqItem
-  summary
-  i {
+  .primaryButton,
+  .secondaryButton,
+  .pathRow {
     transition:
       none;
   }
 
 
-  .programLink:hover {
-    padding-right:
-      0;
-
-    padding-left:
-      0;
+  .primaryButton:hover {
+    transform:
+      none;
   }
 
 }
