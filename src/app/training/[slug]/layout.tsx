@@ -35,6 +35,7 @@ export default async function TrainingProgramLayout({
 
 
   // NB_WEB_EXPLOIT_V28_GATE
+  // NB_WEB_EXPLOIT_V29_GATE
   const isWebExploitation =
     slug ===
     "web-exploitation-techniques";
@@ -266,6 +267,7 @@ return (
                   styles.webExploit
                 }
                 data-web-exploitation-design="v28"
+                data-web-exploitation-system="v29"
               >
                 <div
                   className={

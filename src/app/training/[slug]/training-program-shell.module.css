@@ -12454,3 +12454,1518 @@ a:hover {
   }
 
 }
+
+
+/* ==========================================================================
+   NB_WEB_EXPLOIT_APPLICATION_ANATOMY_V29
+
+   Complete replacement visual direction for Web Exploitation Techniques.
+
+   Concept:
+   - application anatomy dossier
+   - asymmetrical editorial hero
+   - technical specimen rather than flow diagram
+   - 2x2 application anatomy plate
+   - case-file section rhythm
+   - flat records instead of cards
+   - no terminal wallpaper
+   - no fake browser dashboard
+   ========================================================================== */
+
+
+.webExploit {
+  --we-bg:
+    #07090d;
+
+  --we-bg-soft:
+    #0a0d13;
+
+  --we-panel:
+    #0d121a;
+
+  --we-text:
+    #f5f7fa;
+
+  --we-secondary:
+    #c5ced8;
+
+  --we-muted:
+    #8793a3;
+
+  --we-subtle:
+    #667281;
+
+  --we-cyan:
+    #a1e2f0;
+
+  --we-blue:
+    #83b3d7;
+
+  --we-violet:
+    #7e60b9;
+
+  --we-purple:
+    #6333c6;
+
+  --we-line:
+    rgba(
+      197,
+      206,
+      216,
+      0.13
+    );
+
+  --we-line-strong:
+    rgba(
+      161,
+      226,
+      240,
+      0.26
+    );
+
+  position:
+    relative;
+
+  overflow:
+    clip;
+
+  color:
+    var(
+      --we-text
+    );
+
+  background:
+    var(
+      --we-bg
+    );
+
+  counter-reset:
+    web-case;
+}
+
+
+/* ==========================================================================
+   HERO — ASYMMETRIC EDITORIAL DOSSIER
+   ========================================================================== */
+
+
+.webExploit
+> section:first-of-type {
+  position:
+    relative;
+
+  min-height:
+    650px !important;
+
+  padding-top:
+    clamp(
+      40px,
+      4.5vw,
+      62px
+    ) !important;
+
+  padding-bottom:
+    44px !important;
+
+  overflow:
+    hidden;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --we-line
+    ) !important;
+
+  background:
+    #07090d !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+.webExploit
+> section:first-of-type::before {
+  position:
+    absolute;
+
+  top:
+    0;
+
+  bottom:
+    0;
+
+  left:
+    clamp(
+      22px,
+      4vw,
+      68px
+    );
+
+  width:
+    1px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      var(
+        --we-line-strong
+      )
+      15%,
+      var(
+        --we-line
+      )
+      82%,
+      transparent
+    );
+
+  content:
+    "";
+
+  pointer-events:
+    none;
+}
+
+
+.webExploit
+> section:first-of-type::after {
+  position:
+    absolute;
+
+  top:
+    -80px;
+
+  right:
+    -120px;
+
+  width:
+    620px;
+
+  height:
+    620px;
+
+  border:
+    1px
+    solid
+    rgba(
+      126,
+      96,
+      185,
+      0.06
+    );
+
+  border-radius:
+    50%;
+
+  box-shadow:
+    0
+    0
+    0
+    72px
+    rgba(
+      126,
+      96,
+      185,
+      0.018
+    ),
+    0
+    0
+    0
+    144px
+    rgba(
+      131,
+      179,
+      215,
+      0.01
+    );
+
+  content:
+    "";
+
+  pointer-events:
+    none;
+}
+
+
+.webExploit
+> section:first-of-type
+> * {
+  position:
+    relative;
+
+  z-index:
+    2;
+}
+
+
+.webExploit
+> section:first-of-type
+h1 {
+  width:
+    min(
+      100%,
+      710px
+    ) !important;
+
+  max-width:
+    710px !important;
+
+  margin-top:
+    8px !important;
+
+  color:
+    var(
+      --we-text
+    ) !important;
+
+  font-size:
+    clamp(
+      3.2rem,
+      5vw,
+      5.15rem
+    ) !important;
+
+  font-weight:
+    500 !important;
+
+  letter-spacing:
+    -0.064em !important;
+
+  line-height:
+    0.94 !important;
+
+  text-wrap:
+    balance;
+}
+
+
+.webExploit
+> section:first-of-type
+p {
+  max-width:
+    610px !important;
+
+  color:
+    var(
+      --we-muted
+    ) !important;
+
+  font-size:
+    0.91rem !important;
+
+  line-height:
+    1.65 !important;
+}
+
+
+.webExploit
+> section:first-of-type
+dl {
+  width:
+    min(
+      100%,
+      690px
+    ) !important;
+
+  max-width:
+    690px !important;
+
+  margin-top:
+    24px !important;
+
+  border-top:
+    1px
+    solid
+    var(
+      --we-line-strong
+    );
+}
+
+
+.webExploit
+> section:first-of-type
+dl
+> div {
+  border-color:
+    var(
+      --we-line
+    ) !important;
+
+  background:
+    transparent !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+/* ==========================================================================
+   APPLICATION ANATOMY SPECIMEN
+   ========================================================================== */
+
+
+.webExploitVisual {
+  position:
+    absolute;
+
+  z-index:
+    4;
+
+  top:
+    86px;
+
+  right:
+    clamp(
+      28px,
+      5vw,
+      88px
+    );
+
+  width:
+    min(
+      35vw,
+      470px
+    );
+
+  padding:
+    0
+    0
+    0
+    19px;
+
+  border:
+    0;
+
+  border-left:
+    1px
+    solid
+    var(
+      --we-line-strong
+    );
+
+  background:
+    transparent;
+
+  pointer-events:
+    none;
+}
+
+
+.webExploitVisual::before {
+  display:
+    block;
+
+  margin-bottom:
+    17px;
+
+  color:
+    var(
+      --we-text
+    );
+
+  content:
+    "APPLICATION ANATOMY";
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.72rem;
+
+  font-weight:
+    670;
+
+  letter-spacing:
+    0.08em;
+}
+
+
+.webExploitVisualHeader {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  min-height:
+    30px;
+
+  padding-bottom:
+    8px;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --we-line
+    );
+
+  color:
+    var(
+      --we-subtle
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.48rem;
+
+  letter-spacing:
+    0.08em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.webExploitFlow {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    0;
+
+  padding:
+    0;
+
+  border:
+    0;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --we-line
+    );
+}
+
+
+.webExploitFlow
+> i {
+  display:
+    none;
+}
+
+
+.webExploitEndpoint {
+  display:
+    grid;
+
+  grid-template-columns:
+    32px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    9px;
+
+  align-items:
+    center;
+
+  min-width:
+    0;
+
+  min-height:
+    82px;
+
+  padding:
+    13px;
+
+  border:
+    0;
+
+  border-right:
+    1px
+    solid
+    var(
+      --we-line
+    );
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --we-line
+    );
+
+  background:
+    transparent;
+
+  text-align:
+    left;
+}
+
+
+.webExploitEndpoint:nth-of-type(
+  2n
+) {
+  border-right:
+    0;
+}
+
+
+.webExploitEndpoint
+span {
+  display:
+    grid;
+
+  width:
+    28px;
+
+  height:
+    28px;
+
+  place-items:
+    center;
+
+  border:
+    1px
+    solid
+    var(
+      --we-line
+    );
+
+  color:
+    var(
+      --we-subtle
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.46rem;
+}
+
+
+.webExploitEndpoint
+strong {
+  margin:
+    0;
+
+  color:
+    var(
+      --we-secondary
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.56rem;
+
+  font-weight:
+    670;
+
+  letter-spacing:
+    0.055em;
+}
+
+
+.webExploitApplication {
+  border-left:
+    2px
+    solid
+    var(
+      --we-cyan
+    );
+
+  background:
+    rgba(
+      161,
+      226,
+      240,
+      0.018
+    );
+}
+
+
+/* ==========================================================================
+   BOUNDARY REGISTER
+   ========================================================================== */
+
+
+.webExploitBoundaries {
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  border:
+    0;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --we-line
+    );
+}
+
+
+.webExploitBoundaries
+span {
+  position:
+    relative;
+
+  padding:
+    11px
+    10px
+    11px
+    27px;
+
+  border:
+    0;
+
+  border-right:
+    1px
+    solid
+    var(
+      --we-line
+    );
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --we-line
+    );
+
+  color:
+    var(
+      --we-blue
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.48rem;
+
+  letter-spacing:
+    0.07em;
+
+  text-align:
+    left;
+}
+
+
+.webExploitBoundaries
+span::before {
+  position:
+    absolute;
+
+  top:
+    50%;
+
+  left:
+    10px;
+
+  width:
+    5px;
+
+  height:
+    5px;
+
+  border:
+    1px
+    solid
+    var(
+      --we-cyan
+    );
+
+  content:
+    "";
+
+  transform:
+    translateY(
+      -50%
+    );
+}
+
+
+.webExploitBoundaries
+span:nth-child(
+  2n
+) {
+  border-right:
+    0;
+}
+
+
+.webExploitVisualFooter {
+  display:
+    grid;
+
+  grid-template-columns:
+    auto
+    1fr
+    auto
+    1fr
+    auto;
+
+  gap:
+    9px;
+
+  align-items:
+    center;
+
+  min-height:
+    37px;
+
+  color:
+    var(
+      --we-subtle
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.46rem;
+
+  letter-spacing:
+    0.07em;
+}
+
+
+.webExploitVisualFooter
+i {
+  height:
+    1px;
+
+  background:
+    var(
+      --we-line
+    );
+}
+
+
+/* ==========================================================================
+   COURSE BODY — CASE FILE SYSTEM
+   ========================================================================== */
+
+
+.webExploit
+> section:not(
+  :first-of-type
+) {
+  position:
+    relative;
+
+  counter-increment:
+    web-case;
+
+  padding-top:
+    clamp(
+      48px,
+      5vw,
+      68px
+    ) !important;
+
+  padding-bottom:
+    clamp(
+      48px,
+      5vw,
+      68px
+    ) !important;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --we-line
+    ) !important;
+
+  background:
+    var(
+      --we-bg
+    ) !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+.webExploit
+> section:nth-of-type(
+  even
+) {
+  background:
+    var(
+      --we-bg-soft
+    ) !important;
+}
+
+
+.webExploit
+> section:not(
+  :first-of-type
+)::before {
+  position:
+    absolute;
+
+  top:
+    20px;
+
+  left:
+    clamp(
+      18px,
+      3vw,
+      50px
+    );
+
+  color:
+    var(
+      --we-subtle
+    );
+
+  content:
+    "CASE / "
+    counter(
+      web-case,
+      decimal-leading-zero
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.48rem;
+
+  letter-spacing:
+    0.09em;
+
+  pointer-events:
+    none;
+}
+
+
+.webExploit
+> section:not(
+  :first-of-type
+)
+h2 {
+  max-width:
+    880px !important;
+
+  color:
+    var(
+      --we-text
+    ) !important;
+
+  font-size:
+    clamp(
+      2rem,
+      3.2vw,
+      3.1rem
+    ) !important;
+
+  font-weight:
+    470 !important;
+
+  letter-spacing:
+    -0.05em !important;
+
+  line-height:
+    1.04 !important;
+
+  text-wrap:
+    balance;
+}
+
+
+.webExploit
+> section:not(
+  :first-of-type
+)
+h3 {
+  color:
+    var(
+      --we-secondary
+    ) !important;
+
+  font-weight:
+    590 !important;
+
+  letter-spacing:
+    -0.025em !important;
+}
+
+
+.webExploit
+> section:not(
+  :first-of-type
+)
+p {
+  max-width:
+    760px;
+
+  color:
+    var(
+      --we-muted
+    ) !important;
+
+  line-height:
+    1.62 !important;
+}
+
+
+/* ==========================================================================
+   REMOVE GENERIC CARD SURFACES
+   ========================================================================== */
+
+
+.webExploit
+[class*="card"],
+.webExploit
+[class*="Card"],
+.webExploit
+article {
+  border:
+    0 !important;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --we-line
+    ) !important;
+
+  border-radius:
+    0 !important;
+
+  background:
+    transparent !important;
+
+  box-shadow:
+    none !important;
+
+  backdrop-filter:
+    none !important;
+}
+
+
+.webExploit
+article {
+  padding-top:
+    18px !important;
+
+  padding-bottom:
+    18px !important;
+}
+
+
+.webExploit
+> section:not(
+  :first-of-type
+)
+[class*="grid"] {
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    ) !important;
+
+  gap:
+    0 !important;
+
+  border-top:
+    1px
+    solid
+    var(
+      --we-line-strong
+    );
+}
+
+
+/* ==========================================================================
+   TECHNIQUE / OBJECTIVE RECORDS
+   ========================================================================== */
+
+
+.webExploit
+ul,
+.webExploit
+ol {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    0;
+
+  margin-top:
+    20px !important;
+
+  padding:
+    0 !important;
+
+  border-top:
+    1px
+    solid
+    var(
+      --we-line-strong
+    );
+
+  list-style:
+    none !important;
+}
+
+
+.webExploit
+li {
+  position:
+    relative;
+
+  min-height:
+    48px;
+
+  margin:
+    0 !important;
+
+  padding:
+    13px
+    14px
+    13px
+    39px !important;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --we-line
+    );
+
+  color:
+    var(
+      --we-secondary
+    ) !important;
+
+  background:
+    transparent !important;
+}
+
+
+.webExploit
+li::before {
+  position:
+    absolute;
+
+  top:
+    18px;
+
+  left:
+    12px;
+
+  width:
+    9px;
+
+  height:
+    9px;
+
+  border:
+    1px
+    solid
+    var(
+      --we-blue
+    );
+
+  content:
+    "";
+}
+
+
+.webExploit
+li:nth-child(
+  3n
+)::before {
+  border-color:
+    var(
+      --we-violet
+    );
+}
+
+
+/* ==========================================================================
+   METADATA
+   ========================================================================== */
+
+
+.webExploit
+dt {
+  color:
+    var(
+      --we-subtle
+    ) !important;
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace !important;
+
+  font-size:
+    0.52rem !important;
+
+  letter-spacing:
+    0.075em !important;
+
+  text-transform:
+    uppercase;
+}
+
+
+.webExploit
+dd {
+  color:
+    var(
+      --we-secondary
+    ) !important;
+}
+
+
+/* ==========================================================================
+   FAQ
+   ========================================================================== */
+
+
+.webExploit
+details {
+  border:
+    0 !important;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --we-line
+    ) !important;
+
+  border-radius:
+    0 !important;
+
+  background:
+    transparent !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+.webExploit
+details:first-of-type {
+  border-top:
+    1px
+    solid
+    var(
+      --we-line-strong
+    ) !important;
+}
+
+
+.webExploit
+summary {
+  min-height:
+    64px;
+
+  color:
+    var(
+      --we-secondary
+    ) !important;
+}
+
+
+/* ==========================================================================
+   CTA
+   ========================================================================== */
+
+
+.webExploit
+> section:last-of-type {
+  background:
+    linear-gradient(
+      105deg,
+      #080a0f,
+      #0b0d14
+    ) !important;
+}
+
+
+.webExploit
+> section:not(
+  :first-of-type
+)
+a {
+  color:
+    var(
+      --we-secondary
+    );
+
+  transition:
+    color
+    150ms
+    ease;
+}
+
+
+.webExploit
+> section:not(
+  :first-of-type
+)
+a:hover {
+  color:
+    var(
+      --we-cyan
+    );
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    1100px
+) {
+
+  .webExploitVisual {
+    display:
+      none;
+  }
+
+
+  .webExploit
+  > section:first-of-type {
+    min-height:
+      0 !important;
+  }
+
+
+  .webExploit
+  > section:first-of-type
+  h1 {
+    width:
+      min(
+        100%,
+        860px
+      ) !important;
+
+    max-width:
+      860px !important;
+  }
+
+
+  .webExploit
+  > section:first-of-type
+  p {
+    max-width:
+      720px !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    640px
+) {
+
+  .webExploit
+  > section:first-of-type {
+    min-height:
+      0 !important;
+
+    padding-top:
+      18px !important;
+
+    padding-bottom:
+      32px !important;
+  }
+
+
+  .webExploit
+  > section:first-of-type::before,
+  .webExploit
+  > section:first-of-type::after {
+    display:
+      none;
+  }
+
+
+  .webExploit
+  > section:first-of-type
+  h1 {
+    width:
+      100% !important;
+
+    max-width:
+      100% !important;
+
+    margin-top:
+      5px !important;
+
+    font-size:
+      clamp(
+        2.5rem,
+        12vw,
+        3.35rem
+      ) !important;
+
+    line-height:
+      0.97 !important;
+  }
+
+
+  .webExploit
+  > section:not(
+    :first-of-type
+  ) {
+    padding-top:
+      41px !important;
+
+    padding-bottom:
+      41px !important;
+  }
+
+
+  .webExploit
+  > section:not(
+    :first-of-type
+  )::before {
+    top:
+      14px;
+
+    left:
+      18px;
+  }
+
+
+  .webExploit
+  > section:not(
+    :first-of-type
+  )
+  h2 {
+    font-size:
+      clamp(
+        1.82rem,
+        8.8vw,
+        2.5rem
+      ) !important;
+  }
+
+
+  .webExploit
+  article {
+    padding-top:
+      14px !important;
+
+    padding-bottom:
+      14px !important;
+  }
+
+
+  .webExploit
+  li {
+    min-height:
+      0;
+
+    padding-top:
+      11px !important;
+
+    padding-bottom:
+      11px !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   NARROW MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    390px
+) {
+
+  .webExploit
+  > section:first-of-type
+  h1 {
+    font-size:
+      2.38rem !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .webExploit
+  a {
+    transition:
+      none !important;
+  }
+
+}
