@@ -33,6 +33,12 @@ export default async function TrainingProgramLayout({
     slug ===
     "red-team-foundations";
 
+
+  // NB_WEB_EXPLOIT_V28_GATE
+  const isWebExploitation =
+    slug ===
+    "web-exploitation-techniques";
+
 return (
     <div
       className={
@@ -253,7 +259,153 @@ return (
               }
             </div>
           )
-          : children
+          : isWebExploitation
+            ? (
+              <div
+                className={
+                  styles.webExploit
+                }
+                data-web-exploitation-design="v28"
+              >
+                <div
+                  className={
+                    styles.webExploitVisual
+                  }
+                  aria-hidden="true"
+                >
+                  <div
+                    className={
+                      styles.webExploitVisualHeader
+                    }
+                  >
+                    <span>
+                      REQUEST LAB
+                    </span>
+
+                    <span>
+                      WEB / 02
+                    </span>
+                  </div>
+
+                  <div
+                    className={
+                      styles.webExploitFlow
+                    }
+                  >
+                    <div
+                      className={
+                        styles.webExploitEndpoint
+                      }
+                    >
+                      <span>
+                        01
+                      </span>
+
+                      <strong>
+                        BROWSER
+                      </strong>
+                    </div>
+
+                    <i />
+
+                    <div
+                      className={
+                        styles.webExploitEndpoint
+                      }
+                    >
+                      <span>
+                        02
+                      </span>
+
+                      <strong>
+                        REQUEST
+                      </strong>
+                    </div>
+
+                    <i />
+
+                    <div
+                      className={
+                        `${styles.webExploitEndpoint} ${styles.webExploitApplication}`
+                      }
+                    >
+                      <span>
+                        03
+                      </span>
+
+                      <strong>
+                        APPLICATION
+                      </strong>
+                    </div>
+
+                    <i />
+
+                    <div
+                      className={
+                        styles.webExploitEndpoint
+                      }
+                    >
+                      <span>
+                        04
+                      </span>
+
+                      <strong>
+                        RESPONSE
+                      </strong>
+                    </div>
+                  </div>
+
+                  <div
+                    className={
+                      styles.webExploitBoundaries
+                    }
+                  >
+                    <span>
+                      INPUT
+                    </span>
+
+                    <span>
+                      STATE
+                    </span>
+
+                    <span>
+                      ACCESS
+                    </span>
+
+                    <span>
+                      DATA
+                    </span>
+                  </div>
+
+                  <div
+                    className={
+                      styles.webExploitVisualFooter
+                    }
+                  >
+                    <span>
+                      OBSERVE
+                    </span>
+
+                    <i />
+
+                    <span>
+                      REASON
+                    </span>
+
+                    <i />
+
+                    <span>
+                      VALIDATE
+                    </span>
+                  </div>
+                </div>
+
+                {
+                  children
+                }
+              </div>
+            )
+            : children
       }
     </div>
   );
