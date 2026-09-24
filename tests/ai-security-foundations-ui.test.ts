@@ -1,4 +1,5 @@
 import {
+  existsSync,
   readFileSync
 } from "node:fs";
 
@@ -25,43 +26,50 @@ const shell =
 
 const component =
   readFileSync(
-    "src/app/training/[slug]/ai-security-v39.tsx",
+    "src/app/training/[slug]/ai-security-course-detail.tsx",
     "utf8"
   );
 
 
 const css =
   readFileSync(
-    "src/app/training/[slug]/ai-security-v39.module.css",
+    "src/app/training/[slug]/ai-security-course-detail.module.css",
     "utf8"
   );
 
 
 describe(
-  "AI Security Foundations V39 control surface",
+  "AI Security Foundations course-detail design",
   () => {
 
     it(
-      "uses the AI route gate",
+      "binds the new course detail only to the AI route",
       () => {
 
         expect(
           layout
         ).toContain(
-          "const isAiSecurity"
+          "AISecurityCourseDetail"
         );
 
 
         expect(
           layout
         ).toContain(
-          'data-ai-security-design={isAiSecurity ? "v39" : undefined}'
+          "styles.aiSecurityCourseShell"
         );
 
 
         expect(
           layout
         ).toContain(
+          'data-ai-security-design={isAiSecurity ? "course-detail" : undefined}'
+        );
+
+
+        expect(
+          layout
+        ).not.toContain(
           "AISecurityV39"
         );
 
@@ -70,27 +78,24 @@ describe(
 
 
     it(
-      "uses a dedicated V39 root instead of the historical AI design root",
+      "retires the V39 page implementation",
       () => {
 
         expect(
-          layout
-        ).toContain(
-          "styles.aiSecurityV39Shell"
+          existsSync(
+            "src/app/training/[slug]/ai-security-v39.tsx"
+          )
+        ).toBe(
+          false
         );
 
 
         expect(
-          shell
-        ).toContain(
-          ".aiSecurityV39Shell {"
-        );
-
-
-        expect(
-          shell
-        ).not.toContain(
-          '.aiSecurity[data-ai-security-design="v39"]'
+          existsSync(
+            "src/app/training/[slug]/ai-security-v39.module.css"
+          )
+        ).toBe(
+          false
         );
 
       }
@@ -98,43 +103,21 @@ describe(
 
 
     it(
-      "defines the four new visual chapters",
-      () => {
-
-        for (
-          const section
-          of [
-            'data-ai-v39-section="hero"',
-            'data-ai-v39-section="surface"',
-            'data-ai-v39-section="program"',
-            'data-ai-v39-section="note"'
-          ]
-        ) {
-
-          expect(
-            component
-          ).toContain(
-            section
-          );
-
-        }
-
-      }
-    );
-
-
-    it(
-      "uses the new trust-control design language",
+      "uses the canonical course-detail architecture",
       () => {
 
         for (
           const value
           of [
-            "MODEL ≠ SYSTEM",
-            "02 / TRUST SURFACE",
-            "03 / SECURITY PROGRAM",
-            "04 / SECURITY NOTE",
-            "Secure the system"
+            'data-ai-course-section="intro"',
+            'data-ai-course-section="overview"',
+            'data-ai-course-section="curriculum"',
+            'data-ai-course-section="requirements"',
+            'data-ai-course-section="outcomes"',
+            'data-ai-course-section="related"',
+            'data-ai-course-section="cta"',
+            'aria-label="Course sections"',
+            "data-course-enrollment"
           ]
         ) {
 
@@ -151,20 +134,57 @@ describe(
 
 
     it(
-      "removes the old ambient presentation from the visible V39 shell",
+      "uses the shared NoBreach visual language",
+      () => {
+
+        for (
+          const value
+          of [
+            "#07090d",
+            "#0b0f16",
+            "#101620",
+            "#151d29",
+            "#a1e2f0",
+            '"Space Grotesk"',
+            '"Inter"',
+            '"IBM Plex Mono"'
+          ]
+        ) {
+
+          expect(
+            css
+          ).toContain(
+            value
+          );
+
+        }
+
+      }
+    );
+
+
+    it(
+      "uses the documented sticky enrollment behavior",
       () => {
 
         expect(
-          shell
+          css
         ).toContain(
-          ".aiAmbientVisual"
+          "position:\n    sticky;"
         );
 
 
         expect(
-          shell
+          css
         ).toContain(
-          "display:\n    none !important;"
+          "top:\n    104px;"
+        );
+
+
+        expect(
+          css
+        ).toContain(
+          "position:\n      static;"
         );
 
       }
@@ -172,41 +192,55 @@ describe(
 
 
     it(
-      "uses a dark responsive V39 design system",
+      "contains accessibility and mobile contracts",
       () => {
 
         expect(
           css
         ).toContain(
-          "#07090d"
+          ":focus-visible"
         );
 
 
         expect(
           css
         ).toContain(
-          ".heroGrid"
+          "outline:\n    2px"
         );
 
 
         expect(
           css
         ).toContain(
-          ".trustRows"
+          "min-height:\n    48px;"
         );
 
 
         expect(
           css
         ).toContain(
-          ".moduleRail"
+          "prefers-reduced-motion"
+        );
+
+      }
+    );
+
+
+    it(
+      "uses one dedicated isolated route shell",
+      () => {
+
+        expect(
+          shell
+        ).toContain(
+          "NB_AI_SECURITY_COURSE_DETAIL_SHELL"
         );
 
 
         expect(
-          css
+          shell
         ).toContain(
-          "@media (\n  max-width:"
+          ".aiSecurityCourseShell"
         );
 
       }

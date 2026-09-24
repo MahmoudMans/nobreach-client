@@ -9,7 +9,7 @@ const route =
 
 
 test(
-  "AI Security V39 renders four visible sections",
+  "AI Security uses the course-detail architecture",
   async ({
     page
   }) => {
@@ -30,7 +30,7 @@ test(
 
     const root =
       page.locator(
-        '[data-ai-security-design="v39"]'
+        '[data-ai-course-detail="v1"]'
       );
 
 
@@ -39,61 +39,8 @@ test(
     ).toBeVisible();
 
 
-    const sections =
-      root.locator(
-        ":scope > section[data-ai-v39-section]"
-      );
-
-
     await expect(
-      sections
-    ).toHaveCount(
-      4
-    );
-
-
-    for (
-      let index = 0;
-      index < 4;
-      index += 1
-    ) {
-
-      await expect(
-        sections.nth(
-          index
-        )
-      ).toBeVisible();
-
-    }
-
-  }
-);
-
-
-test(
-  "AI Security V39 uses the new hero",
-  async ({
-    page
-  }) => {
-
-    await page.goto(
-      route
-    );
-
-
-    const hero =
-      page.locator(
-        '[data-ai-v39-section="hero"]'
-      );
-
-
-    await expect(
-      hero
-    ).toBeVisible();
-
-
-    await expect(
-      hero.getByRole(
+      root.getByRole(
         "heading",
         {
           level:
@@ -107,24 +54,28 @@ test(
 
 
     await expect(
-      hero.getByText(
-        "Secure the system around the model."
+      root.locator(
+        "[data-ai-course-section]"
       )
-    ).toBeVisible();
+    ).toHaveCount(
+      7
+    );
 
 
     await expect(
-      hero.getByText(
-        "MODEL ≠ SYSTEM"
+      page.locator(
+        '[data-ai-security-design="course-detail"]'
       )
-    ).toBeVisible();
+    ).toHaveCount(
+      1
+    );
 
   }
 );
 
 
 test(
-  "AI Security V39 preserves canonical audience and objectives",
+  "course intro contains summary metadata outcomes and program access",
   async ({
     page
   }) => {
@@ -134,36 +85,241 @@ test(
     );
 
 
-    const surface =
+    const intro =
       page.locator(
-        '[data-ai-v39-section="surface"]'
+        '[data-ai-course-section="intro"]'
       );
 
 
     await expect(
-      surface.getByRole(
+      intro
+    ).toBeVisible();
+
+
+    await expect(
+      intro.getByText(
+        "AI SECURITY / COURSE"
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      intro.getByText(
+        /what you will leave with/i
+      )
+    ).toBeVisible();
+
+
+    const enrollment =
+      intro.locator(
+        "[data-course-enrollment]"
+      );
+
+
+    await expect(
+      enrollment
+    ).toBeVisible();
+
+
+    await expect(
+      enrollment.getByRole(
+        "link",
+        {
+          name:
+            "Ask about this program"
+        }
+      )
+    ).toHaveAttribute(
+      "href",
+      "/contact"
+    );
+
+
+    await expect(
+      enrollment.getByRole(
+        "link",
+        {
+          name:
+            "Explore Academy"
+        }
+      )
+    ).toHaveAttribute(
+      "href",
+      "/training"
+    );
+
+  }
+);
+
+
+test(
+  "desktop program card follows the sticky-header clearance rule",
+  async ({
+    page
+  }) => {
+
+    await page.setViewportSize({
+      width:
+        1440,
+
+      height:
+        900
+    });
+
+
+    await page.goto(
+      route
+    );
+
+
+    const enrollment =
+      page.locator(
+        "[data-course-enrollment]"
+      );
+
+
+    const style =
+      await enrollment.evaluate(
+        (
+          element
+        ) => {
+
+          const computed =
+            getComputedStyle(
+              element
+            );
+
+
+          return {
+            position:
+              computed.position,
+
+            top:
+              computed.top
+          };
+
+        }
+      );
+
+
+    expect(
+      style.position
+    ).toBe(
+      "sticky"
+    );
+
+
+    expect(
+      style.top
+    ).toBe(
+      "104px"
+    );
+
+  }
+);
+
+
+test(
+  "course tabs are contextual navigation",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      route
+    );
+
+
+    const tabs =
+      page.getByRole(
+        "navigation",
+        {
+          name:
+            "Course sections"
+        }
+      );
+
+
+    await expect(
+      tabs
+    ).toBeVisible();
+
+
+    for (
+      const name
+      of [
+        "Overview",
+        "Curriculum",
+        "Requirements",
+        "Outcomes"
+      ]
+    ) {
+
+      await expect(
+        tabs.getByRole(
+          "link",
+          {
+            name
+          }
+        )
+      ).toBeVisible();
+
+    }
+
+
+    await expect(
+      tabs.getByRole(
+        "link"
+      )
+    ).toHaveCount(
+      4
+    );
+
+  }
+);
+
+
+test(
+  "overview uses objectives and audience without another card wall",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      route
+    );
+
+
+    const section =
+      page.locator(
+        '[data-ai-course-section="overview"]'
+      );
+
+
+    await expect(
+      section.getByRole(
         "heading",
         {
           level:
             2,
 
           name:
-            /designed for learners building practical security capability/i
+            /understand the system around the model/i
         }
       )
     ).toBeVisible();
 
 
     await expect(
-      surface.getByText(
-        "Application-security learners"
+      section.getByText(
+        /learning objectives/i
       )
     ).toBeVisible();
 
 
     await expect(
-      surface.getByText(
-        /understand tool-calling and permission boundaries/i
+      section.getByText(
+        /who this is for/i
       )
     ).toBeVisible();
 
@@ -172,7 +328,7 @@ test(
 
 
 test(
-  "AI Security V39 presents the three curriculum boundaries",
+  "curriculum is an editorial module sequence",
   async ({
     page
   }) => {
@@ -182,10 +338,15 @@ test(
     );
 
 
-    const program =
+    const section =
       page.locator(
-        '[data-ai-v39-section="program"]'
+        '[data-ai-course-section="curriculum"]'
       );
+
+
+    await expect(
+      section
+    ).toBeVisible();
 
 
     for (
@@ -198,7 +359,7 @@ test(
     ) {
 
       await expect(
-        program.getByRole(
+        section.getByRole(
           "heading",
           {
             level:
@@ -214,72 +375,53 @@ test(
 
     }
 
+  }
+);
+
+
+test(
+  "requirements and outcomes preserve canonical course content",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      route
+    );
+
+
+    const requirements =
+      page.locator(
+        '[data-ai-course-section="requirements"]'
+      );
+
 
     await expect(
-      program.getByText(
-        /AI application trust boundaries/i
-      )
+      requirements
     ).toBeVisible();
 
 
     await expect(
-      program.getByText(
+      requirements.getByText(
         /no advanced machine-learning background required/i
       )
     ).toBeVisible();
 
-  }
-);
 
-
-test(
-  "AI Security V39 uses one research note instead of the old article section",
-  async ({
-    page
-  }) => {
-
-    await page.goto(
-      route
-    );
-
-
-    const note =
+    const outcomes =
       page.locator(
-        '[data-ai-v39-section="note"]'
+        '[data-ai-course-section="outcomes"]'
       );
 
 
     await expect(
-      note
-    ).toBeVisible();
-
-
-    const research =
-      note.getByRole(
-        "link",
-        {
-          name:
-            /prompt injection matters most when AI can act/i
-        }
-      );
-
-
-    await expect(
-      research
+      outcomes
     ).toBeVisible();
 
 
     await expect(
-      research
-    ).toHaveAttribute(
-      "href",
-      "/insights/prompt-injection-matters-when-ai-can-act"
-    );
-
-
-    await expect(
-      note.getByText(
-        /build practical security capability/i
+      outcomes.getByText(
+        /AI application trust boundaries/i
       )
     ).toBeVisible();
 
@@ -288,7 +430,7 @@ test(
 
 
 test(
-  "AI Security V39 removes the legacy ambient visual",
+  "related course section adapts to the two available programs",
   async ({
     page
   }) => {
@@ -298,41 +440,35 @@ test(
     );
 
 
-    const root =
+    const section =
       page.locator(
-        '[data-ai-security-design="v39"]'
+        '[data-ai-course-section="related"]'
       );
 
 
     await expect(
-      root
+      section
     ).toBeVisible();
 
 
-    const oldVisual =
-      root.locator(
-        '[class*="aiAmbientVisual"]'
-      );
-
-
-    if (
-      await oldVisual.count()
-      >
-      0
-    ) {
-
-      await expect(
-        oldVisual.first()
-      ).toBeHidden();
-
-    }
+    await expect(
+      section.getByRole(
+        "link",
+        {
+          name:
+            /explore course/i
+        }
+      )
+    ).toHaveCount(
+      2
+    );
 
   }
 );
 
 
 test(
-  "AI Security V39 body stays dark",
+  "final Academy CTA remains a single controlled conversion area",
   async ({
     page
   }) => {
@@ -342,100 +478,53 @@ test(
     );
 
 
-    const sections =
+    const section =
       page.locator(
-        "[data-ai-v39-section]"
+        '[data-ai-course-section="cta"]'
       );
 
 
     await expect(
-      sections
-    ).toHaveCount(
-      4
-    );
+      section.getByRole(
+        "heading",
+        {
+          level:
+            2,
+
+          name:
+            /build capability through practice/i
+        }
+      )
+    ).toBeVisible();
 
 
-    for (
-      let index = 0;
-      index < 4;
-      index += 1
-    ) {
-
-      const section =
-        sections.nth(
-          index
-        );
-
-
-      const state =
-        await section.evaluate(
-          (
-            element
-          ) => {
-
-            const style =
-              getComputedStyle(
-                element
-              );
+    await expect(
+      section.getByRole(
+        "link",
+        {
+          name:
+            "Explore Academy"
+        }
+      )
+    ).toBeVisible();
 
 
-            return {
-              backgroundColor:
-                style.backgroundColor,
-
-              backgroundImage:
-                style.backgroundImage
-            };
-
-          }
-        );
-
-
-      const channels =
-        state
-          .backgroundColor
-          .match(
-            /\d+/g
-          )
-          ?.slice(
-            0,
-            3
-          )
-          .map(
-            Number
-          )
-        ??
-        [];
-
-
-      if (
-        state.backgroundImage
-        ===
-        "none"
-        &&
-        channels.length
-        ===
-        3
-      ) {
-
-        expect(
-          Math.max(
-            ...channels
-          )
-        ).toBeLessThan(
-          70
-        );
-
-      }
-
-    }
+    await expect(
+      section.getByRole(
+        "link",
+        {
+          name:
+            "Talk to NoBreach"
+        }
+      )
+    ).toBeVisible();
 
   }
 );
 
 
 test(
-  "V39 remains isolated from the other training programs",
+  "the redesigned course remains isolated from other training routes",
   async ({
     page
   }) => {
@@ -455,7 +544,16 @@ test(
 
       await expect(
         page.locator(
-          "[data-ai-v39-section]"
+          '[data-ai-course-detail="v1"]'
+        )
+      ).toHaveCount(
+        0
+      );
+
+
+      await expect(
+        page.locator(
+          '[data-ai-security-design="course-detail"]'
         )
       ).toHaveCount(
         0
@@ -524,7 +622,7 @@ for (
 ) {
 
   test(
-    `AI Security V39 remains contained at ${viewport.name}`,
+    `AI course detail is contained at ${viewport.name}`,
     async ({
       page
     }) => {
@@ -568,12 +666,7 @@ for (
             clientWidth:
               document
                 .documentElement
-                .clientWidth,
-
-            pageHeight:
-              document
-                .documentElement
-                .scrollHeight
+                .clientWidth
           })
         );
 
@@ -587,16 +680,38 @@ for (
       );
 
 
+      const enrollment =
+        page.locator(
+          "[data-course-enrollment]"
+        );
+
+
+      await expect(
+        enrollment
+      ).toBeVisible();
+
+
       if (
         viewport.width
-        >=
-        1180
+        <=
+        980
       ) {
 
+        const position =
+          await enrollment.evaluate(
+            (
+              element
+            ) =>
+              getComputedStyle(
+                element
+              ).position
+          );
+
+
         expect(
-          geometry.pageHeight
-        ).toBeLessThan(
-          3900
+          position
+        ).toBe(
+          "static"
         );
 
       }
@@ -605,82 +720,3 @@ for (
   );
 
 }
-
-
-test(
-  "AI Security V39 replaces the generic training DOM",
-  async ({
-    page
-  }) => {
-
-    await page.goto(
-      route
-    );
-
-
-    const root =
-      page.locator(
-        '[data-ai-security-design="v39"]'
-      );
-
-
-    await expect(
-      root
-    ).toBeVisible();
-
-
-    /*
-     * The AI route must contain exactly the four V39 sections as direct
-     * section children — not eight hidden generic course sections plus V39.
-     */
-
-    const directSections =
-      root.locator(
-        ":scope > section"
-      );
-
-
-    await expect(
-      directSections
-    ).toHaveCount(
-      4
-    );
-
-
-    await expect(
-      root.locator(
-        ':scope > section[data-ai-v39-section="hero"]'
-      )
-    ).toHaveCount(
-      1
-    );
-
-
-    await expect(
-      root.locator(
-        ':scope > section[data-ai-v39-section="surface"]'
-      )
-    ).toHaveCount(
-      1
-    );
-
-
-    await expect(
-      root.locator(
-        ':scope > section[data-ai-v39-section="program"]'
-      )
-    ).toHaveCount(
-      1
-    );
-
-
-    await expect(
-      root.locator(
-        ':scope > section[data-ai-v39-section="note"]'
-      )
-    ).toHaveCount(
-      1
-    );
-
-  }
-);

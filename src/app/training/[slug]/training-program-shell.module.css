@@ -20506,3 +20506,53 @@ details {
   color-scheme:
     dark;
 }
+
+
+/* ==========================================================================
+   NB_AI_SECURITY_COURSE_DETAIL_SHELL
+
+   Final course-detail architecture.
+
+   This route uses a dedicated shell so historical AI Security presentation
+   experiments cannot affect the current course-detail component.
+   ========================================================================== */
+
+
+.aiSecurityCourseShell {
+  position:
+    relative;
+
+  isolation:
+    isolate;
+
+  min-width:
+    0;
+
+  background:
+    #07090d;
+
+  color:
+    #f5f7fa;
+}
+
+
+.aiSecurityCourseShell[data-ai-security-design="course-detail"] {
+  min-width:
+    0;
+
+  background:
+    #07090d;
+
+  color-scheme:
+    dark;
+}
+
+
+.aiSecurityCourseShell[data-ai-security-design="course-detail"]::before,
+.aiSecurityCourseShell[data-ai-security-design="course-detail"]::after {
+  display:
+    none;
+
+  content:
+    none;
+}

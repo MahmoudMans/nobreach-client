@@ -4,7 +4,7 @@ import type {
 
 import styles from "./training-program-shell.module.css";
 import { WebExploitationV35 } from "./web-exploitation-v35";
-import { AISecurityV39 } from "./ai-security-v39";
+import { AISecurityCourseDetail } from "./ai-security-course-detail";
 
 
 export default async function TrainingProgramLayout({
@@ -47,19 +47,19 @@ return (
     <div
       className={
         isAiSecurity
-          ? styles.aiSecurityV39Shell
+          ? styles.aiSecurityCourseShell
           : styles.programShell
       }
       data-training-program={
         slug
       }
 
-        data-ai-security-design={isAiSecurity ? "v39" : undefined}
+        data-ai-security-design={isAiSecurity ? "course-detail" : undefined}
       >
         {
           isAiSecurity
             ? (
-              <AISecurityV39 />
+              <AISecurityCourseDetail />
             )
             : (
               <>
