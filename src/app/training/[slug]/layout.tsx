@@ -27,7 +27,13 @@ export default async function TrainingProgramLayout({
     slug ===
     "ai-security-foundations";
 
-  return (
+
+  // NB_RED_TEAM_V27_GATE
+  const isRedTeam =
+    slug ===
+    "red-team-foundations";
+
+return (
     <div
       className={
         isAiSecurity
@@ -131,7 +137,123 @@ export default async function TrainingProgramLayout({
       }
 
       {
-        children
+        isRedTeam
+          ? (
+            <div
+              className={
+                styles.redTeam
+              }
+              data-red-team-design="v27"
+            >
+              <div
+                className={
+                  styles.redTeamVisual
+                }
+                aria-hidden="true"
+              >
+                <div
+                  className={
+                    styles.redTeamVisualHeader
+                  }
+                >
+                  <span>
+                    ADVERSARY PATH
+                  </span>
+
+                  <span>
+                    RT / 01
+                  </span>
+                </div>
+
+                <div
+                  className={
+                    styles.redTeamVisualPath
+                  }
+                >
+                  <div
+                    className={
+                      styles.redTeamVisualNode
+                    }
+                  >
+                    <span>
+                      01
+                    </span>
+
+                    <strong>
+                      RECON
+                    </strong>
+                  </div>
+
+                  <i />
+
+                  <div
+                    className={
+                      styles.redTeamVisualNode
+                    }
+                  >
+                    <span>
+                      02
+                    </span>
+
+                    <strong>
+                      MAP
+                    </strong>
+                  </div>
+
+                  <i />
+
+                  <div
+                    className={
+                      styles.redTeamVisualNode
+                    }
+                  >
+                    <span>
+                      03
+                    </span>
+
+                    <strong>
+                      TEST
+                    </strong>
+                  </div>
+
+                  <i />
+
+                  <div
+                    className={
+                      styles.redTeamVisualNode
+                    }
+                  >
+                    <span>
+                      04
+                    </span>
+
+                    <strong>
+                      REPORT
+                    </strong>
+                  </div>
+                </div>
+
+                <div
+                  className={
+                    styles.redTeamVisualFooter
+                  }
+                >
+                  <span>
+                    OBSERVE
+                  </span>
+
+                  <span>
+                    UNDERSTAND
+                  </span>
+                </div>
+              </div>
+
+              {
+                children
+              }
+            </div>
+          )
+          : children
       }
     </div>
   );
