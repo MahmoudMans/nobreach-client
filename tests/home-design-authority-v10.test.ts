@@ -1,11 +1,11 @@
 import {
-  readFileSync,
+  readFileSync
 } from "node:fs";
 
 import {
   describe,
   expect,
-  it,
+  it
 } from "vitest";
 
 
@@ -24,40 +24,115 @@ const css =
 
 
 describe(
-  "No Breach home design authority v10",
+  "homepage design authority v10 / master v11",
   () => {
 
     it(
-      "applies the authority to all five homepage sections",
+      "applies the continuous master design",
       () => {
 
         expect(
-          (
-            page.match(
-              /data-home-design="authority-v10"/g
-            )
-            ?? []
+          page
+        ).toContain(
+          'data-home-design="authority-v10"'
+        );
+
+
+        expect(
+          page
+        ).toContain(
+          'data-home-master="continuous-v11"'
+        );
+
+      }
+    );
+
+
+    it(
+      "keeps exactly one H1",
+      () => {
+
+        expect(
+          page.match(
+            /<h1(?:\s|>)/g
           )
+          ??
+          []
         ).toHaveLength(
-          5
+          1
+        );
+
+      }
+    );
+
+
+    it(
+      "keeps the public NoBreach positioning",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          "Offensive security built around"
+        );
+
+
+        expect(
+          page
+        ).toContain(
+          "how real systems fail."
+        );
+
+
+        expect(
+          page
+        ).toContain(
+          "A cybersecurity organization built from offensive security."
+        );
+
+      }
+    );
+
+
+    it(
+      "renders the four data-driven commercial service areas",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          "const services = ["
+        );
+
+
+        expect(
+          page
+        ).toContain(
+          "services.map"
+        );
+
+
+        expect(
+          page
+        ).toContain(
+          "data-home-service"
         );
 
 
         for (
-          const section
+          const href
           of [
-            "hero",
-            "company",
-            "services",
-            "explore",
-            "contact",
+            "/services/web-application-pentesting",
+            "/services/api-security",
+            "/services/infrastructure-security",
+            "/services/security-training"
           ]
         ) {
 
           expect(
             page
           ).toContain(
-            `data-home-section="${section}"`
+            href
           );
 
         }
@@ -67,117 +142,41 @@ describe(
 
 
     it(
-      "uses the exact No Breach palette",
+      "keeps the global visual-system compatibility markers",
       () => {
 
         for (
-          const color
+          const marker
           of [
-            "#83b3d7",
-            "#a1e2f0",
-            "#7e60b9",
-            "#6333c6",
+            "NB_VISUAL_REFINEMENT_V1",
+            "NB_RESPONSIVE_SYSTEM_V1",
+            "NB_MINIMALIST_SYSTEM_V1",
+            "NB_MINIMALIST_POLISH_V4",
+            "NB_PREMIUM_HERO_SYSTEM_V6",
+            "NB_HOME_HERO_V8",
+            "NB_HOME_HERO_VIEWPORT_FIT_V9",
+            "NB_HOME_DESIGN_AUTHORITY_V10",
+            "NB_HOME_MASTER_CONTINUOUS_V11"
           ]
         ) {
 
           expect(
-            css
-          ).toContain(
-            color
+            (
+              css.match(
+                new RegExp(
+                  marker,
+                  "g"
+                )
+              )
+              ??
+              []
+            ).length,
+            marker
+          ).toBe(
+            1
           );
 
         }
-
-      }
-    );
-
-
-    it(
-      "uses editorial service rows",
-      () => {
-
-        expect(
-          css
-        ).toContain(
-          '.serviceRow'
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          'grid-template-columns:\n    60px'
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          'border-radius:\n    0;'
-        );
-
-      }
-    );
-
-
-    it(
-      "turns the ecosystem into a directory instead of a card grid",
-      () => {
-
-        expect(
-          css
-        ).toContain(
-          '.ecosystemGrid {\n  display:\n    block;'
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          '.ecosystemCard,'
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          'grid-template-columns:\n    180px'
-        );
-
-      }
-    );
-
-
-    it(
-      "supports responsive and reduced-motion experiences",
-      () => {
-
-        expect(
-          css
-        ).toContain(
-          'max-width:\n    1024px'
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          'max-width:\n    768px'
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          'max-width:\n    480px'
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          'prefers-reduced-motion:'
-        );
 
       }
     );

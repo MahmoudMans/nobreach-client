@@ -171,21 +171,60 @@ test(
   async ({
     page
   }) => {
+
     await page.goto(
       "/"
     );
 
-    await expect(
+
+    const visual =
       page.locator(
-        '[data-home-section="hero"]'
+        '[data-home-hero-visual="attack-surface"]'
+      );
+
+
+    await expect(
+      visual
+    ).toBeVisible();
+
+
+    await expect(
+      visual
+    ).toHaveAttribute(
+      "data-hero-art",
+      "attack-surface"
+    );
+
+
+    await expect(
+      visual
+    ).toHaveAttribute(
+      "data-attack-surface",
+      "true"
+    );
+
+
+    await expect(
+      visual.getByText(
+        "NO BREACH",
+        {
+          exact:
+            true
+        }
       )
     ).toBeVisible();
 
+
     await expect(
-      page.getByText(
-        "NB / ATTACK SURFACE"
+      visual.getByText(
+        "ATTACK SURFACE / TN",
+        {
+          exact:
+            true
+        }
       )
     ).toBeVisible();
+
 
     for (
       const node
@@ -194,19 +233,56 @@ test(
         "API",
         "AUTH",
         "USER",
+        "DB",
         "DATA"
       ]
     ) {
+
       await expect(
-        page.getByText(
+        visual.getByText(
           node,
           {
             exact:
               true
           }
-        ).first()
+        )
       ).toBeVisible();
+
     }
+
+
+    await expect(
+      visual.getByText(
+        "MAP",
+        {
+          exact:
+            true
+        }
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      visual.getByText(
+        "TEST",
+        {
+          exact:
+            true
+        }
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      visual.getByText(
+        "VALIDATE",
+        {
+          exact:
+            true
+        }
+      )
+    ).toBeVisible();
+
   }
 );
 

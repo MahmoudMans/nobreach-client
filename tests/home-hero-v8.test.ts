@@ -1,11 +1,11 @@
 import {
-  readFileSync,
+  readFileSync
 } from "node:fs";
 
 import {
   describe,
   expect,
-  it,
+  it
 } from "vitest";
 
 
@@ -24,11 +24,11 @@ const css =
 
 
 describe(
-  "homepage hero v8",
+  "homepage hero v8 compatibility",
   () => {
 
     it(
-      "uses the new elegant hero architecture",
+      "keeps the established hero identity",
       () => {
 
         expect(
@@ -37,74 +37,27 @@ describe(
           'data-home-hero="v8"'
         );
 
-        expect(
-          page
-        ).toContain(
-          "Offensive security built around"
-        );
 
         expect(
           page
         ).toContain(
-          "how real systems fail."
+          "OFFENSIVE SECURITY / TUNISIA"
         );
+
       }
     );
 
 
     it(
-      "preserves the homepage action hierarchy",
+      "keeps the signature attack-surface visual",
       () => {
 
         expect(
           page
         ).toContain(
-          'href="/services"'
+          'data-hero-art="attack-surface"'
         );
 
-        expect(
-          page
-        ).toContain(
-          "Explore services"
-        );
-
-        expect(
-          page
-        ).toContain(
-          'href="/company"'
-        );
-
-        expect(
-          page
-        ).toContain(
-          "About No Breach"
-        );
-      }
-    );
-
-
-    it(
-      "keeps the connected No Breach positioning",
-      () => {
-
-        expect(
-          page
-        ).toContain(
-          "Security, education and community are one connected system."
-        );
-      }
-    );
-
-
-    it(
-      "uses a restrained attack-surface visual",
-      () => {
-
-        expect(
-          page
-        ).toContain(
-          'data-home-hero-visual="attack-surface"'
-        );
 
         for (
           const node
@@ -114,7 +67,7 @@ describe(
             "AUTH",
             "USER",
             "DB",
-            "DATA",
+            "DATA"
           ]
         ) {
 
@@ -125,82 +78,35 @@ describe(
           );
 
         }
+
       }
     );
 
 
     it(
-      "preserves exactly five homepage primary sections",
-      () => {
-
-        const sections =
-          page.match(
-            /data-home-section="/g
-          )
-          ?? [];
-
-
-        expect(
-          sections
-        ).toHaveLength(
-          5
-        );
-
-
-        for (
-          const section
-          of [
-            "hero",
-            "company",
-            "services",
-            "explore",
-            "contact",
-          ]
-        ) {
-
-          expect(
-            page
-          ).toContain(
-            `data-home-section="${section}"`
-          );
-
-        }
-      }
-    );
-
-
-    it(
-      "applies the V8 visual layer once with responsive motion policy",
+      "keeps reduced-motion support",
       () => {
 
         expect(
-          (
-            css.match(
-              /NB_HOME_HERO_V8/g
-            )
-            ?? []
-          )
-        ).toHaveLength(
-          1
+          css
+        ).toContain(
+          "prefers-reduced-motion"
         );
+
 
         expect(
           css
         ).toContain(
-          "@media (\n  max-width: 980px"
+          "animation:"
         );
+
 
         expect(
           css
         ).toContain(
-          "@media (\n  max-width: 680px"
+          "none !important"
         );
 
-        expect(
-          css
-        ).toContain(
-          "prefers-reduced-motion: reduce"
-        );
       }
     );
 

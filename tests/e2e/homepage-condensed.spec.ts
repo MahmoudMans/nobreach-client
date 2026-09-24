@@ -3,198 +3,189 @@ import {
   test
 } from "@playwright/test";
 
+
 test(
-  "homepage is a concise five-section gateway",
+  "homepage uses the full continuous UX chapter flow",
   async ({
     page
   }) => {
+
     await page.goto(
       "/"
     );
 
-    await expect(
+
+    const chapters =
       page.locator(
-        "[data-home-section]"
-      )
-    ).toHaveCount(
-      5
-    );
+        "[data-home-chapter]"
+      );
+
 
     await expect(
-      page.getByRole(
-        "heading",
-        {
-          level: 1,
-          name:
-            /offensive security built around how real systems fail/i
-        }
-      )
-    ).toBeVisible();
+      chapters
+    ).toHaveCount(
+      16
+    );
+
+
+    const expected =
+      [
+        "hero",
+        "trust",
+        "audience",
+        "services",
+        "capability",
+        "academy",
+        "labs",
+        "why",
+        "process",
+        "proof",
+        "metrics",
+        "team",
+        "resources",
+        "faq",
+        "feed",
+        "cta"
+      ];
+
+
+    for (
+      let index = 0;
+      index < expected.length;
+      index += 1
+    ) {
+
+      await expect(
+        chapters.nth(
+          index
+        )
+      ).toHaveAttribute(
+        "data-home-chapter",
+        expected[
+          index
+        ]
+      );
+
+    }
+
   }
 );
+
 
 test(
   "homepage routes detailed content to dedicated pages",
   async ({
     page
   }) => {
+
     await page.goto(
       "/"
     );
 
-    const expectedLinks = [
-      {
-        name:
-          "Read the company story",
-        href:
-          "/company"
-      },
-      {
-        name:
-          "Full methodology & services",
-        href:
-          "/services"
-      },
-      {
-        name:
-          "Nouha Ben Brahim",
-        href:
-          "/company/founder"
-      },
-      {
-        name:
-          "Training Hub",
-        href:
-          "/training"
-      },
-      {
-        name:
-          "CR4CKOUT",
-        href:
-          "/cr4ckout"
-      },
-      {
-        name:
-          "Internship Projects",
-        href:
-          "/company/internships"
-      },
-      {
-        name:
-          "Activities & LinkedIn",
-        href:
-          "/activities"
-      },
-      {
-        name:
-          "Technical Insights",
-        href:
-          "/insights"
-      },
-      {
-        name:
-          "Events Archive",
-        href:
-          "/events"
-      }
-    ];
 
     for (
-      const item
-      of expectedLinks
-    ) {
-      const link =
-        page.getByRole(
-          "link",
-          {
-            name:
-              new RegExp(
-                item.name,
-                "i"
-              )
-          }
-        ).first();
-
-      await expect(
-        link
-      ).toHaveAttribute(
-        "href",
-        item.href
-      );
-    }
-  }
-);
-
-test.describe(
-  "condensed homepage responsive layout",
-  () => {
-    for (
-      const viewport
+      const href
       of [
-        {
-          label:
-            "tablet",
-          width:
-            820,
-          height:
-            1180
-        },
-        {
-          label:
-            "mobile",
-          width:
-            390,
-          height:
-            844
-        }
+        "/services",
+        "/training",
+        "/cr4ckout",
+        "/activities",
+        "/events",
+        "/insights",
+        "/company/team",
+        "/contact"
       ]
     ) {
-      test(
-        `homepage fits ${viewport.label}`,
-        async ({
-          page
-        }) => {
-          await page.setViewportSize({
-            width:
-              viewport.width,
 
-            height:
-              viewport.height
-          });
+      await expect(
+        page.locator(
+          `a[href="${href}"]`
+        ).first()
+      ).toBeVisible();
 
-          await page.goto(
-            "/"
-          );
-
-          await expect(
-            page.locator(
-              "#main-content h1"
-            )
-          ).toBeVisible();
-
-          const dimensions =
-            await page.evaluate(
-              () => ({
-                scrollWidth:
-                  document
-                    .documentElement
-                    .scrollWidth,
-
-                clientWidth:
-                  document
-                    .documentElement
-                    .clientWidth
-              })
-            );
-
-          expect(
-            dimensions.scrollWidth
-          ).toBeLessThanOrEqual(
-            dimensions.clientWidth +
-              1
-          );
-        }
-      );
     }
+
   }
 );
+
+
+for (
+  const viewport
+  of [
+    {
+      name:
+        "tablet",
+
+      width:
+        820,
+
+      height:
+        1180
+    },
+    {
+      name:
+        "mobile",
+
+      width:
+        390,
+
+      height:
+        844
+    },
+    {
+      name:
+        "narrow",
+
+      width:
+        360,
+
+      height:
+        800
+    }
+  ]
+) {
+
+  test(
+    `continuous homepage fits ${viewport.name}`,
+    async ({
+      page
+    }) => {
+
+      await page.setViewportSize({
+        width:
+          viewport.width,
+
+        height:
+          viewport.height
+      });
+
+
+      await page.goto(
+        "/"
+      );
+
+
+      const geometry =
+        await page.evaluate(
+          () => ({
+            scrollWidth:
+              document.documentElement.scrollWidth,
+
+            clientWidth:
+              document.documentElement.clientWidth
+          })
+        );
+
+
+      expect(
+        geometry.scrollWidth
+      ).toBeLessThanOrEqual(
+        geometry.clientWidth
+        +
+        1
+      );
+
+    }
+  );
+
+}

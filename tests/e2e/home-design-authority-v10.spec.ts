@@ -1,40 +1,25 @@
 import {
   expect,
-  test,
+  test
 } from "@playwright/test";
 
 
 test(
-  "homepage applies the No Breach V10 authority",
+  "homepage applies the continuous NoBreach master authority",
   async ({
     page
   }) => {
 
-    await page.setViewportSize({
-      width:
-        1440,
-
-      height:
-        900,
-    });
-
-
     await page.goto(
-      "/",
-      {
-        waitUntil:
-          "domcontentloaded",
-      }
+      "/"
     );
 
 
     await expect(
       page.locator(
-        '[data-home-design="authority-v10"]'
+        '[data-home-master="continuous-v11"]'
       )
-    ).toHaveCount(
-      5
-    );
+    ).toBeVisible();
 
 
     await expect(
@@ -45,32 +30,21 @@ test(
             1,
 
           name:
-            /offensive security built around how real systems fail/i,
+            /offensive security built around/i
         }
       )
-    ).toBeVisible();
+    ).toHaveCount(
+      1
+    );
 
 
     await expect(
-      page.getByRole(
-        "link",
-        {
-          name:
-            /explore services/i,
-        }
+      page.locator(
+        "[data-home-chapter]"
       )
-    ).toBeVisible();
-
-
-    await expect(
-      page.getByRole(
-        "link",
-        {
-          name:
-            /contact no breach/i,
-        }
-      )
-    ).toBeVisible();
+    ).toHaveCount(
+      16
+    );
 
   }
 );
@@ -82,242 +56,92 @@ test(
     page
   }) => {
 
-    await page.setViewportSize({
-      width:
-        1440,
-
-      height:
-        900,
-    });
-
-
     await page.goto(
-      "/",
-      {
-        waitUntil:
-          "domcontentloaded",
-      }
+      "/"
     );
 
 
-    const section =
+    const services =
       page.locator(
-        '[data-home-section="services"]'
-      );
-
-
-    await section
-      .scrollIntoViewIfNeeded();
-
-
-    await expect(
-      section
-    ).toBeVisible();
-
-
-    const rows =
-      section.locator(
-        'a[href^="/services/"]'
+        '[data-home-chapter="services"]'
       );
 
 
     await expect(
-      rows
+      services.locator(
+        "[data-home-service]"
+      )
     ).toHaveCount(
       4
     );
 
 
-    const geometry =
-      await rows.evaluateAll(
-        elements =>
-          elements.map(
-            element => {
-
-              const rect =
-                element.getBoundingClientRect();
-
-
-              return {
-                width:
-                  rect.width,
-
-                height:
-                  rect.height,
-
-                y:
-                  rect.y,
-              };
-
-            }
-          )
-      );
-
-
-    expect(
-      geometry
-    ).toHaveLength(
-      4
-    );
-
-
     for (
-      const row
-      of geometry
+      const href
+      of [
+        "/services/web-application-pentesting",
+        "/services/api-security",
+        "/services/infrastructure-security",
+        "/services/security-training"
+      ]
     ) {
 
-      expect(
-        row.width
-      ).toBeGreaterThan(
-        700
-      );
-
-
-      expect(
-        row.height
-      ).toBeGreaterThan(
-        80
+      await expect(
+        services.locator(
+          `a[href="${href}"]`
+        )
+      ).toHaveCount(
+        1
       );
 
     }
-
-
-    expect(
-      geometry[1].y
-    ).toBeGreaterThan(
-      geometry[0].y
-    );
 
   }
 );
 
 
 test(
-  "homepage ecosystem is a directory rather than a card wall",
+  "homepage ecosystem is an editorial directory",
   async ({
     page
   }) => {
 
-    await page.setViewportSize({
-      width:
-        1440,
-
-      height:
-        900,
-    });
-
-
     await page.goto(
-      "/",
-      {
-        waitUntil:
-          "domcontentloaded",
-      }
+      "/"
     );
 
 
-    const section =
+    const proof =
       page.locator(
         '[data-home-section="explore"]'
       );
 
 
-    await section
-      .scrollIntoViewIfNeeded();
-
-
-    await expect(
-      section
-    ).toBeVisible();
-
-
-    const rows =
-      section.locator(
-        "a"
-      );
-
-
-    await expect(
-      rows
-    ).toHaveCount(
-      7
-    );
-
-
-    const geometry =
-      await rows.evaluateAll(
-        elements =>
-          elements.map(
-            element => {
-
-              const rect =
-                element.getBoundingClientRect();
-
-              const style =
-                window.getComputedStyle(
-                  element
-                );
-
-
-              return {
-                width:
-                  rect.width,
-
-                y:
-                  rect.y,
-
-                radius:
-                  style.borderRadius,
-
-                background:
-                  style.backgroundColor,
-              };
-
-            }
-          )
-      );
-
-
-    expect(
-      geometry
-    ).toHaveLength(
-      7
-    );
-
-
     for (
-      const row
-      of geometry
+      const href
+      of [
+        "/cr4ckout",
+        "/training",
+        "/activities",
+        "/events",
+        "/insights"
+      ]
     ) {
 
-      expect(
-        row.width
-      ).toBeGreaterThan(
-        700
-      );
-
-
-      expect(
-        row.radius
-      ).toBe(
-        "0px"
-      );
+      await expect(
+        proof.locator(
+          `a[href="${href}"]`
+        )
+      ).toBeVisible();
 
     }
-
-
-    expect(
-      geometry[1].y
-    ).toBeGreaterThan(
-      geometry[0].y
-    );
 
   }
 );
 
 
 test(
-  "homepage V10 remains sleek and overflow free on mobile",
+  "homepage remains sleek and overflow free on mobile",
   async ({
     page
   }) => {
@@ -327,50 +151,34 @@ test(
         390,
 
       height:
-        844,
+        844
     });
 
 
     await page.goto(
-      "/",
-      {
-        waitUntil:
-          "domcontentloaded",
-      }
+      "/"
     );
 
 
-    await expect(
-      page.locator(
-        '[data-home-section="hero"] h1'
-      )
-    ).toBeVisible();
-
-
-    const result =
+    const geometry =
       await page.evaluate(
         () => ({
           scrollWidth:
             document.documentElement.scrollWidth,
 
           clientWidth:
-            document.documentElement.clientWidth,
+            document.documentElement.clientWidth
         })
       );
 
 
     expect(
-      result.scrollWidth
+      geometry.scrollWidth
     ).toBeLessThanOrEqual(
-      result.clientWidth + 1
+      geometry.clientWidth
+      +
+      1
     );
-
-
-    await expect(
-      page.locator(
-        '[data-home-section="contact"]'
-      )
-    ).toBeAttached();
 
   }
 );

@@ -1,5 +1,6 @@
-import fs from "node:fs";
-import path from "node:path";
+import {
+  readFileSync
+} from "node:fs";
 
 import {
   describe,
@@ -8,224 +9,119 @@ import {
 } from "vitest";
 
 
-const root =
-  process.cwd();
-
-
-function read(
-  relativePath: string
-) {
-  return fs.readFileSync(
-    path.join(
-      root,
-      relativePath
-    ),
+const page =
+  readFileSync(
+    "src/app/page.tsx",
     "utf8"
   );
-}
 
 
 describe(
-  "modern homepage v7",
+  "modern homepage destination system",
   () => {
-    const page =
-      read(
-        "src/app/page.tsx"
-      );
-
-    const css =
-      read(
-        "src/app/home.module.css"
-      );
-
 
     it(
-      "preserves the five-section information architecture",
+      "routes all four services",
       () => {
-        expect(
-          (
-            page.match(
-              /data-home-section=/g
-            ) ?? []
-          ).length
-        ).toBe(
-          5
-        );
 
         for (
-          const section
+          const href
           of [
-            "hero",
-            "company",
-            "services",
-            "explore",
-            "contact"
+            "/services/web-application-pentesting",
+            "/services/api-security",
+            "/services/infrastructure-security",
+            "/services/security-training"
           ]
         ) {
+
           expect(
             page
           ).toContain(
-            `data-home-section="${section}"`
+            href
           );
+
         }
+
       }
     );
 
 
     it(
-      "uses the dynamic attack surface constellation",
+      "routes the wider NoBreach ecosystem",
       () => {
-        expect(
-          page
-        ).toContain(
-          "NB / ATTACK SURFACE"
-        );
 
         for (
-          const node
+          const href
           of [
-            "APP",
-            "API",
-            "AUTH",
-            "USER",
-            "DATA"
-          ]
-        ) {
-          expect(
-            page
-          ).toContain(
-            node
-          );
-        }
-
-        expect(
-          css
-        ).toContain(
-          ".constellationShell"
-        );
-
-        expect(
-          css
-        ).toContain(
-          ".scanBeam"
-        );
-
-        expect(
-          css
-        ).toContain(
-          "nbModernScan"
-        );
-      }
-    );
-
-
-    it(
-      "preserves all detailed content destinations",
-      () => {
-        for (
-          const route
-          of [
-            "/company",
-            "/company/founder",
-            "/company/internships",
-            "/services",
             "/training",
             "/cr4ckout",
             "/activities",
             "/events",
             "/insights",
+            "/company/team",
             "/contact"
           ]
         ) {
+
           expect(
             page
           ).toContain(
-            route
+            href
           );
+
         }
+
       }
     );
 
 
     it(
-      "uses modern service rows rather than the old service-card layout",
+      "uses canonical training data",
       () => {
-        expect(
-          page
-        ).toContain(
-          "serviceRows"
-        );
 
         expect(
           page
         ).toContain(
-          "serviceRow"
+          'from "@/content/training"'
         );
 
+
         expect(
-          css
+          page
         ).toContain(
-          ".serviceRow"
+          "trainingPrograms.map"
         );
+
       }
     );
 
 
     it(
-      "uses asymmetric ecosystem composition",
+      "uses confirmed current-team data",
       () => {
-        expect(
-          page
-        ).toContain(
-          "ecosystemLarge"
-        );
 
         expect(
           page
         ).toContain(
-          "ecosystemWide"
+          'from "@/content/team"'
         );
 
+
         expect(
-          css
+          page
         ).toContain(
-          ".ecosystemLarge"
+          'member.status'
         );
+
+
+        expect(
+          page
+        ).toContain(
+          '"current"'
+        );
+
       }
     );
 
-
-    it(
-      "supports reduced motion",
-      () => {
-        expect(
-          css
-        ).toContain(
-          "prefers-reduced-motion"
-        );
-
-        expect(
-          css
-        ).toContain(
-          "animation:"
-        );
-      }
-    );
-
-
-    it(
-      "applies V7 once",
-      () => {
-        expect(
-          (
-            css.match(
-              /NB_MODERN_HOME_V7/g
-            ) ?? []
-          ).length
-        ).toBe(
-          1
-        );
-      }
-    );
   }
 );

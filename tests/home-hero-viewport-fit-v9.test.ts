@@ -1,11 +1,11 @@
 import {
-  readFileSync,
+  readFileSync
 } from "node:fs";
 
 import {
   describe,
   expect,
-  it,
+  it
 } from "vitest";
 
 
@@ -16,125 +16,67 @@ const css =
   );
 
 
-const page =
-  readFileSync(
-    "src/app/page.tsx",
-    "utf8"
-  );
-
-
 describe(
-  "homepage hero viewport fit v9",
+  "homepage responsive viewport system",
   () => {
 
     it(
-      "keeps V8 as the homepage hero",
+      "uses viewport-relative desktop hero geometry",
       () => {
 
         expect(
-          page
+          css
         ).toContain(
-          'data-home-hero="v8"'
+          "100svh - 76px"
         );
 
-        expect(
-          page
-        ).toContain(
-          "how real systems fail."
-        );
       }
     );
 
 
     it(
-      "applies the V9 viewport system once",
+      "contains all required responsive recomposition points",
       () => {
 
-        expect(
-          (
-            css.match(
-              /NB_HOME_HERO_VIEWPORT_FIT_V9/g
-            )
-            ?? []
-          )
-        ).toHaveLength(
-          1
-        );
+        for (
+          const breakpoint
+          of [
+            "@media (max-width: 1024px)",
+            "@media (max-width: 820px)",
+            "@media (max-width: 640px)",
+            "@media (max-width: 390px)"
+          ]
+        ) {
+
+          expect(
+            css
+          ).toContain(
+            breakpoint
+          );
+
+        }
+
       }
     );
 
 
     it(
-      "uses viewport-relative hero geometry",
+      "recomposes hero on compact screens",
       () => {
 
         expect(
           css
         ).toContain(
-          "100svh - 82px"
+          ".heroV8Frame,"
         );
+
 
         expect(
           css
         ).toContain(
-          "box-sizing:"
+          "grid-template-columns:"
         );
 
-        expect(
-          css
-        ).toContain(
-          "border-box"
-        );
-      }
-    );
-
-
-    it(
-      "removes unnecessary top spacing",
-      () => {
-
-        expect(
-          css
-        ).toContain(
-          "margin-top:"
-        );
-
-        expect(
-          css
-        ).toContain(
-          "scroll-margin-top:"
-        );
-      }
-    );
-
-
-    it(
-      "compacts tablet and mobile hero presentations",
-      () => {
-
-        expect(
-          css
-        ).toContain(
-          "max-width: 980px"
-        );
-
-        expect(
-          css
-        ).toContain(
-          "max-width: 680px"
-        );
-
-        expect(
-          css
-        ).toContain(
-          ".heroV8Visual"
-        );
-
-        expect(
-          css
-        ).toContain(
-          "display:"
-        );
       }
     );
 

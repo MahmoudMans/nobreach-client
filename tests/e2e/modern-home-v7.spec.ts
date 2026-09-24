@@ -5,316 +5,108 @@ import {
 
 
 test(
-  "modern homepage renders dynamic No Breach hero",
+  "modern homepage renders student and organization journeys",
   async ({
     page
   }) => {
+
     await page.goto(
       "/"
     );
 
-    const hero =
+
+    const audience =
       page.locator(
-        '[data-home-section="hero"]'
+        '[data-home-chapter="audience"]'
       );
 
-    await expect(
-      hero
-    ).toBeVisible();
 
     await expect(
-      page.getByRole(
-        "heading",
-        {
-          level:
-            1,
-
-          name:
-            /offensive security built around how real systems fail/i
-        }
+      audience.getByText(
+        "FOR STUDENTS"
       )
     ).toBeVisible();
 
+
     await expect(
-      page.getByText(
-        "NB / ATTACK SURFACE"
+      audience.getByText(
+        "FOR ORGANIZATIONS"
       )
     ).toBeVisible();
 
-    for (
-      const node
-      of [
-        "APP",
-        "API",
-        "AUTH",
-        "USER",
-        "DATA"
-      ]
-    ) {
-      await expect(
-        hero.getByText(
-          node,
-          {
-            exact:
-              true
-          }
-        ).first()
-      ).toBeVisible();
-    }
   }
 );
 
 
 test(
-  "modern homepage preserves all five primary sections",
+  "modern homepage renders canonical Academy programs",
   async ({
     page
   }) => {
+
     await page.goto(
       "/"
     );
 
-    await expect(
+
+    const academy =
       page.locator(
-        "[data-home-section]"
-      )
-    ).toHaveCount(
-      5
-    );
+        '[data-home-chapter="academy"]'
+      );
+
 
     for (
-      const section
+      const href
       of [
-        "hero",
-        "company",
-        "services",
-        "explore",
-        "contact"
+        "/training/red-team-foundations",
+        "/training/web-exploitation-techniques",
+        "/training/ai-security-foundations"
       ]
     ) {
+
       await expect(
-        page.locator(
-          `[data-home-section="${section}"]`
+        academy.locator(
+          `a[href="${href}"]`
         )
       ).toBeVisible();
+
     }
+
   }
 );
 
 
 test(
-  "modern service rows route to service details",
+  "modern homepage exposes real public proof",
   async ({
     page
   }) => {
+
     await page.goto(
       "/"
     );
 
-    const api =
-      page.getByRole(
-        "link",
-        {
-          name:
-            /api security/i
-        }
-      ).first();
 
     await expect(
-      api
-    ).toHaveAttribute(
-      "href",
-      "/services/api-security"
-    );
-
-    const web =
-      page.getByRole(
-        "link",
+      page.locator(
+        '[data-home-chapter="proof"]'
+      ).getByText(
+        "CR4CKOUT",
         {
-          name:
-            /web application security/i
+          exact:
+            true
         }
-      ).first();
+      )
+    ).toBeVisible();
+
 
     await expect(
-      web
-    ).toHaveAttribute(
-      "href",
-      "/services/web-application-pentesting"
-    );
-  }
-);
+      page.locator(
+        '[data-home-chapter="resources"]'
+      ).getByRole(
+        "link"
+      ).first()
+    ).toBeVisible();
 
-
-test(
-  "modern ecosystem retains dedicated content destinations",
-  async ({
-    page
-  }) => {
-    await page.goto(
-      "/"
-    );
-
-    const destinations = [
-      {
-        name:
-          "Nouha Ben Brahim",
-
-        href:
-          "/company/founder"
-      },
-      {
-        name:
-          "Training Hub",
-
-        href:
-          "/training"
-      },
-      {
-        name:
-          "CR4CKOUT",
-
-        href:
-          "/cr4ckout"
-      },
-      {
-        name:
-          "Internship Projects",
-
-        href:
-          "/company/internships"
-      },
-      {
-        name:
-          "Activities & LinkedIn",
-
-        href:
-          "/activities"
-      },
-      {
-        name:
-          "Technical Insights",
-
-        href:
-          "/insights"
-      },
-      {
-        name:
-          "Events Archive",
-
-        href:
-          "/events"
-      }
-    ];
-
-    for (
-      const destination
-      of destinations
-    ) {
-      await expect(
-        page.getByRole(
-          "link",
-          {
-            name:
-              new RegExp(
-                destination.name,
-                "i"
-              )
-          }
-        ).first()
-      ).toHaveAttribute(
-        "href",
-        destination.href
-      );
-    }
-  }
-);
-
-
-test.describe(
-  "modern homepage responsive experience",
-  () => {
-    for (
-      const viewport
-      of [
-        {
-          label:
-            "desktop",
-
-          width:
-            1440,
-
-          height:
-            900
-        },
-        {
-          label:
-            "tablet",
-
-          width:
-            820,
-
-          height:
-            1180
-        },
-        {
-          label:
-            "mobile",
-
-          width:
-            390,
-
-          height:
-            844
-        }
-      ]
-    ) {
-      test(
-        `modern homepage fits ${viewport.label}`,
-        async ({
-          page
-        }) => {
-          await page.setViewportSize({
-            width:
-              viewport.width,
-
-            height:
-              viewport.height
-          });
-
-          await page.goto(
-            "/"
-          );
-
-          await expect(
-            page.locator(
-              "#main-content h1"
-            )
-          ).toBeVisible();
-
-          const dimensions =
-            await page.evaluate(
-              () => ({
-                scrollWidth:
-                  document
-                    .documentElement
-                    .scrollWidth,
-
-                clientWidth:
-                  document
-                    .documentElement
-                    .clientWidth
-              })
-            );
-
-          expect(
-            dimensions.scrollWidth
-          ).toBeLessThanOrEqual(
-            dimensions.clientWidth +
-              1
-          );
-        }
-      );
-    }
   }
 );

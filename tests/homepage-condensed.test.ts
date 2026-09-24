@@ -1,5 +1,6 @@
-import fs from "node:fs";
-import path from "node:path";
+import {
+  readFileSync
+} from "node:fs";
 
 import {
   describe,
@@ -7,129 +8,107 @@ import {
   it
 } from "vitest";
 
-const root =
-  process.cwd();
 
-function read(
-  relativePath: string
-) {
-  return fs.readFileSync(
-    path.join(
-      root,
-      relativePath
-    ),
+const page =
+  readFileSync(
+    "src/app/page.tsx",
     "utf8"
   );
-}
+
 
 describe(
-  "condensed homepage",
+  "homepage continuous master architecture",
   () => {
-    const homepage =
-      read(
-        "src/app/page.tsx"
-      );
 
     it(
-      "contains exactly five intentional homepage sections",
+      "uses the intended content-chapter sequence",
       () => {
-        const sections =
-          homepage.match(
-            /data-home-section=/g
-          ) ?? [];
+
+        const chapters =
+          page.match(
+            /data-home-chapter="[^"]+"/g
+          )
+          ??
+          [];
+
 
         expect(
-          sections.length
-        ).toBe(
-          5
-        );
+          chapters
+        ).toEqual([
+          'data-home-chapter="hero"',
+          'data-home-chapter="trust"',
+          'data-home-chapter="audience"',
+          'data-home-chapter="services"',
+          'data-home-chapter="capability"',
+          'data-home-chapter="academy"',
+          'data-home-chapter="labs"',
+          'data-home-chapter="why"',
+          'data-home-chapter="process"',
+          'data-home-chapter="proof"',
+          'data-home-chapter="metrics"',
+          'data-home-chapter="team"',
+          'data-home-chapter="resources"',
+          'data-home-chapter="faq"',
+          'data-home-chapter="feed"',
+          'data-home-chapter="cta"'
+        ]);
+
       }
     );
 
+
     it(
-      "preserves the primary No Breach positioning",
+      "keeps five legacy route markers for compatibility",
       () => {
-        expect(
-          homepage
-        ).toContain(
-          "Offensive security built around"
-        );
+
+        const legacySections =
+          page.match(
+            /data-home-section="[^"]+"/g
+          )
+          ??
+          [];
+
 
         expect(
-          homepage
-        ).toContain(
-          "Offensive Security / Tunisia"
-        );
+          legacySections
+        ).toEqual([
+          'data-home-section="hero"',
+          'data-home-section="company"',
+          'data-home-section="services"',
+          'data-home-section="explore"',
+          'data-home-section="contact"'
+        ]);
+
       }
     );
 
-    it(
-      "moves detailed content to dedicated routes",
-      () => {
-        for (
-          const route
-          of [
-            "/company",
-            "/company/founder",
-            "/company/internships",
-            "/services",
-            "/training",
-            "/cr4ckout",
-            "/activities",
-            "/events",
-            "/insights"
-          ]
-        ) {
-          expect(
-            homepage
-          ).toContain(
-            route
-          );
-        }
-      }
-    );
 
     it(
-      "does not recreate the former long-form homepage sections",
+      "contains no page-level navbar",
       () => {
+
         expect(
-          homepage
+          page
         ).not.toContain(
-          "Security methodology"
+          "<nav"
         );
 
-        expect(
-          homepage
-        ).not.toContain(
-          "Featured programs"
-        );
-
-        expect(
-          homepage
-        ).not.toContain(
-          "Company timeline"
-        );
       }
     );
+
 
     it(
-      "applies condensed homepage CSS once",
+      "does not invent testimonial content",
       () => {
-        const css =
-          read(
-            "src/app/home.module.css"
-          );
 
         expect(
-          (
-            css.match(
-              /NB_HOME_CONDENSED_V1/g
-            ) ?? []
-          ).length
-        ).toBe(
-          1
+          page
+        ).not.toContain(
+          "data-home-chapter=\"testimonials\""
         );
+
       }
     );
+
   }
 );

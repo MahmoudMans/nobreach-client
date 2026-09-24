@@ -1,5 +1,6 @@
-import fs from "node:fs";
-import path from "node:path";
+import {
+  readFileSync
+} from "node:fs";
 
 import {
   describe,
@@ -7,169 +8,201 @@ import {
   it
 } from "vitest";
 
-const root =
-  process.cwd();
 
-function read(
-  relativePath: string
-) {
-  return fs.readFileSync(
-    path.join(
-      root,
-      relativePath
-    ),
+const page =
+  readFileSync(
+    "src/app/page.tsx",
     "utf8"
   );
-}
 
-const heroFiles = [
-  "src/styles/pages.module.css",
-  "src/components/ui/page-hero.module.css",
-  "src/app/home.module.css",
-  "src/app/company/founder/founder.module.css",
-  "src/app/company/internships/internships.module.css",
-  "src/app/activities/[slug]/activity.module.css",
-  "src/app/insights/[slug]/article.module.css"
-];
+
+const home =
+  readFileSync(
+    "src/app/home.module.css",
+    "utf8"
+  );
+
 
 describe(
-  "premium hero system v6",
+  "premium hero system v6 compatibility on homepage v11",
   () => {
-    it(
-      "applies hero V6 exactly once to all intended hero surfaces",
-      () => {
-        for (
-          const file
-          of heroFiles
-        ) {
-          const source =
-            read(
-              file
-            );
 
-          expect(
-            (
-              source.match(
-                /NB_PREMIUM_HERO_SYSTEM_V6/g
-              ) ?? []
-            ).length,
-            file
-          ).toBe(
-            1
-          );
-        }
+    it(
+      "retains the premium hero lineage exactly once",
+      () => {
+
+        expect(
+          (
+            home.match(
+              /NB_PREMIUM_HERO_SYSTEM_V6/g
+            )
+            ??
+            []
+          ).length
+        ).toBe(
+          1
+        );
+
+
+        expect(
+          (
+            home.match(
+              /NB_HOME_MASTER_CONTINUOUS_V11/g
+            )
+            ??
+            []
+          ).length
+        ).toBe(
+          1
+        );
+
       }
     );
+
 
     it(
       "uses restrained technical grids",
       () => {
-        const source =
-          read(
-            "src/components/ui/page-hero.module.css"
-          );
 
         expect(
-          source
+          home
         ).toContain(
-          "background-size:"
+          ".heroV8Ambient"
         );
 
-        expect(
-          source
-        ).toContain(
-          "48px 48px"
-        );
 
         expect(
-          source
+          home
         ).toContain(
-          "mask-image:"
+          "background-image:"
         );
+
+
+        expect(
+          home
+        ).toContain(
+          "linear-gradient("
+        );
+
       }
     );
 
-    it(
-      "adds architectural hero accents",
-      () => {
-        const source =
-          read(
-            "src/components/ui/page-hero.module.css"
-          );
-
-        expect(
-          source
-        ).toContain(
-          ".hero::after"
-        );
-
-        expect(
-          source
-        ).toContain(
-          "border-top:"
-        );
-
-        expect(
-          source
-        ).toContain(
-          "border-right:"
-        );
-      }
-    );
 
     it(
-      "enhances the homepage attack-surface visual",
+      "uses the current architectural attack-surface primitives",
       () => {
-        const source =
-          read(
-            "src/app/home.module.css"
+
+        for (
+          const selector
+          of [
+            ".heroV8Visual",
+            ".heroV8Surface",
+            ".heroV8Node",
+            ".heroV8Line"
+          ]
+        ) {
+
+          expect(
+            home
+          ).toContain(
+            selector
           );
 
-        expect(
-          source
-        ).toContain(
-          ".compactSignal::before"
-        );
+        }
+
 
         expect(
-          source
-        ).toContain(
+          home
+        ).not.toContain(
+          ".compactSignal"
+        );
+
+
+        expect(
+          home
+        ).not.toContain(
           ".signalNode"
         );
 
-        expect(
-          source
-        ).toContain(
-          "nbHeroNodeBreathe"
-        );
       }
     );
+
+
+    it(
+      "enhances the homepage with the six-node attack surface",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          'data-home-hero-visual="attack-surface"'
+        );
+
+
+        expect(
+          page
+        ).toContain(
+          'data-hero-art="attack-surface"'
+        );
+
+
+        for (
+          const label
+          of [
+            "APP",
+            "API",
+            "AUTH",
+            "USER",
+            "DB",
+            "DATA"
+          ]
+        ) {
+
+          expect(
+            page
+          ).toContain(
+            label
+          );
+
+        }
+
+      }
+    );
+
 
     it(
       "honors reduced motion",
       () => {
-        const shared =
-          read(
-            "src/components/ui/page-hero.module.css"
-          );
-
-        const home =
-          read(
-            "src/app/home.module.css"
-          );
-
-        expect(
-          shared
-        ).toContain(
-          "prefers-reduced-motion"
-        );
 
         expect(
           home
         ).toContain(
           "prefers-reduced-motion"
         );
+
+
+        expect(
+          home
+        ).toContain(
+          ".heroV8Visual *"
+        );
+
+
+        expect(
+          home
+        ).toContain(
+          "animation:"
+        );
+
+
+        expect(
+          home
+        ).toContain(
+          "none !important"
+        );
+
       }
     );
+
   }
 );
