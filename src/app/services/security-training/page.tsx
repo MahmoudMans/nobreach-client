@@ -1,10 +1,6 @@
 import Link from "next/link";
 
 import {
-  Breadcrumbs
-} from "@/components/navigation/breadcrumbs";
-
-import {
   Container
 } from "@/components/layout/container";
 
@@ -259,21 +255,7 @@ export default function SecurityTrainingPage() {
       }
       data-security-training-design="v25"
     >
-      <Breadcrumbs
-        items={[
-          {
-            label:
-              "Services",
 
-            href:
-              "/services"
-          },
-          {
-            label:
-              "Security Training"
-          }
-        ]}
-      />
 
 
       {/* ================================================================

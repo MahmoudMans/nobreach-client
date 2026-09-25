@@ -1,10 +1,6 @@
 import Link from "next/link";
 
 import {
-  Breadcrumbs
-} from "@/components/navigation/breadcrumbs";
-
-import {
   Container
 } from "@/components/layout/container";
 
@@ -286,21 +282,7 @@ export default function InfrastructureSecurityPage() {
       }
       data-infrastructure-design="v24"
     >
-      <Breadcrumbs
-        items={[
-          {
-            label:
-              "Services",
 
-            href:
-              "/services"
-          },
-          {
-            label:
-              "Infrastructure Security"
-          }
-        ]}
-      />
 
 
       {/* ================================================================
