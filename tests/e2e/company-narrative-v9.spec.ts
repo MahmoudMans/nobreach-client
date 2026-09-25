@@ -5,252 +5,111 @@ import {
 
 
 test(
-  "Company V19 uses editorial rows instead of a card wall",
+  "Company uses editorial story and direction sections",
   async ({
     page
   }) => {
-
-    await page.setViewportSize({
-      width:
-        1440,
-
-      height:
-        900
-    });
-
 
     await page.goto(
       "/company"
     );
 
 
-    const capabilities =
+    await expect(
       page.locator(
-        '[data-company-card="capability"]'
-      );
-
-
-    await capabilities
-      .first()
-      .scrollIntoViewIfNeeded();
+        '[data-company-section="story"]'
+      )
+    ).toBeVisible();
 
 
     await expect(
-      capabilities
-    ).toHaveCount(
-      4
-    );
+      page.locator(
+        '[data-company-section="mission-vision"]'
+      )
+    ).toBeVisible();
 
 
-    const boxes =
-      await capabilities.evaluateAll(
-        elements =>
-          elements.map(
-            element => {
+    await expect(
+      page.getByRole(
+        "heading",
+        {
+          level:
+            2,
 
-              const rect =
-                element.getBoundingClientRect();
-
-
-              return {
-                width:
-                  rect.width,
-
-                height:
-                  rect.height
-              };
-
-            }
-          )
-      );
-
-
-    for (
-      const box
-      of boxes
-    ) {
-
-      expect(
-        box.width
-      ).toBeGreaterThan(
-        800
-      );
-
-
-      expect(
-        box.height
-      ).toBeLessThan(
-        130
-      );
-
-    }
+          name:
+            /built from offensive security/i
+        }
+      )
+    ).toBeVisible();
 
   }
 );
 
 
 test(
-  "Company timeline is horizontal on desktop",
+  "Company timeline contains only published milestones",
   async ({
     page
   }) => {
-
-    await page.setViewportSize({
-      width:
-        1440,
-
-      height:
-        900
-    });
-
 
     await page.goto(
       "/company"
     );
 
 
-    const section =
+    const timeline =
       page.locator(
-        '[data-company-content-section="people"]'
-      );
-
-
-    await section.scrollIntoViewIfNeeded();
-
-
-    const items =
-      section.locator(
-        '[data-company-card="timeline"]'
+        '[data-company-section="timeline"]'
       );
 
 
     await expect(
-      items
+      timeline.locator(
+        "ol > li"
+      )
     ).toHaveCount(
       5
     );
 
 
-    const boxes =
-      await items.evaluateAll(
-        elements =>
-          elements.map(
-            element => {
-
-              const rect =
-                element.getBoundingClientRect();
-
-
-              return {
-                x:
-                  rect.x,
-
-                y:
-                  rect.y
-              };
-
-            }
-          )
-      );
-
-
-    for (
-      let index = 1;
-      index < boxes.length;
-      index += 1
-    ) {
-
-      expect(
-        boxes[
-          index
-        ].x
-      ).toBeGreaterThan(
-        boxes[
-          index - 1
-        ].x
-      );
-
-    }
+    await expect(
+      timeline.getByText(
+        "CR4CKOUT launched",
+        {
+          exact:
+            true
+        }
+      )
+    ).toBeVisible();
 
   }
 );
 
 
 test(
-  "Company timeline becomes vertical on mobile",
+  "Company expertise stays editorial rather than another card wall",
   async ({
     page
   }) => {
-
-    await page.setViewportSize({
-      width:
-        390,
-
-      height:
-        844
-    });
-
 
     await page.goto(
       "/company"
     );
 
 
-    const section =
+    const expertise =
       page.locator(
-        '[data-company-content-section="people"]'
+        '[data-company-section="expertise"]'
       );
 
 
-    await section.scrollIntoViewIfNeeded();
-
-
-    const items =
-      section.locator(
-        '[data-company-card="timeline"]'
-      );
-
-
-    const boxes =
-      await items.evaluateAll(
-        elements =>
-          elements.map(
-            element => {
-
-              const rect =
-                element.getBoundingClientRect();
-
-
-              return {
-                x:
-                  rect.x,
-
-                y:
-                  rect.y
-              };
-
-            }
-          )
-      );
-
-
-    for (
-      let index = 1;
-      index < boxes.length;
-      index += 1
-    ) {
-
-      expect(
-        boxes[
-          index
-        ].y
-      ).toBeGreaterThan(
-        boxes[
-          index - 1
-        ].y
-      );
-
-    }
+    await expect(
+      expertise.getByRole(
+        "link"
+      )
+    ).toHaveCount(
+      4
+    );
 
   }
 );

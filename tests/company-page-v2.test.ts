@@ -24,65 +24,64 @@ const css =
 
 
 describe(
-  "Company V19 editorial system",
+  "company strict about page v20",
   () => {
 
     it(
-      "activates the V19 company design",
+      "uses the canonical About-page flow",
       () => {
 
-        expect(
-          page
-        ).toContain(
-          'data-company-design-system="v19"'
-        );
+        const sections =
+          page.match(
+            /data-company-section="[^"]+"/g
+          )
+          ??
+          [];
 
 
         expect(
-          css
-        ).toContain(
-          "NB_COMPANY_EDITORIAL_SYSTEM_V19"
-        );
-
-      }
-    );
-
-
-    it(
-      "contains exactly three real content sections",
-      () => {
-
-        expect(
-          (
-            page.match(
-              /data-company-content-section=/g
-            )
-            ??
-            []
-          ).length
-        ).toBe(
-          3
-        );
-
-      }
-    );
-
-
-    it(
-      "keeps Hero and CTA outside the section budget",
-      () => {
-
-        expect(
-          page
-        ).toContain(
-          'data-company-section="hero"'
-        );
-
-
-        expect(
-          page
-        ).toContain(
+          sections
+        ).toEqual([
+          'data-company-section="intro"',
+          'data-company-section="story"',
+          'data-company-section="mission-vision"',
+          'data-company-section="values"',
+          'data-company-section="timeline"',
+          'data-company-section="expertise"',
+          'data-company-section="team"',
           'data-company-section="cta"'
+        ]);
+
+      }
+    );
+
+
+    it(
+      "uses one H1 and no second navigation",
+      () => {
+
+        expect(
+          page.match(
+            /<h1(?:\s|>)/g
+          )
+          ??
+          []
+        ).toHaveLength(
+          1
+        );
+
+
+        expect(
+          page
+        ).not.toContain(
+          "<nav"
+        );
+
+
+        expect(
+          page
+        ).not.toContain(
+          "Breadcrumb"
         );
 
       }
@@ -90,18 +89,16 @@ describe(
 
 
     it(
-      "uses the editorial capability and people systems",
+      "keeps verified company facts",
       () => {
 
         for (
           const token
           of [
-            'data-company-ui="signal-system"',
-            'data-company-ui="operating-model"',
-            'data-company-ui="capability-grid"',
-            'data-company-ui="principle-grid"',
-            'data-company-ui="timeline-grid"',
-            'data-company-ui="people-grid"'
+            "2023",
+            "Tunis, Tunisia",
+            "Offensive Security",
+            "Services · Education · Community"
           ]
         ) {
 
@@ -118,46 +115,52 @@ describe(
 
 
     it(
-      "does not use the rejected hero profile card",
-      () => {
-
-        expect(
-          page
-        ).not.toContain(
-          'data-company-ui="profile-card"'
-        );
-
-
-        expect(
-          page
-        ).not.toContain(
-          "technicalPanel"
-        );
-
-      }
-    );
-
-
-    it(
-      "keeps the verified company facts and founder portrait",
+      "keeps exactly three established principles",
       () => {
 
         for (
-          const value
+          const token
           of [
-            "2023",
-            "Tunis, Tunisia",
-            "Offensive Security",
-            "Services · Education · Community",
-            "Nouha Ben Brahim",
-            "/people/ceo.png"
+            "Think offensively",
+            "Build through practice",
+            "Share knowledge"
           ]
         ) {
 
           expect(
             page
           ).toContain(
-            value
+            token
+          );
+
+        }
+
+      }
+    );
+
+
+    it(
+      "uses the NoBreach design tokens",
+      () => {
+
+        for (
+          const token
+          of [
+            "#07090d",
+            "#0b0f16",
+            "#101620",
+            "#151d29",
+            "#a1e2f0",
+            "#83b3d7",
+            "#7e60b9",
+            "NB_COMPANY_ABOUT_STRICT_V20"
+          ]
+        ) {
+
+          expect(
+            css
+          ).toContain(
+            token
           );
 
         }

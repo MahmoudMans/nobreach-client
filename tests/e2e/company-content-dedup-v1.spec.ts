@@ -5,7 +5,7 @@ import {
 
 
 test(
-  "Company V19 contains only three primary content chapters",
+  "Company contains no page-level duplicate navigation",
   async ({
     page
   }) => {
@@ -15,45 +15,33 @@ test(
     );
 
 
-    const sections =
-      page.locator(
-        '[data-company-content-section]'
-      );
-
-
     await expect(
-      sections
+      page.locator(
+        '[data-company-about="strict-v20"] nav'
+      )
     ).toHaveCount(
-      3
+      0
     );
 
 
-    const names =
-      await sections.evaluateAll(
-        elements =>
-          elements.map(
-            element =>
-              element.getAttribute(
-                "data-company-content-section"
-              )
-          )
-      );
-
-
-    expect(
-      names
-    ).toEqual([
-      "identity",
-      "capabilities",
-      "people"
-    ]);
+    await expect(
+      page.getByText(
+        "Company sections",
+        {
+          exact:
+            true
+        }
+      )
+    ).toHaveCount(
+      0
+    );
 
   }
 );
 
 
 test(
-  "Hero and CTA remain outside the content budget",
+  "Company has one final CTA section",
   async ({
     page
   }) => {
@@ -65,19 +53,10 @@ test(
 
     await expect(
       page.locator(
-        '[data-company-section="hero"][data-company-content-section]'
+        '[data-company-section="cta"]'
       )
     ).toHaveCount(
-      0
-    );
-
-
-    await expect(
-      page.locator(
-        '[data-company-section="cta"][data-company-content-section]'
-      )
-    ).toHaveCount(
-      0
+      1
     );
 
   }

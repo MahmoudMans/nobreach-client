@@ -17,58 +17,24 @@ const page =
 
 
 describe(
-  "Company V19 content discipline",
+  "company content continuity",
   () => {
 
     it(
-      "does not recreate old standalone Company sections",
-      () => {
-
-        for (
-          const rejected
-          of [
-            'data-company-section="story"',
-            'data-company-section="ecosystem"',
-            'data-company-section="timeline"',
-            'data-company-section="founder"',
-            'data-company-section="team"'
-          ]
-        ) {
-
-          expect(
-            page
-          ).not.toContain(
-            rejected
-          );
-
-        }
-
-      }
-    );
-
-
-    it(
-      "keeps capabilities and principles in one content chapter",
+      "has no duplicated page navigation",
       () => {
 
         expect(
           page
-        ).toContain(
-          'data-company-content-section="capabilities"'
+        ).not.toContain(
+          "<nav"
         );
 
 
         expect(
           page
-        ).toContain(
-          'data-company-ui="capability-grid"'
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          'data-company-ui="principle-grid"'
+        ).not.toContain(
+          "Company sections"
         );
 
       }
@@ -76,34 +42,40 @@ describe(
 
 
     it(
-      "keeps timeline founder and people in the final chapter",
+      "contains no placeholder or empty-card language",
       () => {
 
         expect(
           page
-        ).toContain(
-          'data-company-content-section="people"'
+        ).not.toMatch(
+          /placeholder/i
         );
 
 
         expect(
           page
-        ).toContain(
-          'data-company-ui="timeline-grid"'
+        ).not.toMatch(
+          /empty card/i
         );
 
+      }
+    );
+
+
+    it(
+      "uses one final conversion section",
+      () => {
 
         expect(
-          page
-        ).toContain(
-          'data-company-card="founder"'
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          'data-company-ui="people-grid"'
+          (
+            page.match(
+              /data-company-section="cta"/g
+            )
+            ??
+            []
+          ).length
+        ).toBe(
+          1
         );
 
       }

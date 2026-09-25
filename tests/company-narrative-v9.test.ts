@@ -16,41 +16,29 @@ const page =
   );
 
 
-const css =
-  readFileSync(
-    "src/app/company/company.module.css",
-    "utf8"
-  );
-
-
 describe(
-  "Company V19 editorial narrative",
+  "company editorial narrative",
   () => {
 
     it(
-      "uses one operating model composition",
+      "contains story mission vision values timeline and expertise",
       () => {
 
-        expect(
-          page
-        ).toContain(
-          'data-company-ui="operating-model"'
-        );
-
-
         for (
-          const label
+          const token
           of [
-            "Security services",
-            "Practical education",
-            "Community"
+            'data-company-section="story"',
+            'data-company-section="mission-vision"',
+            'data-company-section="values"',
+            'data-company-section="timeline"',
+            'data-company-section="expertise"'
           ]
         ) {
 
           expect(
             page
           ).toContain(
-            label
+            token
           );
 
         }
@@ -60,99 +48,47 @@ describe(
 
 
     it(
-      "uses four capability index rows",
+      "uses established timeline milestones",
       () => {
 
-        expect(
-          (
-            page.match(
-              /data-company-card="capability"/g
-            )
-            ??
-            []
-          ).length
-        ).toBe(
-          1
-        );
+        for (
+          const token
+          of [
+            "No Breach founded",
+            "Training Hub established",
+            "CR4CKOUT launched",
+            "Community and training activities",
+            "Continuing to build"
+          ]
+        ) {
 
-
-        expect(
-          page
-        ).toContain(
-          "capabilityItems.map"
-        );
-
-      }
-    );
-
-
-    it(
-      "uses three principles",
-      () => {
-
-        const block =
-          page.slice(
-            page.indexOf(
-              "const principles ="
-            ),
-            page.indexOf(
-              "const milestones ="
-            )
+          expect(
+            page
+          ).toContain(
+            token
           );
 
-
-        expect(
-          (
-            block.match(
-              /number:/g
-            )
-            ??
-            []
-          ).length
-        ).toBe(
-          3
-        );
+        }
 
       }
     );
 
 
     it(
-      "uses a single connected timeline",
-      () => {
-
-        expect(
-          css
-        ).toContain(
-          ".timeline::before"
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "milestones.map"
-        );
-
-      }
-    );
-
-
-    it(
-      "uses the real founder image",
+      "uses editorial expertise rows instead of another card wall",
       () => {
 
         expect(
           page
         ).toContain(
-          'src="/people/ceo.png"'
+          "expertiseRows"
         );
 
 
         expect(
           page
-        ).toContain(
-          'data-founder-photo-image="company"'
+        ).not.toContain(
+          "capabilityGrid"
         );
 
       }

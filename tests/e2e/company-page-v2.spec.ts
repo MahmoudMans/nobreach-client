@@ -5,7 +5,7 @@ import {
 
 
 test(
-  "Company V19 renders three editorial chapters",
+  "Company renders the canonical About-page architecture",
   async ({
     page
   }) => {
@@ -15,258 +15,181 @@ test(
     );
 
 
-    await expect(
+    const root =
       page.locator(
-        '[data-company-design-system="v19"]'
-      )
+        '[data-company-about="strict-v20"]'
+      );
+
+
+    await expect(
+      root
     ).toBeVisible();
 
 
     await expect(
-      page.locator(
-        '[data-company-content-section]'
+      root.locator(
+        ":scope > section[data-company-section]"
       )
     ).toHaveCount(
-      3
+      8
     );
 
 
     await expect(
-      page.locator(
-        '[data-company-section="cta"]'
-      )
-    ).toBeAttached();
+      page.getByRole(
+        "heading",
+        {
+          level:
+            1,
 
-  }
-);
-
-
-test(
-  "Company identity uses a connected operating model",
-  async ({
-    page
-  }) => {
-
-    await page.goto(
-      "/company"
-    );
-
-
-    const section =
-      page.locator(
-        '[data-company-content-section="identity"]'
-      );
-
-
-    await section.scrollIntoViewIfNeeded();
-
-
-    await expect(
-      section
-    ).toBeVisible();
-
-
-    for (
-      const text
-      of [
-        "Security services",
-        "Practical education",
-        "Community"
-      ]
-    ) {
-
-      await expect(
-        section.getByText(
-          text,
-          {
-            exact:
-              true
-          }
-        )
-      ).toBeVisible();
-
-    }
-
-
-    await expect(
-      section.locator(
-        '[data-company-ui="facts"]'
-      )
-    ).toBeVisible();
-
-  }
-);
-
-
-test(
-  "Company capability system uses four compact index rows",
-  async ({
-    page
-  }) => {
-
-    await page.setViewportSize({
-      width:
-        1440,
-
-      height:
-        900
-    });
-
-
-    await page.goto(
-      "/company"
-    );
-
-
-    const section =
-      page.locator(
-        '[data-company-content-section="capabilities"]'
-      );
-
-
-    await section.scrollIntoViewIfNeeded();
-
-
-    const rows =
-      section.locator(
-        '[data-company-card="capability"]'
-      );
-
-
-    await expect(
-      rows
-    ).toHaveCount(
-      4
-    );
-
-
-    const heights =
-      await rows.evaluateAll(
-        elements =>
-          elements.map(
-            element =>
-              element
-                .getBoundingClientRect()
-                .height
-          )
-      );
-
-
-    for (
-      const height
-      of heights
-    ) {
-
-      expect(
-        height
-      ).toBeGreaterThan(
-        80
-      );
-
-
-      expect(
-        height
-      ).toBeLessThan(
-        130
-      );
-
-    }
-
-  }
-);
-
-
-test(
-  "Company final chapter combines timeline founder and destinations",
-  async ({
-    page
-  }) => {
-
-    await page.goto(
-      "/company"
-    );
-
-
-    const section =
-      page.locator(
-        '[data-company-content-section="people"]'
-      );
-
-
-    await section.scrollIntoViewIfNeeded();
-
-
-    await expect(
-      section.locator(
-        '[data-company-card="timeline"]'
+          name:
+            /offensive security beyond the assessment/i
+        }
       )
     ).toHaveCount(
-      5
-    );
-
-
-    await expect(
-      section.locator(
-        '[data-founder-photo-image="company"]'
-      )
-    ).toBeVisible();
-
-
-    await expect(
-      section.locator(
-        '[data-company-card="people"]'
-      )
-    ).toHaveCount(
-      2
-    );
-
-  }
-);
-
-
-test(
-  "Company V19 stays overflow free on mobile",
-  async ({
-    page
-  }) => {
-
-    await page.setViewportSize({
-      width:
-        390,
-
-      height:
-        844
-    });
-
-
-    await page.goto(
-      "/company"
-    );
-
-
-    const result =
-      await page.evaluate(
-        () => ({
-          scrollWidth:
-            document
-              .documentElement
-              .scrollWidth,
-
-          clientWidth:
-            document
-              .documentElement
-              .clientWidth
-        })
-      );
-
-
-    expect(
-      result.scrollWidth
-    ).toBeLessThanOrEqual(
-      result.clientWidth
-      +
       1
     );
 
   }
 );
+
+
+test(
+  "Company exposes verified facts and principles",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/company"
+    );
+
+
+    for (
+      const text
+      of [
+        "2023",
+        "Tunis, Tunisia",
+        "Think offensively",
+        "Build through practice",
+        "Share knowledge"
+      ]
+    ) {
+
+      await expect(
+        page.getByText(
+          text,
+          {
+            exact:
+              true
+          }
+        ).first()
+      ).toBeVisible();
+
+    }
+
+  }
+);
+
+
+for (
+  const viewport
+  of [
+    {
+      name:
+        "desktop",
+
+      width:
+        1440,
+
+      height:
+        900
+    },
+    {
+      name:
+        "tablet",
+
+      width:
+        820,
+
+      height:
+        1180
+    },
+    {
+      name:
+        "mobile",
+
+      width:
+        390,
+
+      height:
+        844
+    },
+    {
+      name:
+        "narrow",
+
+      width:
+        360,
+
+      height:
+        800
+    }
+  ]
+) {
+
+  test(
+    `Company remains contained at ${viewport.name}`,
+    async ({
+      page
+    }) => {
+
+      await page.setViewportSize({
+        width:
+          viewport.width,
+
+        height:
+          viewport.height
+      });
+
+
+      await page.goto(
+        "/company"
+      );
+
+
+      await expect(
+        page.getByRole(
+          "heading",
+          {
+            level:
+              1
+          }
+        )
+      ).toBeVisible();
+
+
+      const width =
+        await page.evaluate(
+          () => ({
+            scroll:
+              document.documentElement.scrollWidth,
+
+            client:
+              document.documentElement.clientWidth
+          })
+        );
+
+
+      expect(
+        width.scroll
+      ).toBeLessThanOrEqual(
+        width.client
+        +
+        1
+      );
+
+    }
+  );
+
+}

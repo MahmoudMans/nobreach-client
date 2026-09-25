@@ -16,31 +16,32 @@ const page =
   );
 
 
-const css =
-  readFileSync(
-    "src/app/company/company.module.css",
-    "utf8"
-  );
-
-
 describe(
-  "Company V19 first-screen hero",
+  "company intro compatibility",
   () => {
 
     it(
-      "retains one Company hero",
+      "uses PageIntro instead of another homepage hero",
       () => {
 
         expect(
-          (
-            page.match(
-              /data-company-section="hero"/g
-            )
-            ??
-            []
-          ).length
-        ).toBe(
-          1
+          page
+        ).toContain(
+          'data-company-section="intro"'
+        );
+
+
+        expect(
+          page
+        ).not.toContain(
+          "data-company-hero="
+        );
+
+
+        expect(
+          page
+        ).not.toContain(
+          "pageNav"
         );
 
       }
@@ -48,7 +49,7 @@ describe(
 
 
     it(
-      "uses editorial copy instead of a hero profile card",
+      "keeps established positioning",
       () => {
 
         expect(
@@ -61,56 +62,7 @@ describe(
         expect(
           page
         ).toContain(
-          "built to move beyond"
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "the assessment."
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          'data-company-ui="signal-system"'
-        );
-
-
-        expect(
-          page
-        ).not.toContain(
-          'data-company-ui="profile-card"'
-        );
-
-      }
-    );
-
-
-    it(
-      "uses a viewport-aware desktop hero",
-      () => {
-
-        expect(
-          css
-        ).toContain(
-          "100svh"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          ".heroMain"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          ".signalSystem"
+          "beyond the assessment."
         );
 
       }

@@ -9,122 +9,53 @@ import {
 } from "vitest";
 
 
-const pages = [
-  {
-    route:
-      "/company",
-
-    file:
-      "src/app/company/page.tsx",
-
-    expected:
-      3
-  },
-  {
-    route:
-      "/company/founder",
-
-    file:
-      "src/app/company/founder/page.tsx",
-
-    expected:
-      3
-  },
-  {
-    route:
-      "/company/team",
-
-    file:
-      "src/app/company/team/page.tsx",
-
-    expected:
-      1
-  },
-  {
-    route:
-      "/company/internships",
-
-    file:
-      "src/app/company/internships/page.tsx",
-
-    expected:
-      3
-  }
-];
+const company =
+  readFileSync(
+    "src/app/company/page.tsx",
+    "utf8"
+  );
 
 
 describe(
-  "Company-family V18 section budget",
+  "company information architecture",
   () => {
 
-    for (
-      const page
-      of pages
-    ) {
+    it(
+      "expands the main About page to the canonical eight-section flow",
+      () => {
 
-      it(
-        `${page.route} has no more than three real content sections`,
-        () => {
+        expect(
+          (
+            company.match(
+              /data-company-section=/g
+            )
+            ??
+            []
+          ).length
+        ).toBe(
+          8
+        );
 
-          const source =
-            readFileSync(
-              page.file,
-              "utf8"
-            );
-
-
-          const count =
-            (
-              source.match(
-                /data-company-content-section=/g
-              )
-              ??
-              []
-            ).length;
-
-
-          expect(
-            count
-          ).toBe(
-            page.expected
-          );
-
-
-          expect(
-            count
-          ).toBeLessThanOrEqual(
-            3
-          );
-
-        }
-      );
-
-    }
+      }
+    );
 
 
     it(
-      "the final CTA does not consume the content-section budget",
+      "does not apply the old three-section budget to the main About page",
       () => {
 
-        for (
-          const page
-          of pages
-        ) {
-
-          const source =
-            readFileSync(
-              page.file,
-              "utf8"
-            );
+        expect(
+          company
+        ).toContain(
+          'data-company-section="mission-vision"'
+        );
 
 
-          expect(
-            source
-          ).not.toMatch(
-            /finalCta[^]*data-company-content-section/
-          );
-
-        }
+        expect(
+          company
+        ).toContain(
+          'data-company-section="team"'
+        );
 
       }
     );
