@@ -70,9 +70,40 @@ for (
           route,
           {
             waitUntil:
-              "networkidle"
+              route
+              ===
+              "/insights/authorization-is-a-system-not-a-checkbox"
+                ?
+                "domcontentloaded"
+                :
+                "networkidle"
           }
         );
+
+
+      /*
+       * NB_AUTHORIZATION_V51_ROUTE_AUDIT_WAIT_V1
+       *
+       * Authorization V51 has dedicated production-route coverage.
+       * DOM readiness avoids waiting on unrelated global-shell Link
+       * prefetch activity.
+       */
+      if (
+        route
+        ===
+        "/insights/authorization-is-a-system-not-a-checkbox"
+      ) {
+
+        await expect(
+          page.locator(
+            '[data-authorization-insight-design="v51"]'
+          )
+        ).toBeVisible({
+          timeout:
+            10_000
+        });
+
+      }
 
       expect(
         response,

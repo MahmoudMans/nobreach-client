@@ -3,18 +3,7 @@ import {
   test,
   type Locator,
   type Page
-} from "@playwright/test";
-
-
-const routes = [
-  "/insights/authorization-is-a-system-not-a-checkbox",
-  "/insights/attack-surface-mapping-before-exploitation",
-  "/insights/prompt-injection-matters-when-ai-can-act",
-  "/insights/manual-reasoning-in-web-security-testing"
-];
-
-
-function articleClass(
+} from "@playwright/test";function articleClass(
   name: string
 ) {
   return (
@@ -266,21 +255,53 @@ async function waitForInsightReady(
 }
 
 
+/*
+ * NB_AUTHORIZATION_V51_SHARED_TARGET_V1
+ *
+ * Legacy Insight details continue to use article.module.css.
+ * Authorization V51 uses the same editorial information architecture
+ * through explicit semantic markers rather than fake legacy classes.
+ */
 test(
   "all insight details use the shared editorial architecture",
   async ({
     page
   }) => {
+
+    const routes = [
+      "/insights/authorization-is-a-system-not-a-checkbox",
+      "/insights/attack-surface-mapping-before-exploitation",
+      "/insights/prompt-injection-matters-when-ai-can-act",
+      "/insights/manual-reasoning-in-web-security-testing"
+    ] as const;
+
+
     for (
       const route
       of routes
     ) {
-      await page.goto(
-        route,
-        {
-          waitUntil:
-            "domcontentloaded"
-        }
+
+      const response =
+        await page.goto(
+          route,
+          {
+            waitUntil:
+              "domcontentloaded"
+          }
+        );
+
+
+      expect(
+        response,
+        `No response for ${route}`
+      ).not.toBeNull();
+
+
+      expect(
+        response?.status(),
+        `Unexpected HTTP status for ${route}`
+      ).toBeLessThan(
+        400
       );
 
 
@@ -289,23 +310,186 @@ test(
           .split(
             "/"
           )
-          .at(
-            -1
+          .filter(
+            Boolean
+          )
+          .pop();
+
+
+      expect(
+        slug
+      ).toBeTruthy();
+
+
+      const article =
+        page.locator(
+          `[data-insight-article="${slug}"]`
+        );
+
+
+      await expect(
+        article
+      ).toHaveCount(
+        1
+      );
+
+
+      await expect(
+        article
+      ).toBeVisible({
+        timeout:
+          10_000
+      });
+
+
+      if (
+        route
+        ===
+        "/insights/authorization-is-a-system-not-a-checkbox"
+      ) {
+
+        const v51 =
+          article.locator(
+            '[data-authorization-insight-design="v51"]'
           );
 
 
-      if (!slug) {
-        throw new Error(
-          "Missing insight slug"
+        await expect(
+          v51
+        ).toHaveCount(
+          1
         );
+
+
+        await expect(
+          v51
+        ).toBeVisible();
+
+
+        const readingGrid =
+          v51.locator(
+            '[data-article-reading-grid="true"]'
+          );
+
+
+        await expect(
+          readingGrid
+        ).toHaveCount(
+          1
+        );
+
+
+        await expect(
+          readingGrid
+        ).toBeVisible();
+
+
+        await expect(
+          v51.getByRole(
+            "navigation",
+            {
+              name:
+                "Article contents"
+            }
+          )
+        ).toBeVisible();
+
+
+        await expect(
+          v51.locator(
+            '[data-article-research="true"]'
+          )
+        ).toBeVisible();
+
+
+        await expect(
+          v51.locator(
+            '[aria-label="Article information"]'
+          )
+        ).toBeVisible();
+
+
+        const sections =
+          v51.locator(
+            '[data-article-section="true"]'
+          );
+
+
+        await expect
+          .poll(
+            async () =>
+              sections.count(),
+            {
+              timeout:
+                10_000,
+
+              message:
+                "V51 should expose canonical editorial sections"
+            }
+          )
+          .toBeGreaterThan(
+            0
+          );
+
+
+        continue;
+
       }
 
 
-      await waitForInsightReady(
-        page,
-        slug
-      );
+      /*
+       * Legacy routes retain the established article.module.css
+       * editorial shell. Keep enforcing it here.
+       */
+      const legacyLayout =
+        article
+          .locator(
+            '[class*="article-module"][class*="layout"]'
+          )
+          .first();
+
+
+      await expect(
+        legacyLayout
+      ).toBeVisible({
+        timeout:
+          10_000
+      });
+
+
+      const legacyContent =
+        article
+          .locator(
+            '[class*="article-module"][class*="content"]'
+          )
+          .first();
+
+
+      await expect(
+        legacyContent
+      ).toBeVisible({
+        timeout:
+          10_000
+      });
+
+
+      const legacyMeta =
+        article
+          .locator(
+            '[class*="article-module"][class*="metaSide"]'
+          )
+          .first();
+
+
+      await expect(
+        legacyMeta
+      ).toBeVisible({
+        timeout:
+          10_000
+      });
+
     }
+
   }
 );
 

@@ -2,6 +2,8 @@ import type {
   ReactNode
 } from "react";
 
+import { AuthorizationSystemInsightV51 } from "./authorization-system-v51";
+
 
 export default async function InsightDetailLayout({
   children,
@@ -20,6 +22,25 @@ export default async function InsightDetailLayout({
     slug
   } =
     await params;
+
+  if (
+    slug
+    ===
+    "authorization-is-a-system-not-a-checkbox"
+  ) {
+
+    return (
+      <div
+        data-insight-article={
+          slug
+        }
+      >
+        <AuthorizationSystemInsightV51 />
+      </div>
+    );
+
+  }
+
 
 
   return (
