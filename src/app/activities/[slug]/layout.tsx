@@ -8,6 +8,8 @@ import {
 
 import { Cr4ckoutLaunchedV47 } from "./cr4ckout-launched-v47";
 
+import { Cr4ckout2V48 } from "./cr4ckout-2-v48";
+
 
 export default async function ActivityDetailLayout({
   children,
@@ -27,6 +29,19 @@ export default async function ActivityDetailLayout({
     slug
   } =
     await params;
+
+  if (
+    slug
+    ===
+    "cr4ckout-2"
+  ) {
+
+    return (
+      <Cr4ckout2V48 />
+    );
+
+  }
+
 
   if (
     slug
