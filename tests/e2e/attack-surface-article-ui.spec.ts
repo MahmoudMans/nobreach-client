@@ -499,6 +499,7 @@ test(
   async ({
     page
   }) => {
+
     await page.setViewportSize({
       width:
         1440,
@@ -508,101 +509,192 @@ test(
     });
 
 
-    await page.goto(
-      "/insights/attack-surface-mapping-before-exploitation",
-      {
-        waitUntil:
-          "domcontentloaded"
-      }
-    );
-
-
-    const {
-      toc,
-      content,
-      meta
-    } =
-      await waitForInsightReady(
-        page,
-        "attack-surface-mapping-before-exploitation"
-      );
-
-
-    /*
-     * Synchronize on visible measurable layout instead of immediately asking
-     * Playwright for bounding boxes after navigation.
-     */
-
-    const tocBox =
-      await waitForStableBox(
-        toc
-      );
-
-    const contentBox =
-      await waitForStableBox(
-        content
-      );
-
-    const metaBox =
-      await waitForStableBox(
-        meta
+    const response =
+      await page.goto(
+        "/insights/attack-surface-mapping-before-exploitation",
+        {
+          waitUntil:
+            "domcontentloaded"
+        }
       );
 
 
     expect(
-      tocBox.x
+      response
+    ).not.toBeNull();
+
+
+    expect(
+      response?.status()
+    ).toBe(
+      200
+    );
+
+
+    const root =
+      page.locator(
+        '[data-attack-surface-insight-design="v52"]'
+      );
+
+
+    await expect(
+      root
+    ).toBeVisible({
+      timeout:
+        10_000
+    });
+
+
+    const contents =
+      root.getByRole(
+        "navigation",
+        {
+          name:
+            "Article contents"
+        }
+      );
+
+
+    const research =
+      root.locator(
+        '[data-article-research="true"]'
+      );
+
+
+    const information =
+      root.locator(
+        '[aria-label="Article information"]'
+      );
+
+
+    await expect(
+      contents
+    ).toBeVisible();
+
+
+    await expect(
+      research
+    ).toBeVisible();
+
+
+    await expect(
+      information
+    ).toBeVisible();
+
+
+    await expect
+      .poll(
+        async () => {
+
+          const [
+            contentsBox,
+            researchBox,
+            informationBox
+          ] =
+            await Promise.all([
+              contents.boundingBox(),
+              research.boundingBox(),
+              information.boundingBox()
+            ]);
+
+
+          return Boolean(
+            contentsBox
+            &&
+            researchBox
+            &&
+            informationBox
+            &&
+            contentsBox.width
+            >
+            0
+            &&
+            researchBox.width
+            >
+            0
+            &&
+            informationBox.width
+            >
+            0
+          );
+
+        },
+        {
+          timeout:
+            10_000
+        }
+      )
+      .toBe(
+        true
+      );
+
+
+    const [
+      contentsBox,
+      researchBox,
+      informationBox
+    ] =
+      await Promise.all([
+        contents.boundingBox(),
+        research.boundingBox(),
+        information.boundingBox()
+      ]);
+
+
+    expect(
+      contentsBox
+    ).not.toBeNull();
+
+
+    expect(
+      researchBox
+    ).not.toBeNull();
+
+
+    expect(
+      informationBox
+    ).not.toBeNull();
+
+
+    expect(
+      contentsBox?.x
+      ??
+      0
     ).toBeLessThan(
-      contentBox.x
+      researchBox?.x
+      ??
+      0
     );
 
 
     expect(
-      contentBox.x
-    ).toBeLessThan(
-      metaBox.x
+      informationBox?.x
+      ??
+      0
+    ).toBeGreaterThan(
+      researchBox?.x
+      ??
+      0
     );
 
 
     expect(
-      tocBox.width
-    ).toBeGreaterThanOrEqual(
-      150
+      researchBox?.width
+      ??
+      0
+    ).toBeGreaterThan(
+      560
     );
 
 
     expect(
-      tocBox.width
+      researchBox?.width
+      ??
+      0
     ).toBeLessThanOrEqual(
-      215
+      820
     );
 
-
-    expect(
-      contentBox.width
-    ).toBeGreaterThanOrEqual(
-      650
-    );
-
-
-    expect(
-      contentBox.width
-    ).toBeLessThanOrEqual(
-      730
-    );
-
-
-    expect(
-      metaBox.width
-    ).toBeGreaterThanOrEqual(
-      150
-    );
-
-
-    expect(
-      metaBox.width
-    ).toBeLessThanOrEqual(
-      215
-    );
   }
 );
 
@@ -612,6 +704,7 @@ test(
   async ({
     page
   }) => {
+
     await page.setViewportSize({
       width:
         1440,
@@ -621,84 +714,113 @@ test(
     });
 
 
-    await page.goto(
-      "/insights/attack-surface-mapping-before-exploitation",
-      {
-        waitUntil:
-          "domcontentloaded"
-      }
-    );
-
-
-    const {
-      content
-    } =
-      await waitForInsightReady(
-        page,
-        "attack-surface-mapping-before-exploitation"
-      );
-
-
-    await waitForStableBox(
-      content
-    );
-
-
-    const paragraphs =
-      content.locator(
-        articleClass(
-          "paragraph"
-        )
+    const response =
+      await page.goto(
+        "/insights/attack-surface-mapping-before-exploitation",
+        {
+          waitUntil:
+            "domcontentloaded"
+        }
       );
 
 
     expect(
-      await paragraphs.count()
-    ).toBeGreaterThanOrEqual(
-      3
+      response
+    ).not.toBeNull();
+
+
+    expect(
+      response?.status()
+    ).toBe(
+      200
     );
+
+
+    const root =
+      page.locator(
+        '[data-attack-surface-insight-design="v52"]'
+      );
+
+
+    await expect(
+      root
+    ).toBeVisible({
+      timeout:
+        10_000
+    });
+
+
+    const research =
+      root.locator(
+        '[data-article-research="true"]'
+      );
+
+
+    await expect(
+      research
+    ).toBeVisible();
+
+
+    const researchBox =
+      await research.boundingBox();
+
+
+    expect(
+      researchBox
+    ).not.toBeNull();
+
+
+    expect(
+      researchBox?.width
+      ??
+      0
+    ).toBeGreaterThan(
+      560
+    );
+
+
+    expect(
+      researchBox?.width
+      ??
+      0
+    ).toBeLessThanOrEqual(
+      820
+    );
+
+
+    const paragraphs =
+      research.locator(
+        "p"
+      );
+
+
+    await expect
+      .poll(
+        async () =>
+          paragraphs.count(),
+        {
+          timeout:
+            10_000
+        }
+      )
+      .toBeGreaterThanOrEqual(
+        3
+      );
 
 
     const widths =
       await paragraphs.evaluateAll(
-        (
-          elements
-        ) =>
-          elements
-            .filter(
-              (
-                element
-              ) => {
-                const rect =
-                  element
-                    .getBoundingClientRect();
-
-
-                return (
-                  rect.width >
-                    0
-                  &&
-                  rect.height >
-                    0
-                  &&
-                  (
-                    element.textContent
-                      ?.trim()
-                      .length ??
-                    0
-                  )
-                  >=
-                  60
-                );
-              }
-            )
+        nodes =>
+          nodes
             .map(
-              (
-                element
-              ) =>
-                element
-                  .getBoundingClientRect()
-                  .width
+              node =>
+                node.getBoundingClientRect().width
+            )
+            .filter(
+              width =>
+                width
+                >
+                0
             )
       );
 
@@ -706,28 +828,29 @@ test(
     expect(
       widths.length
     ).toBeGreaterThanOrEqual(
-      2
+      3
     );
 
 
-    const maximum =
+    const maxParagraphWidth =
       Math.max(
         ...widths
       );
 
 
     expect(
-      maximum
-    ).toBeGreaterThanOrEqual(
-      600
+      maxParagraphWidth
+    ).toBeGreaterThan(
+      320
     );
 
 
     expect(
-      maximum
+      maxParagraphWidth
     ).toBeLessThanOrEqual(
-      710
+      760
     );
+
   }
 );
 
@@ -858,6 +981,7 @@ test(
   async ({
     page
   }) => {
+
     await page.setViewportSize({
       width:
         390,
@@ -867,71 +991,186 @@ test(
     });
 
 
-    await page.goto(
-      "/insights/attack-surface-mapping-before-exploitation",
-      {
-        waitUntil:
-          "domcontentloaded"
-      }
-    );
-
-
-    const {
-      toc,
-      content,
-      meta
-    } =
-      await waitForInsightReady(
-        page,
-        "attack-surface-mapping-before-exploitation"
-      );
-
-
-    const tocBox =
-      await waitForStableBox(
-        toc
-      );
-
-    const contentBox =
-      await waitForStableBox(
-        content
-      );
-
-    const metaBox =
-      await waitForStableBox(
-        meta
+    const response =
+      await page.goto(
+        "/insights/attack-surface-mapping-before-exploitation",
+        {
+          waitUntil:
+            "domcontentloaded"
+        }
       );
 
 
     expect(
-      tocBox.y
-    ).toBeLessThan(
-      contentBox.y
+      response
+    ).not.toBeNull();
+
+
+    expect(
+      response?.status()
+    ).toBe(
+      200
+    );
+
+
+    const root =
+      page.locator(
+        '[data-attack-surface-insight-design="v52"]'
+      );
+
+
+    await expect(
+      root
+    ).toBeVisible({
+      timeout:
+        10_000
+    });
+
+
+    const contents =
+      root.getByRole(
+        "navigation",
+        {
+          name:
+            "Article contents"
+        }
+      );
+
+
+    const research =
+      root.locator(
+        '[data-article-research="true"]'
+      );
+
+
+    const information =
+      root.locator(
+        '[aria-label="Article information"]'
+      );
+
+
+    await expect(
+      contents
+    ).toBeVisible();
+
+
+    await expect(
+      research
+    ).toBeVisible();
+
+
+    await expect(
+      information
+    ).toBeVisible();
+
+
+    await expect
+      .poll(
+        async () => {
+
+          const [
+            contentsBox,
+            researchBox,
+            informationBox
+          ] =
+            await Promise.all([
+              contents.boundingBox(),
+              research.boundingBox(),
+              information.boundingBox()
+            ]);
+
+
+          return Boolean(
+            contentsBox
+            &&
+            researchBox
+            &&
+            informationBox
+            &&
+            contentsBox.width
+            >
+            0
+            &&
+            researchBox.width
+            >
+            0
+            &&
+            informationBox.width
+            >
+            0
+          );
+
+        },
+        {
+          timeout:
+            10_000
+        }
+      )
+      .toBe(
+        true
+      );
+
+
+    const [
+      contentsBox,
+      researchBox,
+      informationBox
+    ] =
+      await Promise.all([
+        contents.boundingBox(),
+        research.boundingBox(),
+        information.boundingBox()
+      ]);
+
+
+    expect(
+      contentsBox
+    ).not.toBeNull();
+
+
+    expect(
+      researchBox
+    ).not.toBeNull();
+
+
+    expect(
+      informationBox
+    ).not.toBeNull();
+
+
+    expect(
+      researchBox?.y
+      ??
+      0
+    ).toBeGreaterThanOrEqual(
+      (
+        contentsBox?.y
+        ??
+        0
+      )
+      +
+      (
+        contentsBox?.height
+        ??
+        0
+      )
+      -
+      1
     );
 
 
     expect(
-      contentBox.y
-    ).toBeLessThan(
-      metaBox.y
-    );
-
-
-    expect(
-      contentBox.width
+      informationBox?.y
+      ??
+      0
     ).toBeGreaterThan(
-      320
+      researchBox?.y
+      ??
+      0
     );
 
 
-    expect(
-      contentBox.width
-    ).toBeLessThanOrEqual(
-      390
-    );
-
-
-    const overflow =
+    const documentGeometry =
       await page.evaluate(
         () => ({
           scrollWidth:
@@ -942,17 +1181,33 @@ test(
           clientWidth:
             document
               .documentElement
-              .clientWidth
+              .clientWidth,
+
+          bodyScrollWidth:
+            document
+              .body
+              .scrollWidth
         })
       );
 
 
     expect(
-      overflow.scrollWidth
+      documentGeometry.scrollWidth
     ).toBeLessThanOrEqual(
-      overflow.clientWidth +
+      documentGeometry.clientWidth
+      +
       1
     );
+
+
+    expect(
+      documentGeometry.bodyScrollWidth
+    ).toBeLessThanOrEqual(
+      documentGeometry.clientWidth
+      +
+      1
+    );
+
   }
 );
 

@@ -5,6 +5,10 @@ import type {
 import { AuthorizationSystemInsightV51 } from "./authorization-system-v51";
 
 
+import {
+  AttackSurfaceInsightV52
+} from "./attack-surface-insight-v52";
+
 export default async function InsightDetailLayout({
   children,
   params
@@ -22,6 +26,28 @@ export default async function InsightDetailLayout({
     slug
   } =
     await params;
+
+
+  if (
+    slug
+    ===
+    "attack-surface-mapping-before-exploitation"
+  ) {
+
+    return (
+      <div
+        data-insight-article={
+          slug
+        }
+      >
+        <AttackSurfaceInsightV52 />
+      </div>
+    );
+
+  }
+
+
+
 
   if (
     slug
