@@ -6,6 +6,8 @@ import {
   TrainingHubEstablishedV46
 } from "./training-hub-established-v46";
 
+import { Cr4ckoutLaunchedV47 } from "./cr4ckout-launched-v47";
+
 
 export default async function ActivityDetailLayout({
   children,
@@ -25,6 +27,19 @@ export default async function ActivityDetailLayout({
     slug
   } =
     await params;
+
+  if (
+    slug
+    ===
+    "cr4ckout-launched"
+  ) {
+
+    return (
+      <Cr4ckoutLaunchedV47 />
+    );
+
+  }
+
 
 
   if (
