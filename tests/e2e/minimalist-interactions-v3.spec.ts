@@ -57,39 +57,180 @@ test(
   async ({
     page
   }) => {
-    await page.goto(
+
+    const response =
+      await page.goto(
+        "/activities"
+      );
+
+
+    expect(
+      response?.status()
+    ).toBe(
+      200
+    );
+
+
+    const filters =
+      page.getByRole(
+        "navigation",
+        {
+          name:
+            "Activity filters"
+        }
+      );
+
+
+    await expect(
+      filters
+    ).toBeVisible();
+
+
+    const training =
+      filters.getByRole(
+        "link",
+        {
+          name:
+            "Training",
+          exact:
+            true
+        }
+      );
+
+
+    await expect(
+      training
+    ).toBeVisible();
+
+
+    await expect(
+      training
+    ).toHaveAttribute(
+      "href",
+      "/activities?type=training"
+    );
+
+
+    await training.click();
+
+
+    await expect(
+      page
+    ).toHaveURL(
+      /\/activities\?type=training$/
+    );
+
+
+    const active =
+      page.locator(
+        '[data-activity-filter="training"]'
+      );
+
+
+    await expect(
+      active
+    ).toHaveAttribute(
+      "data-active",
+      "true"
+    );
+
+
+    await expect(
+      active
+    ).toHaveAttribute(
+      "aria-current",
+      "page"
+    );
+
+
+    const rows =
+      page.locator(
+        '[data-activity-row="true"]'
+      );
+
+
+    const rowCount =
+      await rows.count();
+
+
+    if (
+      rowCount
+      >
+      0
+    ) {
+
+      for (
+        let index =
+          0;
+        index
+        <
+        rowCount;
+        index +=
+          1
+      ) {
+
+        await expect(
+          rows.nth(
+            index
+          )
+        ).toHaveAttribute(
+          "data-activity-category",
+          "training"
+        );
+
+      }
+
+    }
+    else {
+
+      await expect(
+        page.locator(
+          '[data-activities-empty="true"]'
+        )
+      ).toBeVisible();
+
+    }
+
+
+    const all =
+      filters.getByRole(
+        "link",
+        {
+          name:
+            "All",
+          exact:
+            true
+        }
+      );
+
+
+    await expect(
+      all
+    ).toHaveAttribute(
+      "href",
       "/activities"
     );
 
-    const buttons =
-      page.getByRole(
-        "button"
-      );
 
-    const filter =
-      buttons.filter({
-        hasText:
-          /training/i
-      }).first();
+    await all.click();
+
 
     await expect(
-      filter
-    ).toBeVisible();
+      page
+    ).toHaveURL(
+      /\/activities$/
+    );
 
-    const box =
-      await filter.boundingBox();
 
-    expect(
-      box
-    ).not.toBeNull();
+    await expect(
+      page.locator(
+        '[data-activity-filter="all"]'
+      )
+    ).toHaveAttribute(
+      "data-active",
+      "true"
+    );
 
-    if (box) {
-      expect(
-        box.height
-      ).toBeGreaterThanOrEqual(
-        34
-      );
-    }
   }
 );
 
