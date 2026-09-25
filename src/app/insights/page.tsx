@@ -167,52 +167,7 @@ export default async function InsightsPage({
         </div>
       </section>
 
-      <section
-        className={
-          indexStyles.followSection
-        }
-        data-insights-index-section="follow"
-      >
-        <div
-          className={
-            indexStyles.followInner
-          }
-        >
-          <div>
-            <p
-              className={
-                indexStyles.followEyebrow
-              }
-            >
-              NOBREACH RESEARCH
-            </p>
 
-            <h2>
-              Follow the research.
-            </h2>
-
-            <p>
-              Keep up with new NoBreach security thinking,
-              technical notes and published research.
-            </p>
-          </div>
-
-          <a
-            className={
-              indexStyles.feedAction
-            }
-            href="/feed.xml"
-          >
-            Open research feed
-
-            <span
-              aria-hidden="true"
-            >
-              →
-            </span>
-          </a>
-        </div>
-      </section>
     </div>
   );
 }

@@ -98,52 +98,60 @@ test(
 
 
 test(
-  "Insights uses one compact research feed continuation",
+  "Insights does not render the removed research feed continuation",
   async ({
     page
   }) => {
 
-    await page.goto(
-      route
-    );
-
-
-    const follow =
-      page.locator(
-        '[data-insights-index-section="follow"]'
+    const response =
+      await page.goto(
+        "/insights",
+        {
+          waitUntil:
+            "domcontentloaded"
+        }
       );
 
 
-    await expect(
-      follow
-    ).toBeVisible();
+    expect(
+      response?.status()
+    ).toBe(
+      200
+    );
 
 
     await expect(
-      follow.getByRole(
-        "heading",
+      page.locator(
+        '[data-insights-index-section="follow"]'
+      )
+    ).toHaveCount(
+      0
+    );
+
+
+    await expect(
+      page.getByText(
+        "Follow the research.",
         {
-          level:
-            2,
-
-          name:
-            "Follow the research."
+          exact:
+            true
         }
       )
-    ).toBeVisible();
+    ).toHaveCount(
+      0
+    );
 
 
     await expect(
-      follow.getByRole(
+      page.getByRole(
         "link",
         {
           name:
-            /open research feed/i
+            /Open research feed/i
         }
       )
-    ).toHaveAttribute(
-      "href",
-      "/feed.xml"
+    ).toHaveCount(
+      0
     );
 
   }
