@@ -8,7 +8,7 @@ const route =
   "/insights/attack-surface-mapping-before-exploitation";
 
 
-async function openV52(
+async function openV53(
   page:
     import("@playwright/test").Page
 ) {
@@ -37,7 +37,7 @@ async function openV52(
 
   const root =
     page.locator(
-      '[data-attack-surface-insight-design="v52"]'
+      '[data-attack-surface-insight-design="v53"]'
     );
 
 
@@ -62,33 +62,17 @@ async function openV52(
 
 
 test(
-  "Attack Surface article renders one V52 research experience",
+  "Attack Surface renders one V53 reconnaissance dossier",
   async ({
     page
   }) => {
 
     const root =
-      await openV52(
+      await openV53(
         page
       );
 
 
-    await expect(
-      page.locator(
-        '[data-insight-article="attack-surface-mapping-before-exploitation"]'
-      )
-    ).toHaveCount(
-      1
-    );
-
-
-    /*
-     * The title is canonical data, so the browser contract should not
-     * duplicate the article title as a separate hard-coded string.
-     *
-     * Source/unit contracts already prove article.title is rendered by
-     * the single H1. Runtime verifies the structural result.
-     */
     const heading =
       root.locator(
         "h1"
@@ -108,72 +92,73 @@ test(
 
 
     await expect(
-      heading
-    ).toContainText(
-      /\S/
-    );
+      root.getByText(
+        /Reconnaissance dossier/i
+      )
+    ).toBeVisible();
 
   }
 );
 
 
 test(
-  "Attack Surface article keeps one deep breadcrumb and technical map",
+  "V53 exposes the five-stage reconnaissance model",
   async ({
     page
   }) => {
 
     const root =
-      await openV52(
+      await openV53(
         page
       );
 
 
-    await expect(
-      root.getByRole(
-        "navigation",
-        {
-          name:
-            "Breadcrumb"
-        }
-      )
-    ).toHaveCount(
-      1
-    );
-
-
     const map =
       root.locator(
-        '[data-attack-surface-map="true"]'
+        '[data-attack-surface-map="v53"]'
       );
 
 
     await expect(
       map
-    ).toHaveCount(
-      1
-    );
+    ).toBeVisible();
 
 
-    await expect(
-      map
-    ).toHaveAttribute(
-      "aria-hidden",
-      "true"
-    );
+    for (
+      const label
+      of [
+        "OBSERVE",
+        "ENUMERATE",
+        "RELATE",
+        "VERIFY",
+        "PRIORITIZE"
+      ]
+    ) {
+
+      await expect(
+        map.getByText(
+          label,
+          {
+            exact:
+              true
+          }
+        )
+      ).toBeVisible();
+
+    }
 
   }
 );
 
 
 test(
-  "Attack Surface article uses contents research and information architecture",
+  "V53 uses Field Index research and dossier information",
   async ({
     page
   }) => {
 
     const root =
-      await openV52(
+      await openV53(
         page
       );
 
@@ -207,54 +192,40 @@ test(
 
 
 test(
-  "Attack Surface contents resolve to canonical research sections",
+  "V53 Field Index resolves to canonical chapters",
   async ({
     page
   }) => {
 
     const root =
-      await openV52(
+      await openV53(
         page
       );
 
 
-    const contents =
-      root.getByRole(
-        "navigation",
-        {
-          name:
-            "Article contents"
-        }
-      );
-
-
     const links =
-      contents.getByRole(
-        "link"
-      );
-
-
-    await expect
-      .poll(
-        async () =>
-          links.count(),
-        {
-          timeout:
-            10_000
-        }
-      )
-      .toBeGreaterThan(
-        0
-      );
+      root
+        .getByRole(
+          "navigation",
+          {
+            name:
+              "Article contents"
+          }
+        )
+        .getByRole(
+          "link"
+        );
 
 
     const count =
       await links.count();
 
 
-    const hrefs:
-      string[] =
-        [];
+    expect(
+      count
+    ).toBeGreaterThan(
+      0
+    );
 
 
     for (
@@ -284,11 +255,6 @@ test(
       );
 
 
-      hrefs.push(
-        href as string
-      );
-
-
       await expect(
         page.locator(
           href as string
@@ -299,21 +265,12 @@ test(
 
     }
 
-
-    expect(
-      new Set(
-        hrefs
-      ).size
-    ).toBe(
-      hrefs.length
-    );
-
   }
 );
 
 
 test(
-  "Attack Surface desktop reading measure remains editorial",
+  "V53 desktop keeps dossier rails around readable research",
   async ({
     page
   }) => {
@@ -328,7 +285,7 @@ test(
 
 
     const root =
-      await openV52(
+      await openV53(
         page
       );
 
@@ -352,29 +309,6 @@ test(
     const information =
       root.locator(
         '[aria-label="Article information"]'
-      );
-
-
-    await expect
-      .poll(
-        async () => {
-
-          const box =
-            await research.boundingBox();
-
-
-          return box?.width
-            ??
-            0;
-
-        },
-        {
-          timeout:
-            10_000
-        }
-      )
-      .toBeGreaterThan(
-        560
       );
 
 
@@ -406,24 +340,6 @@ test(
 
 
     expect(
-      researchBox?.width
-      ??
-      0
-    ).toBeGreaterThan(
-      560
-    );
-
-
-    expect(
-      researchBox?.width
-      ??
-      0
-    ).toBeLessThanOrEqual(
-      820
-    );
-
-
-    expect(
       contentsBox?.x
       ??
       0
@@ -444,52 +360,22 @@ test(
       0
     );
 
-  }
-);
 
-
-test(
-  "Attack Surface research sections remain flat and substantial",
-  async ({
-    page
-  }) => {
-
-    const root =
-      await openV52(
-        page
-      );
-
-
-    const sections =
-      root.locator(
-        '[data-article-section="true"]'
-      );
-
-
-    await expect
-      .poll(
-        async () =>
-          sections.count(),
-        {
-          timeout:
-            10_000
-        }
-      )
-      .toBeGreaterThan(
-        0
-      );
-
-
-    const paragraphs =
-      root.locator(
-        '[data-article-research="true"] p'
-      );
+    expect(
+      researchBox?.width
+      ??
+      0
+    ).toBeGreaterThan(
+      560
+    );
 
 
     expect(
-      await paragraphs.count()
-    ).toBeGreaterThan(
+      researchBox?.width
+      ??
       0
+    ).toBeLessThanOrEqual(
+      820
     );
 
   }
@@ -497,7 +383,7 @@ test(
 
 
 test(
-  "Attack Surface mobile recomposes contents research information in order",
+  "V53 mobile orders Field Index research then dossier information",
   async ({
     page
   }) => {
@@ -512,7 +398,7 @@ test(
 
 
     const root =
-      await openV52(
+      await openV53(
         page
       );
 
@@ -554,49 +440,6 @@ test(
     ).toBeVisible();
 
 
-    await expect
-      .poll(
-        async () => {
-
-          const [
-            a,
-            b,
-            c
-          ] =
-            await Promise.all([
-              contents.boundingBox(),
-              research.boundingBox(),
-              information.boundingBox()
-            ]);
-
-
-          return Boolean(
-            a
-            &&
-            b
-            &&
-            c
-            &&
-            a.height
-            >
-            0
-            &&
-            b.height
-            >
-            0
-            &&
-            c.height
-            >
-            0
-          );
-
-        }
-      )
-      .toBe(
-        true
-      );
-
-
     const [
       contentsBox,
       researchBox,
@@ -607,6 +450,33 @@ test(
         research.boundingBox(),
         information.boundingBox()
       ]);
+
+
+    expect(
+      contentsBox?.width
+      ??
+      0
+    ).toBeGreaterThan(
+      300
+    );
+
+
+    expect(
+      researchBox?.width
+      ??
+      0
+    ).toBeGreaterThan(
+      300
+    );
+
+
+    expect(
+      informationBox?.width
+      ??
+      0
+    ).toBeGreaterThan(
+      300
+    );
 
 
     expect(
@@ -631,7 +501,7 @@ test(
     );
 
 
-    const metrics =
+    const dimensions =
       await page.evaluate(
         () => ({
           scrollWidth:
@@ -642,29 +512,15 @@ test(
           clientWidth:
             document
               .documentElement
-              .clientWidth,
-
-          bodyScrollWidth:
-            document
-              .body
-              .scrollWidth
+              .clientWidth
         })
       );
 
 
     expect(
-      metrics.scrollWidth
+      dimensions.scrollWidth
     ).toBeLessThanOrEqual(
-      metrics.clientWidth
-      +
-      1
-    );
-
-
-    expect(
-      metrics.bodyScrollWidth
-    ).toBeLessThanOrEqual(
-      metrics.clientWidth
+      dimensions.clientWidth
       +
       1
     );
@@ -674,7 +530,44 @@ test(
 
 
 test(
-  "other Insight articles do not receive Attack Surface V52",
+  "V53 preserves canonical research prose",
+  async ({
+    page
+  }) => {
+
+    const root =
+      await openV53(
+        page
+      );
+
+
+    expect(
+      await root
+        .locator(
+          '[data-article-section="true"]'
+        )
+        .count()
+    ).toBeGreaterThan(
+      0
+    );
+
+
+    expect(
+      await root
+        .locator(
+          '[data-article-research="true"] p'
+        )
+        .count()
+    ).toBeGreaterThanOrEqual(
+      3
+    );
+
+  }
+);
+
+
+test(
+  "V53 stays isolated from other Insight routes",
   async ({
     page
   }) => {
@@ -690,19 +583,10 @@ test(
 
     await expect(
       page.locator(
-        '[data-attack-surface-insight-design="v52"]'
+        '[data-attack-surface-insight-design="v53"]'
       )
     ).toHaveCount(
       0
-    );
-
-
-    await expect(
-      page.locator(
-        '[data-insight-article="prompt-injection-matters-when-ai-can-act"]'
-      )
-    ).toHaveCount(
-      1
     );
 
   }

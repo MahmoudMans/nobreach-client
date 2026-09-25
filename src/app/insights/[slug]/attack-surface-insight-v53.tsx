@@ -7,7 +7,7 @@ import {
 import * as insightContent from "@/content/insights";
 
 import sharedArticleStyles from "./article.module.css";
-import styles from "./attack-surface-insight-v52.module.css";
+import styles from "./attack-surface-insight-v53.module.css";
 
 
 type UnknownRecord =
@@ -141,16 +141,16 @@ function asStringList(
   return value.flatMap(
     item => {
 
-      const text =
+      const result =
         asString(
           item
         );
 
 
-      return text
+      return result
         ?
         [
-          text
+          result
         ]
         :
         [];
@@ -376,13 +376,13 @@ function normalizeInsight(
 }
 
 
-const discoveredInsights:
+const records:
   CanonicalInsight[] =
     [];
 
 
 for (
-  const exportedValue
+  const exported
   of Object.values(
     insightContent
   )
@@ -390,7 +390,7 @@ for (
 
   if (
     !Array.isArray(
-      exportedValue
+      exported
     )
   ) {
 
@@ -401,21 +401,21 @@ for (
 
   for (
     const value
-    of exportedValue
+    of exported
   ) {
 
-    const insight =
+    const normalized =
       normalizeInsight(
         value
       );
 
 
     if (
-      insight
+      normalized
     ) {
 
-      discoveredInsights.push(
-        insight
+      records.push(
+        normalized
       );
 
     }
@@ -425,7 +425,7 @@ for (
 }
 
 
-const insightMap =
+const map =
   new Map<
     string,
     CanonicalInsight
@@ -434,10 +434,10 @@ const insightMap =
 
 for (
   const insight
-  of discoveredInsights
+  of records
 ) {
 
-  insightMap.set(
+  map.set(
     insight.slug,
     insight
   );
@@ -447,7 +447,7 @@ for (
 
 const insights =
   Array.from(
-    insightMap.values()
+    map.values()
   );
 
 
@@ -468,7 +468,7 @@ const article =
     ) {
 
       throw new Error(
-        "Attack surface research article data is missing."
+        "Attack surface research dossier is missing."
       );
 
     }
@@ -479,7 +479,7 @@ const article =
   })();
 
 
-const moreResearch =
+const relatedResearch =
   insights
     .filter(
       insight =>
@@ -504,9 +504,11 @@ function labelFromSlug(
     )
     .map(
       part =>
-        part.charAt(
-          0
-        ).toUpperCase()
+        part
+          .charAt(
+            0
+          )
+          .toUpperCase()
         +
         part.slice(
           1
@@ -532,24 +534,24 @@ function Arrow() {
 }
 
 
-export function AttackSurfaceInsightV52() {
+export function AttackSurfaceInsightV53() {
 
   return (
     <article
       className={
         `${sharedArticleStyles.article} ${styles.page}`
       }
-      data-attack-surface-insight-design="v52"
+      data-attack-surface-insight-design="v53"
       data-insight-slug="attack-surface-mapping-before-exploitation"
     >
 
       {/* ================================================================
-          PAGE INTRO
+          INTELLIGENCE MASTHEAD
          ================================================================ */}
 
       <section
         className={
-          styles.intro
+          styles.masthead
         }
         data-insight-section="intro"
       >
@@ -559,64 +561,77 @@ export function AttackSurfaceInsightV52() {
             styles.container
           }
         >
-
-          <nav
+          <div
             className={
-              styles.breadcrumb
+              styles.topline
             }
-            aria-label="Breadcrumb"
           >
-            <Link
-              href="/insights"
-            >
-              Insights
-            </Link>
-
-            <span
-              aria-hidden="true"
-            >
-              /
-            </span>
-
-            <span>
-              {
-                article.title
+            <nav
+              className={
+                styles.breadcrumb
               }
-            </span>
-          </nav>
+              aria-label="Breadcrumb"
+            >
+              <Link
+                href="/insights"
+              >
+                Insights
+              </Link>
+
+              <span
+                aria-hidden="true"
+              >
+                /
+              </span>
+
+              <span>
+                Research dossier
+              </span>
+            </nav>
+
+
+            <p
+              className={
+                styles.dossierId
+              }
+            >
+              NBR / RECON / 01
+            </p>
+          </div>
 
 
           <div
             className={
-              styles.introGrid
+              styles.mastheadBody
             }
           >
-
-            <div
+            <p
               className={
-                styles.introCopy
+                styles.kicker
               }
             >
-              <p
-                className={
-                  styles.eyebrow
-                }
-              >
+              <span>
                 {
                   article.category
                 }
-                {" "}
-                / RESEARCH
-              </p>
+              </span>
+
+              Reconnaissance dossier
+            </p>
 
 
-              <h1>
-                {
-                  article.title
-                }
-              </h1>
+            <h1>
+              {
+                article.title
+              }
+            </h1>
 
 
+            <div
+              className={
+                styles.introLower
+              }
+            >
               <p
                 className={
                   styles.summary
@@ -630,195 +645,211 @@ export function AttackSurfaceInsightV52() {
 
               <div
                 className={
-                  styles.introMeta
+                  styles.mastheadMeta
                 }
               >
-                <span>
-                  {
-                    article.publishedAt
-                  }
-                </span>
-
-                <span>
-                  {
-                    article.readingTime
-                  }
-                </span>
-
-                <span>
-                  {
-                    article.author
-                  }
-                </span>
-              </div>
-            </div>
-
-
-            <div
-              className={
-                styles.surfaceMap
-              }
-              data-attack-surface-map="true"
-              aria-hidden="true"
-            >
-              <div
-                className={
-                  styles.mapHeader
-                }
-              >
-                <span>
-                  ATTACK SURFACE
-                </span>
-
-                <span>
-                  MAP / 01
-                </span>
-              </div>
-
-
-              <div
-                className={
-                  styles.mapCanvas
-                }
-              >
-                <div
-                  className={
-                    `${styles.mapNode} ${styles.nodeA}`
-                  }
-                >
+                <div>
                   <span>
-                    01
+                    Published
                   </span>
 
                   <strong>
-                    DISCOVER
+                    {
+                      article.publishedAt
+                    }
                   </strong>
-
-                  <small>
-                    ASSETS
-                  </small>
                 </div>
 
-
-                <div
-                  className={
-                    `${styles.mapNode} ${styles.nodeB}`
-                  }
-                >
+                <div>
                   <span>
-                    02
+                    Reading
                   </span>
 
                   <strong>
-                    RESOLVE
+                    {
+                      article.readingTime
+                    }
                   </strong>
-
-                  <small>
-                    INTERFACES
-                  </small>
                 </div>
 
-
-                <div
-                  className={
-                    `${styles.mapNode} ${styles.nodeC}`
-                  }
-                >
+                <div>
                   <span>
-                    03
+                    Research
                   </span>
 
                   <strong>
-                    RELATE
-                  </strong>
-
-                  <small>
-                    TRUST
-                  </small>
-                </div>
-
-
-                <div
-                  className={
-                    `${styles.mapNode} ${styles.nodeD}`
-                  }
-                >
-                  <span>
-                    04
-                  </span>
-
-                  <strong>
-                    PRIORITIZE
-                  </strong>
-
-                  <small>
-                    PATHS
-                  </small>
-                </div>
-
-
-                <i
-                  className={
-                    `${styles.mapLine} ${styles.lineA}`
-                  }
-                />
-
-                <i
-                  className={
-                    `${styles.mapLine} ${styles.lineB}`
-                  }
-                />
-
-                <i
-                  className={
-                    `${styles.mapLine} ${styles.lineC}`
-                  }
-                />
-
-
-                <div
-                  className={
-                    styles.mapCenter
-                  }
-                >
-                  <span>
-                    EXTERNAL
-                  </span>
-
-                  <strong>
-                    SURFACE
+                    {
+                      article.author
+                    }
                   </strong>
                 </div>
-              </div>
-
-
-              <div
-                className={
-                  styles.mapFooter
-                }
-              >
-                <span>
-                  OBSERVE BEFORE EXPLOIT
-                </span>
-
-                <span>
-                  NOBREACH
-                </span>
               </div>
             </div>
-
           </div>
         </Container>
       </section>
 
 
       {/* ================================================================
-          READING FRAME
+          EXPOSURE MAP
          ================================================================ */}
 
       <section
         className={
-          styles.readingSection
+          styles.exposure
+        }
+        aria-label="Attack surface reconnaissance model"
+        data-insight-section="surface-model"
+      >
+        <Container
+          size="wide"
+          className={
+            styles.container
+          }
+        >
+          <header
+            className={
+              styles.exposureHeader
+            }
+          >
+            <div>
+              <p
+                className={
+                  styles.microLabel
+                }
+              >
+                Recon workflow
+              </p>
+
+              <h2>
+                Map the surface before touching the target.
+              </h2>
+            </div>
+
+
+            <p>
+              Build context first. Exploitation comes later.
+            </p>
+          </header>
+
+
+          <div
+            className={
+              styles.exposureMap
+            }
+            data-attack-surface-map="v53"
+            aria-hidden="true"
+          >
+            <div
+              className={
+                styles.exposureAxis
+              }
+            >
+              <span>
+                EXTERNAL
+              </span>
+
+              <span>
+                CONTEXT
+              </span>
+
+              <span>
+                DEPTH
+              </span>
+            </div>
+
+
+            {
+              [
+                [
+                  "01",
+                  "OBSERVE",
+                  "Public edge"
+                ],
+                [
+                  "02",
+                  "ENUMERATE",
+                  "Reachable systems"
+                ],
+                [
+                  "03",
+                  "RELATE",
+                  "Trust paths"
+                ],
+                [
+                  "04",
+                  "VERIFY",
+                  "Exposure"
+                ],
+                [
+                  "05",
+                  "PRIORITIZE",
+                  "Attack paths"
+                ]
+              ].map(
+                item => (
+                  <div
+                    className={
+                      styles.exposureStep
+                    }
+                    key={
+                      item[
+                        0
+                      ]
+                    }
+                  >
+                    <span
+                      className={
+                        styles.exposureNumber
+                      }
+                    >
+                      {
+                        item[
+                          0
+                        ]
+                      }
+                    </span>
+
+                    <div>
+                      <strong>
+                        {
+                          item[
+                            1
+                          ]
+                        }
+                      </strong>
+
+                      <small>
+                        {
+                          item[
+                            2
+                          ]
+                        }
+                      </small>
+                    </div>
+                  </div>
+                )
+              )
+            }
+
+
+            <div
+              className={
+                styles.exposureTrace
+              }
+            />
+          </div>
+        </Container>
+      </section>
+
+
+      {/* ================================================================
+          RESEARCH DOSSIER
+         ================================================================ */}
+
+      <section
+        className={
+          styles.dossier
         }
         data-insight-section="reading"
       >
@@ -828,33 +859,30 @@ export function AttackSurfaceInsightV52() {
             styles.container
           }
         >
-
           <div
             className={
-              `${sharedArticleStyles.layout} ${styles.readingGrid}`
+              `${sharedArticleStyles.layout} ${styles.dossierGrid}`
             }
             data-article-reading-grid="true"
           >
 
-            {/* CONTENTS */}
-
             <aside
               className={
-                styles.contentsColumn
+                styles.indexRail
               }
             >
               <nav
                 className={
-                  `${sharedArticleStyles.toc} ${styles.contents}`
+                  `${sharedArticleStyles.toc} ${styles.fieldIndex}`
                 }
                 aria-label="Article contents"
               >
                 <p
                   className={
-                    styles.railLabel
+                    styles.microLabel
                   }
                 >
-                  Contents
+                  Field index
                 </p>
 
 
@@ -862,35 +890,37 @@ export function AttackSurfaceInsightV52() {
                   {
                     article.sections.map(
                       (
-                        item,
+                        section,
                         index
                       ) => (
                         <li
                           key={
-                            item.id
+                            section.id
                           }
                         >
-                          <span>
-                            {
-                              String(
-                                index
-                                +
-                                1
-                              ).padStart(
-                                2,
-                                "0"
-                              )
-                            }
-                          </span>
-
                           <a
                             href={
-                              `#${item.id}`
+                              `#${section.id}`
                             }
                           >
-                            {
-                              item.heading
-                            }
+                            <span>
+                              {
+                                String(
+                                  index
+                                  +
+                                  1
+                                ).padStart(
+                                  2,
+                                  "0"
+                                )
+                              }
+                            </span>
+
+                            <strong>
+                              {
+                                section.heading
+                              }
+                            </strong>
                           </a>
                         </li>
                       )
@@ -901,41 +931,40 @@ export function AttackSurfaceInsightV52() {
             </aside>
 
 
-            {/* CANONICAL RESEARCH */}
-
             <div
               className={
-                `${sharedArticleStyles.content} ${styles.research}`
+                `${sharedArticleStyles.content} ${styles.researchBody}`
               }
               data-article-research="true"
             >
               {
                 article.sections.map(
                   (
-                    item,
+                    section,
                     index
                   ) => (
                     <section
                       className={
-                        `${sharedArticleStyles.section} ${styles.articleSection}`
+                        `${sharedArticleStyles.section} ${styles.chapter}`
                       }
                       id={
-                        item.id
+                        section.id
                       }
                       key={
-                        item.id
+                        section.id
                       }
                       data-article-section="true"
                     >
                       <header
                         className={
-                          styles.sectionHeader
+                          styles.chapterHeader
                         }
                       >
-                        <p
+                        <div
                           className={
-                            styles.sectionNumber
+                            styles.chapterNumber
                           }
+                          aria-hidden="true"
                         >
                           {
                             String(
@@ -947,23 +976,34 @@ export function AttackSurfaceInsightV52() {
                               "0"
                             )
                           }
-                        </p>
+                        </div>
 
-                        <h2>
-                          {
-                            item.heading
-                          }
-                        </h2>
+
+                        <div>
+                          <p
+                            className={
+                              styles.microLabel
+                            }
+                          >
+                            Research chapter
+                          </p>
+
+                          <h2>
+                            {
+                              section.heading
+                            }
+                          </h2>
+                        </div>
                       </header>
 
 
                       <div
                         className={
-                          styles.prose
+                          styles.chapterBody
                         }
                       >
                         {
-                          item.paragraphs.map(
+                          section.paragraphs.map(
                             paragraph => (
                               <p
                                 key={
@@ -980,20 +1020,26 @@ export function AttackSurfaceInsightV52() {
 
 
                         {
-                          item.bullets.length
+                          section.bullets.length
                           >
                           0
                             ?
                             (
                               <ul>
                                 {
-                                  item.bullets.map(
+                                  section.bullets.map(
                                     bullet => (
                                       <li
                                         key={
                                           bullet
                                         }
                                       >
+                                        <span
+                                          aria-hidden="true"
+                                        >
+                                          —
+                                        </span>
+
                                         {
                                           bullet
                                         }
@@ -1014,32 +1060,34 @@ export function AttackSurfaceInsightV52() {
             </div>
 
 
-            {/* INFORMATION */}
-
             <aside
               className={
-                `${sharedArticleStyles.metaSide} ${styles.infoColumn}`
+                `${sharedArticleStyles.metaSide} ${styles.dossierMeta}`
               }
               aria-label="Article information"
             >
               <div
                 className={
-                  styles.infoPanel
+                  styles.metaSticky
                 }
               >
                 <p
                   className={
-                    styles.railLabel
+                    styles.microLabel
                   }
                 >
-                  Information
+                  Dossier information
                 </p>
 
 
-                <dl>
+                <dl
+                  className={
+                    styles.metaList
+                  }
+                >
                   <div>
                     <dt>
-                      Category
+                      Classification
                     </dt>
 
                     <dd>
@@ -1049,10 +1097,9 @@ export function AttackSurfaceInsightV52() {
                     </dd>
                   </div>
 
-
                   <div>
                     <dt>
-                      Published
+                      Publication
                     </dt>
 
                     <dd>
@@ -1062,35 +1109,9 @@ export function AttackSurfaceInsightV52() {
                     </dd>
                   </div>
 
-
-                  {
-                    article.updatedAt
-                    &&
-                    article.updatedAt
-                    !==
-                    article.publishedAt
-                      ?
-                      (
-                        <div>
-                          <dt>
-                            Updated
-                          </dt>
-
-                          <dd>
-                            {
-                              article.updatedAt
-                            }
-                          </dd>
-                        </div>
-                      )
-                      :
-                      null
-                  }
-
-
                   <div>
                     <dt>
-                      Reading
+                      Reading time
                     </dt>
 
                     <dd>
@@ -1100,10 +1121,9 @@ export function AttackSurfaceInsightV52() {
                     </dd>
                   </div>
 
-
                   <div>
                     <dt>
-                      Author
+                      Researcher
                     </dt>
 
                     <dd>
@@ -1123,22 +1143,18 @@ export function AttackSurfaceInsightV52() {
                     (
                       <div
                         className={
-                          styles.contextGroup
+                          styles.tagBlock
                         }
                       >
                         <p
                           className={
-                            styles.railLabel
+                            styles.microLabel
                           }
                         >
-                          Topics
+                          Index terms
                         </p>
 
-                        <div
-                          className={
-                            styles.tags
-                          }
-                        >
+                        <div>
                           {
                             article.tags.map(
                               tag => (
@@ -1170,15 +1186,15 @@ export function AttackSurfaceInsightV52() {
                     (
                       <div
                         className={
-                          styles.contextGroup
+                          styles.referenceBlock
                         }
                       >
                         <p
                           className={
-                            styles.railLabel
+                            styles.microLabel
                           }
                         >
-                          Related services
+                          Operational context
                         </p>
 
                         {
@@ -1218,15 +1234,15 @@ export function AttackSurfaceInsightV52() {
                     (
                       <div
                         className={
-                          styles.contextGroup
+                          styles.referenceBlock
                         }
                       >
                         <p
                           className={
-                            styles.railLabel
+                            styles.microLabel
                           }
                         >
-                          Related training
+                          Training reference
                         </p>
 
                         {
@@ -1265,18 +1281,18 @@ export function AttackSurfaceInsightV52() {
 
 
       {/* ================================================================
-          MORE RESEARCH
+          RESEARCH DISPATCHES
          ================================================================ */}
 
       {
-        moreResearch.length
+        relatedResearch.length
         >
         0
           ?
           (
             <section
               className={
-                `${sharedArticleStyles.relatedSection} ${styles.relatedSection}`
+                `${sharedArticleStyles.relatedSection} ${styles.dispatches}`
               }
               data-insight-section="related"
             >
@@ -1288,34 +1304,31 @@ export function AttackSurfaceInsightV52() {
               >
                 <header
                   className={
-                    styles.relatedHeader
+                    styles.dispatchHeader
                   }
                 >
                   <div>
                     <p
                       className={
-                        styles.sectionEyebrow
+                        styles.microLabel
                       }
                     >
-                      <span>
-                        NB
-                      </span>
-
-                      Research
+                      Research dispatches
                     </p>
 
                     <h2>
-                      More research.
+                      Continue the investigation.
                     </h2>
                   </div>
+
 
                   <Link
                     href="/insights"
                     className={
-                      styles.textAction
+                      styles.inlineAction
                     }
                   >
-                    All insights
+                    Research index
 
                     <Arrow />
                   </Link>
@@ -1324,18 +1337,21 @@ export function AttackSurfaceInsightV52() {
 
                 <div
                   className={
-                    `${sharedArticleStyles.relatedGrid} ${styles.relatedList}`
+                    `${sharedArticleStyles.relatedGrid} ${styles.dispatchRows}`
                   }
                 >
                   {
-                    moreResearch.map(
+                    relatedResearch.map(
                       (
                         item,
                         index
                       ) => (
-                        <article
+                        <Link
+                          href={
+                            `/insights/${item.slug}`
+                          }
                           className={
-                            styles.relatedRow
+                            styles.dispatchRow
                           }
                           key={
                             item.slug
@@ -1343,9 +1359,8 @@ export function AttackSurfaceInsightV52() {
                         >
                           <span
                             className={
-                              styles.relatedIndex
+                              styles.dispatchNumber
                             }
-                            aria-hidden="true"
                           >
                             {
                               String(
@@ -1361,11 +1376,7 @@ export function AttackSurfaceInsightV52() {
 
 
                           <div>
-                            <p
-                              className={
-                                styles.relatedMeta
-                              }
-                            >
+                            <p>
                               {
                                 item.category
                               }
@@ -1376,25 +1387,22 @@ export function AttackSurfaceInsightV52() {
                                 item.title
                               }
                             </h3>
-
-                            <p>
-                              {
-                                item.summary
-                              }
-                            </p>
                           </div>
 
 
-                          <Link
-                            href={
-                              `/insights/${item.slug}`
+                          <span
+                            className={
+                              styles.dispatchSummary
                             }
                           >
-                            Read research
+                            {
+                              item.summary
+                            }
+                          </span>
 
-                            <Arrow />
-                          </Link>
-                        </article>
+
+                          <Arrow />
+                        </Link>
                       )
                     )
                   }
@@ -1408,12 +1416,12 @@ export function AttackSurfaceInsightV52() {
 
 
       {/* ================================================================
-          FINAL CTA
+          CLOSING INTELLIGENCE STRIP
          ================================================================ */}
 
       <section
         className={
-          styles.finalCta
+          styles.closing
         }
         data-insight-section="final-cta"
       >
@@ -1425,71 +1433,57 @@ export function AttackSurfaceInsightV52() {
         >
           <div
             className={
-              styles.finalLayout
+              styles.closingGrid
             }
           >
+            <p
+              className={
+                styles.closingCode
+              }
+            >
+              NBR / END OF DOSSIER
+            </p>
+
+
             <div>
               <p
                 className={
-                  styles.sectionEyebrow
+                  styles.microLabel
                 }
               >
-                <span>
-                  NB
-                </span>
-
-                Insights
+                Next action
               </p>
 
               <h2>
-                Continue mapping the security problem.
+                Turn reconnaissance into informed testing.
               </h2>
             </div>
 
 
             <div
               className={
-                styles.finalBody
+                styles.closingActions
               }
             >
-              <p>
-                Explore more No Breach research or move from
-                security thinking into practical assessment.
-              </p>
-
-
-              <div
+              <Link
+                href="/services"
                 className={
-                  styles.finalActions
+                  styles.primaryAction
                 }
               >
-                <Link
-                  href="/insights"
-                  className={
-                    styles.primaryAction
-                  }
-                >
-                  Explore Insights
+                Explore services
 
-                  <Arrow />
-                </Link>
+                <Arrow />
+              </Link>
 
-
-                <Link
-                  href="/services"
-                  className={
-                    styles.secondaryAction
-                  }
-                >
-                  Explore Services
-
-                  <span
-                    aria-hidden="true"
-                  >
-                    →
-                  </span>
-                </Link>
-              </div>
+              <Link
+                href="/insights"
+                className={
+                  styles.secondaryAction
+                }
+              >
+                More research
+              </Link>
             </div>
           </div>
         </Container>

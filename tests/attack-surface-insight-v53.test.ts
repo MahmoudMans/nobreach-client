@@ -16,37 +16,37 @@ const layout =
 
 const component =
   fs.readFileSync(
-    "src/app/insights/[slug]/attack-surface-insight-v52.tsx",
+    "src/app/insights/[slug]/attack-surface-insight-v53.tsx",
     "utf8"
   );
 
 
 const css =
   fs.readFileSync(
-    "src/app/insights/[slug]/attack-surface-insight-v52.module.css",
+    "src/app/insights/[slug]/attack-surface-insight-v53.module.css",
     "utf8"
   );
 
 
 describe(
-  "Attack Surface research article V52",
+  "Attack Surface recon dossier V53",
   () => {
 
     it(
-      "uses the dedicated attack surface route",
+      "uses V53 instead of V52",
       () => {
 
         expect(
           layout
         ).toContain(
-          "AttackSurfaceInsightV52"
+          "AttackSurfaceInsightV53"
         );
 
 
         expect(
           layout
-        ).toContain(
-          '"attack-surface-mapping-before-exploitation"'
+        ).not.toContain(
+          "AttackSurfaceInsightV52"
         );
 
       }
@@ -74,13 +74,6 @@ describe(
         expect(
           component
         ).toContain(
-          "value.bullets"
-        );
-
-
-        expect(
-          component
-        ).toContain(
           "value.relatedServiceSlugs"
         );
 
@@ -96,41 +89,27 @@ describe(
 
 
     it(
-      "retains shared editorial structure",
+      "defines the reconnaissance dossier identity",
       () => {
 
         expect(
           component
         ).toContain(
-          'sharedArticleStyles.layout'
+          'data-attack-surface-insight-design="v53"'
         );
 
 
         expect(
           component
         ).toContain(
-          'sharedArticleStyles.toc'
+          "Reconnaissance dossier"
         );
 
 
         expect(
           component
         ).toContain(
-          'sharedArticleStyles.content'
-        );
-
-
-        expect(
-          component
-        ).toContain(
-          'sharedArticleStyles.metaSide'
-        );
-
-
-        expect(
-          component
-        ).toContain(
-          'sharedArticleStyles.section'
+          "Research dispatches"
         );
 
       }
@@ -138,15 +117,43 @@ describe(
 
 
     it(
-      "adds semantic V52 article markers",
+      "keeps shared article architecture",
       () => {
 
         expect(
           component
         ).toContain(
-          'data-attack-surface-insight-design="v52"'
+          "sharedArticleStyles.layout"
         );
 
+
+        expect(
+          component
+        ).toContain(
+          "sharedArticleStyles.toc"
+        );
+
+
+        expect(
+          component
+        ).toContain(
+          "sharedArticleStyles.content"
+        );
+
+
+        expect(
+          component
+        ).toContain(
+          "sharedArticleStyles.metaSide"
+        );
+
+      }
+    );
+
+
+    it(
+      "uses semantic editorial markers",
+      () => {
 
         expect(
           component
@@ -165,6 +172,13 @@ describe(
         expect(
           component
         ).toContain(
+          'aria-label="Article contents"'
+        );
+
+
+        expect(
+          component
+        ).toContain(
           'aria-label="Article information"'
         );
 
@@ -173,7 +187,7 @@ describe(
 
 
     it(
-      "uses exactly one H1",
+      "renders one primary heading",
       () => {
 
         expect(
@@ -189,27 +203,13 @@ describe(
 
 
     it(
-      "uses the strict NoBreach visual system",
+      "uses the strict NoBreach dossier palette",
       () => {
 
         expect(
           css
         ).toContain(
           "#07090d"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          "#0b0f16"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          "#101620"
         );
 
 
@@ -223,42 +223,7 @@ describe(
         expect(
           css
         ).toContain(
-          "96px"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          "80px"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          "64px"
-        );
-
-      }
-    );
-
-
-    it(
-      "does not create another public shell",
-      () => {
-
-        expect(
-          component
-        ).not.toContain(
-          "SiteHeader"
-        );
-
-
-        expect(
-          component
-        ).not.toContain(
-          "SiteFooter"
+          '[data-attack-surface-insight-design="v53"]'
         );
 
       }

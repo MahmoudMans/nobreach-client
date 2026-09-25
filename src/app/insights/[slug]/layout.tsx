@@ -6,8 +6,8 @@ import { AuthorizationSystemInsightV51 } from "./authorization-system-v51";
 
 
 import {
-  AttackSurfaceInsightV52
-} from "./attack-surface-insight-v52";
+  AttackSurfaceInsightV53
+} from "./attack-surface-insight-v53";
 
 export default async function InsightDetailLayout({
   children,
@@ -40,7 +40,7 @@ export default async function InsightDetailLayout({
           slug
         }
       >
-        <AttackSurfaceInsightV52 />
+        <AttackSurfaceInsightV53 />
       </div>
     );
 

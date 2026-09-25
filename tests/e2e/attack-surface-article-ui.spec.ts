@@ -533,7 +533,7 @@ test(
 
     const root =
       page.locator(
-        '[data-attack-surface-insight-design="v52"]'
+        "[data-attack-surface-insight-design=\"v53\"]"
       );
 
 
@@ -738,7 +738,7 @@ test(
 
     const root =
       page.locator(
-        '[data-attack-surface-insight-design="v52"]'
+        "[data-attack-surface-insight-design=\"v53\"]"
       );
 
 
@@ -1015,7 +1015,7 @@ test(
 
     const root =
       page.locator(
-        '[data-attack-surface-insight-design="v52"]'
+        "[data-attack-surface-insight-design=\"v53\"]"
       );
 
 
