@@ -382,25 +382,81 @@ test.describe(
 
 test(
   "activity archive links to activity detail pages",
-  async ({ page }) => {
-    await page.goto(
-      "/activities"
+  async ({
+    page
+  }) => {
+
+    const response =
+      await page.goto(
+        "/activities"
+      );
+
+
+    expect(
+      response?.status()
+    ).toBe(
+      200
     );
 
+
+    const activityRow =
+      page
+        .locator(
+          '[data-activity-row="true"]'
+        )
+        .filter({
+          hasText:
+            "AI Security Foundations"
+        });
+
+
+    await expect(
+      activityRow
+    ).toHaveCount(
+      1
+    );
+
+
+    await expect(
+      activityRow.getByRole(
+        "heading",
+        {
+          name:
+            "AI Security Foundations",
+          exact:
+            true
+        }
+      )
+    ).toBeVisible();
+
+
     const activityLink =
-      page.getByRole(
+      activityRow.getByRole(
         "link",
         {
           name:
-            /AI Security Foundations/i
+            "View activity",
+          exact:
+            true
         }
       );
+
 
     await expect(
       activityLink
     ).toBeVisible();
 
+
+    await expect(
+      activityLink
+    ).toHaveAttribute(
+      "href",
+      "/activities/ai-security-foundations-2026"
+    );
+
+
     await activityLink.click();
+
 
     await expect(
       page
@@ -408,16 +464,31 @@ test(
       /\/activities\/ai-security-foundations-2026$/
     );
 
+
     await expect(
       page.getByRole(
         "heading",
         {
-          level: 1,
+          level:
+            1,
+
           name:
-            "AI Security Foundations"
+            "AI Security Foundations",
+          exact:
+            true
         }
       )
     ).toBeVisible();
+
+
+    await expect(
+      page.locator(
+        '[data-ai-security-activity-design="v50"]'
+      )
+    ).toHaveCount(
+      1
+    );
+
   }
 );
 

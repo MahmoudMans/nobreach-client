@@ -12,6 +12,8 @@ import { Cr4ckout2V48 } from "./cr4ckout-2-v48";
 
 import { RedTeamFoundationsActivityV49 } from "./red-team-foundations-2026-v49";
 
+import { AISecurityFoundationsActivityV50 } from "./ai-security-foundations-2026-v50";
+
 
 export default async function ActivityDetailLayout({
   children,
@@ -31,6 +33,19 @@ export default async function ActivityDetailLayout({
     slug
   } =
     await params;
+
+  if (
+    slug
+    ===
+    "ai-security-foundations-2026"
+  ) {
+
+    return (
+      <AISecurityFoundationsActivityV50 />
+    );
+
+  }
+
 
   if (
     slug
