@@ -9,6 +9,10 @@ import {
   AttackSurfaceInsightV53
 } from "./attack-surface-insight-v53";
 
+import {
+  PromptInjectionInsightV54
+} from "./prompt-injection-insight-v54";
+
 export default async function InsightDetailLayout({
   children,
   params
@@ -31,6 +35,26 @@ export default async function InsightDetailLayout({
   if (
     slug
     ===
+    "prompt-injection-matters-when-ai-can-act"
+  ) {
+
+    return (
+      <div
+        data-insight-article={
+          slug
+        }
+      >
+        <PromptInjectionInsightV54 />
+      </div>
+    );
+
+  }
+
+
+
+  if (
+    slug
+    ===
     "attack-surface-mapping-before-exploitation"
   ) {
 
@@ -45,8 +69,6 @@ export default async function InsightDetailLayout({
     );
 
   }
-
-
 
 
   if (
