@@ -2273,3 +2273,870 @@ and
   }
 
 }
+
+
+/* ==========================================================================
+   NB_CONTACT_STRICT_ARCHITECTURE_V11
+
+   Contact architecture:
+   SiteHeader
+   -> PageIntro
+   -> ContactMain [Information 5 / Form 7]
+   -> SiteFooter
+
+   Contact has no breadcrumb.
+   Existing ConsultationIntakeForm behaviour remains unchanged.
+   ========================================================================== */
+
+
+.v11Page {
+  --contact-v11-bg:
+    #07090d;
+
+  --contact-v11-alt:
+    #0b0f16;
+
+  --contact-v11-card:
+    #101620;
+
+  --contact-v11-text:
+    #f2f6f9;
+
+  --contact-v11-muted:
+    rgba(
+      222,
+      231,
+      239,
+      0.72
+    );
+
+  --contact-v11-faint:
+    rgba(
+      222,
+      231,
+      239,
+      0.44
+    );
+
+  --contact-v11-cyan:
+    #a1e2f0;
+
+  --contact-v11-line:
+    rgba(
+      161,
+      226,
+      240,
+      0.12
+    );
+
+  --contact-v11-line-soft:
+    rgba(
+      255,
+      255,
+      255,
+      0.075
+    );
+
+  width:
+    100%;
+
+  overflow:
+    clip;
+
+  background:
+    var(
+      --contact-v11-bg
+    );
+
+  color:
+    var(
+      --contact-v11-text
+    );
+}
+
+
+.v11Container {
+  position:
+    relative;
+
+  z-index:
+    2;
+}
+
+
+/* ==========================================================================
+   PAGE INTRO
+   ========================================================================== */
+
+
+.v11Intro {
+  position:
+    relative;
+
+  padding:
+    80px
+    0
+    72px;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --contact-v11-line-soft
+    );
+
+  background:
+    var(
+      --contact-v11-bg
+    );
+}
+
+
+.v11Intro::before {
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(
+        161,
+        226,
+        240,
+        0.022
+      )
+      1px,
+      transparent
+      1px
+    );
+
+  background-size:
+    74px
+    100%;
+
+  mask-image:
+    linear-gradient(
+      to right,
+      black,
+      transparent
+      82%
+    );
+
+  content:
+    "";
+
+  pointer-events:
+    none;
+}
+
+
+.v11IntroInner {
+  max-width:
+    720px;
+}
+
+
+.v11Eyebrow,
+.v11MicroLabel {
+  margin:
+    0;
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    "IBM Plex Mono",
+    monospace;
+
+  font-weight:
+    600;
+
+  letter-spacing:
+    0.14em;
+
+  line-height:
+    1.4;
+
+  text-transform:
+    uppercase;
+}
+
+
+.v11Eyebrow {
+  color:
+    var(
+      --contact-v11-cyan
+    );
+
+  font-size:
+    0.62rem;
+}
+
+
+.v11MicroLabel {
+  color:
+    var(
+      --contact-v11-faint
+    );
+
+  font-size:
+    0.56rem;
+}
+
+
+.v11Intro h1 {
+  max-width:
+    700px;
+
+  margin:
+    18px
+    0
+    0;
+
+  color:
+    var(
+      --contact-v11-text
+    );
+
+  font-size:
+    clamp(
+      3.25rem,
+      6vw,
+      5.8rem
+    );
+
+  font-weight:
+    520;
+
+  letter-spacing:
+    -0.06em;
+
+  line-height:
+    0.96;
+}
+
+
+.v11IntroLead {
+  max-width:
+    620px;
+
+  margin:
+    26px
+    0
+    0;
+
+  color:
+    var(
+      --contact-v11-muted
+    );
+
+  font-size:
+    1.03rem;
+
+  line-height:
+    1.72;
+}
+
+
+/* ==========================================================================
+   CONTACT MAIN — 5 / 7
+   ========================================================================== */
+
+
+.v11Main {
+  padding:
+    96px
+    0;
+
+  background:
+    var(
+      --contact-v11-alt
+    );
+}
+
+
+.v11ContactGrid {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      5fr
+    )
+    minmax(
+      0,
+      7fr
+    );
+
+  align-items:
+    start;
+
+  gap:
+    72px;
+
+  width:
+    100%;
+}
+
+
+/* ==========================================================================
+   INFORMATION COLUMN
+   ========================================================================== */
+
+
+.v11Information {
+  min-width:
+    0;
+
+  max-width:
+    470px;
+}
+
+
+.v11InformationIntro {
+  max-width:
+    440px;
+}
+
+
+.v11InformationIntro h2 {
+  max-width:
+    420px;
+
+  margin:
+    12px
+    0
+    0;
+
+  color:
+    var(
+      --contact-v11-text
+    );
+
+  font-size:
+    clamp(
+      2rem,
+      3.5vw,
+      3.45rem
+    );
+
+  font-weight:
+    510;
+
+  letter-spacing:
+    -0.05em;
+
+  line-height:
+    1.02;
+}
+
+
+.v11InformationIntro > p:last-child {
+  margin:
+    20px
+    0
+    0;
+
+  color:
+    var(
+      --contact-v11-muted
+    );
+
+  font-size:
+    0.93rem;
+
+  line-height:
+    1.75;
+}
+
+
+.v11ContextList {
+  margin:
+    46px
+    0
+    0;
+
+  padding:
+    0;
+
+  border-top:
+    1px
+    solid
+    var(
+      --contact-v11-line
+    );
+
+  list-style:
+    none;
+}
+
+
+.v11ContextList li {
+  display:
+    grid;
+
+  grid-template-columns:
+    36px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    16px;
+
+  padding:
+    22px
+    0;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --contact-v11-line-soft
+    );
+}
+
+
+.v11ContextList > li > span {
+  color:
+    var(
+      --contact-v11-cyan
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.55rem;
+
+  line-height:
+    1.5;
+}
+
+
+.v11ContextList strong {
+  display:
+    block;
+
+  color:
+    var(
+      --contact-v11-text
+    );
+
+  font-size:
+    0.84rem;
+
+  font-weight:
+    600;
+}
+
+
+.v11ContextList p {
+  margin:
+    7px
+    0
+    0;
+
+  color:
+    var(
+      --contact-v11-muted
+    );
+
+  font-size:
+    0.78rem;
+
+  line-height:
+    1.6;
+}
+
+
+/* ==========================================================================
+   FORM COLUMN
+   ========================================================================== */
+
+
+.v11FormColumn {
+  min-width:
+    0;
+
+  width:
+    100%;
+}
+
+
+.v11FormHeading {
+  max-width:
+    650px;
+
+  margin-bottom:
+    34px;
+
+  padding-bottom:
+    26px;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --contact-v11-line
+    );
+}
+
+
+.v11FormHeading h2 {
+  margin:
+    11px
+    0
+    0;
+
+  color:
+    var(
+      --contact-v11-text
+    );
+
+  font-size:
+    clamp(
+      1.8rem,
+      2.8vw,
+      2.8rem
+    );
+
+  font-weight:
+    510;
+
+  letter-spacing:
+    -0.045em;
+
+  line-height:
+    1.08;
+}
+
+
+.v11FormHeading > p:last-child {
+  max-width:
+    560px;
+
+  margin:
+    14px
+    0
+    0;
+
+  color:
+    var(
+      --contact-v11-muted
+    );
+
+  font-size:
+    0.85rem;
+
+  line-height:
+    1.65;
+}
+
+
+.v11FormShell {
+  width:
+    100%;
+
+  min-width:
+    0;
+}
+
+
+.v11FormShell [data-consultation-form] {
+  width:
+    100%;
+
+  max-width:
+    none;
+
+  margin:
+    0;
+}
+
+
+/*
+ * Do not change the established V10 option geometry, radio positioning,
+ * step mechanics or review controls here. Those behaviours are already
+ * covered by the existing functional regression.
+ *
+ * V11 only normalizes standard text controls to the strict design authority.
+ */
+
+
+.v11FormShell [data-consultation-form] input:not(
+  [type="radio"]
+):not(
+  [type="checkbox"]
+),
+.v11FormShell [data-consultation-form] select,
+.v11FormShell [data-consultation-form] textarea {
+  width:
+    100%;
+
+  min-height:
+    48px;
+
+  border:
+    1px
+    solid
+    rgba(
+      255,
+      255,
+      255,
+      0.1
+    );
+
+  border-radius:
+    10px;
+
+  background:
+    #0b111a;
+
+  color:
+    var(
+      --contact-v11-text
+    );
+}
+
+
+.v11FormShell [data-consultation-form] textarea {
+  min-height:
+    132px;
+
+  resize:
+    vertical;
+}
+
+
+.v11FormShell [data-consultation-form] input:focus-visible,
+.v11FormShell [data-consultation-form] select:focus-visible,
+.v11FormShell [data-consultation-form] textarea:focus-visible,
+.v11FormShell [data-consultation-form] button:focus-visible {
+  outline:
+    2px
+    solid
+    var(
+      --contact-v11-cyan
+    );
+
+  outline-offset:
+    3px;
+}
+
+
+.v11FormShell [data-consultation-form] button {
+  min-height:
+    44px;
+}
+
+
+/* ==========================================================================
+   ACCESSIBILITY
+   ========================================================================== */
+
+
+.v11Page a:focus-visible {
+  outline:
+    2px
+    solid
+    var(
+      --contact-v11-cyan
+    );
+
+  outline-offset:
+    3px;
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+
+@media (max-width: 980px) {
+
+  .v11Intro {
+    padding:
+      72px
+      0
+      64px;
+  }
+
+
+  .v11Main {
+    padding:
+      80px
+      0;
+  }
+
+
+  .v11ContactGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        4fr
+      )
+      minmax(
+        0,
+        6fr
+      );
+
+    gap:
+      48px;
+  }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+
+@media (max-width: 760px) {
+
+  .v11Intro {
+    padding:
+      54px
+      0
+      56px;
+  }
+
+
+  .v11Intro::before {
+    opacity:
+      0.45;
+
+    background-size:
+      58px
+      100%;
+  }
+
+
+  .v11Intro h1 {
+    font-size:
+      clamp(
+        2.75rem,
+        13vw,
+        4.15rem
+      );
+  }
+
+
+  .v11Main {
+    padding:
+      64px
+      0;
+  }
+
+
+  .v11ContactGrid {
+    display:
+      flex;
+
+    width:
+      100%;
+
+    max-width:
+      100%;
+
+    flex-direction:
+      column;
+
+    align-items:
+      stretch;
+
+    gap:
+      52px;
+  }
+
+
+  .v11Information,
+  .v11FormColumn {
+    width:
+      100%;
+
+    max-width:
+      none;
+
+    min-width:
+      0;
+  }
+
+
+  .v11InformationIntro,
+  .v11FormHeading {
+    max-width:
+      none;
+  }
+
+
+  .v11ContextList {
+    margin-top:
+      34px;
+  }
+
+
+  .v11FormHeading {
+    margin-bottom:
+      28px;
+  }
+
+
+  .v11FormShell {
+    width:
+      100%;
+
+    max-width:
+      100%;
+
+    min-width:
+      0;
+  }
+
+
+  .v11FormShell [data-consultation-form] {
+    width:
+      100%;
+
+    max-width:
+      100%;
+
+    min-width:
+      0;
+  }
+
+
+  .v11FormShell [data-consultation-form] input,
+  .v11FormShell [data-consultation-form] select,
+  .v11FormShell [data-consultation-form] textarea,
+  .v11FormShell [data-consultation-form] button {
+    max-width:
+      100%;
+  }
+
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  .v11Page * {
+    scroll-behavior:
+      auto;
+  }
+
+}
