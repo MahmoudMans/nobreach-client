@@ -13,6 +13,10 @@ import {
   PromptInjectionInsightV54
 } from "./prompt-injection-insight-v54";
 
+import {
+  ManualReasoningInsightV55
+} from "./manual-reasoning-insight-v55";
+
 export default async function InsightDetailLayout({
   children,
   params
@@ -30,6 +34,26 @@ export default async function InsightDetailLayout({
     slug
   } =
     await params;
+
+
+  if (
+    slug
+    ===
+    "manual-reasoning-in-web-security-testing"
+  ) {
+
+    return (
+      <div
+        data-insight-article={
+          slug
+        }
+      >
+        <ManualReasoningInsightV55 />
+      </div>
+    );
+
+  }
+
 
 
   if (
