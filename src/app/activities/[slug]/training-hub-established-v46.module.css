@@ -1,0 +1,1509 @@
+/* ==========================================================================
+   NB_TRAINING_HUB_ACTIVITY_DETAIL_V46
+
+   Strict NoBreach deep activity detail.
+
+   PageIntro
+   Facts
+   Editorial narrative
+   Training Hub context
+   Final CTA
+   ========================================================================== */
+
+
+.page {
+  --th-bg:
+    #07090d;
+
+  --th-alt:
+    #0b0f16;
+
+  --th-surface:
+    #101620;
+
+  --th-elevated:
+    #151d29;
+
+  --th-text:
+    #f5f7fa;
+
+  --th-secondary:
+    #c5ced8;
+
+  --th-muted:
+    #8793a3;
+
+  --th-subtle:
+    #667281;
+
+  --th-cyan:
+    #a1e2f0;
+
+  --th-blue:
+    #83b3d7;
+
+  --th-violet:
+    #7e60b9;
+
+  --th-line:
+    rgba(
+      161,
+      226,
+      240,
+      0.1
+    );
+
+  --th-line-soft:
+    rgba(
+      255,
+      255,
+      255,
+      0.075
+    );
+
+  width:
+    100%;
+
+  min-width:
+    0;
+
+  overflow:
+    clip;
+
+  color:
+    var(
+      --th-text
+    );
+
+  background:
+    var(
+      --th-bg
+    );
+}
+
+
+.page *,
+.page *::before,
+.page *::after {
+  box-sizing:
+    border-box;
+}
+
+
+.container {
+  width:
+    100%;
+}
+
+
+/* ==========================================================================
+   PAGE INTRO
+   ========================================================================== */
+
+
+.intro {
+  position:
+    relative;
+
+  padding:
+    clamp(
+      54px,
+      6vw,
+      82px
+    )
+    0
+    clamp(
+      76px,
+      8vw,
+      108px
+    );
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --th-line-soft
+    );
+
+  background:
+    var(
+      --th-bg
+    );
+}
+
+
+.intro::after {
+  position:
+    absolute;
+
+  z-index:
+    0;
+
+  top:
+    0;
+
+  right:
+    0;
+
+  bottom:
+    0;
+
+  width:
+    min(
+      47vw,
+      760px
+    );
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        99,
+        51,
+        198,
+        0.03
+      )
+    );
+
+  content:
+    "";
+
+  pointer-events:
+    none;
+}
+
+
+.intro
+.container {
+  position:
+    relative;
+
+  z-index:
+    2;
+}
+
+
+.breadcrumb {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  align-items:
+    center;
+
+  gap:
+    8px;
+
+  margin-bottom:
+    42px;
+
+  color:
+    var(
+      --th-subtle
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    "IBM Plex Mono",
+    monospace;
+
+  font-size:
+    0.68rem;
+
+  letter-spacing:
+    0.04em;
+}
+
+
+.breadcrumb a {
+  color:
+    var(
+      --th-muted
+    );
+
+  text-decoration:
+    none;
+}
+
+
+.breadcrumb a:hover {
+  color:
+    var(
+      --th-cyan
+    );
+}
+
+
+.introGrid {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1.06fr
+    )
+    minmax(
+      320px,
+      0.56fr
+    );
+
+  gap:
+    clamp(
+      56px,
+      7vw,
+      96px
+    );
+
+  align-items:
+    center;
+}
+
+
+.introCopy {
+  min-width:
+    0;
+
+  max-width:
+    800px;
+}
+
+
+.eyebrow,
+.sectionEyebrow,
+.subsectionLabel,
+.signalHeader,
+.signalFooter,
+.factList dt {
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.eyebrow {
+  margin:
+    0;
+
+  color:
+    var(
+      --th-blue
+    );
+
+  font-size:
+    0.65rem;
+
+  font-weight:
+    650;
+
+  letter-spacing:
+    0.11em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.intro h1 {
+  max-width:
+    850px;
+
+  margin:
+    15px
+    0
+    0;
+
+  color:
+    var(
+      --th-text
+    );
+
+  font-size:
+    clamp(
+      3.85rem,
+      6.7vw,
+      6.3rem
+    );
+
+  font-weight:
+    470;
+
+  letter-spacing:
+    -0.07em;
+
+  line-height:
+    0.91;
+
+  text-wrap:
+    balance;
+}
+
+
+.summary {
+  max-width:
+    650px;
+
+  margin:
+    26px
+    0
+    0;
+
+  color:
+    var(
+      --th-muted
+    );
+
+  font-size:
+    clamp(
+      1rem,
+      1.35vw,
+      1.13rem
+    );
+
+  line-height:
+    1.68;
+}
+
+
+.introActions,
+.contextActions,
+.finalActions {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    10px;
+
+  margin-top:
+    27px;
+}
+
+
+.primaryAction,
+.secondaryAction {
+  display:
+    inline-flex;
+
+  min-height:
+    46px;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    15px;
+
+  padding:
+    0
+    18px;
+
+  border-radius:
+    4px;
+
+  font-size:
+    0.79rem;
+
+  font-weight:
+    660;
+
+  text-decoration:
+    none;
+}
+
+
+.primaryAction {
+  border:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.3
+    );
+
+  color:
+    #071015;
+
+  background:
+    var(
+      --th-cyan
+    );
+}
+
+
+.primaryAction:hover {
+  background:
+    #c5eff8;
+}
+
+
+.secondaryAction {
+  border:
+    1px
+    solid
+    var(
+      --th-line
+    );
+
+  color:
+    var(
+      --th-secondary
+    );
+
+  background:
+    transparent;
+}
+
+
+.secondaryAction:hover {
+  border-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.22
+    );
+
+  color:
+    var(
+      --th-cyan
+    );
+}
+
+
+/* ==========================================================================
+   SUPPORTING TRAINING SIGNAL
+   ========================================================================== */
+
+
+.trainingSignal {
+  min-width:
+    0;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.23
+    );
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --th-line
+    );
+}
+
+
+.signalHeader,
+.signalFooter {
+  min-height:
+    42px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    16px;
+
+  color:
+    var(
+      --th-subtle
+    );
+
+  font-size:
+    0.54rem;
+
+  letter-spacing:
+    0.09em;
+}
+
+
+.signalTrack {
+  display:
+    grid;
+
+  grid-template-columns:
+    auto
+    1fr
+    auto
+    1fr
+    auto;
+
+  align-items:
+    center;
+
+  min-height:
+    174px;
+
+  border-top:
+    1px
+    solid
+    var(
+      --th-line-soft
+    );
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --th-line-soft
+    );
+}
+
+
+.signalTrack div {
+  display:
+    grid;
+
+  gap:
+    8px;
+
+  justify-items:
+    center;
+}
+
+
+.signalTrack span {
+  color:
+    var(
+      --th-subtle
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.52rem;
+}
+
+
+.signalTrack strong {
+  color:
+    var(
+      --th-secondary
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.57rem;
+
+  font-weight:
+    650;
+
+  letter-spacing:
+    0.05em;
+}
+
+
+.signalTrack i {
+  position:
+    relative;
+
+  height:
+    1px;
+
+  margin-inline:
+    10px;
+
+  background:
+    var(
+      --th-line
+    );
+}
+
+
+.signalTrack i::after {
+  position:
+    absolute;
+
+  top:
+    50%;
+
+  right:
+    0;
+
+  width:
+    5px;
+
+  height:
+    5px;
+
+  border-radius:
+    50%;
+
+  background:
+    var(
+      --th-cyan
+    );
+
+  content:
+    "";
+
+  transform:
+    translate(
+      50%,
+      -50%
+    );
+}
+
+
+/* ==========================================================================
+   FACTS
+   ========================================================================== */
+
+
+.facts {
+  border-bottom:
+    1px
+    solid
+    var(
+      --th-line-soft
+    );
+
+  background:
+    var(
+      --th-bg
+    );
+}
+
+
+.factList {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  margin:
+    0;
+}
+
+
+.factList div {
+  min-width:
+    0;
+
+  padding:
+    22px
+    20px
+    22px
+    0;
+}
+
+
+.factList div
++
+div {
+  padding-left:
+    20px;
+
+  border-left:
+    1px
+    solid
+    var(
+      --th-line-soft
+    );
+}
+
+
+.factList dt {
+  color:
+    var(
+      --th-subtle
+    );
+
+  font-size:
+    0.54rem;
+
+  letter-spacing:
+    0.08em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.factList dd {
+  margin:
+    8px
+    0
+    0;
+
+  color:
+    var(
+      --th-secondary
+    );
+
+  font-size:
+    0.84rem;
+
+  font-weight:
+    600;
+
+  overflow-wrap:
+    anywhere;
+}
+
+
+/* ==========================================================================
+   EDITORIAL SECTIONS
+   ========================================================================== */
+
+
+.section {
+  padding:
+    96px
+    0;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --th-line-soft
+    );
+
+  background:
+    var(
+      --th-bg
+    );
+}
+
+
+.sectionAlt {
+  background:
+    var(
+      --th-alt
+    );
+}
+
+
+.editorialGrid,
+.contextGrid,
+.finalLayout {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      260px,
+      0.42fr
+    )
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    clamp(
+      54px,
+      8vw,
+      110px
+    );
+
+  align-items:
+    start;
+}
+
+
+.sectionHeading {
+  max-width:
+    500px;
+}
+
+
+.sectionEyebrow {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  margin:
+    0;
+
+  color:
+    var(
+      --th-blue
+    );
+
+  font-size:
+    0.6rem;
+
+  font-weight:
+    630;
+
+  letter-spacing:
+    0.1em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.sectionEyebrow span {
+  color:
+    var(
+      --th-subtle
+    );
+}
+
+
+.sectionHeading h2,
+.contextGrid h2,
+.finalLayout h2 {
+  margin:
+    14px
+    0
+    0;
+
+  color:
+    var(
+      --th-text
+    );
+
+  font-size:
+    clamp(
+      2.5rem,
+      4.4vw,
+      4.05rem
+    );
+
+  font-weight:
+    470;
+
+  letter-spacing:
+    -0.055em;
+
+  line-height:
+    1.02;
+}
+
+
+.largeCopy {
+  max-width:
+    760px;
+
+  margin:
+    0;
+
+  color:
+    var(
+      --th-secondary
+    );
+
+  font-size:
+    clamp(
+      1.12rem,
+      1.65vw,
+      1.44rem
+    );
+
+  line-height:
+    1.58;
+}
+
+
+/* ==========================================================================
+   HIGHLIGHTS
+   ========================================================================== */
+
+
+.highlights {
+  margin-top:
+    42px;
+}
+
+
+.subsectionLabel {
+  margin:
+    0
+    0
+    14px;
+
+  color:
+    var(
+      --th-blue
+    );
+
+  font-size:
+    0.58rem;
+
+  letter-spacing:
+    0.09em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.highlights ol {
+  margin:
+    0;
+
+  padding:
+    0;
+
+  border-top:
+    1px
+    solid
+    var(
+      --th-line
+    );
+
+  list-style:
+    none;
+}
+
+
+.highlights li {
+  display:
+    grid;
+
+  grid-template-columns:
+    44px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    18px;
+
+  padding:
+    18px
+    0;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --th-line-soft
+    );
+}
+
+
+.highlights li span {
+  color:
+    var(
+      --th-cyan
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.57rem;
+}
+
+
+.highlights li p {
+  max-width:
+    720px;
+
+  margin:
+    0;
+
+  color:
+    var(
+      --th-muted
+    );
+
+  font-size:
+    0.86rem;
+
+  line-height:
+    1.6;
+}
+
+
+/* ==========================================================================
+   PROSE
+   ========================================================================== */
+
+
+.prose {
+  max-width:
+    780px;
+}
+
+
+.prose p {
+  margin:
+    0;
+
+  color:
+    var(
+      --th-secondary
+    );
+
+  font-size:
+    0.98rem;
+
+  line-height:
+    1.76;
+}
+
+
+.prose p
++
+p {
+  margin-top:
+    20px;
+}
+
+
+/* ==========================================================================
+   TRAINING HUB CONTEXT
+   ========================================================================== */
+
+
+.contextSection {
+  background:
+    var(
+      --th-alt
+    );
+}
+
+
+.contextBody {
+  max-width:
+    620px;
+}
+
+
+.contextBody
+> p,
+.finalBody
+> p {
+  margin:
+    0;
+
+  color:
+    var(
+      --th-muted
+    );
+
+  font-size:
+    0.87rem;
+
+  line-height:
+    1.68;
+}
+
+
+/* ==========================================================================
+   FINAL CTA
+   ========================================================================== */
+
+
+.finalCta {
+  padding:
+    88px
+    0
+    96px;
+
+  background:
+    var(
+      --th-bg
+    );
+}
+
+
+.finalLayout {
+  align-items:
+    end;
+
+  padding-top:
+    30px;
+
+  border-top:
+    1px
+    solid
+    var(
+      --th-line
+    );
+}
+
+
+/* ==========================================================================
+   ACCESSIBILITY
+   ========================================================================== */
+
+
+.page a:focus-visible {
+  outline:
+    2px
+    solid
+    #a1e2f0;
+
+  outline-offset:
+    3px;
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    1024px
+) {
+
+  .introGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      )
+      minmax(
+        280px,
+        0.48fr
+      );
+
+    gap:
+      44px;
+  }
+
+
+  .section {
+    padding:
+      80px
+      0;
+  }
+
+
+  .factList {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+
+  .factList div:nth-child(3) {
+    border-top:
+      1px
+      solid
+      var(
+        --th-line-soft
+      );
+
+    border-left:
+      0;
+  }
+
+
+  .factList div:nth-child(4) {
+    border-top:
+      1px
+      solid
+      var(
+        --th-line-soft
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   TABLET PORTRAIT
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    900px
+) {
+
+  .introGrid,
+  .editorialGrid,
+  .contextGrid,
+  .finalLayout {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      34px;
+  }
+
+
+  .trainingSignal {
+    width:
+      100%;
+
+    max-width:
+      680px;
+  }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    640px
+) {
+
+  .intro {
+    padding:
+      38px
+      0
+      64px;
+  }
+
+
+  .breadcrumb {
+    margin-bottom:
+      30px;
+
+    font-size:
+      0.63rem;
+  }
+
+
+  .intro h1 {
+    font-size:
+      clamp(
+        2.9rem,
+        13.5vw,
+        4.15rem
+      );
+  }
+
+
+  .summary {
+    margin-top:
+      20px;
+
+    font-size:
+      0.94rem;
+  }
+
+
+  .introActions,
+  .contextActions,
+  .finalActions {
+    display:
+      grid;
+
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .primaryAction,
+  .secondaryAction {
+    width:
+      100%;
+  }
+
+
+  .signalTrack {
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(
+          0,
+          1fr
+        )
+      );
+
+    min-height:
+      112px;
+  }
+
+
+  .signalTrack i {
+    display:
+      none;
+  }
+
+
+  .factList {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .factList div,
+  .factList div
+  +
+  div,
+  .factList div:nth-child(3),
+  .factList div:nth-child(4) {
+    padding:
+      14px
+      0;
+
+    border-top:
+      1px
+      solid
+      var(
+        --th-line-soft
+      );
+
+    border-left:
+      0;
+  }
+
+
+  .factList div:first-child {
+    border-top:
+      0;
+  }
+
+
+  .section {
+    padding:
+      64px
+      0;
+  }
+
+
+  .sectionHeading h2,
+  .contextGrid h2,
+  .finalLayout h2 {
+    font-size:
+      clamp(
+        2.15rem,
+        10.5vw,
+        3rem
+      );
+  }
+
+
+  .largeCopy {
+    font-size:
+      1.05rem;
+  }
+
+
+  .highlights li {
+    grid-template-columns:
+      34px
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      12px;
+  }
+
+
+  .finalCta {
+    padding:
+      64px
+      0;
+  }
+
+}
+
+
+/* ==========================================================================
+   NARROW MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    390px
+) {
+
+  .intro h1 {
+    font-size:
+      2.74rem;
+  }
+
+
+  .signalHeader,
+  .signalFooter {
+    font-size:
+      0.48rem;
+  }
+
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .primaryAction,
+  .secondaryAction {
+    transition:
+      none;
+  }
+
+}
