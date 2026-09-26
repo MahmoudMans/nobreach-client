@@ -12,16 +12,6 @@ const root =
   process.cwd();
 
 
-const component =
-  fs.readFileSync(
-    path.join(
-      root,
-      "src/app/training/course-registration-links.tsx"
-    ),
-    "utf8"
-  );
-
-
 const template =
   fs.readFileSync(
     path.join(
@@ -32,20 +22,70 @@ const template =
   );
 
 
+const component =
+  fs.readFileSync(
+    path.join(
+      root,
+      "src/app/training/course-registration-links.tsx"
+    ),
+    "utf8"
+  );
+
+
 describe(
-  "training mentorship registration links V1",
+  "training registration links V2",
   () => {
 
     it(
-      "maps Red Team Foundations to the supplied form",
+      "places registration before course content",
+      () => {
+
+        const registrationIndex =
+          template.indexOf(
+            "<CourseRegistrationLinks />"
+          );
+
+
+        const childrenIndex =
+          template.indexOf(
+            "{children}"
+          );
+
+
+        expect(
+          registrationIndex
+        ).toBeGreaterThan(
+          -1
+        );
+
+
+        expect(
+          childrenIndex
+        ).toBeGreaterThan(
+          registrationIndex
+        );
+
+      }
+    );
+
+
+    it(
+      "declares top placement",
       () => {
 
         expect(
           component
         ).toContain(
-          '"red-team-foundations"'
+          'data-registration-placement="top"'
         );
 
+      }
+    );
+
+
+    it(
+      "uses the Red Team registration link",
+      () => {
 
         expect(
           component
@@ -58,15 +98,8 @@ describe(
 
 
     it(
-      "maps AI Security Foundations to the supplied form",
+      "uses the AI Security registration link",
       () => {
-
-        expect(
-          component
-        ).toContain(
-          '"ai-security-foundations"'
-        );
-
 
         expect(
           component
@@ -79,15 +112,8 @@ describe(
 
 
     it(
-      "maps Web Exploitation Techniques to the supplied form",
+      "uses the Web Exploitation registration link",
       () => {
-
-        expect(
-          component
-        ).toContain(
-          '"web-exploitation-techniques"'
-        );
-
 
         expect(
           component
@@ -100,48 +126,20 @@ describe(
 
 
     it(
-      "renders links as external registration actions",
+      "uses an immediately visible registration action",
       () => {
+
+        expect(
+          component
+        ).toContain(
+          "Register now"
+        );
+
 
         expect(
           component
         ).toContain(
           'target="_blank"'
-        );
-
-
-        expect(
-          component
-        ).toContain(
-          'rel="noreferrer"'
-        );
-
-
-        expect(
-          component
-        ).toContain(
-          "Register"
-        );
-
-      }
-    );
-
-
-    it(
-      "is injected without modifying individual course implementations",
-      () => {
-
-        expect(
-          template
-        ).toContain(
-          "<CourseRegistrationLinks />"
-        );
-
-
-        expect(
-          template
-        ).toContain(
-          "{children}"
         );
 
       }

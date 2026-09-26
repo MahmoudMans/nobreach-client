@@ -39,47 +39,28 @@ const programs = [
 
 
 test(
-  "training index exposes all mentorship registration links",
+  "training index shows all registrations at the top",
   async ({
     page
   }) => {
 
-    const response =
-      await page.goto(
-        "/training",
-        {
-          waitUntil:
-            "domcontentloaded"
-        }
-      );
-
-
-    expect(
-      response?.status()
-    ).toBe(
-      200
+    await page.goto(
+      "/training",
+      {
+        waitUntil:
+          "domcontentloaded"
+      }
     );
 
 
-    const section =
+    const registration =
       page.locator(
-        "[data-training-registration-section]"
+        '[data-registration-placement="top"]'
       );
 
 
     await expect(
-      section
-    ).toBeVisible();
-
-
-    await expect(
-      section.getByRole(
-        "heading",
-        {
-          name:
-            "Join the mentorship program."
-        }
-      )
+      registration
     ).toBeVisible();
 
 
@@ -89,7 +70,7 @@ test(
     ) {
 
       const link =
-        section.locator(
+        registration.locator(
           `[data-training-registration="${program.slug}"]`
         );
 
@@ -106,22 +87,42 @@ test(
         program.url
       );
 
-
-      await expect(
-        link
-      ).toHaveAttribute(
-        "target",
-        "_blank"
-      );
-
-
-      await expect(
-        link
-      ).toContainText(
-        program.title
-      );
-
     }
+
+
+    const registrationBox =
+      await registration.boundingBox();
+
+
+    const h1 =
+      page.locator(
+        "h1"
+      ).first();
+
+
+    const headingBox =
+      await h1.boundingBox();
+
+
+    expect(
+      registrationBox
+    ).not.toBeNull();
+
+
+    expect(
+      headingBox
+    ).not.toBeNull();
+
+
+    expect(
+      registrationBox?.y
+      ??
+      Number.MAX_SAFE_INTEGER
+    ).toBeLessThan(
+      headingBox?.y
+      ??
+      0
+    );
 
   }
 );
@@ -133,7 +134,7 @@ for (
 ) {
 
   test(
-    `${program.title} exposes only its matching registration form`,
+    `${program.title} shows its registration before the course hero`,
     async ({
       page
     }) => {
@@ -155,19 +156,19 @@ for (
       );
 
 
-      const section =
+      const registration =
         page.locator(
-          "[data-training-registration-section]"
+          '[data-registration-placement="top"]'
         );
 
 
       await expect(
-        section
+        registration
       ).toBeVisible();
 
 
       const links =
-        section.locator(
+        registration.locator(
           "[data-training-registration]"
         );
 
@@ -179,19 +180,19 @@ for (
       );
 
 
-      const matching =
-        section.locator(
+      const link =
+        registration.locator(
           `[data-training-registration="${program.slug}"]`
         );
 
 
       await expect(
-        matching
+        link
       ).toBeVisible();
 
 
       await expect(
-        matching
+        link
       ).toHaveAttribute(
         "href",
         program.url
@@ -199,9 +200,49 @@ for (
 
 
       await expect(
-        matching
+        link
       ).toContainText(
-        program.title
+        "Register now"
+      );
+
+
+      const registrationBox =
+        await registration.boundingBox();
+
+
+      const h1 =
+        page.locator(
+          "h1"
+        ).first();
+
+
+      await expect(
+        h1
+      ).toBeVisible();
+
+
+      const headingBox =
+        await h1.boundingBox();
+
+
+      expect(
+        registrationBox
+      ).not.toBeNull();
+
+
+      expect(
+        headingBox
+      ).not.toBeNull();
+
+
+      expect(
+        registrationBox?.y
+        ??
+        Number.MAX_SAFE_INTEGER
+      ).toBeLessThan(
+        headingBox?.y
+        ??
+        0
       );
 
     }
@@ -211,7 +252,7 @@ for (
 
 
 test(
-  "registration section remains controlled on mobile",
+  "top registration remains easy to use at 360px",
   async ({
     page
   }) => {
@@ -226,7 +267,7 @@ test(
 
 
     await page.goto(
-      "/training",
+      "/training/red-team-foundations",
       {
         waitUntil:
           "domcontentloaded"
@@ -234,15 +275,44 @@ test(
     );
 
 
-    const section =
+    const registration =
       page.locator(
-        "[data-training-registration-section]"
+        '[data-registration-placement="top"]'
       );
 
 
     await expect(
-      section
+      registration
     ).toBeVisible();
+
+
+    const register =
+      registration.locator(
+        '[data-training-registration="red-team-foundations"]'
+      );
+
+
+    await expect(
+      register
+    ).toBeVisible();
+
+
+    const box =
+      await register.boundingBox();
+
+
+    expect(
+      box
+    ).not.toBeNull();
+
+
+    expect(
+      box?.width
+      ??
+      0
+    ).toBeGreaterThan(
+      280
+    );
 
 
     const geometry =

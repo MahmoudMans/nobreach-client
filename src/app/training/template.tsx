@@ -19,9 +19,9 @@ export default function TrainingTemplate({
 
   return (
     <>
-      {children}
-
       <CourseRegistrationLinks />
+
+      {children}
     </>
   );
 

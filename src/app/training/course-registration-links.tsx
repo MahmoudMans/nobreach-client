@@ -12,10 +12,7 @@ type RegistrationProgram = {
   slug:
     string;
 
-  title:
-    string;
-
-  shortTitle:
+  name:
     string;
 
   registrationUrl:
@@ -30,10 +27,7 @@ const programs:
       slug:
         "red-team-foundations",
 
-      title:
-        "Red Team Foundations — Mentorship Program",
-
-      shortTitle:
+      name:
         "Red Team Foundations",
 
       registrationUrl:
@@ -43,10 +37,7 @@ const programs:
       slug:
         "ai-security-foundations",
 
-      title:
-        "AI Security Foundations — Mentorship Program",
-
-      shortTitle:
+      name:
         "AI Security Foundations",
 
       registrationUrl:
@@ -56,10 +47,7 @@ const programs:
       slug:
         "web-exploitation-techniques",
 
-      title:
-        "Web Exploitation Techniques — Mentorship Program",
-
-      shortTitle:
+      name:
         "Web Exploitation Techniques",
 
       registrationUrl:
@@ -68,7 +56,7 @@ const programs:
   ];
 
 
-function RegistrationLink({
+function RegistrationAction({
   program
 }: {
   program:
@@ -78,7 +66,7 @@ function RegistrationLink({
   return (
     <a
       className={
-        styles.program
+        styles.action
       }
       href={
         program.registrationUrl
@@ -91,28 +79,20 @@ function RegistrationLink({
     >
       <span
         className={
-          styles.programMeta
+          styles.actionProgram
         }
       >
-        Mentorship program
+        {program.name}
       </span>
 
 
       <span
         className={
-          styles.programTitle
+          styles.actionButton
         }
       >
-        {program.shortTitle}
-      </span>
+        Register now
 
-
-      <span
-        className={
-          styles.programAction
-        }
-      >
-        Register
         <span
           aria-hidden="true"
         >
@@ -131,31 +111,27 @@ export function CourseRegistrationLinks() {
     usePathname();
 
 
-  const detailPrefix =
-    "/training/";
-
-
   const isTrainingIndex =
     pathname
     ===
     "/training";
 
 
-  const matchingProgram =
+  const selectedProgram =
     programs.find(
       (
         program
       ) =>
         pathname
         ===
-        `${detailPrefix}${program.slug}`
+        `/training/${program.slug}`
     );
 
 
   if (
     !isTrainingIndex
     &&
-    !matchingProgram
+    !selectedProgram
   ) {
 
     return null;
@@ -164,10 +140,10 @@ export function CourseRegistrationLinks() {
 
 
   const visiblePrograms =
-    matchingProgram
+    selectedProgram
       ?
       [
-        matchingProgram
+        selectedProgram
       ]
       :
       programs;
@@ -178,8 +154,9 @@ export function CourseRegistrationLinks() {
       className={
         styles.registration
       }
-      aria-labelledby="mentorship-registration-title"
       data-training-registration-section
+      data-registration-placement="top"
+      aria-label="Mentorship registration"
     >
       <div
         className={
@@ -188,39 +165,47 @@ export function CourseRegistrationLinks() {
       >
         <div
           className={
-            styles.heading
+            styles.message
           }
         >
-          <p
+          <span
             className={
-              styles.eyebrow
+              styles.label
             }
           >
-            Registration
-          </p>
+            Mentorship registration
+          </span>
 
 
-          <h2
-            id="mentorship-registration-title"
-          >
-            Join the mentorship program.
-          </h2>
-
-
-          <p
-            className={
-              styles.description
-            }
-          >
-            Ready to take part? Select your program and complete the
-            registration form to apply.
-          </p>
+          {
+            selectedProgram
+              ?
+              (
+                <span
+                  className={
+                    styles.prompt
+                  }
+                >
+                  Ready to join this program?
+                </span>
+              )
+              :
+              (
+                <span
+                  className={
+                    styles.prompt
+                  }
+                >
+                  Choose a program and register.
+                </span>
+              )
+          }
         </div>
 
 
         <div
           className={
-            styles.programs
+            styles.actions
           }
         >
           {
@@ -228,7 +213,7 @@ export function CourseRegistrationLinks() {
               (
                 program
               ) => (
-                <RegistrationLink
+                <RegistrationAction
                   key={
                     program.slug
                   }
