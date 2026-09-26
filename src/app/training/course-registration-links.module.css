@@ -1,0 +1,400 @@
+/* ==========================================================================
+   NB_TRAINING_REGISTRATION_LINKS_V1
+
+   Shared registration surface for:
+   - /training
+   - /training/red-team-foundations
+   - /training/ai-security-foundations
+   - /training/web-exploitation-techniques
+
+   Keeps existing course-detail designs untouched.
+   ========================================================================== */
+
+
+.registration {
+  position:
+    relative;
+
+  overflow:
+    hidden;
+
+  padding:
+    clamp(
+      4.5rem,
+      8vw,
+      7rem
+    )
+    0;
+
+  background:
+    #07090d;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.12
+    );
+
+  color:
+    #f4f8f9;
+}
+
+
+.container {
+  width:
+    min(
+      calc(
+        100%
+        -
+        40px
+      ),
+      1180px
+    );
+
+  margin:
+    0
+    auto;
+}
+
+
+.heading {
+  width:
+    min(
+      100%,
+      680px
+    );
+
+  margin-bottom:
+    clamp(
+      2rem,
+      4vw,
+      3rem
+    );
+}
+
+
+.eyebrow {
+  margin:
+    0
+    0
+    0.9rem;
+
+  color:
+    #a1e2f0;
+
+  font-size:
+    0.72rem;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    0.16em;
+
+  line-height:
+    1.4;
+
+  text-transform:
+    uppercase;
+}
+
+
+.heading h2 {
+  margin:
+    0;
+
+  color:
+    #f7fafb;
+
+  font-size:
+    clamp(
+      2rem,
+      4vw,
+      3.6rem
+    );
+
+  font-weight:
+    600;
+
+  letter-spacing:
+    -0.045em;
+
+  line-height:
+    1.02;
+}
+
+
+.description {
+  max-width:
+    590px;
+
+  margin:
+    1.2rem
+    0
+    0;
+
+  color:
+    rgba(
+      229,
+      238,
+      242,
+      0.68
+    );
+
+  font-size:
+    1rem;
+
+  line-height:
+    1.7;
+}
+
+
+.programs {
+  border-top:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.16
+    );
+}
+
+
+.program {
+  display:
+    grid;
+
+  grid-template-columns:
+    180px
+    minmax(
+      0,
+      1fr
+    )
+    auto;
+
+  gap:
+    2rem;
+
+  align-items:
+    center;
+
+  min-height:
+    104px;
+
+  padding:
+    1.65rem
+    0;
+
+  border-bottom:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.12
+    );
+
+  color:
+    inherit;
+
+  text-decoration:
+    none;
+
+  transition:
+    border-color
+    160ms
+    ease;
+}
+
+
+.program:hover,
+.program:focus-visible {
+  border-bottom-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.58
+    );
+}
+
+
+.program:focus-visible {
+  outline:
+    2px
+    solid
+    #a1e2f0;
+
+  outline-offset:
+    6px;
+}
+
+
+.programMeta {
+  color:
+    rgba(
+      229,
+      238,
+      242,
+      0.46
+    );
+
+  font-size:
+    0.69rem;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    0.13em;
+
+  line-height:
+    1.4;
+
+  text-transform:
+    uppercase;
+}
+
+
+.programTitle {
+  color:
+    #f4f8f9;
+
+  font-size:
+    clamp(
+      1.05rem,
+      2vw,
+      1.35rem
+    );
+
+  font-weight:
+    550;
+
+  letter-spacing:
+    -0.02em;
+
+  line-height:
+    1.35;
+
+  transition:
+    color
+    160ms
+    ease;
+}
+
+
+.programAction {
+  display:
+    inline-flex;
+
+  gap:
+    0.55rem;
+
+  align-items:
+    center;
+
+  color:
+    #a1e2f0;
+
+  font-size:
+    0.84rem;
+
+  font-weight:
+    650;
+
+  white-space:
+    nowrap;
+}
+
+
+.programAction span {
+  transition:
+    transform
+    160ms
+    ease;
+}
+
+
+.program:hover
+.programTitle,
+.program:focus-visible
+.programTitle {
+  color:
+    #a1e2f0;
+}
+
+
+.program:hover
+.programAction span,
+.program:focus-visible
+.programAction span {
+  transform:
+    translate(
+      2px,
+      -2px
+    );
+}
+
+
+@media (
+  max-width:
+    760px
+) {
+
+  .container {
+    width:
+      min(
+        calc(
+          100%
+          -
+          32px
+        ),
+        1180px
+      );
+  }
+
+
+  .program {
+    grid-template-columns:
+      1fr;
+
+    gap:
+      0.55rem;
+
+    min-height:
+      0;
+
+    padding:
+      1.55rem
+      0;
+  }
+
+
+  .programAction {
+    margin-top:
+      0.35rem;
+  }
+
+}
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .program,
+  .programTitle,
+  .programAction span {
+    transition:
+      none;
+  }
+
+}
