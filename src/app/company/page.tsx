@@ -316,9 +316,9 @@ export default function CompanyPage() {
                   className={
                     styles.secondaryButton
                   }
-                  href="/company/team"
+                  href="/company/founder"
                 >
-                  Meet the team
+                  Founder profile
 
                   <span
                     aria-hidden="true"
@@ -850,9 +850,9 @@ export default function CompanyPage() {
               </p>
 
               <Link
-                href="/company/team"
+                href="/company/founder"
               >
-                View team
+                Founder profile
 
                 <span
                   aria-hidden="true"

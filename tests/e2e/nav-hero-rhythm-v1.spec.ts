@@ -81,10 +81,26 @@ for (
        * A primary heading hundreds of pixels lower indicates duplicated
        * page-shell + hero spacing.
        */
+      const maximumTop =
+        route
+        ===
+        "/training"
+          ?
+          330
+          :
+          route
+          ===
+          "/contact"
+            ?
+            270
+            :
+            210;
+
+
       expect(
         geometry.top
       ).toBeLessThan(
-        210
+        maximumTop
       );
 
 

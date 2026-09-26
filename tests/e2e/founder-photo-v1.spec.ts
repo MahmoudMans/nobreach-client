@@ -95,7 +95,7 @@ test(
 
 
 test(
-  "company page renders the founder portrait preview",
+  "company page links to the dedicated founder profile instead of duplicating its portrait",
   async ({
     page
   }) => {
@@ -105,23 +105,22 @@ test(
     );
 
 
-    const portrait =
+    await expect(
       page.locator(
         '[data-founder-photo-image="company"]'
-      );
-
-
-    await expectImageLoaded(
-      portrait
+      )
+    ).toHaveCount(
+      0
     );
 
 
     await expect(
-      portrait
-    ).toHaveAttribute(
-      "alt",
-      ""
-    );
+      page
+        .locator(
+          'main a[href="/company/founder"]'
+        )
+        .first()
+    ).toBeVisible();
 
   }
 );

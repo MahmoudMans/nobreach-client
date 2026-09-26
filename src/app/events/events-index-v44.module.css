@@ -1,0 +1,1540 @@
+/* ==========================================================================
+   NB_EVENTS_INDEX_V44
+
+   Strict NoBreach events index.
+
+   Open PageIntro
+   Editorial event rows
+   State-oriented archive
+   Continuous dark product system
+   ========================================================================== */
+
+
+.page {
+  --events-bg:
+    #07090d;
+
+  --events-alt:
+    #0b0f16;
+
+  --events-surface:
+    #101620;
+
+  --events-elevated:
+    #151d29;
+
+  --events-text:
+    #f5f7fa;
+
+  --events-secondary:
+    #c5ced8;
+
+  --events-muted:
+    #8793a3;
+
+  --events-subtle:
+    #667281;
+
+  --events-cyan:
+    #a1e2f0;
+
+  --events-blue:
+    #83b3d7;
+
+  --events-violet:
+    #7e60b9;
+
+  --events-line:
+    rgba(
+      161,
+      226,
+      240,
+      0.1
+    );
+
+  --events-line-soft:
+    rgba(
+      255,
+      255,
+      255,
+      0.075
+    );
+
+  width:
+    100%;
+
+  min-width:
+    0;
+
+  overflow:
+    clip;
+
+  color:
+    var(
+      --events-text
+    );
+
+  background:
+    var(
+      --events-bg
+    );
+}
+
+
+.page *,
+.page *::before,
+.page *::after {
+  box-sizing:
+    border-box;
+}
+
+
+.container {
+  width:
+    100%;
+}
+
+
+/* ==========================================================================
+   PAGE INTRO
+   ========================================================================== */
+
+
+.intro {
+  position:
+    relative;
+
+  padding:
+    clamp(
+      62px,
+      7vw,
+      92px
+    )
+    0
+    clamp(
+      88px,
+      9vw,
+      120px
+    );
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --events-line-soft
+    );
+
+  background:
+    var(
+      --events-bg
+    );
+}
+
+
+.intro::after {
+  position:
+    absolute;
+
+  z-index:
+    0;
+
+  top:
+    0;
+
+  right:
+    0;
+
+  bottom:
+    0;
+
+  width:
+    min(
+      47vw,
+      760px
+    );
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        99,
+        51,
+        198,
+        0.03
+      )
+    );
+
+  content:
+    "";
+
+  pointer-events:
+    none;
+}
+
+
+.intro
+.container {
+  position:
+    relative;
+
+  z-index:
+    2;
+}
+
+
+.introGrid {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1.08fr
+    )
+    minmax(
+      340px,
+      0.56fr
+    );
+
+  gap:
+    clamp(
+      58px,
+      8vw,
+      104px
+    );
+
+  align-items:
+    center;
+}
+
+
+.introCopy {
+  min-width:
+    0;
+
+  max-width:
+    720px;
+}
+
+
+.eyebrow,
+.sectionEyebrow,
+.streamHeader,
+.streamFooter,
+.eventTopline,
+.emptyLabel,
+.eventMeta {
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.eyebrow {
+  margin:
+    0;
+
+  color:
+    var(
+      --events-blue
+    );
+
+  font-size:
+    0.65rem;
+
+  font-weight:
+    650;
+
+  letter-spacing:
+    0.11em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.intro h1 {
+  margin:
+    15px
+    0
+    0;
+
+  color:
+    var(
+      --events-text
+    );
+
+  font-size:
+    clamp(
+      4.5rem,
+      8vw,
+      7.2rem
+    );
+
+  font-weight:
+    470;
+
+  letter-spacing:
+    -0.075em;
+
+  line-height:
+    0.9;
+}
+
+
+.introLead {
+  max-width:
+    620px;
+
+  margin:
+    25px
+    0
+    0;
+
+  color:
+    var(
+      --events-muted
+    );
+
+  font-size:
+    clamp(
+      1rem,
+      1.4vw,
+      1.14rem
+    );
+
+  line-height:
+    1.68;
+}
+
+
+.introActions,
+.finalActions {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    10px;
+
+  margin-top:
+    28px;
+}
+
+
+.primaryAction,
+.secondaryAction,
+.textAction,
+.eventAction {
+  display:
+    inline-flex;
+
+  min-height:
+    46px;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    14px;
+
+  font-size:
+    0.79rem;
+
+  font-weight:
+    660;
+
+  text-decoration:
+    none;
+}
+
+
+.primaryAction {
+  padding:
+    0
+    18px;
+
+  border:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.3
+    );
+
+  border-radius:
+    4px;
+
+  color:
+    #071015;
+
+  background:
+    var(
+      --events-cyan
+    );
+}
+
+
+.primaryAction:hover {
+  background:
+    #c5eff8;
+}
+
+
+.secondaryAction {
+  padding:
+    0
+    18px;
+
+  border:
+    1px
+    solid
+    var(
+      --events-line
+    );
+
+  border-radius:
+    4px;
+
+  color:
+    var(
+      --events-secondary
+    );
+
+  background:
+    transparent;
+}
+
+
+.secondaryAction:hover {
+  border-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.22
+    );
+
+  color:
+    var(
+      --events-cyan
+    );
+}
+
+
+/* ==========================================================================
+   EVENT STREAM VISUAL
+   ========================================================================== */
+
+
+.eventStream {
+  min-width:
+    0;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.23
+    );
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --events-line
+    );
+}
+
+
+.streamHeader,
+.streamFooter {
+  min-height:
+    42px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    16px;
+
+  color:
+    var(
+      --events-subtle
+    );
+
+  font-size:
+    0.55rem;
+
+  letter-spacing:
+    0.09em;
+}
+
+
+.streamStates {
+  display:
+    grid;
+
+  grid-template-columns:
+    auto
+    1fr
+    auto
+    1fr
+    auto;
+
+  align-items:
+    center;
+
+  min-height:
+    174px;
+
+  border-top:
+    1px
+    solid
+    var(
+      --events-line-soft
+    );
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --events-line-soft
+    );
+}
+
+
+.streamStates div {
+  display:
+    grid;
+
+  gap:
+    8px;
+
+  justify-items:
+    center;
+}
+
+
+.streamStates span {
+  color:
+    var(
+      --events-subtle
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.52rem;
+}
+
+
+.streamStates strong {
+  color:
+    var(
+      --events-secondary
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.58rem;
+
+  font-weight:
+    650;
+
+  letter-spacing:
+    0.05em;
+}
+
+
+.streamStates i {
+  position:
+    relative;
+
+  height:
+    1px;
+
+  margin-inline:
+    10px;
+
+  background:
+    var(
+      --events-line
+    );
+}
+
+
+.streamStates i::after {
+  position:
+    absolute;
+
+  top:
+    50%;
+
+  right:
+    0;
+
+  width:
+    5px;
+
+  height:
+    5px;
+
+  border-radius:
+    50%;
+
+  background:
+    var(
+      --events-cyan
+    );
+
+  content:
+    "";
+
+  transform:
+    translate(
+      50%,
+      -50%
+    );
+}
+
+
+/* ==========================================================================
+   EVENT SECTIONS
+   ========================================================================== */
+
+
+.section {
+  padding:
+    96px
+    0;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --events-line-soft
+    );
+
+  background:
+    var(
+      --events-bg
+    );
+
+  scroll-margin-top:
+    96px;
+}
+
+
+.sectionAlt {
+  background:
+    var(
+      --events-alt
+    );
+}
+
+
+.sectionHeader {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    minmax(
+      280px,
+      0.4fr
+    );
+
+  gap:
+    clamp(
+      46px,
+      7vw,
+      88px
+    );
+
+  align-items:
+    end;
+
+  margin-bottom:
+    52px;
+}
+
+
+.sectionEyebrow {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  margin:
+    0;
+
+  color:
+    var(
+      --events-blue
+    );
+
+  font-size:
+    0.6rem;
+
+  font-weight:
+    630;
+
+  letter-spacing:
+    0.1em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.sectionEyebrow span {
+  color:
+    var(
+      --events-subtle
+    );
+}
+
+
+.sectionHeader h2,
+.finalLayout h2 {
+  max-width:
+    820px;
+
+  margin:
+    14px
+    0
+    0;
+
+  color:
+    var(
+      --events-text
+    );
+
+  font-size:
+    clamp(
+      2.6rem,
+      4.7vw,
+      4.4rem
+    );
+
+  font-weight:
+    470;
+
+  letter-spacing:
+    -0.055em;
+
+  line-height:
+    1.02;
+}
+
+
+.sectionHeader
+> p {
+  max-width:
+    460px;
+
+  margin:
+    0;
+
+  color:
+    var(
+      --events-muted
+    );
+
+  font-size:
+    0.86rem;
+
+  line-height:
+    1.65;
+}
+
+
+/* ==========================================================================
+   EDITORIAL EVENT LIST
+   ========================================================================== */
+
+
+.eventList {
+  border-top:
+    1px
+    solid
+    var(
+      --events-line
+    );
+}
+
+
+.eventRow {
+  display:
+    grid;
+
+  grid-template-columns:
+    54px
+    minmax(
+      0,
+      1fr
+    )
+    auto;
+
+  gap:
+    clamp(
+      22px,
+      4vw,
+      56px
+    );
+
+  align-items:
+    center;
+
+  min-height:
+    190px;
+
+  padding:
+    28px
+    0;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --events-line-soft
+    );
+}
+
+
+.eventIndex {
+  align-self:
+    start;
+
+  padding-top:
+    5px;
+
+  color:
+    var(
+      --events-cyan
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.58rem;
+}
+
+
+.eventRecord {
+  min-width:
+    0;
+}
+
+
+.eventTopline {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    8px
+    18px;
+
+  color:
+    var(
+      --events-subtle
+    );
+
+  font-size:
+    0.55rem;
+
+  letter-spacing:
+    0.08em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.eventRecord h3 {
+  max-width:
+    760px;
+
+  margin:
+    13px
+    0
+    0;
+
+  color:
+    var(
+      --events-text
+    );
+
+  font-size:
+    clamp(
+      1.7rem,
+      3vw,
+      2.8rem
+    );
+
+  font-weight:
+    500;
+
+  letter-spacing:
+    -0.045em;
+
+  line-height:
+    1.04;
+}
+
+
+.eventSummary {
+  max-width:
+    740px;
+
+  margin:
+    14px
+    0
+    0;
+
+  color:
+    var(
+      --events-muted
+    );
+
+  font-size:
+    0.86rem;
+
+  line-height:
+    1.62;
+}
+
+
+.eventMeta {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    8px
+    20px;
+
+  margin-top:
+    18px;
+
+  color:
+    var(
+      --events-subtle
+    );
+
+  font-size:
+    0.55rem;
+
+  letter-spacing:
+    0.045em;
+}
+
+
+.eventAction {
+  min-width:
+    118px;
+
+  color:
+    var(
+      --events-secondary
+    );
+}
+
+
+.eventAction:hover {
+  color:
+    var(
+      --events-cyan
+    );
+}
+
+
+/* ==========================================================================
+   EMPTY STATE
+   ========================================================================== */
+
+
+.emptyState {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    auto;
+
+  gap:
+    40px;
+
+  align-items:
+    end;
+
+  padding:
+    34px
+    0;
+
+  border-top:
+    1px
+    solid
+    var(
+      --events-line
+    );
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --events-line-soft
+    );
+}
+
+
+.emptyLabel {
+  margin:
+    0;
+
+  color:
+    var(
+      --events-blue
+    );
+
+  font-size:
+    0.55rem;
+
+  letter-spacing:
+    0.09em;
+}
+
+
+.emptyState h3 {
+  max-width:
+    680px;
+
+  margin:
+    13px
+    0
+    0;
+
+  color:
+    var(
+      --events-secondary
+    );
+
+  font-size:
+    clamp(
+      1.65rem,
+      2.8vw,
+      2.5rem
+    );
+
+  font-weight:
+    500;
+
+  letter-spacing:
+    -0.04em;
+}
+
+
+.emptyState
+> div
+> p:last-child {
+  max-width:
+    600px;
+
+  margin:
+    12px
+    0
+    0;
+
+  color:
+    var(
+      --events-muted
+    );
+
+  font-size:
+    0.84rem;
+
+  line-height:
+    1.6;
+}
+
+
+.textAction {
+  color:
+    var(
+      --events-secondary
+    );
+}
+
+
+.textAction:hover {
+  color:
+    var(
+      --events-cyan
+    );
+}
+
+
+/* ==========================================================================
+   FINAL CTA
+   ========================================================================== */
+
+
+.finalCta {
+  padding:
+    88px
+    0
+    96px;
+
+  background:
+    var(
+      --events-bg
+    );
+}
+
+
+.finalLayout {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    minmax(
+      300px,
+      0.44fr
+    );
+
+  gap:
+    clamp(
+      50px,
+      8vw,
+      100px
+    );
+
+  align-items:
+    end;
+
+  padding-top:
+    30px;
+
+  border-top:
+    1px
+    solid
+    var(
+      --events-line
+    );
+}
+
+
+.finalBody
+> p {
+  max-width:
+    500px;
+
+  margin:
+    0;
+
+  color:
+    var(
+      --events-muted
+    );
+
+  font-size:
+    0.86rem;
+
+  line-height:
+    1.65;
+}
+
+
+.finalActions {
+  margin-top:
+    22px;
+}
+
+
+/* ==========================================================================
+   ACCESSIBILITY
+   ========================================================================== */
+
+
+.page a:focus-visible {
+  outline:
+    2px
+    solid
+    #a1e2f0;
+
+  outline-offset:
+    3px;
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    1024px
+) {
+
+  .introGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      )
+      minmax(
+        300px,
+        0.52fr
+      );
+
+    gap:
+      46px;
+  }
+
+
+  .section {
+    padding:
+      80px
+      0;
+  }
+
+
+  .eventRow {
+    grid-template-columns:
+      44px
+      minmax(
+        0,
+        1fr
+      )
+      auto;
+  }
+
+}
+
+
+/* ==========================================================================
+   TABLET PORTRAIT
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    900px
+) {
+
+  .introGrid,
+  .sectionHeader,
+  .finalLayout {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      34px;
+  }
+
+
+  .eventStream {
+    width:
+      100%;
+
+    max-width:
+      680px;
+  }
+
+
+  .sectionHeader {
+    margin-bottom:
+      40px;
+  }
+
+
+  .sectionHeader
+  > p {
+    max-width:
+      620px;
+  }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    640px
+) {
+
+  .intro {
+    padding:
+      42px
+      0
+      64px;
+  }
+
+
+  .intro h1 {
+    font-size:
+      clamp(
+        3.8rem,
+        19vw,
+        5.4rem
+      );
+  }
+
+
+  .introLead {
+    margin-top:
+      20px;
+
+    font-size:
+      0.94rem;
+  }
+
+
+  .introActions,
+  .finalActions {
+    display:
+      grid;
+
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .primaryAction,
+  .secondaryAction {
+    width:
+      100%;
+  }
+
+
+  .streamStates {
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(
+          0,
+          1fr
+        )
+      );
+
+    min-height:
+      112px;
+  }
+
+
+  .streamStates i {
+    display:
+      none;
+  }
+
+
+  .streamStates strong {
+    font-size:
+      0.47rem;
+  }
+
+
+  .section {
+    padding:
+      64px
+      0;
+
+    scroll-margin-top:
+      78px;
+  }
+
+
+  .sectionHeader h2,
+  .finalLayout h2 {
+    font-size:
+      clamp(
+        2.15rem,
+        10.5vw,
+        3rem
+      );
+  }
+
+
+  .eventRow {
+    grid-template-columns:
+      32px
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      12px;
+
+    min-height:
+      0;
+
+    padding:
+      24px
+      0;
+  }
+
+
+  .eventAction {
+    grid-column:
+      2;
+
+    min-width:
+      0;
+
+    margin-top:
+      3px;
+  }
+
+
+  .eventRecord h3 {
+    font-size:
+      1.7rem;
+  }
+
+
+  .emptyState {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      24px;
+  }
+
+
+  .textAction {
+    justify-self:
+      start;
+  }
+
+
+  .finalCta {
+    padding:
+      64px
+      0;
+  }
+
+}
+
+
+/* ==========================================================================
+   NARROW MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    390px
+) {
+
+  .intro h1 {
+    font-size:
+      3.7rem;
+  }
+
+
+  .streamHeader,
+  .streamFooter {
+    font-size:
+      0.49rem;
+  }
+
+
+  .eventRow {
+    grid-template-columns:
+      28px
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .primaryAction,
+  .secondaryAction,
+  .textAction,
+  .eventAction {
+    transition:
+      none;
+  }
+
+}

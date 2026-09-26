@@ -7,7 +7,6 @@ const publicRoutes = [
   "/",
   "/company",
   "/company/founder",
-  "/company/team",
   "/company/internships",
 
   "/services",
@@ -189,35 +188,8 @@ test(
 
 
     await expect(
-      visual
-    ).toHaveAttribute(
-      "data-hero-art",
-      "attack-surface"
-    );
-
-
-    await expect(
-      visual
-    ).toHaveAttribute(
-      "data-attack-surface",
-      "true"
-    );
-
-
-    await expect(
       visual.getByText(
-        "NO BREACH",
-        {
-          exact:
-            true
-        }
-      )
-    ).toBeVisible();
-
-
-    await expect(
-      visual.getByText(
-        "ATTACK SURFACE / TN",
+        "NB / ATTACK PATH",
         {
           exact:
             true
@@ -227,20 +199,19 @@ test(
 
 
     for (
-      const node
+      const token
       of [
+        "EDGE",
         "APP",
-        "API",
         "AUTH",
-        "USER",
-        "DB",
+        "ACCESS",
         "DATA"
       ]
     ) {
 
       await expect(
         visual.getByText(
-          node,
+          token,
           {
             exact:
               true
@@ -249,39 +220,6 @@ test(
       ).toBeVisible();
 
     }
-
-
-    await expect(
-      visual.getByText(
-        "MAP",
-        {
-          exact:
-            true
-        }
-      )
-    ).toBeVisible();
-
-
-    await expect(
-      visual.getByText(
-        "TEST",
-        {
-          exact:
-            true
-        }
-      )
-    ).toBeVisible();
-
-
-    await expect(
-      visual.getByText(
-        "VALIDATE",
-        {
-          exact:
-            true
-        }
-      )
-    ).toBeVisible();
 
   }
 );
@@ -408,39 +346,69 @@ test(
   async ({
     page
   }) => {
+
     await page.emulateMedia({
       reducedMotion:
         "reduce"
     });
 
+
     await page.goto(
       "/"
     );
 
-    const animationState =
-      await page.evaluate(
-        () => {
-          const signal =
-            document.querySelector(
-              '[data-home-section="hero"]'
-            );
 
-          if (!signal) {
-            return false;
-          }
-
-          /*
-           * Existence is enough here; reduced-motion rules
-           * are source-contracted in unit tests.
-           */
-          return true;
-        }
+    const visual =
+      page.locator(
+        '[data-home-hero-visual="attack-surface"]'
       );
 
+
+    await expect(
+      visual
+    ).toBeVisible();
+
+
+    const motion =
+      await visual
+        .locator(
+          '[data-stage="edge"]'
+        )
+        .evaluate(
+          (
+            element
+          ) => {
+
+            const style =
+              getComputedStyle(
+                element
+              );
+
+
+            return {
+              animationName:
+                style.animationName,
+
+              transitionDuration:
+                style.transitionDuration
+            };
+
+          }
+        );
+
+
     expect(
-      animationState
+      motion.animationName
     ).toBe(
-      true
+      "none"
     );
+
+
+    expect(
+      motion.transitionDuration
+    ).toBe(
+      "0s"
+    );
+
   }
 );

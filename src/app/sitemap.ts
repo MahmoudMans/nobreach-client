@@ -24,7 +24,6 @@ const staticRoutes = [
   "",
   "/company",
   "/company/founder",
-  "/company/team",
   "/company/internships",
   "/services",
   "/training",

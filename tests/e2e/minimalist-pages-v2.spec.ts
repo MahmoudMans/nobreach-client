@@ -5,7 +5,6 @@ import {
 
 const desktopRoutes = [
   "/company",
-  "/company/team",
 
   "/services",
   "/services/web-application-pentesting",
@@ -36,7 +35,6 @@ const desktopRoutes = [
 
 const mobileRoutes = [
   "/company",
-  "/company/team",
   "/services",
   "/services/api-security",
   "/training",

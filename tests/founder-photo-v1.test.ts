@@ -67,26 +67,29 @@ describe(
 
 
     it(
-      "uses the portrait in the company founder visual",
+      "keeps the company page linked to the dedicated founder profile",
       () => {
 
         expect(
           companyPage
         ).toContain(
-          'import Image from "next/image";'
+          'href="/company/founder"'
         );
+
 
         expect(
           companyPage
-        ).toContain(
+        ).not.toContain(
+          'data-founder-photo-image="company"'
+        );
+
+
+        expect(
+          companyPage
+        ).not.toContain(
           'src="/people/ceo.png"'
         );
 
-        expect(
-          companyPage
-        ).toContain(
-          'data-founder-photo-image="company"'
-        );
       }
     );
 
@@ -111,7 +114,7 @@ describe(
 
 
     it(
-      "applies the photo visual layers once",
+      "applies the founder photo visual layer once",
       () => {
 
         expect(
@@ -122,13 +125,13 @@ describe(
           1
         );
 
+
         expect(
-          companyCss.match(
-            /NB_COMPANY_FOUNDER_REAL_PHOTO_V1/g
-          )
-        ).toHaveLength(
-          1
+          companyCss
+        ).not.toContain(
+          "NB_COMPANY_FOUNDER_REAL_PHOTO_V1"
         );
+
       }
     );
 

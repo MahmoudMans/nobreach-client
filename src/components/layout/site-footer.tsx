@@ -11,7 +11,6 @@ const footerColumns = [
     links: [
       ["/company", "About"],
       ["/company/founder", "Founder"],
-      ["/company/team", "Team"],
       ["/careers", "Careers"]
     ]
   },

@@ -449,10 +449,11 @@ export default function HomePage() {
         data-home-section="hero"
         data-home-chapter="hero"
         data-home-hero="v8"
+        data-home-hero-spec="attack-path-v13"
       >
         <div
           className={
-            styles.heroV8Ambient
+            styles.heroAmbient
           }
           aria-hidden="true"
         />
@@ -461,22 +462,22 @@ export default function HomePage() {
         <Container size="wide">
           <div
             className={
-              styles.heroV8Frame
+              styles.heroFrame
             }
           >
             <div
               className={
-                styles.heroV8Copy
+                styles.heroCopy
               }
             >
               <div
                 className={
-                  styles.heroV8Kicker
+                  styles.heroEyebrow
                 }
               >
                 <span
                   className={
-                    styles.heroV8KickerDot
+                    styles.heroStatus
                   }
                   aria-hidden="true"
                 />
@@ -489,7 +490,7 @@ export default function HomePage() {
 
               <h1
                 className={
-                  styles.heroV8Title
+                  styles.heroTitle
                 }
               >
                 Offensive security built around
@@ -501,7 +502,7 @@ export default function HomePage() {
 
               <p
                 className={
-                  styles.heroV8Lead
+                  styles.heroLead
                 }
               >
                 No Breach helps organizations understand exposure,
@@ -512,7 +513,7 @@ export default function HomePage() {
 
               <div
                 className={
-                  styles.heroV8Actions
+                  styles.heroActions
                 }
               >
                 <Link
@@ -550,41 +551,32 @@ export default function HomePage() {
 
               <div
                 className={
-                  styles.heroV8Statement
+                  styles.heroTrust
                 }
-              >
-                <span
-                  aria-hidden="true"
-                >
-                  01
-                </span>
-
-                <p>
-                  Security, education and community are one connected system.
-                </p>
-              </div>
-
-
-              <div
-                className={
-                  styles.heroV8Capabilities
-                }
-                aria-label="No Breach security focus areas"
+                aria-label="No Breach security approach"
               >
                 <span>
-                  Web application
+                  <i
+                    aria-hidden="true"
+                  />
+
+                  Manual reasoning
                 </span>
 
                 <span>
-                  API
+                  <i
+                    aria-hidden="true"
+                  />
+
+                  Attack-path validation
                 </span>
 
                 <span>
-                  Infrastructure
-                </span>
+                  <i
+                    aria-hidden="true"
+                  />
 
-                <span>
-                  Training
+                  Actionable guidance
                 </span>
               </div>
             </div>
@@ -592,130 +584,352 @@ export default function HomePage() {
 
             <div
               className={
-                styles.heroV8Visual
+                styles.heroAssessment
               }
               data-home-hero-visual="attack-surface"
-              data-hero-visual="attack-surface"
               data-hero-art="attack-surface"
-              data-ui="attack-surface-visual"
               data-attack-surface="true"
               aria-hidden="true"
             >
               <div
                 className={
-                  styles.heroV8VisualHeader
+                  styles.assessmentHeader
                 }
               >
-                <span>
-                  NO BREACH
-                </span>
+                <div>
+                  <span>
+                    NB / ATTACK PATH
+                  </span>
 
-                <span>
-                  ATTACK SURFACE / TN
+                  <small>
+                    LIVE ASSESSMENT
+                  </small>
+                </div>
+
+                <span
+                  className={
+                    styles.assessmentId
+                  }
+                >
+                  MODEL / 01
                 </span>
               </div>
 
 
               <div
                 className={
-                  styles.heroV8Surface
+                  styles.assessmentCanvas
                 }
               >
-                <span
+                <div
                   className={
-                    `${styles.heroV8Node} ${styles.heroV8NodeApp}`
+                    styles.assessmentAxis
                   }
                 >
-                  APP
-                </span>
+                  <span>
+                    ENTRY
+                  </span>
 
-                <span
+                  <span>
+                    TRUST BOUNDARY
+                  </span>
+
+                  <span>
+                    IMPACT
+                  </span>
+                </div>
+
+
+                <div
                   className={
-                    `${styles.heroV8Node} ${styles.heroV8NodeApi}`
+                    styles.attackPath
                   }
                 >
-                  API
-                </span>
+                  <div
+                    className={
+                      styles.attackStage
+                    }
+                    data-stage="edge"
+                  >
+                    <span
+                      className={
+                        styles.stageIndex
+                      }
+                    >
+                      01
+                    </span>
 
-                <span
+                    <div>
+                      <small>
+                        EXTERNAL
+                      </small>
+
+                      <strong>
+                        EDGE
+                      </strong>
+                    </div>
+
+                    <i
+                      aria-hidden="true"
+                    />
+                  </div>
+
+
+                  <div
+                    className={
+                      styles.attackConnector
+                    }
+                    aria-hidden="true"
+                  >
+                    →
+                  </div>
+
+
+                  <div
+                    className={
+                      styles.attackStage
+                    }
+                    data-stage="application"
+                  >
+                    <span
+                      className={
+                        styles.stageIndex
+                      }
+                    >
+                      02
+                    </span>
+
+                    <div>
+                      <small>
+                        SURFACE
+                      </small>
+
+                      <strong>
+                        APP
+                      </strong>
+                    </div>
+
+                    <i
+                      aria-hidden="true"
+                    />
+                  </div>
+
+
+                  <div
+                    className={
+                      styles.attackConnector
+                    }
+                    aria-hidden="true"
+                  >
+                    →
+                  </div>
+
+
+                  <div
+                    className={
+                      styles.attackStage
+                    }
+                    data-stage="identity"
+                  >
+                    <span
+                      className={
+                        styles.stageIndex
+                      }
+                    >
+                      03
+                    </span>
+
+                    <div>
+                      <small>
+                        IDENTITY
+                      </small>
+
+                      <strong>
+                        AUTH
+                      </strong>
+                    </div>
+
+                    <i
+                      aria-hidden="true"
+                    />
+                  </div>
+
+
+                  <div
+                    className={
+                      styles.attackConnector
+                    }
+                    aria-hidden="true"
+                  >
+                    →
+                  </div>
+
+
+                  <div
+                    className={
+                      styles.attackStage
+                    }
+                    data-stage="access"
+                  >
+                    <span
+                      className={
+                        styles.stageIndex
+                      }
+                    >
+                      04
+                    </span>
+
+                    <div>
+                      <small>
+                        BOUNDARY
+                      </small>
+
+                      <strong>
+                        ACCESS
+                      </strong>
+                    </div>
+
+                    <i
+                      aria-hidden="true"
+                    />
+                  </div>
+
+
+                  <div
+                    className={
+                      styles.attackConnector
+                    }
+                    aria-hidden="true"
+                  >
+                    →
+                  </div>
+
+
+                  <div
+                    className={
+                      styles.attackStage
+                    }
+                    data-stage="data"
+                  >
+                    <span
+                      className={
+                        styles.stageIndex
+                      }
+                    >
+                      05
+                    </span>
+
+                    <div>
+                      <small>
+                        IMPACT
+                      </small>
+
+                      <strong>
+                        DATA
+                      </strong>
+                    </div>
+
+                    <i
+                      aria-hidden="true"
+                    />
+                  </div>
+                </div>
+
+
+                <div
                   className={
-                    `${styles.heroV8Node} ${styles.heroV8NodeAuth}`
+                    styles.assessmentEvidence
                   }
                 >
-                  AUTH
-                </span>
+                  <div
+                    className={
+                      styles.evidenceHeader
+                    }
+                  >
+                    <span>
+                      ASSESSMENT SIGNAL
+                    </span>
 
-                <span
-                  className={
-                    `${styles.heroV8Node} ${styles.heroV8NodeUser}`
-                  }
-                >
-                  USER
-                </span>
+                    <span>
+                      STATUS / ACTIVE
+                    </span>
+                  </div>
 
-                <span
-                  className={
-                    `${styles.heroV8Node} ${styles.heroV8NodeDb}`
-                  }
-                >
-                  DB
-                </span>
 
-                <span
-                  className={
-                    `${styles.heroV8Node} ${styles.heroV8NodeData}`
-                  }
-                >
-                  DATA
-                </span>
+                  <div
+                    className={
+                      styles.evidenceRow
+                    }
+                  >
+                    <span>
+                      01
+                    </span>
 
-                <i
-                  className={
-                    `${styles.heroV8Line} ${styles.heroV8LineOne}`
-                  }
-                />
+                    <p>
+                      Map exposed application surface
+                    </p>
 
-                <i
-                  className={
-                    `${styles.heroV8Line} ${styles.heroV8LineTwo}`
-                  }
-                />
+                    <strong>
+                      DISCOVER
+                    </strong>
+                  </div>
 
-                <i
-                  className={
-                    `${styles.heroV8Line} ${styles.heroV8LineThree}`
-                  }
-                />
 
-                <i
-                  className={
-                    `${styles.heroV8Line} ${styles.heroV8LineFour}`
-                  }
-                />
+                  <div
+                    className={
+                      styles.evidenceRow
+                    }
+                  >
+                    <span>
+                      02
+                    </span>
 
-                <i
-                  className={
-                    `${styles.heroV8Line} ${styles.heroV8LineFive}`
-                  }
-                />
+                    <p>
+                      Validate identity and access boundaries
+                    </p>
+
+                    <strong>
+                      TEST
+                    </strong>
+                  </div>
+
+
+                  <div
+                    className={
+                      styles.evidenceRow
+                    }
+                  >
+                    <span>
+                      03
+                    </span>
+
+                    <p>
+                      Confirm practical impact and attack path
+                    </p>
+
+                    <strong>
+                      VALIDATE
+                    </strong>
+                  </div>
+                </div>
               </div>
 
 
               <div
                 className={
-                  styles.heroV8VisualFooter
+                  styles.assessmentFooter
                 }
               >
                 <span>
-                  MAP
+                  MANUAL REASONING
                 </span>
 
                 <span>
-                  TEST
+                  ATTACKER PERSPECTIVE
                 </span>
 
                 <span>
-                  VALIDATE
+                  ACTIONABLE OUTPUT
                 </span>
               </div>
             </div>
@@ -1948,9 +2162,9 @@ export default function HomePage() {
                       </p>
 
                       <Link
-                        href="/company/team"
+                        href="/company"
                       >
-                        View team
+                        About No Breach
 
                         <span
                           aria-hidden="true"

@@ -7,7 +7,6 @@ const visualRoutes = [
   "/",
   "/company",
   "/company/founder",
-  "/company/team",
   "/company/internships",
   "/services",
   "/services/web-application-pentesting",
@@ -76,7 +75,7 @@ for (
                 ?
                 "domcontentloaded"
                 :
-                "networkidle"
+                "domcontentloaded"
           }
         );
 
@@ -84,9 +83,13 @@ for (
       /*
        * NB_AUTHORIZATION_V51_ROUTE_AUDIT_WAIT_V1
        *
-       * Authorization V51 has dedicated production-route coverage.
-       * DOM readiness avoids waiting on unrelated global-shell Link
-       * prefetch activity.
+       * The authorization article is fully covered by its dedicated
+       * editorial E2E suite. During the shared production audit, Next.js
+       * can keep internal route activity alive long enough that
+       * Playwright's networkidle condition never resolves.
+       *
+       * Use DOM readiness only for this route, then verify the actual
+       * V51 root before continuing with the existing generic audit.
        */
       if (
         route

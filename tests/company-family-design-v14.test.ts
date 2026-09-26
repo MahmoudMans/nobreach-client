@@ -23,8 +23,7 @@ describe(
           of [
             "src/app/company/page.tsx",
             "src/app/company/founder/page.tsx",
-            "src/app/company/team/page.tsx",
-            "src/app/company/internships/page.tsx"
+"src/app/company/internships/page.tsx"
           ]
         ) {
 

@@ -148,61 +148,73 @@ test(
 
 test(
   "activity deep-link filter is server initialized",
-  async ({ page }) => {
+  async ({
+    page
+  }) => {
+
     await page.goto(
       "/activities?type=training"
     );
 
-    const trainingButton =
-      page.getByRole(
-        "button",
-        {
-          name: "training"
-        }
-      );
 
     await expect(
-      trainingButton
-    ).toHaveAttribute(
-      "aria-pressed",
-      "true"
+      page
+    ).toHaveURL(
+      /type=training/
     );
+
+
+    await expect(
+      page.locator(
+        '[data-activities-index-design="v45"]'
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      page
+        .locator(
+          'a[href="/activities?type=training"]'
+        )
+        .first()
+    ).toBeVisible();
+
 
     await expect(
       page.getByText(
         "AI Security Foundations"
-      )
+      ).first()
     ).toBeVisible();
 
-    await expect(
-      page
-      .getByRole(
-        "link"
-      )
-      .filter({
-        hasText:
-          "Red Team Foundations"
-      })
-      .first()
-    ).toBeVisible();
   }
 );
 
 test(
   "activity filters update the URL",
-  async ({ page }) => {
+  async ({
+    page
+  }) => {
+
     await page.goto(
       "/activities"
     );
 
-    await page
-      .getByRole(
-        "button",
-        {
-          name: "ctf"
-        }
-      )
-      .click();
+
+    const ctfFilter =
+      page
+        .locator(
+          'a[href="/activities?type=ctf"]'
+        )
+        .first();
+
+
+    await expect(
+      ctfFilter
+    ).toBeVisible();
+
+
+    await ctfFilter.click();
+
 
     await expect(
       page
@@ -210,32 +222,40 @@ test(
       /type=ctf/
     );
 
+
     await expect(
       page.getByText(
         "CR4CKOUT 2.0"
-      )
+      ).first()
     ).toBeVisible();
+
   }
 );
 
 test(
-  "contact experience explicitly remains frontend-only",
-  async ({ page }) => {
+  "contact exposes the published direct contact channels",
+  async ({
+    page
+  }) => {
+
     await page.goto(
       "/contact"
     );
 
+
     await expect(
-      page.getByText(
-        /does not transmit the form to a backend yet/i
+      page.locator(
+        'a[href="mailto:nhbenbrahim@gmail.com"]'
       )
     ).toBeVisible();
 
+
     await expect(
-      page.getByText(
-        /do not enter passwords/i
+      page.locator(
+        'a[href="https://www.linkedin.com/company/no-breach"]'
       )
     ).toBeVisible();
+
   }
 );
 
@@ -551,28 +571,43 @@ test(
 );
 
 test(
-  "training detail contains audience and expected outcomes",
-  async ({ page }) => {
+  "training detail exposes the current course experience and registration",
+  async ({
+    page
+  }) => {
+
     await page.goto(
-      "/training/ai-security-foundations"
+      "/training/red-team-foundations"
     );
+
 
     await expect(
       page.getByRole(
         "heading",
         {
-          level: 2,
+          level:
+            1,
+
           name:
-            /designed for learners building practical security capability/i
+            "Red Team Foundations"
         }
       )
     ).toBeVisible();
 
+
     await expect(
-      page.getByText(
-        /AI application trust boundaries/i
+      page.locator(
+        '[data-red-team-design="v40-course-detail"]'
       )
     ).toBeVisible();
+
+
+    await expect(
+      page.locator(
+        'a[href="https://forms.gle/xfTXg2r1xVfECvCM8"]'
+      )
+    ).toBeVisible();
+
   }
 );
 

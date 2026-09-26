@@ -24,24 +24,28 @@ const css =
 
 
 describe(
-  "homepage hero v8 compatibility",
+  "homepage attack path hero v13",
   () => {
 
     it(
-      "keeps the established hero identity",
+      "uses one V13 homepage hero",
       () => {
 
         expect(
           page
         ).toContain(
-          'data-home-hero="v8"'
+          'data-home-hero-spec="attack-path-v13"'
         );
 
 
         expect(
-          page
-        ).toContain(
-          "OFFENSIVE SECURITY / TUNISIA"
+          page.match(
+            /<h1(?:\s|>)/g
+          )
+          ??
+          []
+        ).toHaveLength(
+          1
         );
 
       }
@@ -49,32 +53,23 @@ describe(
 
 
     it(
-      "keeps the signature attack-surface visual",
+      "preserves the established positioning and actions",
       () => {
 
-        expect(
-          page
-        ).toContain(
-          'data-hero-art="attack-surface"'
-        );
-
-
         for (
-          const node
+          const token
           of [
-            "APP",
-            "API",
-            "AUTH",
-            "USER",
-            "DB",
-            "DATA"
+            "Offensive security built around",
+            "how real systems fail.",
+            "Explore services",
+            "About No Breach"
           ]
         ) {
 
           expect(
             page
           ).toContain(
-            node
+            token
           );
 
         }
@@ -84,27 +79,101 @@ describe(
 
 
     it(
-      "keeps reduced-motion support",
+      "uses the linear attack path assessment",
+      () => {
+
+        for (
+          const token
+          of [
+            "NB / ATTACK PATH",
+            "LIVE ASSESSMENT",
+            "EDGE",
+            "APP",
+            "AUTH",
+            "ACCESS",
+            "DATA",
+            "DISCOVER",
+            "TEST",
+            "VALIDATE"
+          ]
+        ) {
+
+          expect(
+            page
+          ).toContain(
+            token
+          );
+
+        }
+
+      }
+    );
+
+
+    it(
+      "implements the prescribed split geometry",
       () => {
 
         expect(
           css
         ).toContain(
+          "NB_HOME_HERO_ATTACK_PATH_V13"
+        );
+
+
+        expect(
+          css
+        ).toContain(
+          "650px"
+        );
+
+
+        expect(
+          css
+        ).toContain(
+          "580px"
+        );
+
+
+        expect(
+          css
+        ).toContain(
+          "56px"
+        );
+
+
+        expect(
+          css
+        ).toContain(
+          "72px"
+        );
+
+      }
+    );
+
+
+    it(
+      "recomposes the assessment vertically on mobile",
+      () => {
+
+        expect(
+          css
+        ).toContain(
+          "NB_HOME_HERO_ATTACK_PATH_RESPONSIVE_V13_BEGIN"
+        );
+
+
+        expect(
+          css
+        ).toContain(
+          ".attackPath"
+        );
+
+
+        expect(
+          css
+        ).toContain(
           "prefers-reduced-motion"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          "animation:"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          "none !important"
         );
 
       }

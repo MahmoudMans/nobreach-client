@@ -92,7 +92,6 @@ test(
         "/activities",
         "/events",
         "/insights",
-        "/company/team",
         "/contact"
       ]
     ) {

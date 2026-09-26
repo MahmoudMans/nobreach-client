@@ -51,14 +51,6 @@ const companyItems:
     },
     {
       href:
-        "/company/team",
-      label:
-        "Team",
-      description:
-        "People behind the ecosystem."
-    },
-    {
-      href:
         "/company/internships",
       label:
         "Internship Projects",

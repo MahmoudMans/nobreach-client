@@ -5,10 +5,19 @@ import {
 
 
 test(
-  "homepage opens with the established security hero",
+  "homepage opens with the V13 attack-path hero",
   async ({
     page
   }) => {
+
+    await page.setViewportSize({
+      width:
+        1440,
+
+      height:
+        1000
+    });
+
 
     await page.goto(
       "/"
@@ -17,7 +26,7 @@ test(
 
     const hero =
       page.locator(
-        '[data-home-hero="v8"]'
+        '[data-home-hero-spec="attack-path-v13"]'
       );
 
 
@@ -27,14 +36,14 @@ test(
 
 
     await expect(
-      hero.getByRole(
+      page.getByRole(
         "heading",
         {
           level:
             1,
 
           name:
-            /offensive security built around/i
+            /offensive security built around how real systems fail/i
         }
       )
     ).toBeVisible();
@@ -53,12 +62,26 @@ test(
       "/services"
     );
 
+
+    await expect(
+      hero.getByRole(
+        "link",
+        {
+          name:
+            /about no breach/i
+        }
+      )
+    ).toHaveAttribute(
+      "href",
+      "/company"
+    );
+
   }
 );
 
 
 test(
-  "homepage hero presents the attack surface composition",
+  "hero presents the complete attack path assessment",
   async ({
     page
   }) => {
@@ -70,7 +93,7 @@ test(
 
     const visual =
       page.locator(
-        '[data-hero-art="attack-surface"]'
+        '[data-home-hero-visual="attack-surface"]'
       );
 
 
@@ -79,21 +102,34 @@ test(
     ).toBeVisible();
 
 
+    await expect(
+      visual.getByText(
+        "NB / ATTACK PATH",
+        {
+          exact:
+            true
+        }
+      )
+    ).toBeVisible();
+
+
     for (
-      const label
+      const token
       of [
+        "EDGE",
         "APP",
-        "API",
         "AUTH",
-        "USER",
-        "DB",
-        "DATA"
+        "ACCESS",
+        "DATA",
+        "DISCOVER",
+        "TEST",
+        "VALIDATE"
       ]
     ) {
 
       await expect(
         visual.getByText(
-          label,
+          token,
           {
             exact:
               true
@@ -108,7 +144,139 @@ test(
 
 
 test(
-  "homepage hero is overflow free on mobile",
+  "attack path hero stays balanced on desktop",
+  async ({
+    page
+  }) => {
+
+    await page.setViewportSize({
+      width:
+        1440,
+
+      height:
+        1000
+    });
+
+
+    await page.goto(
+      "/"
+    );
+
+
+    const metrics =
+      await page.evaluate(
+        () => {
+
+          const hero =
+            document.querySelector(
+              '[data-home-hero-spec="attack-path-v13"]'
+            );
+
+
+          const heading =
+            hero?.querySelector(
+              "h1"
+            );
+
+
+          const visual =
+            hero?.querySelector(
+              '[data-home-hero-visual="attack-surface"]'
+            );
+
+
+          if (
+            !heading
+            ||
+            !visual
+          ) {
+
+            return null;
+
+          }
+
+
+          const h =
+            heading.getBoundingClientRect();
+
+
+          const v =
+            visual.getBoundingClientRect();
+
+
+          return {
+            headingWidth:
+              h.width,
+
+            visualWidth:
+              v.width,
+
+            visualHeight:
+              v.height,
+
+            scrollWidth:
+              document.documentElement.scrollWidth,
+
+            clientWidth:
+              document.documentElement.clientWidth
+          };
+
+        }
+      );
+
+
+    expect(
+      metrics
+    ).not.toBeNull();
+
+
+    expect(
+      metrics?.headingWidth
+      ??
+      9999
+    ).toBeLessThanOrEqual(
+      652
+    );
+
+
+    expect(
+      metrics?.visualWidth
+      ??
+      0
+    ).toBeGreaterThan(
+      400
+    );
+
+
+    expect(
+      metrics?.visualHeight
+      ??
+      0
+    ).toBeGreaterThan(
+      500
+    );
+
+
+    expect(
+      metrics?.scrollWidth
+      ??
+      9999
+    ).toBeLessThanOrEqual(
+      (
+        metrics?.clientWidth
+        ??
+        0
+      )
+      +
+      1
+    );
+
+  }
+);
+
+
+test(
+  "attack path hero becomes meaning action visual on mobile",
   async ({
     page
   }) => {
@@ -127,29 +295,106 @@ test(
     );
 
 
-    await expect(
-      page.getByRole(
-        "heading",
-        {
-          level:
-            1
-        }
-      )
-    ).toBeVisible();
-
-
-    const overflow =
+    const metrics =
       await page.evaluate(
-        () =>
-          document.documentElement.scrollWidth
-          -
-          document.documentElement.clientWidth
+        () => {
+
+          const hero =
+            document.querySelector(
+              '[data-home-hero-spec="attack-path-v13"]'
+            );
+
+
+          const h1 =
+            hero?.querySelector(
+              "h1"
+            );
+
+
+          const action =
+            hero?.querySelector(
+              'a[href="/services"]'
+            );
+
+
+          const visual =
+            hero?.querySelector(
+              '[data-home-hero-visual="attack-surface"]'
+            );
+
+
+          if (
+            !h1
+            ||
+            !action
+            ||
+            !visual
+          ) {
+
+            return null;
+
+          }
+
+
+          return {
+            heading:
+              h1.getBoundingClientRect().top,
+
+            action:
+              action.getBoundingClientRect().top,
+
+            visual:
+              visual.getBoundingClientRect().top,
+
+            scrollWidth:
+              document.documentElement.scrollWidth,
+
+            clientWidth:
+              document.documentElement.clientWidth
+          };
+
+        }
       );
 
 
     expect(
-      overflow
+      metrics
+    ).not.toBeNull();
+
+
+    expect(
+      metrics?.heading
+      ??
+      9999
+    ).toBeLessThan(
+      metrics?.action
+      ??
+      0
+    );
+
+
+    expect(
+      metrics?.action
+      ??
+      9999
+    ).toBeLessThan(
+      metrics?.visual
+      ??
+      0
+    );
+
+
+    expect(
+      metrics?.scrollWidth
+      ??
+      9999
     ).toBeLessThanOrEqual(
+      (
+        metrics?.clientWidth
+        ??
+        0
+      )
+      +
       1
     );
 

@@ -26,7 +26,7 @@ async function openStableRoute(
       route,
       {
         waitUntil:
-          "networkidle"
+          "domcontentloaded"
       }
     );
 
@@ -60,8 +60,33 @@ async function inspectPrimaryHeading(
       "#main-content h1"
     );
 
+
+  await expect(
+    headings
+  ).toHaveCount(
+    1,
+    {
+      timeout:
+        10000
+    }
+  );
+
+
+  const heading =
+    headings.first();
+
+
+  await expect(
+    heading
+  ).toBeVisible({
+    timeout:
+      10000
+  });
+
+
   const count =
     await headings.count();
+
 
   expect(
     count,
@@ -70,8 +95,6 @@ async function inspectPrimaryHeading(
     1
   );
 
-  const heading =
-    headings.first();
 
   const metrics =
     await heading.evaluate(
@@ -196,12 +219,6 @@ async function inspectPrimaryHeading(
   ).toBeGreaterThan(
     0
   );
-
-  await expect(
-    heading
-  ).toBeVisible({
-    timeout: 10000
-  });
 
   return {
     heading,
@@ -437,7 +454,7 @@ test.describe(
             "/",
             {
               waitUntil:
-                "networkidle"
+                "domcontentloaded"
             }
           );
 

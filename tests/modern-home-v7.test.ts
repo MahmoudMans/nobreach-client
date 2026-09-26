@@ -58,7 +58,6 @@ describe(
             "/activities",
             "/events",
             "/insights",
-            "/company/team",
             "/contact"
           ]
         ) {

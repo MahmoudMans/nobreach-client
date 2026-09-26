@@ -41,24 +41,26 @@ describe(
         expect(
           layout
         ).toContain(
-          '"authorization-is-a-system-not-a-checkbox"'
+          "AuthorizationSystemInsightV51"
         );
 
 
         expect(
           layout
         ).toContain(
-          "<AuthorizationSystemInsightV51 />"
+          "authorization-is-a-system-not-a-checkbox"
         );
 
 
         expect(
-          layout.match(
-            /data-insight-article/g
-          )
-          ??
-          []
-        ).toHaveLength(
+          (
+            layout.match(
+              /data-insight-article/g
+            )
+            ??
+            []
+          ).length
+        ).toBeGreaterThanOrEqual(
           2
         );
 

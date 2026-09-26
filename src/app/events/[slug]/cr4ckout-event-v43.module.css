@@ -1,0 +1,1494 @@
+/* ==========================================================================
+   NB_CR4CKOUT_EVENT_DETAIL_V43
+
+   Strict NoBreach internal-page architecture.
+   ========================================================================== */
+
+
+.page {
+  --event-bg:
+    #07090d;
+
+  --event-alt:
+    #0b0f16;
+
+  --event-surface:
+    #101620;
+
+  --event-elevated:
+    #151d29;
+
+  --event-text:
+    #f5f7fa;
+
+  --event-secondary:
+    #c5ced8;
+
+  --event-muted:
+    #8793a3;
+
+  --event-subtle:
+    #667281;
+
+  --event-cyan:
+    #a1e2f0;
+
+  --event-blue:
+    #83b3d7;
+
+  --event-violet:
+    #7e60b9;
+
+  --event-line:
+    rgba(
+      161,
+      226,
+      240,
+      0.1
+    );
+
+  --event-line-soft:
+    rgba(
+      255,
+      255,
+      255,
+      0.075
+    );
+
+  width:
+    100%;
+
+  min-width:
+    0;
+
+  overflow:
+    clip;
+
+  color:
+    var(
+      --event-text
+    );
+
+  background:
+    var(
+      --event-bg
+    );
+}
+
+
+.page *,
+.page *::before,
+.page *::after {
+  box-sizing:
+    border-box;
+}
+
+
+.container {
+  width:
+    100%;
+}
+
+
+/* ==========================================================================
+   PAGE INTRO
+   ========================================================================== */
+
+
+.intro {
+  position:
+    relative;
+
+  padding:
+    clamp(
+      56px,
+      6vw,
+      84px
+    )
+    0
+    clamp(
+      82px,
+      8vw,
+      112px
+    );
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --event-line-soft
+    );
+
+  background:
+    var(
+      --event-bg
+    );
+}
+
+
+.intro::after {
+  position:
+    absolute;
+
+  z-index:
+    0;
+
+  inset:
+    0
+    0
+    0
+    auto;
+
+  width:
+    min(
+      47vw,
+      760px
+    );
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        99,
+        51,
+        198,
+        0.03
+      )
+    );
+
+  content:
+    "";
+
+  pointer-events:
+    none;
+}
+
+
+.intro
+.container {
+  position:
+    relative;
+
+  z-index:
+    2;
+}
+
+
+.breadcrumb {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  align-items:
+    center;
+
+  gap:
+    8px;
+
+  margin-bottom:
+    44px;
+
+  color:
+    var(
+      --event-subtle
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    "IBM Plex Mono",
+    monospace;
+
+  font-size:
+    0.68rem;
+
+  letter-spacing:
+    0.04em;
+}
+
+
+.breadcrumb a {
+  color:
+    var(
+      --event-muted
+    );
+
+  text-decoration:
+    none;
+}
+
+
+.breadcrumb a:hover {
+  color:
+    var(
+      --event-cyan
+    );
+}
+
+
+.introGrid {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1.08fr
+    )
+    minmax(
+      320px,
+      0.56fr
+    );
+
+  gap:
+    clamp(
+      56px,
+      7vw,
+      96px
+    );
+
+  align-items:
+    center;
+}
+
+
+.introCopy {
+  min-width:
+    0;
+
+  max-width:
+    760px;
+}
+
+
+.eyebrow,
+.sectionEyebrow,
+.subsectionLabel,
+.signalHeader,
+.signalFooter,
+.factList dt {
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    "IBM Plex Mono",
+    monospace;
+}
+
+
+.eyebrow {
+  margin:
+    0;
+
+  color:
+    var(
+      --event-blue
+    );
+
+  font-size:
+    0.65rem;
+
+  font-weight:
+    650;
+
+  letter-spacing:
+    0.11em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.intro h1 {
+  max-width:
+    760px;
+
+  margin:
+    15px
+    0
+    0;
+
+  color:
+    var(
+      --event-text
+    );
+
+  font-size:
+    clamp(
+      4rem,
+      7vw,
+      6.6rem
+    );
+
+  font-weight:
+    480;
+
+  letter-spacing:
+    -0.07em;
+
+  line-height:
+    0.91;
+
+  text-wrap:
+    balance;
+}
+
+
+.summary {
+  max-width:
+    640px;
+
+  margin:
+    26px
+    0
+    0;
+
+  color:
+    var(
+      --event-muted
+    );
+
+  font-size:
+    clamp(
+      1rem,
+      1.4vw,
+      1.14rem
+    );
+
+  line-height:
+    1.68;
+}
+
+
+.introActions,
+.contextActions,
+.finalActions {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    10px;
+
+  margin-top:
+    28px;
+}
+
+
+.primaryAction,
+.secondaryAction {
+  display:
+    inline-flex;
+
+  min-height:
+    46px;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    16px;
+
+  padding:
+    0
+    18px;
+
+  border-radius:
+    4px;
+
+  font-size:
+    0.79rem;
+
+  font-weight:
+    660;
+
+  text-decoration:
+    none;
+}
+
+
+.primaryAction {
+  border:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.3
+    );
+
+  color:
+    #071015;
+
+  background:
+    var(
+      --event-cyan
+    );
+}
+
+
+.primaryAction:hover {
+  background:
+    #c5eff8;
+}
+
+
+.secondaryAction {
+  border:
+    1px
+    solid
+    var(
+      --event-line
+    );
+
+  color:
+    var(
+      --event-secondary
+    );
+
+  background:
+    transparent;
+}
+
+
+.secondaryAction:hover {
+  border-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.22
+    );
+
+  color:
+    var(
+      --event-cyan
+    );
+}
+
+
+/* ==========================================================================
+   TECHNICAL SUPPORTING VISUAL
+   ========================================================================== */
+
+
+.eventSignal {
+  min-width:
+    0;
+
+  border-top:
+    1px
+    solid
+    rgba(
+      161,
+      226,
+      240,
+      0.23
+    );
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --event-line
+    );
+}
+
+
+.signalHeader,
+.signalFooter {
+  min-height:
+    42px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    18px;
+
+  color:
+    var(
+      --event-subtle
+    );
+
+  font-size:
+    0.55rem;
+
+  letter-spacing:
+    0.09em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.signalCore {
+  display:
+    grid;
+
+  grid-template-columns:
+    auto
+    1fr
+    auto
+    1fr
+    auto
+    1fr
+    auto;
+
+  align-items:
+    center;
+
+  min-height:
+    172px;
+
+  border-top:
+    1px
+    solid
+    var(
+      --event-line-soft
+    );
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --event-line-soft
+    );
+}
+
+
+.signalCore span {
+  color:
+    var(
+      --event-secondary
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.62rem;
+
+  font-weight:
+    650;
+
+  letter-spacing:
+    0.06em;
+}
+
+
+.signalCore i {
+  position:
+    relative;
+
+  height:
+    1px;
+
+  margin-inline:
+    10px;
+
+  background:
+    var(
+      --event-line
+    );
+}
+
+
+.signalCore i::after {
+  position:
+    absolute;
+
+  top:
+    50%;
+
+  right:
+    0;
+
+  width:
+    5px;
+
+  height:
+    5px;
+
+  border-radius:
+    50%;
+
+  background:
+    var(
+      --event-cyan
+    );
+
+  content:
+    "";
+
+  transform:
+    translate(
+      50%,
+      -50%
+    );
+}
+
+
+/* ==========================================================================
+   EVENT FACTS
+   ========================================================================== */
+
+
+.facts {
+  padding:
+    0;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --event-line-soft
+    );
+
+  background:
+    var(
+      --event-bg
+    );
+}
+
+
+.factList {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  margin:
+    0;
+}
+
+
+.factList div {
+  min-width:
+    0;
+
+  padding:
+    23px
+    20px
+    23px
+    0;
+}
+
+
+.factList div
++
+div {
+  padding-left:
+    20px;
+
+  border-left:
+    1px
+    solid
+    var(
+      --event-line-soft
+    );
+}
+
+
+.factList dt {
+  color:
+    var(
+      --event-subtle
+    );
+
+  font-size:
+    0.54rem;
+
+  letter-spacing:
+    0.08em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.factList dd {
+  margin:
+    8px
+    0
+    0;
+
+  color:
+    var(
+      --event-secondary
+    );
+
+  font-size:
+    0.85rem;
+
+  font-weight:
+    600;
+
+  overflow-wrap:
+    anywhere;
+}
+
+
+/* ==========================================================================
+   SECTIONS
+   ========================================================================== */
+
+
+.section {
+  padding:
+    96px
+    0;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --event-line-soft
+    );
+
+  background:
+    var(
+      --event-bg
+    );
+}
+
+
+.sectionAlt {
+  background:
+    var(
+      --event-alt
+    );
+}
+
+
+.editorialGrid,
+.contextLayout,
+.finalLayout {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      260px,
+      0.42fr
+    )
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    clamp(
+      54px,
+      8vw,
+      110px
+    );
+
+  align-items:
+    start;
+}
+
+
+.sectionHeading {
+  max-width:
+    500px;
+}
+
+
+.sectionEyebrow {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  margin:
+    0;
+
+  color:
+    var(
+      --event-blue
+    );
+
+  font-size:
+    0.6rem;
+
+  font-weight:
+    630;
+
+  letter-spacing:
+    0.1em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.sectionEyebrow span {
+  color:
+    var(
+      --event-subtle
+    );
+}
+
+
+.sectionHeading h2,
+.contextLayout h2,
+.finalLayout h2 {
+  margin:
+    14px
+    0
+    0;
+
+  color:
+    var(
+      --event-text
+    );
+
+  font-size:
+    clamp(
+      2.5rem,
+      4.4vw,
+      4.1rem
+    );
+
+  font-weight:
+    470;
+
+  letter-spacing:
+    -0.055em;
+
+  line-height:
+    1.02;
+}
+
+
+.largeCopy {
+  max-width:
+    760px;
+
+  margin:
+    0;
+
+  color:
+    var(
+      --event-secondary
+    );
+
+  font-size:
+    clamp(
+      1.12rem,
+      1.65vw,
+      1.44rem
+    );
+
+  line-height:
+    1.58;
+}
+
+
+.highlights {
+  margin-top:
+    42px;
+}
+
+
+.subsectionLabel {
+  margin:
+    0
+    0
+    14px;
+
+  color:
+    var(
+      --event-blue
+    );
+
+  font-size:
+    0.58rem;
+
+  letter-spacing:
+    0.09em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.highlights ol {
+  margin:
+    0;
+
+  padding:
+    0;
+
+  border-top:
+    1px
+    solid
+    var(
+      --event-line
+    );
+
+  list-style:
+    none;
+}
+
+
+.highlights li {
+  display:
+    grid;
+
+  grid-template-columns:
+    44px
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    18px;
+
+  padding:
+    18px
+    0;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --event-line-soft
+    );
+}
+
+
+.highlights li span {
+  color:
+    var(
+      --event-cyan
+    );
+
+  font-family:
+    var(
+      --font-geist-mono
+    ),
+    monospace;
+
+  font-size:
+    0.57rem;
+}
+
+
+.highlights li p {
+  max-width:
+    720px;
+
+  margin:
+    0;
+
+  color:
+    var(
+      --event-muted
+    );
+
+  font-size:
+    0.86rem;
+
+  line-height:
+    1.6;
+}
+
+
+.prose {
+  max-width:
+    780px;
+}
+
+
+.prose p {
+  margin:
+    0;
+
+  color:
+    var(
+      --event-secondary
+    );
+
+  font-size:
+    1rem;
+
+  line-height:
+    1.76;
+}
+
+
+.prose p
++
+p {
+  margin-top:
+    20px;
+}
+
+
+/* ==========================================================================
+   CR4CKOUT CONTEXT
+   ========================================================================== */
+
+
+.cr4ckoutContext {
+  background:
+    var(
+      --event-alt
+    );
+}
+
+
+.contextBody {
+  max-width:
+    620px;
+}
+
+
+.contextBody
+> p {
+  margin:
+    0;
+
+  color:
+    var(
+      --event-muted
+    );
+
+  font-size:
+    0.9rem;
+
+  line-height:
+    1.68;
+}
+
+
+.contextActions {
+  margin-top:
+    24px;
+}
+
+
+/* ==========================================================================
+   FINAL CTA
+   ========================================================================== */
+
+
+.finalCta {
+  padding:
+    88px
+    0
+    96px;
+
+  background:
+    var(
+      --event-bg
+    );
+}
+
+
+.finalLayout {
+  align-items:
+    end;
+
+  padding-top:
+    30px;
+
+  border-top:
+    1px
+    solid
+    var(
+      --event-line
+    );
+}
+
+
+.finalActions {
+  justify-content:
+    flex-start;
+
+  margin-top:
+    0;
+}
+
+
+/* ==========================================================================
+   FOCUS
+   ========================================================================== */
+
+
+.page a:focus-visible {
+  outline:
+    2px
+    solid
+    #a1e2f0;
+
+  outline-offset:
+    3px;
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    1024px
+) {
+
+  .introGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      )
+      minmax(
+        280px,
+        0.48fr
+      );
+
+    gap:
+      44px;
+  }
+
+
+  .section {
+    padding:
+      80px
+      0;
+  }
+
+
+  .factList {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+
+  .factList
+  div:nth-child(3) {
+    border-top:
+      1px
+      solid
+      var(
+        --event-line-soft
+      );
+
+    border-left:
+      0;
+  }
+
+
+  .factList
+  div:nth-child(4) {
+    border-top:
+      1px
+      solid
+      var(
+        --event-line-soft
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   TABLET PORTRAIT
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    900px
+) {
+
+  .introGrid,
+  .editorialGrid,
+  .contextLayout,
+  .finalLayout {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      34px;
+  }
+
+
+  .eventSignal {
+    width:
+      100%;
+
+    max-width:
+      680px;
+  }
+
+
+  .finalActions {
+    margin-top:
+      0;
+  }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    640px
+) {
+
+  .intro {
+    padding:
+      38px
+      0
+      64px;
+  }
+
+
+  .breadcrumb {
+    margin-bottom:
+      30px;
+
+    font-size:
+      0.63rem;
+  }
+
+
+  .intro h1 {
+    font-size:
+      clamp(
+        3rem,
+        14vw,
+        4.35rem
+      );
+  }
+
+
+  .summary {
+    margin-top:
+      20px;
+
+    font-size:
+      0.94rem;
+  }
+
+
+  .introActions {
+    display:
+      grid;
+
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .primaryAction,
+  .secondaryAction {
+    width:
+      100%;
+  }
+
+
+  .signalCore {
+    min-height:
+      116px;
+  }
+
+
+  .factList {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .factList div,
+  .factList div
+  +
+  div,
+  .factList
+  div:nth-child(3),
+  .factList
+  div:nth-child(4) {
+    padding:
+      14px
+      0;
+
+    border-top:
+      1px
+      solid
+      var(
+        --event-line-soft
+      );
+
+    border-left:
+      0;
+  }
+
+
+  .factList
+  div:first-child {
+    border-top:
+      0;
+  }
+
+
+  .section {
+    padding:
+      64px
+      0;
+  }
+
+
+  .sectionHeading h2,
+  .contextLayout h2,
+  .finalLayout h2 {
+    font-size:
+      clamp(
+        2.15rem,
+        10.5vw,
+        3rem
+      );
+  }
+
+
+  .largeCopy {
+    font-size:
+      1.05rem;
+  }
+
+
+  .highlights li {
+    grid-template-columns:
+      34px
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      12px;
+  }
+
+
+  .finalCta {
+    padding:
+      64px
+      0;
+  }
+
+
+  .finalActions,
+  .contextActions {
+    display:
+      grid;
+
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+}
+
+
+/* ==========================================================================
+   NARROW MOBILE
+   ========================================================================== */
+
+
+@media (
+  max-width:
+    390px
+) {
+
+  .intro h1 {
+    font-size:
+      2.82rem;
+  }
+
+
+  .signalCore i {
+    margin-inline:
+      5px;
+  }
+
+
+  .signalCore span {
+    font-size:
+      0.52rem;
+  }
+
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .primaryAction,
+  .secondaryAction {
+    transition:
+      none;
+  }
+
+}

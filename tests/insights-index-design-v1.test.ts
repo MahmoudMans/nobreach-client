@@ -89,8 +89,7 @@ describe(
           sections
         ).toEqual([
           'data-insights-index-section="intro"',
-          'data-insights-index-section="resources"',
-          'data-insights-index-section="follow"'
+          'data-insights-index-section="resources"'
         ]);
 
       }
@@ -183,20 +182,34 @@ describe(
 
 
     it(
-      "uses a compact research-feed continuation",
+      "does not append a redundant research-feed continuation",
       () => {
 
         expect(
           page
         ).toContain(
-          "Follow the research."
+          'data-insights-index-section="resources"'
         );
 
 
         expect(
           page
         ).toContain(
-          'href="/feed.xml"'
+          "<InsightsBrowser"
+        );
+
+
+        expect(
+          page
+        ).not.toContain(
+          'data-insights-index-section="follow"'
+        );
+
+
+        expect(
+          page
+        ).not.toContain(
+          "Follow the research."
         );
 
       }
