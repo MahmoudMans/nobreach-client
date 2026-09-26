@@ -155,19 +155,7 @@ export default function InternshipsPage() {
             styles.container
           }
         >
-          <div
-            className={
-              styles.heroTopline
-            }
-          >
-            <span>
-              No Breach / Internship Projects
-            </span>
 
-            <span>
-              Applied Security Workbench
-            </span>
-          </div>
 
           <div
             className={
