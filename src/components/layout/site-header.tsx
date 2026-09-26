@@ -1,5 +1,6 @@
 "use client";
 
+import { BrandLogo } from "@/components/brand/brand-logo";
 import {
   useEffect,
   useRef,
@@ -496,23 +497,7 @@ export function SiteHeader() {
             href="/"
             aria-label="No Breach home"
           >
-            <span
-              className={
-                styles.brandMark
-              }
-              aria-hidden="true"
-            >
-              <span />
-              <span />
-            </span>
-
-            <span
-              className={
-                styles.brandText
-              }
-            >
-              NO BREACH
-            </span>
+            <BrandLogo placement="header" />
           </Link>
 
           <nav
@@ -874,19 +859,7 @@ export function SiteHeader() {
                   closeDrawer
                 }
               >
-                <span
-                  className={
-                    styles.brandMark
-                  }
-                  aria-hidden="true"
-                >
-                  <span />
-                  <span />
-                </span>
-
-                <span>
-                  NO BREACH
-                </span>
+                <BrandLogo placement="header" />
               </Link>
 
               <button

@@ -1,5 +1,6 @@
+import { BrandLogo } from "@/components/brand/brand-logo";
+
 import Link from "next/link";
-import { BrandMark } from "@/components/brand/brand-mark";
 import { Container } from "@/components/layout/container";
 import { siteConfig } from "@/content/site";
 import styles from "./site-footer.module.css";
@@ -40,7 +41,7 @@ export function SiteFooter() {
       <Container>
         <div className={styles.top}>
           <div className={styles.intro}>
-            <BrandMark />
+            <BrandLogo placement="footer" />
             <p className={styles.tagline}>
               Offensive security.
               <br />
