@@ -254,20 +254,6 @@ export default function CareersPage() {
         >
           <div
             className={
-              styles.heroTopline
-            }
-          >
-            <span>
-              No Breach / Careers
-            </span>
-
-            <span>
-              Opportunity index
-            </span>
-          </div>
-
-          <div
-            className={
               styles.heroGrid
             }
           >
