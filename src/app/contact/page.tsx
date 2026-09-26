@@ -2,265 +2,182 @@ import {
   Container
 } from "@/components/layout/container";
 
-import {
-  ConsultationIntakeForm
-} from "./consultation-intake-form";
-
 import styles from "./contact.module.css";
 
 
-const ContactV11Heading = "h1" as const;
+const emailAddress =
+  "nhbenbrahim@gmail.com";
 
 
-/*
- * Legacy V10 source compatibility only.
- * The live V11 page renders the approved PageIntro heading.
-<h1>
-                Contact
-              </h1>
- */
+const linkedInUrl =
+  [
+    "https:",
+    "",
+    "www.linkedin.com",
+    "company",
+    "no-breach"
+  ].join(
+    "/"
+  );
+
 
 export default function ContactPage() {
 
   return (
     <div
-      data-contact-design="authority-v10"
-      data-contact-legacy-bridge="v10"
+      className={
+        styles.page
+      }
+      data-contact-design="v12-simple"
     >
-      <div
-        className={
-          styles.v11Page
-        }
-        data-contact-page
-        data-contact-design="v11"
-        data-contact-design-authority="v10"
-      >
-
-      {/* ================================================================
-          PAGE INTRO
-
-          Contact intentionally has no breadcrumb.
-         ================================================================ */}
-
       <section
         className={
-          styles.v11Intro
+          styles.intro
         }
-        data-contact-section="intro"
+        aria-labelledby="contact-title"
       >
         <Container
           size="wide"
           className={
-            styles.v11Container
+            styles.container
           }
         >
           <div
             className={
-              styles.v11IntroInner
+              styles.introInner
             }
           >
             <p
               className={
-                styles.v11Eyebrow
+                styles.eyebrow
               }
             >
               Contact
             </p>
 
 
-            <ContactV11Heading
-               aria-label="Contact — Getting to know our clients."
-               data-contact-heading-compat="v10-v11"
-             >
-               Getting to know our clients.
-             </ContactV11Heading>
+            <h1
+              id="contact-title"
+            >
+              Get in touch.
+            </h1>
 
 
             <p
               className={
-                styles.v11IntroLead
+                styles.lead
               }
             >
-              What we ask before the meeting — so we can deliver exactly
-              what they need.
+              You can contact us directly by email or connect with us on
+              LinkedIn.
             </p>
           </div>
         </Container>
       </section>
 
 
-      {/* ================================================================
-          CONTACT MAIN
-
-          Desktop:
-          information 5 columns / form 7 columns
-
-          Mobile:
-          information / form
-         ================================================================ */}
-
       <section
         className={
-          styles.v11Main
+          styles.channels
         }
-        data-contact-section="main"
+        aria-label="Contact options"
       >
         <Container
           size="wide"
           className={
-            styles.v11Container
+            styles.container
           }
         >
           <div
             className={
-              styles.v11ContactGrid
+              styles.channelList
             }
-            data-contact-main
           >
-
-            {/* INFORMATION */}
-
-            <aside
+            <a
               className={
-                styles.v11Information
+                styles.channel
               }
-              data-contact-information
+              href={
+                `mailto:${emailAddress}`
+              }
+              data-contact-channel="email"
             >
-              <div
+              <span
                 className={
-                  styles.v11InformationIntro
+                  styles.channelLabel
                 }
               >
-                <p
-                  className={
-                    styles.v11MicroLabel
-                  }
-                >
-                  Before the meeting
-                </p>
+                Email
+              </span>
 
 
-                <h2
-                   aria-label="Getting to Know Our Clients — Start with the context."
-                   data-contact-subheading-compat="v10-v11"
-                 >
-                   Start with the context.
-                 </h2>
-
-
-                <p>
-                  When a client clicks to book a consultation, we guide you through a short and tailored set of questions. This helps us understand your context, goals, and expectations — and allows us to offer a more personalized, relevant service from the start.
-                </p>
-              </div>
-
-
-              <ol
+              <span
                 className={
-                  styles.v11ContextList
+                  styles.channelValue
                 }
               >
-                <li>
-                  <span>
-                    01
-                  </span>
-
-                  <div>
-                    <strong>
-                      Client profile
-                    </strong>
-
-                    <p>
-                      Tell us who you are, your sector and the size of your
-                      organisation.
-                    </p>
-                  </div>
-                </li>
+                {emailAddress}
+              </span>
 
 
-                <li>
-                  <span>
-                    02
-                  </span>
-
-                  <div>
-                    <strong>
-                      What you need
-                    </strong>
-
-                    <p>
-                      Select the services and engagement format that best match
-                      what you are looking for.
-                    </p>
-                  </div>
-                </li>
+              <span
+                className={
+                  styles.channelAction
+                }
+                aria-hidden="true"
+              >
+                Write to us
+                <span>
+                  ↗
+                </span>
+              </span>
+            </a>
 
 
-                <li>
-                  <span>
-                    03
-                  </span>
-
-                  <div>
-                    <strong>
-                      Technical maturity
-                    </strong>
-
-                    <p>
-                      Share where your current security strategy and internal
-                      technical capabilities stand today.
-                    </p>
-                  </div>
-                </li>
-              </ol>
-            </aside>
-
-
-            {/* CONSULTATION FORM */}
-
-            <div
+            <a
               className={
-                styles.v11FormColumn
+                styles.channel
               }
-              data-contact-form-column
+              href={
+                linkedInUrl
+              }
+              target="_blank"
+              rel="noreferrer"
+              data-contact-channel="linkedin"
             >
-              <div
+              <span
                 className={
-                  styles.v11FormHeading
+                  styles.channelLabel
                 }
               >
-                <p
-                  className={
-                    styles.v11MicroLabel
-                  }
-                >
-                  Consultation intake
-                </p>
-
-                <h2>
-                  Tell us what you need.
-                </h2>
-
-                <p>
-                  Complete the short intake below so the conversation can start
-                  with useful context.
-                </p>
-              </div>
+                LinkedIn
+              </span>
 
 
-              <div
+              <span
                 className={
-                  styles.v11FormShell
+                  styles.channelValue
                 }
               >
-                <ConsultationIntakeForm />
-              </div>
-            </div>
+                No Breach
+              </span>
 
+
+              <span
+                className={
+                  styles.channelAction
+                }
+                aria-hidden="true"
+              >
+                Connect
+                <span>
+                  ↗
+                </span>
+              </span>
+            </a>
           </div>
         </Container>
       </section>
-
-      </div>
     </div>
   );
 
