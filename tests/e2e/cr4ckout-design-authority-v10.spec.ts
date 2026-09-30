@@ -446,8 +446,28 @@ test(
       );
 
 
+    await expect(
+      hero
+    ).toBeVisible();
+
     const box =
-      await hero.boundingBox();
+      await hero.evaluate(
+        (element) => {
+          const rect =
+            element.getBoundingClientRect();
+
+          return {
+            x:
+              rect.x,
+            y:
+              rect.y,
+            width:
+              rect.width,
+            height:
+              rect.height
+          };
+        }
+      );
 
 
     expect(

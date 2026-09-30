@@ -17,73 +17,58 @@ const page =
 
 
 describe(
-  "modern homepage destination system",
+  "modern homepage content",
   () => {
 
     it(
-      "routes all four services",
-      () => {
-
-        for (
-          const href
-          of [
-            "/services/web-application-pentesting",
-            "/services/api-security",
-            "/services/infrastructure-security",
-            "/services/security-training"
-          ]
-        ) {
-
-          expect(
-            page
-          ).toContain(
-            href
-          );
-
-        }
-
-      }
-    );
-
-
-    it(
-      "routes the wider NoBreach ecosystem",
-      () => {
-
-        for (
-          const href
-          of [
-            "/training",
-            "/cr4ckout",
-            "/activities",
-            "/events",
-            "/insights",
-            "/contact"
-          ]
-        ) {
-
-          expect(
-            page
-          ).toContain(
-            href
-          );
-
-        }
-
-      }
-    );
-
-
-    it(
-      "uses canonical training data",
+      "keeps the learner and organization journeys",
       () => {
 
         expect(
           page
         ).toContain(
-          'from "@/content/training"'
+          "For learners"
         );
 
+        expect(
+          page
+        ).toContain(
+          "For organizations"
+        );
+
+      }
+    );
+
+
+    it(
+      "renders services from canonical service data",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          "services.map"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Good fit"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Typical output"
+        );
+
+      }
+    );
+
+
+    it(
+      "renders canonical Academy programs",
+      () => {
 
         expect(
           page
@@ -91,32 +76,82 @@ describe(
           "trainingPrograms.map"
         );
 
+        expect(
+          page
+        ).toContain(
+          "Program published"
+        );
+
       }
     );
 
 
     it(
-      "uses confirmed current-team data",
+      "preserves public community destinations",
       () => {
 
         expect(
           page
         ).toContain(
-          'from "@/content/team"'
+          'href="/cr4ckout"'
         );
-
 
         expect(
           page
         ).toContain(
-          'member.status'
+          '"/activities"'
         );
-
 
         expect(
           page
         ).toContain(
-          '"current"'
+          '"/events"'
+        );
+
+      }
+    );
+
+
+    it(
+      "uses the singleton public founder record",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          "currentFounder"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "/people/ceo.png"
+        );
+
+      }
+    );
+
+
+    it(
+      "renders real insight provenance",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          "publishedAt"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "readingTime"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "featuredInsight.author"
         );
 
       }

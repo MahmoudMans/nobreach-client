@@ -17,17 +17,17 @@ const css =
 
 
 describe(
-  "homepage responsive viewport system",
+  "homepage responsive hero contract",
   () => {
 
     it(
-      "uses viewport-relative desktop hero geometry",
+      "avoids forcing the hero to a full viewport height",
       () => {
 
         expect(
           css
-        ).toContain(
-          "100svh - 76px"
+        ).not.toMatch(
+          /\.hero\s*\{[^}]*min-height\s*:\s*100vh/
         );
 
       }
@@ -35,46 +35,47 @@ describe(
 
 
     it(
-      "contains all required responsive recomposition points",
+      "contains intermediate and compact recomposition",
       () => {
 
-        for (
-          const breakpoint
-          of [
-            "@media (max-width: 1024px)",
-            "@media (max-width: 820px)",
-            "@media (max-width: 640px)",
-            "@media (max-width: 390px)"
-          ]
-        ) {
+        expect(
+          css
+        ).toContain(
+          "@media (max-width: 1100px)"
+        );
 
-          expect(
-            css
-          ).toContain(
-            breakpoint
-          );
-
-        }
+        expect(
+          css
+        ).toContain(
+          "@media (max-width: 720px)"
+        );
 
       }
     );
 
 
     it(
-      "recomposes hero on compact screens",
+      "recomposes the attack path vertically on compact layouts",
       () => {
 
         expect(
           css
-        ).toContain(
-          ".heroV8Frame,"
+        ).toMatch(
+          /@media \(max-width: 720px\)[\s\S]*\.attackPath[\s\S]*grid-template-columns:\s*1fr/
         );
 
+      }
+    );
+
+
+    it(
+      "protects the page from accidental horizontal overflow",
+      () => {
 
         expect(
           css
-        ).toContain(
-          "grid-template-columns:"
+        ).toMatch(
+          /\.page\s*\{[\s\S]*overflow-x:\s*clip/
         );
 
       }

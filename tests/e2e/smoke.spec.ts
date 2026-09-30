@@ -34,7 +34,7 @@ test(
           level:
             2,
           name:
-            /a cybersecurity organization built from offensive security/i
+            /one security practice.*two clear ways in/i
         }
       )
     ).toBeVisible();

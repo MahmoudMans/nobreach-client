@@ -15,8 +15,7 @@ const page =
     "utf8"
   );
 
-
-const home =
+const css =
   readFileSync(
     "src/app/home.module.css",
     "utf8"
@@ -24,36 +23,29 @@ const home =
 
 
 describe(
-  "premium hero compatibility on attack path hero v13",
+  "premium homepage hero compatibility",
   () => {
 
     it(
-      "retains premium system lineage",
+      "retains the attack-surface authority hooks",
       () => {
 
         expect(
-          (
-            home.match(
-              /NB_PREMIUM_HERO_SYSTEM_V6/g
-            )
-            ??
-            []
-          ).length
-        ).toBe(
-          1
+          page
+        ).toContain(
+          'data-home-hero-visual="attack-surface"'
         );
 
+        expect(
+          page
+        ).toContain(
+          'data-hero-art="attack-surface"'
+        );
 
         expect(
-          (
-            home.match(
-              /NB_HOME_HERO_ATTACK_PATH_V13/g
-            )
-            ??
-            []
-          ).length
-        ).toBe(
-          1
+          page
+        ).toContain(
+          'data-attack-surface="true"'
         );
 
       }
@@ -61,52 +53,25 @@ describe(
 
 
     it(
-      "uses one assessment canvas instead of floating UI",
-      () => {
-
-        expect(
-          home
-        ).toContain(
-          ".heroAssessment"
-        );
-
-
-        expect(
-          home
-        ).toContain(
-          ".attackPath"
-        );
-
-
-        expect(
-          home
-        ).toContain(
-          ".assessmentEvidence"
-        );
-
-      }
-    );
-
-
-    it(
-      "contains the attack path",
+      "retains five meaningful attack-path stages",
       () => {
 
         for (
-          const token
-          of [
-            "EDGE",
-            "APP",
-            "AUTH",
-            "ACCESS",
-            "DATA"
+          const stage
+          of
+          [
+            "edge",
+            "application",
+            "identity",
+            "access",
+            "data"
           ]
         ) {
 
           expect(
             page
           ).toContain(
-            token
+            `data-stage="${stage}"`
           );
 
         }
@@ -116,20 +81,13 @@ describe(
 
 
     it(
-      "keeps technical content inside its visual",
+      "does not require hero entrance animation",
       () => {
 
         expect(
-          page
-        ).toContain(
-          'data-home-hero-visual="attack-surface"'
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "NB / ATTACK PATH"
+          css
+        ).not.toMatch(
+          /\.hero[^{]*\{[^}]*animation\s*:/
         );
 
       }
@@ -137,20 +95,27 @@ describe(
 
 
     it(
-      "supports reduced motion",
+      "contains explicit reduced-motion protection",
       () => {
 
         expect(
-          home
+          css
         ).toContain(
-          "prefers-reduced-motion"
+          "@media (prefers-reduced-motion: reduce)"
         );
 
+      }
+    );
+
+
+    it(
+      "uses readable metadata rather than decorative microtext only",
+      () => {
 
         expect(
-          home
+          css
         ).toContain(
-          "none !important"
+          "0.8125rem"
         );
 
       }

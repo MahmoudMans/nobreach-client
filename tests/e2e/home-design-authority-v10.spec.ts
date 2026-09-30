@@ -5,7 +5,7 @@ import {
 
 
 test(
-  "homepage applies the continuous NoBreach master authority",
+  "homepage applies the evidence-led editorial authority",
   async ({
     page
   }) => {
@@ -14,94 +14,45 @@ test(
       "/"
     );
 
-
-    await expect(
+    const root =
       page.locator(
-        '[data-home-master="continuous-v11"]'
-      )
-    ).toBeVisible();
-
+        '[data-home-redesign="editorial-v12"]'
+      );
 
     await expect(
-      page.getByRole(
-        "heading",
-        {
-          level:
-            1,
-
-          name:
-            /offensive security built around/i
-        }
-      )
-    ).toHaveCount(
-      1
-    );
-
+      root
+    ).toBeVisible();
 
     await expect(
       page.locator(
         "[data-home-chapter]"
       )
     ).toHaveCount(
-      16
+      8
     );
-
-  }
-);
-
-
-test(
-  "homepage services behave as a commercial service index",
-  async ({
-    page
-  }) => {
-
-    await page.goto(
-      "/"
-    );
-
-
-    const services =
-      page.locator(
-        '[data-home-chapter="services"]'
-      );
-
 
     await expect(
-      services.locator(
+      page.locator(
         "[data-home-service]"
       )
     ).toHaveCount(
       4
     );
 
-
-    for (
-      const href
-      of [
-        "/services/web-application-pentesting",
-        "/services/api-security",
-        "/services/infrastructure-security",
-        "/services/security-training"
-      ]
-    ) {
-
-      await expect(
-        services.locator(
-          `a[href="${href}"]`
-        )
-      ).toHaveCount(
-        1
-      );
-
-    }
+    await expect(
+      page.locator(
+        "[data-home-program]"
+      )
+    ).toHaveCount(
+      3
+    );
 
   }
 );
 
 
 test(
-  "homepage ecosystem is an editorial directory",
+  "homepage no longer exposes fake live-assessment language",
   async ({
     page
   }) => {
@@ -110,38 +61,42 @@ test(
       "/"
     );
 
+    await expect(
+      page.getByText(
+        "LIVE ASSESSMENT",
+        {
+          exact:
+            true
+        }
+      )
+    ).toHaveCount(
+      0
+    );
 
-    const proof =
-      page.locator(
-        '[data-home-section="explore"]'
-      );
+    await expect(
+      page.getByText(
+        "STATUS / ACTIVE",
+        {
+          exact:
+            true
+        }
+      )
+    ).toHaveCount(
+      0
+    );
 
-
-    for (
-      const href
-      of [
-        "/cr4ckout",
-        "/training",
-        "/activities",
-        "/events",
-        "/insights"
-      ]
-    ) {
-
-      await expect(
-        proof.locator(
-          `a[href="${href}"]`
-        )
-      ).toBeVisible();
-
-    }
+    await expect(
+      page.getByText(
+        "Illustrative attack path — not a live assessment."
+      )
+    ).toBeVisible();
 
   }
 );
 
 
 test(
-  "homepage remains sleek and overflow free on mobile",
+  "homepage stays horizontally contained on mobile",
   async ({
     page
   }) => {
@@ -154,30 +109,24 @@ test(
         844
     });
 
-
     await page.goto(
       "/"
     );
 
-
-    const geometry =
+    const contained =
       await page.evaluate(
-        () => ({
-          scrollWidth:
-            document.documentElement.scrollWidth,
-
-          clientWidth:
-            document.documentElement.clientWidth
-        })
+        () =>
+          document.documentElement.scrollWidth
+          <=
+          window.innerWidth
+          +
+          1
       );
 
-
     expect(
-      geometry.scrollWidth
-    ).toBeLessThanOrEqual(
-      geometry.clientWidth
-      +
-      1
+      contained
+    ).toBe(
+      true
     );
 
   }

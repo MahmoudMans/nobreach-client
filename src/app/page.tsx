@@ -2,11 +2,33 @@ import type {
   Metadata
 } from "next";
 
+import Image from "next/image";
 import Link from "next/link";
 
 import {
   Container
 } from "@/components/layout/container";
+
+import {
+  activities
+} from "@/content/activities";
+
+import {
+  events
+} from "@/content/events";
+
+import {
+  insights
+} from "@/content/insights";
+
+import {
+  services
+} from "@/content/services";
+
+import {
+  methodology,
+  siteConfig
+} from "@/content/site";
 
 import {
   team
@@ -30,20 +52,88 @@ export const metadata:
 };
 
 
+const currentFounder =
+  team.find(
+    (
+      member
+    ) =>
+      member.status
+      ===
+      "current"
+  )
+  ??
+  team[0];
+
+
+const featuredService =
+  services.find(
+    (
+      service
+    ) =>
+      service.slug
+      ===
+      "web-application-pentesting"
+  );
+
+
+const featuredProgram =
+  trainingPrograms.find(
+    (
+      program
+    ) =>
+      program.slug
+      ===
+      "red-team-foundations"
+  )
+  ??
+  trainingPrograms[0];
+
+
+const featuredInsight =
+  insights.find(
+    (
+      insight
+    ) =>
+      insight.featured
+  )
+  ??
+  insights[0];
+
+
+const supportingInsights =
+  insights
+    .filter(
+      (
+        insight
+      ) =>
+        insight.slug
+        !==
+        featuredInsight?.slug
+    )
+    .slice(
+      0,
+      3
+    );
+
+
+const latestPublishedEvent =
+  events[0];
+
+
 const companyFacts = [
   {
     label:
       "Founded",
 
     value:
-      "2023"
+      siteConfig.founded
   },
   {
     label:
       "Based",
 
     value:
-      "Tunis, Tunisia"
+      siteConfig.location
   },
   {
     label:
@@ -62,374 +152,115 @@ const companyFacts = [
 ] as const;
 
 
-const services = [
+const journeys = [
   {
     index:
       "01",
 
-    code:
-      "WEB",
+    label:
+      "For learners",
 
     title:
-      "Web Application Security",
+      "Build practical security skill.",
 
     description:
-      "Security testing focused on application behavior, access control, business logic and real attack surfaces.",
-
-    capabilities: [
-      "Authentication & sessions",
-      "Authorization & access control",
-      "Business logic"
-    ],
+      "Use the No Breach Academy to compare published programs, prerequisites, curriculum and learning outcomes.",
 
     href:
-      "/services/web-application-pentesting"
+      "/training",
+
+    action:
+      "View training"
   },
-  {
-    index:
-      "02",
-
-    code:
-      "API",
-
-    title:
-      "API Security",
-
-    description:
-      "Assessment of exposed application interfaces, authorization boundaries and API behavior.",
-
-    capabilities: [
-      "Authentication",
-      "Object-level access",
-      "Business logic"
-    ],
-
-    href:
-      "/services/api-security"
-  },
-  {
-    index:
-      "03",
-
-    code:
-      "INFRA",
-
-    title:
-      "Infrastructure Security",
-
-    description:
-      "Security assessment of infrastructure exposure, configuration and supporting technical systems.",
-
-    capabilities: [
-      "External exposure",
-      "Privilege paths",
-      "Configuration review"
-    ],
-
-    href:
-      "/services/infrastructure-security"
-  },
-  {
-    index:
-      "04",
-
-    code:
-      "EDU",
-
-    title:
-      "Security Training",
-
-    description:
-      "Practical cybersecurity training for organizations, universities, communities and technical teams.",
-
-    capabilities: [
-      "Hands-on learning",
-      "Technical workshops",
-      "Applied security"
-    ],
-
-    href:
-      "/services/security-training"
-  }
-] as const;
-
-
-const capabilityAreas = [
-  "Authentication and session behavior",
-  "Authorization and access boundaries",
-  "Business-logic weaknesses",
-  "Application and API attack surfaces"
-] as const;
-
-
-const whyNoBreach = [
-  {
-    index:
-      "01",
-
-    title:
-      "Real-world practice",
-
-    description:
-      "Security work and technical learning are grounded in how real systems behave and fail."
-  },
-  {
-    index:
-      "02",
-
-    title:
-      "Technical credibility",
-
-    description:
-      "Testing, research and training share the same attacker-oriented technical mindset."
-  },
-  {
-    index:
-      "03",
-
-    title:
-      "Industry relevance",
-
-    description:
-      "Programs and services stay connected to practical application, API and infrastructure security."
-  },
-  {
-    index:
-      "04",
-
-    title:
-      "One connected ecosystem",
-
-    description:
-      "Security, education and community reinforce each other instead of operating as isolated activities."
-  }
-] as const;
-
-
-const process = [
-  {
-    index:
-      "01",
-
-    title:
-      "Scope"
-  },
-  {
-    index:
-      "02",
-
-    title:
-      "Reconnaissance"
-  },
-  {
-    index:
-      "03",
-
-    title:
-      "Attack Surface Mapping"
-  },
-  {
-    index:
-      "04",
-
-    title:
-      "Testing"
-  },
-  {
-    index:
-      "05",
-
-    title:
-      "Exploitation Validation"
-  },
-  {
-    index:
-      "06",
-
-    title:
-      "Reporting"
-  },
-  {
-    index:
-      "07",
-
-    title:
-      "Remediation Guidance"
-  }
-] as const;
-
-
-const proofLinks = [
   {
     index:
       "02",
 
     label:
-      "ACADEMY",
+      "For organizations",
 
     title:
-      "Training Hub",
+      "Understand and test your exposure.",
 
     description:
-      "Published hands-on cybersecurity learning paths.",
+      "Explore security assessments or organization-facing training built around your systems, audience and context.",
 
     href:
-      "/training"
-  },
+      "/services",
+
+    action:
+      "View services"
+  }
+] as const;
+
+
+const publicDestinations = [
   {
     index:
-      "03",
+      "01",
 
     label:
       "ACTIVITY",
 
     title:
-      "Technical Activities",
+      "Technical activities",
 
     description:
-      "Published workshops, training and community activity.",
+      `${activities.length} published records across training, community work and practical cybersecurity activity.`,
 
     href:
-      "/activities"
+      "/activities",
+
+    action:
+      "View activities"
   },
   {
     index:
-      "04",
+      "02",
 
     label:
-      "ARCHIVE",
+      "EVENTS",
 
     title:
-      "Events",
+      "Event archive",
 
     description:
-      "Public NoBreach event history and CR4CKOUT activity.",
+      latestPublishedEvent
+        ? `${latestPublishedEvent.title} is preserved as a ${latestPublishedEvent.status} event record.`
+        : "Browse published No Breach event records.",
 
     href:
-      "/events"
-  },
-  {
-    index:
-      "05",
+      "/events",
 
-    label:
-      "RESEARCH",
-
-    title:
-      "Insights",
-
-    description:
-      "Technical security writing and published research.",
-
-    href:
-      "/insights"
+    action:
+      "View events"
   }
 ] as const;
 
 
-const resources = [
-  {
-    category:
-      "Application Security",
+function formatPublishedDate(
+  value: string
+) {
 
-    title:
-      "Authorization is a system, not a checkbox",
+  return new Intl.DateTimeFormat(
+    "en",
+    {
+      day:
+        "numeric",
 
-    href:
-      "/insights/authorization-is-a-system-not-a-checkbox"
-  },
-  {
-    category:
-      "Offensive Security",
+      month:
+        "short",
 
-    title:
-      "Attack surface mapping before exploitation",
-
-    href:
-      "/insights/attack-surface-mapping-before-exploitation"
-  },
-  {
-    category:
-      "AI Security",
-
-    title:
-      "Prompt injection matters most when AI can act",
-
-    href:
-      "/insights/prompt-injection-matters-when-ai-can-act"
-  }
-] as const;
-
-
-const faqItems = [
-  {
-    question:
-      "What does NoBreach provide?",
-
-    answer:
-      "NoBreach brings together cybersecurity services, practical training, technical research and community initiatives."
-  },
-  {
-    question:
-      "Where should individual learners start?",
-
-    answer:
-      "The Academy presents the currently published NoBreach training programs, including their level, format, curriculum and expected outcomes."
-  },
-  {
-    question:
-      "Where should organizations start?",
-
-    answer:
-      "Organizations can explore the security services portfolio or contact NoBreach to discuss the context and type of security work required."
-  },
-  {
-    question:
-      "Where can I follow technical NoBreach work?",
-
-    answer:
-      "Published research is available through Insights, while Activities and Events provide public records of training, workshops and community initiatives."
-  }
-] as const;
-
-
-const currentTeam =
-  team
-    .filter(
-      (
-        member
-      ) =>
-        member.status
-        ===
-        "current"
+      year:
+        "numeric"
+    }
+  ).format(
+    new Date(
+      `${value}T00:00:00`
     )
-    .slice(
-      0,
-      4
-    );
-
-
-const featuredPractice =
-  trainingPrograms[0];
-
-
-const supportingPractice =
-  trainingPrograms.slice(
-    1,
-    3
   );
 
-
-const statusLabels = {
-  available:
-    "Available",
-
-  upcoming:
-    "Upcoming",
-
-  archived:
-    "Archived"
-} as const;
+}
 
 
 export default function HomePage() {
@@ -441,28 +272,29 @@ export default function HomePage() {
       }
       data-home-design="authority-v10"
       data-home-master="continuous-v11"
+      data-home-redesign="editorial-v12"
     >
+
+      {/* ================================================================ */}
+      {/* 01 — CLEAR PROPOSITION                                            */}
+      {/* ================================================================ */}
+
       <section
         className={
-          styles.heroV8
+          styles.hero
         }
         data-home-section="hero"
         data-home-chapter="hero"
         data-home-hero="v8"
         data-home-hero-spec="attack-path-v13"
+        aria-labelledby="home-hero-title"
       >
-        <div
-          className={
-            styles.heroAmbient
-          }
-          aria-hidden="true"
-        />
-
-
-        <Container size="wide">
+        <Container
+          size="wide"
+        >
           <div
             className={
-              styles.heroFrame
+              styles.heroGrid
             }
           >
             <div
@@ -470,35 +302,26 @@ export default function HomePage() {
                 styles.heroCopy
               }
             >
-              <div
+              <p
                 className={
-                  styles.heroEyebrow
+                  styles.eyebrow
                 }
               >
-                <span
-                  className={
-                    styles.heroStatus
-                  }
-                  aria-hidden="true"
-                />
-
-                <span>
-                  OFFENSIVE SECURITY / TUNISIA
-                </span>
-              </div>
-
+                OFFENSIVE SECURITY / TUNISIA
+              </p>
 
               <h1
                 className={
                   styles.heroTitle
                 }
+                id="home-hero-title"
               >
                 Offensive security built around
+                {" "}
                 <span>
                   how real systems fail.
                 </span>
               </h1>
-
 
               <p
                 className={
@@ -506,10 +329,9 @@ export default function HomePage() {
                 }
               >
                 No Breach helps organizations understand exposure,
-                validate weaknesses and turn security findings into
-                practical decisions.
+                validate meaningful weaknesses and turn technical
+                findings into practical security decisions.
               </p>
-
 
               <div
                 className={
@@ -518,7 +340,7 @@ export default function HomePage() {
               >
                 <Link
                   className={
-                    styles.primaryButton
+                    styles.primaryAction
                   }
                   href="/services"
                 >
@@ -527,18 +349,17 @@ export default function HomePage() {
                   <span
                     aria-hidden="true"
                   >
-                    ↗
+                    →
                   </span>
                 </Link>
 
-
                 <Link
                   className={
-                    styles.secondaryButton
+                    styles.secondaryAction
                   }
-                  href="/company"
+                  href="/training"
                 >
-                  About No Breach
+                  Explore training
 
                   <span
                     aria-hidden="true"
@@ -548,67 +369,54 @@ export default function HomePage() {
                 </Link>
               </div>
 
-
-              <div
+              <ul
                 className={
-                  styles.heroTrust
+                  styles.heroPrinciples
                 }
                 aria-label="No Breach security approach"
               >
-                <span>
-                  <i
-                    aria-hidden="true"
-                  />
-
+                <li>
                   Manual reasoning
-                </span>
+                </li>
 
-                <span>
-                  <i
-                    aria-hidden="true"
-                  />
-
+                <li>
                   Attack-path validation
-                </span>
+                </li>
 
-                <span>
-                  <i
-                    aria-hidden="true"
-                  />
-
+                <li>
                   Actionable guidance
-                </span>
-              </div>
+                </li>
+              </ul>
             </div>
 
 
             <div
               className={
-                styles.heroAssessment
+                styles.attackPanel
               }
               data-home-hero-visual="attack-surface"
               data-hero-art="attack-surface"
               data-attack-surface="true"
-              aria-hidden="true"
+              aria-label="Illustrative application-security attack path"
             >
               <div
                 className={
-                  styles.assessmentHeader
+                  styles.attackPanelHeader
                 }
               >
                 <div>
                   <span>
-                    NB / ATTACK PATH
+                    NB / ATTACK SURFACE
                   </span>
 
-                  <small>
-                    LIVE ASSESSMENT
-                  </small>
+                  <strong>
+                    ILLUSTRATIVE MODEL
+                  </strong>
                 </div>
 
                 <span
                   className={
-                    styles.assessmentId
+                    styles.modelId
                   }
                 >
                   MODEL / 01
@@ -616,299 +424,185 @@ export default function HomePage() {
               </div>
 
 
+              <p
+                className={
+                  styles.attackPanelNote
+                }
+              >
+                Illustrative attack path — not a live assessment.
+              </p>
+
+
               <div
                 className={
-                  styles.assessmentCanvas
+                  styles.attackAxis
+                }
+                aria-hidden="true"
+              >
+                <span>
+                  ENTRY
+                </span>
+
+                <span>
+                  TRUST BOUNDARY
+                </span>
+
+                <span>
+                  IMPACT
+                </span>
+              </div>
+
+
+              <div
+                className={
+                  styles.attackPath
                 }
               >
                 <div
                   className={
-                    styles.assessmentAxis
+                    styles.attackStage
                   }
+                  data-stage="edge"
                 >
                   <span>
-                    ENTRY
+                    01
                   </span>
 
-                  <span>
-                    TRUST BOUNDARY
-                  </span>
+                  <div>
+                    <small>
+                      EXTERNAL
+                    </small>
 
-                  <span>
-                    IMPACT
-                  </span>
-                </div>
-
-
-                <div
-                  className={
-                    styles.attackPath
-                  }
-                >
-                  <div
-                    className={
-                      styles.attackStage
-                    }
-                    data-stage="edge"
-                  >
-                    <span
-                      className={
-                        styles.stageIndex
-                      }
-                    >
-                      01
-                    </span>
-
-                    <div>
-                      <small>
-                        EXTERNAL
-                      </small>
-
-                      <strong>
-                        EDGE
-                      </strong>
-                    </div>
-
-                    <i
-                      aria-hidden="true"
-                    />
-                  </div>
-
-
-                  <div
-                    className={
-                      styles.attackConnector
-                    }
-                    aria-hidden="true"
-                  >
-                    →
-                  </div>
-
-
-                  <div
-                    className={
-                      styles.attackStage
-                    }
-                    data-stage="application"
-                  >
-                    <span
-                      className={
-                        styles.stageIndex
-                      }
-                    >
-                      02
-                    </span>
-
-                    <div>
-                      <small>
-                        SURFACE
-                      </small>
-
-                      <strong>
-                        APP
-                      </strong>
-                    </div>
-
-                    <i
-                      aria-hidden="true"
-                    />
-                  </div>
-
-
-                  <div
-                    className={
-                      styles.attackConnector
-                    }
-                    aria-hidden="true"
-                  >
-                    →
-                  </div>
-
-
-                  <div
-                    className={
-                      styles.attackStage
-                    }
-                    data-stage="identity"
-                  >
-                    <span
-                      className={
-                        styles.stageIndex
-                      }
-                    >
-                      03
-                    </span>
-
-                    <div>
-                      <small>
-                        IDENTITY
-                      </small>
-
-                      <strong>
-                        AUTH
-                      </strong>
-                    </div>
-
-                    <i
-                      aria-hidden="true"
-                    />
-                  </div>
-
-
-                  <div
-                    className={
-                      styles.attackConnector
-                    }
-                    aria-hidden="true"
-                  >
-                    →
-                  </div>
-
-
-                  <div
-                    className={
-                      styles.attackStage
-                    }
-                    data-stage="access"
-                  >
-                    <span
-                      className={
-                        styles.stageIndex
-                      }
-                    >
-                      04
-                    </span>
-
-                    <div>
-                      <small>
-                        BOUNDARY
-                      </small>
-
-                      <strong>
-                        ACCESS
-                      </strong>
-                    </div>
-
-                    <i
-                      aria-hidden="true"
-                    />
-                  </div>
-
-
-                  <div
-                    className={
-                      styles.attackConnector
-                    }
-                    aria-hidden="true"
-                  >
-                    →
-                  </div>
-
-
-                  <div
-                    className={
-                      styles.attackStage
-                    }
-                    data-stage="data"
-                  >
-                    <span
-                      className={
-                        styles.stageIndex
-                      }
-                    >
-                      05
-                    </span>
-
-                    <div>
-                      <small>
-                        IMPACT
-                      </small>
-
-                      <strong>
-                        DATA
-                      </strong>
-                    </div>
-
-                    <i
-                      aria-hidden="true"
-                    />
+                    <strong>
+                      EDGE
+                    </strong>
                   </div>
                 </div>
 
 
                 <div
                   className={
-                    styles.assessmentEvidence
+                    styles.attackConnector
                   }
+                  aria-hidden="true"
                 >
-                  <div
-                    className={
-                      styles.evidenceHeader
-                    }
-                  >
-                    <span>
-                      ASSESSMENT SIGNAL
-                    </span>
-
-                    <span>
-                      STATUS / ACTIVE
-                    </span>
-                  </div>
+                  →
+                </div>
 
 
-                  <div
-                    className={
-                      styles.evidenceRow
-                    }
-                  >
-                    <span>
-                      01
-                    </span>
+                <div
+                  className={
+                    styles.attackStage
+                  }
+                  data-stage="application"
+                >
+                  <span>
+                    02
+                  </span>
 
-                    <p>
-                      Map exposed application surface
-                    </p>
+                  <div>
+                    <small>
+                      SURFACE
+                    </small>
 
                     <strong>
-                      DISCOVER
+                      APP
                     </strong>
                   </div>
+                </div>
 
 
-                  <div
-                    className={
-                      styles.evidenceRow
-                    }
-                  >
-                    <span>
-                      02
-                    </span>
+                <div
+                  className={
+                    styles.attackConnector
+                  }
+                  aria-hidden="true"
+                >
+                  →
+                </div>
 
-                    <p>
-                      Validate identity and access boundaries
-                    </p>
+
+                <div
+                  className={
+                    styles.attackStage
+                  }
+                  data-stage="identity"
+                >
+                  <span>
+                    03
+                  </span>
+
+                  <div>
+                    <small>
+                      IDENTITY
+                    </small>
 
                     <strong>
-                      TEST
+                      AUTH
                     </strong>
                   </div>
+                </div>
 
 
-                  <div
-                    className={
-                      styles.evidenceRow
-                    }
-                  >
-                    <span>
-                      03
-                    </span>
+                <div
+                  className={
+                    styles.attackConnector
+                  }
+                  aria-hidden="true"
+                >
+                  →
+                </div>
 
-                    <p>
-                      Confirm practical impact and attack path
-                    </p>
+
+                <div
+                  className={
+                    styles.attackStage
+                  }
+                  data-stage="access"
+                >
+                  <span>
+                    04
+                  </span>
+
+                  <div>
+                    <small>
+                      BOUNDARY
+                    </small>
 
                     <strong>
-                      VALIDATE
+                      ACCESS
+                    </strong>
+                  </div>
+                </div>
+
+
+                <div
+                  className={
+                    styles.attackConnector
+                  }
+                  aria-hidden="true"
+                >
+                  →
+                </div>
+
+
+                <div
+                  className={
+                    styles.attackStage
+                  }
+                  data-stage="data"
+                >
+                  <span>
+                    05
+                  </span>
+
+                  <div>
+                    <small>
+                      IMPACT
+                    </small>
+
+                    <strong>
+                      DATA
                     </strong>
                   </div>
                 </div>
@@ -917,7 +611,56 @@ export default function HomePage() {
 
               <div
                 className={
-                  styles.assessmentFooter
+                  styles.attackReasoning
+                }
+              >
+                <div>
+                  <span>
+                    01
+                  </span>
+
+                  <p>
+                    Map the exposed surface.
+                  </p>
+
+                  <strong>
+                    DISCOVER
+                  </strong>
+                </div>
+
+                <div>
+                  <span>
+                    02
+                  </span>
+
+                  <p>
+                    Challenge identity and access boundaries.
+                  </p>
+
+                  <strong>
+                    TEST
+                  </strong>
+                </div>
+
+                <div>
+                  <span>
+                    03
+                  </span>
+
+                  <p>
+                    Confirm meaningful impact.
+                  </p>
+
+                  <strong>
+                    VALIDATE
+                  </strong>
+                </div>
+              </div>
+
+
+              <div
+                className={
+                  styles.attackFooter
                 }
               >
                 <span>
@@ -938,42 +681,59 @@ export default function HomePage() {
       </section>
 
 
+      {/* ================================================================ */}
+      {/* 02 — CHOOSE YOUR ROUTE                                           */}
+      {/* ================================================================ */}
+
       <section
         className={
-          styles.trust
+          styles.orientation
         }
         data-home-section="company"
-        data-home-chapter="trust"
+        data-home-chapter="orientation"
+        aria-labelledby="orientation-title"
       >
-        <Container size="wide">
+        <Container
+          size="wide"
+        >
           <div
             className={
-              styles.trustIntro
+              styles.orientationIntro
             }
           >
+            <div>
+              <p
+                className={
+                  styles.eyebrow
+                }
+              >
+                NO BREACH
+              </p>
+
+              <h2
+                id="orientation-title"
+              >
+                One security practice.
+                <br />
+                Two clear ways in.
+              </h2>
+            </div>
+
             <p
               className={
-                styles.eyebrow
+                styles.sectionLead
               }
             >
-              NO BREACH
-            </p>
-
-            <h2>
-              A cybersecurity organization built from offensive security.
-            </h2>
-
-            <p>
-              Founded in Tunisia, No Breach brings together
-              security services, hands-on education and
-              cybersecurity community initiatives.
+              {siteConfig.description}
+              {" "}
+              Start from the path that matches what you need today.
             </p>
           </div>
 
 
           <dl
             className={
-              styles.trustStrip
+              styles.factGrid
             }
           >
             {
@@ -987,175 +747,102 @@ export default function HomePage() {
                     }
                   >
                     <dt>
-                      {
-                        fact.label
-                      }
+                      {fact.label}
                     </dt>
 
                     <dd>
-                      {
-                        fact.value
-                      }
+                      {fact.value}
                     </dd>
                   </div>
                 )
               )
             }
           </dl>
-        </Container>
-      </section>
-
-
-      <section
-        className={
-          styles.audience
-        }
-        data-home-chapter="audience"
-      >
-        <Container size="wide">
-          <header
-            className={
-              styles.sectionHeader
-            }
-          >
-            <div>
-              <p
-                className={
-                  styles.eyebrow
-                }
-              >
-                START HERE
-              </p>
-
-              <h2>
-                How can NoBreach
-                help you?
-              </h2>
-            </div>
-
-            <p>
-              Two clear journeys. One connected security ecosystem.
-            </p>
-          </header>
 
 
           <div
             className={
-              styles.audienceGrid
+              styles.journeyGrid
             }
           >
-            <article
-              className={
-                styles.audiencePanel
-              }
-            >
-              <span
-                className={
-                  styles.panelLabel
-                }
-              >
-                FOR STUDENTS
-              </span>
+            {
+              journeys.map(
+                (
+                  journey
+                ) => (
+                  <article
+                    className={
+                      styles.journeyCard
+                    }
+                    key={
+                      journey.index
+                    }
+                    data-home-journey={
+                      journey.index
+                    }
+                  >
+                    <div
+                      className={
+                        styles.journeyTopline
+                      }
+                    >
+                      <span>
+                        {journey.index}
+                      </span>
 
-              <h3>
-                Build real cybersecurity capability.
-              </h3>
+                      <p>
+                        {journey.label}
+                      </p>
+                    </div>
 
-              <p>
-                Learn through practical programs, technical
-                modules and explicit learning outcomes.
-              </p>
+                    <h3>
+                      {journey.title}
+                    </h3>
 
-              <ul>
-                <li>
-                  Published learning paths
-                </li>
+                    <p>
+                      {journey.description}
+                    </p>
 
-                <li>
-                  Hands-on technical practice
-                </li>
+                    <Link
+                      href={
+                        journey.href
+                      }
+                      className={
+                        styles.textAction
+                      }
+                    >
+                      {journey.action}
 
-                <li>
-                  Clear levels and outcomes
-                </li>
-              </ul>
-
-              <Link
-                href="/training"
-              >
-                Explore Academy
-
-                <span
-                  aria-hidden="true"
-                >
-                  →
-                </span>
-              </Link>
-            </article>
-
-
-            <article
-              className={
-                styles.audiencePanel
-              }
-            >
-              <span
-                className={
-                  styles.panelLabel
-                }
-              >
-                FOR ORGANIZATIONS
-              </span>
-
-              <h3>
-                Understand and reduce meaningful security risk.
-              </h3>
-
-              <p>
-                Examine systems through attacker-oriented
-                testing, technical validation and actionable
-                security guidance.
-              </p>
-
-              <ul>
-                <li>
-                  Application and API security
-                </li>
-
-                <li>
-                  Infrastructure assessment
-                </li>
-
-                <li>
-                  Security training for teams
-                </li>
-              </ul>
-
-              <Link
-                href="/services"
-              >
-                Explore services
-
-                <span
-                  aria-hidden="true"
-                >
-                  →
-                </span>
-              </Link>
-            </article>
+                      <span
+                        aria-hidden="true"
+                      >
+                        →
+                      </span>
+                    </Link>
+                  </article>
+                )
+              )
+            }
           </div>
         </Container>
       </section>
 
 
+      {/* ================================================================ */}
+      {/* 03 — SECURITY SERVICES                                           */}
+      {/* ================================================================ */}
+
       <section
         className={
-          styles.services
+          styles.servicesSection
         }
         data-home-section="services"
         data-home-chapter="services"
+        aria-labelledby="services-title"
       >
-        <Container size="wide">
+        <Container
+          size="wide"
+        >
           <header
             className={
               styles.sectionHeader
@@ -1167,19 +854,43 @@ export default function HomePage() {
                   styles.eyebrow
                 }
               >
-                SERVICES
+                SECURITY SERVICES
               </p>
 
-              <h2>
-                Security built around
-                real threats.
+              <h2
+                id="services-title"
+              >
+                Choose the assessment
+                that matches the system.
               </h2>
             </div>
 
-            <p>
-              Four core service areas connect technical assessment,
-              validation and practical security improvement.
-            </p>
+            <div
+              className={
+                styles.sectionHeaderSide
+              }
+            >
+              <p>
+                Each service keeps a distinct scope while sharing the
+                same emphasis on context, manual reasoning, validation
+                and useful remediation.
+              </p>
+
+              <Link
+                className={
+                  styles.textAction
+                }
+                href="/services"
+              >
+                View all services
+
+                <span
+                  aria-hidden="true"
+                >
+                  →
+                </span>
+              </Link>
+            </div>
           </header>
 
 
@@ -1197,67 +908,82 @@ export default function HomePage() {
                     className={
                       styles.serviceCard
                     }
-                    data-home-service
                     key={
-                      service.href
+                      service.slug
+                    }
+                    data-home-service={
+                      service.slug
                     }
                   >
                     <div
                       className={
-                        styles.serviceTop
+                        styles.serviceTopline
                       }
                     >
                       <span>
-                        {
-                          service.index
-                        }
+                        {service.number}
                       </span>
 
                       <span>
-                        {
-                          service.code
-                        }
+                        {service.eyebrow}
                       </span>
                     </div>
 
                     <h3>
-                      {
-                        service.title
-                      }
+                      {service.shortTitle}
                     </h3>
 
-                    <p>
-                      {
-                        service.description
+                    <p
+                      className={
+                        styles.cardSummary
                       }
+                    >
+                      {service.summary}
                     </p>
 
-                    <ul>
-                      {
-                        service.capabilities.map(
-                          (
-                            capability
-                          ) => (
-                            <li
-                              key={
-                                capability
-                              }
-                            >
-                              {
-                                capability
-                              }
-                            </li>
-                          )
-                        )
+                    <div
+                      className={
+                        styles.decisionGrid
                       }
-                    </ul>
+                    >
+                      <div>
+                        <span>
+                          Good fit
+                        </span>
+
+                        <strong>
+                          {
+                            service.suitableFor[0]
+                            ??
+                            "Defined security scope"
+                          }
+                        </strong>
+                      </div>
+
+                      <div>
+                        <span>
+                          Typical output
+                        </span>
+
+                        <strong>
+                          {
+                            service.deliverables[0]
+                            ??
+                            "Technical security guidance"
+                          }
+                        </strong>
+                      </div>
+                    </div>
 
                     <Link
                       href={
-                        service.href
+                        `/services/${service.slug}`
+                      }
+                      className={
+                        styles.textAction
                       }
                     >
-                      Explore service
+                      View service
 
                       <span
                         aria-hidden="true"
@@ -1274,21 +1000,28 @@ export default function HomePage() {
       </section>
 
 
+      {/* ================================================================ */}
+      {/* 04 — HOW THE WORK IS APPROACHED                                  */}
+      {/* ================================================================ */}
+
       <section
         className={
-          styles.capability
+          styles.approachSection
         }
-        data-home-chapter="capability"
+        data-home-chapter="approach"
+        aria-labelledby="approach-title"
       >
-        <Container size="wide">
+        <Container
+          size="wide"
+        >
           <div
             className={
-              styles.capabilityGrid
+              styles.approachGrid
             }
           >
             <div
               className={
-                styles.capabilityCopy
+                styles.approachIntro
               }
             >
               <p
@@ -1296,116 +1029,152 @@ export default function HomePage() {
                   styles.eyebrow
                 }
               >
-                FEATURED CAPABILITY
+                SECURITY METHODOLOGY
               </p>
 
-              <h2>
-                Examine applications
-                from the attacker’s perspective.
+              <h2
+                id="approach-title"
+              >
+                From scope to
+                remediation guidance.
               </h2>
 
-              <p>
-                Web application penetration testing combines
-                structured assessment with manual reasoning around
-                access boundaries, application behavior and
-                business logic.
+              <p
+                className={
+                  styles.sectionLead
+                }
+              >
+                Security work is treated as a sequence:
+                understand the environment, map the attack surface,
+                test meaningful assumptions, validate impact and
+                communicate what should happen next.
               </p>
 
-              <ul>
-                {
-                  capabilityAreas.map(
-                    (
-                      item
-                    ) => (
-                      <li
-                        key={
-                          item
+
+              {
+                featuredService
+                  ? (
+                    <aside
+                      className={
+                        styles.capabilityNote
+                      }
+                      aria-label="Featured application security capability"
+                    >
+                      <span>
+                        FEATURED CAPABILITY
+                      </span>
+
+                      <h3>
+                        {featuredService.shortTitle}
+                      </h3>
+
+                      <p>
+                        {featuredService.description}
+                      </p>
+
+                      <ul>
+                        {
+                          featuredService.scope
+                            .slice(
+                              0,
+                              4
+                            )
+                            .map(
+                              (
+                                scopeItem
+                              ) => (
+                                <li
+                                  key={
+                                    scopeItem
+                                  }
+                                >
+                                  {scopeItem}
+                                </li>
+                              )
+                            )
+                        }
+                      </ul>
+
+                      <Link
+                        className={
+                          styles.textAction
+                        }
+                        href={
+                          `/services/${featuredService.slug}`
                         }
                       >
-                        {
-                          item
-                        }
-                      </li>
-                    )
+                        View application-security scope
+
+                        <span
+                          aria-hidden="true"
+                        >
+                          →
+                        </span>
+                      </Link>
+                    </aside>
                   )
-                }
-              </ul>
-
-              <Link
-                className={
-                  styles.textLink
-                }
-                href="/services/web-application-pentesting"
-              >
-                Explore web application security
-
-                <span
-                  aria-hidden="true"
-                >
-                  →
-                </span>
-              </Link>
-            </div>
-
-
-            <div
-              className={
-                styles.capabilityVisual
+                  :
+                  null
               }
-              aria-hidden="true"
-            >
-              <div>
-                <span>
-                  REQUEST
-                </span>
-
-                <strong>
-                  APPLICATION
-                </strong>
-              </div>
-
-              <div>
-                <span>
-                  IDENTITY
-                </span>
-
-                <strong>
-                  AUTH
-                </strong>
-              </div>
-
-              <div>
-                <span>
-                  CONTROL
-                </span>
-
-                <strong>
-                  ACCESS
-                </strong>
-              </div>
-
-              <div>
-                <span>
-                  IMPACT
-                </span>
-
-                <strong>
-                  BUSINESS
-                </strong>
-              </div>
             </div>
+
+
+            <ol
+              className={
+                styles.methodList
+              }
+            >
+              {
+                methodology.map(
+                  (
+                    step
+                  ) => (
+                    <li
+                      key={
+                        step.number
+                      }
+                    >
+                      <span
+                        className={
+                          styles.methodNumber
+                        }
+                      >
+                        {step.number}
+                      </span>
+
+                      <div>
+                        <h3>
+                          {step.title}
+                        </h3>
+
+                        <p>
+                          {step.description}
+                        </p>
+                      </div>
+                    </li>
+                  )
+              )
+            }
+          </ol>
           </div>
         </Container>
       </section>
 
 
+      {/* ================================================================ */}
+      {/* 05 — TRAINING AND PRACTICAL LEARNING                             */}
+      {/* ================================================================ */}
+
       <section
         className={
-          styles.academy
+          styles.trainingSection
         }
-        data-home-chapter="academy"
+        data-home-chapter="training"
+        aria-labelledby="training-title"
       >
-        <Container size="wide">
+        <Container
+          size="wide"
+        >
           <header
             className={
               styles.sectionHeader
@@ -1417,10 +1186,12 @@ export default function HomePage() {
                   styles.eyebrow
                 }
               >
-                NOBREACH ACADEMY
+                NO BREACH ACADEMY
               </p>
 
-              <h2>
+              <h2
+                id="training-title"
+              >
                 Learn cybersecurity
                 by doing cybersecurity.
               </h2>
@@ -1428,17 +1199,22 @@ export default function HomePage() {
 
             <div
               className={
-                styles.sectionAction
+                styles.sectionHeaderSide
               }
             >
               <p>
-                Explore the current public NoBreach learning range.
+                Training is the public learner route. Organization
+                and team engagements remain separate through the
+                Security Training service.
               </p>
 
               <Link
+                className={
+                  styles.textAction
+                }
                 href="/training"
               >
-                Explore Academy
+                View training
 
                 <span
                   aria-hidden="true"
@@ -1467,53 +1243,54 @@ export default function HomePage() {
                     key={
                       program.slug
                     }
+                    data-home-program={
+                      program.slug
+                    }
                   >
                     <div
                       className={
-                        styles.courseTop
+                        styles.courseTopline
                       }
                     >
                       <span>
-                        {
-                          program.category
-                        }
+                        {program.category}
                       </span>
 
                       <span
-                        data-status={
-                          program.status
+                        className={
+                          styles.publishedStatus
                         }
                       >
-                        {
-                          statusLabels[
-                            program.status
-                          ]
-                        }
+                        Program published
                       </span>
                     </div>
 
-                    <h3>
-                      {
-                        program.title
+                    <div
+                      className={
+                        styles.courseMain
                       }
-                    </h3>
+                    >
+                      <h3>
+                        {program.title}
+                      </h3>
 
-                    <p>
-                      {
-                        program.summary
+                      <p>
+                        {program.summary}
+                      </p>
+                    </div>
+
+                    <dl
+                      className={
+                        styles.courseMeta
                       }
-                    </p>
-
-                    <dl>
+                    >
                       <div>
                         <dt>
                           Level
                         </dt>
 
                         <dd>
-                          {
-                            program.level
-                          }
+                          {program.level}
                         </dd>
                       </div>
 
@@ -1523,19 +1300,37 @@ export default function HomePage() {
                         </dt>
 
                         <dd>
-                          {
-                            program.format
-                          }
+                          {program.format}
                         </dd>
                       </div>
+
+                      {
+                        program.duration
+                          ? (
+                            <div>
+                              <dt>
+                                Duration
+                              </dt>
+
+                              <dd>
+                                {program.duration}
+                              </dd>
+                            </div>
+                          )
+                          :
+                          null
+                      }
                     </dl>
 
                     <Link
+                      className={
+                        styles.textAction
+                      }
                       href={
                         `/training/${program.slug}`
                       }
                     >
-                      Explore course
+                      View course
 
                       <span
                         aria-hidden="true"
@@ -1548,127 +1343,48 @@ export default function HomePage() {
               )
             }
           </div>
-        </Container>
-      </section>
 
 
-      <section
-        className={
-          styles.labs
-        }
-        data-home-chapter="labs"
-      >
-        <Container size="wide">
-          <header
-            className={
-              styles.sectionHeader
-            }
-          >
-            <div>
-              <p
-                className={
-                  styles.eyebrow
-                }
-              >
-                HANDS-ON PRACTICE
-              </p>
-
-              <h2>
-                Go deeper than
-                course descriptions.
-              </h2>
-            </div>
-
-            <p>
-              Published curriculum modules show how NoBreach
-              turns learning into a technical sequence.
-            </p>
-          </header>
-
-
-          <div
-            className={
-              styles.labLayout
-            }
-          >
-            {
-              featuredPractice
-              ?
-                (
-                  <article
+          {
+            featuredProgram
+              ? (
+                <div
+                  className={
+                    styles.curriculumPreview
+                  }
+                >
+                  <div
                     className={
-                      styles.featuredLab
+                      styles.curriculumIntro
                     }
                   >
-                    <div
+                    <p
                       className={
-                        styles.labTop
+                        styles.eyebrow
                       }
                     >
-                      <span>
-                        FEATURED PRACTICE
-                      </span>
-
-                      <span>
-                        {
-                          featuredPractice.category
-                        }
-                      </span>
-                    </div>
+                      CURRICULUM PREVIEW
+                    </p>
 
                     <h3>
-                      {
-                        featuredPractice.title
-                      }
+                      {featuredProgram.title}
                     </h3>
 
-                    <ol>
-                      {
-                        featuredPractice.modules
-                          .slice(
-                            0,
-                            3
-                          )
-                          .map(
-                            (
-                              module
-                            ) => (
-                              <li
-                                key={
-                                  module.number
-                                }
-                              >
-                                <span>
-                                  {
-                                    module.number
-                                  }
-                                </span>
-
-                                <div>
-                                  <strong>
-                                    {
-                                      module.title
-                                    }
-                                  </strong>
-
-                                  <p>
-                                    {
-                                      module.description
-                                    }
-                                  </p>
-                                </div>
-                              </li>
-                            )
-                          )
-                      }
-                    </ol>
+                    <p>
+                      Instead of repeating another course card,
+                      this preview exposes the actual progression
+                      learners move through.
+                    </p>
 
                     <Link
+                      className={
+                        styles.textAction
+                      }
                       href={
-                        `/training/${featuredPractice.slug}`
+                        `/training/${featuredProgram.slug}`
                       }
                     >
-                      View curriculum
+                      View complete curriculum
 
                       <span
                         aria-hidden="true"
@@ -1676,228 +1392,71 @@ export default function HomePage() {
                         →
                       </span>
                     </Link>
-                  </article>
-                )
-              :
-                null
-            }
+                  </div>
 
 
-            <div
-              className={
-                styles.supportingLabs
-              }
-            >
-              {
-                supportingPractice.map(
-                  (
-                    program
-                  ) => (
-                    <article
-                      key={
-                        program.slug
-                      }
-                    >
-                      <span>
-                        {
-                          program.category
-                        }
-                      </span>
-
-                      <h3>
-                        {
-                          program.title
-                        }
-                      </h3>
-
-                      <p>
-                        {
-                          program.modules[0]
-                            ?.description
-                          ??
-                          program.summary
-                        }
-                      </p>
-
-                      <Link
-                        href={
-                          `/training/${program.slug}`
-                        }
-                      >
-                        Explore practice
-
-                        <span
-                          aria-hidden="true"
-                        >
-                          →
-                        </span>
-                      </Link>
-                    </article>
-                  )
-                )
-              }
-            </div>
-          </div>
-        </Container>
-      </section>
-
-
-      <section
-        className={
-          styles.why
-        }
-        data-home-chapter="why"
-      >
-        <Container size="wide">
-          <div
-            className={
-              styles.whyGrid
-            }
-          >
-            <header
-              className={
-                styles.whyIntro
-              }
-            >
-              <p
-                className={
-                  styles.eyebrow
-                }
-              >
-                WHY NOBREACH
-              </p>
-
-              <h2>
-                One security mindset
-                across the ecosystem.
-              </h2>
-
-              <p>
-                Services, learning and technical community work
-                reinforce the same practical approach.
-              </p>
-            </header>
-
-
-            <div
-              className={
-                styles.whyRows
-              }
-            >
-              {
-                whyNoBreach.map(
-                  (
-                    item
-                  ) => (
-                    <article
-                      key={
-                        item.index
-                      }
-                    >
-                      <span>
-                        {
-                          item.index
-                        }
-                      </span>
-
-                      <div>
-                        <h3>
-                          {
-                            item.title
-                          }
-                        </h3>
-
-                        <p>
-                          {
-                            item.description
-                          }
-                        </p>
-                      </div>
-                    </article>
-                  )
-                )
-              }
-            </div>
-          </div>
-        </Container>
-      </section>
-
-
-      <section
-        className={
-          styles.process
-        }
-        data-home-chapter="process"
-      >
-        <Container size="wide">
-          <header
-            className={
-              styles.processIntro
-            }
-          >
-            <p
-              className={
-                styles.eyebrow
-              }
-            >
-              SECURITY METHODOLOGY
-            </p>
-
-            <h2>
-              From scope to
-              remediation guidance.
-            </h2>
-
-            <p>
-              A clear technical sequence keeps assessment work
-              connected from initial context through actionable output.
-            </p>
-          </header>
-
-
-          <ol
-            className={
-              styles.processTrack
-            }
-          >
-            {
-              process.map(
-                (
-                  step
-                ) => (
-                  <li
-                    key={
-                      step.index
+                  <ol
+                    className={
+                      styles.curriculumList
                     }
                   >
-                    <span>
-                      {
-                        step.index
-                      }
-                    </span>
+                    {
+                      featuredProgram.modules
+                        .slice(
+                          0,
+                          5
+                        )
+                        .map(
+                          (
+                            module
+                          ) => (
+                            <li
+                              key={
+                                module.number
+                              }
+                            >
+                              <span>
+                                {module.number}
+                              </span>
 
-                    <strong>
-                      {
-                        step.title
-                      }
-                    </strong>
-                  </li>
-                )
+                              <div>
+                                <strong>
+                                  {module.title}
+                                </strong>
+
+                                <p>
+                                  {module.description}
+                                </p>
+                              </div>
+                            </li>
+                          )
+                        )
+                    }
+                  </ol>
+                </div>
               )
-            }
-          </ol>
+              :
+              null
+          }
         </Container>
       </section>
 
 
+      {/* ================================================================ */}
+      {/* 06 — PUBLIC WORK AND COMMUNITY                                   */}
+      {/* ================================================================ */}
+
       <section
         className={
-          styles.proof
+          styles.publicWorkSection
         }
         data-home-section="explore"
-        data-home-chapter="proof"
+        data-home-chapter="public-work"
+        aria-labelledby="public-work-title"
       >
-        <Container size="wide">
+        <Container
+          size="wide"
+        >
           <header
             className={
               styles.sectionHeader
@@ -1912,75 +1471,97 @@ export default function HomePage() {
                 PUBLIC WORK
               </p>
 
-              <h2>
-                Explore the wider
-                NoBreach ecosystem.
+              <h2
+                id="public-work-title"
+              >
+                Security practice
+                beyond client work.
               </h2>
             </div>
 
-            <p>
-              Public challenge, training, event and research
-              destinations provide direct evidence of the work.
+            <p
+              className={
+                styles.sectionLead
+              }
+            >
+              Public activities, events and CR4CKOUT show how
+              technical learning and community participation fit
+              into the wider No Breach ecosystem.
             </p>
           </header>
 
 
           <div
             className={
-              styles.proofLayout
+              styles.publicWorkGrid
             }
           >
             <article
               className={
-                styles.proofFeature
+                styles.cr4ckoutFeature
               }
             >
               <div
                 className={
-                  styles.proofFeatureTop
+                  styles.featureTopline
                 }
               >
                 <span>
-                  01
+                  SIGNATURE CHALLENGE
                 </span>
 
                 <span>
-                  SIGNATURE CHALLENGE
+                  CR4CKOUT
                 </span>
               </div>
 
               <h3>
-                CR4CKOUT
+                A story-driven cybersecurity challenge built
+                for active participation.
               </h3>
 
               <p>
-                A game-like, story-driven cybersecurity challenge
-                combining technical skill and creative thinking.
+                CR4CKOUT combines technical challenge solving,
+                practical cybersecurity activity and shared
+                learning in a dedicated community experience.
               </p>
 
-              <div
-                className={
-                  styles.proofWords
-                }
-              >
-                <span>
-                  HACK
-                </span>
+              {
+                latestPublishedEvent
+                  ? (
+                    <div
+                      className={
+                        styles.eventContext
+                      }
+                    >
+                      <span>
+                        EVENT RECORD
+                      </span>
 
-                <span>
-                  LEARN
-                </span>
+                      <strong>
+                        {latestPublishedEvent.title}
+                      </strong>
 
-                <span>
-                  BREAK
-                </span>
-
-                <span>
-                  BUILD
-                </span>
-              </div>
+                      <small>
+                        {
+                          latestPublishedEvent.status
+                            .toUpperCase()
+                        }
+                        {" · "}
+                        {latestPublishedEvent.year}
+                        {" · "}
+                        {latestPublishedEvent.location}
+                      </small>
+                    </div>
+                  )
+                  :
+                  null
+              }
 
               <Link
+                className={
+                  styles.primaryAction
+                }
                 href="/cr4ckout"
               >
                 Explore CR4CKOUT
@@ -1996,248 +1577,80 @@ export default function HomePage() {
 
             <div
               className={
-                styles.proofDirectory
+                styles.publicDirectory
               }
             >
               {
-                proofLinks.map(
+                publicDestinations.map(
                   (
-                    item
+                    destination
                   ) => (
                     <Link
+                      className={
+                        styles.directoryRow
+                      }
                       href={
-                        item.href
+                        destination.href
                       }
                       key={
-                        item.href
+                        destination.href
                       }
                     >
                       <span
                         className={
-                          styles.proofIndex
+                          styles.directoryIndex
                         }
                       >
-                        {
-                          item.index
-                        }
-                      </span>
-
-                      <span
-                        className={
-                          styles.proofLabel
-                        }
-                      >
-                        {
-                          item.label
-                        }
+                        {destination.index}
                       </span>
 
                       <div>
+                        <small>
+                          {destination.label}
+                        </small>
+
                         <strong>
-                          {
-                            item.title
-                          }
+                          {destination.title}
                         </strong>
 
                         <p>
-                          {
-                            item.description
-                          }
+                          {destination.description}
                         </p>
                       </div>
 
                       <span
-                        aria-hidden="true"
+                        className={
+                          styles.directoryAction
+                        }
                       >
+                        {destination.action}
+                        {" "}
                         →
                       </span>
                     </Link>
                   )
-                )
-              }
-            </div>
-          </div>
-        </Container>
-      </section>
-
-
-      <section
-        className={
-          styles.metrics
-        }
-        data-home-chapter="metrics"
-      >
-        <Container size="wide">
-          <div
-            className={
-              styles.metricGrid
+              )
             }
-          >
-            <div>
-              <strong>
-                4
-              </strong>
-
-              <span>
-                Core service areas
-              </span>
-            </div>
-
-            <div>
-              <strong>
-                {
-                  trainingPrograms.length
-                }
-              </strong>
-
-              <span>
-                Public programs
-              </span>
-            </div>
-
-            <div>
-              <strong>
-                1
-              </strong>
-
-              <span>
-                Signature CR4CKOUT challenge
-              </span>
-            </div>
-
-            <div>
-              <strong>
-                2023
-              </strong>
-
-              <span>
-                Founded
-              </span>
-            </div>
           </div>
+                  </div>
         </Container>
       </section>
 
 
-      {
-        currentTeam.length
-        >
-        0
-          ?
-            (
-              <section
-                className={
-                  styles.team
-                }
-                data-home-chapter="team"
-              >
-                <Container size="wide">
-                  <header
-                    className={
-                      styles.sectionHeader
-                    }
-                  >
-                    <div>
-                      <p
-                        className={
-                          styles.eyebrow
-                        }
-                      >
-                        PEOPLE
-                      </p>
-
-                      <h2>
-                        Expertise behind
-                        the work.
-                      </h2>
-                    </div>
-
-                    <div
-                      className={
-                        styles.sectionAction
-                      }
-                    >
-                      <p>
-                        Only current confirmed public profiles are shown.
-                      </p>
-
-                      <Link
-                        href="/company"
-                      >
-                        About No Breach
-
-                        <span
-                          aria-hidden="true"
-                        >
-                          →
-                        </span>
-                      </Link>
-                    </div>
-                  </header>
-
-
-                  <div
-                    className={
-                      styles.teamGrid
-                    }
-                  >
-                    {
-                      currentTeam.map(
-                        (
-                          member
-                        ) => (
-                          <article
-                            key={
-                              member.name
-                            }
-                          >
-                            <div
-                              className={
-                                styles.teamInitials
-                              }
-                            >
-                              {
-                                member.initials
-                              }
-                            </div>
-
-                            <span>
-                              {
-                                member.role
-                              }
-                            </span>
-
-                            <h3>
-                              {
-                                member.name
-                              }
-                            </h3>
-
-                            <p>
-                              {
-                                member.bio
-                              }
-                            </p>
-                          </article>
-                        )
-                      )
-                    }
-                  </div>
-                </Container>
-              </section>
-            )
-          :
-            null
-      }
-
+      {/* ================================================================ */}
+      {/* 07 — PEOPLE BEHIND THE WORK                                      */}
+      {/* ================================================================ */}
 
       <section
         className={
-          styles.resources
+          styles.peopleSection
         }
-        data-home-chapter="resources"
+        data-home-chapter="people"
+        aria-labelledby="people-title"
       >
-        <Container size="wide">
+        <Container
+          size="wide"
+        >
           <header
             className={
               styles.sectionHeader
@@ -2249,28 +1662,212 @@ export default function HomePage() {
                   styles.eyebrow
                 }
               >
-                INSIGHTS
+                PEOPLE
               </p>
 
-              <h2>
-                Security thinking
-                worth publishing.
+              <h2
+                id="people-title"
+              >
+                The person behind
+                the current public profile.
+              </h2>
+            </div>
+
+            <p
+              className={
+                styles.sectionLead
+              }
+            >
+              The layout reflects the amount of approved public
+              profile data available today rather than forcing one
+              person into an empty multi-column team grid.
+            </p>
+          </header>
+
+
+          {
+            currentFounder
+              ? (
+                <article
+                  className={
+                    styles.founderRow
+                  }
+                  data-home-founder={
+                    currentFounder.name
+                  }
+                >
+                  <div
+                    className={
+                      styles.founderPortrait
+                    }
+                  >
+                    <Image
+                      src="/people/ceo.png"
+                      alt={`${currentFounder.name}, ${currentFounder.role} of No Breach`}
+                      fill
+                      sizes="(max-width: 800px) 100vw, 420px"
+                    />
+                  </div>
+
+
+                  <div
+                    className={
+                      styles.founderContent
+                    }
+                  >
+                    <div
+                      className={
+                        styles.founderIdentity
+                      }
+                    >
+                      <span>
+                        {currentFounder.role}
+                      </span>
+
+                      <h3>
+                        {currentFounder.name}
+                      </h3>
+
+                      <p>
+                        {currentFounder.bio}
+                      </p>
+                    </div>
+
+
+                    <ul
+                      className={
+                        styles.specialtyList
+                      }
+                      aria-label={`${currentFounder.name} specialties`}
+                    >
+                      {
+                        currentFounder.specialties.map(
+                          (
+                            specialty
+                          ) => (
+                            <li
+                              key={
+                                specialty
+                              }
+                            >
+                              {specialty}
+                            </li>
+                          )
+                        )
+                      }
+                    </ul>
+
+
+                    <div
+                      className={
+                        styles.founderActions
+                      }
+                    >
+                      <Link
+                        className={
+                          styles.primaryAction
+                        }
+                        href="/company/founder"
+                      >
+                        View founder profile
+
+                        <span
+                          aria-hidden="true"
+                        >
+                          →
+                        </span>
+                      </Link>
+
+                      {
+                        currentFounder.linkedin
+                          ? (
+                            <a
+                              className={
+                                styles.secondaryAction
+                              }
+                              href={
+                                currentFounder.linkedin
+                              }
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              LinkedIn
+
+                              <span
+                                aria-hidden="true"
+                              >
+                                ↗
+                              </span>
+                            </a>
+                          )
+                          :
+                          null
+                      }
+                    </div>
+                  </div>
+                </article>
+              )
+              :
+              null
+          }
+        </Container>
+      </section>
+
+
+      {/* ================================================================ */}
+      {/* 08 — TECHNICAL INSIGHTS                                          */}
+      {/* ================================================================ */}
+
+      <section
+        className={
+          styles.insightsSection
+        }
+        data-home-chapter="insights"
+        aria-labelledby="insights-title"
+      >
+        <Container
+          size="wide"
+        >
+          <header
+            className={
+              styles.sectionHeader
+            }
+          >
+            <div>
+              <p
+                className={
+                  styles.eyebrow
+                }
+              >
+                TECHNICAL INSIGHTS
+              </p>
+
+              <h2
+                id="insights-title"
+              >
+                Published thinking
+                with context.
               </h2>
             </div>
 
             <div
               className={
-                styles.sectionAction
+                styles.sectionHeaderSide
               }
             >
               <p>
-                Technical research focused on practical security problems.
+                Article previews expose the real summary,
+                publication date, reading time and author before
+                asking visitors to open the full piece.
               </p>
 
               <Link
+                className={
+                  styles.textAction
+                }
                 href="/insights"
               >
-                Browse Insights
+                View all insights
 
                 <span
                   aria-hidden="true"
@@ -2282,227 +1879,171 @@ export default function HomePage() {
           </header>
 
 
-          <div
-            className={
-              styles.resourceLayout
-            }
-          >
-            <Link
-              className={
-                styles.resourceFeature
-              }
-              href={
-                resources[0].href
-              }
-            >
-              <span>
-                {
-                  resources[0].category
-                }
-              </span>
-
-              <h3>
-                {
-                  resources[0].title
-                }
-              </h3>
-
-              <strong>
-                Read research →
-              </strong>
-            </Link>
-
-
-            <div
-              className={
-                styles.resourceSecondary
-              }
-            >
-              {
-                resources
-                  .slice(
-                    1
-                  )
-                  .map(
-                    (
-                      resource
-                    ) => (
-                      <Link
-                        href={
-                          resource.href
-                        }
-                        key={
-                          resource.href
-                        }
-                      >
-                        <span>
-                          {
-                            resource.category
-                          }
-                        </span>
-
-                        <strong>
-                          {
-                            resource.title
-                          }
-                        </strong>
-
-                        <i
-                          aria-hidden="true"
-                        >
-                          →
-                        </i>
-                      </Link>
-                    )
-                  )
-              }
-            </div>
-          </div>
-        </Container>
-      </section>
-
-
-      <section
-        className={
-          styles.faq
-        }
-        data-home-chapter="faq"
-      >
-        <Container size="wide">
-          <div
-            className={
-              styles.faqLayout
-            }
-          >
-            <header
-              className={
-                styles.faqIntro
-              }
-            >
-              <p
-                className={
-                  styles.eyebrow
-                }
-              >
-                FAQ
-              </p>
-
-              <h2>
-                Find the right
-                place to start.
-              </h2>
-
-              <p>
-                A short orientation across the NoBreach public ecosystem.
-              </p>
-            </header>
-
-
-            <div
-              className={
-                styles.faqList
-              }
-            >
-              {
-                faqItems.map(
-                  (
-                    item
-                  ) => (
-                    <details
+          {
+            featuredInsight
+              ? (
+                <div
+                  className={
+                    styles.insightGrid
+                  }
+                >
+                  <article
+                    className={
+                      styles.featuredInsight
+                    }
+                  >
+                    <div
                       className={
-                        styles.faqItem
-                      }
-                      key={
-                        item.question
+                        styles.insightMeta
                       }
                     >
-                      <summary>
-                        <span>
-                          {
-                            item.question
-                          }
-                        </span>
+                      <span>
+                        {featuredInsight.category}
+                      </span>
 
-                        <span
-                          aria-hidden="true"
-                        >
-                          +
-                        </span>
-                      </summary>
-
-                      <p>
-                        {
-                          item.answer
+                      <time
+                        dateTime={
+                          featuredInsight.publishedAt
                         }
-                      </p>
-                    </details>
-                  )
-                )
-              }
-            </div>
-          </div>
+                      >
+                        {
+                          formatPublishedDate(
+                            featuredInsight.publishedAt
+                          )
+                        }
+                      </time>
+
+                      <span>
+                        {featuredInsight.readingTime}
+                      </span>
+                    </div>
+
+                    <h3>
+                      {featuredInsight.title}
+                    </h3>
+
+                    <p>
+                      {featuredInsight.summary}
+                    </p>
+
+                    <div
+                      className={
+                        styles.insightByline
+                      }
+                    >
+                      Published by
+                      {" "}
+                      <strong>
+                        {featuredInsight.author}
+                      </strong>
+                    </div>
+
+                    <Link
+                      className={
+                        styles.primaryAction
+                      }
+                      href={
+                        `/insights/${featuredInsight.slug}`
+                      }
+                    >
+                      Read article
+
+                      <span
+                        aria-hidden="true"
+                      >
+                        →
+                      </span>
+                    </Link>
+                  </article>
+
+
+                  <div
+                    className={
+                      styles.insightList
+                    }
+                  >
+                    {
+                      supportingInsights.map(
+                        (
+                          insight
+                        ) => (
+                          <Link
+                            href={
+                              `/insights/${insight.slug}`
+                            }
+                            className={
+                              styles.insightRow
+                            }
+                            key={
+                              insight.slug
+                            }
+                          >
+                            <div
+                              className={
+                                styles.insightRowMeta
+                              }
+                            >
+                              <span>
+                                {insight.category}
+                              </span>
+
+                              <time
+                                dateTime={
+                                  insight.publishedAt
+                                }
+                              >
+                                {
+                                  formatPublishedDate(
+                                    insight.publishedAt
+                                  )
+                                }
+                              </time>
+                            </div>
+
+                            <strong>
+                              {insight.title}
+                            </strong>
+
+                            <p>
+                              {insight.summary}
+                            </p>
+
+                            <span
+                              className={
+                                styles.directoryAction
+                              }
+                            >
+                              Read article →
+                            </span>
+                          </Link>
+                        )
+                      )
+                    }
+                  </div>
+                </div>
+              )
+              :
+              null
+          }
         </Container>
       </section>
 
 
-      <section
-        className={
-          styles.feed
-        }
-        data-home-chapter="feed"
-      >
-        <Container size="wide">
-          <div
-            className={
-              styles.feedInner
-            }
-          >
-            <div>
-              <p
-                className={
-                  styles.eyebrow
-                }
-              >
-                RESEARCH FEED
-              </p>
-
-              <h2>
-                Follow published
-                technical work.
-              </h2>
-
-              <p>
-                Use the public feed to follow new NoBreach security research.
-              </p>
-            </div>
-
-            <Link
-              className={
-                styles.secondaryButton
-              }
-              href="/feed.xml"
-            >
-              Open research feed
-
-              <span
-                aria-hidden="true"
-              >
-                →
-              </span>
-            </Link>
-          </div>
-        </Container>
-      </section>
-
+      {/* ================================================================ */}
+      {/* EXISTING CONVERSION ENDING                                       */}
+      {/* ================================================================ */}
 
       <section
         className={
           styles.finalCta
         }
         data-home-section="contact"
-        data-home-chapter="cta"
+        data-home-ending="cta"
+        aria-labelledby="home-contact-title"
       >
-        <Container size="wide">
+        <Container
+          size="wide"
+        >
           <div
             className={
               styles.finalCtaInner
@@ -2514,58 +2055,68 @@ export default function HomePage() {
                   styles.eyebrow
                 }
               >
-                WORK WITH NOBREACH
+                WORK WITH NO BREACH
               </p>
 
-              <h2>
+              <h2
+                id="home-contact-title"
+              >
                 Understand the system.
+                <br />
                 Test the assumptions.
               </h2>
-
-              <p>
-                Explore the security services portfolio or contact
-                NoBreach about the context you need to examine.
-              </p>
             </div>
 
             <div
               className={
-                styles.finalCtaActions
+                styles.finalCtaCopy
               }
             >
-              <Link
+              <p>
+                Discuss the application, API, infrastructure
+                or training context you want to examine.
+              </p>
+
+              <div
                 className={
-                  styles.primaryButton
+                  styles.finalActions
                 }
-                href="/services"
               >
-                Explore services
-
-                <span
-                  aria-hidden="true"
+                <Link
+                  className={
+                    styles.primaryAction
+                  }
+                  href="/contact"
                 >
-                  →
-                </span>
-              </Link>
+                  Contact No Breach
 
-              <Link
-                className={
-                  styles.secondaryButton
-                }
-                href="/contact"
-              >
-                Contact NoBreach
+                  <span
+                    aria-hidden="true"
+                  >
+                    →
+                  </span>
+                </Link>
 
-                <span
-                  aria-hidden="true"
+                <Link
+                  className={
+                    styles.secondaryAction
+                  }
+                  href="/services"
                 >
-                  ↗
-                </span>
-              </Link>
+                  View services
+
+                  <span
+                    aria-hidden="true"
+                  >
+                    →
+                  </span>
+                </Link>
+              </div>
             </div>
           </div>
         </Container>
       </section>
     </div>
   );
+
 }

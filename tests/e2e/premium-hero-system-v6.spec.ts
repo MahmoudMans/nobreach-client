@@ -189,7 +189,7 @@ test(
 
     await expect(
       visual.getByText(
-        "NB / ATTACK PATH",
+        "NB / ATTACK SURFACE",
         {
           exact:
             true

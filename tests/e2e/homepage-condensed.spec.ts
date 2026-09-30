@@ -5,7 +5,7 @@ import {
 
 
 test(
-  "homepage uses the full continuous UX chapter flow",
+  "homepage uses eight purposeful editorial chapters",
   async ({
     page
   }) => {
@@ -14,59 +14,53 @@ test(
       "/"
     );
 
-
-    const chapters =
+    await expect(
       page.locator(
-        "[data-home-chapter]"
-      );
-
+        '[data-home-chapter="hero"]'
+      )
+    ).toBeVisible();
 
     await expect(
-      chapters
-    ).toHaveCount(
-      16
-    );
+      page.locator(
+        '[data-home-chapter="orientation"]'
+      )
+    ).toBeVisible();
 
+    await expect(
+      page.locator(
+        '[data-home-chapter="services"]'
+      )
+    ).toBeVisible();
 
-    const expected =
-      [
-        "hero",
-        "trust",
-        "audience",
-        "services",
-        "capability",
-        "academy",
-        "labs",
-        "why",
-        "process",
-        "proof",
-        "metrics",
-        "team",
-        "resources",
-        "faq",
-        "feed",
-        "cta"
-      ];
+    await expect(
+      page.locator(
+        '[data-home-chapter="approach"]'
+      )
+    ).toBeVisible();
 
+    await expect(
+      page.locator(
+        '[data-home-chapter="training"]'
+      )
+    ).toBeVisible();
 
-    for (
-      let index = 0;
-      index < expected.length;
-      index += 1
-    ) {
+    await expect(
+      page.locator(
+        '[data-home-chapter="public-work"]'
+      )
+    ).toBeVisible();
 
-      await expect(
-        chapters.nth(
-          index
-        )
-      ).toHaveAttribute(
-        "data-home-chapter",
-        expected[
-          index
-        ]
-      );
+    await expect(
+      page.locator(
+        '[data-home-chapter="people"]'
+      )
+    ).toBeVisible();
 
-    }
+    await expect(
+      page.locator(
+        '[data-home-chapter="insights"]'
+      )
+    ).toBeVisible();
 
   }
 );
@@ -82,15 +76,16 @@ test(
       "/"
     );
 
-
     for (
       const href
-      of [
+      of
+      [
         "/services",
         "/training",
         "/cr4ckout",
         "/activities",
         "/events",
+        "/company/founder",
         "/insights",
         "/contact"
       ]
@@ -110,16 +105,17 @@ test(
 
 for (
   const viewport
-  of [
+  of
+  [
     {
       name:
         "tablet",
 
       width:
-        820,
+        768,
 
       height:
-        1180
+        1024
     },
     {
       name:
@@ -136,7 +132,7 @@ for (
         "narrow",
 
       width:
-        360,
+        320,
 
       height:
         800
@@ -145,7 +141,7 @@ for (
 ) {
 
   test(
-    `continuous homepage fits ${viewport.name}`,
+    `editorial homepage fits ${viewport.name}`,
     async ({
       page
     }) => {
@@ -158,30 +154,24 @@ for (
           viewport.height
       });
 
-
       await page.goto(
         "/"
       );
 
-
-      const geometry =
+      const fits =
         await page.evaluate(
-          () => ({
-            scrollWidth:
-              document.documentElement.scrollWidth,
-
-            clientWidth:
-              document.documentElement.clientWidth
-          })
+          () =>
+            document.documentElement.scrollWidth
+            <=
+            window.innerWidth
+            +
+            1
         );
 
-
       expect(
-        geometry.scrollWidth
-      ).toBeLessThanOrEqual(
-        geometry.clientWidth
-        +
-        1
+        fits
+      ).toBe(
+        true
       );
 
     }

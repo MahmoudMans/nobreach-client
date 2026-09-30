@@ -5,7 +5,7 @@ import {
 
 
 test(
-  "modern homepage renders student and organization journeys",
+  "modern homepage renders learner and organization journeys",
   async ({
     page
   }) => {
@@ -14,23 +14,23 @@ test(
       "/"
     );
 
-
-    const audience =
-      page.locator(
-        '[data-home-chapter="audience"]'
-      );
-
-
     await expect(
-      audience.getByText(
-        "FOR STUDENTS"
+      page.getByText(
+        "For learners",
+        {
+          exact:
+            true
+        }
       )
     ).toBeVisible();
 
-
     await expect(
-      audience.getByText(
-        "FOR ORGANIZATIONS"
+      page.getByText(
+        "For organizations",
+        {
+          exact:
+            true
+        }
       )
     ).toBeVisible();
 
@@ -48,36 +48,30 @@ test(
       "/"
     );
 
-
-    const academy =
+    await expect(
       page.locator(
-        '[data-home-chapter="academy"]'
-      );
+        '[data-home-program="red-team-foundations"]'
+      )
+    ).toBeVisible();
 
+    await expect(
+      page.locator(
+        '[data-home-program="web-exploitation-techniques"]'
+      )
+    ).toBeVisible();
 
-    for (
-      const href
-      of [
-        "/training/red-team-foundations",
-        "/training/web-exploitation-techniques",
-        "/training/ai-security-foundations"
-      ]
-    ) {
-
-      await expect(
-        academy.locator(
-          `a[href="${href}"]`
-        )
-      ).toBeVisible();
-
-    }
+    await expect(
+      page.locator(
+        '[data-home-program="ai-security-foundations"]'
+      )
+    ).toBeVisible();
 
   }
 );
 
 
 test(
-  "modern homepage exposes real public proof",
+  "modern homepage exposes public proof and founder context",
   async ({
     page
   }) => {
@@ -86,25 +80,29 @@ test(
       "/"
     );
 
-
     await expect(
-      page.locator(
-        '[data-home-chapter="proof"]'
-      ).getByText(
-        "CR4CKOUT",
+      page.getByRole(
+        "link",
         {
-          exact:
-            true
+          name:
+            /Explore CR4CKOUT/i
         }
       )
     ).toBeVisible();
 
-
     await expect(
       page.locator(
-        '[data-home-chapter="resources"]'
-      ).getByRole(
-        "link"
+        "[data-home-founder]"
+      )
+    ).toBeVisible();
+
+    await expect(
+      page.getByRole(
+        "link",
+        {
+          name:
+            /Read article/i
+        }
       ).first()
     ).toBeVisible();
 

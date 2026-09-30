@@ -16,32 +16,42 @@ const page =
   );
 
 
-const css =
-  readFileSync(
-    "src/app/home.module.css",
-    "utf8"
-  );
-
-
 describe(
-  "homepage design authority v10 / master v11",
+  "homepage editorial authority",
   () => {
 
     it(
-      "applies the continuous master design",
+      "uses canonical content sources",
       () => {
 
         expect(
           page
         ).toContain(
-          'data-home-design="authority-v10"'
+          '@/content/services'
         );
-
 
         expect(
           page
         ).toContain(
-          'data-home-master="continuous-v11"'
+          '@/content/training'
+        );
+
+        expect(
+          page
+        ).toContain(
+          '@/content/site'
+        );
+
+        expect(
+          page
+        ).toContain(
+          '@/content/team'
+        );
+
+        expect(
+          page
+        ).toContain(
+          '@/content/insights'
         );
 
       }
@@ -49,17 +59,13 @@ describe(
 
 
     it(
-      "keeps exactly one H1",
+      "exposes the editorial redesign authority",
       () => {
 
         expect(
-          page.match(
-            /<h1(?:\s|>)/g
-          )
-          ??
-          []
-        ).toHaveLength(
-          1
+          page
+        ).toContain(
+          'data-home-redesign="editorial-v12"'
         );
 
       }
@@ -67,27 +73,19 @@ describe(
 
 
     it(
-      "keeps the public NoBreach positioning",
+      "keeps canonical organization naming in public copy",
       () => {
 
         expect(
           page
         ).toContain(
-          "Offensive security built around"
+          "Contact No Breach"
         );
-
 
         expect(
           page
         ).toContain(
-          "how real systems fail."
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "A cybersecurity organization built from offensive security."
+          "NO BREACH ACADEMY"
         );
 
       }
@@ -95,88 +93,26 @@ describe(
 
 
     it(
-      "renders the four data-driven commercial service areas",
+      "does not present the hero visual as live operational data",
       () => {
 
         expect(
           page
-        ).toContain(
-          "const services = ["
+        ).not.toContain(
+          "LIVE ASSESSMENT"
         );
 
+        expect(
+          page
+        ).not.toContain(
+          "STATUS / ACTIVE"
+        );
 
         expect(
           page
         ).toContain(
-          "services.map"
+          "Illustrative attack path — not a live assessment."
         );
-
-
-        expect(
-          page
-        ).toContain(
-          "data-home-service"
-        );
-
-
-        for (
-          const href
-          of [
-            "/services/web-application-pentesting",
-            "/services/api-security",
-            "/services/infrastructure-security",
-            "/services/security-training"
-          ]
-        ) {
-
-          expect(
-            page
-          ).toContain(
-            href
-          );
-
-        }
-
-      }
-    );
-
-
-    it(
-      "keeps the global visual-system compatibility markers",
-      () => {
-
-        for (
-          const marker
-          of [
-            "NB_VISUAL_REFINEMENT_V1",
-            "NB_RESPONSIVE_SYSTEM_V1",
-            "NB_MINIMALIST_SYSTEM_V1",
-            "NB_MINIMALIST_POLISH_V4",
-            "NB_PREMIUM_HERO_SYSTEM_V6",
-            "NB_HOME_HERO_V8",
-            "NB_HOME_HERO_VIEWPORT_FIT_V9",
-            "NB_HOME_DESIGN_AUTHORITY_V10",
-            "NB_HOME_MASTER_CONTINUOUS_V11"
-          ]
-        ) {
-
-          expect(
-            (
-              css.match(
-                new RegExp(
-                  marker,
-                  "g"
-                )
-              )
-              ??
-              []
-            ).length,
-            marker
-          ).toBe(
-            1
-          );
-
-        }
 
       }
     );

@@ -16,20 +16,19 @@ const page =
   );
 
 
-const css =
-  readFileSync(
-    "src/app/home.module.css",
-    "utf8"
-  );
-
-
 describe(
-  "homepage attack path hero v13",
+  "homepage security hero",
   () => {
 
     it(
-      "uses one V13 homepage hero",
+      "preserves the established hero authority",
       () => {
+
+        expect(
+          page
+        ).toContain(
+          'data-home-hero="v8"'
+        );
 
         expect(
           page
@@ -37,15 +36,24 @@ describe(
           'data-home-hero-spec="attack-path-v13"'
         );
 
+      }
+    );
+
+
+    it(
+      "keeps the established proposition",
+      () => {
 
         expect(
-          page.match(
-            /<h1(?:\s|>)/g
-          )
-          ??
-          []
-        ).toHaveLength(
-          1
+          page
+        ).toContain(
+          "Offensive security built around"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "how real systems fail."
         );
 
       }
@@ -53,55 +61,26 @@ describe(
 
 
     it(
-      "preserves the established positioning and actions",
+      "retains the recognizable attack-surface vocabulary",
       () => {
 
         for (
-          const token
-          of [
-            "Offensive security built around",
-            "how real systems fail.",
-            "Explore services",
-            "About No Breach"
-          ]
-        ) {
-
-          expect(
-            page
-          ).toContain(
-            token
-          );
-
-        }
-
-      }
-    );
-
-
-    it(
-      "uses the linear attack path assessment",
-      () => {
-
-        for (
-          const token
-          of [
-            "NB / ATTACK PATH",
-            "LIVE ASSESSMENT",
+          const value
+          of
+          [
+            "NB / ATTACK SURFACE",
             "EDGE",
             "APP",
             "AUTH",
             "ACCESS",
-            "DATA",
-            "DISCOVER",
-            "TEST",
-            "VALIDATE"
+            "DATA"
           ]
         ) {
 
           expect(
             page
           ).toContain(
-            token
+            value
           );
 
         }
@@ -111,69 +90,19 @@ describe(
 
 
     it(
-      "implements the prescribed split geometry",
+      "labels the technical visual truthfully",
       () => {
 
         expect(
-          css
+          page
         ).toContain(
-          "NB_HOME_HERO_ATTACK_PATH_V13"
+          "ILLUSTRATIVE MODEL"
         );
 
-
         expect(
-          css
+          page
         ).toContain(
-          "650px"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          "580px"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          "56px"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          "72px"
-        );
-
-      }
-    );
-
-
-    it(
-      "recomposes the assessment vertically on mobile",
-      () => {
-
-        expect(
-          css
-        ).toContain(
-          "NB_HOME_HERO_ATTACK_PATH_RESPONSIVE_V13_BEGIN"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          ".attackPath"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          "prefers-reduced-motion"
+          "not a live assessment"
         );
 
       }

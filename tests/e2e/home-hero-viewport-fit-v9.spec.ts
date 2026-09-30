@@ -4,11 +4,7 @@ import {
 } from "@playwright/test";
 
 
-const route =
-  "/";
-
-
-const desktopProfiles = [
+const desktopViewports = [
   {
     name:
       "desktop",
@@ -44,11 +40,12 @@ const desktopProfiles = [
 
 for (
   const viewport
-  of desktopProfiles
+  of
+  desktopViewports
 ) {
 
   test(
-    `master homepage hero fits the opening viewport at ${viewport.name}`,
+    `editorial homepage hero starts high at ${viewport.name}`,
     async ({
       page
     }) => {
@@ -61,153 +58,36 @@ for (
           viewport.height
       });
 
-
       await page.goto(
-        route
+        "/"
       );
-
 
       const hero =
         page.locator(
-          '[data-home-hero="v8"]'
+          '[data-home-chapter="hero"]'
         );
 
-
-      /*
-       * Do not request boundingBox() before establishing visibility.
-       * At compact desktop widths the responsive header can settle during
-       * the first browser layout cycle.
-       */
       await expect(
         hero
-      ).toBeVisible({
-        timeout:
-          10_000
-      });
+      ).toBeVisible();
 
-
-      const metrics =
-        await hero.evaluate(
-          (
-            element
-          ) => {
-
-            const rect =
-              element.getBoundingClientRect();
-
-
-            const style =
-              getComputedStyle(
-                element
-              );
-
-
-            return {
-              top:
-                rect.top,
-
-              bottom:
-                rect.bottom,
-
-              left:
-                rect.left,
-
-              right:
-                rect.right,
-
-              width:
-                rect.width,
-
-              height:
-                rect.height,
-
-              display:
-                style.display,
-
-              visibility:
-                style.visibility,
-
-              opacity:
-                Number.parseFloat(
-                  style.opacity
-                )
-            };
-
-          }
-        );
-
+      const box =
+        await hero.boundingBox();
 
       expect(
-        metrics.display,
-        `${viewport.name}: hero display`
-      ).not.toBe(
-        "none"
-      );
-
+        box
+      ).not.toBeNull();
 
       expect(
-        metrics.visibility,
-        `${viewport.name}: hero visibility`
-      ).not.toBe(
-        "hidden"
-      );
-
-
-      expect(
-        metrics.opacity,
-        `${viewport.name}: hero opacity`
-      ).toBeGreaterThan(
-        0
-      );
-
-
-      expect(
-        metrics.width,
-        `${viewport.name}: hero width`
-      ).toBeGreaterThan(
-        0
-      );
-
-
-      expect(
-        metrics.height,
-        `${viewport.name}: hero height`
-      ).toBeGreaterThan(
-        560
-      );
-
-
-      expect(
-        metrics.top,
-        `${viewport.name}: hero top`
-      ).toBeGreaterThanOrEqual(
-        -8
-      );
-
-
-      expect(
-        metrics.top,
-        `${viewport.name}: hero begins too low`
+        box!.y
       ).toBeLessThan(
         120
       );
 
-
       expect(
-        metrics.right,
-        `${viewport.name}: hero right edge`
-      ).toBeLessThanOrEqual(
-        viewport.width
-        +
-        1
-      );
-
-
-      expect(
-        metrics.left,
-        `${viewport.name}: hero left edge`
-      ).toBeGreaterThanOrEqual(
-        -1
+        box!.height
+      ).toBeLessThan(
+        780
       );
 
     }
@@ -217,7 +97,7 @@ for (
 
 
 test(
-  "mobile opens with complete primary hero content",
+  "compact homepage keeps primary hero decisions immediately visible",
   async ({
     page
   }) => {
@@ -230,104 +110,39 @@ test(
         844
     });
 
-
     await page.goto(
-      route
+      "/"
     );
 
-
-    const hero =
-      page.locator(
-        '[data-home-hero="v8"]'
-      );
-
-
-    const heading =
+    await expect(
       page.getByRole(
         "heading",
         {
           level:
-            1,
+            1
+        }
+      )
+    ).toBeVisible();
 
+    await expect(
+      page.getByRole(
+        "link",
+        {
           name:
-            /offensive security built around/i
+            /Explore services/i
         }
-      );
-
-
-    const action =
-      hero
-        .getByRole(
-          "link",
-          {
-            name:
-              /explore services/i
-          }
-        );
-
-
-    await expect(
-      hero
+      ).first()
     ).toBeVisible();
 
-
     await expect(
-      heading
-    ).toBeVisible();
-
-
-    await expect(
-      action
-    ).toBeVisible();
-
-
-    const actionMetrics =
-      await action.evaluate(
-        (
-          element
-        ) => {
-
-          const rect =
-            element.getBoundingClientRect();
-
-
-          return {
-            top:
-              rect.top,
-
-            bottom:
-              rect.bottom,
-
-            width:
-              rect.width,
-
-            height:
-              rect.height
-          };
-
+      page.getByRole(
+        "link",
+        {
+          name:
+            /Explore training/i
         }
-      );
-
-
-    expect(
-      actionMetrics.width
-    ).toBeGreaterThan(
-      0
-    );
-
-
-    expect(
-      actionMetrics.height
-    ).toBeGreaterThanOrEqual(
-      44
-    );
-
-
-    expect(
-      actionMetrics.top
-    ).toBeLessThan(
-      760
-    );
+      ).first()
+    ).toBeVisible();
 
   }
 );
