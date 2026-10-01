@@ -5,7 +5,7 @@ import {
 
 
 test(
-  "Infrastructure Security V24 renders the exposure graph",
+  "Infrastructure Security V25 renders the focused introduction",
   async ({
     page
   }) => {
@@ -17,7 +17,7 @@ test(
 
     await expect(
       page.locator(
-        '[data-infrastructure-design="v24"]'
+        '[data-infrastructure-audit="v25"]'
       )
     ).toBeVisible();
 
@@ -28,17 +28,47 @@ test(
         {
           level:
             1,
-
           name:
-            /Infrastructure risk starts with what is reachable/i
+            "Infrastructure risk starts with what is reachable."
+        }
+      )
+    ).toBeVisible();
+
+
+    const figure =
+      page.locator(
+        '[data-infrastructure-ui="exposure-path"]'
+      );
+
+
+    await expect(
+      figure
+    ).toBeVisible();
+
+
+    await expect(
+      figure.getByText(
+        "Illustrative exposure path",
+        {
+          exact:
+            true
         }
       )
     ).toBeVisible();
 
 
     await expect(
-      page.locator(
-        '[data-infrastructure-ui="exposure-graph"]'
+      figure.locator(
+        "li"
+      )
+    ).toHaveCount(
+      5
+    );
+
+
+    await expect(
+      figure.getByText(
+        /Actual relationships and assessment coverage depend on the authorized scope/i
       )
     ).toBeVisible();
 
@@ -47,7 +77,55 @@ test(
 
 
 test(
-  "Infrastructure Security V24 exposes three external surface layers",
+  "Infrastructure hero keeps verified assessment actions",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/services/infrastructure-security"
+    );
+
+
+    const hero =
+      page.locator(
+        '[data-infrastructure-section="hero"]'
+      );
+
+
+    await expect(
+      hero.getByRole(
+        "link",
+        {
+          name:
+            /Discuss an assessment/
+        }
+      )
+    ).toHaveAttribute(
+      "href",
+      "/contact"
+    );
+
+
+    await expect(
+      hero.getByRole(
+        "link",
+        {
+          name:
+            /Explore the surface/
+        }
+      )
+    ).toHaveAttribute(
+      "href",
+      "#external-surface"
+    );
+
+  }
+);
+
+
+test(
+  "External Surface retains three clearly described subjects without radar framing",
   async ({
     page
   }) => {
@@ -63,8 +141,17 @@ test(
       );
 
 
-    await section
-      .scrollIntoViewIfNeeded();
+    await expect(
+      section.getByRole(
+        "heading",
+        {
+          level:
+            2,
+          name:
+            "Start with the infrastructure an attacker can reach."
+        }
+      )
+    ).toBeVisible();
 
 
     await expect(
@@ -77,8 +164,9 @@ test(
 
 
     for (
-      const heading
-      of [
+      const title
+      of
+      [
         "External exposure",
         "Network services",
         "Configuration review"
@@ -89,23 +177,35 @@ test(
         section.getByRole(
           "heading",
           {
+            level:
+              3,
             name:
-              heading,
-
-            exact:
-              true
+              title
           }
         )
       ).toBeVisible();
 
     }
 
+
+    await expect(
+      page.getByText(
+        "03 LAYERS",
+        {
+          exact:
+            true
+        }
+      )
+    ).toHaveCount(
+      0
+    );
+
   }
 );
 
 
 test(
-  "Infrastructure Security V24 exposes four internal path areas",
+  "Internal Paths retains four subjects and explicit scope qualification",
   async ({
     page
   }) => {
@@ -121,13 +221,9 @@ test(
       );
 
 
-    await section
-      .scrollIntoViewIfNeeded();
-
-
     await expect(
       section.locator(
-        '[data-infrastructure-path]'
+        '[data-infrastructure-internal]'
       )
     ).toHaveCount(
       4
@@ -135,8 +231,9 @@ test(
 
 
     for (
-      const heading
-      of [
+      const title
+      of
+      [
         "Internal attack surface",
         "Privilege paths",
         "Segmentation",
@@ -148,23 +245,36 @@ test(
         section.getByRole(
           "heading",
           {
+            level:
+              3,
             name:
-              heading,
-
-            exact:
-              true
+              title
           }
         )
       ).toBeVisible();
 
     }
 
+
+    await expect(
+      section.getByText(
+        /Inside the authorized scope/i
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      section.getByText(
+        /could lead toward higher privilege/i
+      )
+    ).toBeVisible();
+
   }
 );
 
 
 test(
-  "Infrastructure Security V24 retains reporting as a primary chapter",
+  "Reporting explains the technical record instead of repeating coverage",
   async ({
     page
   }) => {
@@ -180,8 +290,17 @@ test(
       );
 
 
-    await reporting
-      .scrollIntoViewIfNeeded();
+    await expect(
+      reporting.getByRole(
+        "heading",
+        {
+          level:
+            2,
+          name:
+            "Keep infrastructure findings connected to their system context."
+        }
+      )
+    ).toBeVisible();
 
 
     await expect(
@@ -189,10 +308,9 @@ test(
         "heading",
         {
           level:
-            2,
-
+            3,
           name:
-            /Keep infrastructure findings connected to their system context/i
+            "Inside the technical record"
         }
       )
     ).toBeVisible();
@@ -200,27 +318,50 @@ test(
 
     await expect(
       reporting.locator(
-        '[data-infrastructure-ui="reporting-register"]'
+        '[data-infrastructure-record]'
       )
-    ).toBeVisible();
+    ).toHaveCount(
+      3
+    );
+
+
+    for (
+      const title
+      of
+      [
+        "Assessed surface",
+        "System context",
+        "Technical observations"
+      ]
+    ) {
+
+      await expect(
+        reporting.getByText(
+          title,
+          {
+            exact:
+              true
+          }
+        )
+      ).toBeVisible();
+
+    }
 
 
     await expect(
-      reporting.getByText(
-        "Reporting",
-        {
-          exact:
-            true
-        }
-      ).last()
-    ).toBeVisible();
+      page.locator(
+        '[data-infrastructure-ui="reporting-register"]'
+      )
+    ).toHaveCount(
+      0
+    );
 
   }
 );
 
 
 test(
-  "Infrastructure Security V24 assessment CTA reaches contact",
+  "Infrastructure assessment discussion retains truthful destinations",
   async ({
     page
   }) => {
@@ -236,8 +377,17 @@ test(
       );
 
 
-    await cta
-      .scrollIntoViewIfNeeded();
+    await expect(
+      cta.getByRole(
+        "heading",
+        {
+          level:
+            2,
+          name:
+            "Understand what is exposed and where it can lead."
+        }
+      )
+    ).toBeVisible();
 
 
     await expect(
@@ -245,12 +395,217 @@ test(
         "link",
         {
           name:
-            /Discuss an assessment/i
+            /Discuss an assessment/
         }
       )
     ).toHaveAttribute(
       "href",
       "/contact"
+    );
+
+
+    await expect(
+      cta.getByRole(
+        "link",
+        {
+          name:
+            /View all services/
+        }
+      )
+    ).toHaveAttribute(
+      "href",
+      "/services"
+    );
+
+  }
+);
+
+
+test(
+  "Infrastructure V25 uses one purposeful section sequence",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/services/infrastructure-security"
+    );
+
+
+    const order =
+      await page
+        .locator(
+          '[data-infrastructure-section]'
+        )
+        .evaluateAll(
+          elements =>
+            elements.map(
+              element =>
+                element.getAttribute(
+                  "data-infrastructure-section"
+                )
+            )
+        );
+
+
+    expect(
+      order
+    ).toEqual([
+      "hero",
+      "external-surface",
+      "internal-paths",
+      "reporting",
+      "cta"
+    ]);
+
+  }
+);
+
+
+test(
+  "Infrastructure main regions use one shared outer frame",
+  async ({
+    page
+  }) => {
+
+    await page.setViewportSize({
+      width:
+        1440,
+      height:
+        900
+    });
+
+
+    await page.goto(
+      "/services/infrastructure-security"
+    );
+
+
+    const frames =
+      page.locator(
+        '[data-infrastructure-frame]'
+      );
+
+
+    await expect(
+      frames
+    ).toHaveCount(
+      5
+    );
+
+
+    const geometry =
+      await frames.evaluateAll(
+        elements =>
+          elements.map(
+            element => {
+
+              const rect =
+                element.getBoundingClientRect();
+
+
+              return {
+                x:
+                  rect.x,
+
+                width:
+                  rect.width
+              };
+
+            }
+          )
+      );
+
+
+    const xs =
+      geometry.map(
+        item =>
+          item.x
+      );
+
+
+    const widths =
+      geometry.map(
+        item =>
+          item.width
+      );
+
+
+    expect(
+      Math.max(
+        ...xs
+      )
+      -
+      Math.min(
+        ...xs
+      )
+    ).toBeLessThanOrEqual(
+      1
+    );
+
+
+    expect(
+      Math.max(
+        ...widths
+      )
+      -
+      Math.min(
+        ...widths
+      )
+    ).toBeLessThanOrEqual(
+      1
+    );
+
+  }
+);
+
+
+test(
+  "Infrastructure heading uses natural wrapping rather than forced phrase fragments",
+  async ({
+    page
+  }) => {
+
+    await page.setViewportSize({
+      width:
+        1440,
+      height:
+        900
+    });
+
+
+    await page.goto(
+      "/services/infrastructure-security"
+    );
+
+
+    const heading =
+      page.getByRole(
+        "heading",
+        {
+          level:
+            1,
+          name:
+            "Infrastructure risk starts with what is reachable."
+        }
+      );
+
+
+    await expect(
+      heading
+    ).toBeVisible();
+
+
+    const fragmentCount =
+      await heading.locator(
+        "span"
+      ).count();
+
+
+    expect(
+      fragmentCount
+    ).toBe(
+      0
     );
 
   }
@@ -259,62 +614,61 @@ test(
 
 for (
   const viewport
-  of [
+  of
+  [
     {
-      name:
-        "desktop",
-
+      label:
+        "320",
       width:
-        1440,
-
+        320,
       height:
-        900
+        800
     },
     {
-      name:
-        "compact",
-
-      width:
-        1180,
-
-      height:
-        820
-    },
-    {
-      name:
-        "tablet",
-
-      width:
-        820,
-
-      height:
-        1180
-    },
-    {
-      name:
-        "mobile",
-
+      label:
+        "390",
       width:
         390,
-
       height:
         844
     },
     {
-      name:
-        "narrow",
-
+      label:
+        "768",
       width:
-        360,
-
+        768,
+      height:
+        1024
+    },
+    {
+      label:
+        "1024",
+      width:
+        1024,
+      height:
+        768
+    },
+    {
+      label:
+        "1280",
+      width:
+        1280,
       height:
         800
+    },
+    {
+      label:
+        "1440",
+      width:
+        1440,
+      height:
+        900
     }
   ]
 ) {
 
   test(
-    `Infrastructure Security V24 remains contained at ${viewport.name}`,
+    `Infrastructure Security V25 remains contained at ${viewport.label}`,
     async ({
       page
     }) => {
@@ -322,7 +676,6 @@ for (
       await page.setViewportSize({
         width:
           viewport.width,
-
         height:
           viewport.height
       });
@@ -333,25 +686,14 @@ for (
       );
 
 
-      const heading =
-        page.getByRole(
-          "heading",
-          {
-            level:
-              1,
-
-            name:
-              /Infrastructure risk starts with what is reachable/i
-          }
-        );
-
-
       await expect(
-        heading
+        page.locator(
+          '[data-infrastructure-audit="v25"]'
+        )
       ).toBeVisible();
 
 
-      const metrics =
+      const dimensions =
         await page.evaluate(
           () => ({
             scrollWidth:
@@ -368,40 +710,12 @@ for (
 
 
       expect(
-        metrics.scrollWidth
+        dimensions.scrollWidth
       ).toBeLessThanOrEqual(
-        metrics.clientWidth
+        dimensions.clientWidth
         +
         1
       );
-
-
-      if (
-        viewport.width
-        <=
-        390
-      ) {
-
-        const box =
-          await heading.boundingBox();
-
-
-        if (!box) {
-
-          throw new Error(
-            "Infrastructure V24 mobile H1 geometry unavailable"
-          );
-
-        }
-
-
-        expect(
-          box.y
-        ).toBeLessThan(
-          200
-        );
-
-      }
 
     }
   );

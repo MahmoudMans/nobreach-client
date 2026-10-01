@@ -18,20 +18,26 @@ export const metadata =
       "Infrastructure Security | No Breach",
 
     description:
-      "Infrastructure security assessment covering external exposure, internal attack surface, network services, configuration, privilege paths, segmentation, credentials and reporting.",
+      "Infrastructure security assessment covering external exposure, internal attack surface, network services, configuration, privilege paths, segmentation, credentials and contextual technical reporting.",
 
     path:
       "/services/infrastructure-security"
   });
 
 
+const exposurePath = [
+  "Internet",
+  "Edge",
+  "Services",
+  "Internal",
+  "Privilege"
+] as const;
+
+
 const externalSurface = [
   {
     number:
       "01",
-
-    code:
-      "EXT",
 
     title:
       "External exposure",
@@ -43,9 +49,6 @@ const externalSurface = [
     number:
       "02",
 
-    code:
-      "NET",
-
     title:
       "Network services",
 
@@ -55,9 +58,6 @@ const externalSurface = [
   {
     number:
       "03",
-
-    code:
-      "CFG",
 
     title:
       "Configuration review",
@@ -73,9 +73,6 @@ const internalPaths = [
     number:
       "01",
 
-    code:
-      "INT",
-
     title:
       "Internal attack surface",
 
@@ -85,9 +82,6 @@ const internalPaths = [
   {
     number:
       "02",
-
-    code:
-      "PRIV",
 
     title:
       "Privilege paths",
@@ -99,9 +93,6 @@ const internalPaths = [
     number:
       "03",
 
-    code:
-      "SEG",
-
     title:
       "Segmentation",
 
@@ -112,9 +103,6 @@ const internalPaths = [
     number:
       "04",
 
-    code:
-      "CREDS",
-
     title:
       "Credentials",
 
@@ -124,76 +112,27 @@ const internalPaths = [
 ] as const;
 
 
-const reportingAreas = [
+const technicalRecord = [
   {
-    number:
-      "01",
+    title:
+      "Assessed surface",
 
-    label:
-      "External",
-
-    value:
-      "External exposure"
+    description:
+      "The infrastructure and network services reviewed within the assessment scope."
   },
   {
-    number:
-      "02",
+    title:
+      "System context",
 
-    label:
-      "Internal",
-
-    value:
-      "Internal attack surface"
+    description:
+      "Relevant configuration, boundaries and access relationships."
   },
   {
-    number:
-      "03",
+    title:
+      "Technical observations",
 
-    label:
-      "Services",
-
-    value:
-      "Network services"
-  },
-  {
-    number:
-      "04",
-
-    label:
-      "Configuration",
-
-    value:
-      "Configuration review"
-  },
-  {
-    number:
-      "05",
-
-    label:
-      "Privilege",
-
-    value:
-      "Privilege paths"
-  },
-  {
-    number:
-      "06",
-
-    label:
-      "Boundaries",
-
-    value:
-      "Segmentation"
-  },
-  {
-    number:
-      "07",
-
-    label:
-      "Access",
-
-    value:
-      "Credentials"
+    description:
+      "Findings presented alongside the infrastructure context to which they relate."
   }
 ] as const;
 
@@ -204,7 +143,7 @@ function Arrow() {
     <span
       aria-hidden="true"
     >
-      ↗
+      →
     </span>
   );
 
@@ -212,14 +151,10 @@ function Arrow() {
 
 
 function SectionHeading({
-  number,
   eyebrow,
   title,
   description
 }: {
-  number:
-    string;
-
   eyebrow:
     string;
 
@@ -241,22 +176,18 @@ function SectionHeading({
           styles.sectionEyebrow
         }
       >
-        <span>
-          {
-            number
-          }
-        </span>
-
         {
           eyebrow
         }
       </p>
+
 
       <h2>
         {
           title
         }
       </h2>
+
 
       <p
         className={
@@ -281,12 +212,10 @@ export default function InfrastructureSecurityPage() {
         styles.page
       }
       data-infrastructure-design="v24"
+      data-infrastructure-audit="v25"
     >
-
-
-
       {/* ================================================================
-          HERO
+          INTRODUCTION
          ================================================================ */}
 
       <section
@@ -295,318 +224,166 @@ export default function InfrastructureSecurityPage() {
         }
         data-infrastructure-section="hero"
       >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
+        <Container>
           <div
             className={
-              styles.heroTopline
+              styles.frame
             }
-          >
-            <span>
-              No Breach / Infrastructure Security
-            </span>
-
-            <span>
-              Exposure Graph
-            </span>
-          </div>
-
-          <div
-            className={
-              styles.heroGrid
-            }
+            data-infrastructure-frame="hero"
           >
             <div
               className={
-                styles.heroCopy
+                styles.heroGrid
               }
             >
-              <p
-                className={
-                  styles.heroEyebrow
-                }
-              >
-                Exposure · Services · Paths · Boundaries
-              </p>
-
-              <h1>
-                Infrastructure risk starts with
-                <span>
-                  what is reachable.
-                </span>
-              </h1>
-
-              <p
-                className={
-                  styles.heroLead
-                }
-              >
-                Security assessment and guidance focused on infrastructure exposure, configuration and the systems supporting business operations.
-              </p>
-
               <div
                 className={
-                  styles.heroActions
+                  styles.heroCopy
                 }
               >
-                <Link
-                  href="/contact"
+                <p
                   className={
-                    styles.primaryAction
+                    styles.heroEyebrow
                   }
                 >
-                  Discuss an assessment
+                  Infrastructure Security
+                </p>
 
-                  <Arrow />
-                </Link>
 
-                <a
-                  href="#external-surface"
+                <h1>
+                  Infrastructure risk starts with what is reachable.
+                </h1>
+
+
+                <p
                   className={
-                    styles.textAction
+                    styles.heroLead
                   }
                 >
-                  Explore the surface
+                  Security assessment and guidance focused on infrastructure
+                  exposure, configuration and the systems supporting business
+                  operations.
+                </p>
 
-                  <span
-                    aria-hidden="true"
+
+                <div
+                  className={
+                    styles.heroActions
+                  }
+                >
+                  <Link
+                    href="/contact"
+                    className={
+                      styles.primaryAction
+                    }
                   >
-                    ↓
-                  </span>
-                </a>
+                    Discuss an assessment
+
+                    <Arrow />
+                  </Link>
+
+
+                  <a
+                    href="#external-surface"
+                    className={
+                      styles.secondaryAction
+                    }
+                  >
+                    Explore the surface
+
+                    <span
+                      aria-hidden="true"
+                    >
+                      ↓
+                    </span>
+                  </a>
+                </div>
               </div>
+
+
+              <figure
+                className={
+                  styles.exposureFigure
+                }
+                data-infrastructure-ui="exposure-path"
+                aria-labelledby="exposure-path-title"
+              >
+                <figcaption
+                  id="exposure-path-title"
+                  className={
+                    styles.figureHeading
+                  }
+                >
+                  Illustrative exposure path
+                </figcaption>
+
+
+                <ol
+                  className={
+                    styles.exposureNodes
+                  }
+                >
+                  {
+                    exposurePath.map(
+                      (
+                        label,
+                        index
+                      ) => (
+                        <li
+                          key={
+                            label
+                          }
+                        >
+                          <span
+                            className={
+                              styles.nodeIndex
+                            }
+                            aria-hidden="true"
+                          >
+                            {
+                              String(
+                                index + 1
+                              ).padStart(
+                                2,
+                                "0"
+                              )
+                            }
+                          </span>
+
+
+                          <span
+                            className={
+                              styles.nodeLabel
+                            }
+                          >
+                            {
+                              label
+                            }
+                          </span>
+                        </li>
+                      )
+                    )
+                  }
+                </ol>
+
+
+                <p
+                  className={
+                    styles.figureCaption
+                  }
+                >
+                  Illustrative path. Actual relationships and assessment
+                  coverage depend on the authorized scope.
+                </p>
+              </figure>
             </div>
-
-            <div
-              className={
-                styles.exposureGraph
-              }
-              data-infrastructure-ui="exposure-graph"
-              aria-label="Infrastructure exposure model"
-            >
-              <div
-                className={
-                  styles.graphHeader
-                }
-              >
-                <span>
-                  Exposure path
-                </span>
-
-                <span>
-                  NB / INFRA
-                </span>
-              </div>
-
-              <div
-                className={
-                  styles.graphBody
-                }
-              >
-                <div
-                  className={
-                    `${styles.graphNode} ${styles.graphNodeExternal}`
-                  }
-                >
-                  <span>
-                    01
-                  </span>
-
-                  <strong>
-                    INTERNET
-                  </strong>
-                </div>
-
-                <div
-                  className={
-                    styles.graphConnector
-                  }
-                  aria-hidden="true"
-                >
-                  <i />
-
-                  <span>
-                    ↓
-                  </span>
-                </div>
-
-                <div
-                  className={
-                    styles.graphNode
-                  }
-                >
-                  <span>
-                    02
-                  </span>
-
-                  <strong>
-                    EDGE
-                  </strong>
-                </div>
-
-                <div
-                  className={
-                    styles.graphConnector
-                  }
-                  aria-hidden="true"
-                >
-                  <i />
-
-                  <span>
-                    ↓
-                  </span>
-                </div>
-
-                <div
-                  className={
-                    styles.graphNode
-                  }
-                >
-                  <span>
-                    03
-                  </span>
-
-                  <strong>
-                    SERVICES
-                  </strong>
-                </div>
-
-                <div
-                  className={
-                    styles.graphConnector
-                  }
-                  aria-hidden="true"
-                >
-                  <i />
-
-                  <span>
-                    ↓
-                  </span>
-                </div>
-
-                <div
-                  className={
-                    styles.graphNode
-                  }
-                >
-                  <span>
-                    04
-                  </span>
-
-                  <strong>
-                    INTERNAL
-                  </strong>
-                </div>
-
-                <div
-                  className={
-                    styles.graphConnector
-                  }
-                  aria-hidden="true"
-                >
-                  <i />
-
-                  <span>
-                    ↓
-                  </span>
-                </div>
-
-                <div
-                  className={
-                    `${styles.graphNode} ${styles.graphNodePrivilege}`
-                  }
-                >
-                  <span>
-                    05
-                  </span>
-
-                  <strong>
-                    PRIVILEGE
-                  </strong>
-                </div>
-              </div>
-
-              <div
-                className={
-                  styles.graphLegend
-                }
-              >
-                <div>
-                  <span>
-                    Surface
-                  </span>
-
-                  <strong>
-                    Exposure
-                  </strong>
-                </div>
-
-                <div>
-                  <span>
-                    Control
-                  </span>
-
-                  <strong>
-                    Segmentation
-                  </strong>
-                </div>
-
-                <div>
-                  <span>
-                    Access
-                  </span>
-
-                  <strong>
-                    Credentials
-                  </strong>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div
-            className={
-              styles.heroFooter
-            }
-          >
-            <span>
-              EXTERNAL
-            </span>
-
-            <i />
-
-            <span>
-              SERVICES
-            </span>
-
-            <i />
-
-            <span>
-              INTERNAL
-            </span>
-
-            <i />
-
-            <span>
-              PRIVILEGE
-            </span>
-
-            <i />
-
-            <span>
-              REPORTING
-            </span>
           </div>
         </Container>
       </section>
 
 
       {/* ================================================================
-          01 — EXTERNAL SURFACE
+          EXTERNAL SURFACE
          ================================================================ */}
 
       <section
@@ -616,89 +393,32 @@ export default function InfrastructureSecurityPage() {
         }
         data-infrastructure-section="external-surface"
       >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
-          <SectionHeading
-            number="01"
-            eyebrow="External surface"
-            title="Start with the infrastructure an attacker can reach."
-            description="The first view focuses on external exposure, reachable network services and the configuration that shapes that visible surface."
-          />
-
+        <Container>
           <div
             className={
-              styles.externalLayout
+              `${styles.frame} ${styles.externalLayout}`
             }
+            data-infrastructure-frame="external-surface"
           >
-            <div
-              className={
-                styles.surfaceSignal
-              }
-              aria-hidden="true"
-            >
-              <div
-                className={
-                  styles.signalHeader
-                }
-              >
-                <span>
-                  EXTERNAL / SURFACE
-                </span>
+            <SectionHeading
+              eyebrow="01 · External Surface"
+              title="Start with the infrastructure an attacker can reach."
+              description="The first view focuses on external exposure, reachable network services and the configuration that shapes that visible surface."
+            />
 
-                <span>
-                  03 LAYERS
-                </span>
-              </div>
-
-              <div
-                className={
-                  styles.radar
-                }
-              >
-                <span />
-
-                <span />
-
-                <span />
-
-                <i />
-
-                <strong>
-                  NB
-                </strong>
-              </div>
-
-              <div
-                className={
-                  styles.signalFooter
-                }
-              >
-                <span>
-                  Reachability
-                </span>
-
-                <span>
-                  Configuration
-                </span>
-              </div>
-            </div>
 
             <div
               className={
-                styles.externalIndex
+                styles.externalList
               }
-              data-infrastructure-ui="external-index"
+              data-infrastructure-ui="external-list"
             >
               {
                 externalSurface.map(
                   (
                     item
                   ) => (
-                    <div
+                    <article
                       className={
                         styles.externalRow
                       }
@@ -711,21 +431,13 @@ export default function InfrastructureSecurityPage() {
                         className={
                           styles.rowNumber
                         }
+                        aria-hidden="true"
                       >
                         {
                           item.number
                         }
                       </span>
 
-                      <span
-                        className={
-                          styles.rowCode
-                        }
-                      >
-                        {
-                          item.code
-                        }
-                      </span>
 
                       <div>
                         <h3>
@@ -734,13 +446,14 @@ export default function InfrastructureSecurityPage() {
                           }
                         </h3>
 
+
                         <p>
                           {
                             item.description
                           }
                         </p>
                       </div>
-                    </div>
+                    </article>
                   )
                 )
               }
@@ -751,101 +464,60 @@ export default function InfrastructureSecurityPage() {
 
 
       {/* ================================================================
-          02 — INTERNAL PATHS
+          INTERNAL PATHS
          ================================================================ */}
 
       <section
         className={
-          `${styles.section} ${styles.sectionAlt}`
+          `${styles.section} ${styles.internalSection}`
         }
         data-infrastructure-section="internal-paths"
       >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
-          <SectionHeading
-            number="02"
-            eyebrow="Internal paths"
-            title="Exposure matters more when it creates a path."
-            description="Inside the authorized scope, the review considers internal attack surface, privilege relationships, segmentation and credential-related boundaries."
-          />
-
+        <Container>
           <div
             className={
-              styles.pathSystem
+              styles.frame
             }
-            data-infrastructure-ui="path-system"
+            data-infrastructure-frame="internal-paths"
           >
-            <div
-              className={
-                styles.pathAxis
-              }
-              aria-hidden="true"
-            >
-              <span>
-                ACCESS
-              </span>
+            <SectionHeading
+              eyebrow="02 · Internal Paths"
+              title="Exposure matters more when it creates a path."
+              description="Inside the authorized scope, the review considers internal attack surface, privilege relationships, segmentation and credential-related boundaries. Exposure, access and segmentation are considered together."
+            />
 
-              <i />
-
-              <span>
-                MOVEMENT
-              </span>
-
-              <i />
-
-              <span>
-                BOUNDARY
-              </span>
-
-              <i />
-
-              <span>
-                PRIVILEGE
-              </span>
-            </div>
 
             <div
               className={
-                styles.pathRows
+                styles.internalList
               }
+              data-infrastructure-ui="internal-list"
             >
               {
                 internalPaths.map(
                   (
                     item
                   ) => (
-                    <div
+                    <article
                       className={
-                        styles.pathRow
+                        styles.internalRow
                       }
-                      data-infrastructure-path
+                      data-infrastructure-internal
                       key={
                         item.number
                       }
                     >
                       <span
                         className={
-                          styles.pathNumber
+                          styles.rowNumber
                         }
+                        aria-hidden="true"
                       >
                         {
                           item.number
                         }
                       </span>
 
-                      <span
-                        className={
-                          styles.pathCode
-                        }
-                      >
-                        {
-                          item.code
-                        }
-                      </span>
 
                       <h3>
                         {
@@ -853,46 +525,24 @@ export default function InfrastructureSecurityPage() {
                         }
                       </h3>
 
+
                       <p>
                         {
                           item.description
                         }
                       </p>
-
-                      <span
-                        className={
-                          styles.pathMarker
-                        }
-                        aria-hidden="true"
-                      >
-                        ●
-                      </span>
-                    </div>
+                    </article>
                   )
                 )
               }
             </div>
-          </div>
-
-          <div
-            className={
-              styles.boundaryStatement
-            }
-          >
-            <span>
-              BOUNDARY
-            </span>
-
-            <p>
-              The infrastructure view connects exposure, access and segmentation rather than treating each system as an isolated finding.
-            </p>
           </div>
         </Container>
       </section>
 
 
       {/* ================================================================
-          03 — REPORTING
+          REPORTING
          ================================================================ */}
 
       <section
@@ -901,176 +551,64 @@ export default function InfrastructureSecurityPage() {
         }
         data-infrastructure-section="reporting"
       >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
-          <SectionHeading
-            number="03"
-            eyebrow="Reporting"
-            title="Keep infrastructure findings connected to their system context."
-            description="Reporting brings the reviewed infrastructure areas together into one technical record rather than presenting disconnected observations."
-          />
-
+        <Container>
           <div
             className={
-              styles.reportingLayout
+              `${styles.frame} ${styles.reportingLayout}`
             }
+            data-infrastructure-frame="reporting"
           >
+            <SectionHeading
+              eyebrow="03 · Reporting"
+              title="Keep infrastructure findings connected to their system context."
+              description="Reporting brings the reviewed infrastructure areas together into one technical record rather than presenting disconnected observations."
+            />
+
+
             <div
               className={
-                styles.reportingIntro
+                styles.record
               }
+              data-infrastructure-ui="technical-record"
             >
-              <p
-                className={
-                  styles.reportingLabel
-                }
-              >
-                Infrastructure record
-              </p>
-
               <h3>
-                From exposure to a report engineering teams can reason about.
+                Inside the technical record
               </h3>
 
-              <p>
-                The reporting layer keeps the assessed surface, network context, boundaries and access relationships visible alongside the technical observations.
-              </p>
-            </div>
 
-            <div
-              className={
-                styles.reportingRegister
-              }
-              data-infrastructure-ui="reporting-register"
-            >
-              {
-                reportingAreas.map(
-                  (
-                    area
-                  ) => (
-                    <div
-                      className={
-                        styles.reportingRow
-                      }
-                      key={
-                        area.number
-                      }
-                    >
-                      <span>
-                        {
-                          area.number
-                        }
-                      </span>
-
-                      <small>
-                        {
-                          area.label
-                        }
-                      </small>
-
-                      <strong>
-                        {
-                          area.value
-                        }
-                      </strong>
-
-                      <i
-                        aria-hidden="true"
-                      />
-                    </div>
-                  )
-                )
-              }
-
-              <div
+              <dl
                 className={
-                  `${styles.reportingRow} ${styles.reportingFinal}`
+                  styles.recordList
                 }
               >
-                <span>
-                  08
-                </span>
+                {
+                  technicalRecord.map(
+                    (
+                      item
+                    ) => (
+                      <div
+                        data-infrastructure-record
+                        key={
+                          item.title
+                        }
+                      >
+                        <dt>
+                          {
+                            item.title
+                          }
+                        </dt>
 
-                <small>
-                  Output
-                </small>
 
-                <strong>
-                  Reporting
-                </strong>
-
-                <i
-                  aria-hidden="true"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div
-            className={
-              styles.reportingFooter
-            }
-          >
-            <div>
-              <span>
-                01
-              </span>
-
-              <strong>
-                Surface
-              </strong>
-            </div>
-
-            <i />
-
-            <div>
-              <span>
-                02
-              </span>
-
-              <strong>
-                Context
-              </strong>
-            </div>
-
-            <i />
-
-            <div>
-              <span>
-                03
-              </span>
-
-              <strong>
-                Paths
-              </strong>
-            </div>
-
-            <i />
-
-            <div>
-              <span>
-                04
-              </span>
-
-              <strong>
-                Boundaries
-              </strong>
-            </div>
-
-            <i />
-
-            <div>
-              <span>
-                05
-              </span>
-
-              <strong>
-                Report
-              </strong>
+                        <dd>
+                          {
+                            item.description
+                          }
+                        </dd>
+                      </div>
+                    )
+                  )
+                }
+              </dl>
             </div>
           </div>
         </Container>
@@ -1078,7 +616,7 @@ export default function InfrastructureSecurityPage() {
 
 
       {/* ================================================================
-          CTA
+          ASSESSMENT DISCUSSION
          ================================================================ */}
 
       <section
@@ -1087,22 +625,12 @@ export default function InfrastructureSecurityPage() {
         }
         data-infrastructure-section="cta"
       >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
+        <Container>
           <div
             className={
-              styles.ctaRule
+              `${styles.frame} ${styles.ctaLayout}`
             }
-          />
-
-          <div
-            className={
-              styles.ctaLayout
-            }
+            data-infrastructure-frame="cta"
           >
             <div>
               <p
@@ -1110,17 +638,15 @@ export default function InfrastructureSecurityPage() {
                   styles.sectionEyebrow
                 }
               >
-                <span>
-                  INFRA
-                </span>
-
-                Assessment
+                Infrastructure assessment
               </p>
+
 
               <h2>
                 Understand what is exposed and where it can lead.
               </h2>
             </div>
+
 
             <div
               className={
@@ -1128,8 +654,10 @@ export default function InfrastructureSecurityPage() {
               }
             >
               <p>
-                Discuss the infrastructure scope, exposed services and security boundaries you want to review.
+                Discuss the infrastructure scope, exposed services and
+                security boundaries you want to review.
               </p>
+
 
               <div
                 className={
@@ -1147,13 +675,14 @@ export default function InfrastructureSecurityPage() {
                   <Arrow />
                 </Link>
 
+
                 <Link
                   href="/services"
                   className={
                     styles.textAction
                   }
                 >
-                  All services
+                  View all services
 
                   <Arrow />
                 </Link>

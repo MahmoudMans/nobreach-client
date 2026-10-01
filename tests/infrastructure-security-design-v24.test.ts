@@ -24,11 +24,11 @@ const css =
 
 
 describe(
-  "Infrastructure Security V24 exposure graph",
+  "Infrastructure Security V24 compatibility + V25 audit",
   () => {
 
     it(
-      "activates the dedicated V24 design",
+      "keeps V24 route authority while activating V25",
       () => {
 
         expect(
@@ -37,11 +37,22 @@ describe(
           'data-infrastructure-design="v24"'
         );
 
+        expect(
+          page
+        ).toContain(
+          'data-infrastructure-audit="v25"'
+        );
 
         expect(
           css
         ).toContain(
-          "NB_INFRASTRUCTURE_EXPOSURE_GRAPH_V24"
+          "NB_INFRASTRUCTURE_SECURITY_DESIGN_V24"
+        );
+
+        expect(
+          css
+        ).toContain(
+          "NB_INFRASTRUCTURE_SECURITY_AUDIT_V25"
         );
 
       }
@@ -49,27 +60,27 @@ describe(
 
 
     it(
-      "preserves every approved infrastructure section",
+      "preserves all seven distinct assessment subjects",
       () => {
 
         for (
-          const area
-          of [
+          const token
+          of
+          [
             "External exposure",
-            "Internal attack surface",
             "Network services",
             "Configuration review",
+            "Internal attack surface",
             "Privilege paths",
             "Segmentation",
-            "Credentials",
-            "Reporting"
+            "Credentials"
           ]
         ) {
 
           expect(
             page
           ).toContain(
-            area
+            token
           );
 
         }
@@ -79,31 +90,95 @@ describe(
 
 
     it(
-      "uses the infrastructure exposure graph",
+      "preserves the authorized internal-scope qualification",
       () => {
 
         expect(
           page
         ).toContain(
-          'data-infrastructure-ui="exposure-graph"'
+          "Inside the authorized scope"
         );
 
+        expect(
+          page
+        ).toContain(
+          "inside the authorized assessment scope"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "could lead toward higher privilege"
+        );
+
+      }
+    );
+
+
+    it(
+      "keeps one clarified exposure-path illustration",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          'data-infrastructure-ui="exposure-path"'
+        );
 
         for (
-          const label
-          of [
-            "INTERNET",
-            "EDGE",
-            "SERVICES",
-            "INTERNAL",
-            "PRIVILEGE"
+          const node
+          of
+          [
+            "Internet",
+            "Edge",
+            "Services",
+            "Internal",
+            "Privilege"
           ]
         ) {
 
           expect(
             page
           ).toContain(
-            label
+            node
+          );
+
+        }
+
+
+        expect(
+          page.replace(
+            /\s+/g,
+            " "
+          )
+        ).toContain(
+          "Illustrative path. Actual relationships and assessment coverage depend on the authorized scope."
+        );
+
+      }
+    );
+
+
+    it(
+      "removes the radar and redundant framing treatments",
+      () => {
+
+        for (
+          const retired
+          of
+          [
+            "03 LAYERS",
+            "Reachability",
+            'data-infrastructure-ui="reporting-register"',
+            "From exposure to a report engineering teams can reason about.",
+            "Access · Movement · Boundary · Privilege"
+          ]
+        ) {
+
+          expect(
+            page
+          ).not.toContain(
+            retired
           );
 
         }
@@ -113,15 +188,50 @@ describe(
 
 
     it(
-      "uses three primary infrastructure chapters",
+      "turns reporting into a focused technical record",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          "Inside the technical record"
+        );
+
+        for (
+          const token
+          of
+          [
+            "Assessed surface",
+            "System context",
+            "Technical observations"
+          ]
+        ) {
+
+          expect(
+            page
+          ).toContain(
+            token
+          );
+
+        }
+
+      }
+    );
+
+
+    it(
+      "uses the shared five-region flow",
       () => {
 
         for (
           const section
-          of [
+          of
+          [
+            "hero",
             "external-surface",
             "internal-paths",
-            "reporting"
+            "reporting",
+            "cta"
           ]
         ) {
 
@@ -138,40 +248,31 @@ describe(
 
 
     it(
-      "does not fall back to generic service-detail styling",
+      "keeps honest discussion actions",
       () => {
 
         expect(
           page
-        ).not.toContain(
-          "pages.module.css"
+        ).toContain(
+          "Discuss an assessment"
         );
-
 
         expect(
           page
-        ).not.toContain(
-          "ServiceDetail"
+        ).toContain(
+          'href="/contact"'
         );
 
-      }
-    );
-
-
-    it(
-      "keeps one primary heading",
-      () => {
+        expect(
+          page
+        ).toContain(
+          "View all services"
+        );
 
         expect(
-          (
-            page.match(
-              /<h1>/g
-            )
-            ??
-            []
-          ).length
-        ).toBe(
-          1
+          page
+        ).toContain(
+          'href="/services"'
         );
 
       }
