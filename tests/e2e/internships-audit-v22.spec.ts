@@ -5,7 +5,7 @@ import {
 
 
 test(
-  "Internships V22 makes the project catalogue primary",
+  "Internships keeps the accepted V22 architecture",
   async ({
     page
   }) => {
@@ -14,33 +14,20 @@ test(
       "/company/internships"
     );
 
+
     await expect(
       page.locator(
         '[data-internship-audit="v22"]'
       )
     ).toBeVisible();
 
+
     await expect(
-      page.getByRole(
-        "heading",
-        {
-          level:
-            1,
-          name:
-            "Security work built through practice."
-        }
+      page.locator(
+        '[data-internship-refinement="v23"]'
       )
     ).toBeVisible();
 
-    await expect(
-      page.getByText(
-        "8 showcased projects",
-        {
-          exact:
-            true
-        }
-      )
-    ).toBeVisible();
 
     await expect(
       page.locator(
@@ -55,7 +42,105 @@ test(
 
 
 test(
-  "detail instruction and publication notice precede the project list",
+  "publication scope is compact and preserves every safeguard",
+  async ({
+    page
+  }) => {
+
+    await page.setViewportSize({
+      width:
+        1440,
+      height:
+        900
+    });
+
+
+    await page.goto(
+      "/company/internships"
+    );
+
+
+    const notice =
+      page.getByRole(
+        "complementary",
+        {
+          name:
+            "Publication scope"
+        }
+      );
+
+
+    await expect(
+      notice
+    ).toBeVisible();
+
+
+    await expect(
+      notice.getByRole(
+        "heading",
+        {
+          level:
+            3,
+          name:
+            "Publication scope"
+        }
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      notice.getByText(
+        /authorized, isolated environments/i
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      notice.getByText(
+        /separate from confidential client and production environments/i
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      notice.getByText(
+        /No confidential client systems, credentials or private assessment data are published/i
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      notice.getByText(
+        "Contributor names are published only with permission.",
+        {
+          exact:
+            true
+        }
+      )
+    ).toBeVisible();
+
+
+    const box =
+      await notice.boundingBox();
+
+
+    expect(
+      box
+    ).not.toBeNull();
+
+
+    expect(
+      box!.height
+    ).toBeLessThan(
+      300
+    );
+
+  }
+);
+
+
+test(
+  "instruction precedes the first project",
   async ({
     page
   }) => {
@@ -64,25 +149,16 @@ test(
       "/company/internships"
     );
 
-    const notice =
-      page.getByRole(
-        "heading",
-        {
-          level:
-            3,
-          name:
-            "About this showcase"
-        }
-      );
 
     const instruction =
       page.getByText(
-        "Open a project to view its work performed and technical outputs.",
+        "Open a project to view its work and technical outputs.",
         {
           exact:
             true
         }
       );
+
 
     const firstProject =
       page.locator(
@@ -91,40 +167,28 @@ test(
 
 
     const [
-      noticeBox,
       instructionBox,
-      firstBox
+      projectBox
     ] =
       await Promise.all([
-        notice.boundingBox(),
         instruction.boundingBox(),
         firstProject.boundingBox()
       ]);
 
 
     expect(
-      noticeBox
-    ).not.toBeNull();
-
-    expect(
       instructionBox
     ).not.toBeNull();
 
     expect(
-      firstBox
+      projectBox
     ).not.toBeNull();
 
 
     expect(
-      noticeBox!.y
-    ).toBeLessThan(
-      firstBox!.y
-    );
-
-    expect(
       instructionBox!.y
     ).toBeLessThan(
-      firstBox!.y
+      projectBox!.y
     );
 
   }
@@ -132,7 +196,7 @@ test(
 
 
 test(
-  "all project rows expose readable technology information",
+  "each title and detail action form one disclosure control",
   async ({
     page
   }) => {
@@ -141,16 +205,19 @@ test(
       "/company/internships"
     );
 
+
     const projects =
       page.locator(
         '[data-internship-project]'
       );
+
 
     await expect(
       projects
     ).toHaveCount(
       8
     );
+
 
     for (
       let index = 0;
@@ -163,27 +230,27 @@ test(
           index
         );
 
+
       await expect(
         project.locator(
-          "ul"
-        ).first()
-      ).toBeVisible();
+          "h3 > button"
+        )
+      ).toHaveCount(
+        1
+      );
 
-      const technologyCount =
-        await project
-          .locator(
-            "ul"
-          )
-          .first()
-          .locator(
-            "li"
-          )
-          .count();
 
-      expect(
-        technologyCount
-      ).toBeGreaterThanOrEqual(
-        3
+      await expect(
+        project.getByRole(
+          "button",
+          {
+            name:
+              /View details/i
+          }
+        )
+      ).toHaveAttribute(
+        "aria-expanded",
+        "false"
       );
 
     }
@@ -193,7 +260,223 @@ test(
 
 
 test(
-  "project disclosures expose state and allow multiple projects open",
+  "all summaries stay closely grouped with their disclosure headings",
+  async ({
+    page
+  }) => {
+
+    await page.setViewportSize({
+      width:
+        1440,
+      height:
+        900
+    });
+
+
+    await page.goto(
+      "/company/internships"
+    );
+
+
+    const projects =
+      page.locator(
+        '[data-internship-project]'
+      );
+
+
+    for (
+      let index = 0;
+      index < 8;
+      index += 1
+    ) {
+
+      const project =
+        projects.nth(
+          index
+        );
+
+
+      const button =
+        project.locator(
+          "h3 > button"
+        );
+
+
+      const summary =
+        project.locator(
+          '[data-project-summary="true"]'
+        );
+
+
+      await project.scrollIntoViewIfNeeded();
+
+      await button.scrollIntoViewIfNeeded();
+
+      await expect(
+        button
+      ).toBeVisible();
+
+
+      await summary.scrollIntoViewIfNeeded();
+
+      await expect(
+        summary
+      ).toBeVisible();
+
+
+      const [
+        buttonBox,
+        summaryBox
+      ] =
+        await Promise.all([
+          button.boundingBox(),
+          summary.boundingBox()
+        ]);
+
+
+      expect(
+        buttonBox
+      ).not.toBeNull();
+
+      expect(
+        summaryBox
+      ).not.toBeNull();
+
+
+      const gap =
+        summaryBox!.y
+        -
+        (
+          buttonBox!.y
+          +
+          buttonBox!.height
+        );
+
+
+      expect(
+        gap
+      ).toBeGreaterThanOrEqual(
+        8
+      );
+
+
+      expect(
+        gap
+      ).toBeLessThanOrEqual(
+        18
+      );
+
+
+    }
+
+  }
+);
+
+
+test(
+  "metadata begins on the same content axis as each summary",
+  async ({
+    page
+  }) => {
+
+    await page.setViewportSize({
+      width:
+        1440,
+      height:
+        900
+    });
+
+
+    await page.goto(
+      "/company/internships"
+    );
+
+
+    const projects =
+      page.locator(
+        '[data-internship-project]'
+      );
+
+
+    for (
+      let index = 0;
+      index < 8;
+      index += 1
+    ) {
+
+      const project =
+        projects.nth(
+          index
+        );
+
+
+      const summary =
+        project.locator(
+          '[data-project-summary="true"]'
+        );
+
+
+      const firstChip =
+        project
+          .locator(
+            '[data-project-metadata="true"] li'
+          )
+          .first();
+
+
+      await project.scrollIntoViewIfNeeded();
+
+      await summary.scrollIntoViewIfNeeded();
+
+      await expect(
+        summary
+      ).toBeVisible();
+
+
+      await firstChip.scrollIntoViewIfNeeded();
+
+      await expect(
+        firstChip
+      ).toBeVisible();
+
+
+      const [
+        summaryBox,
+        chipBox
+      ] =
+        await Promise.all([
+          summary.boundingBox(),
+          firstChip.boundingBox()
+        ]);
+
+
+      expect(
+        summaryBox
+      ).not.toBeNull();
+
+      expect(
+        chipBox
+      ).not.toBeNull();
+
+
+      expect(
+        Math.abs(
+          summaryBox!.x
+          -
+          chipBox!.x
+        )
+      ).toBeLessThanOrEqual(
+        1.5
+      );
+
+    }
+
+  }
+);
+
+
+test(
+  "project disclosure works with keyboard and supports comparison",
   async ({
     page
   }) => {
@@ -202,10 +485,12 @@ test(
       "/company/internships"
     );
 
+
     const projects =
       page.locator(
         '[data-internship-project]'
       );
+
 
     const first =
       projects.nth(
@@ -217,6 +502,7 @@ test(
         1
       );
 
+
     const firstButton =
       first.getByRole(
         "button",
@@ -225,6 +511,7 @@ test(
             /View details/i
         }
       );
+
 
     const secondButton =
       second.getByRole(
@@ -236,13 +523,7 @@ test(
       );
 
 
-    await expect(
-      firstButton
-    ).toHaveAttribute(
-      "aria-expanded",
-      "false"
-    );
-
+    await firstButton.focus();
 
     await firstButton.press(
       "Enter"
@@ -264,8 +545,39 @@ test(
 
 
     await expect(
-      first.getByRole(
-        "region"
+      first.locator(
+        '[role="region"]'
+      )
+    ).toHaveCount(
+      1
+    );
+
+
+    await expect(
+      first.locator(
+        '[role="region"]'
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      first.getByText(
+        "Work performed",
+        {
+          exact:
+            true
+        }
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      first.getByText(
+        "Technical outputs",
+        {
+          exact:
+            true
+        }
       )
     ).toBeVisible();
 
@@ -274,41 +586,42 @@ test(
 
 
     await expect(
-      second.getByRole(
-        "region"
+      first.locator(
+        '[role="region"]'
       )
     ).toBeVisible();
 
 
     await expect(
-      first.getByRole(
-        "region"
+      second.locator(
+        '[role="region"]'
       )
     ).toBeVisible();
 
 
-    await expect(
-      first.getByRole(
-        "heading",
+    await first
+      .getByRole(
+        "button",
         {
-          level:
-            4,
           name:
-            "Work performed"
+            /Hide details/i
         }
       )
-    ).toBeVisible();
+      .press(
+        "Space"
+      );
 
 
     await expect(
-      first.getByRole(
-        "heading",
-        {
-          level:
-            4,
-          name:
-            "Technical outputs"
-        }
+      first.locator(
+        '[role="region"]'
+      )
+    ).toBeHidden();
+
+
+    await expect(
+      second.locator(
+        '[role="region"]'
       )
     ).toBeVisible();
 
@@ -317,7 +630,7 @@ test(
 
 
 test(
-  "working method appears once as the six authoritative stages",
+  "method introduction is visitor-facing and keeps the Detect qualification",
   async ({
     page
   }) => {
@@ -326,42 +639,32 @@ test(
       "/company/internships"
     );
 
-    const method =
-      page.locator(
-        '[data-internship-ui="method-grid"]'
-      );
 
     await expect(
-      method.locator(
-        ":scope > li"
+      page.getByText(
+        /The internship approach connects lab setup, system understanding, security validation, improvements and documentation\./
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      page.getByText(
+        /Detection work is included where relevant to the project\./
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      page.getByText(
+        /preserving project-specific differences/i
       )
     ).toHaveCount(
-      6
+      0
     );
 
 
-    const headings =
-      await method
-        .locator(
-          "h3"
-        )
-        .allTextContents();
-
-
-    expect(
-      headings
-    ).toEqual([
-      "Build",
-      "Understand",
-      "Validate",
-      "Detect",
-      "Fix",
-      "Document"
-    ]);
-
-
     await expect(
-      method.getByText(
+      page.getByText(
         /Where relevant, interns work with telemetry/i
       )
     ).toBeVisible();
@@ -371,7 +674,7 @@ test(
 
 
 test(
-  "first method row uses consistent alignment",
+  "method grid uses equal cell insets and continuous grid-owned rules",
   async ({
     page
   }) => {
@@ -383,44 +686,151 @@ test(
         900
     });
 
+
     await page.goto(
       "/company/internships"
     );
 
-    const steps =
+
+    const grid =
       page.locator(
-        '[data-internship-ui="method-grid"] > li'
+        '[data-internship-ui="method-grid"]'
       );
 
 
-    const tops =
-      await steps
-        .evaluateAll(
-          elements =>
-            elements
-              .slice(
-                0,
-                3
-              )
-              .map(
-                element =>
+    const steps =
+      grid.locator(
+        ":scope > li"
+      );
+
+
+    await expect(
+      steps
+    ).toHaveCount(
+      6
+    );
+
+
+    const geometry =
+      await steps.evaluateAll(
+        elements =>
+          elements.map(
+            element => {
+
+              const style =
+                getComputedStyle(
                   element
-                    .getBoundingClientRect()
-                    .top
-              )
+                );
+
+              const rect =
+                element
+                  .getBoundingClientRect();
+
+
+              return {
+                top:
+                  rect.top,
+
+                paddingLeft:
+                  style.paddingLeft,
+
+                borderLeft:
+                  style.borderLeftWidth,
+
+                borderRight:
+                  style.borderRightWidth
+              };
+
+            }
+          )
+      );
+
+
+    const firstRowTops =
+      geometry
+        .slice(
+          0,
+          3
+        )
+        .map(
+          item =>
+            item.top
         );
 
 
     expect(
       Math.max(
-        ...tops
+        ...firstRowTops
       )
       -
       Math.min(
-        ...tops
+        ...firstRowTops
       )
     ).toBeLessThanOrEqual(
-      2
+      1
+    );
+
+
+    expect(
+      new Set(
+        geometry.map(
+          item =>
+            item.paddingLeft
+        )
+      ).size
+    ).toBe(
+      1
+    );
+
+
+    expect(
+      new Set(
+        geometry.map(
+          item =>
+            `${item.borderLeft}/${item.borderRight}`
+        )
+      ).size
+    ).toBe(
+      1
+    );
+
+
+    const gridStyle =
+      await grid.evaluate(
+        element => {
+
+          const style =
+            getComputedStyle(
+              element
+            );
+
+
+          return {
+            rowGap:
+              style.rowGap,
+
+            columnGap:
+              style.columnGap,
+
+            backgroundColor:
+              style.backgroundColor
+          };
+
+        }
+      );
+
+
+    expect(
+      gridStyle.rowGap
+    ).toBe(
+      "1px"
+    );
+
+
+    expect(
+      gridStyle.columnGap
+    ).toBe(
+      "1px"
     );
 
   }
@@ -428,7 +838,220 @@ test(
 
 
 test(
-  "closing region exposes one Careers Training Contact group",
+  "major boundaries use one combined spacing allocation",
+  async ({
+    page
+  }) => {
+
+    await page.setViewportSize({
+      width:
+        1440,
+      height:
+        900
+    });
+
+
+    await page.goto(
+      "/company/internships"
+    );
+
+
+    const measurements =
+      await page.evaluate(
+        () => {
+
+          const hero =
+            document.querySelector(
+              '[data-internship-section="hero"]'
+            );
+
+          const projects =
+            document.querySelector(
+              '[data-internship-section="projects"]'
+            );
+
+          const method =
+            document.querySelector(
+              '[data-internship-section="method"]'
+            );
+
+          const cta =
+            document.querySelector(
+              '[data-internship-section="cta"]'
+            );
+
+
+          const heroMeta =
+            hero?.querySelector(
+              'p[class*="heroMeta"]'
+            );
+
+          const projectsHeading =
+            projects?.querySelector(
+              'header'
+            );
+
+          const lastProject =
+            projects?.querySelector(
+              '[data-internship-project]:last-child'
+            );
+
+          const methodHeading =
+            method?.querySelector(
+              'header'
+            );
+
+          const methodGrid =
+            method?.querySelector(
+              '[data-internship-ui="method-grid"]'
+            );
+
+          const ctaHeading =
+            cta?.querySelector(
+              'h2'
+            );
+
+
+          if (
+            !hero
+            ||
+            !projects
+            ||
+            !method
+            ||
+            !cta
+            ||
+            !heroMeta
+            ||
+            !projectsHeading
+            ||
+            !lastProject
+            ||
+            !methodHeading
+            ||
+            !methodGrid
+            ||
+            !ctaHeading
+          ) {
+
+            throw new Error(
+              "BOUNDARY_TARGET_MISSING"
+            );
+
+          }
+
+
+          const heroRect =
+            hero.getBoundingClientRect();
+
+          const projectsRect =
+            projects.getBoundingClientRect();
+
+          const methodRect =
+            method.getBoundingClientRect();
+
+          const ctaRect =
+            cta.getBoundingClientRect();
+
+
+          const heroMetaRect =
+            heroMeta.getBoundingClientRect();
+
+          const projectsHeadingRect =
+            projectsHeading.getBoundingClientRect();
+
+          const lastProjectRect =
+            lastProject.getBoundingClientRect();
+
+          const methodHeadingRect =
+            methodHeading.getBoundingClientRect();
+
+          const methodGridRect =
+            methodGrid.getBoundingClientRect();
+
+          const ctaHeadingRect =
+            ctaHeading.getBoundingClientRect();
+
+
+          return {
+            heroToProjects:
+              (
+                heroRect.bottom
+                -
+                heroMetaRect.bottom
+              )
+              +
+              (
+                projectsHeadingRect.top
+                -
+                projectsRect.top
+              ),
+
+            projectsToMethod:
+              (
+                projectsRect.bottom
+                -
+                lastProjectRect.bottom
+              )
+              +
+              (
+                methodHeadingRect.top
+                -
+                methodRect.top
+              ),
+
+            methodToCta:
+              (
+                methodRect.bottom
+                -
+                methodGridRect.bottom
+              )
+              +
+              (
+                ctaHeadingRect.top
+                -
+                ctaRect.top
+              )
+          };
+
+        }
+      );
+
+
+    for (
+      const [
+        name,
+        value
+      ]
+      of
+      Object.entries(
+        measurements
+      )
+    ) {
+
+      expect(
+        value,
+        name
+      ).toBeGreaterThanOrEqual(
+        50
+      );
+
+
+      expect(
+        value,
+        name
+      ).toBeLessThanOrEqual(
+        110
+      );
+
+    }
+
+  }
+);
+
+
+test(
+  "closing Careers Training Contact hierarchy remains unchanged",
   async ({
     page
   }) => {
@@ -436,6 +1059,7 @@ test(
     await page.goto(
       "/company/internships"
     );
+
 
     const cta =
       page.locator(
@@ -557,7 +1181,7 @@ for (
 ) {
 
   test(
-    `Internships V22 remains contained at ${viewport.name}`,
+    `Internships refinement remains contained at ${viewport.name}`,
     async ({
       page
     }) => {
@@ -569,12 +1193,13 @@ for (
           viewport.height
       });
 
+
       await page.goto(
         "/company/internships"
       );
 
 
-      const geometry =
+      const dimensions =
         await page.evaluate(
           () => ({
             scroll:
@@ -591,9 +1216,9 @@ for (
 
 
       expect(
-        geometry.scroll
+        dimensions.scroll
       ).toBeLessThanOrEqual(
-        geometry.client
+        dimensions.client
         +
         1
       );

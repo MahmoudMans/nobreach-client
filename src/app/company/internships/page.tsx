@@ -124,6 +124,7 @@ export default function InternshipsPage() {
       }
       data-internship-design="v21"
       data-internship-audit="v22"
+      data-internship-refinement="v23"
       data-company-architecture="v18"
     >
       <Breadcrumbs
@@ -256,7 +257,7 @@ export default function InternshipsPage() {
       <section
         id="projects"
         className={
-          styles.section
+          `${styles.section} ${styles.projectsSection}`
         }
         data-company-content-section="projects"
         data-internship-section="projects"
@@ -279,25 +280,14 @@ export default function InternshipsPage() {
             }
             aria-labelledby="showcase-notice-title"
           >
-            <div
+            <h3
+              id="showcase-notice-title"
               className={
-                styles.noticeHeading
+                styles.noticeTitle
               }
             >
-              <p
-                className={
-                  styles.noticeEyebrow
-                }
-              >
-                Publication scope
-              </p>
-
-              <h3
-                id="showcase-notice-title"
-              >
-                About this showcase
-              </h3>
-            </div>
+              Publication scope
+            </h3>
 
             <div
               className={
@@ -323,7 +313,7 @@ export default function InternshipsPage() {
               styles.projectInstruction
             }
           >
-            Open a project to view its work performed and technical outputs.
+            Open a project to view its work and technical outputs.
           </p>
 
           <div
@@ -380,7 +370,7 @@ export default function InternshipsPage() {
 
       <section
         className={
-          `${styles.section} ${styles.sectionAlt}`
+          `${styles.section} ${styles.sectionAlt} ${styles.methodSection}`
         }
         data-company-content-section="method"
         data-internship-section="method"
@@ -394,7 +384,7 @@ export default function InternshipsPage() {
             number="02"
             eyebrow="Working method"
             title="How the work progresses."
-            description="One six-stage sequence describes the internship approach while preserving project-specific differences and the existing detection qualification."
+            description="The internship approach connects lab setup, system understanding, security validation, improvements and documentation. Detection work is included where relevant to the project."
           />
 
           <ol

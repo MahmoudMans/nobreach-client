@@ -121,7 +121,11 @@ test(
 
     await expect(
       page.getByText(
-        /Contributor names are intentionally omitted/i
+        "Contributor names are published only with permission.",
+        {
+          exact:
+            true
+        }
       )
     ).toBeVisible();
 

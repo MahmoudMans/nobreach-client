@@ -448,7 +448,7 @@ export const internshipMethod = [
 ] as const;
 
 export const internshipPublicNote =
-  "The projects shown here describe educational and internal laboratory work. Security testing is performed only in authorized, isolated environments using synthetic or deliberately vulnerable systems. No confidential client systems, credentials or private assessment data are published.";
+  "These projects describe educational and internal laboratory work. Testing takes place only in authorized, isolated environments using synthetic or deliberately vulnerable systems, separate from confidential client and production environments. No confidential client systems, credentials or private assessment data are published.";
 
 export const internshipContributorNote =
-  "Contributor names are intentionally omitted from this public showcase unless publication permission has been provided. The focus of this page is the technical work, learning process and project outputs.";
+  "Contributor names are published only with permission.";

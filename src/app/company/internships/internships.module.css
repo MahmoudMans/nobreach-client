@@ -1748,3 +1748,610 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_INTERNSHIPS_REFINEMENT_V23
+
+   Focused acceptance refinement:
+   - preserve V22 architecture
+   - compact publication scope
+   - tighten title/summary grouping
+   - align metadata to project copy
+   - make title + disclosure one control
+   - give the method grid continuous rules
+   - reduce cumulative section-boundary spacing
+   ========================================================================== */
+
+
+/* BOUNDARY RHYTHM ---------------------------------------------------- */
+
+
+.hero {
+  padding:
+    52px
+    0
+    46px;
+}
+
+
+.projectsSection {
+  padding:
+    46px
+    0;
+}
+
+
+.methodSection {
+  padding:
+    46px
+    0
+    20px;
+}
+
+
+.cta {
+  padding:
+    0
+    0
+    22px;
+}
+
+
+.ctaLayout {
+  padding:
+    0
+    0
+    20px;
+
+  border-top:
+    0;
+}
+
+
+/* PUBLICATION SCOPE -------------------------------------------------- */
+
+
+.showcaseNotice {
+  display:
+    block;
+
+  margin-bottom:
+    24px;
+
+  padding:
+    22px
+    24px;
+
+  border:
+    1px
+    solid
+    var(
+      --intern-border
+    );
+
+  border-radius:
+    14px;
+
+  background:
+    var(
+      --intern-raised
+    );
+}
+
+
+.noticeTitle {
+  margin:
+    0;
+
+  color:
+    var(
+      --intern-text
+    );
+
+  font-size:
+    1.15rem;
+
+  font-weight:
+    600;
+
+  letter-spacing:
+    -0.025em;
+}
+
+
+.noticeCopy {
+  display:
+    grid;
+
+  max-width:
+    96ch;
+
+  gap:
+    10px;
+
+  margin-top:
+    12px;
+}
+
+
+.noticeCopy p {
+  margin:
+    0;
+
+  color:
+    var(
+      --intern-secondary
+    );
+
+  font-size:
+    0.92rem;
+
+  line-height:
+    1.6;
+}
+
+
+.projectInstruction {
+  margin-bottom:
+    16px;
+}
+
+
+/* PROJECT GROUPING --------------------------------------------------- */
+
+
+.projectRowLayout {
+  padding:
+    26px
+    16px;
+}
+
+
+.projectHeadingRow {
+  display:
+    block;
+
+  margin-top:
+    8px;
+}
+
+
+.projectTitle {
+  margin:
+    0;
+
+  font-size:
+    inherit;
+
+  line-height:
+    inherit;
+}
+
+
+.projectToggle {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    auto;
+
+  width:
+    100%;
+
+  min-width:
+    0;
+
+  min-height:
+    44px;
+
+  gap:
+    24px;
+
+  align-items:
+    center;
+
+  justify-content:
+    initial;
+
+  padding:
+    0;
+
+  border:
+    0;
+
+  border-radius:
+    0;
+
+  background:
+    transparent;
+
+  text-align:
+    left;
+}
+
+
+.projectToggle:hover {
+  border-color:
+    transparent;
+
+  background:
+    transparent;
+}
+
+
+.projectToggleTitle {
+  min-width:
+    0;
+
+  color:
+    var(
+      --intern-text
+    );
+
+  font-family:
+    var(
+      --font-company-display,
+      var(--font-geist-sans)
+    ),
+    sans-serif;
+
+  font-size:
+    clamp(
+      1.35rem,
+      2.1vw,
+      1.55rem
+    );
+
+  font-weight:
+    600;
+
+  letter-spacing:
+    -0.03em;
+
+  line-height:
+    1.25;
+}
+
+
+.projectToggleAction {
+  display:
+    inline-flex;
+
+  min-height:
+    44px;
+
+  align-items:
+    center;
+
+  justify-content:
+    flex-end;
+
+  gap:
+    10px;
+
+  color:
+    var(
+      --intern-cyan
+    );
+
+  font-family:
+    var(
+      --font-company-body,
+      var(--font-geist-sans)
+    ),
+    sans-serif;
+
+  font-size:
+    0.84rem;
+
+  font-weight:
+    650;
+
+  white-space:
+    nowrap;
+}
+
+
+.projectSummary {
+  max-width:
+    74ch;
+
+  margin:
+    12px
+    0
+    0;
+}
+
+
+.projectTechnologies {
+  width:
+    100%;
+
+  margin:
+    14px
+    0
+    0;
+
+  padding:
+    0;
+
+  padding-inline-start:
+    0;
+
+  margin-inline-start:
+    0;
+
+  gap:
+    8px;
+}
+
+
+:global(#main-content)
+.projectTechnologies {
+  margin-left:
+    0;
+
+  padding-left:
+    0;
+}
+
+
+:global(#main-content)
+.projectTechnologies
+li {
+  margin:
+    0;
+}
+
+
+:global(#main-content)
+.projectTechnologies
+li
++
+li {
+  margin-top:
+    0;
+}
+
+
+/* EXPANDED DETAILS --------------------------------------------------- */
+
+
+.projectDetails {
+  margin-top:
+    -2px;
+}
+
+
+.detailGroup h4 {
+  color:
+    var(
+      --intern-purple
+    );
+}
+
+
+:global(#main-content)
+.detailGroup
+li
++
+li {
+  margin-top:
+    0;
+}
+
+
+/* METHOD GRID -------------------------------------------------------- */
+
+
+.methodGrid {
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    1px;
+
+  margin:
+    0;
+
+  padding:
+    1px;
+
+  border:
+    0;
+
+  background:
+    var(
+      --intern-border
+    );
+}
+
+
+.methodStep {
+  min-height:
+    0;
+
+  margin:
+    0;
+
+  padding:
+    28px;
+
+  border:
+    0;
+
+  background:
+    var(
+      --intern-section
+    );
+}
+
+
+:global(#main-content)
+.methodGrid
+li
++
+li {
+  margin-top:
+    0;
+}
+
+
+.methodStep h3 {
+  margin:
+    16px
+    0
+    0;
+}
+
+
+.methodStep p {
+  margin:
+    12px
+    0
+    0;
+}
+
+
+/* RESPONSIVE RECOMPOSITION ------------------------------------------ */
+
+
+@media (max-width: 1024px) {
+
+  .methodGrid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+}
+
+
+@media (max-width: 768px) {
+
+  .hero {
+    padding:
+      42px
+      0
+      34px;
+  }
+
+
+  .projectsSection {
+    padding:
+      34px
+      0;
+  }
+
+
+  .methodSection {
+    padding:
+      34px
+      0
+      16px;
+  }
+
+
+  .showcaseNotice {
+    padding:
+      20px;
+  }
+
+
+  .projectRowLayout {
+    padding:
+      24px
+      0;
+  }
+
+
+  .projectToggle {
+    gap:
+      16px;
+  }
+
+
+  .cta {
+    padding-top:
+      0;
+  }
+
+}
+
+
+@media (max-width: 520px) {
+
+  .projectToggle {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      8px;
+  }
+
+
+  .projectToggleAction {
+    justify-self:
+      start;
+
+    justify-content:
+      flex-start;
+  }
+
+
+  .projectSummary {
+    margin-top:
+      12px;
+  }
+
+
+  .methodGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .methodStep {
+    padding:
+      24px;
+  }
+
+}
+
+
+/* MOTION ------------------------------------------------------------- */
+
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .projectToggle {
+    transition:
+      none;
+  }
+
+}

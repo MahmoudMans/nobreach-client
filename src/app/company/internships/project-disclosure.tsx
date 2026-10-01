@@ -89,6 +89,7 @@ export function InternshipProjectDisclosure({
           }
         </span>
 
+
         <div
           className={
             styles.projectContent
@@ -104,6 +105,7 @@ export function InternshipProjectDisclosure({
             }
           </p>
 
+
           <div
             className={
               styles.projectHeadingRow
@@ -114,72 +116,88 @@ export function InternshipProjectDisclosure({
                 styles.projectTitle
               }
             >
-              {
-                title
-              }
-            </h3>
-
-            <button
-              id={
-                triggerId
-              }
-              className={
-                styles.projectToggle
-              }
-              type="button"
-              aria-expanded={
-                open
-              }
-              aria-controls={
-                panelId
-              }
-              onClick={
-                () =>
-                  setOpen(
-                    current =>
-                      !current
-                  )
-              }
-            >
-              <span>
-                {
-                  open
-                    ? "Hide details"
-                    : "View details"
+              <button
+                id={
+                  triggerId
                 }
-              </span>
-
-              <span
                 className={
-                  styles.projectToggleSymbol
+                  styles.projectToggle
                 }
-                aria-hidden="true"
-              >
-                {
+                type="button"
+                aria-expanded={
                   open
-                    ? "−"
-                    : "+"
                 }
-              </span>
-            </button>
+                aria-controls={
+                  panelId
+                }
+                onClick={
+                  () =>
+                    setOpen(
+                      current =>
+                        !current
+                    )
+                }
+              >
+                <span
+                  className={
+                    styles.projectToggleTitle
+                  }
+                >
+                  {
+                    title
+                  }
+                </span>
+
+                <span
+                  className={
+                    styles.projectToggleAction
+                  }
+                >
+                  <span>
+                    {
+                      open
+                        ? "Hide details"
+                        : "View details"
+                    }
+                  </span>
+
+                  <span
+                    className={
+                      styles.projectToggleSymbol
+                    }
+                    aria-hidden="true"
+                  >
+                    {
+                      open
+                        ? "−"
+                        : "+"
+                    }
+                  </span>
+                </span>
+              </button>
+            </h3>
           </div>
+
 
           <p
             className={
               styles.projectSummary
             }
+            data-project-summary="true"
           >
             {
               summary
             }
           </p>
 
+
           <ul
             className={
               styles.projectTechnologies
             }
+            data-project-metadata="true"
             aria-label={
-              `${title} technologies`
+              `${title} technologies and technical topics`
             }
           >
             {
@@ -203,6 +221,7 @@ export function InternshipProjectDisclosure({
         </div>
       </div>
 
+
       <div
         id={
           panelId
@@ -223,11 +242,7 @@ export function InternshipProjectDisclosure({
             styles.detailGroup
           }
         >
-          <h4
-            id={
-              `${panelId}-work`
-            }
-          >
+          <h4>
             Work performed
           </h4>
 
@@ -252,16 +267,13 @@ export function InternshipProjectDisclosure({
           </ul>
         </div>
 
+
         <div
           className={
             styles.detailGroup
           }
         >
-          <h4
-            id={
-              `${panelId}-outputs`
-            }
-          >
+          <h4>
             Technical outputs
           </h4>
 

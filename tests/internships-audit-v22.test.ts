@@ -9,8 +9,10 @@ import {
 } from "vitest";
 
 import {
+  internshipContributorNote,
   internshipMethod,
-  internshipProjects
+  internshipProjects,
+  internshipPublicNote
 } from "@/content/internships";
 
 
@@ -36,11 +38,11 @@ const css =
 
 
 describe(
-  "internships audit v22",
+  "internships V22 + focused V23 refinement",
   () => {
 
     it(
-      "preserves V21 compatibility and activates V22 audit authority",
+      "preserves V21 and V22 while activating the focused refinement",
       () => {
 
         expect(
@@ -55,12 +57,18 @@ describe(
           'data-internship-audit="v22"'
         );
 
+        expect(
+          page
+        ).toContain(
+          'data-internship-refinement="v23"'
+        );
+
       }
     );
 
 
     it(
-      "preserves all eight data-driven project records",
+      "preserves all eight approved project records",
       () => {
 
         expect(
@@ -75,69 +83,36 @@ describe(
           "internshipProjects.map"
         );
 
-        expect(
-          page
-        ).toContain(
-          "InternshipProjectDisclosure"
-        );
-
       }
     );
 
 
     it(
-      "removes repeated hero and method representations",
-      () => {
-
-        for (
-          const retired
-          of
-          [
-            "heroSystem",
-            "heroMetrics",
-            "methodSequence",
-            "One continuous technical loop."
-          ]
-        ) {
-
-          expect(
-            page
-          ).not.toContain(
-            retired
-          );
-
-        }
-
-      }
-    );
-
-
-    it(
-      "moves the publication boundary beside the project catalogue",
+      "publishes visitor-facing method copy rather than implementation commentary",
       () => {
 
         expect(
           page
         ).toContain(
-          "About this showcase"
+          "The internship approach connects lab setup, system understanding, security validation, improvements and documentation."
         );
 
         expect(
           page
         ).toContain(
-          "internshipPublicNote"
-        );
-
-        expect(
-          page
-        ).toContain(
-          "internshipContributorNote"
+          "Detection work is included where relevant to the project."
         );
 
         expect(
           page
         ).not.toContain(
-          'data-company-content-section="public-showcase"'
+          "preserving project-specific differences"
+        );
+
+        expect(
+          page
+        ).not.toContain(
+          "existing detection qualification"
         );
 
       }
@@ -145,31 +120,94 @@ describe(
 
 
     it(
-      "uses an explicit accessible disclosure contract",
+      "keeps the complete publication safeguards in compact copy",
       () => {
 
-        for (
-          const token
-          of
-          [
-            '"use client"',
-            "aria-expanded",
-            "aria-controls",
-            "View details",
-            "Hide details",
-            'role="region"',
-            "Work performed",
-            "Technical outputs"
-          ]
-        ) {
+        expect(
+          internshipPublicNote
+        ).toContain(
+          "authorized, isolated environments"
+        );
 
-          expect(
-            disclosure
-          ).toContain(
-            token
-          );
+        expect(
+          internshipPublicNote
+        ).toContain(
+          "synthetic or deliberately vulnerable systems"
+        );
 
-        }
+        expect(
+          internshipPublicNote
+        ).toContain(
+          "separate from confidential client and production environments"
+        );
+
+        expect(
+          internshipPublicNote
+        ).toContain(
+          "No confidential client systems, credentials or private assessment data are published."
+        );
+
+        expect(
+          internshipContributorNote
+        ).toBe(
+          "Contributor names are published only with permission."
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Publication scope"
+        );
+
+        expect(
+          page
+        ).not.toContain(
+          "About this showcase"
+        );
+
+      }
+    );
+
+
+    it(
+      "makes project title and detail action one disclosure control",
+      () => {
+
+        expect(
+          disclosure
+        ).toContain(
+          "<h3"
+        );
+
+        expect(
+          disclosure
+        ).toContain(
+          "<button"
+        );
+
+        expect(
+          disclosure
+        ).toContain(
+          "projectToggleTitle"
+        );
+
+        expect(
+          disclosure
+        ).toContain(
+          "projectToggleAction"
+        );
+
+        expect(
+          disclosure
+        ).toContain(
+          "aria-expanded"
+        );
+
+        expect(
+          disclosure
+        ).toContain(
+          "aria-controls"
+        );
 
         expect(
           disclosure.match(
@@ -186,7 +224,61 @@ describe(
 
 
     it(
-      "keeps the authoritative six-stage method",
+      "keeps summary and metadata outside the disclosure button",
+      () => {
+
+        const buttonEnd =
+          disclosure.indexOf(
+            "</button>"
+          );
+
+        const summary =
+          disclosure.indexOf(
+            "styles.projectSummary"
+          );
+
+        const metadata =
+          disclosure.indexOf(
+            "styles.projectTechnologies"
+          );
+
+
+        expect(
+          buttonEnd
+        ).toBeGreaterThan(
+          0
+        );
+
+        expect(
+          summary
+        ).toBeGreaterThan(
+          buttonEnd
+        );
+
+        expect(
+          metadata
+        ).toBeGreaterThan(
+          summary
+        );
+
+        expect(
+          disclosure
+        ).toContain(
+          'data-project-summary="true"'
+        );
+
+        expect(
+          disclosure
+        ).toContain(
+          'data-project-metadata="true"'
+        );
+
+      }
+    );
+
+
+    it(
+      "keeps the six-stage method and its detection qualification",
       () => {
 
         expect(
@@ -215,46 +307,37 @@ describe(
 
 
     it(
-      "uses one consolidated ending",
+      "adds local rules for aligned metadata and continuous method geometry",
       () => {
 
         for (
-          const token
+          const selector
           of
           [
-            "Explore careers and training.",
-            "View careers",
-            "View training",
-            "Contact No Breach"
+            ".projectTechnologies",
+            ".projectToggleTitle",
+            ".projectToggleAction",
+            ".methodGrid",
+            ".methodStep",
+            ".projectsSection",
+            ".methodSection"
           ]
         ) {
 
           expect(
-            page
+            css
           ).toContain(
-            token
+            selector
           );
 
         }
-
-        expect(
-          page
-        ).not.toContain(
-          "destinationRail"
-        );
-
-        expect(
-          page
-        ).not.toContain(
-          "Training Hub"
-        );
 
       }
     );
 
 
     it(
-      "retains compatibility markers and V22 styling authority",
+      "keeps all compatibility markers and adds the refinement marker once",
       () => {
 
         for (
@@ -268,7 +351,8 @@ describe(
             "NB_NAV_HERO_RHYTHM_V1",
             "NB_COMPANY_INTERNSHIPS_DESIGN_V14",
             "NB_INTERNSHIPS_DESIGN_V21",
-            "NB_INTERNSHIPS_AUDIT_V22"
+            "NB_INTERNSHIPS_AUDIT_V22",
+            "NB_INTERNSHIPS_REFINEMENT_V23"
           ]
         ) {
 
