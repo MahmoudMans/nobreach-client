@@ -4,55 +4,22 @@ import {
 } from "@playwright/test";
 
 
-const route =
-  "/training";
-
-
-const programRoutes = [
-  "/training/red-team-foundations",
-  "/training/web-exploitation-techniques",
-  "/training/ai-security-foundations"
-] as const;
-
-
 test(
-  "Academy renders the canonical continuous landing page",
+  "Training Hub V27 opens as a public program comparison experience",
   async ({
     page
   }) => {
 
-    await page.setViewportSize({
-      width:
-        1440,
-
-      height:
-        900
-    });
-
-
     await page.goto(
-      route
+      "/training"
     );
 
 
-    const root =
+    await expect(
       page.locator(
-        '[data-training-academy="continuous-v1"]'
-      );
-
-
-    await expect(
-      root
-    ).toBeVisible();
-
-
-    await expect(
-      root.locator(
-        ":scope > section[data-training-section]"
+        '[data-training-hub-audit="v27"]'
       )
-    ).toHaveCount(
-      8
-    );
+    ).toBeVisible();
 
 
     await expect(
@@ -61,73 +28,31 @@ test(
         {
           level:
             1,
-
           name:
-            /learn cybersecurity by doing cybersecurity/i
+            "Learn cybersecurity by doing cybersecurity."
         }
       )
-    ).toHaveCount(
-      1
-    );
-
-  }
-);
-
-
-test(
-  "Academy does not create a second navbar",
-  async ({
-    page
-  }) => {
-
-    await page.goto(
-      route
-    );
+    ).toBeVisible();
 
 
     await expect(
-      page.locator(
-        '[data-training-academy="continuous-v1"] nav'
+      page.getByText(
+        /Compare their technical focus, stated level, learning format and intended outcomes/i
       )
-    ).toHaveCount(
-      0
-    );
-
-  }
-);
-
-
-test(
-  "Academy exposes all three canonical public programs",
-  async ({
-    page
-  }) => {
-
-    await page.goto(
-      route
-    );
-
-
-    for (
-      const href
-      of programRoutes
-    ) {
-
-      await expect(
-        page.locator(
-          `a[href="${href}"]`
-        ).first()
-      ).toBeVisible();
-
-    }
+    ).toBeVisible();
 
 
     await expect(
-      page.locator(
-        "[data-training-program]"
+      page.getByRole(
+        "link",
+        {
+          name:
+            /Explore the Security Training Service/
+        }
       )
-    ).toHaveCount(
-      3
+    ).toHaveAttribute(
+      "href",
+      "/services/security-training"
     );
 
   }
@@ -135,66 +60,370 @@ test(
 
 
 test(
-  "Academy exposes valid public program statuses",
+  "Training Hub V27 exposes one three-program comparison catalogue",
   async ({
     page
   }) => {
 
     await page.goto(
-      route
+      "/training"
     );
 
 
     const cards =
       page.locator(
-        "[data-training-program]"
+        '[data-training-program-card]'
       );
 
 
-    const count =
-      await cards.count();
-
-
-    expect(
-      count
-    ).toBe(
+    await expect(
+      cards
+    ).toHaveCount(
       3
     );
 
 
+    const titles =
+      await cards
+        .locator(
+          "h3"
+        )
+        .allTextContents();
+
+
+    expect(
+      titles
+    ).toEqual([
+      "Red Team Foundations",
+      "Web Exploitation Techniques",
+      "AI Security Foundations"
+    ]);
+
+  }
+);
+
+
+test(
+  "each program card exposes comparable metadata learning aims and actions",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/training"
+    );
+
+
+    const cards =
+      page.locator(
+        '[data-training-program-card]'
+      );
+
+
     for (
       let index = 0;
-      index < count;
+      index < 3;
       index += 1
     ) {
 
-      const status =
-        cards
-          .nth(
-            index
-          )
-          .locator(
-            "[data-status]"
-          );
-
-
-      await expect(
-        status
-      ).toBeVisible();
-
-
-      const value =
-        await status.getAttribute(
-          "data-status"
+      const card =
+        cards.nth(
+          index
         );
 
 
-      expect([
-        "available",
-        "upcoming",
-        "archived"
-      ]).toContain(
-        value
+      for (
+        const label
+        of
+        [
+          "Level",
+          "Format",
+          "Sessions",
+          "Modules",
+          "Learning aims"
+        ]
+      ) {
+
+        await expect(
+          card.getByText(
+            label,
+            {
+              exact:
+                true
+            }
+          )
+        ).toBeVisible();
+
+      }
+
+
+
+      await expect(
+        card.getByRole(
+          "link",
+          {
+            name:
+              /Explore program/
+          }
+        )
+      ).toBeVisible();
+
+
+      await expect(
+        card.getByRole(
+          "link",
+          {
+            name:
+              /Register now/
+          }
+        )
+      ).toBeVisible();
+
+    }
+
+
+    await expect(
+      cards
+        .nth(
+          1
+        )
+        .getByText(
+          "Not specified",
+          {
+            exact:
+              true
+          }
+        )
+    ).toBeVisible();
+
+  }
+);
+
+
+test(
+  "Training Hub V27 retains unique curriculum previews",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/training"
+    );
+
+
+    const curriculum =
+      page.locator(
+        '[data-training-section="curriculum"]'
+      );
+
+
+    await expect(
+      curriculum.getByRole(
+        "heading",
+        {
+          level:
+            2,
+          name:
+            "Preview the technical content."
+        }
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      curriculum.getByText(
+        /Selected modules · 3 of 8 shown/i
+      )
+    ).toBeVisible();
+
+
+    for (
+      const title
+      of
+      [
+        "Red Team Foundations",
+        "Web Exploitation Techniques",
+        "AI Security Foundations"
+      ]
+    ) {
+
+      await expect(
+        curriculum.getByRole(
+          "heading",
+          {
+            level:
+              3,
+            name:
+              title
+          }
+        )
+      ).toBeVisible();
+
+    }
+
+  }
+);
+
+
+test(
+  "Training Hub V27 keeps one four-stage learning method",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/training"
+    );
+
+
+    const method =
+      page.locator(
+        '[data-training-ui="learning-method"]'
+      );
+
+
+    await expect(
+      method
+    ).toBeVisible();
+
+
+    await expect(
+      method.getByRole(
+        "heading",
+        {
+          level:
+            3,
+          name:
+            "How learning progresses."
+        }
+      )
+    ).toBeVisible();
+
+
+    const steps =
+      method.locator(
+        "ol > li"
+      );
+
+
+    await expect(
+      steps
+    ).toHaveCount(
+      4
+    );
+
+
+    for (
+      const title
+      of
+      [
+        "Understand",
+        "Practice",
+        "Investigate",
+        "Apply"
+      ]
+    ) {
+
+      await expect(
+        method.getByRole(
+          "heading",
+          {
+            level:
+              4,
+            name:
+              title
+          }
+        )
+      ).toBeVisible();
+
+    }
+
+  }
+);
+
+
+test(
+  "Training Hub V27 keeps FAQ disclosures and organization distinction",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/training"
+    );
+
+
+    const rows =
+      page.locator(
+        '[data-training-faq]'
+      );
+
+
+    await expect(
+      rows
+    ).toHaveCount(
+      4
+    );
+
+
+    const organizationQuestion =
+      rows.filter({
+        hasText:
+          "Is this the same as training for organizations?"
+      });
+
+
+    await organizationQuestion
+      .locator(
+        "summary"
+      )
+      .click();
+
+
+    await expect(
+      organizationQuestion.getByRole(
+        "link",
+        {
+          name:
+            /Explore Security Training Service/
+        }
+      )
+    ).toHaveAttribute(
+      "href",
+      "/services/security-training"
+    );
+
+  }
+);
+
+
+test(
+  "Training Hub V27 removes duplicate public program presentations",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/training"
+    );
+
+
+    for (
+      const removed
+      of
+      [
+        "paths",
+        "courses",
+        "outcomes"
+      ]
+    ) {
+
+      await expect(
+        page.locator(
+          `[data-training-section="${removed}"]`
+        )
+      ).toHaveCount(
+        0
       );
 
     }
@@ -204,200 +433,138 @@ test(
 
 
 test(
-  "Academy uses editorial learning paths rather than another site menu",
+  "Training Hub V27 keeps one purposeful section sequence",
   async ({
     page
   }) => {
 
     await page.goto(
-      route
+      "/training"
     );
 
 
-    const paths =
-      page.locator(
-        '[data-training-section="paths"]'
-      );
+    const order =
+      await page
+        .locator(
+          '[data-training-section]'
+        )
+        .evaluateAll(
+          elements =>
+            elements.map(
+              element =>
+                element.getAttribute(
+                  "data-training-section"
+                )
+            )
+        );
 
 
-    await expect(
-      paths
-    ).toBeVisible();
-
-
-    await expect(
-      paths.getByRole(
-        "link"
-      )
-    ).toHaveCount(
-      3
-    );
-
-
-    await expect(
-      paths.locator(
-        "nav"
-      )
-    ).toHaveCount(
-      0
-    );
-
-  }
-);
-
-
-test(
-  "Academy presents asymmetric hands-on practice",
-  async ({
-    page
-  }) => {
-
-    await page.goto(
-      route
-    );
-
-
-    const practice =
-      page.locator(
-        '[data-training-section="practice"]'
-      );
-
-
-    await expect(
-      practice
-    ).toBeVisible();
-
-
-    await expect(
-      practice.getByText(
-        "FEATURED PRACTICE"
-      )
-    ).toBeVisible();
-
-
-    await expect(
-      practice.locator(
-        "ol li"
-      ).first()
-    ).toBeVisible();
-
-  }
-);
-
-
-test(
-  "Academy presents learning method and canonical outcomes",
-  async ({
-    page
-  }) => {
-
-    await page.goto(
-      route
-    );
-
-
-    const method =
-      page.locator(
-        '[data-training-section="method"]'
-      );
-
-
-    await expect(
-      method.locator(
-        "ol > li"
-      )
-    ).toHaveCount(
-      4
-    );
-
-
-    const outcomes =
-      page.locator(
-        '[data-training-section="outcomes"]'
-      );
-
-
-    await expect(
-      outcomes.locator(
-        "article"
-      )
-    ).toHaveCount(
-      3
-    );
-
-  }
-);
-
-
-test(
-  "Academy FAQ stays quiet and accessible",
-  async ({
-    page
-  }) => {
-
-    await page.goto(
-      route
-    );
-
-
-    const faq =
-      page.locator(
-        '[data-training-section="faq"]'
-      );
-
-
-    await expect(
-      faq.locator(
-        "details"
-      )
-    ).toHaveCount(
-      4
-    );
-
-
-    const first =
-      faq.locator(
-        "details"
-      ).first();
-
-
-    await first.locator(
-      "summary"
-    ).click();
-
-
-    await expect(
-      first.locator(
-        "p"
-      )
-    ).toBeVisible();
-
-  }
-);
-
-
-test(
-  "Academy CTA is the final page section",
-  async ({
-    page
-  }) => {
-
-    await page.goto(
-      route
-    );
-
-
-    const sections =
-      page.locator(
-        '[data-training-academy="continuous-v1"] > section[data-training-section]'
-      );
-
-
-    await expect(
-      sections.last()
-    ).toHaveAttribute(
-      "data-training-section",
+    expect(
+      order
+    ).toEqual([
+      "intro",
+      "programs",
+      "curriculum",
+      "faq",
       "cta"
+    ]);
+
+  }
+);
+
+
+test(
+  "Training Hub V27 uses one shared outer frame",
+  async ({
+    page
+  }) => {
+
+    await page.setViewportSize({
+      width:
+        1440,
+      height:
+        900
+    });
+
+
+    await page.goto(
+      "/training"
+    );
+
+
+    const frames =
+      page.locator(
+        '[data-training-frame]'
+      );
+
+
+    await expect(
+      frames
+    ).toHaveCount(
+      5
+    );
+
+
+    const geometry =
+      await frames.evaluateAll(
+        elements =>
+          elements.map(
+            element => {
+
+              const rect =
+                element.getBoundingClientRect();
+
+
+              return {
+                x:
+                  rect.x,
+
+                width:
+                  rect.width
+              };
+
+            }
+          )
+      );
+
+
+    const xs =
+      geometry.map(
+        item =>
+          item.x
+      );
+
+
+    const widths =
+      geometry.map(
+        item =>
+          item.width
+      );
+
+
+    expect(
+      Math.max(
+        ...xs
+      )
+      -
+      Math.min(
+        ...xs
+      )
+    ).toBeLessThanOrEqual(
+      1
+    );
+
+
+    expect(
+      Math.max(
+        ...widths
+      )
+      -
+      Math.min(
+        ...widths
+      )
+    ).toBeLessThanOrEqual(
+      1
     );
 
   }
@@ -406,62 +573,61 @@ test(
 
 for (
   const viewport
-  of [
+  of
+  [
     {
-      name:
-        "desktop",
-
+      label:
+        "320",
       width:
-        1440,
-
+        320,
       height:
-        900
+        800
     },
     {
-      name:
-        "compact",
-
-      width:
-        1180,
-
-      height:
-        820
-    },
-    {
-      name:
-        "tablet",
-
-      width:
-        820,
-
-      height:
-        1180
-    },
-    {
-      name:
-        "mobile",
-
+      label:
+        "390",
       width:
         390,
-
       height:
         844
     },
     {
-      name:
-        "narrow",
-
+      label:
+        "768",
       width:
-        360,
-
+        768,
+      height:
+        1024
+    },
+    {
+      label:
+        "1024",
+      width:
+        1024,
+      height:
+        768
+    },
+    {
+      label:
+        "1280",
+      width:
+        1280,
       height:
         800
+    },
+    {
+      label:
+        "1440",
+      width:
+        1440,
+      height:
+        900
     }
   ]
 ) {
 
   test(
-    `Academy remains contained at ${viewport.name}`,
+    `Training Hub V27 remains contained at ${viewport.label}`,
     async ({
       page
     }) => {
@@ -469,32 +635,24 @@ for (
       await page.setViewportSize({
         width:
           viewport.width,
-
         height:
           viewport.height
       });
 
 
       await page.goto(
-        route
+        "/training"
       );
 
 
       await expect(
-        page.getByRole(
-          "heading",
-          {
-            level:
-              1,
-
-            name:
-              /learn cybersecurity by doing cybersecurity/i
-          }
+        page.locator(
+          '[data-training-hub-audit="v27"]'
         )
       ).toBeVisible();
 
 
-      const geometry =
+      const dimensions =
         await page.evaluate(
           () => ({
             scrollWidth:
@@ -511,9 +669,9 @@ for (
 
 
       expect(
-        geometry.scrollWidth
+        dimensions.scrollWidth
       ).toBeLessThanOrEqual(
-        geometry.clientWidth
+        dimensions.clientWidth
         +
         1
       );

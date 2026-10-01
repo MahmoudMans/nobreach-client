@@ -1,7 +1,3 @@
-import type {
-  Metadata
-} from "next";
-
 import Link from "next/link";
 
 import {
@@ -9,21 +5,32 @@ import {
 } from "@/components/layout/container";
 
 import {
+  TrainingRegistrationAction
+} from "./course-registration-links";
+
+import {
   trainingPrograms
 } from "@/content/training";
+
+import {
+  createMetadata
+} from "@/lib/seo";
 
 import styles from "./training.module.css";
 
 
-export const metadata:
-  Metadata = {
+export const metadata =
+  createMetadata({
 
-  title:
-    "Training | No Breach",
+    title:
+      "Training | No Breach",
 
-  description:
-    "Practical No Breach cybersecurity training across offensive security, web exploitation and AI security."
-};
+    description:
+      "Compare public No Breach cybersecurity learning programs across offensive security, web security and AI security.",
+
+    path:
+      "/training"
+  });
 
 
 const statusLabels = {
@@ -38,9 +45,9 @@ const statusLabels = {
 } as const;
 
 
-const method = [
+const learningFlow = [
   {
-    index:
+    number:
       "01",
 
     title:
@@ -50,7 +57,7 @@ const method = [
       "Build a clear model of the system, security problem and relevant trust boundaries."
   },
   {
-    index:
+    number:
       "02",
 
     title:
@@ -60,7 +67,7 @@ const method = [
       "Work through focused technical modules instead of learning only through explanation."
   },
   {
-    index:
+    number:
       "03",
 
     title:
@@ -70,7 +77,7 @@ const method = [
       "Reason through practical security problems and connect individual weaknesses to the wider system."
   },
   {
-    index:
+    number:
       "04",
 
     title:
@@ -82,13 +89,13 @@ const method = [
 ] as const;
 
 
-const faqItems = [
+const faqs = [
   {
     question:
       "How do I choose the right program?",
 
     answer:
-      "Each program publishes its category, level, format, duration and current status. Open the program detail to compare objectives, curriculum, prerequisites and expected outcomes."
+      "Compare each program's category, stated level, learning format, session information, curriculum, prerequisites and intended outcomes. Open the program detail before choosing, and contact No Breach if information you need is unclear."
   },
   {
     question:
@@ -109,33 +116,32 @@ const faqItems = [
       "Is this the same as training for organizations?",
 
     answer:
-      "No. This Academy page focuses on public learner programs. Organization and team training is presented separately through the Security Training service."
+      "No. This page presents public learner programs. Organization and team training is presented separately through the Security Training service."
   }
 ] as const;
 
 
-const primaryProgram =
-  trainingPrograms.find(
-    (
-      program
-    ) =>
-      program.status
-      ===
-      "available"
-  )
-  ??
+const featuredProgram =
   trainingPrograms[0];
 
 
-const featuredPractice =
-  trainingPrograms[0];
-
-
-const supportingPractice =
+const supportingPrograms =
   trainingPrograms.slice(
-    1,
-    3
+    1
   );
+
+
+function Arrow() {
+
+  return (
+    <span
+      aria-hidden="true"
+    >
+      →
+    </span>
+  );
+
+}
 
 
 export default function TrainingPage() {
@@ -146,684 +152,223 @@ export default function TrainingPage() {
         styles.page
       }
       data-training-academy="continuous-v1"
+      data-training-hub-audit="v27"
     >
+      {/* ================================================================
+          TRAINING HUB INTRODUCTION
+         ================================================================ */}
+
       <section
         className={
-          styles.pageIntro
+          styles.hero
         }
         data-training-section="intro"
       >
-        <div
-          className={
-            styles.introDecoration
-          }
-          aria-hidden="true"
-        />
-
-
-        <Container size="wide">
+        <Container>
           <div
             className={
-              styles.introGrid
+              styles.frame
             }
+            data-training-frame="intro"
           >
+            <p
+              className={
+                styles.eyebrow
+              }
+            >
+              No Breach Academy · Training Hub
+            </p>
+
+
+            <h1>
+              Learn cybersecurity by doing cybersecurity.
+            </h1>
+
+
+            <p
+              className={
+                styles.heroLead
+              }
+            >
+              Explore public learning programs in offensive security, web
+              security and AI security. Compare their technical focus, stated
+              level, learning format and intended outcomes.
+            </p>
+
+
             <div
               className={
-                styles.introCopy
+                styles.heroActions
               }
             >
-              <p
+              <a
+                href="#programs"
                 className={
-                  styles.eyebrow
+                  styles.primaryAction
                 }
               >
-                NOBREACH / ACADEMY
-              </p>
-
-
-              <h1>
-                Learn cybersecurity
-                by doing cybersecurity.
-              </h1>
-
-
-              <p
-                className={
-                  styles.introLead
-                }
-              >
-                Practical learning paths built around real security
-                concepts, focused technical modules and explicit
-                outcomes.
-              </p>
-
-
-              <div
-                className={
-                  styles.introActions
-                }
-              >
-                <a
-                  className={
-                    styles.primaryButton
-                  }
-                  href="#programs"
-                >
-                  Explore programs
-
-                  <span
-                    aria-hidden="true"
-                  >
-                    ↓
-                  </span>
-                </a>
-
-
-                <Link
-                  className={
-                    styles.secondaryButton
-                  }
-                  href="/contact"
-                >
-                  Ask about training
-
-                  <span
-                    aria-hidden="true"
-                  >
-                    ↗
-                  </span>
-                </Link>
-              </div>
-
-
-              <p
-                className={
-                  styles.introMeta
-                }
-              >
-                {
-                  trainingPrograms.length
-                } public learning paths / hands-on security
-              </p>
-            </div>
-
-
-            <aside
-              className={
-                styles.learningSignal
-              }
-              aria-label="Academy learning model"
-            >
-              <div
-                className={
-                  styles.signalHeader
-                }
-              >
-                <span>
-                  NB / ACADEMY
-                </span>
-
-                <span>
-                  PRACTICE MODE
-                </span>
-              </div>
-
-
-              <div
-                className={
-                  styles.signalCore
-                }
-              >
-                <span>
-                  LEARN
-                </span>
-
-                <strong>
-                  DO
-                </strong>
-
-                <span>
-                  APPLY
-                </span>
-              </div>
-
-
-              <div
-                className={
-                  styles.signalFlow
-                }
-              >
-                <span>
-                  SYSTEM
-                </span>
-
-                <i />
-
-                <span>
-                  PROBLEM
-                </span>
-
-                <i />
-
-                <span>
-                  PRACTICE
-                </span>
-
-                <i />
-
-                <span>
-                  OUTCOME
-                </span>
-              </div>
-            </aside>
-          </div>
-        </Container>
-      </section>
-
-
-      <section
-        className={
-          styles.paths
-        }
-        data-training-section="paths"
-      >
-        <Container size="wide">
-          <header
-            className={
-              styles.sectionHeader
-            }
-          >
-            <div>
-              <p
-                className={
-                  styles.eyebrow
-                }
-              >
-                01 / LEARNING PATHS
-              </p>
-
-              <h2>
-                Choose the security
-                capability you want to build.
-              </h2>
-            </div>
-
-
-            <p>
-              Each path is connected to a real published NoBreach
-              program rather than a separate navigation system.
-            </p>
-          </header>
-
-
-          <div
-            className={
-              styles.pathRows
-            }
-          >
-            {
-              trainingPrograms.map(
-                (
-                  program,
-                  index
-                ) => (
-                  <Link
-                    className={
-                      styles.pathRow
-                    }
-                    href={
-                      `/training/${program.slug}`
-                    }
-                    key={
-                      program.slug
-                    }
-                  >
-                    <span
-                      className={
-                        styles.pathIndex
-                      }
-                    >
-                      {
-                        String(
-                          index
-                          +
-                          1
-                        ).padStart(
-                          2,
-                          "0"
-                        )
-                      }
-                    </span>
-
-
-                    <span
-                      className={
-                        styles.pathCategory
-                      }
-                    >
-                      {
-                        program.category
-                      }
-                    </span>
-
-
-                    <div>
-                      <strong>
-                        {
-                          program.title
-                        }
-                      </strong>
-
-                      <span>
-                        {
-                          program.level
-                        }
-                      </span>
-                    </div>
-
-
-                    <span
-                      className={
-                        styles.pathArrow
-                      }
-                      aria-hidden="true"
-                    >
-                      →
-                    </span>
-                  </Link>
-                )
-              )
-            }
-          </div>
-        </Container>
-      </section>
-
-
-      <section
-        id="programs"
-        className={
-          styles.programs
-        }
-        data-training-section="courses"
-      >
-        <Container size="wide">
-          <header
-            className={
-              styles.courseHeader
-            }
-          >
-            <div>
-              <p
-                className={
-                  styles.eyebrow
-                }
-              >
-                02 / FEATURED COURSES
-              </p>
-
-              <h2>
-                Current cybersecurity
-                learning range.
-              </h2>
-            </div>
-
-
-            <p>
-              Three public programs. One consistent course system.
-              Different domains, difficulty and technical focus.
-            </p>
-          </header>
-
-
-          <div
-            className={
-              styles.programGrid
-            }
-          >
-            {
-              trainingPrograms.map(
-                (
-                  program,
-                  index
-                ) => (
-                  <article
-                    className={
-                      styles.programCard
-                    }
-                    data-training-program
-                    key={
-                      program.slug
-                    }
-                  >
-                    <div
-                      className={
-                        styles.programTop
-                      }
-                    >
-                      <span
-                        className={
-                          styles.programNumber
-                        }
-                      >
-                        {
-                          String(
-                            index
-                            +
-                            1
-                          ).padStart(
-                            2,
-                            "0"
-                          )
-                        }
-                      </span>
-
-
-                      <span
-                        className={
-                          styles.status
-                        }
-                        data-status={
-                          program.status
-                        }
-                      >
-                        {
-                          statusLabels[
-                            program.status
-                          ]
-                        }
-                      </span>
-                    </div>
-
-
-                    <p
-                      className={
-                        styles.programCategory
-                      }
-                    >
-                      {
-                        program.category
-                      }
-                    </p>
-
-
-                    <h3>
-                      {
-                        program.title
-                      }
-                    </h3>
-
-
-                    <p
-                      className={
-                        styles.programSummary
-                      }
-                    >
-                      {
-                        program.summary
-                      }
-                    </p>
-
-
-                    <dl
-                      className={
-                        styles.programMeta
-                      }
-                    >
-                      <div>
-                        <dt>
-                          Level
-                        </dt>
-
-                        <dd>
-                          {
-                            program.level
-                          }
-                        </dd>
-                      </div>
-
-
-                      <div>
-                        <dt>
-                          Format
-                        </dt>
-
-                        <dd>
-                          {
-                            program.format
-                          }
-                        </dd>
-                      </div>
-
-
-                      {
-                        program.duration
-                        ?
-                          (
-                            <div>
-                              <dt>
-                                Duration
-                              </dt>
-
-                              <dd>
-                                {
-                                  program.duration
-                                }
-                              </dd>
-                            </div>
-                          )
-                        :
-                          null
-                      }
-                    </dl>
-
-
-                    <div
-                      className={
-                        styles.programFooter
-                      }
-                    >
-                      <span>
-                        {
-                          program.modules.length
-                        } modules
-                      </span>
-
-
-                      <Link
-                        href={
-                          `/training/${program.slug}`
-                        }
-                      >
-                        Explore program
-
-                        <span
-                          aria-hidden="true"
-                        >
-                          →
-                        </span>
-                      </Link>
-                    </div>
-                  </article>
-                )
-              )
-            }
-          </div>
-        </Container>
-      </section>
-
-
-      <section
-        className={
-          styles.practice
-        }
-        data-training-section="practice"
-      >
-        <Container size="wide">
-          <header
-            className={
-              styles.sectionHeader
-            }
-          >
-            <div>
-              <p
-                className={
-                  styles.eyebrow
-                }
-              >
-                03 / HANDS-ON PRACTICE
-              </p>
-
-              <h2>
-                Practice sits inside
-                the learning path.
-              </h2>
-            </div>
-
-
-            <p>
-              Program modules provide the concrete technical sequence.
-              The visual hierarchy here reflects the published
-              curriculum rather than inventing separate labs.
-            </p>
-          </header>
-
-
-          <div
-            className={
-              styles.practiceLayout
-            }
-          >
-            <article
-              className={
-                styles.featuredPractice
-              }
-            >
-              <div
-                className={
-                  styles.practiceTopline
-                }
-              >
-                <span>
-                  FEATURED PRACTICE
-                </span>
-
-                <span>
-                  {
-                    featuredPractice.category
-                  }
-                </span>
-              </div>
-
-
-              <h3>
-                {
-                  featuredPractice.title
-                }
-              </h3>
-
-
-              <p>
-                {
-                  featuredPractice.summary
-                }
-              </p>
-
-
-              <ol
-                className={
-                  styles.moduleList
-                }
-              >
-                {
-                  featuredPractice.modules
-                    .slice(
-                      0,
-                      3
-                    )
-                    .map(
-                      (
-                        module
-                      ) => (
-                        <li
-                          key={
-                            module.number
-                          }
-                        >
-                          <span>
-                            {
-                              module.number
-                            }
-                          </span>
-
-                          <div>
-                            <strong>
-                              {
-                                module.title
-                              }
-                            </strong>
-
-                            <p>
-                              {
-                                module.description
-                              }
-                            </p>
-                          </div>
-                        </li>
-                      )
-                    )
-                }
-              </ol>
-
-
-              <Link
-                className={
-                  styles.practiceAction
-                }
-                href={
-                  `/training/${featuredPractice.slug}`
-                }
-              >
-                View complete curriculum
+                Explore programs
 
                 <span
                   aria-hidden="true"
                 >
-                  →
+                  ↓
                 </span>
+              </a>
+
+
+              <Link
+                href="/contact"
+                className={
+                  styles.secondaryAction
+                }
+              >
+                Ask about a program
+
+                <Arrow />
               </Link>
-            </article>
+            </div>
+
+
+            <p
+              className={
+                styles.organizationRoute
+              }
+            >
+              Looking for training for your organization?
+
+              {" "}
+
+              <Link
+                href="/services/security-training"
+              >
+                Explore the Security Training Service
+
+                <Arrow />
+              </Link>
+            </p>
+          </div>
+        </Container>
+      </section>
+
+
+      {/* ================================================================
+          UNIFIED PROGRAM CATALOGUE
+         ================================================================ */}
+
+      <section
+        id="programs"
+        className={
+          `${styles.section} ${styles.catalogueSection}`
+        }
+        data-training-section="programs"
+      >
+        <Container>
+          <div
+            className={
+              styles.frame
+            }
+            data-training-frame="programs"
+          >
+            <header
+              className={
+                styles.sectionHeading
+              }
+            >
+              <p
+                className={
+                  styles.sectionEyebrow
+                }
+              >
+                01 · Programs
+              </p>
+
+
+              <div
+                className={
+                  styles.headingLine
+                }
+              >
+                <h2>
+                  Choose the security capability you want to build.
+                </h2>
+
+
+                <span
+                  className={
+                    styles.programCount
+                  }
+                >
+                  {
+                    trainingPrograms.length
+                  } public programs
+                </span>
+              </div>
+
+
+              <p
+                className={
+                  styles.sectionDescription
+                }
+              >
+                Compare each program&apos;s focus, level, learning format and
+                learning aims. Open a program to explore its curriculum and
+                registration information.
+              </p>
+            </header>
 
 
             <div
               className={
-                styles.supportingPractice
+                styles.programGrid
               }
+              data-training-ui="program-catalogue"
             >
               {
-                supportingPractice.map(
+                trainingPrograms.map(
                   (
                     program
                   ) => (
                     <article
+                      className={
+                        styles.programCard
+                      }
+                      data-training-program-card={
+                        program.slug
+                      }
                       key={
                         program.slug
                       }
                     >
                       <div
                         className={
-                          styles.supportingHeader
+                          styles.programTopline
                         }
                       >
-                        <span>
+                        <span
+                          className={
+                            styles.programCategory
+                          }
+                        >
                           {
                             program.category
                           }
                         </span>
 
-                        <span>
+
+                        <span
+                          className={
+                            styles.programStatus
+                          }
+                          data-status={
+                            program.status
+                          }
+                        >
                           {
-                            program.modules.length
-                          } modules
+                            statusLabels[
+                              program.status
+                            ]
+                          }
                         </span>
                       </div>
 
@@ -835,29 +380,139 @@ export default function TrainingPage() {
                       </h3>
 
 
-                      <p>
+                      <p
+                        className={
+                          styles.programSummary
+                        }
+                      >
                         {
-                          program.modules[0]
-                            ?.description
-                          ??
                           program.summary
                         }
                       </p>
 
 
-                      <Link
-                        href={
-                          `/training/${program.slug}`
+                      <dl
+                        className={
+                          styles.programMetadata
+                        }
+                        aria-label={`${program.title} program information`}
+                      >
+                        <div>
+                          <dt>
+                            Level
+                          </dt>
+
+                          <dd>
+                            {
+                              program.level
+                            }
+                          </dd>
+                        </div>
+
+
+                        <div>
+                          <dt>
+                            Format
+                          </dt>
+
+                          <dd>
+                            {
+                              program.format
+                            }
+                          </dd>
+                        </div>
+
+
+                        <div>
+                          <dt>
+                            Sessions
+                          </dt>
+
+                          <dd>
+                            {
+                              program.duration
+                              ??
+                              "Not specified"
+                            }
+                          </dd>
+                        </div>
+
+
+                        <div>
+                          <dt>
+                            Modules
+                          </dt>
+
+                          <dd>
+                            {
+                              program.modules.length
+                            }
+                          </dd>
+                        </div>
+                      </dl>
+
+
+                      <div
+                        className={
+                          styles.learningAims
                         }
                       >
-                        Explore practice
+                        <h4>
+                          Learning aims
+                        </h4>
 
-                        <span
-                          aria-hidden="true"
+
+                        <ul>
+                          {
+                            program.outcomes
+                              .slice(
+                                0,
+                                3
+                              )
+                              .map(
+                                outcome => (
+                                  <li
+                                    key={
+                                      outcome
+                                    }
+                                  >
+                                    {
+                                      outcome
+                                    }
+                                  </li>
+                                )
+                              )
+                          }
+                        </ul>
+                      </div>
+
+
+                      <div
+                        className={
+                          styles.programActions
+                        }
+                      >
+                        <Link
+                          href={`/training/${program.slug}`}
+                          className={
+                            styles.cardPrimaryAction
+                          }
                         >
-                          →
-                        </span>
-                      </Link>
+                          Explore program
+
+                          <Arrow />
+                        </Link>
+
+
+                        <TrainingRegistrationAction
+                          slug={
+                            program.slug
+                          }
+                          className={
+                            styles.registrationAction
+                          }
+                        />
+                      </div>
                     </article>
                   )
                 )
@@ -868,246 +523,327 @@ export default function TrainingPage() {
       </section>
 
 
-      <section
-        className={
-          styles.method
-        }
-        data-training-section="method"
-      >
-        <Container size="wide">
-          <div
-            className={
-              styles.methodIntro
-            }
-          >
-            <p
-              className={
-                styles.eyebrow
-              }
-            >
-              04 / LEARNING METHOD
-            </p>
-
-            <h2>
-              Learn through a connected
-              technical sequence.
-            </h2>
-
-            <p>
-              Meaning comes first. Practice follows. Each stage should
-              help the learner understand what they are doing and why.
-            </p>
-          </div>
-
-
-          <ol
-            className={
-              styles.methodTrack
-            }
-          >
-            {
-              method.map(
-                (
-                  step
-                ) => (
-                  <li
-                    key={
-                      step.index
-                    }
-                  >
-                    <span>
-                      {
-                        step.index
-                      }
-                    </span>
-
-                    <strong>
-                      {
-                        step.title
-                      }
-                    </strong>
-
-                    <p>
-                      {
-                        step.description
-                      }
-                    </p>
-                  </li>
-                )
-              )
-            }
-          </ol>
-        </Container>
-      </section>
-
+      {/* ================================================================
+          INSIDE THE CURRICULUM + LEARNING METHOD
+         ================================================================ */}
 
       <section
         className={
-          styles.outcomes
+          styles.section
         }
-        data-training-section="outcomes"
+        data-training-section="curriculum"
       >
-        <Container size="wide">
-          <header
-            className={
-              styles.sectionHeader
-            }
-          >
-            <div>
-              <p
-                className={
-                  styles.eyebrow
-                }
-              >
-                05 / STUDENT OUTCOMES
-              </p>
-
-              <h2>
-                Know what the program
-                is designed to build.
-              </h2>
-            </div>
-
-
-            <p>
-              Outcomes shown below come directly from the canonical
-              course data.
-            </p>
-          </header>
-
-
+        <Container>
           <div
             className={
-              styles.outcomeColumns
+              styles.frame
             }
-          >
-            {
-              trainingPrograms.map(
-                (
-                  program,
-                  index
-                ) => (
-                  <article
-                    key={
-                      program.slug
-                    }
-                  >
-                    <span
-                      className={
-                        styles.outcomeNumber
-                      }
-                    >
-                      {
-                        String(
-                          index
-                          +
-                          1
-                        ).padStart(
-                          2,
-                          "0"
-                        )
-                      }
-                    </span>
-
-
-                    <p
-                      className={
-                        styles.outcomeCategory
-                      }
-                    >
-                      {
-                        program.category
-                      }
-                    </p>
-
-
-                    <h3>
-                      {
-                        program.title
-                      }
-                    </h3>
-
-
-                    <ul>
-                      {
-                        program.outcomes
-                          .slice(
-                            0,
-                            3
-                          )
-                          .map(
-                            (
-                              outcome
-                            ) => (
-                              <li
-                                key={
-                                  outcome
-                                }
-                              >
-                                {
-                                  outcome
-                                }
-                              </li>
-                            )
-                          )
-                      }
-                    </ul>
-
-
-                    <Link
-                      href={
-                        `/training/${program.slug}`
-                      }
-                    >
-                      Review outcomes
-
-                      <span
-                        aria-hidden="true"
-                      >
-                        →
-                      </span>
-                    </Link>
-                  </article>
-                )
-              )
-            }
-          </div>
-        </Container>
-      </section>
-
-
-      <section
-        className={
-          styles.faq
-        }
-        data-training-section="faq"
-      >
-        <Container size="wide">
-          <div
-            className={
-              styles.faqLayout
-            }
+            data-training-frame="curriculum"
           >
             <header
               className={
-                styles.faqIntro
+                styles.sectionHeading
               }
             >
               <p
                 className={
-                  styles.eyebrow
+                  styles.sectionEyebrow
                 }
               >
-                06 / FAQ
+                02 · Inside the curriculum
               </p>
 
+
               <h2>
-                Before choosing
-                a program.
+                Preview the technical content.
               </h2>
 
-              <p>
-                A short orientation to the public Academy experience.
+
+              <p
+                className={
+                  styles.sectionDescription
+                }
+              >
+                Explore selected curriculum content before opening the full
+                program.
+              </p>
+            </header>
+
+
+            {
+              featuredProgram
+                ? (
+                    <div
+                      className={
+                        styles.curriculumGrid
+                      }
+                      data-training-ui="curriculum-previews"
+                    >
+                      <article
+                        className={
+                          styles.featuredPreview
+                        }
+                      >
+                        <p
+                          className={
+                            styles.previewMeta
+                          }
+                        >
+                          Selected modules · {
+                            Math.min(
+                              3,
+                              featuredProgram.modules.length
+                            )
+                          } of {
+                            featuredProgram.modules.length
+                          } shown
+                        </p>
+
+
+                        <h3>
+                          {
+                            featuredProgram.title
+                          }
+                        </h3>
+
+
+                        <ol
+                          className={
+                            styles.moduleList
+                          }
+                        >
+                          {
+                            featuredProgram.modules
+                              .slice(
+                                0,
+                                3
+                              )
+                              .map(
+                                module => (
+                                  <li
+                                    key={
+                                      module.number
+                                    }
+                                  >
+                                    <span>
+                                      {
+                                        module.number
+                                      }
+                                    </span>
+
+
+                                    <div>
+                                      <h4>
+                                        {
+                                          module.title
+                                        }
+                                      </h4>
+
+
+                                      <p>
+                                        {
+                                          module.description
+                                        }
+                                      </p>
+                                    </div>
+                                  </li>
+                                )
+                              )
+                          }
+                        </ol>
+
+
+                        <Link
+                          href={`/training/${featuredProgram.slug}`}
+                          className={
+                            styles.previewAction
+                          }
+                        >
+                          View complete curriculum
+
+                          <Arrow />
+                        </Link>
+                      </article>
+
+
+                      <div
+                        className={
+                          styles.supportingPreviews
+                        }
+                      >
+                        {
+                          supportingPrograms.map(
+                            program => (
+                              <article
+                                className={
+                                  styles.supportingPreview
+                                }
+                                key={
+                                  program.slug
+                                }
+                              >
+                                <p
+                                  className={
+                                    styles.previewMeta
+                                  }
+                                >
+                                  {
+                                    program.category
+                                  }
+                                </p>
+
+
+                                <h3>
+                                  {
+                                    program.title
+                                  }
+                                </h3>
+
+
+                                <p>
+                                  {
+                                    program.modules[0]
+                                      ?.description
+                                    ??
+                                    program.summary
+                                  }
+                                </p>
+
+
+                                <Link
+                                  href={`/training/${program.slug}`}
+                                  className={
+                                    styles.previewAction
+                                  }
+                                >
+                                  View curriculum
+
+                                  <Arrow />
+                                </Link>
+                              </article>
+                            )
+                          )
+                        }
+                      </div>
+                    </div>
+                  )
+                : null
+            }
+
+
+            <div
+              className={
+                styles.method
+              }
+              data-training-ui="learning-method"
+            >
+              <header
+                className={
+                  styles.methodHeading
+                }
+              >
+                <h3>
+                  How learning progresses.
+                </h3>
+
+
+                <p>
+                  Work through focused technical modules, investigate security
+                  problems and connect what you learn to the wider system.
+                </p>
+              </header>
+
+
+              <ol
+                className={
+                  styles.methodGrid
+                }
+              >
+                {
+                  learningFlow.map(
+                    stage => (
+                      <li
+                        key={
+                          stage.number
+                        }
+                      >
+                        <span
+                          className={
+                            styles.methodNumber
+                          }
+                          aria-hidden="true"
+                        >
+                          {
+                            stage.number
+                          }
+                        </span>
+
+
+                        <h4>
+                          {
+                            stage.title
+                          }
+                        </h4>
+
+
+                        <p>
+                          {
+                            stage.description
+                          }
+                        </p>
+                      </li>
+                    )
+                  )
+                }
+              </ol>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+
+      {/* ================================================================
+          FAQ
+         ================================================================ */}
+
+      <section
+        className={
+          `${styles.section} ${styles.faqSection}`
+        }
+        data-training-section="faq"
+      >
+        <Container>
+          <div
+            className={
+              `${styles.frame} ${styles.faqLayout}`
+            }
+            data-training-frame="faq"
+          >
+            <header
+              className={
+                styles.sectionHeading
+              }
+            >
+              <p
+                className={
+                  styles.sectionEyebrow
+                }
+              >
+                03 · Before choosing
+              </p>
+
+
+              <h2>
+                Before choosing a program.
+              </h2>
+
+
+              <p
+                className={
+                  styles.sectionDescription
+                }
+              >
+                Guidance on program choice and the public learning experience.
               </p>
             </header>
 
@@ -1118,37 +854,95 @@ export default function TrainingPage() {
               }
             >
               {
-                faqItems.map(
+                faqs.map(
                   (
-                    item
+                    faq,
+                    index
                   ) => (
                     <details
                       className={
                         styles.faqItem
                       }
+                      data-training-faq
                       key={
-                        item.question
+                        faq.question
                       }
                     >
                       <summary>
-                        <span>
-                          {
-                            item.question
-                          }
-                        </span>
-
                         <span
-                          aria-hidden="true"
+                          className={
+                            styles.faqTrigger
+                          }
                         >
-                          +
+                          <span
+                            className={
+                              styles.faqNumber
+                            }
+                            aria-hidden="true"
+                          >
+                            {
+                              String(
+                                index + 1
+                              ).padStart(
+                                2,
+                                "0"
+                              )
+                            }
+                          </span>
+
+
+                          <span
+                            className={
+                              styles.faqQuestion
+                            }
+                          >
+                            {
+                              faq.question
+                            }
+                          </span>
+
+
+                          <span
+                            className={
+                              styles.faqIndicator
+                            }
+                            aria-hidden="true"
+                          />
                         </span>
                       </summary>
 
-                      <p>
-                        {
-                          item.answer
+
+                      <div
+                        className={
+                          styles.faqAnswer
                         }
-                      </p>
+                      >
+                        <p>
+                          {
+                            faq.answer
+                          }
+                        </p>
+
+
+                        {
+                          faq.question
+                          ===
+                          "Is this the same as training for organizations?"
+                            ? (
+                                <Link
+                                  href="/services/security-training"
+                                  className={
+                                    styles.answerLink
+                                  }
+                                >
+                                  Explore Security Training Service
+
+                                  <Arrow />
+                                </Link>
+                              )
+                            : null
+                        }
+                      </div>
                     </details>
                   )
                 )
@@ -1159,84 +953,87 @@ export default function TrainingPage() {
       </section>
 
 
+      {/* ================================================================
+          CLOSING GUIDANCE
+         ================================================================ */}
+
       <section
         className={
           styles.cta
         }
         data-training-section="cta"
       >
-        <Container size="wide">
+        <Container>
           <div
             className={
-              styles.ctaInner
+              `${styles.frame} ${styles.ctaLayout}`
             }
+            data-training-frame="cta"
           >
-            <div
-              className={
-                styles.ctaCopy
-              }
-            >
+            <div>
               <p
                 className={
-                  styles.eyebrow
+                  styles.sectionEyebrow
                 }
               >
-                NOBREACH ACADEMY
+                Training Hub
               </p>
+
 
               <h2>
-                Build your next
-                security capability.
+                Build your next security capability.
               </h2>
-
-              <p>
-                Start with a published program or talk to NoBreach
-                about the learning path that fits your current level.
-              </p>
             </div>
 
 
             <div
               className={
-                styles.ctaActions
+                styles.ctaBody
               }
             >
-              <Link
+              <p>
+                Explore a program that matches your goals and current level,
+                or contact No Breach with a question.
+              </p>
+
+
+              <div
                 className={
-                  styles.primaryButton
-                }
-                href={
-                  `/training/${primaryProgram.slug}`
+                  styles.ctaActions
                 }
               >
-                Explore available program
-
-                <span
-                  aria-hidden="true"
+                <a
+                  href="#programs"
+                  className={
+                    styles.primaryAction
+                  }
                 >
-                  →
-                </span>
-              </Link>
+                  Explore programs
+
+                  <span
+                    aria-hidden="true"
+                  >
+                    ↑
+                  </span>
+                </a>
 
 
-              <Link
-                className={
-                  styles.secondaryButton
-                }
-                href="/contact"
-              >
-                Contact NoBreach
-
-                <span
-                  aria-hidden="true"
+                <Link
+                  href="/contact"
+                  className={
+                    styles.textAction
+                  }
                 >
-                  ↗
-                </span>
-              </Link>
+                  Ask about a program
+
+                  <Arrow />
+                </Link>
+              </div>
             </div>
           </div>
         </Container>
       </section>
     </div>
   );
+
 }

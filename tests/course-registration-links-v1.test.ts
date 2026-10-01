@@ -1,5 +1,6 @@
-import fs from "node:fs";
-import path from "node:path";
+import {
+  readFileSync
+} from "node:fs";
 
 import {
   describe,
@@ -8,61 +9,51 @@ import {
 } from "vitest";
 
 
-const root =
-  process.cwd();
-
-
-const template =
-  fs.readFileSync(
-    path.join(
-      root,
-      "src/app/training/template.tsx"
-    ),
+const component =
+  readFileSync(
+    "src/app/training/course-registration-links.tsx",
     "utf8"
   );
 
 
-const component =
-  fs.readFileSync(
-    path.join(
-      root,
-      "src/app/training/course-registration-links.tsx"
-    ),
+const page =
+  readFileSync(
+    "src/app/training/page.tsx",
+    "utf8"
+  );
+
+
+const template =
+  readFileSync(
+    "src/app/training/template.tsx",
     "utf8"
   );
 
 
 describe(
-  "training registration links V2",
+  "training registration links V3",
   () => {
 
     it(
-      "places registration before course content",
+      "keeps registration mounted before route children",
       () => {
 
-        const registrationIndex =
-          template.indexOf(
-            "<CourseRegistrationLinks />"
-          );
-
-
-        const childrenIndex =
-          template.indexOf(
-            "{children}"
-          );
-
-
         expect(
-          registrationIndex
-        ).toBeGreaterThan(
-          -1
+          template.indexOf(
+            "<CourseRegistrationLinks"
+          )
+        ).toBeGreaterThanOrEqual(
+          0
         );
 
-
         expect(
-          childrenIndex
-        ).toBeGreaterThan(
-          registrationIndex
+          template.indexOf(
+            "<CourseRegistrationLinks"
+          )
+        ).toBeLessThan(
+          template.indexOf(
+            "{children}"
+          )
         );
 
       }
@@ -70,13 +61,19 @@ describe(
 
 
     it(
-      "declares top placement",
+      "does not render the top strip on the Training index",
       () => {
 
         expect(
           component
         ).toContain(
-          'data-registration-placement="top"'
+          'pathname\n    ===\n    "/training"'
+        );
+
+        expect(
+          component
+        ).toContain(
+          "return null"
         );
 
       }
@@ -84,7 +81,27 @@ describe(
 
 
     it(
-      "uses the Red Team registration link",
+      "exports a card-level registration action",
+      () => {
+
+        expect(
+          component
+        ).toContain(
+          "export function TrainingRegistrationAction"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "<TrainingRegistrationAction"
+        );
+
+      }
+    );
+
+
+    it(
+      "preserves Red Team registration",
       () => {
 
         expect(
@@ -98,7 +115,7 @@ describe(
 
 
     it(
-      "uses the AI Security registration link",
+      "preserves AI Security registration",
       () => {
 
         expect(
@@ -112,7 +129,7 @@ describe(
 
 
     it(
-      "uses the Web Exploitation registration link",
+      "preserves Web Exploitation registration",
       () => {
 
         expect(
@@ -126,20 +143,19 @@ describe(
 
 
     it(
-      "uses an immediately visible registration action",
+      "keeps top placement on individual detail routes",
       () => {
 
         expect(
           component
         ).toContain(
-          "Register now"
+          'data-registration-placement="top"'
         );
-
 
         expect(
           component
         ).toContain(
-          'target="_blank"'
+          "selectedProgram"
         );
 
       }

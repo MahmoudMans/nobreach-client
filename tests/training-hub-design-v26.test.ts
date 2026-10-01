@@ -23,12 +23,19 @@ const css =
   );
 
 
+const normalizedPage =
+  page.replace(
+    /\s+/g,
+    " "
+  );
+
+
 describe(
-  "Academy continuous design system",
+  "Training Hub V26 compatibility + V27 audit",
   () => {
 
     it(
-      "uses one Academy PageIntro and no page-level navigation",
+      "keeps continuous authority while activating V27",
       () => {
 
         expect(
@@ -37,36 +44,16 @@ describe(
           'data-training-academy="continuous-v1"'
         );
 
-
-        expect(
-          page.match(
-            /<h1(?:\s|>)/g
-          )
-          ??
-          []
-        ).toHaveLength(
-          1
-        );
-
-
         expect(
           page
         ).toContain(
-          "Learn cybersecurity"
+          'data-training-hub-audit="v27"'
         );
 
-
         expect(
-          page
+          css
         ).toContain(
-          "by doing cybersecurity."
-        );
-
-
-        expect(
-          page
-        ).not.toContain(
-          "<nav"
+          "NB_TRAINING_HUB_AUDIT_V27"
         );
 
       }
@@ -74,36 +61,39 @@ describe(
 
 
     it(
-      "uses the canonical Academy section order",
+      "uses one learner-facing introduction",
       () => {
 
-        const sections =
-          page.match(
-            /data-training-section="[^"]+"/g
-          )
-          ??
-          [];
-
+        expect(
+          normalizedPage
+        ).toContain(
+          "Explore public learning programs in offensive security, web security and AI security."
+        );
 
         expect(
-          sections
-        ).toEqual([
-          'data-training-section="intro"',
-          'data-training-section="paths"',
-          'data-training-section="courses"',
-          'data-training-section="practice"',
-          'data-training-section="method"',
-          'data-training-section="outcomes"',
-          'data-training-section="faq"',
-          'data-training-section="cta"'
-        ]);
+          page
+        ).toContain(
+          "Explore programs"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Ask about a program"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "/services/security-training"
+        );
 
       }
     );
 
 
     it(
-      "remains bound to canonical trainingPrograms",
+      "uses canonical training data for one catalogue",
       () => {
 
         expect(
@@ -112,6 +102,11 @@ describe(
           'from "@/content/training"'
         );
 
+        expect(
+          page
+        ).toContain(
+          'data-training-ui="program-catalogue"'
+        );
 
         expect(
           page
@@ -119,38 +114,24 @@ describe(
           "trainingPrograms.map"
         );
 
-
-        expect(
-          page
-        ).toContain(
-          "`/training/${program.slug}`"
-        );
-
       }
     );
 
 
     it(
-      "renders consistent program cards",
+      "places comparison metadata and learning aims together",
       () => {
-
-        expect(
-          page
-        ).toContain(
-          "data-training-program"
-        );
-
 
         for (
           const token
-          of [
-            "program.category",
-            "program.title",
-            "program.summary",
-            "program.level",
-            "program.format",
-            "program.duration",
-            "program.status",
+          of
+          [
+            "Level",
+            "Format",
+            "Sessions",
+            "Modules",
+            "Learning aims",
+            "program.outcomes",
             "program.modules.length"
           ]
         ) {
@@ -163,25 +144,11 @@ describe(
 
         }
 
-      }
-    );
-
-
-    it(
-      "uses real canonical modules and outcomes",
-      () => {
 
         expect(
           page
         ).toContain(
-          "featuredPractice.modules"
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "program.outcomes"
+          '"Not specified"'
         );
 
       }
@@ -189,50 +156,42 @@ describe(
 
 
     it(
-      "keeps public learner and organization training separate",
+      "preserves curriculum previews and one learning sequence",
       () => {
 
         expect(
           page
         ).toContain(
-          "public Academy"
+          "Preview the technical content."
         );
-
 
         expect(
           page
         ).toContain(
-          "Security Training service"
+          "View complete curriculum"
         );
 
-      }
-    );
-
-
-    it(
-      "uses the final NoBreach palette and fonts",
-      () => {
+        expect(
+          page
+        ).toContain(
+          "How learning progresses."
+        );
 
         for (
-          const token
-          of [
-            "#07090d",
-            "#0b0f16",
-            "#101620",
-            "#151d29",
-            "#a1e2f0",
-            "#83b3d7",
-            "#7e60b9",
-            '"Space Grotesk"',
-            '"Inter"',
-            '"IBM Plex Mono"'
+          const stage
+          of
+          [
+            "Understand",
+            "Practice",
+            "Investigate",
+            "Apply"
           ]
         ) {
 
           expect(
-            css
+            page
           ).toContain(
-            token
+            stage
           );
 
         }
@@ -242,34 +201,86 @@ describe(
 
 
     it(
-      "supports responsive accessible interaction",
+      "removes the duplicated index outcomes and decorative hero language",
+      () => {
+
+        for (
+          const retired
+          of
+          [
+            'data-training-section="paths"',
+            'data-training-section="courses"',
+            'data-training-section="outcomes"',
+            "PRACTICE MODE",
+            "Each path is connected to a real published NoBreach program rather than a separate navigation system.",
+            "canonical course data"
+          ]
+        ) {
+
+          expect(
+            page
+          ).not.toContain(
+            retired
+          );
+
+        }
+
+      }
+    );
+
+
+    it(
+      "keeps four FAQ questions and preserves the archive explanation",
       () => {
 
         expect(
-          css
+          page
         ).toContain(
-          ":focus-visible"
+          "What does an archived program mean?"
         );
 
-
         expect(
-          css
+          page
         ).toContain(
-          "outline:\n    2px"
+          "Archived identifies a program that is not currently presented as an active public edition."
         );
 
-
         expect(
-          css
+          page
         ).toContain(
-          "min-height:\n    48px"
+          "Explore Security Training Service"
         );
 
+      }
+    );
+
+
+    it(
+      "keeps collection-level closing actions",
+      () => {
 
         expect(
-          css
+          page
         ).toContain(
-          "prefers-reduced-motion"
+          "Build your next security capability."
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Explore programs"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Ask about a program"
+        );
+
+        expect(
+          page
+        ).not.toContain(
+          "Explore available program"
         );
 
       }

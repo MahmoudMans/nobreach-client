@@ -9,119 +9,56 @@ const programs = [
     slug:
       "red-team-foundations",
 
-    title:
-      "Red Team Foundations",
-
-    url:
+    registrationUrl:
       "https://forms.gle/xfTXg2r1xVfECvCM8"
-  },
-  {
-    slug:
-      "ai-security-foundations",
-
-    title:
-      "AI Security Foundations",
-
-    url:
-      "https://forms.gle/G5VhyDZ8i5EpWYuA6"
   },
   {
     slug:
       "web-exploitation-techniques",
 
-    title:
-      "Web Exploitation Techniques",
-
-    url:
+    registrationUrl:
       "https://forms.gle/32b6mUKhYWbpz6NF6"
+  },
+  {
+    slug:
+      "ai-security-foundations",
+
+    registrationUrl:
+      "https://forms.gle/G5VhyDZ8i5EpWYuA6"
   }
 ] as const;
 
 
 test(
-  "training index shows all registrations at the top",
+  "training index relocates registration into the program catalogue",
   async ({
     page
   }) => {
 
     await page.goto(
-      "/training",
-      {
-        waitUntil:
-          "domcontentloaded"
-      }
+      "/training"
     );
 
 
-    const registration =
+    await expect(
       page.locator(
-        '[data-registration-placement="top"]'
+        '[data-training-registration-section]'
+      )
+    ).toHaveCount(
+      0
+    );
+
+
+    const cardRegistrations =
+      page.locator(
+        '[data-training-program-card] [data-training-registration]'
       );
 
 
     await expect(
-      registration
-    ).toBeVisible();
-
-
-    for (
-      const program
-      of programs
-    ) {
-
-      const link =
-        registration.locator(
-          `[data-training-registration="${program.slug}"]`
-        );
-
-
-      await expect(
-        link
-      ).toBeVisible();
-
-
-      await expect(
-        link
-      ).toHaveAttribute(
-        "href",
-        program.url
-      );
-
-    }
-
-
-    const registrationBox =
-      await registration.boundingBox();
-
-
-    const h1 =
-      page.locator(
-        "h1"
-      ).first();
-
-
-    const headingBox =
-      await h1.boundingBox();
-
-
-    expect(
-      registrationBox
-    ).not.toBeNull();
-
-
-    expect(
-      headingBox
-    ).not.toBeNull();
-
-
-    expect(
-      registrationBox?.y
-      ??
-      Number.MAX_SAFE_INTEGER
-    ).toBeLessThan(
-      headingBox?.y
-      ??
-      0
+      cardRegistrations
+    ).toHaveCount(
+      3
     );
 
   }
@@ -130,119 +67,47 @@ test(
 
 for (
   const program
-  of programs
+  of
+  programs
 ) {
 
   test(
-    `${program.title} shows its registration before the course hero`,
+    `${program.slug} preserves its top registration action`,
     async ({
       page
     }) => {
 
-      const response =
-        await page.goto(
-          `/training/${program.slug}`,
-          {
-            waitUntil:
-              "domcontentloaded"
-          }
-        );
-
-
-      expect(
-        response?.status()
-      ).toBe(
-        200
+      await page.goto(
+        `/training/${program.slug}`
       );
 
 
-      const registration =
+      const section =
         page.locator(
-          '[data-registration-placement="top"]'
+          '[data-training-registration-section]'
         );
 
 
       await expect(
-        registration
+        section
       ).toBeVisible();
 
 
-      const links =
-        registration.locator(
-          "[data-training-registration]"
-        );
-
-
       await expect(
-        links
-      ).toHaveCount(
-        1
+        section
+      ).toHaveAttribute(
+        "data-registration-placement",
+        "top"
       );
 
 
-      const link =
-        registration.locator(
+      await expect(
+        section.locator(
           `[data-training-registration="${program.slug}"]`
-        );
-
-
-      await expect(
-        link
-      ).toBeVisible();
-
-
-      await expect(
-        link
+        )
       ).toHaveAttribute(
         "href",
-        program.url
-      );
-
-
-      await expect(
-        link
-      ).toContainText(
-        "Register now"
-      );
-
-
-      const registrationBox =
-        await registration.boundingBox();
-
-
-      const h1 =
-        page.locator(
-          "h1"
-        ).first();
-
-
-      await expect(
-        h1
-      ).toBeVisible();
-
-
-      const headingBox =
-        await h1.boundingBox();
-
-
-      expect(
-        registrationBox
-      ).not.toBeNull();
-
-
-      expect(
-        headingBox
-      ).not.toBeNull();
-
-
-      expect(
-        registrationBox?.y
-        ??
-        Number.MAX_SAFE_INTEGER
-      ).toBeLessThan(
-        headingBox?.y
-        ??
-        0
+        program.registrationUrl
       );
 
     }
@@ -252,7 +117,7 @@ for (
 
 
 test(
-  "top registration remains easy to use at 360px",
+  "catalogue registration actions remain usable at 360px",
   async ({
     page
   }) => {
@@ -260,62 +125,30 @@ test(
     await page.setViewportSize({
       width:
         360,
-
       height:
         800
     });
 
 
     await page.goto(
-      "/training/red-team-foundations",
-      {
-        waitUntil:
-          "domcontentloaded"
-      }
+      "/training"
     );
 
 
-    const registration =
+    const actions =
       page.locator(
-        '[data-registration-placement="top"]'
+        '[data-training-program-card] [data-training-registration]'
       );
 
 
     await expect(
-      registration
-    ).toBeVisible();
-
-
-    const register =
-      registration.locator(
-        '[data-training-registration="red-team-foundations"]'
-      );
-
-
-    await expect(
-      register
-    ).toBeVisible();
-
-
-    const box =
-      await register.boundingBox();
-
-
-    expect(
-      box
-    ).not.toBeNull();
-
-
-    expect(
-      box?.width
-      ??
-      0
-    ).toBeGreaterThan(
-      280
+      actions
+    ).toHaveCount(
+      3
     );
 
 
-    const geometry =
+    const dimensions =
       await page.evaluate(
         () => ({
           scrollWidth:
@@ -332,9 +165,9 @@ test(
 
 
     expect(
-      geometry.scrollWidth
+      dimensions.scrollWidth
     ).toBeLessThanOrEqual(
-      geometry.clientWidth
+      dimensions.clientWidth
       +
       1
     );

@@ -56,12 +56,77 @@ const programs:
   ];
 
 
-function RegistrationAction({
-  program
+function getProgram(
+  slug:
+    string
+) {
+
+  return programs.find(
+    program =>
+      program.slug
+      ===
+      slug
+  );
+
+}
+
+
+export function TrainingRegistrationAction({
+  slug,
+  className
 }: {
-  program:
-    RegistrationProgram;
+  slug:
+    string;
+
+  className?:
+    string;
 }) {
+
+  const program =
+    getProgram(
+      slug
+    );
+
+
+  if (
+    !program
+  ) {
+
+    return null;
+
+  }
+
+
+  if (
+    className
+  ) {
+
+    return (
+      <a
+        className={
+          className
+        }
+        href={
+          program.registrationUrl
+        }
+        target="_blank"
+        rel="noreferrer"
+        data-training-registration={
+          program.slug
+        }
+      >
+        Register now
+
+        <span
+          aria-hidden="true"
+        >
+          ↗
+        </span>
+      </a>
+    );
+
+  }
+
 
   return (
     <a
@@ -82,7 +147,9 @@ function RegistrationAction({
           styles.actionProgram
         }
       >
-        {program.name}
+        {
+          program.name
+        }
       </span>
 
 
@@ -111,27 +178,15 @@ export function CourseRegistrationLinks() {
     usePathname();
 
 
-  const isTrainingIndex =
+  /*
+   * V27:
+   * The /training index owns registration inside each comparison card.
+   * Detail routes retain the immediately visible registration strip.
+   */
+  if (
     pathname
     ===
-    "/training";
-
-
-  const selectedProgram =
-    programs.find(
-      (
-        program
-      ) =>
-        pathname
-        ===
-        `/training/${program.slug}`
-    );
-
-
-  if (
-    !isTrainingIndex
-    &&
-    !selectedProgram
+    "/training"
   ) {
 
     return null;
@@ -139,14 +194,22 @@ export function CourseRegistrationLinks() {
   }
 
 
-  const visiblePrograms =
-    selectedProgram
-      ?
-      [
-        selectedProgram
-      ]
-      :
-      programs;
+  const selectedProgram =
+    programs.find(
+      program =>
+        pathname
+        ===
+        `/training/${program.slug}`
+    );
+
+
+  if (
+    !selectedProgram
+  ) {
+
+    return null;
+
+  }
 
 
   return (
@@ -156,7 +219,7 @@ export function CourseRegistrationLinks() {
       }
       data-training-registration-section
       data-registration-placement="top"
-      aria-label="Mentorship registration"
+      aria-label={`${selectedProgram.name} registration`}
     >
       <div
         className={
@@ -168,63 +231,17 @@ export function CourseRegistrationLinks() {
             styles.message
           }
         >
-          <span
-            className={
-              styles.label
-            }
-          >
-            Mentorship registration
+          <span>
+            Program registration
           </span>
-
-
-          {
-            selectedProgram
-              ?
-              (
-                <span
-                  className={
-                    styles.prompt
-                  }
-                >
-                  Ready to join this program?
-                </span>
-              )
-              :
-              (
-                <span
-                  className={
-                    styles.prompt
-                  }
-                >
-                  Choose a program and register.
-                </span>
-              )
-          }
         </div>
 
 
-        <div
-          className={
-            styles.actions
+        <TrainingRegistrationAction
+          slug={
+            selectedProgram.slug
           }
-        >
-          {
-            visiblePrograms.map(
-              (
-                program
-              ) => (
-                <RegistrationAction
-                  key={
-                    program.slug
-                  }
-                  program={
-                    program
-                  }
-                />
-              )
-            )
-          }
-        </div>
+        />
       </div>
     </section>
   );
