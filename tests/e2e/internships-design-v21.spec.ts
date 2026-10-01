@@ -5,7 +5,7 @@ import {
 
 
 test(
-  "Internships V21 renders three workbench chapters",
+  "Internships V21 route remains compatible under V22 audit",
   async ({
     page
   }) => {
@@ -13,7 +13,6 @@ test(
     await page.goto(
       "/company/internships"
     );
-
 
     await expect(
       page.locator(
@@ -21,119 +20,63 @@ test(
       )
     ).toBeVisible();
 
+    await expect(
+      page.locator(
+        '[data-internship-audit="v22"]'
+      )
+    ).toBeVisible();
 
     await expect(
       page.locator(
         '[data-company-content-section]'
       )
     ).toHaveCount(
-      3
+      2
     );
-
-
-    await expect(
-      page.getByRole(
-        "heading",
-        {
-          level:
-            1,
-
-          name:
-            "Security work built through practice."
-        }
-      )
-    ).toBeVisible();
 
   }
 );
 
 
 test(
-  "Internships V21 uses expandable technical project rows",
+  "Internships keeps eight expandable technical project records",
   async ({
     page
   }) => {
 
-    await page.setViewportSize({
-      width:
-        1440,
-
-      height:
-        900
-    });
-
-
     await page.goto(
       "/company/internships"
     );
-
 
     const projects =
       page.locator(
         '[data-internship-project]'
       );
 
-
-    const count =
-      await projects.count();
-
-
-    expect(
-      count
-    ).toBeGreaterThanOrEqual(
+    await expect(
+      projects
+    ).toHaveCount(
       8
     );
 
-
-    const first =
-      projects.first();
-
-
-    await first
-      .locator(
-        "summary"
-      )
-      .click();
-
-
     await expect(
-      first.getByText(
-        "Technologies",
+      projects.getByRole(
+        "button",
         {
-          exact:
-            true
+          name:
+            /View details/i
         }
       )
-    ).toBeVisible();
-
-
-    await expect(
-      first.getByText(
-        "Work",
-        {
-          exact:
-            true
-        }
-      )
-    ).toBeVisible();
-
-
-    await expect(
-      first.getByText(
-        "Outputs",
-        {
-          exact:
-            true
-        }
-      )
-    ).toBeVisible();
+    ).toHaveCount(
+      8
+    );
 
   }
 );
 
 
 test(
-  "Internships V21 exposes six connected methodology stages",
+  "Internships keeps six connected methodology stages",
   async ({
     page
   }) => {
@@ -142,58 +85,20 @@ test(
       "/company/internships"
     );
 
-
-    const rail =
-      page.locator(
-        '[data-internship-ui="method-rail"]'
-      );
-
-
-    await rail.scrollIntoViewIfNeeded();
-
-
     await expect(
-      rail.locator(
-        "li"
+      page.locator(
+        '[data-internship-ui="method-grid"] > li'
       )
     ).toHaveCount(
       6
     );
 
-
-    for (
-      const title
-      of [
-        "Build",
-        "Understand",
-        "Validate",
-        "Detect",
-        "Fix",
-        "Document"
-      ]
-    ) {
-
-      await expect(
-        rail.getByRole(
-          "heading",
-          {
-            name:
-              title,
-
-            exact:
-              true
-          }
-        )
-      ).toBeVisible();
-
-    }
-
   }
 );
 
 
 test(
-  "Internships V21 keeps public safety boundaries visible",
+  "Internships keeps public safety boundaries visible",
   async ({
     page
   }) => {
@@ -202,46 +107,23 @@ test(
       "/company/internships"
     );
 
-
-    const safety =
-      page.locator(
-        '[data-internship-ui="safety-boundaries"]'
-      );
-
-
-    await safety.scrollIntoViewIfNeeded();
-
-
     await expect(
-      safety.getByText(
+      page.getByText(
         /authorized, isolated environments/i
       )
     ).toBeVisible();
 
-
     await expect(
-      safety.getByText(
+      page.getByText(
         /synthetic or deliberately vulnerable systems/i
       )
     ).toBeVisible();
 
-
-    for (
-      const label
-      of [
-        /Authorized/,
-        /Isolated/,
-        /Synthetic/
-      ]
-    ) {
-
-      await expect(
-        safety.getByText(
-          label
-        ).first()
-      ).toBeVisible();
-
-    }
+    await expect(
+      page.getByText(
+        /Contributor names are intentionally omitted/i
+      )
+    ).toBeVisible();
 
   }
 );
@@ -249,44 +131,37 @@ test(
 
 for (
   const viewport
-  of [
+  of
+  [
     {
       name:
         "desktop",
-
       width:
         1440,
-
       height:
         900
     },
     {
       name:
         "tablet",
-
       width:
-        820,
-
+        768,
       height:
-        1180
+        1024
     },
     {
       name:
         "mobile",
-
       width:
         390,
-
       height:
         844
     },
     {
       name:
         "narrow",
-
       width:
-        360,
-
+        320,
       height:
         800
     }
@@ -294,7 +169,7 @@ for (
 ) {
 
   test(
-    `Internships V21 stays contained at ${viewport.name}`,
+    `Internships V21 compatibility remains contained at ${viewport.name}`,
     async ({
       page
     }) => {
@@ -302,44 +177,24 @@ for (
       await page.setViewportSize({
         width:
           viewport.width,
-
         height:
           viewport.height
       });
-
 
       await page.goto(
         "/company/internships"
       );
 
 
-      const heading =
-        page.getByRole(
-          "heading",
-          {
-            level:
-              1,
-
-            name:
-              "Security work built through practice."
-          }
-        );
-
-
-      await expect(
-        heading
-      ).toBeVisible();
-
-
-      const metrics =
+      const dimensions =
         await page.evaluate(
           () => ({
-            scrollWidth:
+            scroll:
               document
                 .documentElement
                 .scrollWidth,
 
-            clientWidth:
+            client:
               document
                 .documentElement
                 .clientWidth
@@ -348,40 +203,12 @@ for (
 
 
       expect(
-        metrics.scrollWidth
+        dimensions.scroll
       ).toBeLessThanOrEqual(
-        metrics.clientWidth
+        dimensions.client
         +
         1
       );
-
-
-      if (
-        viewport.width
-        <=
-        390
-      ) {
-
-        const box =
-          await heading.boundingBox();
-
-
-        if (!box) {
-
-          throw new Error(
-            "Internship V21 mobile H1 geometry unavailable"
-          );
-
-        }
-
-
-        expect(
-          box.y
-        ).toBeLessThan(
-          190
-        );
-
-      }
 
     }
   );

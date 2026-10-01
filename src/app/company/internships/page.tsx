@@ -19,6 +19,10 @@ import {
   createMetadata
 } from "@/lib/seo";
 
+import {
+  InternshipProjectDisclosure
+} from "./project-disclosure";
+
 import styles from "./internships.module.css";
 
 
@@ -42,7 +46,7 @@ function Arrow() {
     <span
       aria-hidden="true"
     >
-      ↗
+      →
     </span>
   );
 
@@ -119,6 +123,7 @@ export default function InternshipsPage() {
         styles.page
       }
       data-internship-design="v21"
+      data-internship-audit="v22"
       data-company-architecture="v18"
     >
       <Breadcrumbs
@@ -139,8 +144,7 @@ export default function InternshipsPage() {
 
 
       {/* ================================================================
-          HERO
-          Not counted as a content section.
+          INTRODUCTION
          ================================================================ */}
 
       <section
@@ -150,200 +154,103 @@ export default function InternshipsPage() {
         data-internship-section="hero"
       >
         <Container
-          size="wide"
           className={
             styles.container
           }
         >
-
-
           <div
             className={
-              styles.heroGrid
+              styles.heroCopy
             }
           >
-            <div
+            <p
               className={
-                styles.heroCopy
+                styles.heroEyebrow
               }
             >
-              <p
+              Internship projects
+            </p>
+
+            <h1>
+              Security work
+              <span>
+                built through practice.
+              </span>
+            </h1>
+
+            <p
+              className={
+                styles.heroLead
+              }
+            >
+              Selected technical work from No Breach internship programs.
+              Interns build labs, investigate system behavior, validate
+              security hypotheses, create detections where relevant, verify
+              remediation and document findings.
+            </p>
+
+            <div
+              className={
+                styles.heroActions
+              }
+            >
+              <a
+                href="#projects"
                 className={
-                  styles.heroEyebrow
+                  styles.primaryAction
                 }
               >
-                Build · Test · Detect · Fix · Document
-              </p>
+                Explore the projects
 
-              <h1>
-                Security work
-                <span>
-                  built through practice.
+                <span
+                  aria-hidden="true"
+                >
+                  ↓
                 </span>
-              </h1>
+              </a>
 
-              <p
+              <Link
+                href="/careers"
                 className={
-                  styles.heroLead
+                  styles.textAction
                 }
               >
-                Selected technical work from No Breach internship programs, where interns build labs, investigate system behavior, validate security hypotheses, create detections, document findings and verify remediation.
-              </p>
+                View careers
 
-              <div
-                className={
-                  styles.heroActions
-                }
-              >
-                <a
-                  href="#projects"
-                  className={
-                    styles.primaryAction
-                  }
-                >
-                  Explore the projects
-
-                  <span
-                    aria-hidden="true"
-                  >
-                    ↓
-                  </span>
-                </a>
-
-                <Link
-                  href="/careers"
-                  className={
-                    styles.textAction
-                  }
-                >
-                  Careers
-
-                  <Arrow />
-                </Link>
-              </div>
+                <Arrow />
+              </Link>
             </div>
 
-            <div
+            <p
               className={
-                styles.heroSystem
+                styles.heroMeta
               }
-              aria-label="Internship working method"
             >
-              <div
-                className={
-                  styles.heroSystemHeader
-                }
-              >
-                <span>
-                  Method
-                </span>
-
-                <span>
-                  {
-                    String(
-                      internshipMethod.length
-                    ).padStart(
-                      2,
-                      "0"
-                    )
-                  }
-                  {" "}
-                  stages
-                </span>
-              </div>
-
-              <ol>
+              <strong>
                 {
-                  internshipMethod.map(
-                    (
-                      item
-                    ) => (
-                      <li
-                        key={
-                          item.number
-                        }
-                      >
-                        <span>
-                          {
-                            item.number
-                          }
-                        </span>
-
-                        <strong>
-                          {
-                            item.title
-                          }
-                        </strong>
-
-                        <i
-                          aria-hidden="true"
-                        />
-                      </li>
-                    )
-                  )
+                  internshipProjects.length
                 }
-              </ol>
-            </div>
+                {" "}
+                showcased projects
+              </strong>
+
+              <span
+                aria-hidden="true"
+              >
+                ·
+              </span>
+
+              <span>
+                Isolated lab work
+              </span>
+            </p>
           </div>
-
-          <dl
-            className={
-              styles.heroMetrics
-            }
-          >
-            <div>
-              <dt>
-                Projects
-              </dt>
-
-              <dd>
-                {
-                  String(
-                    internshipProjects.length
-                  ).padStart(
-                    2,
-                    "0"
-                  )
-                }
-              </dd>
-            </div>
-
-            <div>
-              <dt>
-                Method
-              </dt>
-
-              <dd>
-                06 stages
-              </dd>
-            </div>
-
-            <div>
-              <dt>
-                Environment
-              </dt>
-
-              <dd>
-                Isolated labs
-              </dd>
-            </div>
-
-            <div>
-              <dt>
-                Evidence
-              </dt>
-
-              <dd>
-                Reproducible
-              </dd>
-            </div>
-          </dl>
         </Container>
       </section>
 
 
       {/* ================================================================
-          01 — PROJECT INDEX
+          01 — PROJECT CATALOGUE
          ================================================================ */}
 
       <section
@@ -355,17 +262,69 @@ export default function InternshipsPage() {
         data-internship-section="projects"
       >
         <Container
-          size="wide"
           className={
             styles.container
           }
         >
           <SectionHeading
             number="01"
-            eyebrow="Project index"
-            title="Technical work, presented as evidence rather than decoration."
-            description="Each project represents a controlled security problem with an environment to understand, work to perform and outputs that make the result reproducible."
+            eyebrow="Project catalogue"
+            title="Internship projects"
+            description="Explore the technologies, work performed and technical outputs behind each project."
           />
+
+          <aside
+            className={
+              styles.showcaseNotice
+            }
+            aria-labelledby="showcase-notice-title"
+          >
+            <div
+              className={
+                styles.noticeHeading
+              }
+            >
+              <p
+                className={
+                  styles.noticeEyebrow
+                }
+              >
+                Publication scope
+              </p>
+
+              <h3
+                id="showcase-notice-title"
+              >
+                About this showcase
+              </h3>
+            </div>
+
+            <div
+              className={
+                styles.noticeCopy
+              }
+            >
+              <p>
+                {
+                  internshipPublicNote
+                }
+              </p>
+
+              <p>
+                {
+                  internshipContributorNote
+                }
+              </p>
+            </div>
+          </aside>
+
+          <p
+            className={
+              styles.projectInstruction
+            }
+          >
+            Open a project to view its work performed and technical outputs.
+          </p>
 
           <div
             className={
@@ -378,199 +337,39 @@ export default function InternshipsPage() {
                 (
                   project
                 ) => (
-                  <details
-                    className={
-                      styles.projectRow
-                    }
-                    data-internship-project
+                  <InternshipProjectDisclosure
                     key={
                       project.slug
                     }
-                  >
-                    <summary
-                      className={
-                        styles.projectSummary
-                      }
-                    >
-                      <span
-                        className={
-                          styles.projectNumber
-                        }
-                      >
-                        {
-                          project.number
-                        }
-                      </span>
-
-                      <span
-                        className={
-                          styles.projectIdentity
-                        }
-                      >
-                        <small>
-                          {
-                            project.track
-                          }
-                        </small>
-
-                        <span
-                          className={
-                            styles.projectTitle
-                          }
-                          role="heading"
-                          aria-level={3}
-                        >
-                          {
-                            project.title
-                          }
-                        </span>
-                      </span>
-
-                      <span
-                        className={
-                          styles.projectSummaryText
-                        }
-                      >
-                        {
-                          project.summary
-                        }
-                      </span>
-
-                      <span
-                        className={
-                          styles.projectTechnology
-                        }
-                      >
-                        {
-                          project.technologies
-                            .slice(
-                              0,
-                              3
-                            )
-                            .join(
-                              " / "
-                            )
-                        }
-                      </span>
-
-                      <span
-                        className={
-                          styles.projectToggle
-                        }
-                        aria-hidden="true"
-                      >
-                        +
-                      </span>
-                    </summary>
-
-                    <div
-                      className={
-                        styles.projectDetails
-                      }
-                    >
-                      <div
-                        className={
-                          styles.detailGroup
-                        }
-                      >
-                        <p>
-                          Technologies
-                        </p>
-
-                        <ul>
-                          {
-                            project.technologies.map(
-                              (
-                                technology
-                              ) => (
-                                <li
-                                  key={
-                                    technology
-                                  }
-                                >
-                                  {
-                                    technology
-                                  }
-                                </li>
-                              )
-                            )
-                          }
-                        </ul>
-                      </div>
-
-                      <div
-                        className={
-                          styles.detailGroup
-                        }
-                      >
-                        <p>
-                          Work
-                        </p>
-
-                        <ul>
-                          {
-                            project.work.map(
-                              (
-                                item
-                              ) => (
-                                <li
-                                  key={
-                                    item
-                                  }
-                                >
-                                  {
-                                    item
-                                  }
-                                </li>
-                              )
-                            )
-                          }
-                        </ul>
-                      </div>
-
-                      <div
-                        className={
-                          styles.detailGroup
-                        }
-                      >
-                        <p>
-                          Outputs
-                        </p>
-
-                        <ul>
-                          {
-                            project.outputs.map(
-                              (
-                                output
-                              ) => (
-                                <li
-                                  key={
-                                    output
-                                  }
-                                >
-                                  {
-                                    output
-                                  }
-                                </li>
-                              )
-                            )
-                          }
-                        </ul>
-                      </div>
-                    </div>
-                  </details>
+                    number={
+                      project.number
+                    }
+                    slug={
+                      project.slug
+                    }
+                    title={
+                      project.title
+                    }
+                    track={
+                      project.track
+                    }
+                    summary={
+                      project.summary
+                    }
+                    technologies={
+                      project.technologies
+                    }
+                    work={
+                      project.work
+                    }
+                    outputs={
+                      project.outputs
+                    }
+                  />
                 )
               )
             }
           </div>
-
-          <p
-            className={
-              styles.projectHint
-            }
-          >
-            Select a project row to inspect technologies, work performed and technical outputs.
-          </p>
         </Container>
       </section>
 
@@ -587,7 +386,6 @@ export default function InternshipsPage() {
         data-internship-section="method"
       >
         <Container
-          size="wide"
           className={
             styles.container
           }
@@ -595,66 +393,15 @@ export default function InternshipsPage() {
           <SectionHeading
             number="02"
             eyebrow="Working method"
-            title="Internships structured around doing the work."
-            description="The program moves from building a controlled environment to understanding it, validating security behavior, detecting what happened, improving controls and documenting the evidence."
+            title="How the work progresses."
+            description="One six-stage sequence describes the internship approach while preserving project-specific differences and the existing detection qualification."
           />
-
-          <div
-            className={
-              styles.methodIntro
-            }
-          >
-            <p>
-              One continuous technical loop.
-            </p>
-
-            <div
-              className={
-                styles.methodSequence
-              }
-              aria-hidden="true"
-            >
-              <span>
-                BUILD
-              </span>
-
-              <i />
-
-              <span>
-                UNDERSTAND
-              </span>
-
-              <i />
-
-              <span>
-                VALIDATE
-              </span>
-
-              <i />
-
-              <span>
-                DETECT
-              </span>
-
-              <i />
-
-              <span>
-                FIX
-              </span>
-
-              <i />
-
-              <span>
-                DOCUMENT
-              </span>
-            </div>
-          </div>
 
           <ol
             className={
-              styles.methodRail
+              styles.methodGrid
             }
-            data-internship-ui="method-rail"
+            data-internship-ui="method-grid"
           >
             {
               internshipMethod.map(
@@ -669,21 +416,15 @@ export default function InternshipsPage() {
                       item.number
                     }
                   >
-                    <div
+                    <span
                       className={
-                        styles.methodMeta
+                        styles.methodNumber
                       }
                     >
-                      <span>
-                        {
-                          item.number
-                        }
-                      </span>
-
-                      <i
-                        aria-hidden="true"
-                      />
-                    </div>
+                      {
+                        item.number
+                      }
+                    </span>
 
                     <h3>
                       {
@@ -706,155 +447,7 @@ export default function InternshipsPage() {
 
 
       {/* ================================================================
-          03 — PUBLIC SHOWCASE & SAFETY
-         ================================================================ */}
-
-      <section
-        className={
-          styles.section
-        }
-        data-company-content-section="public-showcase"
-        data-internship-section="public-showcase"
-      >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
-          <SectionHeading
-            number="03"
-            eyebrow="Public showcase"
-            title="Public by design. Controlled by default."
-            description="The showcase explains learning outcomes and technical process without publishing confidential assessment material or private contributor information."
-          />
-
-          <div
-            className={
-              styles.safetyLayout
-            }
-            data-internship-ui="safety-boundaries"
-          >
-            <div
-              className={
-                styles.safetyCopy
-              }
-            >
-              <p
-                className={
-                  styles.safetyLabel
-                }
-              >
-                Publication boundary
-              </p>
-
-              <p
-                className={
-                  styles.safetyLead
-                }
-              >
-                {
-                  internshipPublicNote
-                }
-              </p>
-
-              <p
-                className={
-                  styles.contributorNote
-                }
-              >
-                {
-                  internshipContributorNote
-                }
-              </p>
-            </div>
-
-            <dl
-              className={
-                styles.safetyTerms
-              }
-            >
-              <div>
-                <dt>
-                  01 / Authorized
-                </dt>
-
-                <dd>
-                  Security testing takes place only where the work is permitted.
-                </dd>
-              </div>
-
-              <div>
-                <dt>
-                  02 / Isolated
-                </dt>
-
-                <dd>
-                  Exercises are separated from confidential client and production environments.
-                </dd>
-              </div>
-
-              <div>
-                <dt>
-                  03 / Synthetic
-                </dt>
-
-                <dd>
-                  Public exercises use synthetic or intentionally vulnerable systems.
-                </dd>
-              </div>
-            </dl>
-          </div>
-
-          <div
-            className={
-              styles.destinationRail
-            }
-          >
-            <p>
-              Continue
-            </p>
-
-            <nav
-              aria-label="Continue exploring No Breach"
-            >
-              <Link
-                href="/careers"
-              >
-                <span>
-                  Careers
-                </span>
-
-                <Arrow />
-              </Link>
-
-              <Link
-                href="/training"
-              >
-                <span>
-                  Training
-                </span>
-
-                <Arrow />
-              </Link>
-
-              <Link
-                href="/contact"
-              >
-                <span>
-                  Contact
-                </span>
-
-                <Arrow />
-              </Link>
-            </nav>
-          </div>
-        </Container>
-      </section>
-
-
-      {/* ================================================================
-          CTA — not part of the three-section budget
+          CLOSING ACTION
          ================================================================ */}
 
       <section
@@ -864,17 +457,10 @@ export default function InternshipsPage() {
         data-internship-section="cta"
       >
         <Container
-          size="wide"
           className={
             styles.container
           }
         >
-          <div
-            className={
-              styles.ctaRule
-            }
-          />
-
           <div
             className={
               styles.ctaLayout
@@ -890,11 +476,11 @@ export default function InternshipsPage() {
                   NB
                 </span>
 
-                Applied learning
+                Next steps
               </p>
 
               <h2>
-                Build, break, detect, fix and document.
+                Explore careers and training.
               </h2>
             </div>
 
@@ -904,7 +490,8 @@ export default function InternshipsPage() {
               }
             >
               <p>
-                Explore opportunities to learn security through complete technical work rather than isolated exercises.
+                Visit Careers for role information, explore Training, or
+                contact No Breach with a question.
               </p>
 
               <div
@@ -918,7 +505,7 @@ export default function InternshipsPage() {
                     styles.primaryAction
                   }
                 >
-                  Explore careers
+                  View careers
 
                   <Arrow />
                 </Link>
@@ -926,10 +513,21 @@ export default function InternshipsPage() {
                 <Link
                   href="/training"
                   className={
+                    styles.secondaryAction
+                  }
+                >
+                  View training
+
+                  <Arrow />
+                </Link>
+
+                <Link
+                  href="/contact"
+                  className={
                     styles.textAction
                   }
                 >
-                  Training Hub
+                  Contact No Breach
 
                   <Arrow />
                 </Link>

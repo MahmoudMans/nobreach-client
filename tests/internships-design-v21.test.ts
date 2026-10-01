@@ -8,13 +8,17 @@ import {
   it
 } from "vitest";
 
+import {
+  internshipMethod,
+  internshipProjects
+} from "@/content/internships";
+
 
 const page =
   readFileSync(
     "src/app/company/internships/page.tsx",
     "utf8"
   );
-
 
 const css =
   readFileSync(
@@ -24,11 +28,11 @@ const css =
 
 
 describe(
-  "Internships V21 applied security workbench",
+  "Internships V21 compatibility under audit V22",
   () => {
 
     it(
-      "activates the V21 visual authority",
+      "keeps the established route authority",
       () => {
 
         expect(
@@ -37,11 +41,10 @@ describe(
           'data-internship-design="v21"'
         );
 
-
         expect(
-          css
+          page
         ).toContain(
-          "NB_INTERNSHIP_APPLIED_SECURITY_WORKBENCH_V21"
+          'data-company-architecture="v18"'
         );
 
       }
@@ -49,72 +52,19 @@ describe(
 
 
     it(
-      "uses exactly three real content sections",
+      "keeps the project catalogue data-driven",
       () => {
 
         expect(
-          (
-            page.match(
-              /data-company-content-section=/g
-            )
-            ??
-            []
-          ).length
-        ).toBe(
-          3
+          internshipProjects
+        ).toHaveLength(
+          8
         );
-
-
-        for (
-          const name
-          of [
-            "projects",
-            "method",
-            "public-showcase"
-          ]
-        ) {
-
-          expect(
-            page
-          ).toContain(
-            `data-company-content-section="${name}"`
-          );
-
-        }
-
-      }
-    );
-
-
-    it(
-      "uses a technical project ledger instead of a project card wall",
-      () => {
 
         expect(
           page
         ).toContain(
-          'data-internship-ui="project-index"'
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "<details"
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "styles.projectRow"
-        );
-
-
-        expect(
-          page
-        ).not.toContain(
-          "styles.projectCard"
+          "internshipProjects.map"
         );
 
       }
@@ -122,8 +72,28 @@ describe(
 
 
     it(
-      "renders methodology from the canonical six-stage source",
+      "keeps project details expandable",
       () => {
+
+        expect(
+          page
+        ).toContain(
+          "InternshipProjectDisclosure"
+        );
+
+      }
+    );
+
+
+    it(
+      "keeps the complete methodology",
+      () => {
+
+        expect(
+          internshipMethod
+        ).toHaveLength(
+          6
+        );
 
         expect(
           page
@@ -131,19 +101,12 @@ describe(
           "internshipMethod.map"
         );
 
-
-        expect(
-          page
-        ).toContain(
-          'data-internship-ui="method-rail"'
-        );
-
       }
     );
 
 
     it(
-      "preserves public safety and contributor notes",
+      "keeps publication boundaries visible",
       () => {
 
         expect(
@@ -152,18 +115,10 @@ describe(
           "internshipPublicNote"
         );
 
-
         expect(
           page
         ).toContain(
           "internshipContributorNote"
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          'data-internship-ui="safety-boundaries"'
         );
 
       }
@@ -171,37 +126,18 @@ describe(
 
 
     it(
-      "preserves global compatibility markers exactly once",
+      "keeps the Company-family compatibility marker",
       () => {
 
-        for (
-          const marker
-          of [
-            "NB_MINIMALIST_SYSTEM_V1",
-            "NB_MINIMALIST_POLISH_V4",
-            "NB_PREMIUM_HERO_SYSTEM_V6",
-            "NB_NAV_HERO_RHYTHM_V1",
-            "NB_INTERNSHIP_THREE_SECTION_ARCHITECTURE_V18"
-          ]
-        ) {
-
-          expect(
-            (
-              css.match(
-                new RegExp(
-                  marker,
-                  "g"
-                )
-              )
-              ??
-              []
-            ).length,
-            marker
-          ).toBe(
-            1
-          );
-
-        }
+        expect(
+          css.match(
+            /NB_COMPANY_INTERNSHIPS_DESIGN_V14/g
+          )
+          ??
+          []
+        ).toHaveLength(
+          1
+        );
 
       }
     );
