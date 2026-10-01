@@ -25,136 +25,20 @@ export const metadata =
   });
 
 
-const focusAreas = [
+const interfaces = [
   {
-    number:
-      "01",
-
-    code:
-      "REST",
-
     title:
       "REST APIs",
 
     description:
-      "Review exposed endpoints, resource behavior, methods and security boundaries."
+      "Review exposed endpoints, resources, methods, identities and behavior across REST-style interfaces."
   },
   {
-    number:
-      "02",
-
-    code:
-      "GQL",
-
     title:
       "GraphQL",
 
     description:
-      "Review schema exposure, resolver behavior and authorization across operations."
-  },
-  {
-    number:
-      "03",
-
-    code:
-      "AUTHN",
-
-    title:
-      "Authentication",
-
-    description:
-      "Examine how API clients establish and maintain authenticated identity."
-  },
-  {
-    number:
-      "04",
-
-    code:
-      "AUTHZ",
-
-    title:
-      "Authorization",
-
-    description:
-      "Validate whether identities can perform only the actions they are intended to perform."
-  },
-  {
-    number:
-      "05",
-
-    code:
-      "BOLA",
-
-    title:
-      "BOLA / IDOR",
-
-    description:
-      "Test whether changing object references can cross intended access boundaries."
-  },
-  {
-    number:
-      "06",
-
-    code:
-      "OBJ",
-
-    title:
-      "Object-level access",
-
-    description:
-      "Compare access to records and resources across different identities."
-  },
-  {
-    number:
-      "07",
-
-    code:
-      "FUNC",
-
-    title:
-      "Function-level authorization",
-
-    description:
-      "Review whether privileged actions remain restricted to appropriate identities."
-  },
-  {
-    number:
-      "08",
-
-    code:
-      "TOKEN",
-
-    title:
-      "Token security",
-
-    description:
-      "Review token handling, lifecycle assumptions and the boundaries attached to authenticated sessions."
-  },
-  {
-    number:
-      "09",
-
-    code:
-      "RATE",
-
-    title:
-      "Rate limiting",
-
-    description:
-      "Review how sensitive API behavior responds to repeated or high-frequency requests."
-  },
-  {
-    number:
-      "10",
-
-    code:
-      "DATA",
-
-    title:
-      "Business logic & data exposure",
-
-    description:
-      "Assess workflow assumptions and whether responses reveal more information than intended."
+      "Review schema exposure, operations, resolver behavior and authorization boundaries, including access to returned data."
   }
 ] as const;
 
@@ -171,7 +55,10 @@ const boundaries = [
       "Identity boundary",
 
     description:
-      "Who is making the request, how identity is established and what trust is attached to it."
+      "Examine who is making the request, how API clients establish and maintain authenticated identity, and what trust is attached to that identity.",
+
+    supplement:
+      null
   },
   {
     number:
@@ -184,7 +71,10 @@ const boundaries = [
       "Object boundary",
 
     description:
-      "Which records, resources and tenant-owned objects that identity is allowed to access."
+      "Compare access to records, resources and tenant-owned objects across different identities. Test whether changing object references can cross intended access boundaries.",
+
+    supplement:
+      "Object-level access · BOLA / IDOR"
   },
   {
     number:
@@ -197,36 +87,30 @@ const boundaries = [
       "Function boundary",
 
     description:
-      "Which actions, workflows and privileged operations that identity is permitted to invoke."
+      "Review whether actions, workflows and privileged operations remain restricted to the identities permitted to invoke them.",
+
+    supplement:
+      null
   }
 ] as const;
 
 
-const behavioralControls = [
+const additionalAreas = [
   {
-    number:
-      "01",
-
     title:
       "Token security",
 
     description:
-      "Inspect how API identity and session assumptions are carried between requests."
+      "Review token handling, lifecycle assumptions and the identity and session boundaries carried between requests."
   },
   {
-    number:
-      "02",
-
     title:
       "Rate limiting",
 
     description:
-      "Observe whether sensitive operations apply appropriate request-control boundaries."
+      "Review how sensitive API operations respond to repeated or high-frequency requests and the request-control boundaries applied to them."
   },
   {
-    number:
-      "03",
-
     title:
       "Business logic",
 
@@ -234,14 +118,11 @@ const behavioralControls = [
       "Follow complete workflows to identify security assumptions that endpoint-by-endpoint testing may miss."
   },
   {
-    number:
-      "04",
-
     title:
       "Data exposure",
 
     description:
-      "Review whether API responses disclose fields or information outside the intended use of the request."
+      "Review whether responses disclose fields or information beyond the intended use of the request."
   }
 ] as const;
 
@@ -300,7 +181,7 @@ const workflow = [
 ] as const;
 
 
-const deliverables = [
+const outputs = [
   {
     code:
       "MAP",
@@ -344,6 +225,10 @@ const deliverables = [
 ] as const;
 
 
+/*
+ * Preserve the current verified answers rather than silently replacing them
+ * with screenshot-only editorial drafts.
+ */
 const faqs = [
   {
     question:
@@ -375,7 +260,7 @@ function Arrow() {
     <span
       aria-hidden="true"
     >
-      ↗
+      →
     </span>
   );
 
@@ -383,14 +268,10 @@ function Arrow() {
 
 
 function SectionHeading({
-  number,
   eyebrow,
   title,
   description
 }: {
-  number:
-    string;
-
   eyebrow:
     string;
 
@@ -412,22 +293,18 @@ function SectionHeading({
           styles.sectionEyebrow
         }
       >
-        <span>
-          {
-            number
-          }
-        </span>
-
         {
           eyebrow
         }
       </p>
+
 
       <h2>
         {
           title
         }
       </h2>
+
 
       <p
         className={
@@ -452,12 +329,10 @@ export default function ApiSecurityPage() {
         styles.page
       }
       data-api-security-design="v23"
+      data-api-security-audit="v24"
     >
-
-
-
       {/* ================================================================
-          HERO
+          INTRODUCTION
          ================================================================ */}
 
       <section
@@ -466,62 +341,707 @@ export default function ApiSecurityPage() {
         }
         data-api-section="hero"
       >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
+        <Container>
           <div
             className={
-              styles.heroTopline
+              styles.frame
             }
-          >
-            <span>
-              No Breach / API Security
-            </span>
-
-            <span>
-              Trust Boundary Assessment
-            </span>
-          </div>
-
-          <div
-            className={
-              styles.heroGrid
-            }
+            data-api-frame="hero"
           >
             <div
               className={
-                styles.heroCopy
+                styles.heroTopline
               }
             >
-              <p
+              <span>
+                No Breach / API Security
+              </span>
+
+              <span>
+                Trust Boundary Assessment
+              </span>
+            </div>
+
+
+            <div
+              className={
+                styles.heroGrid
+              }
+            >
+              <div
                 className={
-                  styles.heroEyebrow
+                  styles.heroCopy
                 }
               >
-                REST · GraphQL · Authorization
-              </p>
+                <p
+                  className={
+                    styles.heroEyebrow
+                  }
+                >
+                  REST · GraphQL · Authorization
+                </p>
 
-              <h1>
-                API security starts with
-                <span>
-                  trust boundaries.
-                </span>
-              </h1>
 
-              <p
+                <h1>
+                  API security starts with trust boundaries.
+                </h1>
+
+
+                <p
+                  className={
+                    styles.heroLead
+                  }
+                >
+                  Security testing focused on the identities, objects,
+                  functions and business rules exposed through application
+                  interfaces.
+                </p>
+
+
+                <div
+                  className={
+                    styles.heroActions
+                  }
+                >
+                  <Link
+                    href="/contact"
+                    className={
+                      styles.primaryAction
+                    }
+                  >
+                    Discuss an API assessment
+
+                    <Arrow />
+                  </Link>
+
+
+                  <a
+                    href="#attack-surface"
+                    className={
+                      styles.secondaryAction
+                    }
+                  >
+                    Explore the assessment
+
+                    <span
+                      aria-hidden="true"
+                    >
+                      ↓
+                    </span>
+                  </a>
+                </div>
+              </div>
+
+
+              <aside
                 className={
-                  styles.heroLead
+                  styles.overview
+                }
+                data-api-ui="assessment-overview"
+                aria-labelledby="api-assessment-overview"
+              >
+                <p
+                  className={
+                    styles.overviewLabel
+                  }
+                >
+                  Assessment overview
+                </p>
+
+
+                <h2
+                  id="api-assessment-overview"
+                  className={
+                    styles.overviewTitle
+                  }
+                >
+                  Interfaces, boundaries and evidence at a glance.
+                </h2>
+
+
+                <dl
+                  className={
+                    styles.overviewList
+                  }
+                >
+                  <div>
+                    <dt>
+                      Interfaces
+                    </dt>
+
+                    <dd>
+                      REST APIs and GraphQL
+                    </dd>
+                  </div>
+
+
+                  <div>
+                    <dt>
+                      Focus
+                    </dt>
+
+                    <dd>
+                      Identity, object and function boundaries
+                    </dd>
+                  </div>
+
+
+                  <div>
+                    <dt>
+                      Outputs
+                    </dt>
+
+                    <dd>
+                      Technical evidence and remediation guidance
+                    </dd>
+                  </div>
+                </dl>
+              </aside>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+
+      {/* ================================================================
+          ATTACK SURFACE
+         ================================================================ */}
+
+      <section
+        id="attack-surface"
+        className={
+          styles.section
+        }
+        data-api-section="attack-surface"
+      >
+        <Container>
+          <div
+            className={
+              styles.frame
+            }
+            data-api-frame="attack-surface"
+          >
+            <SectionHeading
+              eyebrow="01 / Attack surface"
+              title="Test the interface as a system, not a list of endpoints."
+              description="The assessment follows how identities, requests, resources and application workflows interact across the API."
+            />
+
+
+            <div
+              className={
+                styles.subgroupHeading
+              }
+            >
+              <h3>
+                Interfaces assessed
+              </h3>
+            </div>
+
+
+            <div
+              className={
+                styles.interfaceGrid
+              }
+              data-api-ui="interfaces"
+            >
+              {
+                interfaces.map(
+                  (
+                    item
+                  ) => (
+                    <article
+                      className={
+                        styles.interfacePanel
+                      }
+                      data-api-interface
+                      key={
+                        item.title
+                      }
+                    >
+                      <h3>
+                        {
+                          item.title
+                        }
+                      </h3>
+
+
+                      <p>
+                        {
+                          item.description
+                        }
+                      </p>
+                    </article>
+                  )
+                )
+              }
+            </div>
+          </div>
+        </Container>
+      </section>
+
+
+      {/* ================================================================
+          AUTHORIZATION MODEL
+         ================================================================ */}
+
+      <section
+        className={
+          `${styles.section} ${styles.authorization}`
+        }
+        data-api-section="authorization"
+      >
+        <Container>
+          <div
+            className={
+              styles.frame
+            }
+            data-api-frame="authorization"
+          >
+            <SectionHeading
+              eyebrow="02 / Authorization model"
+              title="Identity is only the first boundary."
+              description="The assessment connects authenticated identity with the objects and functions that identity is permitted to access."
+            />
+
+
+            <div
+              className={
+                styles.boundaryGrid
+              }
+              data-api-ui="boundary-system"
+            >
+              {
+                boundaries.map(
+                  (
+                    boundary
+                  ) => (
+                    <article
+                      className={
+                        styles.boundary
+                      }
+                      data-api-boundary
+                      key={
+                        boundary.code
+                      }
+                    >
+                      <div
+                        className={
+                          styles.boundaryMeta
+                        }
+                      >
+                        <span>
+                          {
+                            boundary.number
+                          }
+                        </span>
+
+                        <span>
+                          {
+                            boundary.code
+                          }
+                        </span>
+                      </div>
+
+
+                      <h3>
+                        {
+                          boundary.title
+                        }
+                      </h3>
+
+
+                      <p>
+                        {
+                          boundary.description
+                        }
+                      </p>
+
+
+                      {
+                        boundary.supplement
+                          ? (
+                              <p
+                                className={
+                                  styles.boundarySupplement
+                                }
+                              >
+                                {
+                                  boundary.supplement
+                                }
+                              </p>
+                            )
+                          : null
+                      }
+                    </article>
+                  )
+                )
+              }
+            </div>
+
+
+            <div
+              className={
+                styles.additional
+              }
+            >
+              <div
+                className={
+                  styles.subgroupHeading
                 }
               >
-                Security testing focused on the identities, objects, functions and business rules exposed through application interfaces.
-              </p>
+                <h3>
+                  Additional assessment areas
+                </h3>
+              </div>
+
 
               <div
                 className={
-                  styles.heroActions
+                  styles.additionalList
+                }
+              >
+                {
+                  additionalAreas.map(
+                    (
+                      item
+                    ) => (
+                      <article
+                        className={
+                          styles.additionalRow
+                        }
+                        data-api-additional
+                        key={
+                          item.title
+                        }
+                      >
+                        <h4>
+                          {
+                            item.title
+                          }
+                        </h4>
+
+
+                        <p>
+                          {
+                            item.description
+                          }
+                        </p>
+                      </article>
+                    )
+                  )
+                }
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+
+      {/* ================================================================
+          VALIDATION & REPORTING
+         ================================================================ */}
+
+      <section
+        className={
+          styles.section
+        }
+        data-api-section="validation-reporting"
+      >
+        <Container>
+          <div
+            className={
+              styles.frame
+            }
+            data-api-frame="validation-reporting"
+          >
+            <SectionHeading
+              eyebrow="03 / Validation & reporting"
+              title="From initial context to actionable reporting."
+              description="The engagement moves from understanding intended API behavior toward validating meaningful weaknesses and documenting what engineering teams need to correct."
+            />
+
+
+            <ol
+              className={
+                styles.workflow
+              }
+              data-api-ui="workflow"
+              aria-label="API security assessment workflow"
+            >
+              {
+                workflow.map(
+                  (
+                    step
+                  ) => (
+                    <li
+                      className={
+                        styles.workflowStep
+                      }
+                      data-api-workflow-step
+                      key={
+                        step.number
+                      }
+                    >
+                      <div
+                        className={
+                          styles.workflowMarker
+                        }
+                        aria-hidden="true"
+                      >
+                        <span>
+                          {
+                            step.number
+                          }
+                        </span>
+
+                        <i />
+                      </div>
+
+
+                      <h3>
+                        {
+                          step.title
+                        }
+                      </h3>
+
+
+                      <p>
+                        {
+                          step.description
+                        }
+                      </p>
+                    </li>
+                  )
+                )
+              }
+            </ol>
+
+
+            <div
+              className={
+                styles.reportingGrid
+              }
+            >
+              <section
+                className={
+                  styles.outputs
+                }
+                aria-labelledby="api-output-heading"
+              >
+                <div
+                  className={
+                    styles.subgroupHeading
+                  }
+                >
+                  <h3
+                    id="api-output-heading"
+                  >
+                    Assessment output
+                  </h3>
+                </div>
+
+
+                <div
+                  className={
+                    styles.outputList
+                  }
+                >
+                  {
+                    outputs.map(
+                      (
+                        output
+                      ) => (
+                        <article
+                          className={
+                            styles.outputRow
+                          }
+                          data-api-output
+                          key={
+                            output.code
+                          }
+                        >
+                          <span>
+                            {
+                              output.code
+                            }
+                          </span>
+
+
+                          <div>
+                            <h4>
+                              {
+                                output.title
+                              }
+                            </h4>
+
+                            <p>
+                              {
+                                output.description
+                              }
+                            </p>
+                          </div>
+                        </article>
+                      )
+                    )
+                  }
+                </div>
+              </section>
+
+
+              <section
+                className={
+                  styles.questions
+                }
+                aria-labelledby="api-faq-heading"
+              >
+                <div
+                  className={
+                    styles.subgroupHeading
+                  }
+                >
+                  <h3
+                    id="api-faq-heading"
+                  >
+                    Common questions
+                  </h3>
+                </div>
+
+
+                <div
+                  className={
+                    styles.faqList
+                  }
+                >
+                  {
+                    faqs.map(
+                      (
+                        faq,
+                        index
+                      ) => (
+                        <details
+                          className={
+                            styles.faqItem
+                          }
+                          data-api-faq
+                          key={
+                            faq.question
+                          }
+                        >
+                          <summary>
+                            <span
+                              className={
+                                styles.faqTrigger
+                              }
+                            >
+                              <span
+                                className={
+                                  styles.faqNumber
+                                }
+                                aria-hidden="true"
+                              >
+                                {
+                                  String(
+                                    index + 1
+                                  ).padStart(
+                                    2,
+                                    "0"
+                                  )
+                                }
+                              </span>
+
+
+                              <span
+                                className={
+                                  styles.faqQuestion
+                                }
+                              >
+                                {
+                                  faq.question
+                                }
+                              </span>
+
+
+                              <span
+                                className={
+                                  styles.faqIndicator
+                                }
+                                aria-hidden="true"
+                              />
+                            </span>
+                          </summary>
+
+
+                          <div
+                            className={
+                              styles.faqAnswer
+                            }
+                          >
+                            <p>
+                              {
+                                faq.answer
+                              }
+                            </p>
+                          </div>
+                        </details>
+                      )
+                    )
+                  }
+                </div>
+              </section>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+
+      {/* ================================================================
+          ASSESSMENT DISCUSSION
+         ================================================================ */}
+
+      <section
+        className={
+          styles.cta
+        }
+        data-api-section="cta"
+      >
+        <Container>
+          <div
+            className={
+              `${styles.frame} ${styles.ctaGrid}`
+            }
+            data-api-frame="cta"
+          >
+            <div>
+              <p
+                className={
+                  styles.sectionEyebrow
+                }
+              >
+                API assessment
+              </p>
+
+
+              <h2>
+                Understand your API&apos;s access boundaries.
+              </h2>
+            </div>
+
+
+            <div
+              className={
+                styles.ctaBody
+              }
+            >
+              <p>
+                Discuss your API architecture, assessment scope and the access
+                boundaries you need to validate.
+              </p>
+
+
+              <div
+                className={
+                  styles.ctaActions
                 }
               >
                 <Link
@@ -535,725 +1055,6 @@ export default function ApiSecurityPage() {
                   <Arrow />
                 </Link>
 
-                <a
-                  href="#attack-surface"
-                  className={
-                    styles.textAction
-                  }
-                >
-                  Explore the assessment
-
-                  <span
-                    aria-hidden="true"
-                  >
-                    ↓
-                  </span>
-                </a>
-              </div>
-            </div>
-
-            <div
-              className={
-                styles.trustMap
-              }
-              data-api-ui="trust-map"
-              aria-label="API trust boundary model"
-            >
-              <div
-                className={
-                  styles.trustMapHeader
-                }
-              >
-                <span>
-                  Request path
-                </span>
-
-                <span>
-                  NB / API
-                </span>
-              </div>
-
-              <div
-                className={
-                  styles.trustNodes
-                }
-              >
-                <div>
-                  <span>
-                    01
-                  </span>
-
-                  <strong>
-                    CLIENT
-                  </strong>
-                </div>
-
-                <i
-                  aria-hidden="true"
-                />
-
-                <div>
-                  <span>
-                    02
-                  </span>
-
-                  <strong>
-                    TOKEN
-                  </strong>
-                </div>
-
-                <i
-                  aria-hidden="true"
-                />
-
-                <div>
-                  <span>
-                    03
-                  </span>
-
-                  <strong>
-                    API
-                  </strong>
-                </div>
-
-                <i
-                  aria-hidden="true"
-                />
-
-                <div>
-                  <span>
-                    04
-                  </span>
-
-                  <strong>
-                    OBJECT
-                  </strong>
-                </div>
-
-                <i
-                  aria-hidden="true"
-                />
-
-                <div>
-                  <span>
-                    05
-                  </span>
-
-                  <strong>
-                    FUNCTION
-                  </strong>
-                </div>
-              </div>
-
-              <div
-                className={
-                  styles.trustProtocols
-                }
-              >
-                <div>
-                  <span>
-                    Interface
-                  </span>
-
-                  <strong>
-                    REST APIs
-                  </strong>
-                </div>
-
-                <div>
-                  <span>
-                    Interface
-                  </span>
-
-                  <strong>
-                    GraphQL
-                  </strong>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div
-            className={
-              styles.heroFooter
-            }
-          >
-            <span>
-              AUTHENTICATION
-            </span>
-
-            <i />
-
-            <span>
-              AUTHORIZATION
-            </span>
-
-            <i />
-
-            <span>
-              BUSINESS LOGIC
-            </span>
-
-            <i />
-
-            <span>
-              DATA EXPOSURE
-            </span>
-          </div>
-        </Container>
-      </section>
-
-
-      {/* ================================================================
-          01 — ATTACK SURFACE
-         ================================================================ */}
-
-      <section
-        id="attack-surface"
-        className={
-          styles.section
-        }
-        data-api-section="attack-surface"
-      >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
-          <SectionHeading
-            number="01"
-            eyebrow="Attack surface"
-            title="Test the interface as a system, not a list of endpoints."
-            description="The assessment follows how identities, requests, resources and application workflows interact across the API."
-          />
-
-          <div
-            className={
-              styles.surfaceTop
-            }
-          >
-            <div>
-              <span>
-                Protocol
-              </span>
-
-              <strong>
-                REST APIs
-              </strong>
-
-              <p>
-                Resources, methods, identities and behavior exposed through REST-style interfaces.
-              </p>
-            </div>
-
-            <div>
-              <span>
-                Protocol
-              </span>
-
-              <strong>
-                GraphQL
-              </strong>
-
-              <p>
-                Schema, operations, resolvers and the access boundaries applied to returned data.
-              </p>
-            </div>
-          </div>
-
-          <div
-            className={
-              styles.focusIndex
-            }
-            data-api-ui="focus-index"
-          >
-            {
-              focusAreas.map(
-                (
-                  focus
-                ) => (
-                  <div
-                    className={
-                      styles.focusRow
-                    }
-                    data-api-focus
-                    key={
-                      focus.number
-                    }
-                  >
-                    <span
-                      className={
-                        styles.focusNumber
-                      }
-                    >
-                      {
-                        focus.number
-                      }
-                    </span>
-
-                    <span
-                      className={
-                        styles.focusCode
-                      }
-                    >
-                      {
-                        focus.code
-                      }
-                    </span>
-
-                    <h3>
-                      {
-                        focus.title
-                      }
-                    </h3>
-
-                    <p>
-                      {
-                        focus.description
-                      }
-                    </p>
-                  </div>
-                )
-              )
-            }
-          </div>
-        </Container>
-      </section>
-
-
-      {/* ================================================================
-          02 — AUTHORIZATION MODEL
-         ================================================================ */}
-
-      <section
-        className={
-          `${styles.section} ${styles.sectionAlt}`
-        }
-        data-api-section="authorization"
-      >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
-          <SectionHeading
-            number="02"
-            eyebrow="Authorization model"
-            title="Identity is only the first boundary."
-            description="Strong API security depends on consistently connecting identity to the objects and functions that identity is actually allowed to use."
-          />
-
-          <div
-            className={
-              styles.boundarySystem
-            }
-            data-api-ui="boundary-system"
-          >
-            {
-              boundaries.map(
-                (
-                  boundary,
-                  index
-                ) => (
-                  <div
-                    className={
-                      styles.boundaryColumn
-                    }
-                    data-api-boundary
-                    key={
-                      boundary.code
-                    }
-                  >
-                    <div
-                      className={
-                        styles.boundaryTop
-                      }
-                    >
-                      <span>
-                        {
-                          boundary.number
-                        }
-                      </span>
-
-                      <strong>
-                        {
-                          boundary.code
-                        }
-                      </strong>
-                    </div>
-
-                    <h3>
-                      {
-                        boundary.title
-                      }
-                    </h3>
-
-                    <p>
-                      {
-                        boundary.description
-                      }
-                    </p>
-
-                    {
-                      index <
-                      boundaries.length - 1
-                        ? (
-                          <span
-                            className={
-                              styles.boundaryArrow
-                            }
-                            aria-hidden="true"
-                          >
-                            →
-                          </span>
-                        )
-                        : null
-                    }
-                  </div>
-                )
-              )
-            }
-          </div>
-
-          <div
-            className={
-              styles.behaviorLayout
-            }
-          >
-            <div
-              className={
-                styles.behaviorIntro
-              }
-            >
-              <p>
-                Behavior beyond access control
-              </p>
-
-              <h3>
-                Security boundaries also live inside application behavior.
-              </h3>
-            </div>
-
-            <div
-              className={
-                styles.behaviorIndex
-              }
-            >
-              {
-                behavioralControls.map(
-                  (
-                    control
-                  ) => (
-                    <div
-                      className={
-                        styles.behaviorRow
-                      }
-                      key={
-                        control.number
-                      }
-                    >
-                      <span>
-                        {
-                          control.number
-                        }
-                      </span>
-
-                      <strong>
-                        {
-                          control.title
-                        }
-                      </strong>
-
-                      <p>
-                        {
-                          control.description
-                        }
-                      </p>
-                    </div>
-                  )
-                )
-              }
-            </div>
-          </div>
-        </Container>
-      </section>
-
-
-      {/* ================================================================
-          03 — VALIDATION & REPORTING
-         ================================================================ */}
-
-      <section
-        className={
-          styles.section
-        }
-        data-api-section="validation-reporting"
-      >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
-          <SectionHeading
-            number="03"
-            eyebrow="Validation & reporting"
-            title="From initial context to actionable reporting."
-            description="The engagement moves from understanding intended API behavior toward validating meaningful weaknesses and documenting what engineering teams need to correct."
-          />
-
-          <ol
-            className={
-              styles.workflow
-            }
-            data-api-ui="workflow"
-          >
-            {
-              workflow.map(
-                (
-                  step
-                ) => (
-                  <li
-                    className={
-                      styles.workflowStep
-                    }
-                    key={
-                      step.number
-                    }
-                  >
-                    <span>
-                      {
-                        step.number
-                      }
-                    </span>
-
-                    <i
-                      aria-hidden="true"
-                    />
-
-                    <h3>
-                      {
-                        step.title
-                      }
-                    </h3>
-
-                    <p>
-                      {
-                        step.description
-                      }
-                    </p>
-                  </li>
-                )
-              )
-            }
-          </ol>
-
-          <div
-            className={
-              styles.reportingGrid
-            }
-          >
-            <div
-              className={
-                styles.deliverables
-              }
-            >
-              <p
-                className={
-                  styles.subsectionLabel
-                }
-              >
-                Assessment output
-              </p>
-
-              <div
-                className={
-                  styles.deliverableIndex
-                }
-              >
-                {
-                  deliverables.map(
-                    (
-                      deliverable
-                    ) => (
-                      <div
-                        className={
-                          styles.deliverableRow
-                        }
-                        key={
-                          deliverable.code
-                        }
-                      >
-                        <span>
-                          {
-                            deliverable.code
-                          }
-                        </span>
-
-                        <div>
-                          <h3>
-                            {
-                              deliverable.title
-                            }
-                          </h3>
-
-                          <p>
-                            {
-                              deliverable.description
-                            }
-                          </p>
-                        </div>
-                      </div>
-                    )
-                  )
-                }
-              </div>
-            </div>
-
-            <div
-              className={
-                styles.faq
-              }
-            >
-              <p
-                className={
-                  styles.subsectionLabel
-                }
-              >
-                Common questions
-              </p>
-
-              <div
-                className={
-                  styles.faqList
-                }
-              >
-                {
-                  faqs.map(
-                    (
-                      faq,
-                      index
-                    ) => (
-                      <details
-                        className={
-                          styles.faqItem
-                        }
-                        key={
-                          faq.question
-                        }
-                      >
-                        <summary>
-                          <span>
-                            {
-                              String(
-                                index + 1
-                              ).padStart(
-                                2,
-                                "0"
-                              )
-                            }
-                          </span>
-
-                          <strong>
-                            {
-                              faq.question
-                            }
-                          </strong>
-
-                          <i
-                            aria-hidden="true"
-                          >
-                            +
-                          </i>
-                        </summary>
-
-                        <p>
-                          {
-                            faq.answer
-                          }
-                        </p>
-                      </details>
-                    )
-                  )
-                }
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-
-      {/* ================================================================
-          CTA
-         ================================================================ */}
-
-      <section
-        className={
-          styles.cta
-        }
-        data-api-section="cta"
-      >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
-          <div
-            className={
-              styles.ctaRule
-            }
-          />
-
-          <div
-            className={
-              styles.ctaLayout
-            }
-          >
-            <div>
-              <p
-                className={
-                  styles.sectionEyebrow
-                }
-              >
-                <span>
-                  API
-                </span>
-
-                Assessment
-              </p>
-
-              <h2>
-                Know what every identity can really do.
-              </h2>
-            </div>
-
-            <div
-              className={
-                styles.ctaCopy
-              }
-            >
-              <p>
-                Discuss your API architecture, assessment scope and the access boundaries you need to validate.
-              </p>
-
-              <div
-                className={
-                  styles.ctaActions
-                }
-              >
-                <Link
-                  href="/contact"
-                  className={
-                    styles.primaryAction
-                  }
-                >
-                  Discuss an assessment
-
-                  <Arrow />
-                </Link>
 
                 <Link
                   href="/services"
@@ -1261,7 +1062,7 @@ export default function ApiSecurityPage() {
                     styles.textAction
                   }
                 >
-                  All services
+                  View all services
 
                   <Arrow />
                 </Link>

@@ -1,68 +1,48 @@
 /* ==========================================================================
    NB_API_SECURITY_TRUST_BOUNDARY_SYSTEM_V23
+   NB_API_SECURITY_AUDIT_V24
 
-   Dedicated API Security service design.
-
-   - trust-boundary hero
-   - REST / GraphQL surface index
-   - identity / object / function authorization model
-   - behavioral security layer
-   - validation workflow
-   - evidence and reporting
-   - no generic service template
-   - no card wall
+   API Security refinement:
+   identity -> interfaces -> authorization boundaries -> validation/reporting
    ========================================================================== */
 
 
 .page {
   --api-bg:
-    #07090d;
+    #080b10;
 
   --api-alt:
-    #0b0f16;
+    #0c121b;
 
-  --api-surface:
-    #101620;
+  --api-raised:
+    #111b28;
+
+  --api-hover:
+    #182536;
 
   --api-text:
-    #f5f7fa;
+    #f3f6fb;
 
   --api-secondary:
-    #c5ced8;
+    #b7c2d0;
 
-  --api-muted:
-    #8793a3;
-
-  --api-subtle:
-    #667281;
+  --api-metadata:
+    #94a3b8;
 
   --api-cyan:
-    #a1e2f0;
-
-  --api-blue:
-    #83b3d7;
+    #a5e8f3;
 
   --api-violet:
-    #7e60b9;
+    #b59ae7;
 
-  --api-purple:
-    #6333c6;
+  --api-border:
+    #273446;
 
-  --api-line:
-    rgba(
-      197,
-      206,
-      216,
-      0.13
-    );
+  --api-control:
+    #63758c;
 
-  --api-line-strong:
-    rgba(
-      161,
-      226,
-      240,
-      0.24
-    );
+  min-width:
+    0;
 
   overflow:
     clip;
@@ -79,9 +59,12 @@
 }
 
 
-.container {
+.frame {
   width:
     100%;
+
+  min-width:
+    0;
 }
 
 
@@ -90,102 +73,124 @@
    ========================================================================== */
 
 
-.primaryAction {
+.primaryAction,
+.secondaryAction {
   display:
     inline-flex;
+
+  min-height:
+    2.75rem;
 
   align-items:
     center;
 
   justify-content:
-    space-between;
+    center;
 
   gap:
-    18px;
-
-  min-height:
-    46px;
+    0.65rem;
 
   padding:
-    0
-    18px;
+    0.7rem
+    1rem;
 
   border:
     1px
     solid
-    rgba(
-      161,
-      226,
-      240,
-      0.3
+    var(
+      --api-control
     );
 
   border-radius:
-    4px;
+    0.35rem;
+
+  font-size:
+    0.94rem;
+
+  font-weight:
+    680;
+
+  line-height:
+    1.2;
+
+  text-decoration:
+    none;
+
+  transition:
+    color
+    120ms
+    ease,
+    background-color
+    120ms
+    ease,
+    border-color
+    120ms
+    ease;
+}
+
+
+.primaryAction {
+  border-color:
+    var(
+      --api-cyan
+    );
 
   color:
-    #071015;
+    #081017;
 
   background:
     var(
       --api-cyan
     );
-
-  font-size:
-    0.78rem;
-
-  font-weight:
-    700;
-
-  transition:
-    background-color
-    160ms
-    ease;
 }
 
 
 .primaryAction:hover {
+  border-color:
+    #c5f2f8;
+
   background:
-    #c5eff8;
+    #c5f2f8;
 }
 
 
-.textAction {
-  display:
-    inline-flex;
-
-  align-items:
-    center;
-
-  gap:
-    11px;
-
-  min-height:
-    44px;
-
-  color:
-    var(
-      --api-secondary
-    );
-
-  font-size:
-    0.78rem;
-
-  font-weight:
-    620;
-
-  transition:
-    color
-    160ms
-    ease;
-}
-
-
-.textAction:hover {
+.secondaryAction {
   color:
     var(
       --api-cyan
     );
+
+  background:
+    transparent;
+}
+
+
+.secondaryAction:hover {
+  border-color:
+    var(
+      --api-cyan
+    );
+
+  background:
+    var(
+      --api-hover
+    );
+}
+
+
+.primaryAction:focus-visible,
+.secondaryAction:focus-visible,
+.textAction:focus-visible,
+.faqItem summary:focus-visible {
+  outline:
+    2px
+    solid
+    var(
+      --api-cyan
+    );
+
+  outline-offset:
+    3px;
 }
 
 
@@ -195,102 +200,27 @@
 
 
 .hero {
-  position:
-    relative;
-
-  min-height:
-    min(
-      760px,
-      calc(
-        100svh
-        -
-        104px
-      )
+  padding:
+    clamp(
+      2.25rem,
+      4vw,
+      3.5rem
+    )
+    0
+    clamp(
+      4.5rem,
+      6vw,
+      5rem
     );
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --api-line
-    );
-
-  background:
-    var(
-      --api-bg
-    );
-}
-
-
-.hero::after {
-  position:
-    absolute;
-
-  top:
-    0;
-
-  right:
-    0;
-
-  bottom:
-    0;
-
-  width:
-    min(
-      47vw,
-      760px
-    );
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(
-        99,
-        51,
-        198,
-        0.026
-      )
-    );
-
-  content:
-    "";
-
-  pointer-events:
-    none;
-}
-
-
-.hero
-.container {
-  position:
-    relative;
-
-  z-index:
-    1;
-
-  display:
-    grid;
-
-  grid-template-rows:
-    auto
-    1fr
-    auto;
-
-  min-height:
-    inherit;
-
-  padding-top:
-    17px;
-
-  padding-bottom:
-    17px;
 }
 
 
 .heroTopline {
   display:
     flex;
+
+  flex-wrap:
+    wrap;
 
   align-items:
     center;
@@ -299,40 +229,26 @@
     space-between;
 
   gap:
-    20px;
+    0.75rem
+    1.5rem;
 
-  min-height:
-    34px;
-
-  padding-bottom:
-    11px;
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --api-line
+  margin-bottom:
+    clamp(
+      2.5rem,
+      5vw,
+      3.5rem
     );
 
   color:
     var(
-      --api-subtle
+      --api-metadata
     );
 
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
   font-size:
-    0.58rem;
+    0.82rem;
 
-  letter-spacing:
-    0.1em;
-
-  text-transform:
-    uppercase;
+  line-height:
+    1.5;
 }
 
 
@@ -343,116 +259,107 @@
   grid-template-columns:
     minmax(
       0,
-      1.16fr
+      3fr
     )
     minmax(
-      350px,
-      0.64fr
+      18rem,
+      2fr
     );
 
   gap:
     clamp(
-      50px,
-      7vw,
-      100px
+      2.5rem,
+      5vw,
+      3rem
     );
 
   align-items:
-    center;
+    start;
+}
 
-  padding:
-    clamp(
-      38px,
-      5vh,
-      58px
-    )
+
+.heroCopy {
+  min-width:
     0;
 }
 
 
-.heroEyebrow {
+.heroEyebrow,
+.sectionEyebrow,
+.overviewLabel {
+  margin:
+    0;
+
   color:
     var(
-      --api-blue
+      --api-metadata
     );
 
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
   font-size:
-    0.63rem;
+    0.84rem;
 
   font-weight:
-    600;
+    650;
 
   letter-spacing:
-    0.11em;
+    0.025em;
 
-  text-transform:
-    uppercase;
+  line-height:
+    1.5;
 }
 
 
 .heroCopy h1 {
   max-width:
-    900px;
+    15ch;
 
-  margin-top:
-    15px;
+  margin:
+    0.75rem
+    0
+    0;
+
+  color:
+    var(
+      --api-text
+    );
 
   font-size:
     clamp(
-      4rem,
-      6.2vw,
-      6rem
+      3.5rem,
+      5.8vw,
+      4.5rem
     );
 
   font-weight:
-    500;
+    650;
 
   letter-spacing:
-    -0.07em;
+    -0.06em;
 
   line-height:
-    0.91;
+    0.98;
 }
 
 
-.heroCopy h1
-span {
-  display:
-    block;
+.heroLead {
+  max-width:
+    44rem;
+
+  margin:
+    1rem
+    0
+    0;
 
   color:
     var(
       --api-secondary
     );
 
-  font-weight:
-    420;
-}
-
-
-.heroLead {
-  max-width:
-    660px;
-
-  margin-top:
-    24px;
-
-  color:
-    var(
-      --api-muted
-    );
-
   font-size:
     clamp(
-      0.98rem,
-      1.35vw,
-      1.12rem
+      1.05rem,
+      1.5vw,
+      1.18rem
     );
 
   line-height:
@@ -468,384 +375,174 @@ span {
     wrap;
 
   gap:
-    18px;
+    0.75rem;
 
   margin-top:
-    27px;
+    1.5rem;
 }
 
 
 /* ==========================================================================
-   TRUST MAP
+   ASSESSMENT OVERVIEW
    ========================================================================== */
 
 
-.trustMap {
-  border-top:
+.overview {
+  padding:
+    clamp(
+      1.5rem,
+      3vw,
+      2rem
+    );
+
+  border:
     1px
     solid
     var(
-      --api-line-strong
+      --api-border
     );
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --api-line
-    );
-}
-
-
-.trustMapHeader {
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    space-between;
-
-  min-height:
-    40px;
-
-  color:
-    var(
-      --api-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.56rem;
-
-  letter-spacing:
-    0.08em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.trustNodes {
-  display:
-    grid;
-
-  grid-template-columns:
-    auto
-    1fr
-    auto
-    1fr
-    auto
-    1fr
-    auto
-    1fr
-    auto;
-
-  align-items:
-    center;
-
-  min-height:
-    160px;
-
-  border-top:
-    1px
-    solid
-    var(
-      --api-line
-    );
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --api-line
-    );
-}
-
-
-.trustNodes
-div {
-  display:
-    grid;
-
-  gap:
-    7px;
-
-  justify-items:
-    center;
-}
-
-
-.trustNodes
-span {
-  color:
-    var(
-      --api-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.52rem;
-}
-
-
-.trustNodes
-strong {
-  color:
-    var(
-      --api-secondary
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.58rem;
-
-  font-weight:
-    650;
-
-  letter-spacing:
-    0.05em;
-}
-
-
-.trustNodes
-i {
-  position:
-    relative;
-
-  height:
-    1px;
-
-  background:
-    var(
-      --api-line
-    );
-}
-
-
-.trustNodes
-i::after {
-  position:
-    absolute;
-
-  top:
-    50%;
-
-  right:
-    0;
-
-  width:
-    5px;
-
-  height:
-    5px;
 
   border-radius:
-    50%;
+    0.75rem;
 
   background:
     var(
-      --api-cyan
-    );
-
-  content:
-    "";
-
-  transform:
-    translate(
-      50%,
-      -50%
+      --api-raised
     );
 }
 
 
-.trustProtocols {
+.overviewTitle {
+  max-width:
+    24rem;
+
+  margin:
+    0.6rem
+    0
+    0;
+
+  color:
+    var(
+      --api-text
+    );
+
+  font-size:
+    clamp(
+      1.25rem,
+      2vw,
+      1.55rem
+    );
+
+  font-weight:
+    620;
+
+  letter-spacing:
+    -0.03em;
+
+  line-height:
+    1.2;
+}
+
+
+.overviewList {
   display:
     grid;
 
-  grid-template-columns:
-    repeat(
-      2,
-      minmax(
-        0,
-        1fr
-      )
-    );
-}
-
-
-.trustProtocols
-div {
-  padding:
-    15px
+  margin:
+    1.5rem
+    0
     0;
 }
 
 
-.trustProtocols
-div
-+
-div {
-  padding-left:
-    18px;
+.overviewList div {
+  display:
+    grid;
 
-  border-left:
+  grid-template-columns:
+    6rem
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    1rem;
+
+  padding:
+    0.9rem
+    0;
+
+  border-top:
     1px
     solid
     var(
-      --api-line
+      --api-border
     );
 }
 
 
-.trustProtocols
-span {
-  display:
-    block;
-
+.overviewList dt {
   color:
     var(
-      --api-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.53rem;
-
-  letter-spacing:
-    0.08em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.trustProtocols
-strong {
-  display:
-    block;
-
-  margin-top:
-    5px;
-
-  color:
-    var(
-      --api-secondary
+      --api-metadata
     );
 
   font-size:
-    0.76rem;
+    0.84rem;
 
   font-weight:
     620;
 }
 
 
-.heroFooter {
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  gap:
-    12px;
-
-  min-height:
-    42px;
-
-  padding-top:
-    13px;
-
-  border-top:
-    1px
-    solid
-    var(
-      --api-line
-    );
+.overviewList dd {
+  margin:
+    0;
 
   color:
     var(
-      --api-subtle
+      --api-text
     );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
 
   font-size:
-    0.53rem;
+    0.94rem;
 
-  letter-spacing:
-    0.07em;
-}
-
-
-.heroFooter
-i {
-  flex:
-    1;
-
-  max-width:
-    42px;
-
-  height:
-    1px;
-
-  background:
-    var(
-      --api-line
-    );
+  line-height:
+    1.5;
 }
 
 
 /* ==========================================================================
-   SHARED SECTIONS
+   SHARED SECTION HEADING
    ========================================================================== */
 
 
 .section {
   padding:
     clamp(
-      54px,
+      4rem,
       6vw,
-      76px
+      4.5rem
     )
     0;
 
-  border-bottom:
+  border-top:
     1px
     solid
     var(
-      --api-line
+      --api-border
     );
 }
 
 
-.sectionAlt {
+#attack-surface {
+  scroll-margin-top:
+    6rem;
+}
+
+
+.authorization {
   background:
     var(
       --api-alt
@@ -854,129 +551,107 @@ i {
 
 
 .sectionHeading {
-  display:
-    grid;
-
-  grid-template-columns:
-    minmax(
-      0,
-      1.05fr
-    )
-    minmax(
-      280px,
-      0.45fr
-    );
-
-  gap:
-    15px
-    clamp(
-      40px,
-      6vw,
-      84px
-    );
-
-  align-items:
-    end;
+  max-width:
+    49rem;
 
   margin-bottom:
-    39px;
+    1.75rem;
 }
 
 
-.sectionEyebrow {
-  grid-column:
-    1
-    /
-    -1;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  gap:
-    10px;
+.sectionHeading h2,
+.ctaGrid h2 {
+  margin:
+    0.7rem
+    0
+    0;
 
   color:
     var(
-      --api-blue
+      --api-text
     );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.6rem;
-
-  font-weight:
-    600;
-
-  letter-spacing:
-    0.1em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.sectionEyebrow
-span {
-  color:
-    var(
-      --api-subtle
-    );
-}
-
-
-.sectionHeading h2 {
-  max-width:
-    900px;
 
   font-size:
     clamp(
-      2.4rem,
-      4vw,
-      3.65rem
+      2rem,
+      3.7vw,
+      2.75rem
     );
 
   font-weight:
-    470;
+    640;
 
   letter-spacing:
-    -0.055em;
+    -0.045em;
 
   line-height:
-    1.02;
+    1.08;
 }
 
 
 .sectionDescription {
   max-width:
-    470px;
+    47rem;
+
+  margin:
+    0.8rem
+    0
+    0;
 
   color:
     var(
-      --api-muted
+      --api-secondary
     );
 
   font-size:
-    0.86rem;
+    1rem;
 
   line-height:
     1.65;
 }
 
 
+.subgroupHeading {
+  margin:
+    0
+    0
+    1rem;
+}
+
+
+.subgroupHeading h3 {
+  margin:
+    0;
+
+  color:
+    var(
+      --api-text
+    );
+
+  font-size:
+    clamp(
+      1.35rem,
+      2vw,
+      1.6rem
+    );
+
+  font-weight:
+    620;
+
+  letter-spacing:
+    -0.025em;
+
+  line-height:
+    1.25;
+}
+
+
 /* ==========================================================================
-   PROTOCOL SURFACE
+   INTERFACES
    ========================================================================== */
 
 
-.surfaceTop {
+.interfaceGrid {
   display:
     grid;
 
@@ -989,199 +664,59 @@ span {
       )
     );
 
-  border-top:
-    1px
-    solid
-    var(
-      --api-line-strong
-    );
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --api-line
-    );
+  gap:
+    1rem;
 }
 
 
-.surfaceTop
-div {
-  padding:
-    22px
-    30px
-    22px
+.interfacePanel {
+  min-width:
     0;
-}
 
+  padding:
+    1.5rem;
 
-.surfaceTop
-div
-+
-div {
-  padding-left:
-    30px;
-
-  border-left:
+  border:
     1px
     solid
     var(
-      --api-line
+      --api-border
     );
+
+  border-radius:
+    0.55rem;
 }
 
 
-.surfaceTop
-span {
+.interfacePanel h3 {
+  margin:
+    0;
+
   color:
     var(
-      --api-blue
+      --api-text
     );
 
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
   font-size:
-    0.56rem;
+    1.35rem;
+
+  font-weight:
+    620;
 
   letter-spacing:
-    0.08em;
-
-  text-transform:
-    uppercase;
+    -0.025em;
 }
 
 
-.surfaceTop
-strong {
-  display:
-    block;
-
-  margin-top:
-    10px;
-
-  color:
-    var(
-      --api-secondary
-    );
-
-  font-size:
-    1.25rem;
-
-  font-weight:
-    600;
-}
-
-
-.surfaceTop
-p {
+.interfacePanel p {
   max-width:
-    580px;
+    42rem;
 
-  margin-top:
-    8px;
+  margin:
+    0.75rem
+    0
+    0;
 
-  color:
-    var(
-      --api-muted
-    );
-
-  font-size:
-    0.76rem;
-
-  line-height:
-    1.55;
-}
-
-
-/* ==========================================================================
-   FOCUS INDEX
-   ========================================================================== */
-
-
-.focusIndex {
-  margin-top:
-    30px;
-
-  border-top:
-    1px
-    solid
-    var(
-      --api-line
-    );
-}
-
-
-.focusRow {
-  display:
-    grid;
-
-  grid-template-columns:
-    42px
-    64px
-    minmax(
-      220px,
-      0.55fr
-    )
-    minmax(
-      300px,
-      1fr
-    );
-
-  gap:
-    16px;
-
-  align-items:
-    center;
-
-  min-height:
-    76px;
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --api-line
-    );
-}
-
-
-.focusNumber,
-.focusCode {
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.56rem;
-}
-
-
-.focusNumber {
-  color:
-    var(
-      --api-subtle
-    );
-}
-
-
-.focusCode {
-  color:
-    var(
-      --api-cyan
-    );
-
-  font-weight:
-    700;
-}
-
-
-.focusRow h3 {
   color:
     var(
       --api-secondary
@@ -1190,31 +725,17 @@ p {
   font-size:
     1rem;
 
-  font-weight:
-    600;
-}
-
-
-.focusRow p {
-  color:
-    var(
-      --api-muted
-    );
-
-  font-size:
-    0.74rem;
-
   line-height:
-    1.52;
+    1.62;
 }
 
 
 /* ==========================================================================
-   AUTHORIZATION BOUNDARIES
+   AUTHORIZATION MODEL
    ========================================================================== */
 
 
-.boundarySystem {
+.boundaryGrid {
   display:
     grid;
 
@@ -1231,49 +752,45 @@ p {
     1px
     solid
     var(
-      --api-line-strong
+      --api-border
     );
 
   border-bottom:
     1px
     solid
     var(
-      --api-line
+      --api-border
     );
 }
 
 
-.boundaryColumn {
-  position:
-    relative;
-
+.boundary {
   min-width:
     0;
 
   padding:
-    24px
-    26px
-    26px
-    0;
-}
-
-
-.boundaryColumn
-+
-.boundaryColumn {
-  padding-left:
-    26px;
-
-  border-left:
-    1px
-    solid
-    var(
-      --api-line
+    1.6rem
+    clamp(
+      1.25rem,
+      2vw,
+      1.75rem
     );
 }
 
 
-.boundaryTop {
+.boundary
++
+.boundary {
+  border-left:
+    1px
+    solid
+    var(
+      --api-border
+    );
+}
+
+
+.boundaryMeta {
   display:
     flex;
 
@@ -1281,49 +798,49 @@ p {
     space-between;
 
   gap:
-    12px;
-}
+    1rem;
 
-
-.boundaryTop
-span,
-.boundaryTop
-strong {
-  font-family:
+  color:
     var(
-      --font-geist-mono
-    ),
-    monospace;
+      --api-metadata
+    );
 
   font-size:
-    0.55rem;
+    0.8rem;
+}
+
+
+.boundary h3 {
+  margin:
+    1.25rem
+    0
+    0;
+
+  color:
+    var(
+      --api-text
+    );
+
+  font-size:
+    clamp(
+      1.25rem,
+      2vw,
+      1.55rem
+    );
+
+  font-weight:
+    620;
 
   letter-spacing:
-    0.08em;
+    -0.025em;
 }
 
 
-.boundaryTop
-span {
-  color:
-    var(
-      --api-subtle
-    );
-}
-
-
-.boundaryTop
-strong {
-  color:
-    var(
-      --api-cyan
-    );
-}
-
-
-.boundaryColumn h3 {
-  margin-top:
-    33px;
+.boundary > p {
+  margin:
+    0.75rem
+    0
+    0;
 
   color:
     var(
@@ -1331,282 +848,124 @@ strong {
     );
 
   font-size:
-    clamp(
-      1.4rem,
-      2vw,
-      1.8rem
-    );
-
-  font-weight:
-    560;
-
-  letter-spacing:
-    -0.035em;
-}
-
-
-.boundaryColumn
-> p {
-  max-width:
-    380px;
-
-  margin-top:
-    12px;
-
-  color:
-    var(
-      --api-muted
-    );
-
-  font-size:
-    0.76rem;
+    0.98rem;
 
   line-height:
-    1.55;
+    1.62;
 }
 
 
-.boundaryArrow {
-  position:
-    absolute;
+.boundarySupplement {
+  padding-top:
+    0.75rem;
 
-  top:
-    50%;
-
-  right:
-    -12px;
-
-  z-index:
-    1;
-
-  display:
-    grid;
-
-  width:
-    24px;
-
-  height:
-    24px;
-
-  place-items:
-    center;
-
-  border:
+  border-top:
     1px
     solid
     var(
-      --api-line
+      --api-border
     );
-
-  border-radius:
-    50%;
 
   color:
     var(
       --api-cyan
-    );
-
-  background:
-    var(
-      --api-alt
-    );
+    ) !important;
 
   font-size:
-    0.65rem;
+    0.82rem
+    !important;
 
-  transform:
-    translateY(
-      -50%
-    );
+  font-weight:
+    620;
 }
 
 
 /* ==========================================================================
-   BEHAVIOR LAYER
+   ADDITIONAL ASSESSMENT AREAS
    ========================================================================== */
 
 
-.behaviorLayout {
+.additional {
+  margin-top:
+    2.25rem;
+}
+
+
+.additionalList {
+  border-top:
+    1px
+    solid
+    var(
+      --api-border
+    );
+}
+
+
+.additionalRow {
   display:
     grid;
 
   grid-template-columns:
     minmax(
-      260px,
-      0.44fr
+      12rem,
+      0.34fr
     )
     minmax(
       0,
-      1fr
+      0.66fr
     );
 
   gap:
     clamp(
-      40px,
-      6vw,
-      82px
+      1.5rem,
+      4vw,
+      2rem
     );
 
-  margin-top:
-    40px;
-}
-
-
-.behaviorIntro {
-  padding-top:
-    17px;
-
-  border-top:
-    1px
-    solid
-    var(
-      --api-line-strong
-    );
-}
-
-
-.behaviorIntro
-> p {
-  color:
-    var(
-      --api-blue
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.57rem;
-
-  letter-spacing:
-    0.08em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.behaviorIntro h3 {
-  max-width:
-    440px;
-
-  margin-top:
-    13px;
-
-  color:
-    var(
-      --api-secondary
-    );
-
-  font-size:
-    clamp(
-      1.65rem,
-      2.7vw,
-      2.4rem
-    );
-
-  font-weight:
-    480;
-
-  letter-spacing:
-    -0.045em;
-
-  line-height:
-    1.12;
-}
-
-
-.behaviorIndex {
-  border-top:
-    1px
-    solid
-    var(
-      --api-line
-    );
-}
-
-
-.behaviorRow {
-  display:
-    grid;
-
-  grid-template-columns:
-    42px
-    minmax(
-      160px,
-      0.42fr
-    )
-    minmax(
-      0,
-      1fr
-    );
-
-  gap:
-    15px;
-
-  align-items:
-    center;
-
-  min-height:
-    72px;
+  padding:
+    1.3rem
+    0;
 
   border-bottom:
     1px
     solid
     var(
-      --api-line
+      --api-border
     );
 }
 
 
-.behaviorRow
-> span {
+.additionalRow h4 {
+  margin:
+    0;
+
   color:
     var(
-      --api-subtle
+      --api-text
     );
 
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
   font-size:
-    0.55rem;
+    1.05rem;
+
+  font-weight:
+    620;
 }
 
 
-.behaviorRow
-strong {
+.additionalRow p {
+  max-width:
+    45rem;
+
+  margin:
+    0;
+
   color:
     var(
       --api-secondary
     );
 
-  font-size:
-    0.91rem;
-
-  font-weight:
-    600;
-}
-
-
-.behaviorRow
-p {
-  color:
-    var(
-      --api-muted
-    );
-
-  font-size:
-    0.73rem;
-
   line-height:
-    1.5;
+    1.62;
 }
 
 
@@ -1616,9 +975,6 @@ p {
 
 
 .workflow {
-  position:
-    relative;
-
   display:
     grid;
 
@@ -1637,115 +993,140 @@ p {
   padding:
     0;
 
+  border-top:
+    1px
+    solid
+    var(
+      --api-border
+    );
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --api-border
+    );
+
   list-style:
     none;
 }
 
 
-.workflow::before {
-  position:
-    absolute;
-
-  top:
-    29px;
-
-  right:
+:global(#main-content)
+.workflow {
+  margin-left:
     0;
 
-  left:
+  padding-left:
     0;
+}
 
-  height:
-    1px;
 
-  background:
-    var(
-      --api-line
-    );
-
-  content:
-    "";
+:global(#main-content)
+.workflow
+li
++
+li {
+  margin-top:
+    0;
 }
 
 
 .workflowStep {
-  position:
-    relative;
+  min-width:
+    0;
+
+  margin:
+    0;
 
   padding:
-    0
-    22px
-    0
-    0;
+    1.4rem
+    1rem
+    1.5rem;
 }
 
 
 .workflowStep
 +
 .workflowStep {
-  padding-left:
-    18px;
-}
-
-
-.workflowStep
-> span {
-  color:
+  border-left:
+    1px
+    solid
     var(
-      --api-subtle
+      --api-border
     );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.55rem;
 }
 
 
-.workflowStep
-> i {
-  position:
-    absolute;
-
-  top:
-    25px;
-
-  left:
-    0;
-
-  z-index:
-    1;
-
-  width:
-    8px;
+.workflowMarker {
+  display:
+    flex;
 
   height:
-    8px;
+    1.2rem;
+
+  align-items:
+    center;
+
+  gap:
+    0.55rem;
+
+  color:
+    var(
+      --api-violet
+    );
+
+  font-size:
+    0.8rem;
+
+  font-variant-numeric:
+    tabular-nums;
+}
+
+
+.workflowMarker i {
+  width:
+    0.45rem;
+
+  height:
+    0.45rem;
 
   border:
     1px
     solid
     var(
-      --api-blue
+      --api-cyan
     );
 
   border-radius:
     50%;
-
-  background:
-    var(
-      --api-bg
-    );
 }
 
 
 .workflowStep h3 {
-  margin-top:
-    30px;
+  margin:
+    1rem
+    0
+    0;
+
+  color:
+    var(
+      --api-text
+    );
+
+  font-size:
+    1.05rem;
+
+  font-weight:
+    620;
+}
+
+
+.workflowStep p {
+  margin:
+    0.65rem
+    0
+    0;
 
   color:
     var(
@@ -1753,32 +1134,15 @@ p {
     );
 
   font-size:
-    0.96rem;
-
-  font-weight:
-    610;
-}
-
-
-.workflowStep p {
-  margin-top:
-    8px;
-
-  color:
-    var(
-      --api-muted
-    );
-
-  font-size:
-    0.71rem;
+    0.93rem;
 
   line-height:
-    1.52;
+    1.58;
 }
 
 
 /* ==========================================================================
-   REPORTING GRID
+   OUTPUTS + FAQ
    ========================================================================== */
 
 
@@ -1787,124 +1151,112 @@ p {
     grid;
 
   grid-template-columns:
-    repeat(
-      2,
-      minmax(
-        0,
-        1fr
-      )
-    );
-
-  gap:
-    clamp(
-      45px,
-      6vw,
-      84px
-    );
-
-  margin-top:
-    48px;
-
-  padding-top:
-    32px;
-
-  border-top:
-    1px
-    solid
-    var(
-      --api-line-strong
-    );
-}
-
-
-.subsectionLabel {
-  margin-bottom:
-    14px;
-
-  color:
-    var(
-      --api-blue
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.56rem;
-
-  letter-spacing:
-    0.08em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.deliverableIndex,
-.faqList {
-  border-top:
-    1px
-    solid
-    var(
-      --api-line
-    );
-}
-
-
-.deliverableRow {
-  display:
-    grid;
-
-  grid-template-columns:
-    54px
+    minmax(
+      0,
+      1fr
+    )
     minmax(
       0,
       1fr
     );
 
   gap:
-    16px;
-
-  min-height:
-    84px;
+    clamp(
+      2.5rem,
+      5vw,
+      3rem
+    );
 
   align-items:
-    center;
+    start;
+
+  margin-top:
+    2.5rem;
+}
+
+
+.outputs,
+.questions {
+  min-width:
+    0;
+}
+
+
+.outputList,
+.faqList {
+  border-top:
+    1px
+    solid
+    var(
+      --api-border
+    );
+}
+
+
+.outputRow {
+  display:
+    grid;
+
+  grid-template-columns:
+    3.5rem
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    1rem;
+
+  padding:
+    1.15rem
+    0;
 
   border-bottom:
     1px
     solid
     var(
-      --api-line
+      --api-border
     );
 }
 
 
-.deliverableRow
-> span {
+.outputRow > span {
   color:
     var(
-      --api-cyan
+      --api-metadata
     );
 
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
   font-size:
-    0.56rem;
+    0.8rem;
 
   font-weight:
-    700;
+    650;
 }
 
 
-.deliverableRow h3 {
+.outputRow h4 {
+  margin:
+    0;
+
+  color:
+    var(
+      --api-text
+    );
+
+  font-size:
+    1rem;
+
+  font-weight:
+    620;
+}
+
+
+.outputRow p {
+  margin:
+    0.45rem
+    0
+    0;
+
   color:
     var(
       --api-secondary
@@ -1913,63 +1265,42 @@ p {
   font-size:
     0.94rem;
 
-  font-weight:
-    600;
-}
-
-
-.deliverableRow p {
-  margin-top:
-    5px;
-
-  color:
-    var(
-      --api-muted
-    );
-
-  font-size:
-    0.71rem;
-
   line-height:
-    1.5;
+    1.58;
 }
 
 
-/* ==========================================================================
-   FAQ
-   ========================================================================== */
+/* FAQ */
 
 
 .faqItem {
+  width:
+    100%;
+
+  min-width:
+    0;
+
   border-bottom:
     1px
     solid
     var(
-      --api-line
+      --api-border
     );
 }
 
 
 .faqItem summary {
   display:
-    grid;
+    block;
 
-  grid-template-columns:
-    34px
-    minmax(
-      0,
-      1fr
-    )
-    20px;
+  width:
+    100%;
 
-  gap:
-    12px;
+  min-width:
+    0;
 
-  align-items:
-    center;
-
-  min-height:
-    74px;
+  padding:
+    0;
 
   cursor:
     pointer;
@@ -1985,90 +1316,146 @@ p {
 }
 
 
-.faqItem summary
-> span {
-  color:
+.faqItem summary:hover {
+  background:
     var(
-      --api-subtle
+      --api-hover
     );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.54rem;
 }
 
 
-.faqItem summary
-strong {
+.faqTrigger {
+  display:
+    grid;
+
+  grid-template-columns:
+    2.25rem
+    minmax(
+      0,
+      1fr
+    )
+    1.5rem;
+
+  width:
+    100%;
+
+  min-width:
+    0;
+
+  gap:
+    1rem;
+
+  align-items:
+    center;
+
+  padding:
+    1.15rem
+    1.25rem;
+
+  box-sizing:
+    border-box;
+}
+
+
+.faqNumber {
+  color:
+    var(
+      --api-violet
+    );
+
+  font-size:
+    0.8rem;
+
+  font-variant-numeric:
+    tabular-nums;
+}
+
+
+.faqQuestion {
+  min-width:
+    0;
+
+  color:
+    var(
+      --api-text
+    );
+
+  font-size:
+    0.98rem;
+
+  font-weight:
+    620;
+
+  line-height:
+    1.45;
+}
+
+
+.faqIndicator {
+  display:
+    grid;
+
+  width:
+    1.5rem;
+
+  height:
+    1.5rem;
+
+  place-items:
+    center;
+
+  justify-self:
+    end;
+
+  color:
+    var(
+      --api-cyan
+    );
+}
+
+
+.faqIndicator::before {
+  content:
+    "+";
+
+  font-size:
+    1.15rem;
+}
+
+
+.faqItem[open]
+.faqIndicator::before {
+  content:
+    "−";
+}
+
+
+.faqAnswer {
+  padding:
+    0
+    4rem
+    1.25rem
+    4.5rem;
+}
+
+
+.faqAnswer p {
+  max-width:
+    42rem;
+
+  margin:
+    0;
+
   color:
     var(
       --api-secondary
     );
 
   font-size:
-    0.84rem;
-
-  font-weight:
-    600;
-}
-
-
-.faqItem summary
-i {
-  color:
-    var(
-      --api-cyan
-    );
-
-  font-style:
-    normal;
-
-  font-size:
-    1rem;
-
-  transition:
-    transform
-    160ms
-    ease;
-}
-
-
-.faqItem[open]
-summary
-i {
-  transform:
-    rotate(
-      45deg
-    );
-}
-
-
-.faqItem
-> p {
-  max-width:
-    590px;
-
-  padding:
-    0
-    34px
-    18px
-    46px;
-
-  color:
-    var(
-      --api-muted
-    );
-
-  font-size:
-    0.74rem;
+    0.94rem;
 
   line-height:
-    1.55;
+    1.62;
 }
 
 
@@ -2080,85 +1467,64 @@ i {
 .cta {
   padding:
     clamp(
-      48px,
-      6vw,
-      72px
+      4.5rem,
+      7vw,
+      5rem
     )
     0;
-}
 
-
-.ctaRule {
-  height:
-    1px;
-
-  background:
+  border-top:
+    1px
+    solid
     var(
-      --api-line-strong
+      --api-border
     );
 }
 
 
-.ctaLayout {
+.ctaGrid {
   display:
     grid;
 
   grid-template-columns:
     minmax(
       0,
-      1fr
+      0.9fr
     )
     minmax(
-      300px,
-      0.48fr
+      20rem,
+      1.1fr
     );
 
   gap:
     clamp(
-      40px,
+      2rem,
       6vw,
-      82px
+      5rem
     );
 
-  padding-top:
-    31px;
+  align-items:
+    start;
 }
 
 
-.ctaLayout h2 {
+.ctaBody {
   max-width:
-    760px;
-
-  margin-top:
-    11px;
-
-  font-size:
-    clamp(
-      2.35rem,
-      4vw,
-      3.8rem
-    );
-
-  font-weight:
-    470;
-
-  letter-spacing:
-    -0.055em;
-
-  line-height:
-    1.02;
+    43rem;
 }
 
 
-.ctaCopy
-> p {
+.ctaBody > p {
+  margin:
+    0;
+
   color:
     var(
-      --api-muted
+      --api-secondary
     );
 
   font-size:
-    0.85rem;
+    1rem;
 
   line-height:
     1.65;
@@ -2173,69 +1539,128 @@ i {
     wrap;
 
   gap:
-    18px;
+    0.75rem
+    1.25rem;
 
   margin-top:
-    22px;
+    1.5rem;
+}
+
+
+.textAction {
+  display:
+    inline-flex;
+
+  min-height:
+    2.75rem;
+
+  align-items:
+    center;
+
+  gap:
+    0.55rem;
+
+  color:
+    var(
+      --api-cyan
+    );
+
+  font-size:
+    0.94rem;
+
+  font-weight:
+    650;
+
+  text-decoration:
+    none;
+}
+
+
+.textAction:hover {
+  color:
+    #c5f2f8;
 }
 
 
 /* ==========================================================================
-   COMPACT DESKTOP
+   RESPONSIVE
    ========================================================================== */
 
 
 @media (
   max-width:
-    1080px
+    1120px
 ) {
 
-  .heroGrid {
+  .workflow {
     grid-template-columns:
       minmax(
         0,
         1fr
+      );
+
+    border-bottom:
+      0;
+  }
+
+
+  .workflowStep {
+    display:
+      grid;
+
+    grid-template-columns:
+      4rem
+      minmax(
+        12rem,
+        0.35fr
       )
       minmax(
-        300px,
-        0.56fr
+        0,
+        0.65fr
       );
 
     gap:
-      44px;
-  }
+      1rem;
 
+    padding:
+      1.15rem
+      0;
 
-  .heroCopy h1 {
-    font-size:
-      clamp(
-        3.6rem,
-        6vw,
-        5rem
+    border-bottom:
+      1px
+      solid
+      var(
+        --api-border
       );
   }
 
 
-  .focusRow {
-    grid-template-columns:
-      38px
-      58px
-      minmax(
-        190px,
-        0.5fr
-      )
-      minmax(
-        0,
-        1fr
-      );
+  .workflowStep
+  +
+  .workflowStep {
+    border-left:
+      0;
+  }
+
+
+  .workflowMarker {
+    margin:
+      0;
+  }
+
+
+  .workflowStep h3 {
+    margin:
+      0;
+  }
+
+
+  .workflowStep p {
+    margin:
+      0;
   }
 
 }
-
-
-/* ==========================================================================
-   TABLET
-   ========================================================================== */
 
 
 @media (
@@ -2243,69 +1668,24 @@ i {
     900px
 ) {
 
-  .hero {
-    min-height:
-      auto;
-  }
-
-
-  .hero
-  .container {
-    min-height:
-      auto;
-  }
-
-
-  .heroGrid {
+  .heroGrid,
+  .reportingGrid,
+  .ctaGrid {
     grid-template-columns:
       minmax(
         0,
         1fr
       );
-
-    gap:
-      35px;
-
-    padding:
-      36px
-      0;
   }
 
 
-  .trustMap {
+  .overview {
     max-width:
-      720px;
+      38rem;
   }
 
 
-  .sectionHeading {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-
-    gap:
-      12px;
-  }
-
-
-  .focusRow {
-    grid-template-columns:
-      38px
-      54px
-      minmax(
-        180px,
-        0.45fr
-      )
-      minmax(
-        0,
-        1fr
-      );
-  }
-
-
-  .boundarySystem {
+  .boundaryGrid {
     grid-template-columns:
       minmax(
         0,
@@ -2314,19 +1694,14 @@ i {
   }
 
 
-  .boundaryColumn,
-  .boundaryColumn
+  .boundary
   +
-  .boundaryColumn {
-    padding:
-      22px
-      0;
-
+  .boundary {
     border-top:
       1px
       solid
       var(
-        --api-line
+        --api-border
       );
 
     border-left:
@@ -2334,19 +1709,7 @@ i {
   }
 
 
-  .boundaryColumn h3 {
-    margin-top:
-      15px;
-  }
-
-
-  .boundaryArrow {
-    display:
-      none;
-  }
-
-
-  .behaviorLayout {
+  .additionalRow {
     grid-template-columns:
       minmax(
         0,
@@ -2354,104 +1717,52 @@ i {
       );
 
     gap:
-      28px;
-  }
-
-
-  .workflow {
-    grid-template-columns:
-      repeat(
-        3,
-        minmax(
-          0,
-          1fr
-        )
-      );
-
-    row-gap:
-      28px;
-  }
-
-
-  .workflow::before {
-    display:
-      none;
-  }
-
-
-  .workflowStep {
-    padding:
-      0
-      20px
-      18px
-      0;
-
-    border-bottom:
-      1px
-      solid
-      var(
-        --api-line
-      );
-  }
-
-
-  .workflowStep
-  +
-  .workflowStep {
-    padding-left:
-      18px;
-
-    border-left:
-      1px
-      solid
-      var(
-        --api-line
-      );
-  }
-
-
-  .workflowStep
-  > i {
-    display:
-      none;
-  }
-
-
-  .workflowStep h3 {
-    margin-top:
-      11px;
+      0.55rem;
   }
 
 
   .reportingGrid {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-
     gap:
-      34px;
-  }
-
-
-  .ctaLayout {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-
-    gap:
-      24px;
+      2rem;
   }
 
 }
 
 
-/* ==========================================================================
-   MOBILE
-   ========================================================================== */
+@media (
+  max-width:
+    680px
+) {
+
+  .interfaceGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .workflowStep {
+    grid-template-columns:
+      3rem
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      0.55rem
+      0.85rem;
+  }
+
+
+  .workflowStep p {
+    grid-column:
+      2;
+  }
+
+}
 
 
 @media (
@@ -2459,448 +1770,80 @@ i {
     640px
 ) {
 
-  .hero
-  .container {
-    padding-top:
-      0;
-
-    padding-bottom:
-      27px;
+  .hero {
+    padding:
+      1.75rem
+      0
+      3.25rem;
   }
 
 
   .heroTopline {
-    display:
-      none;
-  }
-
-
-  .heroGrid {
-    gap:
-      27px;
-
-    padding:
-      10px
-      0
-      28px;
-  }
-
-
-  .heroEyebrow {
-    font-size:
-      0.54rem;
-
-    line-height:
-      1.4;
+    margin-bottom:
+      2rem;
   }
 
 
   .heroCopy h1 {
-    margin-top:
-      5px;
-
     font-size:
       clamp(
-        2.75rem,
-        13vw,
-        3.75rem
+        2.35rem,
+        11vw,
+        3rem
       );
-
-    line-height:
-      0.95;
-  }
-
-
-  .heroLead {
-    margin-top:
-      16px;
-
-    font-size:
-      0.88rem;
-  }
-
-
-  .heroActions {
-    margin-top:
-      18px;
-  }
-
-
-  .trustNodes {
-    grid-template-columns:
-      repeat(
-        5,
-        minmax(
-          0,
-          1fr
-        )
-      );
-
-    min-height:
-      100px;
-  }
-
-
-  .trustNodes
-  i {
-    display:
-      none;
-  }
-
-
-  .trustNodes
-  strong {
-    font-size:
-      0.48rem;
-  }
-
-
-  .heroFooter {
-    flex-wrap:
-      wrap;
-
-    row-gap:
-      5px;
-  }
-
-
-  .heroFooter
-  i {
-    display:
-      none;
   }
 
 
   .section {
     padding:
-      42px
+      3rem
       0;
-  }
-
-
-  .sectionHeading {
-    margin-bottom:
-      27px;
-  }
-
-
-  .sectionHeading h2 {
-    font-size:
-      clamp(
-        2rem,
-        10vw,
-        2.8rem
-      );
-  }
-
-
-  .sectionDescription {
-    font-size:
-      0.81rem;
-  }
-
-
-  .surfaceTop {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-  }
-
-
-  .surfaceTop
-  div,
-  .surfaceTop
-  div
-  +
-  div {
-    padding:
-      17px
-      0;
-
-    border-top:
-      1px
-      solid
-      var(
-        --api-line
-      );
-
-    border-left:
-      0;
-  }
-
-
-  .focusIndex {
-    margin-top:
-      22px;
-  }
-
-
-  .focusRow {
-    grid-template-columns:
-      30px
-      42px
-      minmax(
-        0,
-        1fr
-      );
-
-    gap:
-      9px;
-
-    min-height:
-      0;
-
-    padding:
-      14px
-      0;
-  }
-
-
-  .focusRow h3 {
-    font-size:
-      0.92rem;
-  }
-
-
-  .focusRow p {
-    grid-column:
-      3;
-
-    font-size:
-      0.7rem;
-  }
-
-
-  .behaviorRow {
-    grid-template-columns:
-      30px
-      minmax(
-        0,
-        1fr
-      );
-
-    gap:
-      8px;
-
-    padding:
-      13px
-      0;
-  }
-
-
-  .behaviorRow p {
-    grid-column:
-      2;
-  }
-
-
-  .workflow {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-
-    row-gap:
-      0;
-
-    padding-left:
-      20px;
-  }
-
-
-  .workflow::before {
-    display:
-      block;
-
-    top:
-      0;
-
-    right:
-      auto;
-
-    bottom:
-      0;
-
-    left:
-      4px;
-
-    width:
-      1px;
-
-    height:
-      auto;
-  }
-
-
-  .workflowStep,
-  .workflowStep
-  +
-  .workflowStep {
-    position:
-      relative;
-
-    padding:
-      0
-      0
-      20px
-      14px;
-
-    border-bottom:
-      0;
-
-    border-left:
-      0;
-  }
-
-
-  .workflowStep
-  > span {
-    display:
-      none;
-  }
-
-
-  .workflowStep
-  > i {
-    display:
-      block;
-
-    top:
-      5px;
-
-    left:
-      -20px;
-  }
-
-
-  .workflowStep h3 {
-    margin-top:
-      0;
-  }
-
-
-  .reportingGrid {
-    margin-top:
-      34px;
-
-    padding-top:
-      26px;
   }
 
 
   .cta {
     padding:
-      42px
+      3.25rem
       0;
   }
 
 
-  .ctaLayout {
-    padding-top:
-      25px;
-  }
-
-
-  .ctaLayout h2 {
-    font-size:
-      clamp(
-        2rem,
-        10vw,
-        2.8rem
-      );
-  }
-
-}
-
-
-/* ==========================================================================
-   NARROW MOBILE
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    390px
-) {
-
-  .heroCopy h1 {
-    font-size:
-      2.65rem;
-  }
-
-
-  .heroActions,
-  .ctaActions {
-    display:
-      grid;
-
+  .overviewList div {
     grid-template-columns:
       minmax(
         0,
         1fr
       );
+
+    gap:
+      0.35rem;
   }
 
 
-  .primaryAction {
-    width:
-      100%;
-  }
-
-
-  .trustProtocols {
+  .faqTrigger {
     grid-template-columns:
+      2rem
       minmax(
         0,
         1fr
-      );
-  }
+      )
+      1.5rem;
 
+    gap:
+      0.75rem;
 
-  .trustProtocols
-  div,
-  .trustProtocols
-  div
-  +
-  div {
     padding:
-      11px
+      1.05rem
       0;
-
-    border-left:
-      0;
-
-    border-top:
-      1px
-      solid
-      var(
-        --api-line
-      );
   }
 
 
-  .focusCode {
-    display:
-      none;
-  }
-
-
-  .focusRow {
-    grid-template-columns:
-      28px
-      minmax(
-        0,
-        1fr
-      );
-  }
-
-
-  .focusRow p {
-    grid-column:
-      2;
+  .faqAnswer {
+    padding:
+      0
+      2.25rem
+      1.2rem
+      2.75rem;
   }
 
 }
@@ -2917,9 +1860,7 @@ i {
 ) {
 
   .primaryAction,
-  .textAction,
-  .faqItem summary
-  i {
+  .secondaryAction {
     transition:
       none;
   }
