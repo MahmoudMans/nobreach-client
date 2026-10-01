@@ -24,11 +24,11 @@ const css =
 
 
 describe(
-  "Careers V22 opportunity index",
+  "Careers V22 compatibility + audit V23 consolidation",
   () => {
 
     it(
-      "activates V22",
+      "keeps V22 compatibility and activates the consolidated audit",
       () => {
 
         expect(
@@ -37,11 +37,22 @@ describe(
           'data-careers-design="v22"'
         );
 
+        expect(
+          page
+        ).toContain(
+          'data-careers-audit="v23"'
+        );
 
         expect(
           css
         ).toContain(
-          "NB_CAREERS_OPPORTUNITY_INDEX_V22"
+          "NB_CAREERS_DESIGN_V22"
+        );
+
+        expect(
+          css
+        ).toContain(
+          "NB_CAREERS_AUDIT_V23"
         );
 
       }
@@ -49,22 +60,51 @@ describe(
 
 
     it(
-      "preserves the three authorized career categories",
+      "uses one task-focused careers opening",
       () => {
 
+        expect(
+          page
+        ).toContain(
+          "Careers at No Breach"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Explore employment, internship and freelance collaboration opportunities."
+        );
+
+        expect(
+          page
+        ).toContain(
+          "There are currently no published openings."
+        );
+
+        expect(
+          page
+        ).toContain(
+          "New opportunities will appear here when they are formally published."
+        );
+
         for (
-          const category
-          of [
-            "Employment",
-            "Internships",
-            "Freelance collaboration"
+          const retired
+          of
+          [
+            "Opportunity Index",
+            "Three paths. One truthful public status.",
+            "View opportunity status",
+            "UPDATED PUBLIC INDEX",
+            "Updated public index",
+            "Follow No Breach for future opportunities.",
+            "Follow on LinkedIn"
           ]
         ) {
 
           expect(
             page
-          ).toContain(
-            category
+          ).not.toContain(
+            retired
           );
 
         }
@@ -74,27 +114,32 @@ describe(
 
 
     it(
-      "publishes no fabricated openings",
+      "preserves all three opportunity categories once through one scope model",
       () => {
 
-        expect(
-          page
-        ).toContain(
-          "const publishedOpenings:"
-        );
+        for (
+          const category
+          of
+          [
+            "Employment",
+            "Internships",
+            "Freelance collaboration"
+          ]
+        ) {
+
+          expect(
+            page
+          ).toContain(
+            `"${category}"`
+          );
+
+        }
 
 
         expect(
           page
         ).toContain(
-          "readonly never[] = []"
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "There are currently no published openings."
+          "opportunityCategories.map"
         );
 
       }
@@ -102,20 +147,43 @@ describe(
 
 
     it(
-      "uses the required future opportunities CTA",
+      "distinguishes empty and unavailable source states without fabricated vacancies",
       () => {
 
         expect(
           page
         ).toContain(
-          "Follow No Breach for future opportunities."
+          '"ready"'
         );
-
 
         expect(
           page
         ).toContain(
-          "siteConfig.linkedin"
+          '"unavailable"'
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Opportunity information is temporarily unavailable."
+        );
+
+        expect(
+          page
+        ).not.toMatch(
+          /\bWe are not hiring\b/i
+        );
+
+        expect(
+          page
+        ).not.toContain(
+          "<form"
+        );
+
+        expect(
+          page
+        ).not.toContain(
+          "Apply now"
         );
 
       }
@@ -123,34 +191,73 @@ describe(
 
 
     it(
-      "uses editorial rows rather than fake vacancy cards",
+      "keeps the three useful work destinations and stable interaction geometry",
       () => {
 
+        for (
+          const token
+          of
+          [
+            "Internship Projects",
+            "Training",
+            "Technical Insights",
+            '"/company/internships"',
+            '"/training"',
+            '"/insights"',
+            "View No Breach on LinkedIn"
+          ]
+        ) {
+
+          expect(
+            page
+          ).toContain(
+            token
+          );
+
+        }
+
+
         expect(
-          page
+          css
         ).toContain(
-          "styles.opportunityRow"
+          ".resourceRow:hover"
         );
 
-
         expect(
-          page
+          css
         ).toContain(
-          "styles.workRow"
+          ".resourceRow:focus-visible"
         );
 
 
+        const hoverStart =
+          css.indexOf(
+            ".resourceRow:hover"
+          );
+
+        const focusStart =
+          css.indexOf(
+            ".resourceRow:focus-visible"
+          );
+
+
+        const hoverBlock =
+          css.slice(
+            hoverStart,
+            focusStart
+          );
+
+
         expect(
-          page
+          hoverBlock
         ).not.toContain(
-          "jobCard"
+          "transform:"
         );
 
-
         expect(
-          page
+          hoverBlock
         ).not.toContain(
-          "vacancyCard"
+          "padding:"
         );
 
       }

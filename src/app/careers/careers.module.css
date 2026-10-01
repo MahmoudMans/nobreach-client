@@ -1,66 +1,45 @@
 /* ==========================================================================
-   NB_CAREERS_OPPORTUNITY_INDEX_V22
+   NB_CAREERS_DESIGN_V22
+   Compatibility marker for the established Careers route.
 
-   /careers visual authority.
-
-   - truthful opportunity status
-   - no manufactured vacancies
-   - editorial opportunity ledger
-   - no card wall
-   - no recruitment dashboard
-   - no decorative fake job listings
+   NB_CAREERS_AUDIT_V23
+   Consolidated careers identity, current published state and work directory.
    ========================================================================== */
 
 
 .page {
-  --careers-bg:
-    #07090d;
+  --careers-canvas:
+    #080b10;
 
-  --careers-alt:
-    #0b0f16;
+  --careers-section:
+    #0c121b;
 
-  --careers-surface:
-    #101620;
+  --careers-raised:
+    #111b28;
+
+  --careers-hover:
+    #182536;
 
   --careers-text:
-    #f5f7fa;
+    #f3f6fb;
 
   --careers-secondary:
-    #c5ced8;
+    #b7c2d0;
 
-  --careers-muted:
-    #8793a3;
+  --careers-metadata:
+    #94a3b8;
 
-  --careers-subtle:
-    #667281;
+  --careers-action:
+    #a5e8f3;
 
-  --careers-cyan:
-    #a1e2f0;
+  --careers-border:
+    #273446;
 
-  --careers-blue:
-    #83b3d7;
+  --careers-control-border:
+    #63758c;
 
-  --careers-violet:
-    #7e60b9;
-
-  --careers-purple:
-    #6333c6;
-
-  --careers-line:
-    rgba(
-      197,
-      206,
-      216,
-      0.13
-    );
-
-  --careers-line-strong:
-    rgba(
-      161,
-      226,
-      240,
-      0.24
-    );
+  min-width:
+    0;
 
   overflow:
     clip;
@@ -72,381 +51,101 @@
 
   background:
     var(
-      --careers-bg
+      --careers-canvas
     );
 }
 
 
-.container {
-  width:
-    100%;
-}
+/* OPENING ------------------------------------------------------------ */
 
 
-/* ==========================================================================
-   ACTIONS
-   ========================================================================== */
-
-
-.primaryAction {
-  display:
-    inline-flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    space-between;
-
-  gap:
-    18px;
-
-  min-height:
-    46px;
-
+.opening {
   padding:
-    0
-    18px;
-
-  border:
-    1px
-    solid
-    rgba(
-      161,
-      226,
-      240,
-      0.3
-    );
-
-  border-radius:
-    4px;
-
-  color:
-    #071015;
-
-  background:
-    var(
-      --careers-cyan
-    );
-
-  font-size:
-    0.78rem;
-
-  font-weight:
-    700;
-
-  transition:
-    background-color
-    160ms
-    ease;
-}
-
-
-.primaryAction:hover {
-  background:
-    #c5eff8;
-}
-
-
-.textAction {
-  display:
-    inline-flex;
-
-  align-items:
-    center;
-
-  gap:
-    11px;
-
-  min-height:
-    44px;
-
-  color:
-    var(
-      --careers-secondary
-    );
-
-  font-size:
-    0.78rem;
-
-  font-weight:
-    620;
-
-  transition:
-    color
-    160ms
-    ease;
-}
-
-
-.textAction:hover {
-  color:
-    var(
-      --careers-cyan
-    );
-}
-
-
-/* ==========================================================================
-   HERO
-   ========================================================================== */
-
-
-.hero {
-  position:
-    relative;
-
-  min-height:
-    min(
-      700px,
-      calc(
-        100svh
-        -
-        104px
-      )
-    );
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --careers-line
-    );
-
-  background:
-    var(
-      --careers-bg
-    );
-}
-
-
-.hero::after {
-  position:
-    absolute;
-
-  top:
-    0;
-
-  right:
-    0;
-
-  bottom:
-    0;
-
-  width:
-    min(
-      46vw,
-      720px
-    );
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(
-        126,
-        96,
-        185,
-        0.026
-      )
-    );
-
-  content:
-    "";
-
-  pointer-events:
-    none;
-}
-
-
-.hero
-.container {
-  position:
-    relative;
-
-  z-index:
-    1;
-
-  display:
-    grid;
-
-  grid-template-rows:
-    auto
-    1fr
-    auto;
-
-  min-height:
-    inherit;
-
-  padding-top:
-    18px;
-
-  padding-bottom:
-    18px;
-}
-
-
-.heroTopline {
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    space-between;
-
-  gap:
-    20px;
-
-  min-height:
-    34px;
-
-  padding-bottom:
-    12px;
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --careers-line
-    );
-
-  color:
-    var(
-      --careers-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.58rem;
-
-  letter-spacing:
-    0.1em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.heroGrid {
-  display:
-    grid;
-
-  grid-template-columns:
-    minmax(
-      0,
-      1.25fr
-    )
-    minmax(
-      320px,
-      0.55fr
-    );
-
-  gap:
     clamp(
-      48px,
-      7vw,
-      100px
-    );
-
-  align-items:
-    center;
-
-  padding:
-    40px
-    0;
-}
-
-
-.heroEyebrow {
-  color:
-    var(
-      --careers-blue
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.63rem;
-
-  font-weight:
-    600;
-
-  letter-spacing:
-    0.11em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.heroCopy h1 {
-  max-width:
-    920px;
-
-  margin-top:
-    15px;
-
-  font-size:
+      2.5rem,
+      5vw,
+      4rem
+    )
+    0
     clamp(
       4rem,
-      6.2vw,
-      5.9rem
+      6.5vw,
+      5rem
     );
 
-  font-weight:
-    500;
-
-  letter-spacing:
-    -0.07em;
-
-  line-height:
-    0.92;
+  border-bottom:
+    1px
+    solid
+    var(
+      --careers-border
+    );
 }
 
 
-.heroCopy h1
-span {
-  display:
-    block;
+.frame {
+  width:
+    100%;
+
+  min-width:
+    0;
+}
+
+
+.intro {
+  max-width:
+    48rem;
+}
+
+
+.title {
+  max-width:
+    13ch;
+
+  margin:
+    0;
+
+  color:
+    var(
+      --careers-text
+    );
+
+  font-size:
+    clamp(
+      2.75rem,
+      5vw,
+      3.5rem
+    );
+
+  font-weight:
+    650;
+
+  letter-spacing:
+    -0.055em;
+
+  line-height:
+    0.98;
+}
+
+
+.introText {
+  max-width:
+    43rem;
+
+  margin:
+    1rem
+    0
+    0;
 
   color:
     var(
       --careers-secondary
     );
 
-  font-weight:
-    420;
-}
-
-
-.heroLead {
-  max-width:
-    660px;
-
-  margin-top:
-    24px;
-
-  color:
-    var(
-      --careers-muted
-    );
-
   font-size:
     clamp(
-      0.98rem,
-      1.35vw,
-      1.1rem
+      1rem,
+      1.4vw,
+      1.125rem
     );
 
   line-height:
@@ -454,7 +153,39 @@ span {
 }
 
 
-.heroActions {
+/* CATEGORY SCOPE ----------------------------------------------------- */
+
+
+.scope {
+  max-width:
+    58rem;
+
+  margin-top:
+    1.75rem;
+}
+
+
+.scopeLabel {
+  margin:
+    0;
+
+  color:
+    var(
+      --careers-metadata
+    );
+
+  font-size:
+    0.86rem;
+
+  font-weight:
+    600;
+
+  letter-spacing:
+    0.01em;
+}
+
+
+.scopeList {
   display:
     flex;
 
@@ -462,600 +193,173 @@ span {
     wrap;
 
   gap:
-    18px;
+    0.5rem
+    1.25rem;
 
-  margin-top:
-    27px;
-}
-
-
-/* ==========================================================================
-   STATUS SYSTEM
-   ========================================================================== */
-
-
-.statusSystem {
-  border-top:
-    1px
-    solid
-    var(
-      --careers-line-strong
-    );
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --careers-line
-    );
-}
-
-
-.statusHeader {
-  display:
-    flex;
-
-  justify-content:
-    space-between;
-
-  gap:
-    12px;
-
-  min-height:
-    40px;
-
-  align-items:
-    center;
-
-  color:
-    var(
-      --careers-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.56rem;
-
-  letter-spacing:
-    0.08em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.statusCount {
-  display:
-    flex;
-
-  align-items:
-    flex-end;
-
-  gap:
-    16px;
-
-  padding:
-    20px
+  margin:
+    0.7rem
+    0
     0;
 
-  border-top:
-    1px
-    solid
-    var(
-      --careers-line
-    );
+  padding:
+    0;
+
+  list-style:
+    none;
 }
 
 
-.statusCount
-strong {
-  color:
-    var(
-      --careers-text
-    );
+:global(#main-content)
+.scopeList {
+  margin-left:
+    0;
 
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    clamp(
-      3.4rem,
-      5vw,
-      5rem
-    );
-
-  font-weight:
-    420;
-
-  letter-spacing:
-    -0.08em;
-
-  line-height:
-    0.8;
+  padding-left:
+    0;
 }
 
 
-.statusCount
-div {
-  display:
-    grid;
+:global(#main-content)
+.scopeList
+li {
+  position:
+    relative;
 
-  padding-bottom:
-    2px;
+  margin:
+    0;
 
-  color:
-    var(
-      --careers-muted
-    );
+  padding-left:
+    0.85rem;
 
-  font-size:
-    0.7rem;
-
-  line-height:
-    1.3;
-}
-
-
-.statusLines
-> div {
-  display:
-    grid;
-
-  grid-template-columns:
-    34px
-    minmax(
-      0,
-      1fr
-    )
-    54px
-    auto;
-
-  gap:
-    10px;
-
-  align-items:
-    center;
-
-  min-height:
-    49px;
-
-  border-top:
-    1px
-    solid
-    var(
-      --careers-line
-    );
-}
-
-
-.statusLines
-span {
-  color:
-    var(
-      --careers-blue
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.55rem;
-
-  font-weight:
-    650;
-}
-
-
-.statusLines
-strong {
   color:
     var(
       --careers-secondary
     );
 
   font-size:
-    0.72rem;
-
-  font-weight:
-    600;
-}
-
-
-.statusLines
-i {
-  height:
-    1px;
-
-  background:
-    var(
-      --careers-line
-    );
-}
-
-
-.statusLines
-small {
-  color:
-    var(
-      --careers-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.5rem;
-
-  text-align:
-    right;
-
-  text-transform:
-    uppercase;
-}
-
-
-.heroFooter {
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  gap:
-    12px;
-
-  min-height:
-    42px;
-
-  padding-top:
-    13px;
-
-  border-top:
-    1px
-    solid
-    var(
-      --careers-line
-    );
-
-  color:
-    var(
-      --careers-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.55rem;
-
-  letter-spacing:
-    0.07em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.heroFooter
-i {
-  flex:
-    1;
-
-  max-width:
-    50px;
-
-  height:
-    1px;
-
-  background:
-    var(
-      --careers-line
-    );
-}
-
-
-/* ==========================================================================
-   SHARED SECTIONS
-   ========================================================================== */
-
-
-.section {
-  padding:
-    clamp(
-      54px,
-      6vw,
-      76px
-    )
-    0;
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --careers-line
-    );
-}
-
-
-.sectionAlt {
-  background:
-    var(
-      --careers-alt
-    );
-}
-
-
-.sectionHeading {
-  display:
-    grid;
-
-  grid-template-columns:
-    minmax(
-      0,
-      1.05fr
-    )
-    minmax(
-      280px,
-      0.45fr
-    );
-
-  gap:
-    15px
-    clamp(
-      40px,
-      6vw,
-      84px
-    );
-
-  align-items:
-    end;
-
-  margin-bottom:
-    38px;
-}
-
-
-.sectionEyebrow {
-  grid-column:
-    1
-    /
-    -1;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  gap:
-    10px;
-
-  color:
-    var(
-      --careers-blue
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.6rem;
-
-  font-weight:
-    600;
-
-  letter-spacing:
-    0.1em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.sectionEyebrow
-span {
-  color:
-    var(
-      --careers-subtle
-    );
-}
-
-
-.sectionHeading h2 {
-  max-width:
-    880px;
-
-  font-size:
-    clamp(
-      2.4rem,
-      4vw,
-      3.65rem
-    );
-
-  font-weight:
-    470;
-
-  letter-spacing:
-    -0.055em;
+    0.95rem;
 
   line-height:
-    1.02;
+    1.5;
 }
 
 
-.sectionDescription {
-  max-width:
-    460px;
-
-  color:
-    var(
-      --careers-muted
-    );
-
-  font-size:
-    0.86rem;
-
-  line-height:
-    1.65;
-}
-
-
-/* ==========================================================================
-   EMPTY STATUS
-   ========================================================================== */
-
-
-.emptyState {
-  display:
-    grid;
-
-  grid-template-columns:
-    42px
-    minmax(
-      0,
-      1fr
-    );
-
-  gap:
-    20px;
-
-  align-items:
-    center;
-
-  padding:
-    21px
+:global(#main-content)
+.scopeList
+li
++
+li {
+  margin-top:
     0;
-
-  border-top:
-    1px
-    solid
-    var(
-      --careers-line-strong
-    );
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --careers-line
-    );
 }
 
 
-.emptySignal {
-  position:
-    relative;
-
-  width:
-    30px;
-
-  height:
-    30px;
-}
-
-
-.emptySignal
-span:first-child {
+.scopeList
+li::before {
   position:
     absolute;
 
-  inset:
-    4px;
+  top:
+    0.62em;
+
+  left:
+    0;
+
+  width:
+    0.28rem;
+
+  height:
+    0.28rem;
+
+  border-radius:
+    50%;
+
+  background:
+    var(
+      --careers-action
+    );
+
+  content:
+    "";
+}
+
+
+/* AUTHORITATIVE STATUS ---------------------------------------------- */
+
+
+.statusCard {
+  max-width:
+    60rem;
+
+  margin-top:
+    clamp(
+      1.5rem,
+      3vw,
+      2rem
+    );
+
+  padding:
+    clamp(
+      1.5rem,
+      3vw,
+      2rem
+    );
 
   border:
     1px
     solid
     var(
-      --careers-blue
+      --careers-border
     );
 
   border-radius:
-    50%;
-}
-
-
-.emptySignal
-span:last-child {
-  position:
-    absolute;
-
-  top:
-    50%;
-
-  left:
-    50%;
-
-  width:
-    5px;
-
-  height:
-    5px;
-
-  border-radius:
-    50%;
+    0.875rem;
 
   background:
     var(
-      --careers-cyan
-    );
-
-  transform:
-    translate(
-      -50%,
-      -50%
+      --careers-raised
     );
 }
 
 
-.emptyState p {
+.statusTitle {
+  max-width:
+    27ch;
+
+  margin:
+    0;
+
   color:
     var(
-      --careers-subtle
+      --careers-text
     );
 
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
   font-size:
-    0.55rem;
+    clamp(
+      1.55rem,
+      2.8vw,
+      2rem
+    );
+
+  font-weight:
+    620;
 
   letter-spacing:
-    0.08em;
+    -0.035em;
 
-  text-transform:
-    uppercase;
+  line-height:
+    1.15;
 }
 
 
-.emptyState strong {
-  display:
-    block;
+.statusText {
+  max-width:
+    46rem;
 
-  margin-top:
-    5px;
+  margin:
+    0.75rem
+    0
+    0;
 
   color:
     var(
@@ -1065,135 +369,432 @@ span:last-child {
   font-size:
     1rem;
 
-  font-weight:
-    560;
+  line-height:
+    1.65;
 }
 
 
-/* ==========================================================================
-   OPPORTUNITY INDEX
-   ========================================================================== */
-
-
-.opportunityIndex {
-  margin-top:
-    30px;
-
-  border-top:
-    1px
-    solid
-    var(
-      --careers-line
-    );
-}
-
-
-.opportunityRow {
+.linkedinAction {
   display:
-    grid;
+    inline-flex;
 
-  grid-template-columns:
-    42px
-    52px
-    minmax(
-      0,
-      1fr
-    )
-    minmax(
-      170px,
-      auto
-    );
+  min-height:
+    2.75rem;
 
-  gap:
-    16px;
+  margin-top:
+    1.5rem;
 
   align-items:
     center;
 
-  min-height:
-    104px;
+  gap:
+    0.65rem;
 
-  border-bottom:
+  padding:
+    0.65rem
+    0;
+
+  color:
+    var(
+      --careers-action
+    );
+
+  font-size:
+    0.95rem;
+
+  font-weight:
+    650;
+
+  text-decoration:
+    none;
+
+  transition:
+    color
+    120ms
+    ease;
+}
+
+
+.linkedinAction:hover {
+  color:
+    #c5f2f8;
+}
+
+
+.linkedinAction:focus-visible {
+  border-radius:
+    0.2rem;
+
+  outline:
+    2px
+    solid
+    var(
+      --careers-action
+    );
+
+  outline-offset:
+    3px;
+}
+
+
+/* FUTURE POPULATED STATE -------------------------------------------- */
+
+
+.openingList {
+  display:
+    grid;
+
+  gap:
+    1px;
+
+  margin-top:
+    1.5rem;
+
+  overflow:
+    hidden;
+
+  border:
     1px
     solid
     var(
-      --careers-line
+      --careers-border
+    );
+
+  border-radius:
+    0.625rem;
+
+  background:
+    var(
+      --careers-border
     );
 }
 
 
-.opportunityNumber,
-.opportunityCode {
-  font-family:
+.openingItem {
+  padding:
+    1.25rem;
+
+  background:
     var(
-      --font-geist-mono
-    ),
-    monospace;
+      --careers-section
+    );
+}
+
+
+.openingType {
+  margin:
+    0;
+
+  color:
+    var(
+      --careers-metadata
+    );
 
   font-size:
-    0.58rem;
+    0.86rem;
 }
 
 
-.opportunityNumber {
+.openingItem
+h3 {
+  margin:
+    0.5rem
+    0
+    0;
+
   color:
     var(
-      --careers-subtle
+      --careers-text
+    );
+
+  font-size:
+    1.2rem;
+}
+
+
+.openingItem
+p:not(.openingType) {
+  margin:
+    0.55rem
+    0
+    0;
+
+  color:
+    var(
+      --careers-secondary
+    );
+
+  line-height:
+    1.6;
+}
+
+
+.openingItem
+a {
+  display:
+    inline-flex;
+
+  margin-top:
+    1rem;
+
+  gap:
+    0.5rem;
+
+  color:
+    var(
+      --careers-action
+    );
+
+  text-decoration:
+    none;
+}
+
+
+/* WORK DIRECTORY ----------------------------------------------------- */
+
+
+.work {
+  padding:
+    clamp(
+      3.5rem,
+      6vw,
+      4.75rem
+    )
+    0
+    clamp(
+      3.75rem,
+      6.5vw,
+      5rem
     );
 }
 
 
-.opportunityCode {
+.workHeader {
+  max-width:
+    48rem;
+
+  margin-bottom:
+    1.75rem;
+}
+
+
+.workTitle {
+  margin:
+    0;
+
   color:
     var(
-      --careers-cyan
+      --careers-text
+    );
+
+  font-size:
+    clamp(
+      2rem,
+      3.4vw,
+      2.6rem
     );
 
   font-weight:
-    700;
+    630;
+
+  letter-spacing:
+    -0.045em;
+
+  line-height:
+    1.08;
 }
 
 
-.opportunityCopy h3 {
+.workIntro {
+  max-width:
+    43rem;
+
+  margin:
+    0.75rem
+    0
+    0;
+
   color:
     var(
       --careers-secondary
     );
 
   font-size:
-    1.2rem;
+    1rem;
 
-  font-weight:
-    590;
-
-  letter-spacing:
-    -0.025em;
+  line-height:
+    1.65;
 }
 
 
-.opportunityCopy p {
-  max-width:
-    670px;
+.resourceList {
+  display:
+    block;
 
-  margin-top:
-    5px;
-
-  color:
+  border-top:
+    1px
+    solid
     var(
-      --careers-muted
+      --careers-border
+    );
+}
+
+
+.resourceRow {
+  display:
+    grid;
+
+  grid-template-columns:
+    3rem
+    minmax(
+      0,
+      1fr
+    )
+    auto;
+
+  min-width:
+    0;
+
+  gap:
+    1.25rem;
+
+  align-items:
+    center;
+
+  padding:
+    1.35rem
+    0;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --careers-border
     );
 
+  color:
+    inherit;
+
+  text-decoration:
+    none;
+
+  transition:
+    background-color
+    120ms
+    ease,
+    color
+    120ms
+    ease;
+}
+
+
+.resourceRow:hover {
+  background:
+    var(
+      --careers-hover
+    );
+}
+
+
+.resourceRow:focus-visible {
+  position:
+    relative;
+
+  z-index:
+    1;
+
+  border-radius:
+    0.15rem;
+
+  outline:
+    2px
+    solid
+    var(
+      --careers-action
+    );
+
+  outline-offset:
+    3px;
+}
+
+
+.resourceNumber {
+  align-self:
+    start;
+
+  color:
+    #b59ae7;
+
   font-size:
-    0.76rem;
+    0.85rem;
+
+  font-variant-numeric:
+    tabular-nums;
 
   line-height:
     1.55;
 }
 
 
-.opportunityStatus {
+.resourceCopy {
   display:
-    flex;
+    grid;
+
+  min-width:
+    0;
+
+  gap:
+    0.45rem;
+}
+
+
+.resourceTitle {
+  color:
+    var(
+      --careers-text
+    );
+
+  font-size:
+    clamp(
+      1.15rem,
+      2vw,
+      1.4rem
+    );
+
+  font-weight:
+    610;
+
+  letter-spacing:
+    -0.025em;
+
+  line-height:
+    1.2;
+}
+
+
+.resourceDescription {
+  max-width:
+    48rem;
+
+  color:
+    var(
+      --careers-secondary
+    );
+
+  font-size:
+    0.96rem;
+
+  line-height:
+    1.6;
+}
+
+
+.resourceAction {
+  display:
+    inline-flex;
+
+  min-height:
+    2.75rem;
 
   align-items:
     center;
@@ -1202,821 +803,124 @@ span:last-child {
     flex-end;
 
   gap:
-    8px;
-
-  color:
-    var(
-      --careers-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.52rem;
-
-  letter-spacing:
-    0.06em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.opportunityStatus
-i {
-  width:
-    5px;
-
-  height:
-    5px;
-
-  border:
-    1px
-    solid
-    var(
-      --careers-subtle
-    );
-
-  border-radius:
-    50%;
-}
-
-
-.statusNote {
-  margin-top:
-    16px;
-
-  color:
-    var(
-      --careers-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
     0.55rem;
 
-  letter-spacing:
-    0.04em;
-}
-
-
-/* ==========================================================================
-   WORK DIRECTORY
-   ========================================================================== */
-
-
-.workIndex {
-  border-top:
-    1px
-    solid
+  color:
     var(
-      --careers-line-strong
+      --careers-action
     );
-}
-
-
-.workRow {
-  display:
-    grid;
-
-  grid-template-columns:
-    42px
-    52px
-    minmax(
-      0,
-      1fr
-    )
-    22px;
-
-  gap:
-    16px;
-
-  align-items:
-    center;
-
-  min-height:
-    105px;
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --careers-line
-    );
-
-  transition:
-    padding
-    160ms
-    ease,
-    background-color
-    160ms
-    ease;
-}
-
-
-.workRow:hover {
-  padding:
-    0
-    8px;
-
-  background:
-    rgba(
-      161,
-      226,
-      240,
-      0.025
-    );
-}
-
-
-.workNumber,
-.workCode {
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
 
   font-size:
-    0.58rem;
-}
-
-
-.workNumber {
-  color:
-    var(
-      --careers-subtle
-    );
-}
-
-
-.workCode {
-  color:
-    var(
-      --careers-cyan
-    );
+    0.9rem;
 
   font-weight:
-    700;
+    650;
+
+  white-space:
+    nowrap;
 }
 
 
-.workRow h3 {
-  color:
-    var(
-      --careers-secondary
-    );
-
-  font-size:
-    1.16rem;
-
-  font-weight:
-    590;
-}
-
-
-.workRow p {
-  max-width:
-    650px;
-
-  margin-top:
-    5px;
-
-  color:
-    var(
-      --careers-muted
-    );
-
-  font-size:
-    0.76rem;
-
-  line-height:
-    1.5;
-}
-
-
-.workRow
-> span:last-child {
-  color:
-    var(
-      --careers-subtle
-    );
-}
-
-
-/* ==========================================================================
-   CTA
-   ========================================================================== */
-
-
-.cta {
-  padding:
-    clamp(
-      48px,
-      6vw,
-      72px
-    )
-    0;
-}
-
-
-.ctaRule {
-  height:
-    1px;
-
-  background:
-    var(
-      --careers-line-strong
-    );
-}
-
-
-.ctaLayout {
-  display:
-    grid;
-
-  grid-template-columns:
-    minmax(
-      0,
-      1fr
-    )
-    minmax(
-      300px,
-      0.48fr
-    );
-
-  gap:
-    clamp(
-      40px,
-      6vw,
-      82px
-    );
-
-  padding-top:
-    31px;
-}
-
-
-.ctaLayout h2 {
-  max-width:
-    760px;
-
-  margin-top:
-    11px;
-
-  font-size:
-    clamp(
-      2.35rem,
-      4vw,
-      3.8rem
-    );
-
-  font-weight:
-    470;
-
-  letter-spacing:
-    -0.055em;
-
-  line-height:
-    1.02;
-}
-
-
-.ctaCopy
-> p {
-  color:
-    var(
-      --careers-muted
-    );
-
-  font-size:
-    0.85rem;
-
-  line-height:
-    1.65;
-}
-
-
-.ctaCopy
-.primaryAction {
-  margin-top:
-    22px;
-}
-
-
-/* ==========================================================================
-   TABLET
-   ========================================================================== */
+/* RESPONSIVE --------------------------------------------------------- */
 
 
 @media (
   max-width:
-    900px
+    768px
 ) {
 
-  .hero {
-    min-height:
-      auto;
+  .opening {
+    padding:
+      2rem
+      0
+      3.25rem;
   }
 
 
-  .hero
-  .container {
-    min-height:
-      auto;
-  }
-
-
-  .heroGrid {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
+  .title {
+    font-size:
+      clamp(
+        2rem,
+        9vw,
+        2.5rem
       );
 
-    gap:
-      35px;
+    line-height:
+      1.02;
+  }
 
+
+  .statusCard {
     padding:
-      38px
+      1.5rem;
+  }
+
+
+  .work {
+    padding:
+      3rem
       0;
   }
 
 
-  .statusSystem {
-    max-width:
-      650px;
-  }
-
-
-  .sectionHeading {
+  .resourceRow {
     grid-template-columns:
+      2.25rem
       minmax(
         0,
         1fr
       );
 
     gap:
-      12px;
+      0.85rem
+      1rem;
+
+    padding:
+      1.25rem
+      0;
   }
 
 
-  .opportunityRow {
-    grid-template-columns:
-      36px
-      46px
-      minmax(
-        0,
-        1fr
-      );
-  }
-
-
-  .opportunityStatus {
+  .resourceAction {
     grid-column:
-      3;
+      2;
+
+    justify-self:
+      start;
 
     justify-content:
       flex-start;
 
-    padding-bottom:
-      14px;
-  }
-
-
-  .ctaLayout {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-
-    gap:
-      24px;
+    min-height:
+      2rem;
   }
 
 }
 
 
-/* ==========================================================================
-   MOBILE
-   ========================================================================== */
-
-
 @media (
   max-width:
-    640px
+    420px
 ) {
 
-  .hero
-  .container {
-    padding-top:
-      6px;
-
-    padding-bottom:
-      26px;
-  }
-
-
-  .heroTopline {
-    padding-bottom:
-      6px;
-
-    font-size:
-      0.5rem;
-
-    line-height:
-      1.2;
-  }
-
-
-  .heroGrid {
-    gap:
-      26px;
-
-    padding:
-      13px
-      0
-      28px;
-  }
-
-
-  .heroEyebrow {
-    font-size:
-      0.54rem;
-
-    line-height:
-      1.5;
-  }
-
-
-  .heroCopy h1 {
-    margin-top:
-      6px;
-
-    font-size:
-      clamp(
-        2.75rem,
-        13vw,
-        3.75rem
-      );
-
-    line-height:
-      0.96;
-  }
-
-
-  .heroLead {
-    margin-top:
-      16px;
-
-    font-size:
-      0.88rem;
-  }
-
-
-  .heroActions {
-    margin-top:
-      18px;
-  }
-
-
-  .statusCount {
-    padding:
-      15px
-      0;
-  }
-
-
-  .statusLines
-  > div {
-    grid-template-columns:
-      28px
-      minmax(
-        0,
-        1fr
-      )
-      auto;
-
-    min-height:
-      44px;
-  }
-
-
-  .statusLines
-  i {
-    display:
-      none;
-  }
-
-
-  .statusLines
-  small {
-    max-width:
-      96px;
-  }
-
-
-  .heroFooter {
-    flex-wrap:
-      wrap;
-
-    row-gap:
-      6px;
-  }
-
-
-  .heroFooter
-  i {
-    display:
-      none;
-  }
-
-
-  .section {
-    padding:
-      42px
-      0;
-  }
-
-
-  .sectionHeading {
-    margin-bottom:
-      27px;
-  }
-
-
-  .sectionHeading h2 {
-    font-size:
-      clamp(
-        2rem,
-        10vw,
-        2.8rem
-      );
-  }
-
-
-  .sectionDescription {
-    font-size:
-      0.81rem;
-  }
-
-
-  .emptyState {
-    grid-template-columns:
-      32px
-      minmax(
-        0,
-        1fr
-      );
-
-    gap:
-      14px;
-  }
-
-
-  .opportunityRow {
-    grid-template-columns:
-      30px
-      38px
-      minmax(
-        0,
-        1fr
-      );
-
-    gap:
-      9px;
-
-    min-height:
-      0;
-
-    padding:
-      16px
-      0;
-  }
-
-
-  .opportunityCopy h3 {
-    font-size:
-      1.02rem;
-  }
-
-
-  .opportunityCopy p {
-    font-size:
-      0.72rem;
-  }
-
-
-  .opportunityStatus {
-    grid-column:
-      3;
-
-    padding-bottom:
-      0;
-
-    font-size:
-      0.48rem;
-  }
-
-
-  .workRow {
-    grid-template-columns:
-      30px
-      38px
-      minmax(
-        0,
-        1fr
-      )
-      18px;
-
-    gap:
-      9px;
-
-    min-height:
-      92px;
-
-    padding:
-      12px
-      0;
-  }
-
-
-  .workRow:hover {
-    padding:
-      12px
-      5px;
-  }
-
-
-  .workRow p {
-    font-size:
-      0.7rem;
-  }
-
-
-  .cta {
-    padding:
-      42px
-      0;
-  }
-
-
-  .ctaLayout {
-    padding-top:
-      25px;
-  }
-
-
-  .ctaLayout h2 {
-    font-size:
-      clamp(
-        2rem,
-        10vw,
-        2.8rem
-      );
-  }
-
-}
-
-
-/* ==========================================================================
-   NARROW MOBILE
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    390px
-) {
-
-  .heroTopline {
+  .scopeList {
     display:
       grid;
 
     gap:
-      3px;
+      0.45rem;
   }
 
 
-  .heroCopy h1 {
+  .resourceDescription {
     font-size:
-      2.65rem;
-  }
-
-
-  .heroActions {
-    display:
-      grid;
-
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-  }
-
-
-  .primaryAction {
-    width:
-      100%;
-  }
-
-
-  .opportunityCode,
-  .workCode {
-    display:
-      none;
-  }
-
-
-  .opportunityRow {
-    grid-template-columns:
-      28px
-      minmax(
-        0,
-        1fr
-      );
-  }
-
-
-  .opportunityStatus {
-    grid-column:
-      2;
-  }
-
-
-  .workRow {
-    grid-template-columns:
-      28px
-      minmax(
-        0,
-        1fr
-      )
-      18px;
+      0.93rem;
   }
 
 }
 
 
-/* ==========================================================================
-   EXTRA-NARROW HERO RHYTHM
-
-   360px devices need a tighter metadata-to-heading transition.
-   The editorial hero remains unchanged at 390px and above.
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    370px
-) {
-
-  .hero
-  .container {
-    padding-top:
-      0;
-  }
-
-
-  .heroTopline {
-    display:
-      none;
-  }
-
-
-  .heroGrid {
-    padding-top:
-      4px;
-  }
-
-
-  .heroEyebrow {
-    line-height:
-      1.2;
-  }
-
-
-  .heroCopy h1 {
-    margin-top:
-      2px;
-  }
-
-}
-
-
-/* ==========================================================================
-   REDUCED MOTION
-   ========================================================================== */
+/* REDUCED MOTION ----------------------------------------------------- */
 
 
 @media (
@@ -2024,20 +928,10 @@ i {
     reduce
 ) {
 
-  .primaryAction,
-  .textAction,
-  .workRow {
+  .linkedinAction,
+  .resourceRow {
     transition:
       none;
-  }
-
-
-  .workRow:hover {
-    padding-right:
-      0;
-
-    padding-left:
-      0;
   }
 
 }

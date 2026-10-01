@@ -30,63 +30,75 @@ export const metadata =
 
     path:
       "/careers"
+
   });
 
 
-const opportunityCategories = [
+type Opportunity = {
+  title:
+    string;
+
+  type:
+    "Employment"
+    |
+    "Internship"
+    |
+    "Freelance collaboration";
+
+  summary:
+    string;
+
+  href:
+    string;
+};
+
+
+type OpportunitySourceState =
+  |
   {
-    number:
-      "01",
+    kind:
+      "ready";
 
-    code:
-      "EMP",
-
-    title:
-      "Employment",
-
-    description:
-      "Employment opportunities will appear here when a position is formally published."
-  },
-  {
-    number:
-      "02",
-
-    code:
-      "INT",
-
-    title:
-      "Internships",
-
-    description:
-      "Internship opportunities will appear here when a program or placement is formally published."
-  },
-  {
-    number:
-      "03",
-
-    code:
-      "COL",
-
-    title:
-      "Freelance collaboration",
-
-    description:
-      "Freelance collaboration opportunities will appear here when a defined need is formally published."
+    opportunities:
+      readonly Opportunity[];
   }
-] as const;
+  |
+  {
+    kind:
+      "unavailable";
+  };
 
 
 const publishedOpenings:
-  readonly never[] = [];
+  readonly Opportunity[] =
+  [];
 
 
-const workDestinations = [
+const opportunityState:
+  OpportunitySourceState =
+  {
+    kind:
+      "ready",
+
+    opportunities:
+      publishedOpenings
+  };
+
+
+const opportunityCategories = [
+  "Employment",
+  "Internships",
+  "Freelance collaboration"
+] as const;
+
+
+const workResources = [
   {
     number:
       "01",
 
-    code:
-      "LAB",
+    key:
+      "internships",
 
     title:
       "Internship Projects",
@@ -101,11 +113,11 @@ const workDestinations = [
     number:
       "02",
 
-    code:
-      "EDU",
+    key:
+      "training",
 
     title:
-      "Training Hub",
+      "Training",
 
     description:
       "Explore practical cybersecurity learning and technical training.",
@@ -117,14 +129,14 @@ const workDestinations = [
     number:
       "03",
 
-    code:
-      "R&D",
+    key:
+      "insights",
 
     title:
       "Technical Insights",
 
     description:
-      "Read the technical thinking and security research published by No Breach.",
+      "Read technical writing and security research published by No Breach.",
 
     href:
       "/insights"
@@ -132,7 +144,20 @@ const workDestinations = [
 ] as const;
 
 
-function Arrow() {
+function InternalArrow() {
+
+  return (
+    <span
+      aria-hidden="true"
+    >
+      →
+    </span>
+  );
+
+}
+
+
+function ExternalArrow() {
 
   return (
     <span
@@ -145,69 +170,35 @@ function Arrow() {
 }
 
 
-function SectionHeading({
-  number,
-  eyebrow,
-  title,
-  description
-}: {
-  number:
-    string;
-
-  eyebrow:
-    string;
-
-  title:
-    string;
-
-  description:
-    string;
-}) {
-
-  return (
-    <header
-      className={
-        styles.sectionHeading
-      }
-    >
-      <p
-        className={
-          styles.sectionEyebrow
-        }
-      >
-        <span>
-          {
-            number
-          }
-        </span>
-
-        {
-          eyebrow
-        }
-      </p>
-
-      <h2>
-        {
-          title
-        }
-      </h2>
-
-      <p
-        className={
-          styles.sectionDescription
-        }
-      >
-        {
-          description
-        }
-      </p>
-    </header>
-  );
-
-}
-
-
 export default function CareersPage() {
+
+  const sourceUnavailable =
+    opportunityState.kind
+    ===
+    "unavailable";
+
+
+  const currentOpenings =
+    opportunityState.kind
+    ===
+    "ready"
+      ? opportunityState.opportunities
+      : [];
+
+
+  const hasPublishedOpenings =
+    currentOpenings.length
+    >
+    0;
+
+
+  const displayedState =
+    sourceUnavailable
+      ? "unavailable"
+      : hasPublishedOpenings
+        ? "populated"
+        : "empty";
+
 
   return (
     <div
@@ -215,8 +206,12 @@ export default function CareersPage() {
         styles.page
       }
       data-careers-design="v22"
+      data-careers-audit="v23"
+      data-careers-state={
+        displayedState
+      }
       data-careers-opening-count={
-        publishedOpenings.length
+        currentOpenings.length
       }
     >
       <Breadcrumbs
@@ -236,503 +231,353 @@ export default function CareersPage() {
       />
 
 
-      {/* ================================================================
-          HERO
-         ================================================================ */}
-
       <section
         className={
-          styles.hero
+          styles.opening
         }
-        data-careers-section="hero"
+        data-careers-section="opening"
       >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
+        <Container>
           <div
             className={
-              styles.heroGrid
+              styles.frame
             }
+            data-careers-frame="opening"
           >
-            <div
+            <header
               className={
-                styles.heroCopy
+                styles.intro
               }
             >
-              <p
+              <h1
                 className={
-                  styles.heroEyebrow
+                  styles.title
                 }
               >
-                Careers · Internships · Collaboration
-              </p>
-
-              <h1>
-                Opportunities
-                <span>
-                  published only when they are real.
-                </span>
+                Careers at No Breach
               </h1>
 
+
               <p
                 className={
-                  styles.heroLead
+                  styles.introText
                 }
               >
-                This page is the public status board for employment, internship and freelance collaboration opportunities at No Breach.
+                Explore employment, internship and freelance collaboration opportunities.
+              </p>
+            </header>
+
+
+            <div
+              className={
+                styles.scope
+              }
+              aria-labelledby="careers-scope-title"
+            >
+              <p
+                id="careers-scope-title"
+                className={
+                  styles.scopeLabel
+                }
+              >
+                Opportunity scope
               </p>
 
-              <div
+
+              <ul
                 className={
-                  styles.heroActions
+                  styles.scopeList
                 }
-              >
-                <a
-                  href="#opportunities"
-                  className={
-                    styles.primaryAction
-                  }
-                >
-                  View opportunity status
-
-                  <span
-                    aria-hidden="true"
-                  >
-                    ↓
-                  </span>
-                </a>
-
-                <a
-                  href={
-                    siteConfig.linkedin
-                  }
-                  target="_blank"
-                  rel="noreferrer"
-                  className={
-                    styles.textAction
-                  }
-                >
-                  Follow No Breach
-
-                  <Arrow />
-                </a>
-              </div>
-            </div>
-
-            <aside
-              className={
-                styles.statusSystem
-              }
-              aria-label="Current opportunity status"
-            >
-              <div
-                className={
-                  styles.statusHeader
-                }
-              >
-                <span>
-                  Current status
-                </span>
-
-                <span>
-                  Updated public index
-                </span>
-              </div>
-
-              <div
-                className={
-                  styles.statusCount
-                }
-              >
-                <strong>
-                  00
-                </strong>
-
-                <div>
-                  <span>
-                    Published
-                  </span>
-
-                  <span>
-                    openings
-                  </span>
-                </div>
-              </div>
-
-              <div
-                className={
-                  styles.statusLines
-                }
+                aria-label="Opportunity categories"
               >
                 {
                   opportunityCategories.map(
                     (
                       category
                     ) => (
-                      <div
+                      <li
                         key={
-                          category.code
+                          category
                         }
+                        data-careers-category
                       >
-                        <span>
-                          {
-                            category.code
-                          }
-                        </span>
-
-                        <strong>
-                          {
-                            category.title
-                          }
-                        </strong>
-
-                        <i
-                          aria-hidden="true"
-                        />
-
-                        <small>
-                          No published opening
-                        </small>
-                      </div>
+                        {
+                          category
+                        }
+                      </li>
                     )
                   )
                 }
-              </div>
-            </aside>
-          </div>
-
-          <div
-            className={
-              styles.heroFooter
-            }
-          >
-            <span>
-              Employment
-            </span>
-
-            <i
-              aria-hidden="true"
-            />
-
-            <span>
-              Internships
-            </span>
-
-            <i
-              aria-hidden="true"
-            />
-
-            <span>
-              Freelance collaboration
-            </span>
-          </div>
-        </Container>
-      </section>
+              </ul>
+            </div>
 
 
-      {/* ================================================================
-          01 — OPPORTUNITY INDEX
-         ================================================================ */}
-
-      <section
-        id="opportunities"
-        className={
-          styles.section
-        }
-        data-careers-section="opportunities"
-      >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
-          <SectionHeading
-            number="01"
-            eyebrow="Opportunity index"
-            title="Three paths. One truthful public status."
-            description="No role is presented as open unless No Breach has actually published that opportunity."
-          />
-
-          <div
-            className={
-              styles.emptyState
-            }
-            data-careers-empty-state
-          >
-            <div
+            <section
               className={
-                styles.emptySignal
+                styles.statusCard
               }
-              aria-hidden="true"
-            >
-              <span />
-
-              <span />
-            </div>
-
-            <div>
-              <p>
-                Current availability
-              </p>
-
-              <strong>
-                There are currently no published openings.
-              </strong>
-            </div>
-          </div>
-
-          <div
-            className={
-              styles.opportunityIndex
-            }
-            data-careers-opportunity-index
-          >
-            {
-              opportunityCategories.map(
-                (
-                  category
-                ) => (
-                  <div
-                    className={
-                      styles.opportunityRow
-                    }
-                    data-careers-category={
-                      category.code
-                    }
-                    key={
-                      category.code
-                    }
-                  >
-                    <span
-                      className={
-                        styles.opportunityNumber
-                      }
-                    >
-                      {
-                        category.number
-                      }
-                    </span>
-
-                    <span
-                      className={
-                        styles.opportunityCode
-                      }
-                    >
-                      {
-                        category.code
-                      }
-                    </span>
-
-                    <div
-                      className={
-                        styles.opportunityCopy
-                      }
-                    >
-                      <h3>
-                        {
-                          category.title
-                        }
-                      </h3>
-
-                      <p>
-                        {
-                          category.description
-                        }
-                      </p>
-                    </div>
-
-                    <div
-                      className={
-                        styles.opportunityStatus
-                      }
-                    >
-                      <i
-                        aria-hidden="true"
-                      />
-
-                      <span>
-                        No published opening
-                      </span>
-                    </div>
-                  </div>
-                )
-              )
-            }
-          </div>
-
-          <p
-            className={
-              styles.statusNote
-            }
-          >
-            Opportunities appear here only after they are formally published.
-          </p>
-        </Container>
-      </section>
-
-
-      {/* ================================================================
-          02 — UNDERSTAND THE WORK
-         ================================================================ */}
-
-      <section
-        className={
-          `${styles.section} ${styles.sectionAlt}`
-        }
-        data-careers-section="explore"
-      >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
-          <SectionHeading
-            number="02"
-            eyebrow="Understand the work"
-            title="Explore the technical ecosystem before the next opportunity appears."
-            description="The public site already shows the kind of security work, learning and technical thinking developed across No Breach."
-          />
-
-          <nav
-            className={
-              styles.workIndex
-            }
-            aria-label="Explore No Breach work"
-          >
-            {
-              workDestinations.map(
-                (
-                  destination
-                ) => (
-                  <Link
-                    href={
-                      destination.href
-                    }
-                    className={
-                      styles.workRow
-                    }
-                    key={
-                      destination.number
-                    }
-                  >
-                    <span
-                      className={
-                        styles.workNumber
-                      }
-                    >
-                      {
-                        destination.number
-                      }
-                    </span>
-
-                    <span
-                      className={
-                        styles.workCode
-                      }
-                    >
-                      {
-                        destination.code
-                      }
-                    </span>
-
-                    <div>
-                      <h3>
-                        {
-                          destination.title
-                        }
-                      </h3>
-
-                      <p>
-                        {
-                          destination.description
-                        }
-                      </p>
-                    </div>
-
-                    <Arrow />
-                  </Link>
-                )
-              )
-            }
-          </nav>
-        </Container>
-      </section>
-
-
-      {/* ================================================================
-          FOLLOW CTA
-         ================================================================ */}
-
-      <section
-        className={
-          styles.cta
-        }
-        data-careers-section="follow"
-      >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
-          <div
-            className={
-              styles.ctaRule
-            }
-          />
-
-          <div
-            className={
-              styles.ctaLayout
-            }
-          >
-            <div>
-              <p
-                className={
-                  styles.sectionEyebrow
-                }
-              >
-                <span>
-                  NB
-                </span>
-
-                Future opportunities
-              </p>
-
-              <h2>
-                Follow No Breach for future opportunities.
-              </h2>
-            </div>
-
-            <div
-              className={
-                styles.ctaCopy
+              aria-labelledby="careers-status-heading"
+              data-careers-status={
+                displayedState
               }
             >
-              <p>
-                New employment, internship and freelance collaboration opportunities will be published through official No Breach channels when available.
-              </p>
+              {
+                sourceUnavailable
+                  ? (
+                    <>
+                      <h2
+                        id="careers-status-heading"
+                        className={
+                          styles.statusTitle
+                        }
+                      >
+                        Opportunity information is temporarily unavailable.
+                      </h2>
+
+
+                      <p
+                        className={
+                          styles.statusText
+                        }
+                      >
+                        The current publication state cannot be confirmed from the available source.
+                      </p>
+                    </>
+                  )
+                  : hasPublishedOpenings
+                    ? (
+                      <>
+                        <h2
+                          id="careers-status-heading"
+                          className={
+                            styles.statusTitle
+                          }
+                        >
+                          Published opportunities
+                        </h2>
+
+
+                        <div
+                          className={
+                            styles.openingList
+                          }
+                        >
+                          {
+                            currentOpenings.map(
+                              (
+                                opportunity
+                              ) => (
+                                <article
+                                  key={
+                                    opportunity.href
+                                  }
+                                  className={
+                                    styles.openingItem
+                                  }
+                                  data-careers-opportunity
+                                >
+                                  <p
+                                    className={
+                                      styles.openingType
+                                    }
+                                  >
+                                    {
+                                      opportunity.type
+                                    }
+                                  </p>
+
+
+                                  <h3>
+                                    {
+                                      opportunity.title
+                                    }
+                                  </h3>
+
+
+                                  <p>
+                                    {
+                                      opportunity.summary
+                                    }
+                                  </p>
+
+
+                                  <Link
+                                    href={
+                                      opportunity.href
+                                    }
+                                  >
+                                    View opportunity
+
+                                    <InternalArrow />
+                                  </Link>
+                                </article>
+                              )
+                            )
+                          }
+                        </div>
+                      </>
+                    )
+                    : (
+                      <>
+                        <h2
+                          id="careers-status-heading"
+                          className={
+                            styles.statusTitle
+                          }
+                        >
+                          There are currently no published openings.
+                        </h2>
+
+
+                        <p
+                          className={
+                            styles.statusText
+                          }
+                        >
+                          New opportunities will appear here when they are formally published.
+                        </p>
+                      </>
+                    )
+              }
+
 
               <a
+                className={
+                  styles.linkedinAction
+                }
                 href={
                   siteConfig.linkedin
                 }
                 target="_blank"
                 rel="noreferrer"
+                data-careers-linkedin
+              >
+                View No Breach on LinkedIn
+
+                <ExternalArrow />
+              </a>
+            </section>
+          </div>
+        </Container>
+      </section>
+
+
+      <section
+        className={
+          styles.work
+        }
+        data-careers-section="work"
+      >
+        <Container>
+          <div
+            className={
+              styles.frame
+            }
+            data-careers-frame="work"
+          >
+            <header
+              className={
+                styles.workHeader
+              }
+            >
+              <h2
                 className={
-                  styles.primaryAction
+                  styles.workTitle
                 }
               >
-                Follow on LinkedIn
+                Explore No Breach’s work
+              </h2>
 
-                <Arrow />
-              </a>
-            </div>
+
+              <p
+                className={
+                  styles.workIntro
+                }
+              >
+                See internship projects, practical training and technical insights.
+              </p>
+            </header>
+
+
+            <nav
+              className={
+                styles.resourceList
+              }
+              aria-label="Explore No Breach work"
+            >
+              {
+                workResources.map(
+                  (
+                    resource
+                  ) => (
+                    <Link
+                      key={
+                        resource.key
+                      }
+                      href={
+                        resource.href
+                      }
+                      className={
+                        styles.resourceRow
+                      }
+                      data-careers-resource={
+                        resource.key
+                      }
+                    >
+                      <span
+                        className={
+                          styles.resourceNumber
+                        }
+                        aria-hidden="true"
+                      >
+                        {
+                          resource.number
+                        }
+                      </span>
+
+
+                      <span
+                        className={
+                          styles.resourceCopy
+                        }
+                      >
+                        <span
+                          className={
+                            styles.resourceTitle
+                          }
+                        >
+                          {
+                            resource.title
+                          }
+                        </span>
+
+
+                        <span
+                          className={
+                            styles.resourceDescription
+                          }
+                        >
+                          {
+                            resource.description
+                          }
+                        </span>
+                      </span>
+
+
+                      <span
+                        className={
+                          styles.resourceAction
+                        }
+                      >
+                        Explore
+
+                        <InternalArrow />
+                      </span>
+                    </Link>
+                  )
+                )
+              }
+            </nav>
           </div>
         </Container>
       </section>
