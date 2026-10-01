@@ -26,7 +26,7 @@ const footerColumns = [
   {
     title: "Ecosystem",
     links: [
-      ["/training", "Training Hub"],
+      ["/training", "Training"],
       ["/cr4ckout", "CR4CKOUT"],
       ["/activities", "Activities"],
       ["/events", "Events"]

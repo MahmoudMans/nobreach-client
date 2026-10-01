@@ -263,3 +263,43 @@
   font-size:
     0.72rem;
 }
+
+
+/* ==========================================================================
+   NB_HOME_AUDIT_FOOTER_V13
+   Reduce the CTA -> footer boundary while retaining link readability.
+   ========================================================================== */
+
+.footer {
+  padding-block: 0;
+}
+
+.top {
+  padding-block:
+    2.75rem
+    2rem;
+}
+
+.bottom {
+  min-height: auto;
+  padding-block:
+    1.4rem
+    1.75rem;
+}
+
+
+@media (max-width: 768px) {
+
+  .top {
+    padding-block:
+      2.25rem
+      1.5rem;
+  }
+
+  .bottom {
+    padding-block:
+      1.2rem
+      1.5rem;
+  }
+
+}

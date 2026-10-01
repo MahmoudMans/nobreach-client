@@ -2665,3 +2665,268 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_HOME_AUDIT_CORRECTION_V13
+   Second-iteration audit corrections using the current V12 class system.
+   ========================================================================== */
+
+
+/* Visitor-facing service link */
+
+.inlineTextLink {
+  color: inherit;
+  font-weight: 650;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+}
+
+
+/* F024 — hero principles and founder chips */
+
+.heroPrinciples,
+.specialtyList {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.heroPrinciples {
+  align-items: center;
+}
+
+.heroPrinciples > * {
+  margin-block: 0;
+  align-self: center;
+}
+
+.specialtyList {
+  align-items: center;
+}
+
+.specialtyList li {
+  display: inline-flex;
+  min-height: 2rem;
+  align-items: center;
+  margin: 0;
+}
+
+
+/* F025 — allow card headings to use their real column width */
+
+.journeyCard h3,
+.serviceCard h3,
+.courseCard h3,
+.featuredInsight h3 {
+  width: auto;
+  max-width: none;
+}
+
+
+/* F010 — service comparison regions */
+
+.serviceGrid {
+  align-items: stretch;
+}
+
+.serviceCard {
+  display: grid;
+  grid-template-rows:
+    auto
+    minmax(3.25rem, auto)
+    minmax(6.1rem, 1fr)
+    auto
+    auto;
+  align-content: stretch;
+}
+
+.serviceCard > h3,
+.serviceCard > .cardSummary {
+  align-self: start;
+}
+
+.serviceCard > .cardSummary {
+  min-height: 0;
+}
+
+.serviceCard .decisionGrid {
+  width: 100%;
+  align-self: end;
+}
+
+.serviceCard > a:last-child {
+  align-self: start;
+  margin-top: 1.5rem;
+}
+
+
+/* F010 — course comparison regions */
+
+.courseGrid {
+  align-items: stretch;
+}
+
+.courseCard {
+  display: grid;
+  grid-template-rows:
+    auto
+    minmax(0, 1fr)
+    auto
+    auto;
+  align-content: stretch;
+}
+
+.courseMain {
+  display: grid;
+  grid-template-rows:
+    minmax(3.25rem, auto)
+    minmax(6.4rem, 1fr);
+  align-content: start;
+}
+
+.courseMain > h3,
+.courseMain > p {
+  align-self: start;
+}
+
+.courseMain > h3 {
+  max-width: none;
+  margin-bottom: 0;
+}
+
+.courseMain > p {
+  min-height: 0;
+}
+
+.courseMeta {
+  width: 100%;
+  align-self: end;
+}
+
+.courseMeta > div {
+  min-width: 0;
+}
+
+.courseCard > a:last-child {
+  align-self: start;
+  margin-top: 1.5rem;
+}
+
+
+/* F023 — compact curriculum header + full-width learning sequence */
+
+.curriculumPreview {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+.curriculumPreview > :first-child {
+  max-width: 52rem;
+}
+
+.curriculumPreview ol {
+  width: 100%;
+  margin: 0;
+  padding-left: 0;
+}
+
+.curriculumPreview ol > li {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+}
+
+.curriculumPreview ol > li > div {
+  display: grid;
+  grid-template-columns:
+    minmax(12rem, 0.7fr)
+    minmax(0, 1.3fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.curriculumPreview ol > li h3,
+.curriculumPreview ol > li h4,
+.curriculumPreview ol > li p {
+  max-width: none;
+  margin-top: 0;
+}
+
+
+/* Explicit section title when the founder name is profile content */
+
+.peopleSectionTitle {
+  max-width: 20ch;
+  margin:
+    0
+    0
+    1.5rem;
+  color:
+    var(--home-text);
+  font-size:
+    clamp(
+      2rem,
+      3.5vw,
+      2.75rem
+    );
+  font-weight:
+    620;
+  line-height:
+    1.12;
+  letter-spacing:
+    -0.035em;
+}
+
+
+/* People header no longer reserves an explanatory side column */
+
+.peopleSection .sectionHeader {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 52rem;
+}
+
+.peopleSection .sectionHeaderSide {
+  display: none;
+}
+
+
+/* F026 — final section boundary */
+
+.finalCta {
+  padding-bottom: 2.25rem;
+}
+
+
+@media (max-width: 900px) {
+
+  .serviceCard,
+  .courseCard {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+  }
+
+  .serviceCard > h3,
+  .serviceCard > .cardSummary,
+  .courseMain > h3,
+  .courseMain > p {
+    min-height: 0;
+  }
+
+  .courseMain {
+    grid-template-rows: auto;
+  }
+
+}
+
+
+@media (max-width: 720px) {
+
+  .curriculumPreview ol > li > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.5rem;
+  }
+
+}

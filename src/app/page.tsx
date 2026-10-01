@@ -9,9 +9,6 @@ import {
   Container
 } from "@/components/layout/container";
 
-import {
-  activities
-} from "@/content/activities";
 
 import {
   events
@@ -161,7 +158,7 @@ const journeys = [
       "For learners",
 
     title:
-      "Build practical security skill.",
+      "Build practical cybersecurity skills.",
 
     description:
       "Use the No Breach Academy to compare published programs, prerequisites, curriculum and learning outcomes.",
@@ -206,7 +203,7 @@ const publicDestinations = [
       "Technical activities",
 
     description:
-      `${activities.length} published records across training, community work and practical cybersecurity activity.`,
+      "Explore training and community activities.",
 
     href:
       "/activities",
@@ -225,9 +222,7 @@ const publicDestinations = [
       "Event archive",
 
     description:
-      latestPublishedEvent
-        ? `${latestPublishedEvent.title} is preserved as a ${latestPublishedEvent.status} event record.`
-        : "Browse published No Breach event records.",
+      "Explore past No Breach events, including CR4CKOUT 2.0.",
 
     href:
       "/events",
@@ -273,6 +268,7 @@ export default function HomePage() {
       data-home-design="authority-v10"
       data-home-master="continuous-v11"
       data-home-redesign="editorial-v12"
+      data-home-correction="audit-v13"
     >
 
       {/* ================================================================ */}
@@ -860,8 +856,7 @@ export default function HomePage() {
               <h2
                 id="services-title"
               >
-                Choose the assessment
-                that matches the system.
+                Security assessments and practical training.
               </h2>
             </div>
 
@@ -871,10 +866,9 @@ export default function HomePage() {
               }
             >
               <p>
-                Each service keeps a distinct scope while sharing the
-                same emphasis on context, manual reasoning, validation
-                and useful remediation.
-              </p>
+              Choose a service by the system you need to assess or the team
+              you need to train.
+            </p>
 
               <Link
                 className={
@@ -1144,7 +1138,7 @@ export default function HomePage() {
 
                       <div>
                         <h3>
-                          {step.title}
+                          {step.title === "Remediation" ? "Remediation guidance" : step.title}
                         </h3>
 
                         <p>
@@ -1203,10 +1197,15 @@ export default function HomePage() {
               }
             >
               <p>
-                Training is the public learner route. Organization
-                and team engagements remain separate through the
-                Security Training service.
-              </p>
+              Compare cybersecurity programs by level, format and curriculum.
+              For team training, explore our{" "}
+              <Link
+                className={styles.inlineTextLink}
+                href="/services/security-training"
+              >
+                Security Training service
+              </Link>.
+            </p>
 
               <Link
                 className={
@@ -1304,22 +1303,15 @@ export default function HomePage() {
                         </dd>
                       </div>
 
-                      {
-                        program.duration
-                          ? (
-                            <div>
+                      <div>
                               <dt>
                                 Duration
                               </dt>
 
                               <dd>
-                                {program.duration}
+                                {program.duration ?? "Not specified"}
                               </dd>
                             </div>
-                          )
-                          :
-                          null
-                      }
                     </dl>
 
                     <Link
@@ -1352,7 +1344,8 @@ export default function HomePage() {
                   className={
                     styles.curriculumPreview
                   }
-                >
+
+              data-home-curriculum-preview="true">
                   <div
                     className={
                       styles.curriculumIntro
@@ -1371,10 +1364,9 @@ export default function HomePage() {
                     </h3>
 
                     <p>
-                      Instead of repeating another course card,
-                      this preview exposes the actual progression
-                      learners move through.
-                    </p>
+                  See how Red Team Foundations progresses from reconnaissance
+                  to privilege escalation.
+                </p>
 
                     <Link
                       className={
@@ -1484,9 +1476,8 @@ export default function HomePage() {
                 styles.sectionLead
               }
             >
-              Public activities, events and CR4CKOUT show how
-              technical learning and community participation fit
-              into the wider No Breach ecosystem.
+              Explore CR4CKOUT, technical activities and past events from the
+              No Breach community.
             </p>
           </header>
 
@@ -1668,20 +1659,11 @@ export default function HomePage() {
               <h2
                 id="people-title"
               >
-                The person behind
-                the current public profile.
+                Meet the founder.
               </h2>
             </div>
 
-            <p
-              className={
-                styles.sectionLead
-              }
-            >
-              The layout reflects the amount of approved public
-              profile data available today rather than forcing one
-              person into an empty multi-column team grid.
-            </p>
+
           </header>
 
 
@@ -1845,8 +1827,7 @@ export default function HomePage() {
               <h2
                 id="insights-title"
               >
-                Published thinking
-                with context.
+                Practical security insights.
               </h2>
             </div>
 
@@ -1856,10 +1837,9 @@ export default function HomePage() {
               }
             >
               <p>
-                Article previews expose the real summary,
-                publication date, reading time and author before
-                asking visitors to open the full piece.
-              </p>
+              Explore perspectives on authorization, attack-surface mapping,
+              AI security and manual testing.
+            </p>
 
               <Link
                 className={

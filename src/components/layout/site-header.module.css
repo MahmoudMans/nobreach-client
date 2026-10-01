@@ -1045,3 +1045,30 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_HOME_AUDIT_FRAME_V13
+   Global navigation now shares the standard page outer frame.
+   ========================================================================== */
+
+.inner {
+  width:
+    min(
+      calc(100% - 64px),
+      var(--container-default)
+    );
+}
+
+
+@media (max-width: 768px) {
+
+  .inner {
+    width:
+      min(
+        calc(100% - 36px),
+        var(--container-default)
+      );
+  }
+
+}
