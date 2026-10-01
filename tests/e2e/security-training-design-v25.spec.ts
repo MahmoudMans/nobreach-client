@@ -5,7 +5,7 @@ import {
 
 
 test(
-  "Security Training V25 renders the capability studio",
+  "Security Training V26 opens as an organization-facing service",
   async ({
     page
   }) => {
@@ -17,7 +17,7 @@ test(
 
     await expect(
       page.locator(
-        '[data-security-training-design="v25"]'
+        '[data-security-training-audit="v26"]'
       )
     ).toBeVisible();
 
@@ -28,85 +28,34 @@ test(
         {
           level:
             1,
-
           name:
-            /Security capability is built through practice/i
+            "Security capability is built through practice."
         }
       )
     ).toBeVisible();
 
 
     await expect(
-      page.locator(
-        '[data-security-training-ui="capability-map"]'
+      page.getByText(
+        /Practical cybersecurity training for companies, universities, communities and teams/i
       )
     ).toBeVisible();
 
-  }
-);
-
-
-test(
-  "Security Training V25 exposes four organization audiences",
-  async ({
-    page
-  }) => {
-
-    await page.goto(
-      "/services/security-training"
-    );
-
-
-    const section =
-      page.locator(
-        '[data-security-training-section="audiences"]'
-      );
-
-
-    await section
-      .scrollIntoViewIfNeeded();
-
 
     await expect(
-      section.locator(
-        '[data-security-training-audience]'
+      page.getByText(
+        /both teams and individuals/i
       )
     ).toHaveCount(
-      4
+      0
     );
-
-
-    for (
-      const heading
-      of [
-        "Companies",
-        "Universities",
-        "Communities",
-        "Teams"
-      ]
-    ) {
-
-      await expect(
-        section.getByRole(
-          "heading",
-          {
-            name:
-              heading,
-
-            exact:
-              true
-          }
-        )
-      ).toBeVisible();
-
-    }
 
   }
 );
 
 
 test(
-  "Security Training V25 presents four learning architecture stages",
+  "Security Training V26 gives individual learners an immediate Training Hub route",
   async ({
     page
   }) => {
@@ -116,123 +65,43 @@ test(
     );
 
 
-    const section =
+    const aside =
       page.locator(
-        '[data-security-training-section="architecture"]'
+        '[data-security-training-ui="training-hub-aside"]'
       );
 
 
-    await section
-      .scrollIntoViewIfNeeded();
+    await expect(
+      aside
+    ).toBeVisible();
 
 
     await expect(
-      section.locator(
-        '[data-security-training-step]'
-      )
-    ).toHaveCount(
-      4
-    );
-
-
-    for (
-      const heading
-      of [
-        "Context",
-        "Design",
-        "Practice",
-        "Review"
-      ]
-    ) {
-
-      await expect(
-        section.getByRole(
-          "heading",
-          {
-            name:
-              heading,
-
-            exact:
-              true
-          }
-        )
-      ).toBeVisible();
-
-    }
-
-  }
-);
-
-
-test(
-  "Security Training V25 separates service and public training journeys",
-  async ({
-    page
-  }) => {
-
-    await page.goto(
-      "/services/security-training"
-    );
-
-
-    const journeys =
-      page.locator(
-        '[data-security-training-section="journeys"]'
-      );
-
-
-    await journeys
-      .scrollIntoViewIfNeeded();
-
-
-    await expect(
-      journeys.getByRole(
+      aside.getByRole(
         "heading",
         {
+          level:
+            2,
           name:
-            "Security Training Service",
-
-          exact:
-            true
+            "Training Hub"
         }
       )
     ).toBeVisible();
 
 
     await expect(
-      journeys.getByRole(
-        "heading",
-        {
-          name:
-            "Training Hub",
-
-          exact:
-            true
-        }
+      aside.getByText(
+        /Looking for a public learner program/i
       )
     ).toBeVisible();
 
 
     await expect(
-      journeys.getByRole(
+      aside.getByRole(
         "link",
         {
           name:
-            /Discuss training/i
-        }
-      )
-    ).toHaveAttribute(
-      "href",
-      "/contact"
-    );
-
-
-    await expect(
-      journeys.getByRole(
-        "link",
-        {
-          name:
-            /Explore Training Hub/i
+            /Explore Training Hub/
         }
       )
     ).toHaveAttribute(
@@ -245,7 +114,264 @@ test(
 
 
 test(
-  "Security Training V25 contact CTA stays organization-facing",
+  "Security Training hero keeps the service inquiry and in-page exploration actions",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/services/security-training"
+    );
+
+
+    const hero =
+      page.locator(
+        '[data-security-training-section="hero"]'
+      );
+
+
+    await expect(
+      hero.getByRole(
+        "link",
+        {
+          name:
+            /Discuss training/
+        }
+      )
+    ).toHaveAttribute(
+      "href",
+      "/contact"
+    );
+
+
+    await expect(
+      hero.getByRole(
+        "link",
+        {
+          name:
+            /Explore the service/
+        }
+      )
+    ).toHaveAttribute(
+      "href",
+      "#audiences"
+    );
+
+  }
+);
+
+
+test(
+  "Security Training V26 preserves four organization contexts",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/services/security-training"
+    );
+
+
+    const audienceRows =
+      page.locator(
+        '[data-security-training-audience]'
+      );
+
+
+    await expect(
+      audienceRows
+    ).toHaveCount(
+      4
+    );
+
+
+    for (
+      const title
+      of
+      [
+        "Companies",
+        "Universities",
+        "Communities",
+        "Teams"
+      ]
+    ) {
+
+      await expect(
+        page.getByRole(
+          "heading",
+          {
+            level:
+              3,
+            name:
+              title
+          }
+        )
+      ).toBeVisible();
+
+    }
+
+  }
+);
+
+
+test(
+  "Security Training V26 presents one four-stage learning architecture",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/services/security-training"
+    );
+
+
+    const architecture =
+      page.locator(
+        '[data-security-training-section="architecture"]'
+      );
+
+
+    await expect(
+      architecture.getByRole(
+        "heading",
+        {
+          level:
+            2,
+          name:
+            "From learning context to technical practice."
+        }
+      )
+    ).toBeVisible();
+
+
+    const stages =
+      architecture.locator(
+        '[data-security-training-step]'
+      );
+
+
+    await expect(
+      stages
+    ).toHaveCount(
+      4
+    );
+
+
+    for (
+      const title
+      of
+      [
+        "Context",
+        "Design",
+        "Practice",
+        "Review"
+      ]
+    ) {
+
+      await expect(
+        architecture.getByRole(
+          "heading",
+          {
+            level:
+              3,
+            name:
+              title
+          }
+        )
+      ).toBeVisible();
+
+    }
+
+
+    await expect(
+      architecture.getByText(
+        /current cybersecurity practice rather than generic awareness material/i
+      )
+    ).toBeVisible();
+
+  }
+);
+
+
+test(
+  "Security Training V26 removes the late route comparison",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/services/security-training"
+    );
+
+
+    await expect(
+      page.locator(
+        '[data-security-training-section="journeys"]'
+      )
+    ).toHaveCount(
+      0
+    );
+
+
+    await expect(
+      page.locator(
+        '[data-security-training-ui="journey-system"]'
+      )
+    ).toHaveCount(
+      0
+    );
+
+
+    await expect(
+      page.getByText(
+        "Organization-facing training and public programs are different paths.",
+        {
+          exact:
+            true
+        }
+      )
+    ).toHaveCount(
+      0
+    );
+
+  }
+);
+
+
+test(
+  "Security Training V26 intentionally omits an unapproved training example",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/services/security-training"
+    );
+
+
+    await expect(
+      page.locator(
+        '[data-security-training-example]'
+      )
+    ).toHaveCount(
+      0
+    );
+
+
+    await expect(
+      page.getByText(
+        /Representative training example/i
+      )
+    ).toHaveCount(
+      0
+    );
+
+  }
+);
+
+
+test(
+  "Security Training discussion keeps group inquiry and public learner routes distinct",
   async ({
     page
   }) => {
@@ -261,8 +387,17 @@ test(
       );
 
 
-    await cta
-      .scrollIntoViewIfNeeded();
+    await expect(
+      cta.getByRole(
+        "heading",
+        {
+          level:
+            2,
+          name:
+            "Build practical security capability with your group."
+        }
+      )
+    ).toBeVisible();
 
 
     await expect(
@@ -270,7 +405,7 @@ test(
         "link",
         {
           name:
-            /Start a conversation/i
+            /Start a conversation/
         }
       )
     ).toHaveAttribute(
@@ -284,12 +419,211 @@ test(
         "link",
         {
           name:
-            /Public Training Hub/i
+            /Explore Training Hub/
         }
       )
     ).toHaveAttribute(
       "href",
       "/training"
+    );
+
+
+    await expect(
+      cta.getByText(
+        /technical background and the security capability you want to develop/i
+      )
+    ).toBeVisible();
+
+  }
+);
+
+
+test(
+  "Security Training V26 uses one purposeful section sequence",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/services/security-training"
+    );
+
+
+    const order =
+      await page
+        .locator(
+          '[data-security-training-section]'
+        )
+        .evaluateAll(
+          elements =>
+            elements.map(
+              element =>
+                element.getAttribute(
+                  "data-security-training-section"
+                )
+            )
+        );
+
+
+    expect(
+      order
+    ).toEqual([
+      "hero",
+      "audiences",
+      "architecture",
+      "cta"
+    ]);
+
+  }
+);
+
+
+test(
+  "Security Training main regions use one shared outer frame",
+  async ({
+    page
+  }) => {
+
+    await page.setViewportSize({
+      width:
+        1440,
+      height:
+        900
+    });
+
+
+    await page.goto(
+      "/services/security-training"
+    );
+
+
+    const frames =
+      page.locator(
+        '[data-security-training-frame]'
+      );
+
+
+    await expect(
+      frames
+    ).toHaveCount(
+      4
+    );
+
+
+    const geometry =
+      await frames.evaluateAll(
+        elements =>
+          elements.map(
+            element => {
+
+              const rect =
+                element.getBoundingClientRect();
+
+
+              return {
+                x:
+                  rect.x,
+
+                width:
+                  rect.width
+              };
+
+            }
+          )
+      );
+
+
+    const xs =
+      geometry.map(
+        item =>
+          item.x
+      );
+
+
+    const widths =
+      geometry.map(
+        item =>
+          item.width
+      );
+
+
+    expect(
+      Math.max(
+        ...xs
+      )
+      -
+      Math.min(
+        ...xs
+      )
+    ).toBeLessThanOrEqual(
+      1
+    );
+
+
+    expect(
+      Math.max(
+        ...widths
+      )
+      -
+      Math.min(
+        ...widths
+      )
+    ).toBeLessThanOrEqual(
+      1
+    );
+
+  }
+);
+
+
+test(
+  "Security Training architecture recomposes before four stages become cramped",
+  async ({
+    page
+  }) => {
+
+    await page.setViewportSize({
+      width:
+        768,
+      height:
+        1024
+    });
+
+
+    await page.goto(
+      "/services/security-training"
+    );
+
+
+    const system =
+      page.locator(
+        '[data-security-training-ui="learning-system"]'
+      );
+
+
+    await expect(
+      system
+    ).toBeVisible();
+
+
+    const columns =
+      await system.evaluate(
+        element =>
+          getComputedStyle(
+            element
+          ).gridTemplateColumns
+      );
+
+
+    expect(
+      columns
+        .trim()
+        .split(
+          /\s+/
+        )
+        .length
+    ).toBeLessThanOrEqual(
+      2
     );
 
   }
@@ -298,62 +632,61 @@ test(
 
 for (
   const viewport
-  of [
+  of
+  [
     {
-      name:
-        "desktop",
-
+      label:
+        "320",
       width:
-        1440,
-
+        320,
       height:
-        900
+        800
     },
     {
-      name:
-        "compact",
-
-      width:
-        1180,
-
-      height:
-        820
-    },
-    {
-      name:
-        "tablet",
-
-      width:
-        820,
-
-      height:
-        1180
-    },
-    {
-      name:
-        "mobile",
-
+      label:
+        "390",
       width:
         390,
-
       height:
         844
     },
     {
-      name:
-        "narrow",
-
+      label:
+        "768",
       width:
-        360,
-
+        768,
+      height:
+        1024
+    },
+    {
+      label:
+        "1024",
+      width:
+        1024,
+      height:
+        768
+    },
+    {
+      label:
+        "1280",
+      width:
+        1280,
       height:
         800
+    },
+    {
+      label:
+        "1440",
+      width:
+        1440,
+      height:
+        900
     }
   ]
 ) {
 
   test(
-    `Security Training V25 remains contained at ${viewport.name}`,
+    `Security Training V26 remains contained at ${viewport.label}`,
     async ({
       page
     }) => {
@@ -361,7 +694,6 @@ for (
       await page.setViewportSize({
         width:
           viewport.width,
-
         height:
           viewport.height
       });
@@ -372,25 +704,14 @@ for (
       );
 
 
-      const heading =
-        page.getByRole(
-          "heading",
-          {
-            level:
-              1,
-
-            name:
-              /Security capability is built through practice/i
-          }
-        );
-
-
       await expect(
-        heading
+        page.locator(
+          '[data-security-training-audit="v26"]'
+        )
       ).toBeVisible();
 
 
-      const metrics =
+      const dimensions =
         await page.evaluate(
           () => ({
             scrollWidth:
@@ -407,40 +728,12 @@ for (
 
 
       expect(
-        metrics.scrollWidth
+        dimensions.scrollWidth
       ).toBeLessThanOrEqual(
-        metrics.clientWidth
+        dimensions.clientWidth
         +
         1
       );
-
-
-      if (
-        viewport.width
-        <=
-        390
-      ) {
-
-        const box =
-          await heading.boundingBox();
-
-
-        if (!box) {
-
-          throw new Error(
-            "Security Training V25 mobile H1 geometry unavailable"
-          );
-
-        }
-
-
-        expect(
-          box.y
-        ).toBeLessThan(
-          200
-        );
-
-      }
 
     }
   );

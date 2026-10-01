@@ -23,12 +23,19 @@ const css =
   );
 
 
+const normalizedPage =
+  page.replace(
+    /\s+/g,
+    " "
+  );
+
+
 describe(
-  "Security Training V25 capability studio",
+  "Security Training V25 compatibility + V26 audit",
   () => {
 
     it(
-      "activates the dedicated security-training authority",
+      "keeps V25 authority while activating V26",
       () => {
 
         expect(
@@ -37,6 +44,11 @@ describe(
           'data-security-training-design="v25"'
         );
 
+        expect(
+          page
+        ).toContain(
+          'data-security-training-audit="v26"'
+        );
 
         expect(
           css
@@ -44,17 +56,76 @@ describe(
           "NB_SECURITY_TRAINING_CAPABILITY_STUDIO_V25"
         );
 
+        expect(
+          css
+        ).toContain(
+          "NB_SECURITY_TRAINING_AUDIT_V26"
+        );
+
       }
     );
 
 
     it(
-      "preserves the approved organization audiences",
+      "makes the organization-facing service explicit in the opening",
+      () => {
+
+        expect(
+          normalizedPage
+        ).toContain(
+          "Practical cybersecurity training for companies, universities, communities and teams, designed to build skills participants can connect to real technical work."
+        );
+
+        expect(
+          page
+        ).not.toContain(
+          "for both teams and individuals"
+        );
+
+      }
+    );
+
+
+    it(
+      "moves the public Training Hub alternative into the opening",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          'data-security-training-ui="training-hub-aside"'
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Individual programs"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Looking for a public learner program?"
+        );
+
+        expect(
+          page
+        ).toContain(
+          'href="/training"'
+        );
+
+      }
+    );
+
+
+    it(
+      "preserves all four organization contexts without acronym metadata",
       () => {
 
         for (
-          const audience
-          of [
+          const title
+          of
+          [
             "Companies",
             "Universities",
             "Communities",
@@ -65,7 +136,27 @@ describe(
           expect(
             page
           ).toContain(
-            audience
+            title
+          );
+
+        }
+
+
+        for (
+          const retired
+          of
+          [
+            '"ORG"',
+            '"UNI"',
+            '"COM"',
+            '"TEAM"'
+          ]
+        ) {
+
+          expect(
+            page
+          ).not.toContain(
+            retired
           );
 
         }
@@ -75,98 +166,47 @@ describe(
 
 
     it(
-      "preserves approved practical training positioning",
+      "preserves one four-stage learning sequence without abbreviations",
       () => {
 
-        expect(
-          page
-        ).toContain(
-          "Practical, modern training designed to build real, applicable skills for both teams and individuals."
-        );
+        for (
+          const title
+          of
+          [
+            "Context",
+            "Design",
+            "Practice",
+            "Review"
+          ]
+        ) {
+
+          expect(
+            page
+          ).toContain(
+            title
+          );
+
+        }
 
 
-        expect(
-          page
-        ).toContain(
-          "Practical"
-        );
+        for (
+          const retired
+          of
+          [
+            '"CTX"',
+            '"DSN"',
+            '"LAB"',
+            '"REV"'
+          ]
+        ) {
 
+          expect(
+            page
+          ).not.toContain(
+            retired
+          );
 
-        expect(
-          page
-        ).toContain(
-          "Modern"
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "Applicable"
-        );
-
-      }
-    );
-
-
-    it(
-      "separates organization-facing training from public programs",
-      () => {
-
-        expect(
-          page
-        ).toContain(
-          "/services/security-training"
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          'href="/training"'
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "Training Hub"
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "Public learner programs"
-        );
-
-      }
-    );
-
-
-    it(
-      "uses four audience rows and four learning steps",
-      () => {
-
-        expect(
-          page
-        ).toContain(
-          "audiences.map"
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "learningArchitecture.map"
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          'data-security-training-ui="audience-index"'
-        );
+        }
 
 
         expect(
@@ -180,38 +220,53 @@ describe(
 
 
     it(
-      "does not invent certification duration or generic detail styling",
+      "removes redundant audience, positioning and journey presentations",
       () => {
 
-        const lower =
-          page.toLowerCase();
-
-
         for (
-          const unsupported
-          of [
-            "certified course",
-            "official certification",
-            "guaranteed certification",
-            "2-day training",
-            "3-day training",
-            "5-day training"
+          const retired
+          of
+          [
+            'data-security-training-ui="capability-map"',
+            'data-security-training-ui="journey-system"',
+            'data-security-training-section="journeys"',
+            "Organization-facing training and public programs are different paths.",
+            "PRACTICAL · MODERN · APPLICABLE"
           ]
         ) {
 
           expect(
-            lower
+            page
           ).not.toContain(
-            unsupported
+            retired
           );
 
         }
 
+      }
+    );
+
+
+    it(
+      "does not invent a concrete training example before approval",
+      () => {
 
         expect(
           page
         ).not.toContain(
-          "pages.module.css"
+          "data-security-training-example"
+        );
+
+        expect(
+          page
+        ).not.toContain(
+          "Representative training example"
+        );
+
+        expect(
+          page
+        ).not.toContain(
+          "certificate"
         );
 
       }
@@ -219,19 +274,37 @@ describe(
 
 
     it(
-      "keeps one primary heading",
+      "keeps honest inquiry and Training Hub destinations",
       () => {
 
         expect(
-          (
-            page.match(
-              /<h1>/g
-            )
-            ??
-            []
-          ).length
-        ).toBe(
-          1
+          page
+        ).toContain(
+          "Discuss training"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Start a conversation"
+        );
+
+        expect(
+          page
+        ).toContain(
+          'href="/contact"'
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Explore Training Hub"
+        );
+
+        expect(
+          page
+        ).toContain(
+          'href="/training"'
         );
 
       }

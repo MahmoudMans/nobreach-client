@@ -1,67 +1,47 @@
 /* ==========================================================================
    NB_SECURITY_TRAINING_CAPABILITY_STUDIO_V25
+   NB_SECURITY_TRAINING_AUDIT_V26
 
-   Dedicated organization-facing Security Training service.
-
-   - training capability map
-   - organization audience index
-   - practical learning architecture
-   - service/public training split
-   - no course catalogue
-   - no card wall
-   - no invented certificates or durations
+   Organization-facing service with an immediate public Training Hub route.
    ========================================================================== */
 
 
 .page {
   --training-bg:
-    #07090d;
+    #080b10;
 
   --training-alt:
-    #0b0f16;
+    #0c121b;
 
-  --training-surface:
-    #101620;
+  --training-raised:
+    #111b28;
+
+  --training-hover:
+    #182536;
 
   --training-text:
-    #f5f7fa;
+    #f3f6fb;
 
   --training-secondary:
-    #c5ced8;
+    #b7c2d0;
 
-  --training-muted:
-    #8793a3;
-
-  --training-subtle:
-    #667281;
+  --training-metadata:
+    #94a3b8;
 
   --training-cyan:
-    #a1e2f0;
-
-  --training-blue:
-    #83b3d7;
+    #a5e8f3;
 
   --training-violet:
-    #7e60b9;
+    #b59ae7;
 
-  --training-purple:
-    #6333c6;
+  --training-border:
+    #273446;
 
-  --training-line:
-    rgba(
-      197,
-      206,
-      216,
-      0.13
-    );
+  --training-control:
+    #63758c;
 
-  --training-line-strong:
-    rgba(
-      161,
-      226,
-      240,
-      0.24
-    );
+  min-width:
+    0;
 
   overflow:
     clip;
@@ -78,9 +58,12 @@
 }
 
 
-.container {
+.frame {
   width:
     100%;
+
+  min-width:
+    0;
 }
 
 
@@ -89,63 +72,108 @@
    ========================================================================== */
 
 
-.primaryAction {
+.primaryAction,
+.secondaryAction {
   display:
     inline-flex;
+
+  min-height:
+    2.75rem;
 
   align-items:
     center;
 
   justify-content:
-    space-between;
+    center;
 
   gap:
-    18px;
-
-  min-height:
-    46px;
+    0.65rem;
 
   padding:
-    0
-    18px;
+    0.7rem
+    1rem;
 
   border:
     1px
     solid
-    rgba(
-      161,
-      226,
-      240,
-      0.3
+    var(
+      --training-control
     );
 
   border-radius:
-    4px;
+    0.35rem;
+
+  font-size:
+    0.94rem;
+
+  font-weight:
+    680;
+
+  line-height:
+    1.2;
+
+  text-decoration:
+    none;
+
+  transition:
+    color
+    120ms
+    ease,
+    background-color
+    120ms
+    ease,
+    border-color
+    120ms
+    ease;
+}
+
+
+.primaryAction {
+  border-color:
+    var(
+      --training-cyan
+    );
 
   color:
-    #071015;
+    #081017;
 
   background:
     var(
       --training-cyan
     );
-
-  font-size:
-    0.78rem;
-
-  font-weight:
-    700;
-
-  transition:
-    background-color
-    160ms
-    ease;
 }
 
 
 .primaryAction:hover {
+  border-color:
+    #c5f2f8;
+
   background:
-    #c5eff8;
+    #c5f2f8;
+}
+
+
+.secondaryAction {
+  color:
+    var(
+      --training-cyan
+    );
+
+  background:
+    transparent;
+}
+
+
+.secondaryAction:hover {
+  border-color:
+    var(
+      --training-cyan
+    );
+
+  background:
+    var(
+      --training-hover
+    );
 }
 
 
@@ -153,38 +181,58 @@
   display:
     inline-flex;
 
+  min-height:
+    2.75rem;
+
   align-items:
     center;
 
   gap:
-    11px;
-
-  min-height:
-    44px;
+    0.55rem;
 
   color:
     var(
-      --training-secondary
+      --training-cyan
     );
 
   font-size:
-    0.78rem;
+    0.94rem;
 
   font-weight:
-    620;
+    650;
 
-  transition:
-    color
-    160ms
-    ease;
+  line-height:
+    1.3;
+
+  text-decoration:
+    underline;
+
+  text-decoration-thickness:
+    1px;
+
+  text-underline-offset:
+    0.22em;
 }
 
 
 .textAction:hover {
   color:
+    #c5f2f8;
+}
+
+
+.primaryAction:focus-visible,
+.secondaryAction:focus-visible,
+.textAction:focus-visible {
+  outline:
+    2px
+    solid
     var(
       --training-cyan
     );
+
+  outline-offset:
+    3px;
 }
 
 
@@ -194,144 +242,18 @@
 
 
 .hero {
-  position:
-    relative;
-
-  min-height:
-    min(
-      760px,
-      calc(
-        100svh
-        -
-        104px
-      )
+  padding:
+    clamp(
+      3rem,
+      5vw,
+      3.5rem
+    )
+    0
+    clamp(
+      4rem,
+      6vw,
+      4.5rem
     );
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --training-line
-    );
-
-  background:
-    var(
-      --training-bg
-    );
-}
-
-
-.hero::after {
-  position:
-    absolute;
-
-  top:
-    0;
-
-  right:
-    0;
-
-  bottom:
-    0;
-
-  width:
-    min(
-      47vw,
-      760px
-    );
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(
-        126,
-        96,
-        185,
-        0.03
-      )
-    );
-
-  content:
-    "";
-
-  pointer-events:
-    none;
-}
-
-
-.hero
-.container {
-  position:
-    relative;
-
-  z-index:
-    1;
-
-  display:
-    grid;
-
-  grid-template-rows:
-    auto
-    1fr
-    auto;
-
-  min-height:
-    inherit;
-
-  padding-top:
-    17px;
-
-  padding-bottom:
-    17px;
-}
-
-
-.heroTopline {
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    space-between;
-
-  gap:
-    20px;
-
-  min-height:
-    34px;
-
-  padding-bottom:
-    11px;
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --training-line
-    );
-
-  color:
-    var(
-      --training-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.58rem;
-
-  letter-spacing:
-    0.1em;
-
-  text-transform:
-    uppercase;
 }
 
 
@@ -342,105 +264,99 @@
   grid-template-columns:
     minmax(
       0,
-      1.14fr
+      1.75fr
     )
     minmax(
-      360px,
-      0.66fr
+      20rem,
+      1fr
     );
 
   gap:
     clamp(
-      50px,
-      7vw,
-      100px
+      2.5rem,
+      5vw,
+      3rem
     );
 
   align-items:
-    center;
+    start;
+}
 
-  padding:
-    clamp(
-      38px,
-      5vh,
-      58px
-    )
+
+.heroCopy {
+  min-width:
     0;
 }
 
 
-.heroEyebrow {
+.heroEyebrow,
+.sectionEyebrow,
+.hubEyebrow {
+  margin:
+    0;
+
   color:
     var(
-      --training-blue
+      --training-metadata
     );
 
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
   font-size:
-    0.63rem;
+    0.84rem;
 
   font-weight:
-    600;
+    650;
 
   letter-spacing:
-    0.11em;
+    0.025em;
 
-  text-transform:
-    uppercase;
+  line-height:
+    1.5;
 }
 
 
 .heroCopy h1 {
   max-width:
-    900px;
+    15ch;
 
-  margin-top:
-    15px;
-
-  font-size:
-    clamp(
-      4rem,
-      6.1vw,
-      5.9rem
-    );
-
-  font-weight:
-    500;
-
-  letter-spacing:
-    -0.07em;
-
-  line-height:
-    0.91;
-}
-
-
-.heroCopy h1
-span {
-  display:
-    block;
+  margin:
+    0.75rem
+    0
+    0;
 
   color:
     var(
-      --training-secondary
+      --training-text
+    );
+
+  font-size:
+    clamp(
+      3.5rem,
+      5.6vw,
+      4.5rem
     );
 
   font-weight:
-    420;
+    650;
+
+  letter-spacing:
+    -0.06em;
+
+  line-height:
+    1.02;
+
+  text-wrap:
+    balance;
 }
 
 
 .heroLead {
   max-width:
-    670px;
+    46rem;
 
-  margin-top:
-    24px;
+  margin:
+    1rem
+    0
+    0;
 
   color:
     var(
@@ -449,33 +365,13 @@ span {
 
   font-size:
     clamp(
-      1rem,
-      1.4vw,
-      1.14rem
+      1.05rem,
+      1.5vw,
+      1.18rem
     );
 
   line-height:
-    1.62;
-}
-
-
-.heroServiceNote {
-  max-width:
-    650px;
-
-  margin-top:
-    10px;
-
-  color:
-    var(
-      --training-muted
-    );
-
-  font-size:
-    0.8rem;
-
-  line-height:
-    1.6;
+    1.65;
 }
 
 
@@ -487,935 +383,80 @@ span {
     wrap;
 
   gap:
-    18px;
+    0.75rem;
 
   margin-top:
-    27px;
+    1.5rem;
 }
 
 
 /* ==========================================================================
-   CAPABILITY MAP
+   TRAINING HUB ASIDE
    ========================================================================== */
 
 
-.capabilityMap {
-  border-top:
-    1px
-    solid
-    var(
-      --training-line-strong
-    );
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --training-line
-    );
-}
-
-
-.mapHeader {
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    space-between;
-
-  min-height:
-    40px;
-
-  color:
-    var(
-      --training-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.55rem;
-
-  letter-spacing:
-    0.08em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.mapBody {
-  position:
-    relative;
-
-  min-height:
-    300px;
-
-  border-top:
-    1px
-    solid
-    var(
-      --training-line
-    );
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --training-line
-    );
-}
-
-
-.mapAudience,
-.mapCore {
-  position:
-    absolute;
-
-  z-index:
-    2;
-
-  display:
-    grid;
-
-  place-content:
-    center;
-
-  text-align:
-    center;
-
-  background:
-    var(
-      --training-bg
-    );
-}
-
-
-.mapAudience {
-  width:
-    108px;
-
-  height:
-    48px;
-
-  border:
-    1px
-    solid
-    var(
-      --training-line
-    );
-}
-
-
-.mapCompany {
-  top:
-    25px;
-
-  left:
-    0;
-}
-
-
-.mapUniversity {
-  top:
-    25px;
-
-  right:
-    0;
-}
-
-
-.mapCommunity {
-  bottom:
-    25px;
-
-  left:
-    0;
-}
-
-
-.mapTeam {
-  right:
-    0;
-
-  bottom:
-    25px;
-}
-
-
-.mapAudience
-span,
-.mapCore
-span {
-  color:
-    var(
-      --training-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.48rem;
-}
-
-
-.mapAudience
-strong {
-  margin-top:
-    4px;
-
-  color:
-    var(
-      --training-secondary
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.53rem;
-
-  letter-spacing:
-    0.05em;
-}
-
-
-.mapCore {
-  top:
-    50%;
-
-  left:
-    50%;
-
-  width:
-    125px;
-
-  height:
-    125px;
-
-  border:
-    1px
-    solid
-    rgba(
-      161,
-      226,
-      240,
-      0.3
-    );
-
-  border-radius:
-    50%;
-
-  transform:
-    translate(
-      -50%,
-      -50%
-    );
-}
-
-
-.mapCore::before,
-.mapCore::after {
-  position:
-    absolute;
-
-  border:
-    1px
-    solid
-    var(
-      --training-line
-    );
-
-  border-radius:
-    50%;
-
-  content:
-    "";
-}
-
-
-.mapCore::before {
-  inset:
-    12px;
-}
-
-
-.mapCore::after {
-  inset:
-    25px;
-}
-
-
-.mapCore
-span,
-.mapCore
-strong {
-  position:
-    relative;
-
-  z-index:
-    2;
-}
-
-
-.mapCore
-strong {
-  margin-top:
-    7px;
-
-  color:
-    var(
-      --training-cyan
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.58rem;
-
-  letter-spacing:
-    0.07em;
-}
-
-
-.mapCore
-i {
-  position:
-    absolute;
-
-  z-index:
-    2;
-
-  top:
-    16px;
-
-  right:
-    23px;
-
-  width:
-    6px;
-
-  height:
-    6px;
-
-  border-radius:
-    50%;
-
-  background:
-    var(
-      --training-violet
-    );
-}
-
-
-.mapLine {
-  position:
-    absolute;
-
-  z-index:
-    1;
-
-  width:
-    31%;
-
-  height:
-    1px;
-
-  background:
-    var(
-      --training-line-strong
-    );
-
-  transform-origin:
-    center;
-}
-
-
-.mapLineOne {
-  top:
-    91px;
-
-  left:
-    87px;
-
-  transform:
-    rotate(
-      29deg
-    );
-}
-
-
-.mapLineTwo {
-  top:
-    91px;
-
-  right:
-    87px;
-
-  transform:
-    rotate(
-      -29deg
-    );
-}
-
-
-.mapLineThree {
-  bottom:
-    91px;
-
-  left:
-    87px;
-
-  transform:
-    rotate(
-      -29deg
-    );
-}
-
-
-.mapLineFour {
-  right:
-    87px;
-
-  bottom:
-    91px;
-
-  transform:
-    rotate(
-      29deg
-    );
-}
-
-
-.mapOutput {
-  display:
-    grid;
-
-  grid-template-columns:
-    auto
-    1fr
-    auto
-    1fr
-    auto;
-
-  gap:
-    10px;
-
-  align-items:
-    center;
-
-  min-height:
-    46px;
-
-  color:
-    var(
-      --training-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.51rem;
-
-  letter-spacing:
-    0.06em;
-}
-
-
-.mapOutput
-i {
-  height:
-    1px;
-
-  background:
-    var(
-      --training-line
-    );
-}
-
-
-.mapOutput
-strong {
-  color:
-    var(
-      --training-cyan
-    );
-
-  font-size:
-    inherit;
-}
-
-
-.heroFooter {
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  gap:
-    12px;
-
-  min-height:
-    42px;
-
-  padding-top:
-    13px;
-
-  border-top:
-    1px
-    solid
-    var(
-      --training-line
-    );
-
-  color:
-    var(
-      --training-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.52rem;
-
-  letter-spacing:
-    0.07em;
-}
-
-
-.heroFooter
-i {
-  flex:
-    1;
-
-  max-width:
-    45px;
-
-  height:
-    1px;
-
-  background:
-    var(
-      --training-line
-    );
-}
-
-
-/* ==========================================================================
-   SHARED SECTIONS
-   ========================================================================== */
-
-
-.section {
-  padding:
-    clamp(
-      54px,
-      6vw,
-      76px
-    )
-    0;
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --training-line
-    );
-}
-
-
-.sectionAlt {
-  background:
-    var(
-      --training-alt
-    );
-}
-
-
-.sectionHeading {
-  display:
-    grid;
-
-  grid-template-columns:
-    minmax(
-      0,
-      1.05fr
-    )
-    minmax(
-      280px,
-      0.45fr
-    );
-
-  gap:
-    15px
-    clamp(
-      40px,
-      6vw,
-      84px
-    );
-
-  align-items:
-    end;
-
-  margin-bottom:
-    39px;
-}
-
-
-.sectionEyebrow {
-  grid-column:
-    1
-    /
-    -1;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  gap:
-    10px;
-
-  color:
-    var(
-      --training-blue
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.6rem;
-
-  font-weight:
-    600;
-
-  letter-spacing:
-    0.1em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.sectionEyebrow
-span {
-  color:
-    var(
-      --training-subtle
-    );
-}
-
-
-.sectionHeading h2 {
-  max-width:
-    900px;
-
-  font-size:
-    clamp(
-      2.4rem,
-      4vw,
-      3.65rem
-    );
-
-  font-weight:
-    470;
-
-  letter-spacing:
-    -0.055em;
-
-  line-height:
-    1.02;
-}
-
-
-.sectionDescription {
-  max-width:
-    480px;
-
-  color:
-    var(
-      --training-muted
-    );
-
-  font-size:
-    0.86rem;
-
-  line-height:
-    1.65;
-}
-
-
-/* ==========================================================================
-   AUDIENCE INDEX
-   ========================================================================== */
-
-
-.audienceIndex {
-  border-top:
-    1px
-    solid
-    var(
-      --training-line-strong
-    );
-}
-
-
-.audienceRow {
-  display:
-    grid;
-
-  grid-template-columns:
-    42px
-    62px
-    minmax(
-      180px,
-      0.42fr
-    )
-    minmax(
-      0,
-      1fr
-    )
-    18px;
-
-  gap:
-    16px;
-
-  align-items:
-    center;
-
-  min-height:
-    88px;
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --training-line
-    );
-}
-
-
-.audienceNumber,
-.audienceCode {
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.56rem;
-}
-
-
-.audienceNumber {
-  color:
-    var(
-      --training-subtle
-    );
-}
-
-
-.audienceCode {
-  color:
-    var(
-      --training-cyan
-    );
-
-  font-weight:
-    700;
-}
-
-
-.audienceRow h3 {
-  color:
-    var(
-      --training-secondary
-    );
-
-  font-size:
-    1.05rem;
-
-  font-weight:
-    600;
-}
-
-
-.audienceRow p {
-  max-width:
-    690px;
-
-  color:
-    var(
-      --training-muted
-    );
-
-  font-size:
-    0.74rem;
-
-  line-height:
-    1.53;
-}
-
-
-.audienceSignal {
-  color:
-    var(
-      --training-blue
-    );
-
-  font-size:
-    0.48rem;
-
-  text-align:
-    right;
-}
-
-
-/* ==========================================================================
-   PRINCIPLE RAIL
-   ========================================================================== */
-
-
-.principleRail {
-  display:
-    grid;
-
-  grid-template-columns:
-    repeat(
-      3,
-      minmax(
-        0,
-        1fr
-      )
-    );
-
-  margin-top:
-    36px;
-
-  border-top:
-    1px
-    solid
-    var(
-      --training-line
-    );
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --training-line
-    );
-}
-
-
-.principleRail
-> div {
+.hubAside {
   min-width:
     0;
 
   padding:
-    19px
-    24px
-    20px
-    0;
-}
+    clamp(
+      1.4rem,
+      2.6vw,
+      1.75rem
+    );
 
-
-.principleRail
-> div
-+
-div {
-  padding-left:
-    24px;
-
-  border-left:
+  border:
     1px
     solid
     var(
-      --training-line
+      --training-border
+    );
+
+  border-radius:
+    0.7rem;
+
+  background:
+    var(
+      --training-raised
     );
 }
 
 
-.principleRail
-span,
-.principleRail
-small {
-  font-family:
+.hubAside h2 {
+  margin:
+    0.5rem
+    0
+    0;
+
+  color:
     var(
-      --font-geist-mono
-    ),
-    monospace;
+      --training-text
+    );
 
   font-size:
-    0.52rem;
+    clamp(
+      1.4rem,
+      2.2vw,
+      1.7rem
+    );
+
+  font-weight:
+    620;
 
   letter-spacing:
-    0.06em;
+    -0.03em;
+
+  line-height:
+    1.22;
 }
 
 
-.principleRail
-span {
-  color:
-    var(
-      --training-subtle
-    );
-}
-
-
-.principleRail
-small {
-  margin-left:
-    10px;
-
-  color:
-    var(
-      --training-blue
-    );
-}
-
-
-.principleRail
-strong {
-  display:
-    block;
-
-  margin-top:
-    20px;
+.hubAside > p:not(.hubEyebrow) {
+  margin:
+    0.75rem
+    0
+    0;
 
   color:
     var(
@@ -1425,115 +466,227 @@ strong {
   font-size:
     1rem;
 
-  font-weight:
-    600;
+  line-height:
+    1.6;
 }
 
 
-.principleRail
-p {
+.hubAside .textAction {
   margin-top:
-    7px;
-
-  color:
-    var(
-      --training-muted
-    );
-
-  font-size:
-    0.72rem;
-
-  line-height:
-    1.52;
+    1.25rem;
 }
 
 
 /* ==========================================================================
-   LEARNING ARCHITECTURE
+   SECTION SYSTEM
    ========================================================================== */
 
 
-.learningSystem {
+.section {
+  padding:
+    clamp(
+      4rem,
+      6vw,
+      5rem
+    )
+    0;
+
   border-top:
     1px
     solid
     var(
-      --training-line-strong
-    );
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --training-line
+      --training-border
     );
 }
 
 
-.learningAxis {
+#audiences {
+  scroll-margin-top:
+    6rem;
+}
+
+
+.architectureSection {
+  background:
+    var(
+      --training-alt
+    );
+}
+
+
+.sectionHeading {
+  max-width:
+    52rem;
+
+  margin-bottom:
+    clamp(
+      1.5rem,
+      3vw,
+      2rem
+    );
+}
+
+
+.sectionHeading h2,
+.ctaLayout h2 {
+  margin:
+    0.7rem
+    0
+    0;
+
+  color:
+    var(
+      --training-text
+    );
+
+  font-size:
+    clamp(
+      2rem,
+      3.7vw,
+      2.75rem
+    );
+
+  font-weight:
+    640;
+
+  letter-spacing:
+    -0.045em;
+
+  line-height:
+    1.08;
+
+  text-wrap:
+    balance;
+}
+
+
+.sectionDescription {
+  max-width:
+    49rem;
+
+  margin:
+    0.8rem
+    0
+    0;
+
+  color:
+    var(
+      --training-secondary
+    );
+
+  font-size:
+    1rem;
+
+  line-height:
+    1.65;
+}
+
+
+/* ==========================================================================
+   AUDIENCES
+   ========================================================================== */
+
+
+.audienceList {
+  border-top:
+    1px
+    solid
+    var(
+      --training-border
+    );
+}
+
+
+.audienceRow {
   display:
     grid;
 
   grid-template-columns:
-    auto
-    1fr
-    auto
-    1fr
-    auto
-    1fr
-    auto;
+    minmax(
+      12rem,
+      0.32fr
+    )
+    minmax(
+      0,
+      0.68fr
+    );
 
   gap:
-    12px;
+    clamp(
+      1.5rem,
+      4vw,
+      2rem
+    );
 
   align-items:
-    center;
+    start;
 
-  min-height:
-    54px;
+  padding:
+    1.4rem
+    0;
 
   border-bottom:
     1px
     solid
     var(
-      --training-line
+      --training-border
     );
+}
+
+
+.audienceRow h3 {
+  margin:
+    0;
 
   color:
     var(
-      --training-subtle
+      --training-text
     );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
 
   font-size:
-    0.52rem;
+    clamp(
+      1.2rem,
+      1.8vw,
+      1.45rem
+    );
+
+  font-weight:
+    620;
 
   letter-spacing:
-    0.06em;
+    -0.025em;
+
+  line-height:
+    1.3;
 }
 
 
-.learningAxis
-i {
-  height:
-    1px;
+.audienceRow p {
+  max-width:
+    46rem;
 
-  background:
+  margin:
+    0;
+
+  color:
     var(
-      --training-line
+      --training-secondary
     );
+
+  font-size:
+    1rem;
+
+  line-height:
+    1.62;
 }
 
 
-.learningSteps {
-  position:
-    relative;
+/* ==========================================================================
+   TRAINING ARCHITECTURE
+   ========================================================================== */
 
+
+.stageGrid {
   display:
     grid;
 
@@ -1552,559 +705,117 @@ i {
   padding:
     0;
 
-  list-style:
-    none;
-}
-
-
-.learningSteps::before {
-  position:
-    absolute;
-
-  top:
-    45px;
-
-  right:
-    0;
-
-  left:
-    0;
-
-  height:
-    1px;
-
-  background:
-    var(
-      --training-line-strong
-    );
-
-  content:
-    "";
-}
-
-
-.learningStep {
-  position:
-    relative;
-
-  min-width:
-    0;
-
-  padding:
-    22px
-    24px
-    25px
-    0;
-}
-
-
-.learningStep
-+
-.learningStep {
-  padding-left:
-    24px;
-
-  border-left:
-    1px
-    solid
-    var(
-      --training-line
-    );
-}
-
-
-.stepMeta {
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  gap:
-    10px;
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.52rem;
-}
-
-
-.stepMeta
-span {
-  color:
-    var(
-      --training-subtle
-    );
-}
-
-
-.stepMeta
-small {
-  color:
-    var(
-      --training-blue
-    );
-
-  font-size:
-    inherit;
-}
-
-
-.learningStep h3 {
-  margin-top:
-    34px;
-
-  color:
-    var(
-      --training-secondary
-    );
-
-  font-size:
-    1.1rem;
-
-  font-weight:
-    600;
-}
-
-
-.learningStep p {
-  margin-top:
-    9px;
-
-  color:
-    var(
-      --training-muted
-    );
-
-  font-size:
-    0.73rem;
-
-  line-height:
-    1.55;
-}
-
-
-.stepNode {
-  position:
-    absolute;
-
-  z-index:
-    1;
-
-  top:
-    41px;
-
-  left:
-    0;
-
-  width:
-    8px;
-
-  height:
-    8px;
-
-  border:
-    1px
-    solid
-    var(
-      --training-cyan
-    );
-
-  border-radius:
-    50%;
-
-  background:
-    var(
-      --training-alt
-    );
-}
-
-
-.learningStep
-+
-.learningStep
-.stepNode {
-  left:
-    24px;
-}
-
-
-.architectureStatement {
-  display:
-    grid;
-
-  grid-template-columns:
-    100px
-    minmax(
-      0,
-      1fr
-    );
-
-  gap:
-    28px;
-
-  margin-top:
-    32px;
-
-  padding-top:
-    20px;
-
   border-top:
     1px
     solid
     var(
-      --training-line
-    );
-}
-
-
-.architectureStatement
-span {
-  color:
-    var(
-      --training-blue
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.56rem;
-
-  letter-spacing:
-    0.08em;
-}
-
-
-.architectureStatement
-p {
-  max-width:
-    800px;
-
-  color:
-    var(
-      --training-secondary
-    );
-
-  font-size:
-    clamp(
-      1.16rem,
-      2vw,
-      1.52rem
-    );
-
-  font-weight:
-    480;
-
-  letter-spacing:
-    -0.025em;
-
-  line-height:
-    1.42;
-}
-
-
-/* ==========================================================================
-   TRAINING JOURNEYS
-   ========================================================================== */
-
-
-.journeySystem {
-  display:
-    grid;
-
-  grid-template-columns:
-    185px
-    repeat(
-      2,
-      minmax(
-        0,
-        1fr
-      )
-    );
-
-  border-top:
-    1px
-    solid
-    var(
-      --training-line-strong
+      --training-border
     );
 
   border-bottom:
     1px
     solid
     var(
-      --training-line
+      --training-border
     );
+
+  list-style:
+    none;
 }
 
 
-.journeyOrigin {
-  position:
-    relative;
+:global(#main-content)
+.stageGrid {
+  margin-left:
+    0;
 
-  display:
-    flex;
-
-  flex-direction:
-    column;
-
-  justify-content:
-    center;
-
-  min-height:
-    280px;
-
-  padding-right:
-    30px;
-
-  border-right:
-    1px
-    solid
-    var(
-      --training-line
-    );
+  padding-left:
+    0;
 }
 
 
-.journeyOrigin
-span {
-  color:
-    var(
-      --training-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.51rem;
-
-  letter-spacing:
-    0.07em;
-}
-
-
-.journeyOrigin
-strong {
+:global(#main-content)
+.stageGrid
+li
++
+li {
   margin-top:
-    8px;
-
-  color:
-    var(
-      --training-cyan
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.72rem;
-
-  letter-spacing:
-    0.08em;
+    0;
 }
 
 
-.journeyOrigin
-i {
-  position:
-    absolute;
-
-  top:
-    50%;
-
-  right:
-    -5px;
-
-  width:
-    9px;
-
-  height:
-    9px;
-
-  border:
-    1px
-    solid
-    var(
-      --training-cyan
-    );
-
-  border-radius:
-    50%;
-
-  background:
-    var(
-      --training-bg
-    );
-
-  transform:
-    translateY(
-      -50%
-    );
-}
-
-
-.journeyBranch {
+.stage {
   min-width:
     0;
 
+  margin:
+    0;
+
   padding:
-    25px
-    28px;
+    1.5rem;
 }
 
 
-.journeyBranch
+.stage
 +
-.journeyBranch {
+.stage {
   border-left:
     1px
     solid
     var(
-      --training-line
+      --training-border
     );
 }
 
 
-.journeyLabel {
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    space-between;
-
+.stageNumber {
   color:
     var(
-      --training-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.52rem;
-}
-
-
-.journeyLabel
-small {
-  color:
-    var(
-      --training-blue
+      --training-violet
     );
 
   font-size:
-    inherit;
+    0.82rem;
+
+  font-variant-numeric:
+    tabular-nums;
 }
 
 
-.journeyCopy
-> p:first-child {
-  margin-top:
-    40px;
+.stage h3 {
+  margin:
+    0.75rem
+    0
+    0;
 
   color:
     var(
-      --training-blue
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.55rem;
-
-  letter-spacing:
-    0.06em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.journeyCopy h3 {
-  margin-top:
-    9px;
-
-  color:
-    var(
-      --training-secondary
+      --training-text
     );
 
   font-size:
     clamp(
-      1.5rem,
-      2.4vw,
-      2rem
+      1.2rem,
+      2vw,
+      1.5rem
     );
 
   font-weight:
-    500;
+    620;
 
   letter-spacing:
-    -0.04em;
-}
-
-
-.journeyCopy
-> p:nth-of-type(
-  2
-) {
-  max-width:
-    520px;
-
-  margin-top:
-    12px;
-
-  color:
-    var(
-      --training-muted
-    );
-
-  font-size:
-    0.76rem;
+    -0.025em;
 
   line-height:
-    1.6;
+    1.3;
 }
 
 
-.journeyAction {
-  display:
-    inline-flex;
-
-  align-items:
-    center;
-
-  gap:
-    11px;
-
-  margin-top:
-    21px;
+.stage p {
+  margin:
+    0.75rem
+    0
+    0;
 
   color:
     var(
@@ -2112,109 +823,32 @@ small {
     );
 
   font-size:
-    0.76rem;
+    0.96rem;
 
-  font-weight:
-    620;
-}
-
-
-.journeyAction:hover {
-  color:
-    var(
-      --training-cyan
-    );
-}
-
-
-.journeyFooter {
-  display:
-    grid;
-
-  grid-template-columns:
-    auto
-    1fr
-    auto
-    auto
-    auto
-    1fr
-    auto;
-
-  gap:
-    12px;
-
-  align-items:
-    center;
-
-  margin-top:
-    30px;
-
-  color:
-    var(
-      --training-subtle
-    );
-
-  font-family:
-    var(
-      --font-geist-mono
-    ),
-    monospace;
-
-  font-size:
-    0.5rem;
-
-  letter-spacing:
-    0.05em;
-}
-
-
-.journeyFooter
-i {
-  height:
-    1px;
-
-  background:
-    var(
-      --training-line
-    );
-}
-
-
-.journeyFooter
-strong {
-  color:
-    var(
-      --training-cyan
-    );
-
-  font-size:
-    0.8rem;
+  line-height:
+    1.62;
 }
 
 
 /* ==========================================================================
-   CTA
+   CLOSING DISCUSSION
    ========================================================================== */
 
 
 .cta {
   padding:
     clamp(
-      48px,
+      4rem,
       6vw,
-      72px
+      4.5rem
     )
     0;
-}
 
-
-.ctaRule {
-  height:
-    1px;
-
-  background:
+  border-top:
+    1px
+    solid
     var(
-      --training-line-strong
+      --training-border
     );
 }
 
@@ -2226,62 +860,58 @@ strong {
   grid-template-columns:
     minmax(
       0,
-      1fr
+      0.9fr
     )
     minmax(
-      300px,
-      0.48fr
+      20rem,
+      1.1fr
     );
 
   gap:
     clamp(
-      40px,
+      2rem,
       6vw,
-      82px
+      5rem
     );
 
-  padding-top:
-    31px;
+  align-items:
+    start;
 }
 
 
-.ctaLayout h2 {
+.ctaCopy {
   max-width:
-    760px;
-
-  margin-top:
-    11px;
-
-  font-size:
-    clamp(
-      2.35rem,
-      4vw,
-      3.8rem
-    );
-
-  font-weight:
-    470;
-
-  letter-spacing:
-    -0.055em;
-
-  line-height:
-    1.02;
+    44rem;
 }
 
 
-.ctaCopy
-> p {
+.ctaCopy > p {
+  margin:
+    0;
+
   color:
     var(
-      --training-muted
+      --training-secondary
     );
 
   font-size:
-    0.85rem;
+    1rem;
 
   line-height:
     1.65;
+}
+
+
+.ctaSupport {
+  margin-top:
+    0.75rem
+    !important;
+
+  color:
+    var(
+      --training-metadata
+    )
+    !important;
 }
 
 
@@ -2293,15 +923,16 @@ strong {
     wrap;
 
   gap:
-    18px;
+    0.75rem
+    1.25rem;
 
   margin-top:
-    22px;
+    1.5rem;
 }
 
 
 /* ==========================================================================
-   COMPACT DESKTOP
+   RESPONSIVE
    ========================================================================== */
 
 
@@ -2310,128 +941,7 @@ strong {
     1080px
 ) {
 
-  .heroGrid {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      )
-      minmax(
-        320px,
-        0.6fr
-      );
-
-    gap:
-      42px;
-  }
-
-
-  .heroCopy h1 {
-    font-size:
-      clamp(
-        3.6rem,
-        6vw,
-        5rem
-      );
-  }
-
-
-  .mapAudience {
-    width:
-      94px;
-  }
-
-
-  .mapLineOne,
-  .mapLineThree {
-    left:
-      74px;
-  }
-
-
-  .mapLineTwo,
-  .mapLineFour {
-    right:
-      74px;
-  }
-
-}
-
-
-/* ==========================================================================
-   TABLET
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    900px
-) {
-
-  .hero {
-    min-height:
-      auto;
-  }
-
-
-  .hero
-  .container {
-    min-height:
-      auto;
-  }
-
-
-  .heroGrid {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-
-    gap:
-      34px;
-
-    padding:
-      36px
-      0;
-  }
-
-
-  .capabilityMap {
-    max-width:
-      700px;
-  }
-
-
-  .sectionHeading {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-
-    gap:
-      12px;
-  }
-
-
-  .audienceRow {
-    grid-template-columns:
-      38px
-      58px
-      minmax(
-        160px,
-        0.38fr
-      )
-      minmax(
-        0,
-        1fr
-      )
-      18px;
-  }
-
-
-  .learningSteps {
+  .stageGrid {
     grid-template-columns:
       repeat(
         2,
@@ -2443,72 +953,12 @@ strong {
   }
 
 
-  .learningSteps::before {
-    display:
-      none;
-  }
-
-
-  .learningStep,
-  .learningStep
-  +
-  .learningStep {
-    border-bottom:
-      1px
-      solid
-      var(
-        --training-line
-      );
-  }
-
-
-  .stepNode {
-    display:
-      none;
-  }
-
-
-  .learningStep h3 {
-    margin-top:
-      16px;
-  }
-
-
-  .journeySystem {
-    grid-template-columns:
-      140px
-      minmax(
-        0,
-        1fr
-      );
-  }
-
-
-  .journeyOrigin {
-    grid-row:
-      1
-      /
-      3;
-
-    min-height:
-      auto;
-  }
-
-
-  .journeyBranch {
-    min-height:
-      230px;
-  }
-
-
-  .journeyBranch
-  +
-  .journeyBranch {
+  .stage:nth-child(3) {
     border-top:
       1px
       solid
       var(
-        --training-line
+        --training-border
       );
 
     border-left:
@@ -2516,7 +966,40 @@ strong {
   }
 
 
+  .stage:nth-child(4) {
+    border-top:
+      1px
+      solid
+      var(
+        --training-border
+      );
+  }
+
+}
+
+
+@media (
+  max-width:
+    900px
+) {
+
+  .heroGrid,
   .ctaLayout {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .hubAside {
+    max-width:
+      40rem;
+  }
+
+
+  .audienceRow {
     grid-template-columns:
       minmax(
         0,
@@ -2524,15 +1007,47 @@ strong {
       );
 
     gap:
-      24px;
+      0.55rem;
   }
 
 }
 
 
-/* ==========================================================================
-   MOBILE
-   ========================================================================== */
+@media (
+  max-width:
+    680px
+) {
+
+  .stageGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .stage
+  +
+  .stage {
+    border-top:
+      1px
+      solid
+      var(
+        --training-border
+      );
+
+    border-left:
+      0;
+  }
+
+
+  .stage:nth-child(4) {
+    border-left:
+      0;
+  }
+
+}
 
 
 @media (
@@ -2540,487 +1055,54 @@ strong {
     640px
 ) {
 
-  .hero
-  .container {
-    padding-top:
-      0;
-
-    padding-bottom:
-      27px;
-  }
-
-
-  .heroTopline {
-    display:
-      none;
-  }
-
-
-  .heroGrid {
-    gap:
-      26px;
-
+  .hero {
     padding:
-      9px
+      2rem
       0
-      28px;
-  }
-
-
-  .heroEyebrow {
-    font-size:
-      0.54rem;
-
-    line-height:
-      1.4;
+      3.25rem;
   }
 
 
   .heroCopy h1 {
-    margin-top:
-      5px;
+    max-width:
+      none;
 
     font-size:
       clamp(
-        2.75rem,
-        13vw,
-        3.75rem
+        2.4rem,
+        11vw,
+        3rem
       );
-
-    line-height:
-      0.95;
-  }
-
-
-  .heroLead {
-    margin-top:
-      16px;
-
-    font-size:
-      0.9rem;
-  }
-
-
-  .heroServiceNote {
-    font-size:
-      0.74rem;
-  }
-
-
-  .heroActions {
-    margin-top:
-      18px;
-  }
-
-
-  .mapBody {
-    min-height:
-      250px;
-  }
-
-
-  .mapAudience {
-    width:
-      83px;
-
-    height:
-      43px;
-  }
-
-
-  .mapAudience
-  strong {
-    font-size:
-      0.45rem;
-  }
-
-
-  .mapCore {
-    width:
-      105px;
-
-    height:
-      105px;
-  }
-
-
-  .mapLine {
-    display:
-      none;
-  }
-
-
-  .mapOutput {
-    grid-template-columns:
-      auto
-      1fr
-      auto;
-
-    min-height:
-      42px;
-  }
-
-
-  .mapOutput
-  i:nth-of-type(
-    2
-  ),
-  .mapOutput
-  span:last-child {
-    display:
-      none;
-  }
-
-
-  .heroFooter {
-    flex-wrap:
-      wrap;
-
-    row-gap:
-      5px;
-  }
-
-
-  .heroFooter
-  i {
-    display:
-      none;
   }
 
 
   .section {
     padding:
-      42px
+      3rem
       0;
-  }
-
-
-  .sectionHeading {
-    margin-bottom:
-      27px;
-  }
-
-
-  .sectionHeading h2 {
-    font-size:
-      clamp(
-        2rem,
-        10vw,
-        2.8rem
-      );
-  }
-
-
-  .sectionDescription {
-    font-size:
-      0.81rem;
-  }
-
-
-  .audienceRow {
-    grid-template-columns:
-      30px
-      42px
-      minmax(
-        0,
-        1fr
-      );
-
-    gap:
-      9px;
-
-    min-height:
-      0;
-
-    padding:
-      14px
-      0;
-  }
-
-
-  .audienceRow h3 {
-    font-size:
-      0.94rem;
-  }
-
-
-  .audienceRow p {
-    grid-column:
-      3;
-
-    font-size:
-      0.7rem;
-  }
-
-
-  .audienceSignal {
-    display:
-      none;
-  }
-
-
-  .principleRail {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-  }
-
-
-  .principleRail
-  > div,
-  .principleRail
-  > div
-  +
-  div {
-    padding:
-      15px
-      0;
-
-    border-top:
-      1px
-      solid
-      var(
-        --training-line
-      );
-
-    border-left:
-      0;
-  }
-
-
-  .principleRail
-  strong {
-    margin-top:
-      10px;
-  }
-
-
-  .learningAxis {
-    grid-template-columns:
-      repeat(
-        4,
-        minmax(
-          0,
-          1fr
-        )
-      );
-
-    gap:
-      6px;
-
-    font-size:
-      0.46rem;
-  }
-
-
-  .learningAxis
-  i {
-    display:
-      none;
-  }
-
-
-  .learningSteps {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-  }
-
-
-  .learningStep,
-  .learningStep
-  +
-  .learningStep {
-    padding:
-      15px
-      0;
-
-    border-left:
-      0;
-  }
-
-
-  .architectureStatement {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-
-    gap:
-      9px;
-  }
-
-
-  .architectureStatement p {
-    font-size:
-      1.05rem;
-  }
-
-
-  .journeySystem {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-  }
-
-
-  .journeyOrigin {
-    display:
-      none;
-  }
-
-
-  .journeyBranch,
-  .journeyBranch
-  +
-  .journeyBranch {
-    min-height:
-      0;
-
-    padding:
-      20px
-      0;
-
-    border-top:
-      1px
-      solid
-      var(
-        --training-line
-      );
-
-    border-left:
-      0;
-  }
-
-
-  .journeyCopy
-  > p:first-child {
-    margin-top:
-      25px;
-  }
-
-
-  .journeyFooter {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-
-    gap:
-      6px;
-  }
-
-
-  .journeyFooter
-  i,
-  .journeyFooter
-  strong {
-    display:
-      none;
   }
 
 
   .cta {
     padding:
-      42px
+      3.25rem
       0;
   }
 
 
-  .ctaLayout {
-    padding-top:
-      25px;
+  .hubAside {
+    padding:
+      1.25rem;
   }
 
 
-  .ctaLayout h2 {
-    font-size:
-      clamp(
-        2rem,
-        10vw,
-        2.8rem
-      );
+  .stage {
+    padding:
+      1.3rem
+      0;
   }
 
 }
-
-
-/* ==========================================================================
-   NARROW MOBILE
-   ========================================================================== */
-
-
-@media (
-  max-width:
-    390px
-) {
-
-  .heroCopy h1 {
-    font-size:
-      2.62rem;
-  }
-
-
-  .heroActions,
-  .ctaActions {
-    display:
-      grid;
-
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-  }
-
-
-  .primaryAction {
-    width:
-      100%;
-  }
-
-
-  .audienceCode {
-    display:
-      none;
-  }
-
-
-  .audienceRow {
-    grid-template-columns:
-      28px
-      minmax(
-        0,
-        1fr
-      );
-  }
-
-
-  .audienceRow p {
-    grid-column:
-      2;
-  }
-
-
-  .mapAudience {
-    width:
-      76px;
-  }
-
-}
-
-
-/* ==========================================================================
-   REDUCED MOTION
-   ========================================================================== */
 
 
 @media (
@@ -3029,8 +1111,7 @@ strong {
 ) {
 
   .primaryAction,
-  .textAction,
-  .journeyAction {
+  .secondaryAction {
     transition:
       none;
   }

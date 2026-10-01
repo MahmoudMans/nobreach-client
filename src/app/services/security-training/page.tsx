@@ -18,7 +18,7 @@ export const metadata =
       "Security Training | No Breach",
 
     description:
-      "Organization-facing cybersecurity training for companies, universities, communities and teams, built around practical technical skill development.",
+      "Organization-facing practical cybersecurity training for companies, universities, communities and teams, with public learner programs available separately through the Training Hub.",
 
     path:
       "/services/security-training"
@@ -27,51 +27,27 @@ export const metadata =
 
 const audiences = [
   {
-    number:
-      "01",
-
-    code:
-      "ORG",
-
     title:
       "Companies",
 
     description:
-      "Organization-facing cybersecurity training for companies looking to develop practical security capability."
+      "Cybersecurity training for companies looking to develop practical security capability."
   },
   {
-    number:
-      "02",
-
-    code:
-      "UNI",
-
     title:
       "Universities",
 
     description:
-      "Practical cybersecurity training for academic and technical learning environments."
+      "Practical training for academic and technical learning environments."
   },
   {
-    number:
-      "03",
-
-    code:
-      "COM",
-
     title:
       "Communities",
 
     description:
-      "Technical training experiences for cybersecurity communities and organized learning groups."
+      "Technical training for cybersecurity communities and organized learning groups."
   },
   {
-    number:
-      "04",
-
-    code:
-      "TEAM",
-
     title:
       "Teams",
 
@@ -86,9 +62,6 @@ const learningArchitecture = [
     number:
       "01",
 
-    code:
-      "CTX",
-
     title:
       "Context",
 
@@ -98,9 +71,6 @@ const learningArchitecture = [
   {
     number:
       "02",
-
-    code:
-      "DSN",
 
     title:
       "Design",
@@ -112,9 +82,6 @@ const learningArchitecture = [
     number:
       "03",
 
-    code:
-      "LAB",
-
     title:
       "Practice",
 
@@ -125,48 +92,11 @@ const learningArchitecture = [
     number:
       "04",
 
-    code:
-      "REV",
-
     title:
       "Review",
 
     description:
       "Connect the practical work back to the security reasoning behind it."
-  }
-] as const;
-
-
-const principles = [
-  {
-    code:
-      "PRACTICAL",
-
-    title:
-      "Practical",
-
-    description:
-      "Technical learning centered on doing, testing and understanding."
-  },
-  {
-    code:
-      "MODERN",
-
-    title:
-      "Modern",
-
-    description:
-      "Training positioned around current cybersecurity practice rather than generic awareness material."
-  },
-  {
-    code:
-      "APPLICABLE",
-
-    title:
-      "Applicable",
-
-    description:
-      "A focus on skills participants can connect to real technical work."
   }
 ] as const;
 
@@ -177,7 +107,7 @@ function Arrow() {
     <span
       aria-hidden="true"
     >
-      ↗
+      →
     </span>
   );
 
@@ -185,21 +115,17 @@ function Arrow() {
 
 
 function SectionHeading({
-  number,
   eyebrow,
   title,
   description
 }: {
-  number:
-    string;
-
   eyebrow:
     string;
 
   title:
     string;
 
-  description:
+  description?:
     string;
 }) {
 
@@ -214,16 +140,11 @@ function SectionHeading({
           styles.sectionEyebrow
         }
       >
-        <span>
-          {
-            number
-          }
-        </span>
-
         {
           eyebrow
         }
       </p>
+
 
       <h2>
         {
@@ -231,15 +152,22 @@ function SectionHeading({
         }
       </h2>
 
-      <p
-        className={
-          styles.sectionDescription
-        }
-      >
-        {
-          description
-        }
-      </p>
+
+      {
+        description
+          ? (
+              <p
+                className={
+                  styles.sectionDescription
+                }
+              >
+                {
+                  description
+                }
+              </p>
+            )
+          : null
+      }
     </header>
   );
 
@@ -254,12 +182,10 @@ export default function SecurityTrainingPage() {
         styles.page
       }
       data-security-training-design="v25"
+      data-security-training-audit="v26"
     >
-
-
-
       {/* ================================================================
-          HERO
+          ORGANIZATION-FACING INTRODUCTION + PUBLIC LEARNER ALTERNATIVE
          ================================================================ */}
 
       <section
@@ -268,286 +194,131 @@ export default function SecurityTrainingPage() {
         }
         data-security-training-section="hero"
       >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
+        <Container>
           <div
             className={
-              styles.heroTopline
+              styles.frame
             }
-          >
-            <span>
-              No Breach / Security Training
-            </span>
-
-            <span>
-              Capability Studio
-            </span>
-          </div>
-
-          <div
-            className={
-              styles.heroGrid
-            }
+            data-security-training-frame="hero"
           >
             <div
               className={
-                styles.heroCopy
+                styles.heroGrid
               }
             >
-              <p
-                className={
-                  styles.heroEyebrow
-                }
-              >
-                Practical · Modern · Applicable
-              </p>
-
-              <h1>
-                Security capability is built
-                <span>
-                  through practice.
-                </span>
-              </h1>
-
-              <p
-                className={
-                  styles.heroLead
-                }
-              >
-                Practical, modern training designed to build real, applicable skills for both teams and individuals.
-              </p>
-
-              <p
-                className={
-                  styles.heroServiceNote
-                }
-              >
-                This service is the organization-facing path for companies, universities, communities and teams.
-              </p>
-
               <div
                 className={
-                  styles.heroActions
+                  styles.heroCopy
                 }
               >
-                <Link
-                  href="/contact"
+                <p
                   className={
-                    styles.primaryAction
+                    styles.heroEyebrow
                   }
                 >
-                  Discuss training
+                  Security Training
+                </p>
 
-                  <Arrow />
-                </Link>
 
-                <a
-                  href="#audiences"
+                <h1>
+                  Security capability is built through practice.
+                </h1>
+
+
+                <p
+                  className={
+                    styles.heroLead
+                  }
+                >
+                  Practical cybersecurity training for companies,
+                  universities, communities and teams, designed to build
+                  skills participants can connect to real technical work.
+                </p>
+
+
+                <div
+                  className={
+                    styles.heroActions
+                  }
+                >
+                  <Link
+                    href="/contact"
+                    className={
+                      styles.primaryAction
+                    }
+                  >
+                    Discuss training
+
+                    <Arrow />
+                  </Link>
+
+
+                  <a
+                    href="#audiences"
+                    className={
+                      styles.secondaryAction
+                    }
+                  >
+                    Explore the service
+
+                    <span
+                      aria-hidden="true"
+                    >
+                      ↓
+                    </span>
+                  </a>
+                </div>
+              </div>
+
+
+              <aside
+                className={
+                  styles.hubAside
+                }
+                data-security-training-ui="training-hub-aside"
+                aria-labelledby="training-hub-aside-title"
+              >
+                <p
+                  className={
+                    styles.hubEyebrow
+                  }
+                >
+                  Individual programs
+                </p>
+
+
+                <h2
+                  id="training-hub-aside-title"
+                >
+                  Training Hub
+                </h2>
+
+
+                <p>
+                  Looking for a public learner program? Explore the Training
+                  Hub rather than the organization-facing training service.
+                </p>
+
+
+                <Link
+                  href="/training"
                   className={
                     styles.textAction
                   }
                 >
-                  Explore the service
+                  Explore Training Hub
 
-                  <span
-                    aria-hidden="true"
-                  >
-                    ↓
-                  </span>
-                </a>
-              </div>
+                  <Arrow />
+                </Link>
+              </aside>
             </div>
-
-            <div
-              className={
-                styles.capabilityMap
-              }
-              data-security-training-ui="capability-map"
-              aria-label="Security training audience model"
-            >
-              <div
-                className={
-                  styles.mapHeader
-                }
-              >
-                <span>
-                  Training interface
-                </span>
-
-                <span>
-                  NB / EDU
-                </span>
-              </div>
-
-              <div
-                className={
-                  styles.mapBody
-                }
-              >
-                <div
-                  className={
-                    `${styles.mapAudience} ${styles.mapCompany}`
-                  }
-                >
-                  <span>
-                    01
-                  </span>
-
-                  <strong>
-                    COMPANY
-                  </strong>
-                </div>
-
-                <div
-                  className={
-                    `${styles.mapAudience} ${styles.mapUniversity}`
-                  }
-                >
-                  <span>
-                    02
-                  </span>
-
-                  <strong>
-                    UNIVERSITY
-                  </strong>
-                </div>
-
-                <div
-                  className={
-                    styles.mapCore
-                  }
-                >
-                  <span>
-                    NB
-                  </span>
-
-                  <strong>
-                    PRACTICE
-                  </strong>
-
-                  <i
-                    aria-hidden="true"
-                  />
-                </div>
-
-                <div
-                  className={
-                    `${styles.mapAudience} ${styles.mapCommunity}`
-                  }
-                >
-                  <span>
-                    03
-                  </span>
-
-                  <strong>
-                    COMMUNITY
-                  </strong>
-                </div>
-
-                <div
-                  className={
-                    `${styles.mapAudience} ${styles.mapTeam}`
-                  }
-                >
-                  <span>
-                    04
-                  </span>
-
-                  <strong>
-                    TEAM
-                  </strong>
-                </div>
-
-                <span
-                  className={
-                    `${styles.mapLine} ${styles.mapLineOne}`
-                  }
-                  aria-hidden="true"
-                />
-
-                <span
-                  className={
-                    `${styles.mapLine} ${styles.mapLineTwo}`
-                  }
-                  aria-hidden="true"
-                />
-
-                <span
-                  className={
-                    `${styles.mapLine} ${styles.mapLineThree}`
-                  }
-                  aria-hidden="true"
-                />
-
-                <span
-                  className={
-                    `${styles.mapLine} ${styles.mapLineFour}`
-                  }
-                  aria-hidden="true"
-                />
-              </div>
-
-              <div
-                className={
-                  styles.mapOutput
-                }
-              >
-                <span>
-                  INPUT
-                </span>
-
-                <i />
-
-                <strong>
-                  TECHNICAL PRACTICE
-                </strong>
-
-                <i />
-
-                <span>
-                  CAPABILITY
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <div
-            className={
-              styles.heroFooter
-            }
-          >
-            <span>
-              COMPANIES
-            </span>
-
-            <i />
-
-            <span>
-              UNIVERSITIES
-            </span>
-
-            <i />
-
-            <span>
-              COMMUNITIES
-            </span>
-
-            <i />
-
-            <span>
-              TEAMS
-            </span>
           </div>
         </Container>
       </section>
 
 
       {/* ================================================================
-          01 — WHO IT IS FOR
+          WHO IT IS FOR
          ================================================================ */}
 
       <section
@@ -557,455 +328,151 @@ export default function SecurityTrainingPage() {
         }
         data-security-training-section="audiences"
       >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
-          <SectionHeading
-            number="01"
-            eyebrow="Who it is for"
-            title="Four organizational contexts. One practical focus."
-            description="The security-training service is designed for organizational and group learning contexts rather than functioning as the public course catalogue."
-          />
-
+        <Container>
           <div
             className={
-              styles.audienceIndex
+              styles.frame
             }
-            data-security-training-ui="audience-index"
+            data-security-training-frame="audiences"
           >
-            {
-              audiences.map(
-                (
-                  audience
-                ) => (
-                  <div
-                    className={
-                      styles.audienceRow
-                    }
-                    data-security-training-audience
-                    key={
-                      audience.number
-                    }
-                  >
-                    <span
-                      className={
-                        styles.audienceNumber
-                      }
-                    >
-                      {
-                        audience.number
-                      }
-                    </span>
+            <SectionHeading
+              eyebrow="01 · Who it is for"
+              title="Four organizational contexts. One practical focus."
+            />
 
-                    <span
-                      className={
-                        styles.audienceCode
-                      }
-                    >
-                      {
-                        audience.code
-                      }
-                    </span>
 
-                    <h3>
-                      {
+            <div
+              className={
+                styles.audienceList
+              }
+              data-security-training-ui="audience-list"
+            >
+              {
+                audiences.map(
+                  (
+                    audience
+                  ) => (
+                    <article
+                      className={
+                        styles.audienceRow
+                      }
+                      data-security-training-audience
+                      key={
                         audience.title
                       }
-                    </h3>
-
-                    <p>
-                      {
-                        audience.description
-                      }
-                    </p>
-
-                    <span
-                      className={
-                        styles.audienceSignal
-                      }
-                      aria-hidden="true"
                     >
-                      ●
-                    </span>
-                  </div>
+                      <h3>
+                        {
+                          audience.title
+                        }
+                      </h3>
+
+
+                      <p>
+                        {
+                          audience.description
+                        }
+                      </p>
+                    </article>
+                  )
                 )
-              )
-            }
-          </div>
-
-          <div
-            className={
-              styles.principleRail
-            }
-          >
-            {
-              principles.map(
-                (
-                  principle,
-                  index
-                ) => (
-                  <div
-                    key={
-                      principle.code
-                    }
-                  >
-                    <span>
-                      {
-                        String(
-                          index + 1
-                        ).padStart(
-                          2,
-                          "0"
-                        )
-                      }
-                    </span>
-
-                    <small>
-                      {
-                        principle.code
-                      }
-                    </small>
-
-                    <strong>
-                      {
-                        principle.title
-                      }
-                    </strong>
-
-                    <p>
-                      {
-                        principle.description
-                      }
-                    </p>
-                  </div>
-                )
-              )
-            }
+              }
+            </div>
           </div>
         </Container>
       </section>
 
 
       {/* ================================================================
-          02 — TRAINING ARCHITECTURE
+          TRAINING ARCHITECTURE
          ================================================================ */}
 
       <section
         className={
-          `${styles.section} ${styles.sectionAlt}`
+          `${styles.section} ${styles.architectureSection}`
         }
         data-security-training-section="architecture"
       >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
-          <SectionHeading
-            number="02"
-            eyebrow="Training architecture"
-            title="Move from audience context into technical practice."
-            description="The training experience is organized around understanding the learning context, shaping the session, practicing the technical material and reviewing the reasoning behind the work."
-          />
-
+        <Container>
           <div
             className={
-              styles.learningSystem
+              styles.frame
             }
-            data-security-training-ui="learning-system"
+            data-security-training-frame="architecture"
           >
-            <div
-              className={
-                styles.learningAxis
-              }
-              aria-hidden="true"
-            >
-              <span>
-                CONTEXT
-              </span>
+            <SectionHeading
+              eyebrow="02 · Training architecture"
+              title="From learning context to technical practice."
+              description="Technical learning centered on doing, testing and understanding. Training focuses on current cybersecurity practice rather than generic awareness material, with skills participants can connect to real technical work."
+            />
 
-              <i />
 
-              <span>
-                DESIGN
-              </span>
+            {/*
+              A concrete training-example block is intentionally omitted here.
 
-              <i />
+              The audit requires an approved subject, intended audience and
+              prerequisites, practical activity, intended learning objective,
+              and source/status before that content can be published.
+            */}
 
-              <span>
-                PRACTICE
-              </span>
-
-              <i />
-
-              <span>
-                REVIEW
-              </span>
-            </div>
 
             <ol
               className={
-                styles.learningSteps
+                styles.stageGrid
               }
+              data-security-training-ui="learning-system"
+              aria-label="Training architecture"
             >
               {
                 learningArchitecture.map(
                   (
-                    step
+                    stage
                   ) => (
                     <li
                       className={
-                        styles.learningStep
+                        styles.stage
                       }
                       data-security-training-step
                       key={
-                        step.number
+                        stage.number
                       }
                     >
-                      <div
+                      <span
                         className={
-                          styles.stepMeta
+                          styles.stageNumber
                         }
+                        aria-hidden="true"
                       >
-                        <span>
-                          {
-                            step.number
-                          }
-                        </span>
+                        {
+                          stage.number
+                        }
+                      </span>
 
-                        <small>
-                          {
-                            step.code
-                          }
-                        </small>
-                      </div>
 
                       <h3>
                         {
-                          step.title
+                          stage.title
                         }
                       </h3>
 
+
                       <p>
                         {
-                          step.description
+                          stage.description
                         }
                       </p>
-
-                      <i
-                        className={
-                          styles.stepNode
-                        }
-                        aria-hidden="true"
-                      />
                     </li>
                   )
                 )
               }
             </ol>
           </div>
-
-          <div
-            className={
-              styles.architectureStatement
-            }
-          >
-            <span>
-              PRACTICE
-            </span>
-
-            <p>
-              The emphasis remains on practical cybersecurity skill development rather than passive attendance.
-            </p>
-          </div>
         </Container>
       </section>
 
 
       {/* ================================================================
-          03 — TWO TRAINING JOURNEYS
-         ================================================================ */}
-
-      <section
-        className={
-          styles.section
-        }
-        data-security-training-section="journeys"
-      >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
-          <SectionHeading
-            number="03"
-            eyebrow="Training journeys"
-            title="Organization-facing training and public programs are different paths."
-            description="No Breach separates the security-training service from the public Training Hub so organizations and individual learners reach the right experience."
-          />
-
-          <div
-            className={
-              styles.journeySystem
-            }
-            data-security-training-ui="journey-system"
-          >
-            <div
-              className={
-                styles.journeyOrigin
-              }
-              aria-hidden="true"
-            >
-              <span>
-                NO BREACH
-              </span>
-
-              <strong>
-                TRAINING
-              </strong>
-
-              <i />
-            </div>
-
-            <div
-              className={
-                styles.journeyBranch
-              }
-            >
-              <div
-                className={
-                  styles.journeyLabel
-                }
-              >
-                <span>
-                  01
-                </span>
-
-                <small>
-                  SERVICE
-                </small>
-              </div>
-
-              <div
-                className={
-                  styles.journeyCopy
-                }
-              >
-                <p>
-                  Organization-facing
-                </p>
-
-                <h3>
-                  Security Training Service
-                </h3>
-
-                <p>
-                  For companies, universities, communities and teams looking for an organization-facing cybersecurity training engagement.
-                </p>
-
-                <Link
-                  href="/contact"
-                  className={
-                    styles.journeyAction
-                  }
-                >
-                  Discuss training
-
-                  <Arrow />
-                </Link>
-              </div>
-            </div>
-
-            <div
-              className={
-                styles.journeyBranch
-              }
-            >
-              <div
-                className={
-                  styles.journeyLabel
-                }
-              >
-                <span>
-                  02
-                </span>
-
-                <small>
-                  PUBLIC
-                </small>
-              </div>
-
-              <div
-                className={
-                  styles.journeyCopy
-                }
-              >
-                <p>
-                  Individual programs
-                </p>
-
-                <h3>
-                  Training Hub
-                </h3>
-
-                <p>
-                  Public learner programs live in the Training Hub rather than inside the commercial security-training service.
-                </p>
-
-                <Link
-                  href="/training"
-                  className={
-                    styles.journeyAction
-                  }
-                >
-                  Explore Training Hub
-
-                  <Arrow />
-                </Link>
-              </div>
-            </div>
-          </div>
-
-          <div
-            className={
-              styles.journeyFooter
-            }
-          >
-            <span>
-              ORGANIZATION
-            </span>
-
-            <i />
-
-            <span>
-              /services/security-training
-            </span>
-
-            <strong>
-              ≠
-            </strong>
-
-            <span>
-              /training
-            </span>
-
-            <i />
-
-            <span>
-              PUBLIC PROGRAMS
-            </span>
-          </div>
-        </Container>
-      </section>
-
-
-      {/* ================================================================
-          CTA
+          TRAINING DISCUSSION
          ================================================================ */}
 
       <section
@@ -1014,22 +481,12 @@ export default function SecurityTrainingPage() {
         }
         data-security-training-section="cta"
       >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
+        <Container>
           <div
             className={
-              styles.ctaRule
+              `${styles.frame} ${styles.ctaLayout}`
             }
-          />
-
-          <div
-            className={
-              styles.ctaLayout
-            }
+            data-security-training-frame="cta"
           >
             <div>
               <p
@@ -1037,17 +494,15 @@ export default function SecurityTrainingPage() {
                   styles.sectionEyebrow
                 }
               >
-                <span>
-                  EDU
-                </span>
-
-                Security Training
+                Security training
               </p>
+
 
               <h2>
                 Build practical security capability with your group.
               </h2>
             </div>
+
 
             <div
               className={
@@ -1055,8 +510,20 @@ export default function SecurityTrainingPage() {
               }
             >
               <p>
-                Tell No Breach about the organization, audience and training context you want to discuss.
+                Tell No Breach about the organization, audience and training
+                context you want to discuss.
               </p>
+
+
+              <p
+                className={
+                  styles.ctaSupport
+                }
+              >
+                Include the audience&apos;s technical background and the
+                security capability you want to develop.
+              </p>
+
 
               <div
                 className={
@@ -1074,13 +541,14 @@ export default function SecurityTrainingPage() {
                   <Arrow />
                 </Link>
 
+
                 <Link
                   href="/training"
                   className={
                     styles.textAction
                   }
                 >
-                  Public Training Hub
+                  Explore Training Hub
 
                   <Arrow />
                 </Link>
