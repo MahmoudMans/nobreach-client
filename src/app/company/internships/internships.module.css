@@ -2355,3 +2355,86 @@ li {
   }
 
 }
+
+
+/* ==========================================================================
+   NB_INTERNSHIPS_LOCAL_ACCEPTANCE_V24
+
+   Final local corrections from the latest acceptance review.
+
+   INT-14:
+   - remove inherited ordered-list inset from the method grid
+   - retain a 1px perimeter and 1px internal dividers
+   - keep equivalent cell padding
+
+   INT-15:
+   - retain a compact 24px method tail
+   - restore deliberate incoming spacing to the complete closing group
+   ========================================================================== */
+
+
+/* INT-14 — GRID EDGE ------------------------------------------------- */
+
+
+:global(#main-content) .methodGrid {
+  margin:
+    0;
+
+  margin-inline-start:
+    0;
+
+  padding:
+    1px;
+
+  padding-left:
+    1px;
+
+  padding-inline-start:
+    1px;
+
+  list-style:
+    none;
+}
+
+
+.methodStep {
+  padding:
+    32px;
+}
+
+
+/* INT-15 — METHOD → CLOSING ----------------------------------------- */
+
+
+.methodSection {
+  padding-bottom:
+    24px;
+}
+
+
+.ctaLayout {
+  padding-top:
+    32px;
+}
+
+
+@media (max-width: 768px) {
+
+  .methodStep {
+    padding:
+      24px;
+  }
+
+
+  .methodSection {
+    padding-bottom:
+      24px;
+  }
+
+
+  .ctaLayout {
+    padding-top:
+      24px;
+  }
+
+}

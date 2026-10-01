@@ -145,6 +145,14 @@ test(
     page
   }) => {
 
+    await page.setViewportSize({
+      width:
+        1440,
+      height:
+        900
+    });
+
+
     await page.goto(
       "/company/internships"
     );
@@ -166,29 +174,62 @@ test(
       ).first();
 
 
-    const [
-      instructionBox,
-      projectBox
-    ] =
-      await Promise.all([
-        instruction.boundingBox(),
-        firstProject.boundingBox()
-      ]);
+    await instruction.scrollIntoViewIfNeeded();
+
+    await expect(
+      instruction
+    ).toBeVisible();
+
+
+    const instructionDocumentY =
+      await instruction.evaluate(
+        element => {
+
+          const rect =
+            element
+              .getBoundingClientRect();
+
+
+          return (
+            rect.top
+            +
+            window.scrollY
+          );
+
+        }
+      );
+
+
+    await firstProject.scrollIntoViewIfNeeded();
+
+    await expect(
+      firstProject
+    ).toBeVisible();
+
+
+    const firstProjectDocumentY =
+      await firstProject.evaluate(
+        element => {
+
+          const rect =
+            element
+              .getBoundingClientRect();
+
+
+          return (
+            rect.top
+            +
+            window.scrollY
+          );
+
+        }
+      );
 
 
     expect(
-      instructionBox
-    ).not.toBeNull();
-
-    expect(
-      projectBox
-    ).not.toBeNull();
-
-
-    expect(
-      instructionBox!.y
+      instructionDocumentY
     ).toBeLessThan(
-      projectBox!.y
+      firstProjectDocumentY
     );
 
   }
@@ -888,7 +929,7 @@ test(
 
           const projectsHeading =
             projects?.querySelector(
-              'header'
+              "header"
             );
 
           const lastProject =
@@ -898,7 +939,7 @@ test(
 
           const methodHeading =
             method?.querySelector(
-              'header'
+              "header"
             );
 
           const methodGrid =
@@ -908,8 +949,27 @@ test(
 
           const ctaHeading =
             cta?.querySelector(
-              'h2'
+              "h2"
             );
+
+
+          const ctaParagraph =
+            Array
+              .from(
+                cta?.querySelectorAll(
+                  "p"
+                )
+                ??
+                []
+              )
+              .find(
+                element =>
+                  element
+                    .textContent
+                    ?.includes(
+                      "Visit Careers for role information"
+                    )
+              );
 
 
           if (
@@ -932,6 +992,8 @@ test(
             !methodGrid
             ||
             !ctaHeading
+            ||
+            !ctaParagraph
           ) {
 
             throw new Error(
@@ -958,19 +1020,35 @@ test(
             heroMeta.getBoundingClientRect();
 
           const projectsHeadingRect =
-            projectsHeading.getBoundingClientRect();
+            projectsHeading
+              .getBoundingClientRect();
 
           const lastProjectRect =
-            lastProject.getBoundingClientRect();
+            lastProject
+              .getBoundingClientRect();
 
           const methodHeadingRect =
-            methodHeading.getBoundingClientRect();
+            methodHeading
+              .getBoundingClientRect();
 
           const methodGridRect =
-            methodGrid.getBoundingClientRect();
+            methodGrid
+              .getBoundingClientRect();
 
           const ctaHeadingRect =
-            ctaHeading.getBoundingClientRect();
+            ctaHeading
+              .getBoundingClientRect();
+
+          const ctaParagraphRect =
+            ctaParagraph
+              .getBoundingClientRect();
+
+
+          const earliestClosingTop =
+            Math.min(
+              ctaHeadingRect.top,
+              ctaParagraphRect.top
+            );
 
 
           return {
@@ -1008,7 +1086,7 @@ test(
               )
               +
               (
-                ctaHeadingRect.top
+                earliestClosingTop
                 -
                 ctaRect.top
               )
@@ -1018,16 +1096,36 @@ test(
       );
 
 
+    expect(
+      measurements.heroToProjects,
+      "heroToProjects"
+    ).toBeGreaterThanOrEqual(
+      0
+    );
+
+
+    expect(
+      measurements.heroToProjects,
+      "heroToProjects"
+    ).toBeLessThanOrEqual(
+      110
+    );
+
+
     for (
-      const [
-        name,
-        value
-      ]
+      const name
       of
-      Object.entries(
-        measurements
-      )
+      [
+        "projectsToMethod",
+        "methodToCta"
+      ] as const
     ) {
+
+      const value =
+        measurements[
+          name
+        ];
+
 
       expect(
         value,
@@ -1227,3 +1325,498 @@ for (
   );
 
 }
+
+
+test(
+  "V24 method grid has a thin complete perimeter",
+  async ({
+    page
+  }) => {
+
+    await page.setViewportSize({
+      width:
+        1440,
+      height:
+        900
+    });
+
+
+    await page.goto(
+      "/company/internships"
+    );
+
+
+    const grid =
+      page.locator(
+        '[data-internship-ui="method-grid"]'
+      );
+
+
+    await grid.scrollIntoViewIfNeeded();
+
+    await expect(
+      grid
+    ).toBeVisible();
+
+
+    const geometry =
+      await grid.evaluate(
+        element => {
+
+          const style =
+            getComputedStyle(
+              element
+            );
+
+          const rect =
+            element
+              .getBoundingClientRect();
+
+          const cells =
+            Array.from(
+              element.children
+            );
+
+          const first =
+            cells[0]
+              ?.getBoundingClientRect();
+
+          const fourth =
+            cells[3]
+              ?.getBoundingClientRect();
+
+
+          return {
+            paddingTop:
+              parseFloat(
+                style.paddingTop
+              ),
+
+            paddingRight:
+              parseFloat(
+                style.paddingRight
+              ),
+
+            paddingBottom:
+              parseFloat(
+                style.paddingBottom
+              ),
+
+            paddingLeft:
+              parseFloat(
+                style.paddingLeft
+              ),
+
+            paddingInlineStart:
+              parseFloat(
+                style.paddingInlineStart
+              ),
+
+            firstInset:
+              first
+                ? first.left - rect.left
+                : null,
+
+            fourthInset:
+              fourth
+                ? fourth.left - rect.left
+                : null,
+
+            cellPadding:
+              cells.map(
+                cell =>
+                  parseFloat(
+                    getComputedStyle(
+                      cell
+                    ).paddingLeft
+                  )
+              )
+          };
+
+        }
+      );
+
+
+    expect(
+      geometry.paddingTop
+    ).toBeCloseTo(
+      1,
+      1
+    );
+
+    expect(
+      geometry.paddingRight
+    ).toBeCloseTo(
+      1,
+      1
+    );
+
+    expect(
+      geometry.paddingBottom
+    ).toBeCloseTo(
+      1,
+      1
+    );
+
+    expect(
+      geometry.paddingLeft
+    ).toBeCloseTo(
+      1,
+      1
+    );
+
+    expect(
+      geometry.paddingInlineStart
+    ).toBeCloseTo(
+      1,
+      1
+    );
+
+
+    expect(
+      geometry.firstInset
+    ).not.toBeNull();
+
+    expect(
+      geometry.fourthInset
+    ).not.toBeNull();
+
+
+    expect(
+      geometry.firstInset!
+    ).toBeGreaterThanOrEqual(
+      0.5
+    );
+
+    expect(
+      geometry.firstInset!
+    ).toBeLessThanOrEqual(
+      2.5
+    );
+
+    expect(
+      geometry.fourthInset!
+    ).toBeGreaterThanOrEqual(
+      0.5
+    );
+
+    expect(
+      geometry.fourthInset!
+    ).toBeLessThanOrEqual(
+      2.5
+    );
+
+
+    expect(
+      new Set(
+        geometry.cellPadding
+      ).size
+    ).toBe(
+      1
+    );
+
+
+    expect(
+      geometry.cellPadding[0]
+    ).toBeCloseTo(
+      32,
+      1
+    );
+
+  }
+);
+
+
+test(
+  "V24 closing section has deliberate wide incoming space",
+  async ({
+    page
+  }) => {
+
+    await page.setViewportSize({
+      width:
+        1440,
+      height:
+        900
+    });
+
+
+    await page.goto(
+      "/company/internships"
+    );
+
+
+    const method =
+      page.locator(
+        '[data-internship-section="method"]'
+      );
+
+    const grid =
+      page.locator(
+        '[data-internship-ui="method-grid"]'
+      );
+
+    const cta =
+      page.locator(
+        '[data-internship-section="cta"]'
+      );
+
+    const layout =
+      cta.locator(
+        'div[class*="ctaLayout"]'
+      );
+
+    const paragraph =
+      cta.getByText(
+        "Visit Careers for role information, explore Training, or contact No Breach with a question.",
+        {
+          exact:
+            true
+        }
+      );
+
+
+    await paragraph.scrollIntoViewIfNeeded();
+
+    await expect(
+      paragraph
+    ).toBeVisible();
+
+
+    const [
+      methodBox,
+      gridBox,
+      layoutBox,
+      paragraphBox
+    ] =
+      await Promise.all([
+        method.boundingBox(),
+        grid.boundingBox(),
+        layout.boundingBox(),
+        paragraph.boundingBox()
+      ]);
+
+
+    expect(
+      methodBox
+    ).not.toBeNull();
+
+    expect(
+      gridBox
+    ).not.toBeNull();
+
+    expect(
+      layoutBox
+    ).not.toBeNull();
+
+    expect(
+      paragraphBox
+    ).not.toBeNull();
+
+
+    const methodTail =
+      methodBox!.y
+      +
+      methodBox!.height
+      -
+      (
+        gridBox!.y
+        +
+        gridBox!.height
+      );
+
+
+    const earliestClosingInset =
+      paragraphBox!.y
+      -
+      layoutBox!.y;
+
+
+    expect(
+      methodTail
+    ).toBeGreaterThanOrEqual(
+      20
+    );
+
+    expect(
+      methodTail
+    ).toBeLessThanOrEqual(
+      30
+    );
+
+
+    expect(
+      earliestClosingInset
+    ).toBeGreaterThanOrEqual(
+      28
+    );
+
+
+    expect(
+      earliestClosingInset
+    ).toBeLessThan(
+      72
+    );
+
+  }
+);
+
+
+test(
+  "V24 method and closing relationship remains deliberate on compact screens",
+  async ({
+    page
+  }) => {
+
+    await page.setViewportSize({
+      width:
+        390,
+      height:
+        844
+    });
+
+
+    await page.goto(
+      "/company/internships"
+    );
+
+
+    const cta =
+      page.locator(
+        '[data-internship-section="cta"]'
+      );
+
+    const layout =
+      cta.locator(
+        'div[class*="ctaLayout"]'
+      );
+
+
+    await layout.scrollIntoViewIfNeeded();
+
+    await expect(
+      layout
+    ).toBeVisible();
+
+
+    const result =
+      await page.evaluate(
+        () => {
+
+          const gridElement =
+            document.querySelector(
+              '[data-internship-ui="method-grid"]'
+            );
+
+          const ctaElement =
+            document.querySelector(
+              '[data-internship-section="cta"]'
+            );
+
+          const layoutElement =
+            ctaElement?.querySelector(
+              'div[class*="ctaLayout"]'
+            );
+
+          if (
+            !gridElement
+            ||
+            !layoutElement
+          ) {
+            throw new Error(
+              "COMPACT_GEOMETRY_TARGET_MISSING"
+            );
+          }
+
+
+          const gridStyle =
+            getComputedStyle(
+              gridElement
+            );
+
+          const firstCell =
+            gridElement
+              .querySelector(
+                ":scope > li"
+              );
+
+          const cellStyle =
+            firstCell
+              ? getComputedStyle(
+                  firstCell
+                )
+              : null;
+
+          const layoutStyle =
+            getComputedStyle(
+              layoutElement
+            );
+
+
+          return {
+            gridPaddingLeft:
+              parseFloat(
+                gridStyle.paddingLeft
+              ),
+
+            cellPaddingLeft:
+              cellStyle
+                ? parseFloat(
+                    cellStyle.paddingLeft
+                  )
+                : null,
+
+            closingPaddingTop:
+              parseFloat(
+                layoutStyle.paddingTop
+              ),
+
+            scrollWidth:
+              document
+                .documentElement
+                .scrollWidth,
+
+            clientWidth:
+              document
+                .documentElement
+                .clientWidth
+          };
+
+        }
+      );
+
+
+    expect(
+      result.gridPaddingLeft
+    ).toBeCloseTo(
+      1,
+      1
+    );
+
+
+    expect(
+      result.cellPaddingLeft
+    ).toBeCloseTo(
+      24,
+      1
+    );
+
+
+    expect(
+      result.closingPaddingTop
+    ).toBeCloseTo(
+      24,
+      1
+    );
+
+
+    expect(
+      result.scrollWidth
+    ).toBeLessThanOrEqual(
+      result.clientWidth
+      +
+      1
+    );
+
+  }
+);
