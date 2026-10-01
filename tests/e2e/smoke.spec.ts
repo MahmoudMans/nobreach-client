@@ -89,7 +89,7 @@ test(
         {
           level: 1,
           name:
-            /see the system from the attacker/i
+            /see the system from an attacker/i
         }
       )
     ).toBeVisible();

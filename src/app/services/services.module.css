@@ -1,214 +1,240 @@
 /* ==========================================================================
    NB_SERVICES_DESIGN_AUTHORITY_V10
+   Compatibility marker for the established Services design authority.
 
-   No Breach Concept & Guidelines — Nouha Ben Brahim
-
-   Slightly edgy / Professional / Sleek
-   Cold + neutral
-   Dark-mode base
-   High contrast
-   Editorial layouts instead of repeated card walls
+   NB_SERVICES_AUDIT_V11
+   Audit-led service discovery architecture.
    ========================================================================== */
-
-/* NB_SERVICES_V10_NAV_RHYTHM_RECOVERY_V3 */
 
 
 .page {
-  --nb-services-bg:
-    #08090c;
+  --srv-canvas:
+    #080b10;
 
-  --nb-services-alt:
-    #0a0d12;
+  --srv-surface:
+    #0c121b;
 
-  --nb-services-surface:
-    #0d1117;
+  --srv-raised:
+    #111b28;
 
-  --nb-services-text:
-    #f5f7fa;
+  --srv-hover:
+    #182536;
 
-  --nb-services-muted:
-    rgba(
-      245,
-      247,
-      250,
-      0.62
-    );
+  --srv-text:
+    #f3f6fb;
 
-  --nb-services-faint:
-    rgba(
-      245,
-      247,
-      250,
-      0.4
-    );
+  --srv-secondary:
+    #b7c2d0;
 
-  --nb-services-line:
-    rgba(
-      255,
-      255,
-      255,
-      0.095
-    );
+  --srv-metadata:
+    #94a3b8;
 
-  --nb-services-line-soft:
-    rgba(
-      255,
-      255,
-      255,
-      0.055
-    );
+  --srv-cyan:
+    #a5e8f3;
 
-  --nb-services-blue:
-    #83b3d7;
+  --srv-blue:
+    #86bde0;
 
-  --nb-services-cyan:
-    #a1e2f0;
+  --srv-violet:
+    #b59ae7;
 
-  --nb-services-violet:
-    #7e60b9;
+  --srv-border:
+    #273446;
 
-  --nb-services-purple:
-    #6333c6;
+  --srv-control-border:
+    #63758c;
+
+  min-width:
+    0;
 
   overflow:
     clip;
 
-  background:
-    var(--nb-services-bg);
-
   color:
-    var(--nb-services-text);
+    var(
+      --srv-text
+    );
+
+  background:
+    var(
+      --srv-canvas
+    );
 }
 
 
-.eyebrow {
+/* SHARED TEXT -------------------------------------------------------- */
+
+
+.eyebrow,
+.sectionEyebrow {
   margin:
     0;
 
   color:
-    var(--nb-services-cyan);
+    var(
+      --srv-metadata
+    );
 
   font-size:
-    0.7rem;
+    0.86rem;
 
   font-weight:
-    660;
+    650;
 
   letter-spacing:
-    0.13em;
+    0.03em;
 
   line-height:
-    1.3;
-
-  text-transform:
-    uppercase;
+    1.5;
 }
+
+
+.sectionHeader {
+  max-width:
+    48rem;
+
+  margin-bottom:
+    2rem;
+}
+
+
+.sectionHeader h2,
+.splitIntro h2,
+.featuredIntro h2,
+.consultationInner h2 {
+  margin:
+    0.65rem
+    0
+    0;
+
+  color:
+    var(
+      --srv-text
+    );
+
+  font-size:
+    clamp(
+      2rem,
+      3.6vw,
+      2.75rem
+    );
+
+  font-weight:
+    640;
+
+  letter-spacing:
+    -0.045em;
+
+  line-height:
+    1.08;
+}
+
+
+.sectionHeader > p:last-child,
+.splitIntro > p:last-child,
+.featuredIntro > p:last-of-type,
+.consultationInner > p:last-of-type {
+  max-width:
+    44rem;
+
+  margin:
+    0.9rem
+    0
+    0;
+
+  color:
+    var(
+      --srv-secondary
+    );
+
+  font-size:
+    clamp(
+      1rem,
+      1.35vw,
+      1.125rem
+    );
+
+  line-height:
+    1.65;
+}
+
+
+/* INTRODUCTION ------------------------------------------------------- */
 
 
 .hero {
   padding:
     clamp(
-      2.75rem,
-      5vw,
-      4.75rem
+      3.25rem,
+      6vw,
+      5rem
     )
     0
-    clamp(
-      4rem,
-      7vw,
-      6.5rem
-    );
-
-  border-bottom:
-    1px solid
-    var(--nb-services-line);
-
-  background:
-    var(--nb-services-bg);
+    2.5rem;
 }
 
 
-.heroGrid {
-  display:
-    grid;
-
-  grid-template-columns:
-    minmax(
-      0,
-      1.38fr
-    )
-    minmax(
-      300px,
-      0.62fr
-    );
-
-  gap:
-    clamp(
-      3rem,
-      8vw,
-      8rem
-    );
-
-  align-items:
-    end;
-}
-
-
-.heroCopy {
+.heroInner {
   max-width:
-    900px;
+    65rem;
 }
 
 
-.heroCopy h1 {
+.heroTitle {
   max-width:
-    900px;
+    17ch;
 
   margin:
-    1.1rem
+    0.75rem
     0
-    1.5rem;
+    0;
 
   color:
-    var(--nb-services-text);
+    var(
+      --srv-text
+    );
 
   font-size:
     clamp(
-      3rem,
-      6.3vw,
-      6rem
+      3.5rem,
+      6vw,
+      4.75rem
     );
 
   font-weight:
-    490;
-
-  line-height:
-    0.94;
+    650;
 
   letter-spacing:
-    -0.064em;
+    -0.06em;
+
+  line-height:
+    0.98;
 }
 
 
 .heroLead {
   max-width:
-    63ch;
+    52rem;
 
   margin:
+    1rem
+    0
     0;
 
   color:
-    var(--nb-services-muted);
+    var(
+      --srv-secondary
+    );
 
   font-size:
     clamp(
-      1rem,
-      1.4vw,
-      1.13rem
+      1.05rem,
+      1.55vw,
+      1.22rem
     );
 
   line-height:
-    1.72;
+    1.65;
 }
 
 
@@ -223,18 +249,17 @@
     0.75rem;
 
   margin-top:
-    2rem;
+    1.5rem;
 }
 
 
 .primaryAction,
-.secondaryAction,
-.consultationAction {
-  min-height:
-    46px;
-
+.secondaryAction {
   display:
     inline-flex;
+
+  min-height:
+    2.75rem;
 
   align-items:
     center;
@@ -243,311 +268,439 @@
     center;
 
   gap:
-    0.7rem;
+    0.65rem;
 
   padding:
-    0.78rem
-    1.1rem;
+    0.7rem
+    1rem;
 
   border:
-    1px solid
-    var(--nb-services-cyan);
+    1px
+    solid
+    var(
+      --srv-control-border
+    );
+
+  border-radius:
+    0.35rem;
+
+  font-size:
+    0.94rem;
+
+  font-weight:
+    680;
+
+  line-height:
+    1.2;
 
   text-decoration:
     none;
 
-  font-size:
-    0.86rem;
-
-  font-weight:
-    650;
-
-  line-height:
-    1;
-}
-
-
-.primaryAction,
-.consultationAction {
-  background:
-    var(--nb-services-cyan);
-
-  color:
-    #08090c;
-}
-
-
-.secondaryAction {
-  border-color:
-    var(--nb-services-line);
-
-  background:
-    transparent;
-
-  color:
-    var(--nb-services-text);
-}
-
-
-.primaryAction span,
-.secondaryAction span,
-.consultationAction span {
   transition:
-    transform
-    160ms
+    background-color
+    120ms
+    ease,
+    color
+    120ms
+    ease,
+    border-color
+    120ms
     ease;
 }
 
 
-.heroAside {
-  min-height:
-    310px;
+.primaryAction {
+  border-color:
+    var(
+      --srv-cyan
+    );
 
-  display:
-    flex;
+  color:
+    #081017;
 
-  flex-direction:
-    column;
+  background:
+    var(
+      --srv-cyan
+    );
+}
+
+
+.primaryAction:hover {
+  border-color:
+    #c5f2f8;
+
+  background:
+    #c5f2f8;
+}
+
+
+.secondaryAction {
+  color:
+    var(
+      --srv-cyan
+    );
+
+  background:
+    transparent;
+}
+
+
+.secondaryAction:hover {
+  border-color:
+    var(
+      --srv-cyan
+    );
+
+  background:
+    var(
+      --srv-hover
+    );
+}
+
+
+.primaryAction:focus-visible,
+.secondaryAction:focus-visible,
+.serviceAction:focus-visible,
+.serviceSecondaryAction:focus-visible,
+.consultingJump:focus-visible,
+.inlineAction:focus-visible {
+  outline:
+    2px
+    solid
+    var(
+      --srv-cyan
+    );
+
+  outline-offset:
+    3px;
+}
+
+
+/* SERVICE DIRECTORY ------------------------------------------------- */
+
+
+.directory {
+  scroll-margin-top:
+    6rem;
 
   padding:
-    1.3rem
+    2.5rem
     0
+    4.5rem;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --srv-border
+    );
+}
+
+
+.serviceList {
+  margin:
+    0;
+
+  padding:
     0;
 
   border-top:
-    1px solid
-    rgba(
-      161,
-      226,
-      240,
-      0.42
+    1px
+    solid
+    var(
+      --srv-border
     );
 
-  border-bottom:
-    1px solid
-    var(--nb-services-line);
+  list-style:
+    none;
 }
 
 
-.heroAsideHeader {
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    space-between;
-
-  gap:
-    1rem;
-
-  color:
-    var(--nb-services-faint);
-
-  font-size:
-    0.66rem;
-
-  font-weight:
-    650;
-
-  letter-spacing:
-    0.1em;
-}
-
-
-.heroAside > p {
-  max-width:
-    37ch;
-
-  margin:
-    2rem
-    0
-    auto;
-
-  color:
-    var(--nb-services-text);
-
-  font-size:
-    1.15rem;
-
-  line-height:
-    1.55;
-}
-
-
-.signalRail {
-  display:
-    grid;
-
-  grid-template-columns:
-    1fr
-    1fr
-    1fr;
-
-  gap:
-    0.35rem;
-
-  margin:
-    2rem
-    0
-    1.4rem;
-}
-
-
-.signalRail span {
-  height:
-    2px;
-
-  background:
-    var(--nb-services-line);
-}
-
-
-.signalRail span:nth-child(1) {
-  background:
-    var(--nb-services-cyan);
-}
-
-
-.signalRail span:nth-child(2) {
-  background:
-    var(--nb-services-blue);
-}
-
-
-.signalRail span:nth-child(3) {
-  background:
-    var(--nb-services-purple);
-}
-
-
-.heroMeta {
-  margin:
+:global(#main-content)
+.serviceList {
+  margin-left:
     0;
 
-  padding:
+  padding-left:
     0;
 }
 
 
-.heroMeta div {
+:global(#main-content)
+.serviceList
+li
++
+li {
+  margin-top:
+    0;
+}
+
+
+.serviceRow {
   display:
     grid;
 
   grid-template-columns:
-    82px
+    3.5rem
     minmax(
       0,
       1fr
     );
 
   gap:
-    1rem;
+    1.25rem;
 
-  padding:
-    0.75rem
+  margin:
     0;
 
-  border-top:
-    1px solid
-    var(--nb-services-line-soft);
+  padding:
+    1.75rem
+    0.75rem;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --srv-border
+    );
+
+  background:
+    transparent;
+
+  transition:
+    background-color
+    120ms
+    ease;
 }
 
 
-.heroMeta dt {
+.serviceRow:hover {
+  background:
+    var(
+      --srv-hover
+    );
+}
+
+
+.serviceNumber {
+  padding-top:
+    0.15rem;
+
   color:
-    var(--nb-services-faint);
+    var(
+      --srv-violet
+    );
 
   font-size:
-    0.65rem;
+    0.86rem;
 
-  font-weight:
-    650;
-
-  letter-spacing:
-    0.08em;
-
-  text-transform:
-    uppercase;
+  font-variant-numeric:
+    tabular-nums;
 }
 
 
-.heroMeta dd {
+.serviceBody {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      14rem,
+      0.9fr
+    )
+    minmax(
+      0,
+      1.1fr
+    );
+
+  min-width:
+    0;
+
+  gap:
+    clamp(
+      1.5rem,
+      4vw,
+      4rem
+    );
+}
+
+
+.serviceIdentity,
+.serviceDetail {
+  min-width:
+    0;
+}
+
+
+.serviceCategory {
   margin:
     0;
 
   color:
-    var(--nb-services-text);
+    var(
+      --srv-metadata
+    );
 
   font-size:
-    0.84rem;
+    0.86rem;
+
+  font-weight:
+    600;
 
   line-height:
     1.45;
 }
 
 
-.consulting,
-.portfolio,
-.pentest,
-.training,
-.consultation {
-  padding:
-    clamp(
-      4rem,
-      7vw,
-      6.5rem
-    )
+.serviceIdentity h3 {
+  margin:
+    0.45rem
+    0
     0;
-}
 
+  color:
+    var(
+      --srv-text
+    );
 
-.consulting,
-.pentest,
-.consultation {
-  background:
-    var(--nb-services-alt);
-}
-
-
-.portfolio,
-.training {
-  background:
-    var(--nb-services-bg);
-}
-
-
-.sectionRule {
-  height:
-    1px;
-
-  margin-bottom:
+  font-size:
     clamp(
-      2rem,
-      4vw,
-      3.5rem
+      1.5rem,
+      2.5vw,
+      1.875rem
     );
 
-  background:
-    linear-gradient(
-      90deg,
-      var(--nb-services-cyan),
-      rgba(
-        161,
-        226,
-        240,
-        0.12
-      )
-      42%,
-      transparent
-      78%
+  font-weight:
+    620;
+
+  letter-spacing:
+    -0.035em;
+
+  line-height:
+    1.15;
+}
+
+
+.serviceDescription {
+  max-width:
+    46rem;
+
+  margin:
+    0;
+
+  color:
+    var(
+      --srv-secondary
+    );
+
+  font-size:
+    1rem;
+
+  line-height:
+    1.62;
+}
+
+
+.serviceActions {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    0.75rem
+    1.25rem;
+
+  margin-top:
+    0.9rem;
+}
+
+
+.serviceAction,
+.serviceSecondaryAction,
+.consultingJump,
+.inlineAction {
+  display:
+    inline-flex;
+
+  min-height:
+    2.75rem;
+
+  align-items:
+    center;
+
+  gap:
+    0.55rem;
+
+  color:
+    var(
+      --srv-cyan
+    );
+
+  font-size:
+    0.9rem;
+
+  font-weight:
+    650;
+
+  text-decoration:
+    none;
+}
+
+
+.serviceSecondaryAction {
+  color:
+    var(
+      --srv-secondary
     );
 }
 
 
-.consultingLayout,
-.pentestLayout {
+.serviceAction:hover,
+.serviceSecondaryAction:hover,
+.consultingJump:hover,
+.inlineAction:hover {
+  color:
+    #c5f2f8;
+}
+
+
+.consultingJump {
+  margin-top:
+    1.5rem;
+}
+
+
+/* CONSULTING --------------------------------------------------------- */
+
+
+.supportingSection {
+  background:
+    var(
+      --srv-surface
+    );
+}
+
+
+.consulting {
+  scroll-margin-top:
+    6rem;
+
+  padding:
+    4.25rem
+    0;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --srv-border
+    );
+}
+
+
+.splitSection {
   display:
     grid;
 
@@ -557,115 +710,26 @@
       0.9fr
     )
     minmax(
-      0,
+      22rem,
       1.1fr
     );
 
   gap:
     clamp(
-      3rem,
-      8vw,
-      8rem
+      2rem,
+      6vw,
+      5rem
     );
-
-  align-items:
-    start;
 }
 
 
-.sectionIntro h2,
-.pentestHeading h2 {
+.splitIntro {
   max-width:
-    700px;
-
-  margin:
-    1rem
-    0
-    0;
-
-  color:
-    var(--nb-services-text);
-
-  font-size:
-    clamp(
-      2.3rem,
-      4.5vw,
-      4.2rem
-    );
-
-  font-weight:
-    495;
-
-  line-height:
-    0.98;
-
-  letter-spacing:
-    -0.055em;
-}
-
-
-.largeCopy {
-  max-width:
-    680px;
-
-  margin:
-    0;
-
-  color:
-    var(--nb-services-text);
-
-  font-size:
-    clamp(
-      1.2rem,
-      2vw,
-      1.65rem
-    );
-
-  font-weight:
-    450;
-
-  line-height:
-    1.55;
-
-  letter-spacing:
-    -0.025em;
+    35rem;
 }
 
 
 .focusList {
-  margin-top:
-    clamp(
-      2rem,
-      4vw,
-      3.2rem
-    );
-}
-
-
-.focusLabel {
-  margin:
-    0
-    0
-    0.8rem;
-
-  color:
-    var(--nb-services-faint);
-
-  font-size:
-    0.68rem;
-
-  font-weight:
-    650;
-
-  letter-spacing:
-    0.1em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.focusList ol {
   margin:
     0;
 
@@ -673,11 +737,34 @@
     0;
 
   border-top:
-    1px solid
-    var(--nb-services-line);
+    1px
+    solid
+    var(
+      --srv-border
+    );
 
   list-style:
     none;
+}
+
+
+:global(#main-content)
+.focusList {
+  margin-left:
+    0;
+
+  padding-left:
+    0;
+}
+
+
+:global(#main-content)
+.focusList
+li
++
+li {
+  margin-top:
+    0;
 }
 
 
@@ -686,937 +773,360 @@
     grid;
 
   grid-template-columns:
-    54px
-    minmax(
-      0,
-      1fr
-    );
-
-  gap:
-    1rem;
-
-  align-items:
-    center;
-
-  min-height:
-    74px;
-
-  padding:
-    0.9rem
-    0;
-
-  border-bottom:
-    1px solid
-    var(--nb-services-line);
-}
-
-
-.focusList li span {
-  color:
-    var(--nb-services-cyan);
-
-  font-size:
-    0.68rem;
-
-  letter-spacing:
-    0.1em;
-}
-
-
-.focusList li strong {
-  color:
-    var(--nb-services-text);
-
-  font-size:
-    1rem;
-
-  font-weight:
-    520;
-
-  line-height:
-    1.5;
-}
-
-
-.sectionHeader {
-  display:
-    grid;
-
-  grid-template-columns:
-    minmax(
-      0,
-      1fr
-    )
-    minmax(
-      260px,
-      0.42fr
-    );
-
-  gap:
-    3rem;
-
-  align-items:
-    end;
-
-  margin-bottom:
-    0;
-
-  padding-bottom:
-    2rem;
-
-  border-bottom:
-    1px solid
-    var(--nb-services-line);
-}
-
-
-.sectionHeader h2 {
-  max-width:
-    830px;
-
-  margin:
-    1rem
-    0
-    0;
-
-  color:
-    var(--nb-services-text);
-
-  font-size:
-    clamp(
-      2.3rem,
-      4.6vw,
-      4.25rem
-    );
-
-  font-weight:
-    495;
-
-  line-height:
-    0.98;
-
-  letter-spacing:
-    -0.055em;
-}
-
-
-.sectionHeader > p {
-  max-width:
-    43ch;
-
-  margin:
-    0;
-
-  color:
-    var(--nb-services-muted);
-
-  line-height:
-    1.65;
-}
-
-
-.serviceRows {
-  border-top:
-    0;
-}
-
-
-.serviceRow {
-  min-height:
-    160px;
-
-  display:
-    grid;
-
-  grid-template-columns:
-    58px
-    150px
-    minmax(
-      220px,
-      0.8fr
-    )
-    minmax(
-      300px,
-      1.2fr
-    )
-    28px;
-
-  gap:
-    clamp(
-      1rem,
-      2.4vw,
-      2.2rem
-    );
-
-  align-items:
-    center;
-
-  padding:
-    1.5rem
-    0;
-
-  border-bottom:
-    1px solid
-    var(--nb-services-line);
-
-  color:
-    inherit;
-
-  text-decoration:
-    none;
-
-  transition:
-    padding-left
-    170ms
-    ease;
-}
-
-
-.serviceIndex {
-  color:
-    var(--nb-services-cyan);
-
-  font-size:
-    0.68rem;
-
-  letter-spacing:
-    0.1em;
-}
-
-
-.serviceLabel {
-  color:
-    var(--nb-services-faint);
-
-  font-size:
-    0.68rem;
-
-  font-weight:
-    650;
-
-  letter-spacing:
-    0.08em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.serviceRow strong {
-  color:
-    var(--nb-services-text);
-
-  font-size:
-    clamp(
-      1.35rem,
-      2.3vw,
-      2rem
-    );
-
-  font-weight:
-    515;
-
-  letter-spacing:
-    -0.04em;
-}
-
-
-.serviceRow p {
-  max-width:
-    610px;
-
-  margin:
-    0;
-
-  color:
-    var(--nb-services-muted);
-
-  line-height:
-    1.6;
-}
-
-
-.serviceArrow {
-  justify-self:
-    end;
-
-  color:
-    var(--nb-services-cyan);
-
-  font-size:
-    1.05rem;
-
-  transition:
-    transform
-    170ms
-    ease;
-}
-
-
-.pentestHeading {
-  position:
-    sticky;
-
-  top:
-    110px;
-
-  align-self:
-    start;
-}
-
-
-.inlineLink {
-  display:
-    inline-flex;
-
-  align-items:
-    center;
-
-  gap:
-    0.65rem;
-
-  margin-top:
-    1.8rem;
-
-  color:
-    var(--nb-services-text);
-
-  text-decoration:
-    none;
-
-  font-size:
-    0.88rem;
-
-  font-weight:
-    650;
-}
-
-
-.inlineLink span {
-  color:
-    var(--nb-services-cyan);
-
-  transition:
-    transform
-    160ms
-    ease;
-}
-
-
-.methodRail {
-  display:
-    grid;
-
-  grid-template-columns:
-    auto
-    1fr
-    auto
-    1fr
-    auto;
-
-  gap:
-    0.8rem;
-
-  align-items:
-    center;
-
-  margin:
     2.5rem
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    1rem;
+
+  align-items:
+    start;
+
+  margin:
     0;
 
-  color:
-    var(--nb-services-faint);
+  padding:
+    1.1rem
+    0;
 
-  font-size:
-    0.64rem;
-
-  font-weight:
-    650;
-
-  letter-spacing:
-    0.11em;
-}
-
-
-.methodRail i {
-  height:
-    1px;
-
-  background:
-    linear-gradient(
-      90deg,
-      var(--nb-services-blue),
-      var(--nb-services-purple)
+  border-bottom:
+    1px
+    solid
+    var(
+      --srv-border
     );
 }
 
 
-.training {
-  border-top:
-    1px solid
-    var(--nb-services-line);
+.focusList span {
+  color:
+    var(
+      --srv-violet
+    );
+
+  font-size:
+    0.84rem;
 }
 
 
-.trainingLayout {
+.focusList p {
+  margin:
+    0;
+
+  color:
+    var(
+      --srv-text
+    );
+
+  font-size:
+    1rem;
+
+  line-height:
+    1.55;
+}
+
+
+/* FEATURED WEB ASSESSMENT ------------------------------------------- */
+
+
+.featured {
+  padding:
+    4.25rem
+    0;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --srv-border
+    );
+}
+
+
+.featuredLayout {
   display:
     grid;
 
   grid-template-columns:
-    70px
     minmax(
       0,
-      1fr
+      0.85fr
     )
     minmax(
-      240px,
-      auto
+      24rem,
+      1.15fr
     );
 
   gap:
     clamp(
-      1.5rem,
-      4vw,
-      4rem
+      2rem,
+      6vw,
+      5rem
     );
-
-  align-items:
-    end;
 }
 
 
-.trainingIndex {
-  align-self:
-    start;
-
-  color:
-    var(--nb-services-cyan);
-
-  font-size:
-    0.72rem;
-
-  letter-spacing:
-    0.1em;
-}
-
-
-.trainingCopy {
+.featuredIntro {
   max-width:
-    780px;
+    34rem;
 }
 
 
-.trainingCopy h2 {
+.inlineAction {
+  margin-top:
+    1.25rem;
+}
+
+
+.assessmentList {
   margin:
-    0.85rem
-    0
-    1rem;
+    0;
 
-  color:
-    var(--nb-services-text);
+  padding:
+    0;
 
-  font-size:
-    clamp(
-      2.3rem,
-      4.5vw,
-      4.1rem
+  border-top:
+    1px
+    solid
+    var(
+      --srv-border
     );
 
-  font-weight:
-    495;
-
-  line-height:
-    0.98;
-
-  letter-spacing:
-    -0.055em;
+  list-style:
+    none;
 }
 
 
-.trainingCopy > p:not(.eyebrow) {
-  max-width:
-    60ch;
+:global(#main-content)
+.assessmentList {
+  margin-left:
+    0;
+
+  padding-left:
+    0;
+}
+
+
+:global(#main-content)
+.assessmentList
+li
++
+li {
+  margin-top:
+    0;
+}
+
+
+.assessmentList li {
+  display:
+    grid;
+
+  grid-template-columns:
+    2.5rem
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    1rem;
 
   margin:
     0;
 
+  padding:
+    1.1rem
+    0;
+
+  border-bottom:
+    1px
+    solid
+    var(
+      --srv-border
+    );
+}
+
+
+.assessmentNumber {
   color:
-    var(--nb-services-muted);
+    var(
+      --srv-violet
+    );
+
+  font-size:
+    0.84rem;
+}
+
+
+.assessmentLabel {
+  margin:
+    0;
+
+  color:
+    var(
+      --srv-metadata
+    );
+
+  font-size:
+    0.84rem;
+
+  font-weight:
+    650;
+}
+
+
+.assessmentText {
+  margin:
+    0.35rem
+    0
+    0;
+
+  color:
+    var(
+      --srv-text
+    );
+
+  font-size:
+    1rem;
 
   line-height:
-    1.67;
+    1.55;
 }
 
 
-.trainingActions {
-  display:
-    grid;
-
-  align-content:
-    end;
-
-  justify-items:
-    start;
-
-  gap:
-    0.2rem;
-}
+/* CONSULTATION ------------------------------------------------------- */
 
 
 .consultation {
-  border-top:
-    1px solid
-    var(--nb-services-line);
-}
-
-
-.consultationLayout {
-  padding-top:
-    2rem;
-
-  border-top:
-    1px solid
-    rgba(
-      161,
-      226,
-      240,
-      0.4
-    );
-}
-
-
-.consultationLayout h2 {
-  max-width:
-    950px;
-
-  margin:
-    0.9rem
+  padding:
+    3.75rem
     0
-    1rem;
+    4.25rem;
 
-  color:
-    var(--nb-services-text);
-
-  font-size:
-    clamp(
-      3rem,
-      6vw,
-      5.8rem
+  background:
+    var(
+      --srv-canvas
     );
-
-  font-weight:
-    480;
-
-  line-height:
-    0.94;
-
-  letter-spacing:
-    -0.064em;
 }
 
 
-.consultationLayout > p:not(.eyebrow) {
+.consultationInner {
   max-width:
-    54ch;
-
-  margin:
-    0;
-
-  color:
-    var(--nb-services-muted);
-
-  font-size:
-    1.05rem;
-
-  line-height:
-    1.65;
+    50rem;
 }
 
 
-.consultationAction {
+.consultationInner
+.primaryAction {
   margin-top:
-    2rem;
+    1.5rem;
 }
 
 
-@media (
-  hover:
-    hover
-)
-and
-(
-  pointer:
-    fine
-) {
-
-  .serviceRow:hover {
-    padding-left:
-      0.6rem;
-  }
-
-
-  .serviceRow:hover strong {
-    color:
-      var(--nb-services-cyan);
-  }
-
-
-  .serviceRow:hover
-  .serviceArrow {
-    transform:
-      translate(
-        4px,
-        -4px
-      );
-  }
-
-
-  .primaryAction:hover span,
-  .secondaryAction:hover span,
-  .consultationAction:hover span,
-  .inlineLink:hover span {
-    transform:
-      translateX(
-        4px
-      );
-  }
-
-}
+/* RESPONSIVE --------------------------------------------------------- */
 
 
 @media (
   max-width:
-    1024px
+    900px
 ) {
 
-  .heroGrid {
+  .serviceBody,
+  .splitSection,
+  .featuredLayout {
     grid-template-columns:
       minmax(
         0,
-        1.15fr
-      )
-      minmax(
-        270px,
-        0.85fr
+        1fr
       );
-
-    gap:
-      3rem;
   }
 
 
-  .consultingLayout,
-  .pentestLayout {
+  .splitSection,
+  .featuredLayout {
     gap:
+      2rem;
+  }
+
+}
+
+
+@media (
+  max-width:
+    640px
+) {
+
+  .hero {
+    padding:
+      2.5rem
+      0
+      2rem;
+  }
+
+
+  .heroTitle {
+    font-size:
+      clamp(
+        2.4rem,
+        12vw,
+        3rem
+      );
+  }
+
+
+  .directory {
+    padding:
+      2.5rem
+      0
       3.5rem;
   }
 
 
   .serviceRow {
     grid-template-columns:
-      50px
-      120px
-      minmax(
-        0,
-        1fr
-      )
-      28px;
-
-    grid-template-rows:
-      auto
-      auto;
-  }
-
-
-  .serviceRow p {
-    grid-column:
-      3;
-
-    grid-row:
-      2;
-
-    margin-top:
-      -0.4rem;
-  }
-
-
-  .serviceArrow {
-    grid-column:
-      4;
-
-    grid-row:
-      1
-      /
-      span
-      2;
-  }
-
-
-  .trainingLayout {
-    grid-template-columns:
-      55px
+      2rem
       minmax(
         0,
         1fr
       );
-  }
-
-
-  .trainingActions {
-    grid-column:
-      2;
-  }
-
-}
-
-
-@media (
-  max-width:
-    768px
-) {
-
-  .hero,
-  .consulting,
-  .portfolio,
-  .pentest,
-  .training,
-  .consultation {
-    padding:
-      3.5rem
-      0;
-  }
-
-
-  .heroGrid,
-  .consultingLayout,
-  .pentestLayout,
-  .sectionHeader {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-  }
-
-
-  .heroGrid,
-  .consultingLayout,
-  .pentestLayout {
-    gap:
-      2.6rem;
-  }
-
-
-  .heroCopy h1 {
-    font-size:
-      clamp(
-        2.8rem,
-        13vw,
-        4.4rem
-      );
-  }
-
-
-  .heroAside {
-    min-height:
-      0;
-  }
-
-
-  .sectionHeader {
-    gap:
-      1.25rem;
-  }
-
-
-  .sectionIntro h2,
-  .pentestHeading h2,
-  .sectionHeader h2,
-  .trainingCopy h2 {
-    font-size:
-      clamp(
-        2.15rem,
-        10.5vw,
-        3.4rem
-      );
-  }
-
-
-  .pentestHeading {
-    position:
-      static;
-  }
-
-
-  .serviceRow {
-    min-height:
-      0;
-
-    grid-template-columns:
-      40px
-      minmax(
-        0,
-        1fr
-      )
-      24px;
-
-    grid-template-rows:
-      auto
-      auto
-      auto
-      auto;
 
     gap:
-      0.5rem
       0.8rem;
 
     padding:
-      1.35rem
+      1.5rem
       0;
   }
 
 
-  .serviceIndex {
-    grid-column:
-      1;
-
-    grid-row:
-      1;
-  }
-
-
-  .serviceLabel {
-    grid-column:
-      2;
-
-    grid-row:
-      1;
-  }
-
-
-  .serviceRow strong {
-    grid-column:
-      2;
-
-    grid-row:
-      2;
-  }
-
-
-  .serviceRow p {
-    grid-column:
-      2;
-
-    grid-row:
-      3;
-
-    margin:
-      0;
-  }
-
-
-  .serviceArrow {
-    grid-column:
-      3;
-
-    grid-row:
-      1
-      /
-      span
-      3;
-  }
-
-
-  .methodRail {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-
+  .serviceBody {
     gap:
-      0.5rem;
-
-    padding-left:
       1rem;
-
-    border-left:
-      1px solid
-      rgba(
-        161,
-        226,
-        240,
-        0.3
-      );
   }
 
 
-  .methodRail i {
-    width:
-      32px;
+  .consulting,
+  .featured {
+    padding:
+      3.25rem
+      0;
   }
 
 
-  .trainingLayout {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-
-    gap:
-      1.4rem;
-  }
-
-
-  .trainingIndex,
-  .trainingCopy,
-  .trainingActions {
-    grid-column:
-      1;
-  }
-
-
-  .consultationLayout h2 {
-    font-size:
-      clamp(
-        2.8rem,
-        13vw,
-        4.6rem
-      );
+  .consultation {
+    padding:
+      3rem
+      0
+      3.5rem;
   }
 
 }
 
 
-@media (
-  max-width:
-    480px
-) {
-
-  .heroActions {
-    display:
-      grid;
-  }
-
-
-  .primaryAction,
-  .secondaryAction {
-    width:
-      100%;
-  }
-
-
-  .focusList li {
-    grid-template-columns:
-      42px
-      minmax(
-        0,
-        1fr
-      );
-  }
-
-}
+/* REDUCED MOTION ----------------------------------------------------- */
 
 
 @media (
@@ -1624,12 +1134,9 @@ and
     reduce
 ) {
 
-  .serviceRow,
-  .serviceArrow,
-  .primaryAction span,
-  .secondaryAction span,
-  .consultationAction span,
-  .inlineLink span {
+  .primaryAction,
+  .secondaryAction,
+  .serviceRow {
     transition:
       none;
   }

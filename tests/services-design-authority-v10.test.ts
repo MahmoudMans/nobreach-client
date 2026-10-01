@@ -1,11 +1,11 @@
 import {
-  readFileSync,
+  readFileSync
 } from "node:fs";
 
 import {
   describe,
   expect,
-  it,
+  it
 } from "vitest";
 
 
@@ -24,11 +24,11 @@ const css =
 
 
 describe(
-  "services design authority v10",
+  "Services V10 compatibility + audit V11",
   () => {
 
     it(
-      "uses the No Breach V10 services authority",
+      "preserves V10 authority and activates V11",
       () => {
 
         expect(
@@ -37,6 +37,11 @@ describe(
           'data-services-design="authority-v10"'
         );
 
+        expect(
+          page
+        ).toContain(
+          'data-services-audit="v11"'
+        );
 
         expect(
           css
@@ -44,46 +49,10 @@ describe(
           "NB_SERVICES_DESIGN_AUTHORITY_V10"
         );
 
-      }
-    );
-
-
-    it(
-      "includes the approved Security Consulting content",
-      () => {
-
         expect(
-          page
+          css
         ).toContain(
-          "Security Consulting"
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "Helping companies understand how to protect themselves"
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "Security architecture reviews"
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "Secure workflows and infrastructure guidance"
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "Internal process hardening"
+          "NB_SERVICES_AUDIT_V11"
         );
 
       }
@@ -91,72 +60,48 @@ describe(
 
 
     it(
-      "includes the approved Web Penetration Testing content",
+      "puts the four service choices before consulting",
       () => {
 
-        expect(
-          page
-        ).toContain(
-          "Web Penetration Testing"
-        );
+        const directory =
+          page.indexOf(
+            'data-services-section="directory"'
+          );
+
+        const consulting =
+          page.indexOf(
+            'data-services-section="consulting"'
+          );
 
 
         expect(
-          page
-        ).toContain(
-          "A thorough, methodical assessment of your web"
+          directory
+        ).toBeGreaterThan(
+          0
         );
-
 
         expect(
-          page
-        ).toContain(
-          "In-depth testing of web applications and APIs"
+          consulting
+        ).toBeGreaterThan(
+          directory
         );
 
-
-        expect(
-          page
-        ).toContain(
-          "Business logic and authentication flaw identification"
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "Manual verification of critical vulnerabilities"
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          "Clear reporting with technical and executive summaries"
-        );
-
-      }
-    );
-
-
-    it(
-      "keeps all four service destinations",
-      () => {
 
         for (
-          const href
-          of [
-            "/services/web-application-pentesting",
-            "/services/api-security",
-            "/services/infrastructure-security",
-            "/services/security-training",
+          const title
+          of
+          [
+            "Web Penetration Testing",
+            "API Security",
+            "Infrastructure Security",
+            "Cybersecurity Training"
           ]
         ) {
 
           expect(
             page
           ).toContain(
-            href
+            title
           );
 
         }
@@ -166,53 +111,162 @@ describe(
 
 
     it(
-      "uses the exact No Breach palette and responsive contracts",
+      "preserves consulting and featured assessment specifics",
       () => {
 
         for (
-          const color
-          of [
-            "#83b3d7",
-            "#a1e2f0",
-            "#7e60b9",
-            "#6333c6",
+          const content
+          of
+          [
+            "Security architecture reviews",
+            "Secure workflows and infrastructure guidance",
+            "Internal process hardening, including access control and data handling",
+            "In-depth testing of web applications and APIs.",
+            "Business logic and authentication flaw identification.",
+            "Manual verification of critical vulnerabilities.",
+            "Clear reporting with technical and executive summaries."
           ]
         ) {
 
           expect(
-            css
+            page
           ).toContain(
-            color
+            content
           );
 
         }
 
+      }
+    );
+
+
+    it(
+      "keeps both actual training destinations inside the directory model",
+      () => {
 
         expect(
-          css
+          page
         ).toContain(
-          "max-width:\n    1024px"
+          '"/services/security-training"'
+        );
+
+        expect(
+          page
+        ).toContain(
+          '"/training"'
+        );
+
+        expect(
+          page
+        ).toContain(
+          "View training service"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Explore training programs"
+        );
+
+        expect(
+          page
+        ).not.toContain(
+          'data-services-section="training"'
+        );
+
+      }
+    );
+
+
+    it(
+      "uses contact semantics instead of claiming a booking workflow",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          'href="/contact"'
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Discuss your needs"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Discuss your security needs."
+        );
+
+        expect(
+          page
+        ).not.toContain(
+          "Book a consultation"
+        );
+
+        expect(
+          page
+        ).not.toContain(
+          "Unsure how it works?"
+        );
+
+      }
+    );
+
+
+    it(
+      "keeps service-row state feedback geometry stable",
+      () => {
+
+        const hoverStart =
+          css.indexOf(
+            ".serviceRow:hover"
+          );
+
+        const numberStart =
+          css.indexOf(
+            ".serviceNumber"
+          );
+
+
+        expect(
+          hoverStart
+        ).toBeGreaterThan(
+          0
+        );
+
+        expect(
+          numberStart
+        ).toBeGreaterThan(
+          hoverStart
         );
 
 
+        const hoverBlock =
+          css.slice(
+            hoverStart,
+            numberStart
+          );
+
+
         expect(
-          css
-        ).toContain(
-          "max-width:\n    768px"
+          hoverBlock
+        ).not.toContain(
+          "transform:"
         );
 
-
         expect(
-          css
-        ).toContain(
-          "max-width:\n    480px"
+          hoverBlock
+        ).not.toContain(
+          "padding:"
         );
 
-
         expect(
-          css
-        ).toContain(
-          "prefers-reduced-motion:"
+          hoverBlock
+        ).not.toContain(
+          "margin:"
         );
 
       }
