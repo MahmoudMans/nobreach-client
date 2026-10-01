@@ -15,7 +15,6 @@ const page =
     "utf8"
   );
 
-
 const css =
   readFileSync(
     "src/app/company/founder/founder.module.css",
@@ -24,67 +23,31 @@ const css =
 
 
 describe(
-  "Founder V20 editorial profile",
+  "founder visual compatibility after audit v21",
   () => {
 
     it(
-      "activates the V20 founder design",
+      "preserves the canonical founder section contracts",
       () => {
-
-        expect(
-          page
-        ).toContain(
-          'data-founder-page="v20"'
-        );
-
-
-        expect(
-          page
-        ).toContain(
-          'data-founder-design-system="v20"'
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          "NB_FOUNDER_EDITORIAL_PROFILE_V20"
-        );
-
-      }
-    );
-
-
-    it(
-      "uses exactly three real content sections",
-      () => {
-
-        expect(
-          (
-            page.match(
-              /data-company-content-section=/g
-            )
-            ??
-            []
-          ).length
-        ).toBe(
-          3
-        );
-
 
         for (
-          const section
-          of [
-            "journey",
-            "expertise-education",
-            "public-work"
+          const token
+          of
+          [
+            'data-founder-section="hero"',
+            'data-founder-section="overview"',
+            'data-founder-section="journey"',
+            'data-founder-section="expertise"',
+            'data-founder-section="education"',
+            'data-founder-section="public-work"',
+            'data-founder-section="cta"'
           ]
         ) {
 
           expect(
             page
           ).toContain(
-            `data-company-content-section="${section}"`
+            token
           );
 
         }
@@ -94,27 +57,17 @@ describe(
 
 
     it(
-      "uses an editorial portrait rather than the old profile card",
+      "preserves exactly three real content chapters",
       () => {
 
         expect(
-          page
-        ).toContain(
-          'data-founder-ui="portrait-editorial"'
-        );
-
-
-        expect(
-          page
-        ).not.toContain(
-          'data-founder-ui="portrait-card"'
-        );
-
-
-        expect(
-          page
-        ).not.toContain(
-          "founderPortraitCard"
+          page.match(
+            /data-company-content-section=/g
+          )
+          ??
+          []
+        ).toHaveLength(
+          3
         );
 
       }
@@ -122,7 +75,7 @@ describe(
 
 
     it(
-      "preserves founder identity without unsupported ownership claims",
+      "preserves the founder identity without unsupported ownership claims",
       () => {
 
         expect(
@@ -131,13 +84,11 @@ describe(
           "Nouha"
         );
 
-
         expect(
           page
         ).toContain(
           "Ben Brahim"
         );
-
 
         expect(
           page
@@ -145,13 +96,11 @@ describe(
           "Founder of No Breach"
         );
 
-
         expect(
           page
         ).not.toMatch(
           /\bowner\b/i
         );
-
 
         expect(
           page
@@ -164,90 +113,68 @@ describe(
 
 
     it(
-      "keeps five journey stages and four expertise areas",
+      "preserves portrait journey expertise method public work and CTA structures",
       () => {
 
-        const journeyBlock =
-          page.slice(
-            page.indexOf(
-              "const journey ="
-            ),
-            page.indexOf(
-              "const expertise ="
-            )
+        for (
+          const token
+          of
+          [
+            'data-founder-ui="portrait-editorial"',
+            'data-founder-ui="journey"',
+            'data-founder-ui="expertise-index"',
+            'data-founder-ui="method"',
+            'data-founder-ui="engagement-evidence"',
+            'data-founder-card="public"'
+          ]
+        ) {
+
+          expect(
+            page
+          ).toContain(
+            token
           );
 
-
-        expect(
-          (
-            journeyBlock.match(
-              /number:/g
-            )
-            ??
-            []
-          ).length
-        ).toBe(
-          5
-        );
-
-
-        const expertiseBlock =
-          page.slice(
-            page.indexOf(
-              "const expertise ="
-            ),
-            page.indexOf(
-              "const engagements ="
-            )
-          );
-
-
-        expect(
-          (
-            expertiseBlock.match(
-              /number:/g
-            )
-            ??
-            []
-          ).length
-        ).toBe(
-          4
-        );
+        }
 
       }
     );
 
 
     it(
-      "preserves historical compatibility markers exactly once",
+      "applies the audit design layer exactly once",
       () => {
 
+        expect(
+          css.match(
+            /NB_FOUNDER_AUDIT_V21/g
+          )
+          ??
+          []
+        ).toHaveLength(
+          1
+        );
+
         for (
-          const marker
-          of [
-            "NB_FOUNDER_VISUAL_V2",
-            "NB_FOUNDER_REAL_PHOTO_V1",
-            "NB_MINIMALIST_SYSTEM_V1",
-            "NB_MINIMALIST_POLISH_V4",
-            "NB_PREMIUM_HERO_SYSTEM_V6",
-            "NB_NAV_HERO_RHYTHM_V1"
+          const selector
+          of
+          [
+            ".heroGrid",
+            ".heroFacts",
+            ".trajectoryLayout",
+            ".journeyRow",
+            ".expertiseRow",
+            ".methodFlow",
+            ".engagements",
+            ".publicDirectory",
+            ".ctaLayout"
           ]
         ) {
 
           expect(
-            (
-              css.match(
-                new RegExp(
-                  marker,
-                  "g"
-                )
-              )
-              ??
-              []
-            ).length,
-            marker
-          ).toBe(
-            1
+            css
+          ).toContain(
+            selector
           );
 
         }

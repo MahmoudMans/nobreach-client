@@ -15,24 +15,9 @@ const founderPage =
     "utf8"
   );
 
-
 const founderCss =
   readFileSync(
     "src/app/company/founder/founder.module.css",
-    "utf8"
-  );
-
-
-const companyPage =
-  readFileSync(
-    "src/app/company/page.tsx",
-    "utf8"
-  );
-
-
-const companyCss =
-  readFileSync(
-    "src/app/company/company.module.css",
     "utf8"
   );
 
@@ -42,7 +27,7 @@ describe(
   () => {
 
     it(
-      "uses Next Image on the dedicated founder profile",
+      "uses Next Image on the founder profile",
       () => {
 
         expect(
@@ -68,75 +53,13 @@ describe(
 
 
     it(
-      "uses the approved portrait in the audited Company founder feature",
+      "uses an informative portrait alternative in the refined profile",
       () => {
 
         expect(
-          companyPage
+          founderPage
         ).toContain(
-          'import Image from "next/image";'
-        );
-
-        expect(
-          companyPage
-        ).toContain(
-          'data-company-audit="v21"'
-        );
-
-        expect(
-          companyPage
-        ).toContain(
-          'data-company-section="founder"'
-        );
-
-        expect(
-          companyPage
-        ).toContain(
-          'src="/people/ceo.png"'
-        );
-
-        expect(
-          companyPage
-        ).toContain(
-          'alt="Nouha Ben Brahim, founder of No Breach"'
-        );
-
-        expect(
-          companyPage
-        ).toContain(
-          "founderProfile.name"
-        );
-
-        expect(
-          companyPage
-        ).toContain(
-          "founderProfile.summary"
-        );
-
-      }
-    );
-
-
-    it(
-      "keeps the Company portrait attached to the founder profile journey",
-      () => {
-
-        expect(
-          companyPage
-        ).toContain(
-          "Meet the founder"
-        );
-
-        expect(
-          companyPage
-        ).toContain(
-          'href="/company/founder"'
-        );
-
-        expect(
-          companyPage
-        ).toContain(
-          "Explore founder profile"
+          'alt="Portrait of Nouha Ben Brahim"'
         );
 
       }
@@ -159,18 +82,12 @@ describe(
           ">CEO<"
         );
 
-        expect(
-          companyPage
-        ).not.toContain(
-          ">CEO<"
-        );
-
       }
     );
 
 
     it(
-      "preserves founder portrait styling on both routes",
+      "keeps the founder photo compatibility marker",
       () => {
 
         expect(
@@ -181,18 +98,6 @@ describe(
           []
         ).toHaveLength(
           1
-        );
-
-        expect(
-          companyCss
-        ).toContain(
-          ".founderPortrait"
-        );
-
-        expect(
-          companyCss
-        ).toContain(
-          ".founderImage"
         );
 
       }

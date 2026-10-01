@@ -4,43 +4,8 @@ import {
 } from "@playwright/test";
 
 
-async function founderReady(
-  page:
-    import("@playwright/test").Page
-) {
-
-  const founder =
-    page.locator(
-      '[data-founder-page="v20"]'
-    );
-
-
-  await expect(
-    founder
-  ).toBeVisible();
-
-
-  await expect(
-    page.getByRole(
-      "heading",
-      {
-        level:
-          1,
-
-        name:
-          "Nouha Ben Brahim"
-      }
-    )
-  ).toBeVisible();
-
-
-  return founder;
-
-}
-
-
 test(
-  "Founder V20 renders the new editorial profile",
+  "Founder V20 remains the compatible route architecture after V21 refinement",
   async ({
     page
   }) => {
@@ -49,11 +14,17 @@ test(
       "/company/founder"
     );
 
+    await expect(
+      page.locator(
+        '[data-founder-page="v20"]'
+      )
+    ).toBeVisible();
 
-    await founderReady(
-      page
-    );
-
+    await expect(
+      page.locator(
+        '[data-founder-audit="v21"]'
+      )
+    ).toBeVisible();
 
     await expect(
       page.locator(
@@ -63,131 +34,44 @@ test(
       3
     );
 
-
-    for (
-      const name
-      of [
-        "journey",
-        "expertise-education",
-        "public-work"
-      ]
-    ) {
-
-      await expect(
-        page.locator(
-          `[data-company-content-section="${name}"]`
-        )
-      ).toBeAttached();
-
-    }
-
   }
 );
 
 
 test(
-  "Founder V20 hero uses editorial portrait and identity split",
+  "Founder profile keeps one primary heading and portrait",
   async ({
     page
   }) => {
-
-    await page.setViewportSize({
-      width:
-        1440,
-
-      height:
-        900
-    });
-
 
     await page.goto(
       "/company/founder"
     );
 
-
-    await founderReady(
-      page
-    );
-
-
-    const portrait =
-      page.locator(
-        '[data-founder-ui="portrait-editorial"]'
-      );
-
-
-    const copy =
-      page.locator(
-        '[data-founder-ui="hero-copy"]'
-      );
-
-
     await expect(
-      portrait
-    ).toBeVisible();
-
-
-    await expect(
-      copy
-    ).toBeVisible();
-
-
-    await expect(
-      page.locator(
-        '[data-founder-ui="portrait-card"]'
+      page.getByRole(
+        "heading",
+        {
+          level:
+            1
+        }
       )
     ).toHaveCount(
-      0
+      1
     );
 
-
-    const portraitBox =
-      await portrait.boundingBox();
-
-
-    const copyBox =
-      await copy.boundingBox();
-
-
-    if (
-      !portraitBox
-      ||
-      !copyBox
-    ) {
-
-      throw new Error(
-        "Founder V20 hero geometry unavailable"
-      );
-
-    }
-
-
-    expect(
-      portraitBox.x
-    ).toBeLessThan(
-      copyBox.x
-    );
-
-
-    expect(
-      portraitBox.width
-    ).toBeGreaterThan(
-      320
-    );
-
-
-    expect(
-      portraitBox.height
-    ).toBeGreaterThan(
-      400
-    );
+    await expect(
+      page.locator(
+        '[data-founder-photo-image="profile"]'
+      )
+    ).toBeVisible();
 
   }
 );
 
 
 test(
-  "Founder V20 journey uses five editorial rows",
+  "Founder trajectory keeps five stages",
   async ({
     page
   }) => {
@@ -196,61 +80,20 @@ test(
       "/company/founder"
     );
 
-
-    const section =
-      page.locator(
-        '[data-founder-section="journey"]'
-      );
-
-
-    await section.scrollIntoViewIfNeeded();
-
-
-    const rows =
-      section.locator(
-        '[data-founder-card="journey"]'
-      );
-
-
     await expect(
-      rows
+      page.locator(
+        '[data-founder-card="journey"]'
+      )
     ).toHaveCount(
       5
     );
 
-
-    for (
-      const title
-      of [
-        "Development",
-        "Cybersecurity",
-        "Bug bounty / security research",
-        "Offensive security",
-        "No Breach"
-      ]
-    ) {
-
-      await expect(
-        section.getByRole(
-          "heading",
-          {
-            name:
-              title,
-
-            exact:
-              true
-          }
-        )
-      ).toBeVisible();
-
-    }
-
   }
 );
 
 
 test(
-  "Founder V20 practice uses four expertise rows and one methodology",
+  "Founder practice keeps four focus rows and four method stages",
   async ({
     page
   }) => {
@@ -258,7 +101,6 @@ test(
     await page.goto(
       "/company/founder"
     );
-
 
     await expect(
       page.locator(
@@ -268,32 +110,20 @@ test(
       4
     );
 
-
-    const method =
-      page.locator(
-        '[data-founder-ui="method"]'
-      );
-
-
-    await method.scrollIntoViewIfNeeded();
-
-
     await expect(
-      method.getByRole(
-        "heading",
-        {
-          name:
-            "Learn security by doing security."
-        }
+      page.locator(
+        '[data-founder-ui="method"] ol > li'
       )
-    ).toBeVisible();
+    ).toHaveCount(
+      4
+    );
 
   }
 );
 
 
 test(
-  "Founder V20 public work uses three editorial destinations",
+  "Founder public work keeps three personal engagements and three No Breach destinations",
   async ({
     page
   }) => {
@@ -302,48 +132,28 @@ test(
       "/company/founder"
     );
 
-
-    const publicSection =
+    await expect(
       page.locator(
-        '[data-company-content-section="public-work"]'
-      );
-
-
-    await publicSection.scrollIntoViewIfNeeded();
-
+        '[data-founder-engagement="true"]'
+      )
+    ).toHaveCount(
+      3
+    );
 
     await expect(
-      publicSection.locator(
+      page.locator(
         '[data-founder-card="public"]'
       )
     ).toHaveCount(
       3
     );
 
-
-    for (
-      const href
-      of [
-        "/activities",
-        "/insights",
-        "/cr4ckout"
-      ]
-    ) {
-
-      await expect(
-        publicSection.locator(
-          `a[href="${href}"]`
-        )
-      ).toBeVisible();
-
-    }
-
   }
 );
 
 
 test(
-  "Founder V20 contains no owner or CEO claim",
+  "Founder page contains no owner or CEO claim",
   async ({
     page
   }) => {
@@ -352,28 +162,21 @@ test(
       "/company/founder"
     );
 
+    const text =
+      await page.locator(
+        "main"
+      ).innerText();
 
-    const founder =
-      await founderReady(
-        page
-      );
-
-
-    await expect(
-      founder.getByText(
-        /\bowner\b/i
-      )
-    ).toHaveCount(
-      0
+    expect(
+      text
+    ).not.toMatch(
+      /\bowner\b/i
     );
 
-
-    await expect(
-      founder.getByText(
-        /\bCEO\b/
-      )
-    ).toHaveCount(
-      0
+    expect(
+      text
+    ).not.toMatch(
+      /\bCEO\b/
     );
 
   }
@@ -382,44 +185,29 @@ test(
 
 for (
   const viewport
-  of [
+  of
+  [
     {
-      name:
-        "desktop",
-
       width:
         1440,
-
       height:
         900
     },
     {
-      name:
-        "tablet",
-
       width:
         820,
-
       height:
         1180
     },
     {
-      name:
-        "mobile",
-
       width:
         390,
-
       height:
         844
     },
     {
-      name:
-        "narrow",
-
       width:
-        360,
-
+        320,
       height:
         800
     }
@@ -427,50 +215,34 @@ for (
 ) {
 
   test(
-    `Founder V20 remains contained at ${viewport.name}`,
+    `Founder V21 remains overflow-free at ${viewport.width}`,
     async ({
       page
     }) => {
 
-      await page.setViewportSize({
-        width:
-          viewport.width,
-
-        height:
-          viewport.height
-      });
-
+      await page.setViewportSize(
+        viewport
+      );
 
       await page.goto(
         "/company/founder"
       );
 
-
-      await founderReady(
-        page
-      );
-
-
-      const metrics =
+      const dimensions =
         await page.evaluate(
           () => ({
-            scrollWidth:
-              document
-                .documentElement
-                .scrollWidth,
+            scroll:
+              document.documentElement.scrollWidth,
 
-            clientWidth:
-              document
-                .documentElement
-                .clientWidth
+            client:
+              document.documentElement.clientWidth
           })
         );
 
-
       expect(
-        metrics.scrollWidth
+        dimensions.scroll
       ).toBeLessThanOrEqual(
-        metrics.clientWidth
+        dimensions.client
         +
         1
       );

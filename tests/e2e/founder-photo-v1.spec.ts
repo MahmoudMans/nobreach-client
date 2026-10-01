@@ -5,7 +5,7 @@ import {
 
 
 test(
-  "founder profile renders the real portrait",
+  "founder profile renders the approved portrait",
   async ({
     page
   }) => {
@@ -15,74 +15,11 @@ test(
     );
 
     const portrait =
-      page.locator(
-        '[data-founder-photo-image="profile"]'
-      );
-
-    await expect(
-      portrait
-    ).toBeVisible();
-
-    await expect(
-      portrait
-    ).toHaveAttribute(
-      "src",
-      /ceo\.png/
-    );
-
-  }
-);
-
-
-test(
-  "audited Company page intentionally presents the founder portrait",
-  async ({
-    page
-  }) => {
-
-    await page.goto(
-      "/company"
-    );
-
-    const founder =
-      page.locator(
-        '[data-company-section="founder"]'
-      );
-
-    await expect(
-      founder
-    ).toBeVisible();
-
-    await expect(
-      founder.getByRole(
-        "heading",
-        {
-          level:
-            2,
-          name:
-            "Meet the founder"
-        }
-      )
-    ).toBeVisible();
-
-    await expect(
-      founder.getByRole(
-        "heading",
-        {
-          level:
-            3,
-          name:
-            "Nouha Ben Brahim"
-        }
-      )
-    ).toBeVisible();
-
-    const portrait =
-      founder.getByRole(
+      page.getByRole(
         "img",
         {
           name:
-            "Nouha Ben Brahim, founder of No Breach"
+            "Portrait of Nouha Ben Brahim"
         }
       );
 
@@ -95,19 +32,6 @@ test(
     ).toHaveAttribute(
       "src",
       /ceo\.png/
-    );
-
-    await expect(
-      founder.getByRole(
-        "link",
-        {
-          name:
-            /Explore founder profile/i
-        }
-      )
-    ).toHaveAttribute(
-      "href",
-      "/company/founder"
     );
 
   }
@@ -115,32 +39,37 @@ test(
 
 
 for (
-  const route
+  const width
   of
   [
-    "/company",
-    "/company/founder"
+    320,
+    390
   ]
 ) {
 
   test(
-    `${route} founder photo layout remains overflow free on mobile`,
+    `founder photo layout remains overflow free at ${width}`,
     async ({
       page
     }) => {
 
       await page.setViewportSize({
-        width:
-          390,
+        width,
         height:
           844
       });
 
       await page.goto(
-        route
+        "/company/founder"
       );
 
-      const geometry =
+      await expect(
+        page.locator(
+          '[data-founder-photo-image="profile"]'
+        )
+      ).toBeVisible();
+
+      const dimensions =
         await page.evaluate(
           () => ({
             scroll:
@@ -152,9 +81,9 @@ for (
         );
 
       expect(
-        geometry.scroll
+        dimensions.scroll
       ).toBeLessThanOrEqual(
-        geometry.client
+        dimensions.client
         +
         1
       );

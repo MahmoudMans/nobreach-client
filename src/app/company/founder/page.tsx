@@ -32,14 +32,8 @@ const journey = [
     number:
       "01",
 
-    code:
-      "DEV",
-
     title:
       "Development",
-
-    headline:
-      "Understanding how systems are built.",
 
     description:
       "Programming formed the technical foundation for understanding software behavior, structure and implementation."
@@ -48,76 +42,49 @@ const journey = [
     number:
       "02",
 
-    code:
-      "SEC",
-
     title:
       "Cybersecurity",
 
-    headline:
-      "Moving from construction to failure analysis.",
-
     description:
-      "Security shifted the focus from building systems toward understanding assumptions, weaknesses and attack surfaces."
+      "The focus shifted from building systems toward understanding assumptions, weaknesses and attack surfaces."
   },
   {
     number:
       "03",
 
-    code:
-      "RES",
-
     title:
       "Bug bounty / security research",
 
-    headline:
-      "Learning through real application behavior.",
-
     description:
-      "Legal web-security and bug-bounty research reinforced the importance of understanding systems before attempting exploitation."
+      "Legal web-security and bug-bounty research reinforced the importance of understanding application behavior before attempting exploitation."
   },
   {
     number:
       "04",
 
-    code:
-      "OFF",
-
     title:
       "Offensive security",
 
-    headline:
-      "Turning attacker thinking into a repeatable method.",
-
     description:
-      "Offensive-security work connects technical reasoning, experimentation, validation and practical communication."
+      "Technical reasoning, experimentation, validation and communication became part of a repeatable method."
   },
   {
     number:
       "05",
 
-    code:
-      "NB",
-
     title:
       "No Breach",
 
-    headline:
-      "Connecting practice, education and community.",
-
     description:
-      "No Breach brings professional security work together with technical learning and cybersecurity community activity."
+      "Professional security practice, technical learning and community activity come together through No Breach."
   }
-];
+] as const;
 
 
 const expertise = [
   {
     number:
       "01",
-
-    code:
-      "WEB",
 
     title:
       "Web Security",
@@ -129,9 +96,6 @@ const expertise = [
     number:
       "02",
 
-    code:
-      "API",
-
     title:
       "API Security",
 
@@ -141,9 +105,6 @@ const expertise = [
   {
     number:
       "03",
-
-    code:
-      "OFF",
 
     title:
       "Offensive Security",
@@ -155,23 +116,17 @@ const expertise = [
     number:
       "04",
 
-    code:
-      "EDU",
-
     title:
       "Security Training",
 
     description:
       "Hands-on learning, mentorship and practical technical skill development."
   }
-];
+] as const;
 
 
 const engagements = [
   {
-    number:
-      "01",
-
     type:
       "Workshop",
 
@@ -179,12 +134,15 @@ const engagements = [
       "CyberSummit 4.0",
 
     role:
-      "Workshop trainer"
+      "Workshop trainer",
+
+    organization:
+      "Cyber Trace / ESPITA",
+
+    detail:
+      "Public event material lists Nouha among CyberSummit 4.0 workshop trainers."
   },
   {
-    number:
-      "02",
-
     type:
       "Mentorship",
 
@@ -192,29 +150,35 @@ const engagements = [
       "CyberCamp 5.0",
 
     role:
-      "OSINT mentor"
+      "OSINT mentor",
+
+    organization:
+      "Securinets",
+
+    detail:
+      "Introduced publicly as the OSINT mentor for CyberCamp 5.0."
   },
   {
-    number:
-      "03",
-
     type:
-      "Media",
+      "Podcast",
 
     name:
       "The Hackers Line",
 
     role:
-      "Cybersecurity podcast"
+      "Podcast host",
+
+    organization:
+      null,
+
+    detail:
+      "A cybersecurity podcast hosted by Nouha featuring conversations with practitioners from the hacking and security community."
   }
-];
+] as const;
 
 
 const destinations = [
   {
-    code:
-      "ACT",
-
     label:
       "Activities",
 
@@ -228,9 +192,6 @@ const destinations = [
       "/activities"
   },
   {
-    code:
-      "R&D",
-
     label:
       "Knowledge",
 
@@ -244,9 +205,6 @@ const destinations = [
       "/insights"
   },
   {
-    code:
-      "CTF",
-
     label:
       "Community",
 
@@ -259,7 +217,7 @@ const destinations = [
     href:
       "/cr4ckout"
   }
-];
+] as const;
 
 
 const founderStructuredData = {
@@ -302,7 +260,7 @@ function Arrow() {
     <span
       aria-hidden="true"
     >
-      ↗
+      →
     </span>
   );
 
@@ -385,6 +343,7 @@ export default function FounderPage() {
         styles.page
       }
       data-founder-page="v20"
+      data-founder-audit="v21"
       data-company-family="v14"
       data-company-density="v15"
       data-company-architecture="v18"
@@ -399,6 +358,7 @@ export default function FounderPage() {
             )
         }}
       />
+
 
       <Breadcrumbs
         items={[
@@ -418,8 +378,7 @@ export default function FounderPage() {
 
 
       {/* ================================================================
-          HERO
-          Not counted as one of the three content sections.
+          PROFILE
          ================================================================ */}
 
       <section
@@ -429,7 +388,6 @@ export default function FounderPage() {
         data-founder-section="hero"
       >
         <Container
-          size="wide"
           className={
             styles.container
           }
@@ -441,86 +399,10 @@ export default function FounderPage() {
           >
             <div
               className={
-                styles.heroPortrait
-              }
-              data-founder-ui="portrait-editorial"
-            >
-              <div
-                className={
-                  styles.heroImage
-                }
-              >
-                <Image
-                  src="/people/ceo.png"
-                  alt=""
-                  fill
-                  priority
-                  sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1100px) 42vw, 430px"
-                  className={
-                    styles.heroPhoto
-                  }
-                  data-founder-photo-image="profile"
-                />
-
-                <div
-                  className={
-                    styles.heroImageShade
-                  }
-                  aria-hidden="true"
-                />
-
-                <div
-                  className={
-                    styles.heroImageCorner
-                  }
-                  aria-hidden="true"
-                />
-
-                <div
-                  className={
-                    styles.heroImageMeta
-                  }
-                  aria-hidden="true"
-                >
-                  <span>
-                    NB / Founder
-                  </span>
-
-                  <span>
-                    Tunis
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div
-              className={
                 styles.heroCopy
               }
               data-founder-ui="hero-copy"
             >
-              <div
-                className={
-                  styles.heroTopline
-                }
-              >
-                <span>
-                  Founder profile
-                </span>
-
-                <span>
-                  No Breach / Tunisia
-                </span>
-              </div>
-
-              <p
-                className={
-                  styles.heroEyebrow
-                }
-              >
-                Offensive security · Education · Community
-              </p>
-
               <h1>
                 Nouha
                 <span>
@@ -541,44 +423,37 @@ export default function FounderPage() {
                   styles.heroLead
                 }
               >
-                Cybersecurity professional connecting offensive-security practice with technical education, mentorship and community development.
+                Cybersecurity professional connecting offensive-security
+                practice with technical education, mentorship and community
+                development.
               </p>
 
-              <div
+              <dl
                 className={
-                  styles.heroMeta
+                  styles.heroFacts
                 }
+                aria-label="Founder facts"
               >
                 <div>
-                  <span>
-                    Focus
-                  </span>
-
-                  <strong>
-                    Offensive Security
-                  </strong>
-                </div>
-
-                <div>
-                  <span>
+                  <dt>
                     Base
-                  </span>
+                  </dt>
 
-                  <strong>
+                  <dd>
                     Tunis, Tunisia
-                  </strong>
+                  </dd>
                 </div>
 
                 <div>
-                  <span>
-                    Practice
-                  </span>
+                  <dt>
+                    Focus
+                  </dt>
 
-                  <strong>
-                    Security · Training · Research
-                  </strong>
+                  <dd>
+                    Offensive Security
+                  </dd>
                 </div>
-              </div>
+              </dl>
 
               <div
                 className={
@@ -586,12 +461,12 @@ export default function FounderPage() {
                 }
               >
                 <a
-                  href="#trajectory"
+                  href="#public-work"
                   className={
                     styles.primaryAction
                   }
                 >
-                  Explore the profile
+                  View public work
 
                   <span
                     aria-hidden="true"
@@ -612,13 +487,53 @@ export default function FounderPage() {
                 </Link>
               </div>
             </div>
+
+
+            <div
+              className={
+                styles.heroPortrait
+              }
+              data-founder-ui="portrait-editorial"
+            >
+              <div
+                className={
+                  styles.heroImage
+                }
+              >
+                <Image
+                  src="/people/ceo.png"
+                  alt="Portrait of Nouha Ben Brahim"
+                  fill
+                  priority
+                  sizes="(max-width: 700px) calc(100vw - 40px), (max-width: 1100px) 40vw, 430px"
+                  className={
+                    styles.heroPhoto
+                  }
+                  data-founder-photo-image="profile"
+                />
+
+                <div
+                  className={
+                    styles.heroImageShade
+                  }
+                  aria-hidden="true"
+                />
+
+                <div
+                  className={
+                    styles.heroImageCorner
+                  }
+                  aria-hidden="true"
+                />
+              </div>
+            </div>
           </div>
         </Container>
       </section>
 
 
       {/* ================================================================
-          01 — TRAJECTORY
+          01 — BACKGROUND
          ================================================================ */}
 
       <section
@@ -629,16 +544,15 @@ export default function FounderPage() {
         data-company-content-section="journey"
       >
         <Container
-          size="wide"
           className={
             styles.container
           }
         >
           <SectionHeading
             number="01"
-            eyebrow="Trajectory"
+            eyebrow="Background"
             title="From programming to offensive security."
-            description="A technical path built by moving from how software is created toward how systems behave, fail and can be understood from an attacker’s perspective."
+            description="Five stages summarize the technical progression without assigning unsupported dates or employment milestones."
           />
 
           <div
@@ -646,7 +560,7 @@ export default function FounderPage() {
               styles.trajectoryLayout
             }
           >
-            <div
+            <aside
               className={
                 styles.trajectoryStatement
               }
@@ -660,14 +574,15 @@ export default function FounderPage() {
                 Working perspective
               </p>
 
-              <blockquote>
-                At some point, you stop hunting vulnerabilities. You start understanding systems.
-              </blockquote>
-
-              <p>
-                Practical security work becomes stronger when technical reasoning, experimentation and teaching reinforce each other.
+              <p
+                className={
+                  styles.statementText
+                }
+              >
+                The emphasis is on understanding how systems behave, not
+                only on identifying individual vulnerabilities.
               </p>
-            </div>
+            </aside>
 
             <div
               className={
@@ -690,27 +605,19 @@ export default function FounderPage() {
                         item.number
                       }
                     >
-                      <div
+                      <span
                         className={
-                          styles.journeyMeta
+                          styles.journeyNumber
                         }
                       >
-                        <span>
-                          {
-                            item.number
-                          }
-                        </span>
-
-                        <small>
-                          {
-                            item.code
-                          }
-                        </small>
-                      </div>
+                        {
+                          item.number
+                        }
+                      </span>
 
                       <div
                         className={
-                          styles.journeyTitle
+                          styles.journeyContent
                         }
                       >
                         <h3>
@@ -719,18 +626,12 @@ export default function FounderPage() {
                           }
                         </h3>
 
-                        <strong>
+                        <p>
                           {
-                            item.headline
+                            item.description
                           }
-                        </strong>
+                        </p>
                       </div>
-
-                      <p>
-                        {
-                          item.description
-                        }
-                      </p>
                     </article>
                   )
                 )
@@ -742,7 +643,7 @@ export default function FounderPage() {
 
 
       {/* ================================================================
-          02 — PRACTICE
+          02 — PRACTICE + TEACHING
          ================================================================ */}
 
       <section
@@ -752,7 +653,6 @@ export default function FounderPage() {
         data-company-content-section="expertise-education"
       >
         <Container
-          size="wide"
           className={
             styles.container
           }
@@ -760,8 +660,8 @@ export default function FounderPage() {
           <SectionHeading
             number="02"
             eyebrow="Practice"
-            title="Technical depth supported by hands-on learning."
-            description="The same reasoning is applied across application security, offensive testing, research and practical cybersecurity education."
+            title="Technical practice and learning."
+            description="Application security, offensive reasoning and practical learning remain distinct areas while sharing the same systems-oriented approach."
           />
 
           <div
@@ -795,32 +695,29 @@ export default function FounderPage() {
                       }
                     </span>
 
-                    <span
+                    <div
                       className={
-                        styles.expertiseCode
+                        styles.expertiseContent
                       }
                     >
-                      {
-                        item.code
-                      }
-                    </span>
+                      <h3>
+                        {
+                          item.title
+                        }
+                      </h3>
 
-                    <h3>
-                      {
-                        item.title
-                      }
-                    </h3>
-
-                    <p>
-                      {
-                        item.description
-                      }
-                    </p>
+                      <p>
+                        {
+                          item.description
+                        }
+                      </p>
+                    </div>
                   </article>
                 )
               )
             }
           </div>
+
 
           <div
             className={
@@ -847,7 +744,8 @@ export default function FounderPage() {
               </h3>
 
               <p>
-                Training and mentorship focus on complete technical problems rather than passive consumption.
+                Training and mentorship focus on complete technical
+                problems, experimentation and repeatable reasoning.
               </p>
 
               <Link
@@ -856,7 +754,7 @@ export default function FounderPage() {
                   styles.textAction
                 }
               >
-                Explore Training Hub
+                View training
 
                 <Arrow />
               </Link>
@@ -866,6 +764,7 @@ export default function FounderPage() {
               className={
                 styles.methodFlow
               }
+              aria-label="Teaching methodology"
             >
               <li>
                 <span>
@@ -917,6 +816,7 @@ export default function FounderPage() {
          ================================================================ */}
 
       <section
+        id="public-work"
         className={
           styles.section
         }
@@ -924,7 +824,6 @@ export default function FounderPage() {
         data-founder-section="public-work"
       >
         <Container
-          size="wide"
           className={
             styles.container
           }
@@ -933,7 +832,7 @@ export default function FounderPage() {
             number="03"
             eyebrow="Public work"
             title="Selected public engagements."
-            description="Technical teaching, community participation and security knowledge sharing form a visible part of the professional profile."
+            description="Publicly documented teaching, mentoring and media work is presented separately from No Breach’s organizational destinations."
           />
 
           <div
@@ -951,23 +850,20 @@ export default function FounderPage() {
                     className={
                       styles.engagement
                     }
+                    data-founder-engagement="true"
                     key={
-                      engagement.number
+                      engagement.name
                     }
                   >
-                    <div>
-                      <span>
-                        {
-                          engagement.number
-                        }
-                      </span>
-
-                      <small>
-                        {
-                          engagement.type
-                        }
-                      </small>
-                    </div>
+                    <p
+                      className={
+                        styles.engagementType
+                      }
+                    >
+                      {
+                        engagement.type
+                      }
+                    </p>
 
                     <h3>
                       {
@@ -975,9 +871,39 @@ export default function FounderPage() {
                       }
                     </h3>
 
-                    <p>
+                    <p
+                      className={
+                        styles.engagementRole
+                      }
+                    >
                       {
                         engagement.role
+                      }
+                    </p>
+
+                    {
+                      engagement.organization
+                        ? (
+                          <p
+                            className={
+                              styles.engagementOrganization
+                            }
+                          >
+                            {
+                              engagement.organization
+                            }
+                          </p>
+                        )
+                        : null
+                    }
+
+                    <p
+                      className={
+                        styles.engagementDetail
+                      }
+                    >
+                      {
+                        engagement.detail
                       }
                     </p>
                   </article>
@@ -986,18 +912,35 @@ export default function FounderPage() {
             }
           </div>
 
+
           <div
             className={
               styles.publicDirectory
             }
           >
-            <p
+            <header
               className={
-                styles.directoryLabel
+                styles.directoryHeading
               }
             >
-              Explore the work
-            </p>
+              <p
+                className={
+                  styles.directoryLabel
+                }
+              >
+                Organizational destinations
+              </p>
+
+              <h3>
+                More from No Breach
+              </h3>
+
+              <p>
+                Continue into No Breach activity, technical writing and
+                community work without implying personal authorship of
+                every linked resource.
+              </p>
+            </header>
 
             <div
               className={
@@ -1007,8 +950,7 @@ export default function FounderPage() {
               {
                 destinations.map(
                   (
-                    destination,
-                    index
+                    destination
                   ) => (
                     <Link
                       href={
@@ -1019,34 +961,9 @@ export default function FounderPage() {
                       }
                       data-founder-card="public"
                       key={
-                        destination.code
+                        destination.href
                       }
                     >
-                      <span
-                        className={
-                          styles.publicNumber
-                        }
-                      >
-                        {
-                          String(
-                            index + 1
-                          ).padStart(
-                            2,
-                            "0"
-                          )
-                        }
-                      </span>
-
-                      <span
-                        className={
-                          styles.publicCode
-                        }
-                      >
-                        {
-                          destination.code
-                        }
-                      </span>
-
                       <div>
                         <small>
                           {
@@ -1054,11 +971,11 @@ export default function FounderPage() {
                           }
                         </small>
 
-                        <h3>
+                        <h4>
                           {
                             destination.title
                           }
-                        </h3>
+                        </h4>
 
                         <p>
                           {
@@ -1079,8 +996,7 @@ export default function FounderPage() {
 
 
       {/* ================================================================
-          CTA
-          Does not count as one of the three content sections.
+          CLOSING ACTION
          ================================================================ */}
 
       <section
@@ -1090,17 +1006,10 @@ export default function FounderPage() {
         data-founder-section="cta"
       >
         <Container
-          size="wide"
           className={
             styles.container
           }
         >
-          <div
-            className={
-              styles.ctaRule
-            }
-          />
-
           <div
             className={
               styles.ctaLayout
@@ -1130,7 +1039,8 @@ export default function FounderPage() {
               }
             >
               <p>
-                Discover No Breach security services, training and technical community activity.
+                Discover No Breach security services, training and
+                technical community activity.
               </p>
 
               <div
