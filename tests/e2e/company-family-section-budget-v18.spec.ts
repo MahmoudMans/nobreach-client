@@ -5,7 +5,7 @@ import {
 
 
 test(
-  "Main Company page uses the full canonical About flow",
+  "Main Company page uses the consolidated audit-led flow",
   async ({
     page
   }) => {
@@ -14,31 +14,25 @@ test(
       "/company"
     );
 
-
     const sections =
       page.locator(
         '[data-company-about="strict-v20"] > section[data-company-section]'
       );
 
-
     await expect(
       sections
     ).toHaveCount(
-      8
+      6
     );
-
 
     const expected = [
       "intro",
-      "story",
       "mission-vision",
-      "values",
       "timeline",
-      "expertise",
-      "team",
+      "founder",
+      "approach-expertise",
       "cta"
     ];
-
 
     for (
       let index = 0;

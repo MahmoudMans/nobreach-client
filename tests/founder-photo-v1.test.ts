@@ -1,11 +1,11 @@
 import {
-  readFileSync,
+  readFileSync
 } from "node:fs";
 
 import {
   describe,
   expect,
-  it,
+  it
 } from "vitest";
 
 
@@ -42,7 +42,7 @@ describe(
   () => {
 
     it(
-      "uses Next Image on the founder profile",
+      "uses Next Image on the dedicated founder profile",
       () => {
 
         expect(
@@ -62,13 +62,70 @@ describe(
         ).toContain(
           'data-founder-photo-image="profile"'
         );
+
       }
     );
 
 
     it(
-      "keeps the company page linked to the dedicated founder profile",
+      "uses the approved portrait in the audited Company founder feature",
       () => {
+
+        expect(
+          companyPage
+        ).toContain(
+          'import Image from "next/image";'
+        );
+
+        expect(
+          companyPage
+        ).toContain(
+          'data-company-audit="v21"'
+        );
+
+        expect(
+          companyPage
+        ).toContain(
+          'data-company-section="founder"'
+        );
+
+        expect(
+          companyPage
+        ).toContain(
+          'src="/people/ceo.png"'
+        );
+
+        expect(
+          companyPage
+        ).toContain(
+          'alt="Nouha Ben Brahim, founder of No Breach"'
+        );
+
+        expect(
+          companyPage
+        ).toContain(
+          "founderProfile.name"
+        );
+
+        expect(
+          companyPage
+        ).toContain(
+          "founderProfile.summary"
+        );
+
+      }
+    );
+
+
+    it(
+      "keeps the Company portrait attached to the founder profile journey",
+      () => {
+
+        expect(
+          companyPage
+        ).toContain(
+          "Meet the founder"
+        );
 
         expect(
           companyPage
@@ -76,18 +133,10 @@ describe(
           'href="/company/founder"'
         );
 
-
         expect(
           companyPage
-        ).not.toContain(
-          'data-founder-photo-image="company"'
-        );
-
-
-        expect(
-          companyPage
-        ).not.toContain(
-          'src="/people/ceo.png"'
+        ).toContain(
+          "Explore founder profile"
         );
 
       }
@@ -95,7 +144,7 @@ describe(
 
 
     it(
-      "preserves the existing founder role contract",
+      "preserves the defensible founder role contract",
       () => {
 
         expect(
@@ -109,27 +158,41 @@ describe(
         ).not.toContain(
           ">CEO<"
         );
+
+        expect(
+          companyPage
+        ).not.toContain(
+          ">CEO<"
+        );
+
       }
     );
 
 
     it(
-      "applies the founder photo visual layer once",
+      "preserves founder portrait styling on both routes",
       () => {
 
         expect(
           founderCss.match(
             /NB_FOUNDER_REAL_PHOTO_V1/g
           )
+          ??
+          []
         ).toHaveLength(
           1
         );
 
+        expect(
+          companyCss
+        ).toContain(
+          ".founderPortrait"
+        );
 
         expect(
           companyCss
-        ).not.toContain(
-          "NB_COMPANY_FOUNDER_REAL_PHOTO_V1"
+        ).toContain(
+          ".founderImage"
         );
 
       }

@@ -5,7 +5,7 @@ import {
 
 
 test(
-  "Company renders the canonical About-page architecture",
+  "Company renders the audit-led About architecture",
   async ({
     page
   }) => {
@@ -14,26 +14,22 @@ test(
       "/company"
     );
 
-
     const root =
       page.locator(
         '[data-company-about="strict-v20"]'
       );
 
-
     await expect(
       root
     ).toBeVisible();
-
 
     await expect(
       root.locator(
         ":scope > section[data-company-section]"
       )
     ).toHaveCount(
-      8
+      6
     );
-
 
     await expect(
       page.getByRole(
@@ -41,7 +37,6 @@ test(
         {
           level:
             1,
-
           name:
             /offensive security beyond the assessment/i
         }
@@ -55,7 +50,7 @@ test(
 
 
 test(
-  "Company exposes verified facts and principles",
+  "Company exposes facts principles and founder context",
   async ({
     page
   }) => {
@@ -64,15 +59,16 @@ test(
       "/company"
     );
 
-
     for (
       const text
-      of [
+      of
+      [
         "2023",
         "Tunis, Tunisia",
         "Think offensively",
         "Build through practice",
-        "Share knowledge"
+        "Share knowledge",
+        "Nouha Ben Brahim"
       ]
     ) {
 
@@ -94,44 +90,37 @@ test(
 
 for (
   const viewport
-  of [
+  of
+  [
     {
       name:
         "desktop",
-
       width:
         1440,
-
       height:
         900
     },
     {
       name:
         "tablet",
-
       width:
         820,
-
       height:
         1180
     },
     {
       name:
         "mobile",
-
       width:
         390,
-
       height:
         844
     },
     {
       name:
         "narrow",
-
       width:
         360,
-
       height:
         800
     }
@@ -147,16 +136,13 @@ for (
       await page.setViewportSize({
         width:
           viewport.width,
-
         height:
           viewport.height
       });
 
-
       await page.goto(
         "/company"
       );
-
 
       await expect(
         page.getByRole(
@@ -168,18 +154,15 @@ for (
         )
       ).toBeVisible();
 
-
       const width =
         await page.evaluate(
           () => ({
             scroll:
               document.documentElement.scrollWidth,
-
             client:
               document.documentElement.clientWidth
           })
         );
-
 
       expect(
         width.scroll

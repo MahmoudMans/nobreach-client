@@ -13,47 +13,52 @@
   NB_COMPANY_NARRATIVE_V9
   NB_COMPANY_FAMILY_V14
   NB_COMPANY_ABOUT_STRICT_V20
+  NB_COMPANY_AUDIT_V21
 */
 
 
 .page {
   --company-base:
-    #07090d;
+    #080b10;
 
   --company-surface:
-    #0b0f16;
+    #0c121b;
 
   --company-card:
-    #101620;
+    #111b28;
 
-  --company-elevated:
-    #151d29;
-
-  --company-cyan:
-    #a1e2f0;
-
-  --company-blue:
-    #83b3d7;
-
-  --company-purple:
-    #7e60b9;
+  --company-hover:
+    #182536;
 
   --company-text:
-    #f5f7fa;
+    #f3f6fb;
+
+  --company-secondary:
+    #b7c2d0;
 
   --company-muted:
-    #8e9aaa;
-
-  --company-subtle:
-    #667281;
+    #94a3b8;
 
   --company-line:
-    rgba(
-      255,
-      255,
-      255,
-      0.08
-    );
+    #273446;
+
+  --company-control:
+    #63758c;
+
+  --company-cyan:
+    #a5e8f3;
+
+  --company-cyan-hover:
+    #c5f2f8;
+
+  --company-cyan-pressed:
+    #80d0df;
+
+  --company-blue:
+    #86bde0;
+
+  --company-purple:
+    #b59ae7;
 
   min-width:
     0;
@@ -82,7 +87,8 @@
 
 .page h1,
 .page h2,
-.page h3 {
+.page h3,
+.page h4 {
   font-family:
     var(
       --font-space-grotesk,
@@ -102,8 +108,7 @@
 }
 
 
-.page a:focus-visible,
-.page summary:focus-visible {
+.page a:focus-visible {
   outline:
     2px
     solid
@@ -116,14 +121,15 @@
 }
 
 
-.eyebrow {
+/* ==========================================================================
+   SHARED TYPOGRAPHY
+   ========================================================================== */
+
+
+.eyebrow,
+.informationLabel {
   margin:
     0;
-
-  color:
-    var(
-      --company-cyan
-    );
 
   font-family:
     var(
@@ -133,13 +139,13 @@
     monospace;
 
   font-size:
-    0.64rem;
+    0.82rem;
 
   font-weight:
     650;
 
   letter-spacing:
-    0.11em;
+    0.075em;
 
   line-height:
     1.4;
@@ -149,8 +155,119 @@
 }
 
 
+.eyebrow {
+  color:
+    var(
+      --company-cyan
+    );
+}
+
+
+.informationLabel {
+  color:
+    var(
+      --company-purple
+    );
+}
+
+
+.compactHeader {
+  max-width:
+    760px;
+
+  margin-bottom:
+    36px;
+}
+
+
+.compactHeader h2,
+.sectionHeader h2,
+.founderCopy h2,
+.ctaInner h2 {
+  margin:
+    12px
+    0
+    0;
+
+  color:
+    var(
+      --company-text
+    );
+
+  font-size:
+    clamp(
+      2.2rem,
+      3.8vw,
+      3.45rem
+    );
+
+  font-weight:
+    540;
+
+  letter-spacing:
+    -0.05em;
+
+  line-height:
+    1.02;
+
+  text-wrap:
+    balance;
+}
+
+
+.sectionHeader {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1.15fr
+    )
+    minmax(
+      280px,
+      0.85fr
+    );
+
+  gap:
+    48px;
+
+  align-items:
+    end;
+
+  margin-bottom:
+    40px;
+}
+
+
+.sectionHeader > div {
+  max-width:
+    720px;
+}
+
+
+.sectionHeader > p {
+  max-width:
+    480px;
+
+  margin:
+    0;
+
+  color:
+    var(
+      --company-secondary
+    );
+
+  font-size:
+    0.98rem;
+
+  line-height:
+    1.65;
+}
+
+
 /* ==========================================================================
-   BUTTONS
+   BUTTONS / LINKS
    ========================================================================== */
 
 
@@ -160,7 +277,7 @@
     inline-flex;
 
   min-height:
-    48px;
+    44px;
 
   align-items:
     center;
@@ -179,7 +296,7 @@
     10px;
 
   font-size:
-    0.8rem;
+    0.84rem;
 
   font-weight:
     650;
@@ -189,16 +306,13 @@
 
   transition:
     background-color
-    180ms
+    120ms
     ease,
     border-color
-    180ms
+    120ms
     ease,
     color
-    180ms
-    ease,
-    transform
-    180ms
+    120ms
     ease;
 }
 
@@ -217,22 +331,32 @@
     );
 
   color:
-    var(
-      --company-base
-    );
+    #081017;
 }
 
 
 .primaryButton:hover {
-  background:
-    #c2f0f8;
-
   border-color:
-    #c2f0f8;
+    var(
+      --company-cyan-hover
+    );
 
-  transform:
-    translateY(
-      -1px
+  background:
+    var(
+      --company-cyan-hover
+    );
+}
+
+
+.primaryButton:active {
+  border-color:
+    var(
+      --company-cyan-pressed
+    );
+
+  background:
+    var(
+      --company-cyan-pressed
     );
 }
 
@@ -241,11 +365,8 @@
   border:
     1px
     solid
-    rgba(
-      161,
-      226,
-      240,
-      0.34
+    var(
+      --company-control
     );
 
   background:
@@ -259,23 +380,56 @@
 
 
 .secondaryButton:hover {
-  border-color:
-    var(
-      --company-cyan
-    );
-
   background:
-    rgba(
-      161,
-      226,
-      240,
-      0.05
+    var(
+      --company-hover
     );
 }
 
 
+.textAction {
+  display:
+    inline-flex;
+
+  min-height:
+    44px;
+
+  width:
+    fit-content;
+
+  align-items:
+    center;
+
+  gap:
+    8px;
+
+  margin-top:
+    24px;
+
+  color:
+    var(
+      --company-cyan
+    );
+
+  font-size:
+    0.88rem;
+
+  font-weight:
+    650;
+
+  text-decoration:
+    underline;
+
+  text-decoration-thickness:
+    1px;
+
+  text-underline-offset:
+    0.18em;
+}
+
+
 /* ==========================================================================
-   PAGE INTRO
+   HERO
    ========================================================================== */
 
 
@@ -290,9 +444,9 @@
     hidden;
 
   padding:
-    96px
+    64px
     0
-    88px;
+    72px;
 
   border-bottom:
     1px
@@ -324,10 +478,10 @@
   background-image:
     linear-gradient(
       rgba(
-        161,
-        226,
-        240,
-        0.02
+        148,
+        163,
+        184,
+        0.035
       )
       1px,
       transparent
@@ -336,10 +490,10 @@
     linear-gradient(
       90deg,
       rgba(
-        161,
-        226,
-        240,
-        0.02
+        148,
+        163,
+        184,
+        0.035
       )
       1px,
       transparent
@@ -348,16 +502,16 @@
     radial-gradient(
       circle
       at
-      82%
-      30%,
+      84%
+      34%,
       rgba(
-        126,
-        96,
-        185,
+        134,
+        189,
+        224,
         0.09
       ),
       transparent
-      28%
+      30%
     );
 
   background-size:
@@ -374,7 +528,7 @@
     relative;
 
   z-index:
-    2;
+    1;
 
   display:
     grid;
@@ -382,34 +536,34 @@
   grid-template-columns:
     minmax(
       0,
-      7fr
+      3fr
     )
     minmax(
-      0,
-      5fr
+      320px,
+      2fr
     );
 
   gap:
     clamp(
-      56px,
-      7vw,
-      88px
+      48px,
+      6vw,
+      76px
     );
 
   align-items:
-    end;
+    center;
 }
 
 
 .introCopy {
   max-width:
-    680px;
+    720px;
 }
 
 
 .introCopy h1 {
   max-width:
-    660px;
+    690px;
 
   margin:
     14px
@@ -423,7 +577,7 @@
 
   font-size:
     clamp(
-      3.15rem,
+      3rem,
       5vw,
       4.65rem
     );
@@ -432,10 +586,10 @@
     520;
 
   letter-spacing:
-    -0.065em;
+    -0.062em;
 
   line-height:
-    0.96;
+    0.98;
 
   text-wrap:
     balance;
@@ -455,23 +609,23 @@
 
 .introLead {
   max-width:
-    590px;
+    620px;
 
   margin:
-    20px
+    22px
     0
     0;
 
   color:
     var(
-      --company-muted
+      --company-secondary
     );
 
   font-size:
-    0.96rem;
+    1.04rem;
 
   line-height:
-    1.66;
+    1.65;
 }
 
 
@@ -485,7 +639,10 @@
 
   gap:
     12px;
+}
 
+
+.introActions {
   margin-top:
     28px;
 }
@@ -510,31 +667,32 @@
   padding:
     0;
 
-  border-top:
-    1px
-    solid
-    rgba(
-      161,
-      226,
-      240,
-      0.2
-    );
-
-  border-left:
+  border:
     1px
     solid
     var(
       --company-line
     );
+
+  border-radius:
+    16px;
+
+  overflow:
+    hidden;
+
+  background:
+    var(
+      --company-card
+    );
 }
 
 
 .companyFacts > div {
-  min-height:
-    112px;
+  min-width:
+    0;
 
   padding:
-    20px;
+    24px;
 
   border-right:
     1px
@@ -552,10 +710,26 @@
 }
 
 
+.companyFacts > div:nth-child(
+  2n
+) {
+  border-right:
+    0;
+}
+
+
+.companyFacts > div:nth-last-child(
+  -n + 2
+) {
+  border-bottom:
+    0;
+}
+
+
 .companyFacts dt {
   color:
     var(
-      --company-subtle
+      --company-muted
     );
 
   font-family:
@@ -566,10 +740,13 @@
     monospace;
 
   font-size:
-    0.54rem;
+    0.82rem;
+
+  font-weight:
+    600;
 
   letter-spacing:
-    0.07em;
+    0.055em;
 
   text-transform:
     uppercase;
@@ -577,65 +754,6 @@
 
 
 .companyFacts dd {
-  margin:
-    13px
-    0
-    0;
-
-  color:
-    #d2dae3;
-
-  font-size:
-    0.83rem;
-
-  font-weight:
-    560;
-
-  line-height:
-    1.45;
-}
-
-
-/* ==========================================================================
-   SHARED SECTION HEADER
-   ========================================================================== */
-
-
-.sectionHeader {
-  display:
-    grid;
-
-  grid-template-columns:
-    minmax(
-      0,
-      1.25fr
-    )
-    minmax(
-      280px,
-      0.75fr
-    );
-
-  gap:
-    56px;
-
-  align-items:
-    end;
-
-  margin-bottom:
-    52px;
-}
-
-
-.sectionHeader > div:first-child {
-  max-width:
-    720px;
-}
-
-
-.sectionHeader h2,
-.storyHeading h2,
-.expertiseIntro h2,
-.ctaInner h2 {
   margin:
     12px
     0
@@ -647,269 +765,29 @@
     );
 
   font-size:
-    clamp(
-      2.45rem,
-      4vw,
-      3.85rem
-    );
+    1rem;
 
   font-weight:
-    520;
-
-  letter-spacing:
-    -0.058em;
+    600;
 
   line-height:
-    0.99;
-
-  text-wrap:
-    balance;
-}
-
-
-.sectionHeader > p,
-.sectionAction > p {
-  max-width:
-    430px;
-
-  margin:
-    0;
-
-  color:
-    var(
-      --company-muted
-    );
-
-  font-size:
-    0.87rem;
-
-  line-height:
-    1.6;
-}
-
-
-.sectionAction {
-  display:
-    grid;
-
-  gap:
-    15px;
-}
-
-
-.sectionAction a {
-  display:
-    inline-flex;
-
-  min-height:
-    44px;
-
-  width:
-    fit-content;
-
-  align-items:
-    center;
-
-  gap:
-    8px;
-
-  color:
-    var(
-      --company-cyan
-    );
-
-  font-size:
-    0.75rem;
-
-  font-weight:
-    620;
-
-  text-decoration:
-    none;
+    1.45;
 }
 
 
 /* ==========================================================================
-   STORY
-   ========================================================================== */
-
-
-.story {
-  padding:
-    96px
-    0;
-
-  background:
-    var(
-      --company-base
-    );
-}
-
-
-.storyGrid {
-  display:
-    grid;
-
-  grid-template-columns:
-    minmax(
-      0,
-      5fr
-    )
-    minmax(
-      0,
-      7fr
-    );
-
-  gap:
-    clamp(
-      56px,
-      8vw,
-      110px
-    );
-
-  align-items:
-    start;
-}
-
-
-.storyHeading {
-  max-width:
-    520px;
-}
-
-
-.storyCopy {
-  max-width:
-    760px;
-
-  padding-top:
-    2px;
-}
-
-
-.storyCopy p {
-  margin:
-    0;
-
-  color:
-    var(
-      --company-muted
-    );
-
-  font-size:
-    0.89rem;
-
-  line-height:
-    1.68;
-}
-
-
-.storyLead {
-  color:
-    #c8d1da !important;
-
-  font-size:
-    clamp(
-      1.15rem,
-      1.8vw,
-      1.42rem
-    ) !important;
-
-  line-height:
-    1.5 !important;
-}
-
-
-.storyCopy p + p {
-  margin-top:
-    22px;
-}
-
-
-.storySequence {
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  gap:
-    13px;
-
-  margin-top:
-    34px;
-
-  padding:
-    18px
-    0;
-
-  border-top:
-    1px
-    solid
-    rgba(
-      161,
-      226,
-      240,
-      0.17
-    );
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --company-line
-    );
-
-  color:
-    var(
-      --company-blue
-    );
-
-  font-family:
-    var(
-      --font-ibm-plex-mono,
-      "IBM Plex Mono"
-    ),
-    monospace;
-
-  font-size:
-    0.57rem;
-
-  letter-spacing:
-    0.08em;
-}
-
-
-.storySequence i {
-  width:
-    34px;
-
-  height:
-    1px;
-
-  background:
-    rgba(
-      161,
-      226,
-      240,
-      0.24
-    );
-}
-
-
-/* ==========================================================================
-   MISSION / VISION
+   MISSION + VISION
    ========================================================================== */
 
 
 .missionVision {
   padding:
-    96px
+    80px
     0;
 
   background:
     var(
-      --company-surface
+      --company-base
     );
 }
 
@@ -927,17 +805,134 @@
       )
     );
 
+  gap:
+    48px;
+}
+
+
+.directionGrid article {
+  padding:
+    28px
+    0
+    0;
+
   border-top:
     1px
     solid
-    rgba(
-      161,
-      226,
-      240,
-      0.2
+    var(
+      --company-control
+    );
+}
+
+
+.directionGrid h3 {
+  max-width:
+    530px;
+
+  margin:
+    12px
+    0
+    0;
+
+  color:
+    var(
+      --company-text
     );
 
-  border-left:
+  font-size:
+    clamp(
+      1.65rem,
+      2.5vw,
+      2.25rem
+    );
+
+  font-weight:
+    540;
+
+  letter-spacing:
+    -0.04em;
+
+  line-height:
+    1.08;
+}
+
+
+.directionGrid p {
+  max-width:
+    540px;
+
+  margin:
+    16px
+    0
+    0;
+
+  color:
+    var(
+      --company-secondary
+    );
+
+  font-size:
+    0.98rem;
+
+  line-height:
+    1.65;
+}
+
+
+/* ==========================================================================
+   SELECTED MILESTONES
+   ========================================================================== */
+
+
+.timeline {
+  padding:
+    80px
+    0;
+
+  background:
+    var(
+      --company-surface
+    );
+}
+
+
+.milestoneList {
+  margin:
+    0;
+
+  padding:
+    0;
+
+  list-style:
+    none;
+}
+
+
+.milestoneList li {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      8rem,
+      0.28fr
+    )
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    28px;
+
+  align-items:
+    start;
+
+  padding:
+    26px
+    0;
+
+  border-top:
     1px
     solid
     var(
@@ -946,20 +941,7 @@
 }
 
 
-.directionGrid article {
-  min-height:
-    330px;
-
-  padding:
-    32px;
-
-  border-right:
-    1px
-    solid
-    var(
-      --company-line
-    );
-
+.milestoneList li:last-child {
   border-bottom:
     1px
     solid
@@ -969,7 +951,367 @@
 }
 
 
-.directionGrid article > span {
+.milestoneDate {
+  color:
+    var(
+      --company-blue
+    );
+
+  font-family:
+    var(
+      --font-ibm-plex-mono,
+      "IBM Plex Mono"
+    ),
+    monospace;
+
+  font-size:
+    0.86rem;
+
+  font-weight:
+    650;
+
+  letter-spacing:
+    0.05em;
+}
+
+
+.milestoneCopy h3 {
+  margin:
+    0;
+
+  color:
+    var(
+      --company-text
+    );
+
+  font-size:
+    1.3rem;
+
+  font-weight:
+    560;
+
+  letter-spacing:
+    -0.025em;
+
+  line-height:
+    1.3;
+}
+
+
+.milestoneCopy p {
+  max-width:
+    720px;
+
+  margin:
+    10px
+    0
+    0;
+
+  color:
+    var(
+      --company-secondary
+    );
+
+  font-size:
+    0.92rem;
+
+  line-height:
+    1.62;
+}
+
+
+.ongoingActivity {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      14rem,
+      0.42fr
+    )
+    minmax(
+      0,
+      1fr
+    );
+
+  gap:
+    48px;
+
+  margin-top:
+    48px;
+
+  padding-top:
+    36px;
+
+  border-top:
+    1px
+    solid
+    var(
+      --company-control
+    );
+}
+
+
+.ongoingHeading h3 {
+  margin:
+    12px
+    0
+    0;
+
+  color:
+    var(
+      --company-text
+    );
+
+  font-size:
+    1.65rem;
+
+  font-weight:
+    550;
+
+  letter-spacing:
+    -0.035em;
+}
+
+
+.ongoingGrid {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap:
+    24px;
+}
+
+
+.ongoingGrid article {
+  padding:
+    24px;
+
+  border:
+    1px
+    solid
+    var(
+      --company-line
+    );
+
+  border-radius:
+    16px;
+
+  background:
+    var(
+      --company-card
+    );
+}
+
+
+.ongoingGrid article > span {
+  color:
+    var(
+      --company-muted
+    );
+
+  font-family:
+    var(
+      --font-ibm-plex-mono,
+      "IBM Plex Mono"
+    ),
+    monospace;
+
+  font-size:
+    0.82rem;
+
+  font-weight:
+    600;
+
+  letter-spacing:
+    0.05em;
+}
+
+
+.ongoingGrid h4 {
+  margin:
+    12px
+    0
+    0;
+
+  color:
+    var(
+      --company-text
+    );
+
+  font-size:
+    1.12rem;
+
+  font-weight:
+    560;
+
+  line-height:
+    1.35;
+}
+
+
+.ongoingGrid p {
+  margin:
+    12px
+    0
+    0;
+
+  color:
+    var(
+      --company-secondary
+    );
+
+  font-size:
+    0.9rem;
+
+  line-height:
+    1.6;
+}
+
+
+/* ==========================================================================
+   FOUNDER
+   ========================================================================== */
+
+
+.founder {
+  padding:
+    80px
+    0;
+
+  background:
+    var(
+      --company-base
+    );
+}
+
+
+.founderLayout {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(
+      17rem,
+      0.78fr
+    )
+    minmax(
+      0,
+      1.22fr
+    );
+
+  gap:
+    clamp(
+      48px,
+      7vw,
+      88px
+    );
+
+  align-items:
+    center;
+}
+
+
+.founderPortrait {
+  margin:
+    0;
+
+  overflow:
+    hidden;
+
+  border:
+    1px
+    solid
+    var(
+      --company-line
+    );
+
+  border-radius:
+    16px;
+
+  background:
+    var(
+      --company-card
+    );
+}
+
+
+.founderImage {
+  display:
+    block;
+
+  width:
+    100%;
+
+  height:
+    auto;
+
+  aspect-ratio:
+    1
+    /
+    1;
+
+  object-fit:
+    cover;
+}
+
+
+.founderPortrait figcaption {
+  padding:
+    14px
+    18px;
+
+  border-top:
+    1px
+    solid
+    var(
+      --company-line
+    );
+
+  color:
+    var(
+      --company-muted
+    );
+
+  font-family:
+    var(
+      --font-ibm-plex-mono,
+      "IBM Plex Mono"
+    ),
+    monospace;
+
+  font-size:
+    0.78rem;
+
+  letter-spacing:
+    0.05em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.founderCopy {
+  max-width:
+    700px;
+}
+
+
+.founderRole {
+  margin:
+    28px
+    0
+    0;
+
   color:
     var(
       --company-purple
@@ -983,19 +1325,19 @@
     monospace;
 
   font-size:
-    0.57rem;
+    0.86rem;
+
+  font-weight:
+    650;
 
   letter-spacing:
-    0.09em;
+    0.05em;
 }
 
 
-.directionGrid h3 {
-  max-width:
-    510px;
-
+.founderName {
   margin:
-    62px
+    10px
     0
     0;
 
@@ -1006,62 +1348,117 @@
 
   font-size:
     clamp(
-      1.65rem,
-      2.8vw,
-      2.5rem
+      1.9rem,
+      3vw,
+      2.7rem
     );
 
   font-weight:
-    530;
+    550;
 
   letter-spacing:
     -0.045em;
 
   line-height:
-    1.05;
+    1.08;
 }
 
 
-.directionGrid p {
+.founderBio {
   max-width:
-    510px;
+    660px;
 
   margin:
-    17px
+    16px
     0
     0;
+
+  color:
+    var(
+      --company-secondary
+    );
+
+  font-size:
+    1rem;
+
+  line-height:
+    1.68;
+}
+
+
+.founderDescriptors {
+  display:
+    flex;
+
+  flex-wrap:
+    wrap;
+
+  gap:
+    8px;
+
+  margin:
+    22px
+    0
+    0;
+
+  padding:
+    0;
+
+  list-style:
+    none;
+}
+
+
+.founderDescriptors li {
+  padding:
+    7px
+    10px;
+
+  border:
+    1px
+    solid
+    var(
+      --company-line
+    );
+
+  border-radius:
+    999px;
 
   color:
     var(
       --company-muted
     );
 
-  font-size:
-    0.84rem;
+  font-family:
+    var(
+      --font-ibm-plex-mono,
+      "IBM Plex Mono"
+    ),
+    monospace;
 
-  line-height:
-    1.6;
+  font-size:
+    0.76rem;
 }
 
 
 /* ==========================================================================
-   VALUES
+   APPROACH + EXPERTISE
    ========================================================================== */
 
 
-.values {
+.approachExpertise {
   padding:
-    96px
+    80px
     0;
 
   background:
     var(
-      --company-base
+      --company-surface
     );
 }
 
 
-.valueGrid {
+.principleGrid {
   display:
     grid;
 
@@ -1074,49 +1471,27 @@
       )
     );
 
+  gap:
+    24px;
+}
+
+
+.principleGrid article {
+  padding:
+    24px
+    0
+    0;
+
   border-top:
     1px
     solid
-    rgba(
-      161,
-      226,
-      240,
-      0.2
+    var(
+      --company-control
     );
 }
 
 
-.valueGrid article {
-  padding:
-    28px;
-
-  border-right:
-    1px
-    solid
-    var(
-      --company-line
-    );
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --company-line
-    );
-}
-
-
-.valueGrid article:first-child {
-  border-left:
-    1px
-    solid
-    var(
-      --company-line
-    );
-}
-
-
-.valueIndex {
+.principleIndex {
   color:
     var(
       --company-purple
@@ -1130,13 +1505,13 @@
     monospace;
 
   font-size:
-    0.58rem;
+    0.78rem;
 }
 
 
-.valueGrid h3 {
+.principleGrid h3 {
   margin:
-    42px
+    12px
     0
     0;
 
@@ -1149,14 +1524,17 @@
     1.32rem;
 
   font-weight:
-    550;
+    560;
 
   letter-spacing:
-    -0.035em;
+    -0.03em;
+
+  line-height:
+    1.3;
 }
 
 
-.valueGrid p {
+.principleGrid p {
   margin:
     12px
     0
@@ -1164,155 +1542,61 @@
 
   color:
     var(
-      --company-muted
+      --company-secondary
     );
 
   font-size:
-    0.8rem;
+    0.92rem;
 
   line-height:
-    1.55;
+    1.58;
 }
 
 
-/* ==========================================================================
-   TIMELINE
-   ========================================================================== */
+.expertiseBlock {
+  margin-top:
+    48px;
 
-
-.timeline {
-  padding:
-    96px
-    0;
-
-  background:
-    var(
-      --company-surface
-    );
-}
-
-
-.timelineTrack {
-  display:
-    grid;
-
-  grid-template-columns:
-    repeat(
-      5,
-      minmax(
-        0,
-        1fr
-      )
-    );
-
-  margin:
-    0;
-
-  padding:
-    0;
+  padding-top:
+    48px;
 
   border-top:
     1px
     solid
-    rgba(
-      161,
-      226,
-      240,
-      0.2
-    );
-
-  list-style:
-    none;
-}
-
-
-.timelineTrack li {
-  min-width:
-    0;
-
-  min-height:
-    300px;
-
-  padding:
-    24px;
-
-  border-right:
-    1px
-    solid
-    var(
-      --company-line
-    );
-
-  border-bottom:
-    1px
-    solid
     var(
       --company-line
     );
 }
 
 
-.timelineTrack li:first-child {
-  border-left:
-    1px
-    solid
-    var(
-      --company-line
-    );
-}
-
-
-.timelineIndex {
-  color:
-    var(
-      --company-purple
-    );
-
-  font-family:
-    var(
-      --font-ibm-plex-mono,
-      "IBM Plex Mono"
-    ),
-    monospace;
-
-  font-size:
-    0.55rem;
-}
-
-
-.timelineTrack > li > strong {
+.expertiseHeader {
   display:
-    block;
+    grid;
 
-  margin-top:
-    38px;
-
-  color:
-    var(
-      --company-cyan
+  grid-template-columns:
+    minmax(
+      0,
+      1fr
+    )
+    minmax(
+      280px,
+      0.72fr
     );
 
-  font-family:
-    var(
-      --font-ibm-plex-mono,
-      "IBM Plex Mono"
-    ),
-    monospace;
+  gap:
+    48px;
 
-  font-size:
-    0.64rem;
+  align-items:
+    end;
 
-  font-weight:
-    600;
-
-  letter-spacing:
-    0.06em;
+  margin-bottom:
+    28px;
 }
 
 
-.timelineTrack h3 {
+.expertiseHeader h3 {
   margin:
-    15px
+    12px
     0
     0;
 
@@ -1322,100 +1606,37 @@
     );
 
   font-size:
-    1rem;
+    clamp(
+      1.85rem,
+      3vw,
+      2.6rem
+    );
 
   font-weight:
-    560;
+    550;
 
-  line-height:
-    1.3;
+  letter-spacing:
+    -0.045em;
 }
 
 
-.timelineTrack p {
-  margin:
-    13px
-    0
-    0;
-
-  color:
-    var(
-      --company-muted
-    );
-
-  font-size:
-    0.73rem;
-
-  line-height:
-    1.53;
-}
-
-
-/* ==========================================================================
-   EXPERTISE
-   ========================================================================== */
-
-
-.expertise {
-  padding:
-    96px
-    0;
-
-  background:
-    var(
-      --company-base
-    );
-}
-
-
-.expertiseLayout {
-  display:
-    grid;
-
-  grid-template-columns:
-    minmax(
-      0,
-      5fr
-    )
-    minmax(
-      0,
-      7fr
-    );
-
-  gap:
-    clamp(
-      56px,
-      8vw,
-      108px
-    );
-
-  align-items:
-    start;
-}
-
-
-.expertiseIntro {
+.expertiseHeader > p {
   max-width:
-    520px;
-}
+    460px;
 
-
-.expertiseIntro > p:last-child {
   margin:
-    17px
-    0
     0;
 
   color:
     var(
-      --company-muted
+      --company-secondary
     );
 
   font-size:
-    0.85rem;
+    0.94rem;
 
   line-height:
-    1.6;
+    1.62;
 }
 
 
@@ -1423,11 +1644,8 @@
   border-top:
     1px
     solid
-    rgba(
-      161,
-      226,
-      240,
-      0.2
+    var(
+      --company-control
     );
 }
 
@@ -1437,8 +1655,8 @@
     grid;
 
   grid-template-columns:
-    38px
-    66px
+    42px
+    72px
     minmax(
       0,
       1fr
@@ -1446,13 +1664,17 @@
     24px;
 
   gap:
-    14px;
+    16px;
 
   align-items:
     center;
 
   min-height:
-    106px;
+    92px;
+
+  padding:
+    14px
+    16px;
 
   border-bottom:
     1px
@@ -1466,6 +1688,31 @@
 
   text-decoration:
     none;
+
+  transition:
+    background-color
+    120ms
+    ease;
+}
+
+
+.expertiseRows > a:hover {
+  background:
+    var(
+      --company-hover
+    );
+}
+
+
+.expertiseRows > a:hover strong {
+  text-decoration:
+    underline;
+
+  text-decoration-thickness:
+    1px;
+
+  text-underline-offset:
+    0.16em;
 }
 
 
@@ -1483,7 +1730,7 @@
     monospace;
 
   font-size:
-    0.56rem;
+    0.78rem;
 }
 
 
@@ -1501,22 +1748,27 @@
     monospace;
 
   font-size:
-    0.55rem;
+    0.78rem;
+
+  font-weight:
+    600;
 
   letter-spacing:
-    0.06em;
+    0.055em;
 }
 
 
 .expertiseRows strong {
   color:
-    #d5dde5;
+    var(
+      --company-text
+    );
 
   font-size:
-    0.94rem;
+    1rem;
 
   font-weight:
-    570;
+    600;
 }
 
 
@@ -1528,14 +1780,14 @@
 
   color:
     var(
-      --company-muted
+      --company-secondary
     );
 
   font-size:
-    0.74rem;
+    0.88rem;
 
   line-height:
-    1.46;
+    1.5;
 }
 
 
@@ -1548,183 +1800,15 @@
 
 
 /* ==========================================================================
-   TEAM PREVIEW
-   ========================================================================== */
-
-
-.team {
-  padding:
-    96px
-    0;
-
-  background:
-    var(
-      --company-surface
-    );
-}
-
-
-.teamGrid {
-  display:
-    grid;
-
-  grid-template-columns:
-    repeat(
-      4,
-      minmax(
-        0,
-        1fr
-      )
-    );
-
-  gap:
-    20px;
-}
-
-
-.teamGrid article {
-  min-width:
-    0;
-
-  padding:
-    24px
-    0;
-
-  border-top:
-    1px
-    solid
-    rgba(
-      161,
-      226,
-      240,
-      0.18
-    );
-
-  border-bottom:
-    1px
-    solid
-    var(
-      --company-line
-    );
-}
-
-
-.teamInitials {
-  display:
-    grid;
-
-  width:
-    58px;
-
-  height:
-    58px;
-
-  place-items:
-    center;
-
-  border:
-    1px
-    solid
-    var(
-      --company-line
-    );
-
-  border-radius:
-    50%;
-
-  color:
-    var(
-      --company-cyan
-    );
-
-  font-family:
-    var(
-      --font-ibm-plex-mono,
-      "IBM Plex Mono"
-    ),
-    monospace;
-
-  font-size:
-    0.67rem;
-}
-
-
-.teamRole {
-  margin:
-    24px
-    0
-    0;
-
-  color:
-    var(
-      --company-blue
-    );
-
-  font-family:
-    var(
-      --font-ibm-plex-mono,
-      "IBM Plex Mono"
-    ),
-    monospace;
-
-  font-size:
-    0.54rem;
-
-  letter-spacing:
-    0.06em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.teamGrid h3 {
-  margin:
-    9px
-    0
-    0;
-
-  color:
-    var(
-      --company-text
-    );
-
-  font-size:
-    1.22rem;
-
-  font-weight:
-    550;
-}
-
-
-.teamBio {
-  margin:
-    11px
-    0
-    0;
-
-  color:
-    var(
-      --company-muted
-    );
-
-  font-size:
-    0.76rem;
-
-  line-height:
-    1.52;
-}
-
-
-/* ==========================================================================
    FINAL CTA
    ========================================================================== */
 
 
 .cta {
   padding:
-    96px
-    0;
+    64px
+    0
+    28px;
 
   background:
     var(
@@ -1745,30 +1829,21 @@
     auto;
 
   gap:
-    64px;
+    56px;
 
   align-items:
     end;
 
   padding:
-    44px
-    0;
+    36px
+    0
+    28px;
 
   border-top:
     1px
     solid
-    rgba(
-      161,
-      226,
-      240,
-      0.25
-    );
-
-  border-bottom:
-    1px
-    solid
     var(
-      --company-line
+      --company-control
     );
 }
 
@@ -1790,25 +1865,25 @@
     560px;
 
   margin:
-    17px
+    16px
     0
     0;
 
   color:
     var(
-      --company-muted
+      --company-secondary
     );
 
   font-size:
-    0.86rem;
+    0.96rem;
 
   line-height:
-    1.58;
+    1.62;
 }
 
 
 .ctaActions {
-  margin-top:
+  margin:
     0;
 }
 
@@ -1820,22 +1895,15 @@
 
 @media (max-width: 1024px) {
 
-  .pageIntro {
-    padding:
-      80px
-      0;
-  }
-
-
-  .introGrid,
-  .storyGrid,
-  .expertiseLayout,
-  .ctaInner {
+  .introGrid {
     grid-template-columns:
       minmax(
         0,
         1fr
       );
+
+    gap:
+      42px;
   }
 
 
@@ -1845,20 +1913,10 @@
   }
 
 
-  .story,
-  .missionVision,
-  .values,
-  .timeline,
-  .expertise,
-  .team,
-  .cta {
-    padding:
-      80px
-      0;
-  }
-
-
-  .sectionHeader {
+  .sectionHeader,
+  .expertiseHeader,
+  .ongoingActivity,
+  .ctaInner {
     grid-template-columns:
       minmax(
         0,
@@ -1866,49 +1924,87 @@
       );
 
     gap:
-      22px;
+      24px;
   }
 
 
-  .timelineTrack {
-    grid-template-columns:
-      repeat(
-        3,
-        minmax(
-          0,
-          1fr
-        )
-      );
-  }
-
-
-  .timelineTrack li:nth-child(
-    4
-  ) {
-    border-left:
-      1px
-      solid
-      var(
-        --company-line
-      );
-  }
-
-
-  .teamGrid {
-    grid-template-columns:
-      repeat(
-        2,
-        minmax(
-          0,
-          1fr
-        )
-      );
+  .founderLayout {
+    gap:
+      48px;
   }
 
 
   .ctaInner {
+    align-items:
+      start;
+  }
+
+}
+
+
+/* ==========================================================================
+   COMPACT
+   ========================================================================== */
+
+
+@media (max-width: 820px) {
+
+  .pageIntro,
+  .missionVision,
+  .timeline,
+  .founder,
+  .approachExpertise {
+    padding:
+      64px
+      0;
+  }
+
+
+  .founderLayout {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .founderPortrait {
+    max-width:
+      460px;
+  }
+
+
+  .principleGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
     gap:
-      30px;
+      28px;
+  }
+
+
+  .ongoingGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  .directionGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      28px;
   }
 
 }
@@ -1923,23 +2019,18 @@
 
   .pageIntro {
     padding:
-      64px
-      0;
-  }
-
-
-  .introDecoration {
-    opacity:
-      0.45;
+      48px
+      0
+      56px;
   }
 
 
   .introCopy h1 {
     font-size:
       clamp(
-        2.7rem,
+        2.65rem,
         12vw,
-        3.55rem
+        3.5rem
       );
   }
 
@@ -1967,168 +2058,16 @@
         0,
         1fr
       );
-
-    margin-top:
-      8px;
   }
 
 
-  .companyFacts > div {
-    min-height:
-      0;
-
-    padding:
-      18px;
-  }
-
-
-  .story,
-  .missionVision,
-  .values,
-  .timeline,
-  .expertise,
-  .team,
-  .cta {
-    padding:
-      64px
-      0;
-  }
-
-
-  .sectionHeader h2,
-  .storyHeading h2,
-  .expertiseIntro h2,
-  .ctaInner h2 {
-    font-size:
-      clamp(
-        2.2rem,
-        10vw,
-        2.95rem
-      );
-  }
-
-
-  .storyGrid {
-    gap:
-      38px;
-  }
-
-
-  .storySequence {
-    flex-wrap:
-      wrap;
-  }
-
-
-  .storySequence i {
-    width:
-      20px;
-  }
-
-
-  .directionGrid {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-  }
-
-
-  .directionGrid article {
-    min-height:
-      0;
-
-    padding:
-      26px
-      0;
-
-    border-right:
-      0;
-
-    border-left:
-      0;
-  }
-
-
-  .directionGrid h3 {
-    margin-top:
-      34px;
-  }
-
-
-  .valueGrid {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-  }
-
-
-  .valueGrid article,
-  .valueGrid article:first-child {
-    padding:
-      24px
-      0;
-
-    border-right:
-      0;
-
-    border-left:
-      0;
-  }
-
-
-  .valueGrid h3 {
-    margin-top:
-      28px;
-  }
-
-
-  .timelineTrack {
-    position:
-      relative;
-
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-
-    padding-left:
-      24px;
-
-    border-top:
-      0;
-
-    border-left:
-      1px
-      solid
-      rgba(
-        161,
-        226,
-        240,
-        0.16
-      );
-  }
-
-
-  .timelineTrack li,
-  .timelineTrack li:first-child,
-  .timelineTrack li:nth-child(
-    4
+  .companyFacts > div,
+  .companyFacts > div:nth-child(
+    2n
+  ),
+  .companyFacts > div:nth-last-child(
+    -n + 2
   ) {
-    position:
-      relative;
-
-    min-height:
-      0;
-
-    padding:
-      22px
-      0;
-
     border-right:
       0;
 
@@ -2138,56 +2077,83 @@
       var(
         --company-line
       );
+  }
 
-    border-left:
+
+  .companyFacts > div:last-child {
+    border-bottom:
       0;
   }
 
 
-  .timelineTrack li::before {
-    position:
-      absolute;
+  .compactHeader h2,
+  .sectionHeader h2,
+  .founderCopy h2,
+  .ctaInner h2 {
+    font-size:
+      clamp(
+        2rem,
+        10vw,
+        2.7rem
+      );
+  }
 
-    top:
-      28px;
 
-    left:
-      -28px;
+  .sectionHeader {
+    margin-bottom:
+      32px;
+  }
 
-    width:
-      7px;
 
-    height:
-      7px;
-
-    border-radius:
-      50%;
-
-    background:
-      var(
-        --company-cyan
+  .milestoneList li {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
       );
 
-    content:
-      "";
-  }
-
-
-  .timelineTrack > li > strong {
-    margin-top:
-      18px;
-  }
-
-
-  .expertiseLayout {
     gap:
-      38px;
+      10px;
+
+    padding:
+      24px
+      0;
+  }
+
+
+  .ongoingActivity {
+    margin-top:
+      36px;
+
+    padding-top:
+      28px;
+  }
+
+
+  .founderPortrait {
+    width:
+      100%;
+  }
+
+
+  .founderDescriptors {
+    gap:
+      6px;
+  }
+
+
+  .expertiseBlock {
+    margin-top:
+      40px;
+
+    padding-top:
+      36px;
   }
 
 
   .expertiseRows > a {
     grid-template-columns:
-      32px
+      36px
       minmax(
         0,
         1fr
@@ -2195,15 +2161,15 @@
       20px;
 
     gap:
-      8px
+      7px
       12px;
 
     min-height:
-      98px;
+      94px;
 
     padding:
-      12px
-      0;
+      14px
+      4px;
   }
 
 
@@ -2231,26 +2197,19 @@
   }
 
 
-  .teamGrid {
-    grid-template-columns:
-      minmax(
-        0,
-        1fr
-      );
-  }
-
-
-  .teamGrid article {
+  .cta {
     padding:
-      22px
-      0;
+      52px
+      0
+      18px;
   }
 
 
   .ctaInner {
     padding:
-      34px
-      0;
+      30px
+      0
+      20px;
   }
 
 }
@@ -2262,14 +2221,9 @@
 ) {
 
   .primaryButton,
-  .secondaryButton {
+  .secondaryButton,
+  .expertiseRows > a {
     transition:
-      none;
-  }
-
-
-  .primaryButton:hover {
-    transform:
       none;
   }
 

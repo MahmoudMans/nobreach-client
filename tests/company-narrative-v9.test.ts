@@ -21,17 +21,18 @@ describe(
   () => {
 
     it(
-      "contains story mission vision values timeline and expertise",
+      "progresses from purpose to history founder approach and action",
       () => {
 
         for (
           const token
-          of [
-            'data-company-section="story"',
+          of
+          [
             'data-company-section="mission-vision"',
-            'data-company-section="values"',
             'data-company-section="timeline"',
-            'data-company-section="expertise"'
+            'data-company-section="founder"',
+            'data-company-section="approach-expertise"',
+            'data-company-section="cta"'
           ]
         ) {
 
@@ -43,17 +44,24 @@ describe(
 
         }
 
+        expect(
+          page
+        ).not.toContain(
+          'data-company-section="story"'
+        );
+
       }
     );
 
 
     it(
-      "uses established timeline milestones",
+      "keeps established historical content while separating ongoing work",
       () => {
 
         for (
           const token
-          of [
+          of
+          [
             "No Breach founded",
             "Training Hub established",
             "CR4CKOUT launched",
@@ -70,12 +78,18 @@ describe(
 
         }
 
+        expect(
+          page
+        ).toContain(
+          "Ongoing activity"
+        );
+
       }
     );
 
 
     it(
-      "uses editorial expertise rows instead of another card wall",
+      "keeps expertise editorial rather than rebuilding a card wall",
       () => {
 
         expect(
@@ -83,7 +97,6 @@ describe(
         ).toContain(
           "expertiseRows"
         );
-
 
         expect(
           page

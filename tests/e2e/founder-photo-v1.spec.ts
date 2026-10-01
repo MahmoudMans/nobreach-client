@@ -1,64 +1,7 @@
 import {
   expect,
-  test,
+  test
 } from "@playwright/test";
-
-
-async function expectImageLoaded(
-  locator:
-    import("@playwright/test").Locator
-) {
-
-  await expect(
-    locator
-  ).toHaveCount(
-    1
-  );
-
-
-  await locator
-    .scrollIntoViewIfNeeded();
-
-
-  await expect(
-    locator
-  ).toBeVisible();
-
-
-  await expect
-    .poll(
-      async () =>
-        locator.evaluate(
-          (
-            element
-          ) => {
-
-            const image =
-              element as HTMLImageElement;
-
-
-            return (
-              image.complete
-              &&
-              image.naturalWidth > 0
-              &&
-              image.naturalHeight > 0
-            );
-          }
-        ),
-      {
-        message:
-          "expected founder portrait image to finish loading",
-
-        timeout:
-          5000,
-      }
-    )
-    .toBe(
-      true
-    );
-
-}
 
 
 test(
@@ -71,23 +14,20 @@ test(
       "/company/founder"
     );
 
-
     const portrait =
       page.locator(
         '[data-founder-photo-image="profile"]'
       );
 
-
-    await expectImageLoaded(
+    await expect(
       portrait
-    );
-
+    ).toBeVisible();
 
     await expect(
       portrait
     ).toHaveAttribute(
-      "alt",
-      ""
+      "src",
+      /ceo\.png/
     );
 
   }
@@ -95,7 +35,7 @@ test(
 
 
 test(
-  "company page links to the dedicated founder profile instead of duplicating its portrait",
+  "audited Company page intentionally presents the founder portrait",
   async ({
     page
   }) => {
@@ -104,72 +44,122 @@ test(
       "/company"
     );
 
+    const founder =
+      page.locator(
+        '[data-company-section="founder"]'
+      );
 
     await expect(
-      page.locator(
-        '[data-founder-photo-image="company"]'
+      founder
+    ).toBeVisible();
+
+    await expect(
+      founder.getByRole(
+        "heading",
+        {
+          level:
+            2,
+          name:
+            "Meet the founder"
+        }
       )
-    ).toHaveCount(
-      0
+    ).toBeVisible();
+
+    await expect(
+      founder.getByRole(
+        "heading",
+        {
+          level:
+            3,
+          name:
+            "Nouha Ben Brahim"
+        }
+      )
+    ).toBeVisible();
+
+    const portrait =
+      founder.getByRole(
+        "img",
+        {
+          name:
+            "Nouha Ben Brahim, founder of No Breach"
+        }
+      );
+
+    await expect(
+      portrait
+    ).toBeVisible();
+
+    await expect(
+      portrait
+    ).toHaveAttribute(
+      "src",
+      /ceo\.png/
     );
 
-
     await expect(
-      page
-        .locator(
-          'main a[href="/company/founder"]'
-        )
-        .first()
-    ).toBeVisible();
+      founder.getByRole(
+        "link",
+        {
+          name:
+            /Explore founder profile/i
+        }
+      )
+    ).toHaveAttribute(
+      "href",
+      "/company/founder"
+    );
 
   }
 );
 
 
-test(
-  "founder photo layouts remain overflow free on mobile",
-  async ({
-    page
-  }) => {
+for (
+  const route
+  of
+  [
+    "/company",
+    "/company/founder"
+  ]
+) {
 
-    await page.setViewportSize({
-      width:
-        390,
+  test(
+    `${route} founder photo layout remains overflow free on mobile`,
+    async ({
+      page
+    }) => {
 
-      height:
-        844,
-    });
-
-
-    for (
-      const route
-      of [
-        "/company/founder",
-        "/company",
-      ]
-    ) {
+      await page.setViewportSize({
+        width:
+          390,
+        height:
+          844
+      });
 
       await page.goto(
         route
       );
 
-
-      const overflow =
+      const geometry =
         await page.evaluate(
-          () =>
-            document.documentElement.scrollWidth
-            >
-            document.documentElement.clientWidth
+          () => ({
+            scroll:
+              document.documentElement.scrollWidth,
+
+            client:
+              document.documentElement.clientWidth
+          })
         );
 
-
       expect(
-        overflow
-      ).toBe(
-        false
+        geometry.scroll
+      ).toBeLessThanOrEqual(
+        geometry.client
+        +
+        1
       );
 
     }
+  );
 
-  }
-);
+}

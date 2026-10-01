@@ -15,7 +15,6 @@ const page =
     "utf8"
   );
 
-
 const css =
   readFileSync(
     "src/app/company/company.module.css",
@@ -24,32 +23,34 @@ const css =
 
 
 describe(
-  "company strict about page v20",
+  "company strict about page",
   () => {
 
     it(
-      "uses the canonical About-page flow",
+      "uses the audited Company flow",
       () => {
 
         const sections =
-          page.match(
-            /data-company-section="[^"]+"/g
-          )
-          ??
-          [];
-
+          [
+            ...page.matchAll(
+              /data-company-section="([^"]+)"/g
+            )
+          ].map(
+            (
+              match
+            ) =>
+              match[1]
+          );
 
         expect(
           sections
         ).toEqual([
-          'data-company-section="intro"',
-          'data-company-section="story"',
-          'data-company-section="mission-vision"',
-          'data-company-section="values"',
-          'data-company-section="timeline"',
-          'data-company-section="expertise"',
-          'data-company-section="team"',
-          'data-company-section="cta"'
+          "intro",
+          "mission-vision",
+          "timeline",
+          "founder",
+          "approach-expertise",
+          "cta"
         ]);
 
       }
@@ -70,13 +71,11 @@ describe(
           1
         );
 
-
         expect(
           page
         ).not.toContain(
           "<nav"
         );
-
 
         expect(
           page
@@ -94,11 +93,13 @@ describe(
 
         for (
           const token
-          of [
+          of
+          [
             "2023",
             "Tunis, Tunisia",
             "Offensive Security",
-            "Services · Education · Community"
+            "Services · Education · Community",
+            "Activities"
           ]
         ) {
 
@@ -120,7 +121,8 @@ describe(
 
         for (
           const token
-          of [
+          of
+          [
             "Think offensively",
             "Build through practice",
             "Share knowledge"
@@ -140,30 +142,32 @@ describe(
 
 
     it(
-      "uses the NoBreach design tokens",
+      "keeps the strict-v20 compatibility marker and v21 audit marker",
       () => {
 
-        for (
-          const token
-          of [
-            "#07090d",
-            "#0b0f16",
-            "#101620",
-            "#151d29",
-            "#a1e2f0",
-            "#83b3d7",
-            "#7e60b9",
-            "NB_COMPANY_ABOUT_STRICT_V20"
-          ]
-        ) {
+        expect(
+          page
+        ).toContain(
+          'data-company-about="strict-v20"'
+        );
 
-          expect(
-            css
-          ).toContain(
-            token
-          );
+        expect(
+          page
+        ).toContain(
+          'data-company-audit="v21"'
+        );
 
-        }
+        expect(
+          css
+        ).toContain(
+          "NB_COMPANY_ABOUT_STRICT_V20"
+        );
+
+        expect(
+          css
+        ).toContain(
+          "NB_COMPANY_AUDIT_V21"
+        );
 
       }
     );

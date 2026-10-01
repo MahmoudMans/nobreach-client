@@ -21,40 +21,50 @@ describe(
   () => {
 
     it(
-      "expands the main About page to the canonical eight-section flow",
+      "uses the consolidated six-section Company flow",
       () => {
 
-        expect(
-          (
-            company.match(
-              /data-company-section=/g
+        const sections =
+          [
+            ...company.matchAll(
+              /data-company-section="([^"]+)"/g
             )
-            ??
-            []
-          ).length
-        ).toBe(
-          8
-        );
+          ].map(
+            (
+              match
+            ) =>
+              match[1]
+          );
+
+        expect(
+          sections
+        ).toEqual([
+          "intro",
+          "mission-vision",
+          "timeline",
+          "founder",
+          "approach-expertise",
+          "cta"
+        ]);
 
       }
     );
 
 
     it(
-      "does not apply the old three-section budget to the main About page",
+      "keeps founder and expertise as deliberate Company content",
       () => {
 
         expect(
           company
         ).toContain(
-          'data-company-section="mission-vision"'
+          'data-company-section="founder"'
         );
-
 
         expect(
           company
         ).toContain(
-          'data-company-section="team"'
+          'data-company-section="approach-expertise"'
         );
 
       }

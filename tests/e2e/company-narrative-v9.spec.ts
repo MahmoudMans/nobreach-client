@@ -5,7 +5,7 @@ import {
 
 
 test(
-  "Company uses editorial story and direction sections",
+  "Company uses consolidated purpose and history sections",
   async ({
     page
   }) => {
@@ -14,20 +14,25 @@ test(
       "/company"
     );
 
-
-    await expect(
-      page.locator(
-        '[data-company-section="story"]'
-      )
-    ).toBeVisible();
-
-
     await expect(
       page.locator(
         '[data-company-section="mission-vision"]'
       )
     ).toBeVisible();
 
+    await expect(
+      page.locator(
+        '[data-company-section="timeline"]'
+      )
+    ).toBeVisible();
+
+    await expect(
+      page.locator(
+        '[data-company-section="story"]'
+      )
+    ).toHaveCount(
+      0
+    );
 
     await expect(
       page.getByRole(
@@ -35,9 +40,8 @@ test(
         {
           level:
             2,
-
           name:
-            /built from offensive security/i
+            "Mission and vision"
         }
       )
     ).toBeVisible();
@@ -47,7 +51,7 @@ test(
 
 
 test(
-  "Company timeline contains only published milestones",
+  "Company timeline distinguishes milestones and ongoing work",
   async ({
     page
   }) => {
@@ -56,21 +60,26 @@ test(
       "/company"
     );
 
-
     const timeline =
       page.locator(
         '[data-company-section="timeline"]'
       );
 
+    await expect(
+      timeline.locator(
+        '[data-company-milestone="true"]'
+      )
+    ).toHaveCount(
+      3
+    );
 
     await expect(
       timeline.locator(
-        "ol > li"
+        '[data-company-ongoing="true"]'
       )
     ).toHaveCount(
-      5
+      2
     );
-
 
     await expect(
       timeline.getByText(
@@ -87,7 +96,7 @@ test(
 
 
 test(
-  "Company expertise stays editorial rather than another card wall",
+  "Company expertise remains an editorial service directory",
   async ({
     page
   }) => {
@@ -96,16 +105,14 @@ test(
       "/company"
     );
 
-
     const expertise =
       page.locator(
-        '[data-company-section="expertise"]'
+        '[data-company-section="approach-expertise"]'
       );
 
-
     await expect(
-      expertise.getByRole(
-        "link"
+      expertise.locator(
+        '[data-company-expertise="true"]'
       )
     ).toHaveCount(
       4
