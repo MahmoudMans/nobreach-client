@@ -1,6 +1,7 @@
 /* ==========================================================================
    NB_CR4CKOUT_DESIGN_AUTHORITY_V10
    NB_CR4CKOUT_AUDIT_V11
+   NB_CR4CKOUT_FINISHING_V12
 
    Signature challenge:
    introduction -> experience -> technical areas -> event record -> hosting
@@ -666,25 +667,6 @@
 
   letter-spacing:
     0.06em;
-}
-
-
-.themeNote {
-  margin:
-    1rem
-    0
-    0;
-
-  color:
-    var(
-      --cr-muted
-    );
-
-  font-size:
-    0.88rem;
-
-  line-height:
-    1.55;
 }
 
 

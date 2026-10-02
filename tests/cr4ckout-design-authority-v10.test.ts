@@ -355,3 +355,92 @@ describe(
 
   }
 );
+
+describe(
+  "CR4CKOUT V12 finishing pass",
+  () => {
+
+    it(
+      "removes the public illustration design note",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          'data-cr4ckout-finish="v12"'
+        );
+
+
+        expect(
+          page
+        ).not.toContain(
+          "A thematic illustration of the challenge areas—not a live"
+        );
+
+
+        expect(
+          page
+        ).not.toContain(
+          "event-status display."
+        );
+
+
+        expect(
+          page
+        ).not.toContain(
+          "styles.themeNote"
+        );
+
+
+        expect(
+          css
+        ).not.toContain(
+          ".themeNote"
+        );
+
+
+        expect(
+          css
+        ).toContain(
+          "NB_CR4CKOUT_FINISHING_V12"
+        );
+
+      }
+    );
+
+
+    it(
+      "preserves the accepted V11 architecture and actions",
+      () => {
+
+        for (
+          const token
+          of
+          [
+            'data-cr4ckout-section="hero"',
+            'data-cr4ckout-section="experience"',
+            'data-cr4ckout-section="challenges"',
+            'data-cr4ckout-section="events"',
+            'data-cr4ckout-section="host"',
+            "Explore the challenge",
+            "Host CR4CKOUT",
+            "View event information",
+            "View event details",
+            "Browse all No Breach events",
+            "Discuss hosting"
+          ]
+        ) {
+
+          expect(
+            page
+          ).toContain(
+            token
+          );
+
+        }
+
+      }
+    );
+
+  }
+);

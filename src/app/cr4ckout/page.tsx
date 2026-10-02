@@ -242,6 +242,7 @@ export default function Cr4ckoutPage() {
       }
       data-cr4ckout-design="continuous-system"
       data-cr4ckout-audit="v11"
+      data-cr4ckout-finish="v12"
     >
       {/* ================================================================
           INTRODUCTION
@@ -416,14 +417,6 @@ export default function Cr4ckoutPage() {
                 </div>
 
 
-                <p
-                  className={
-                    styles.themeNote
-                  }
-                >
-                  A thematic illustration of the challenge areas—not a live
-                  event-status display.
-                </p>
               </figure>
             </div>
 

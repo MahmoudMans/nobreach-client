@@ -746,3 +746,227 @@ for (
   );
 
 }
+
+test(
+  "CR4CKOUT V12 removes the illustration design note without weakening the artwork",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/cr4ckout"
+    );
+
+
+    await expect(
+      page.locator(
+        '[data-cr4ckout-finish="v12"]'
+      )
+    ).toBeVisible();
+
+
+    const figure =
+      page.locator(
+        '[data-cr4ckout-ui="theme-illustration"]'
+      );
+
+
+    await expect(
+      figure
+    ).toBeVisible();
+
+
+    await expect(
+      figure.getByText(
+        "Challenge themes",
+        {
+          exact:
+            true
+        }
+      )
+    ).toBeVisible();
+
+
+    for (
+      const theme
+      of
+      [
+        "Cryptography",
+        "Steganography",
+        "System access"
+      ]
+    ) {
+
+      await expect(
+        figure.getByText(
+          theme,
+          {
+            exact:
+              true
+          }
+        )
+      ).toBeVisible();
+
+    }
+
+
+    await expect(
+      page.getByText(
+        /A thematic illustration of the challenge areas/i
+      )
+    ).toHaveCount(
+      0
+    );
+
+
+    await expect(
+      figure.locator(
+        "a, button, input, select, textarea"
+      )
+    ).toHaveCount(
+      0
+    );
+
+
+    await expect(
+      figure.locator(
+        '[tabindex]:not([tabindex="-1"])'
+      )
+    ).toHaveCount(
+      0
+    );
+
+  }
+);
+
+
+test(
+  "CR4CKOUT V12 preserves in-page and downstream action contracts",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/cr4ckout"
+    );
+
+
+    const hero =
+      page.locator(
+        '[data-cr4ckout-section="hero"]'
+      );
+
+
+    await expect(
+      hero.getByRole(
+        "link",
+        {
+          name:
+            /Explore the challenge/
+        }
+      )
+    ).toHaveAttribute(
+      "href",
+      "#experience"
+    );
+
+
+    await expect(
+      hero.getByRole(
+        "link",
+        {
+          name:
+            /Host CR4CKOUT/
+        }
+      )
+    ).toHaveAttribute(
+      "href",
+      "#host"
+    );
+
+
+    await expect(
+      hero.getByRole(
+        "link",
+        {
+          name:
+            /View event information/
+        }
+      )
+    ).toHaveAttribute(
+      "href",
+      "#events"
+    );
+
+
+    await hero.getByRole(
+      "link",
+      {
+        name:
+          /Explore the challenge/
+      }
+    ).click();
+
+
+    await expect(
+      page.locator(
+        "#experience"
+      )
+    ).toBeInViewport();
+
+
+    await expect(
+      page
+        .locator(
+          '[data-cr4ckout-ui="event-feature"]'
+        )
+        .getByRole(
+          "link",
+          {
+            name:
+              /View event details/
+          }
+        )
+    ).toHaveAttribute(
+      "href",
+      "/events/cr4ckout-2-0"
+    );
+
+
+    await expect(
+      page
+        .locator(
+          '[data-cr4ckout-section="events"]'
+        )
+        .getByRole(
+          "link",
+          {
+            name:
+              /Browse all No Breach events/
+          }
+        )
+    ).toHaveAttribute(
+      "href",
+      "/events"
+    );
+
+
+    await expect(
+      page
+        .locator(
+          '[data-cr4ckout-section="host"]'
+        )
+        .getByRole(
+          "link",
+          {
+            name:
+              /Discuss hosting/
+          }
+        )
+    ).toHaveAttribute(
+      "href",
+      "/contact"
+    );
+
+  }
+);
