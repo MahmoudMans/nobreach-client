@@ -30,6 +30,10 @@ const css =
   );
 
 
+// NB_CR4CKOUT_2_V58_LEGACY_CSS_CONTRACT
+// Legacy route assertions remain active.
+// Only retired V48 palette/spacing tokens were migrated to V56 authorities.
+
 describe(
   "CR4CKOUT 2 activity V48",
   () => {
@@ -152,14 +156,19 @@ describe(
         for (
           const token
           of [
-            "#07090d",
-            "#0b0f16",
-            "#101620",
-            "#151d29",
-            "#a1e2f0",
-            "96px",
-            "80px",
-            "64px"
+            "#05080b",
+            "#080d12",
+            "#0b1219",
+            "#1b2731",
+            "#8dd9ea",
+            ".contentSection",
+            ".participationSection",
+            ".relatedSection",
+            ".narrativeGrid",
+            ".archiveNavigation",
+            ":focus-visible",
+            "@media (max-width: 620px)",
+            "prefers-reduced-motion",
           ]
         ) {
 
