@@ -524,11 +524,11 @@ export function RedTeamFoundationsActivityV49() {
         styles.page
       }
       data-red-team-activity-design="v49"
+      data-red-team-activity-audit="v52"
       data-activity-detail-slug="red-team-foundations-2026"
     >
-
       {/* ================================================================
-          PAGE INTRO
+          PUBLISHED RECORD INTRODUCTION
          ================================================================ */}
 
       <section
@@ -543,318 +543,214 @@ export function RedTeamFoundationsActivityV49() {
             styles.container
           }
         >
-
-          <nav
-            className={
-              styles.breadcrumb
-            }
-            aria-label="Breadcrumb"
-          >
-            <Link
-              href="/activities"
-            >
-              Activities
-            </Link>
-
-            <span
-              aria-hidden="true"
-            >
-              /
-            </span>
-
-            <span>
-              {
-                activity.title
-              }
-            </span>
-          </nav>
-
-
           <div
             className={
-              styles.introGrid
+              styles.frame
             }
+            data-red-team-activity-frame="intro"
           >
-
-            <div
+            <nav
               className={
-                styles.introCopy
+                styles.breadcrumb
               }
+              aria-label="Breadcrumb"
             >
-
-              <p
-                className={
-                  styles.eyebrow
-                }
+              <Link
+                href="/activities"
               >
-                {
-                  activity.category
-                }
-                {" "}
-                / {
-                  activity.year
-                }
-              </p>
+                Activities
+              </Link>
 
 
-              <h1>
+              <span
+                aria-hidden="true"
+              >
+                /
+              </span>
+
+
+              <span>
                 {
                   activity.title
                 }
-              </h1>
-
-
-              <p
-                className={
-                  styles.summary
-                }
-              >
-                {
-                  activity.summary
-                }
-              </p>
-
-
-              <div
-                className={
-                  styles.introActions
-                }
-              >
-                {
-                  activity.relatedTrainingSlug
-                    ? (
-                        <Link
-                          className={
-                            styles.primaryAction
-                          }
-                          href={
-                            `/training/${activity.relatedTrainingSlug}`
-                          }
-                        >
-                          Explore related training
-
-                          <Arrow />
-                        </Link>
-                      )
-                    : (
-                        <Link
-                          className={
-                            styles.primaryAction
-                          }
-                          href="/training"
-                        >
-                          Explore Training Hub
-
-                          <Arrow />
-                        </Link>
-                      )
-                }
-
-
-                <Link
-                  className={
-                    styles.secondaryAction
-                  }
-                  href="/activities"
-                >
-                  Activity archive
-
-                  <span
-                    aria-hidden="true"
-                  >
-                    →
-                  </span>
-                </Link>
-              </div>
-
-            </div>
+              </span>
+            </nav>
 
 
             <div
               className={
-                styles.practiceSignal
+                styles.introGrid
               }
-              aria-label="Red Team training activity signal"
             >
               <div
                 className={
-                  styles.signalHeader
+                  styles.introCopy
                 }
               >
-                <span>
-                  RED TEAM
-                </span>
-
-                <span>
-                  TRAINING / {
+                <p
+                  className={
+                    styles.eyebrow
+                  }
+                >
+                  {
+                    activity.category
+                  }
+                  {" / "}
+                  {
                     activity.year
                   }
-                </span>
+                </p>
+
+
+                <h1>
+                  {
+                    activity.title
+                  }
+                </h1>
+
+
+                <p
+                  className={
+                    styles.introLead
+                  }
+                >
+                  {
+                    activity.summary
+                  }
+                </p>
+
+
+                <div
+                  className={
+                    styles.introActions
+                  }
+                >
+                  <a
+                    href="#overview"
+                    className={
+                      styles.primaryAction
+                    }
+                  >
+                    Read activity record
+
+                    <span
+                      aria-hidden="true"
+                    >
+                      ↓
+                    </span>
+                  </a>
+
+
+                  <Link
+                    href="/activities"
+                    className={
+                      styles.secondaryAction
+                    }
+                  >
+                    Activity archive
+
+                    <span
+                      aria-hidden="true"
+                    >
+                      →
+                    </span>
+                  </Link>
+                </div>
               </div>
 
 
-              <div
+              <aside
                 className={
-                  styles.signalCore
+                  styles.recordContext
                 }
-                aria-hidden="true"
+                data-red-team-activity-ui="record-context"
+                aria-labelledby="red-team-record-context"
               >
-                <div>
-                  <span>
-                    01
-                  </span>
-
-                  <strong>
-                    UNDERSTAND
-                  </strong>
-                </div>
-
-                <i />
-
-                <div>
-                  <span>
-                    02
-                  </span>
-
-                  <strong>
-                    PRACTICE
-                  </strong>
-                </div>
-
-                <i />
-
-                <div>
-                  <span>
-                    03
-                  </span>
-
-                  <strong>
-                    VALIDATE
-                  </strong>
-                </div>
-
-                <i />
-
-                <div>
-                  <span>
-                    04
-                  </span>
-
-                  <strong>
-                    DOCUMENT
-                  </strong>
-                </div>
-              </div>
+                <p
+                  className={
+                    styles.panelEyebrow
+                  }
+                >
+                  Published activity
+                </p>
 
 
-              <div
-                className={
-                  styles.signalFooter
-                }
-              >
-                <span>
-                  ACTIVITY RECORD
-                </span>
+                <h2
+                  id="red-team-record-context"
+                >
+                  Record context
+                </h2>
 
-                <span>
-                  NOBREACH ACADEMY
-                </span>
-              </div>
+
+                <dl
+                  className={
+                    styles.recordFacts
+                  }
+                >
+                  <div>
+                    <dt>
+                      Year
+                    </dt>
+
+                    <dd>
+                      {
+                        activity.year
+                      }
+                    </dd>
+                  </div>
+
+
+                  <div>
+                    <dt>
+                      Category
+                    </dt>
+
+                    <dd>
+                      {
+                        activity.category
+                      }
+                    </dd>
+                  </div>
+
+
+                  <div>
+                    <dt>
+                      Location
+                    </dt>
+
+                    <dd>
+                      {
+                        activity.location
+                        ??
+                        "Not specified"
+                      }
+                    </dd>
+                  </div>
+
+
+                  <div>
+                    <dt>
+                      Record
+                    </dt>
+
+                    <dd>
+                      Published activity
+                    </dd>
+                  </div>
+                </dl>
+              </aside>
             </div>
-
           </div>
-
         </Container>
       </section>
 
 
       {/* ================================================================
-          FACTS
+          ACTIVITY OVERVIEW
          ================================================================ */}
 
       <section
-        className={
-          styles.facts
-        }
-        data-red-team-activity-section="facts"
-      >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
-          <dl
-            className={
-              styles.factList
-            }
-          >
-
-            <div>
-              <dt>
-                Year
-              </dt>
-
-              <dd>
-                {
-                  activity.year
-                }
-              </dd>
-            </div>
-
-
-            <div>
-              <dt>
-                Category
-              </dt>
-
-              <dd>
-                {
-                  activity.category
-                }
-              </dd>
-            </div>
-
-
-            {
-              activity.location
-                ? (
-                    <div>
-                      <dt>
-                        Location
-                      </dt>
-
-                      <dd>
-                        {
-                          activity.location
-                        }
-                      </dd>
-                    </div>
-                  )
-                : null
-            }
-
-
-            <div>
-              <dt>
-                Record
-              </dt>
-
-              <dd>
-                Published activity
-              </dd>
-            </div>
-
-          </dl>
-        </Container>
-      </section>
-
-
-      {/* ================================================================
-          OVERVIEW
-         ================================================================ */}
-
-      <section
+        id="overview"
         className={
           styles.section
         }
@@ -868,12 +764,145 @@ export function RedTeamFoundationsActivityV49() {
         >
           <div
             className={
-              styles.editorialGrid
+              styles.frame
             }
+            data-red-team-activity-frame="overview"
+          >
+            <div
+              className={
+                styles.sectionGrid
+              }
+            >
+              <header
+                className={
+                  styles.sectionHeading
+                }
+              >
+                <p
+                  className={
+                    styles.sectionEyebrow
+                  }
+                >
+                  01 / Activity overview
+                </p>
+
+
+                <h2>
+                  What this activity covered.
+                </h2>
+              </header>
+
+
+              <div
+                className={
+                  styles.sectionBody
+                }
+              >
+                <p
+                  className={
+                    styles.overviewIntroduction
+                  }
+                >
+                  {
+                    useDescription
+                      ? activity.description
+                      : activity.summary
+                  }
+                </p>
+
+
+                {
+                  activity.highlights.length
+                  >
+                  0
+                    ? (
+                        <div
+                          className={
+                            styles.highlights
+                          }
+                          data-red-team-activity-ui="published-highlights"
+                        >
+                          <p
+                            className={
+                              styles.contentLabel
+                            }
+                          >
+                            Published highlights
+                          </p>
+
+
+                          <ol>
+                            {
+                              activity.highlights.map(
+                                (
+                                  highlight,
+                                  index
+                                ) => (
+                                  <li
+                                    key={
+                                      highlight
+                                    }
+                                  >
+                                    <span
+                                      aria-hidden="true"
+                                    >
+                                      {
+                                        String(
+                                          index + 1
+                                        ).padStart(
+                                          2,
+                                          "0"
+                                        )
+                                      }
+                                    </span>
+
+
+                                    <p>
+                                      {
+                                        highlight
+                                      }
+                                    </p>
+                                  </li>
+                                )
+                              )
+                            }
+                          </ol>
+                        </div>
+                      )
+                    : null
+                }
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+
+      {/* ================================================================
+          CONSOLIDATED PUBLISHED RECORD
+         ================================================================ */}
+
+      <section
+        className={
+          `${styles.section} ${styles.recordSection}`
+        }
+        data-red-team-activity-section="record"
+      >
+        <Container
+          size="wide"
+          className={
+            styles.container
+          }
+        >
+          <div
+            className={
+              styles.frame
+            }
+            data-red-team-activity-frame="record"
           >
             <header
               className={
-                styles.sectionHeading
+                styles.recordHeading
               }
             >
               <p
@@ -881,95 +910,85 @@ export function RedTeamFoundationsActivityV49() {
                   styles.sectionEyebrow
                 }
               >
-                <span>
-                  01
-                </span>
-
-                Activity overview
+                02 / Published record
               </p>
 
 
               <h2>
-                The published Red Team training record.
+                The methodology behind the activity.
               </h2>
             </header>
 
 
             <div
               className={
-                styles.overviewContent
+                styles.recordRows
               }
+              data-red-team-activity-ui="record-sections"
             >
-              <p
-                className={
-                  styles.largeCopy
-                }
-              >
-                {
-                  useDescription
-                    ? activity.description
-                    : activity.summary
-                }
-              </p>
-
-
               {
-                activity.highlights.length
-                >
-                0
-                  ? (
+                activity.sections.map(
+                  (
+                    item,
+                    index
+                  ) => (
+                    <article
+                      className={
+                        styles.recordRow
+                      }
+                      data-red-team-activity-record-section
+                      key={
+                        item.title
+                      }
+                    >
+                      <span
+                        className={
+                          styles.recordIndex
+                        }
+                        aria-hidden="true"
+                      >
+                        {
+                          String(
+                            index + 1
+                          ).padStart(
+                            2,
+                            "0"
+                          )
+                        }
+                      </span>
+
+
+                      <h3>
+                        {
+                          item.title
+                        }
+                      </h3>
+
+
                       <div
                         className={
-                          styles.highlights
+                          styles.recordCopy
                         }
                       >
-                        <p
-                          className={
-                            styles.subsectionLabel
-                          }
-                        >
-                          Published highlights
-                        </p>
-
-
-                        <ol>
-                          {
-                            activity.highlights.map(
-                              (
-                                highlight,
-                                index
-                              ) => (
-                                <li
-                                  key={
-                                    highlight
-                                  }
-                                >
-                                  <span>
-                                    {
-                                      String(
-                                        index
-                                        +
-                                        1
-                                      ).padStart(
-                                        2,
-                                        "0"
-                                      )
-                                    }
-                                  </span>
-
-                                  <p>
-                                    {
-                                      highlight
-                                    }
-                                  </p>
-                                </li>
-                              )
+                        {
+                          item.paragraphs.map(
+                            paragraph => (
+                              <p
+                                key={
+                                  paragraph
+                                }
+                              >
+                                {
+                                  paragraph
+                                }
+                              </p>
                             )
-                          }
-                        </ol>
+                          )
+                        }
                       </div>
-                    )
-                  : null
+                    </article>
+                  )
+                )
               }
             </div>
           </div>
@@ -978,112 +997,13 @@ export function RedTeamFoundationsActivityV49() {
 
 
       {/* ================================================================
-          CANONICAL ACTIVITY NARRATIVE
-         ================================================================ */}
-
-      {
-        activity.sections.map(
-          (
-            section,
-            index
-          ) => (
-            <section
-              className={
-                index
-                %
-                2
-                ===
-                0
-                  ? `${styles.section} ${styles.sectionAlt}`
-                  : styles.section
-              }
-              data-red-team-activity-section="narrative"
-              key={
-                `${section.title}-${index}`
-              }
-            >
-              <Container
-                size="wide"
-                className={
-                  styles.container
-                }
-              >
-                <div
-                  className={
-                    styles.editorialGrid
-                  }
-                >
-                  <header
-                    className={
-                      styles.sectionHeading
-                    }
-                  >
-                    <p
-                      className={
-                        styles.sectionEyebrow
-                      }
-                    >
-                      <span>
-                        {
-                          String(
-                            index
-                            +
-                            2
-                          ).padStart(
-                            2,
-                            "0"
-                          )
-                        }
-                      </span>
-
-                      Activity record
-                    </p>
-
-
-                    <h2>
-                      {
-                        section.title
-                      }
-                    </h2>
-                  </header>
-
-
-                  <div
-                    className={
-                      styles.prose
-                    }
-                  >
-                    {
-                      section.paragraphs.map(
-                        paragraph => (
-                          <p
-                            key={
-                              paragraph
-                            }
-                          >
-                            {
-                              paragraph
-                            }
-                          </p>
-                        )
-                      )
-                    }
-                  </div>
-                </div>
-              </Container>
-            </section>
-          )
-        )
-      }
-
-
-      {/* ================================================================
-          TRAINING CONTEXT
+          CURRENT PROGRAMME HANDOFF
          ================================================================ */}
 
       <section
+        id="current-programme"
         className={
-          `${styles.section} ${styles.contextSection}`
+          styles.context
         }
         data-red-team-activity-section="context"
       >
@@ -1095,8 +1015,9 @@ export function RedTeamFoundationsActivityV49() {
         >
           <div
             className={
-              styles.contextGrid
+              `${styles.frame} ${styles.contextLayout}`
             }
+            data-red-team-activity-frame="context"
           >
             <div>
               <p
@@ -1104,16 +1025,12 @@ export function RedTeamFoundationsActivityV49() {
                   styles.sectionEyebrow
                 }
               >
-                <span>
-                  NB
-                </span>
-
-                Training Hub
+                03 / Training context
               </p>
 
 
               <h2>
-                Continue into the current No Breach training catalogue.
+                Continue into the current Red Team Foundations programme.
               </h2>
             </div>
 
@@ -1124,9 +1041,9 @@ export function RedTeamFoundationsActivityV49() {
               }
             >
               <p>
-                The activity archive documents published work. The
-                Training Hub contains the current programme experience,
-                structure and course information.
+                This page documents published Red Team training activity.
+                The Training Hub contains the current programme structure,
+                learning objectives and course information.
               </p>
 
 
@@ -1139,11 +1056,11 @@ export function RedTeamFoundationsActivityV49() {
                   activity.relatedTrainingSlug
                     ? (
                         <Link
-                          className={
-                            styles.primaryAction
-                          }
                           href={
                             `/training/${activity.relatedTrainingSlug}`
+                          }
+                          className={
+                            styles.primaryAction
                           }
                         >
                           View related course
@@ -1153,10 +1070,10 @@ export function RedTeamFoundationsActivityV49() {
                       )
                     : (
                         <Link
+                          href="/training"
                           className={
                             styles.primaryAction
                           }
-                          href="/training"
                         >
                           Explore Training Hub
 
@@ -1167,10 +1084,10 @@ export function RedTeamFoundationsActivityV49() {
 
 
                 <Link
+                  href="/activities"
                   className={
                     styles.secondaryAction
                   }
-                  href="/activities"
                 >
                   Activity archive
 
@@ -1183,100 +1100,8 @@ export function RedTeamFoundationsActivityV49() {
               </div>
             </div>
           </div>
-
         </Container>
       </section>
-
-
-      {/* ================================================================
-          FINAL CTA
-         ================================================================ */}
-
-      <section
-        className={
-          styles.finalCta
-        }
-        data-red-team-activity-section="final-cta"
-      >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
-          <div
-            className={
-              styles.finalLayout
-            }
-          >
-            <div>
-              <p
-                className={
-                  styles.sectionEyebrow
-                }
-              >
-                <span>
-                  NB
-                </span>
-
-                Activities
-              </p>
-
-
-              <h2>
-                Explore more published No Breach work.
-              </h2>
-            </div>
-
-
-            <div
-              className={
-                styles.finalBody
-              }
-            >
-              <p>
-                Browse the broader activity archive or continue into the
-                current No Breach Academy catalogue.
-              </p>
-
-
-              <div
-                className={
-                  styles.finalActions
-                }
-              >
-                <Link
-                  className={
-                    styles.primaryAction
-                  }
-                  href="/activities"
-                >
-                  Browse activities
-
-                  <Arrow />
-                </Link>
-
-
-                <Link
-                  className={
-                    styles.secondaryAction
-                  }
-                  href="/training"
-                >
-                  Explore Academy
-
-                  <span
-                    aria-hidden="true"
-                  >
-                    →
-                  </span>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-
     </article>
   );
 

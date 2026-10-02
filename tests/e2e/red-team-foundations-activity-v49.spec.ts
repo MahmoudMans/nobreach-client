@@ -4,63 +4,59 @@ import {
 } from "@playwright/test";
 
 
+const route =
+  "/activities/red-team-foundations-2026";
+
+
 test(
-  "Red Team Foundations activity renders one strict detail",
+  "Red Team activity V52 opens as a compact published record",
   async ({
     page
   }) => {
 
-    const response =
-      await page.goto(
-        "/activities/red-team-foundations-2026"
-      );
-
-
-    expect(
-      response?.status()
-    ).toBe(
-      200
+    await page.goto(
+      route
     );
 
 
-    const root =
+    await expect(
       page.locator(
-        '[data-red-team-activity-design="v49"]'
-      );
-
-
-    await expect(
-      root
-    ).toHaveCount(
-      1
-    );
-
-
-    await expect(
-      root
+        '[data-red-team-activity-audit="v52"]'
+      )
     ).toBeVisible();
 
 
     await expect(
-      page.locator(
-        "h1"
+      page.getByRole(
+        "heading",
+        {
+          level:
+            1,
+          name:
+            "Red Team Foundations"
+        }
       )
-    ).toHaveCount(
-      1
-    );
+    ).toBeVisible();
+
+
+    await expect(
+      page.getByText(
+        /offensive-security engagement from reconnaissance through reporting/i
+      )
+    ).toBeVisible();
 
   }
 );
 
 
 test(
-  "Red Team activity has one lightweight breadcrumb",
+  "Red Team activity keeps one lightweight breadcrumb",
   async ({
     page
   }) => {
 
     await page.goto(
-      "/activities/red-team-foundations-2026"
+      route
     );
 
 
@@ -76,9 +72,7 @@ test(
 
     await expect(
       breadcrumb
-    ).toHaveCount(
-      1
-    );
+    ).toBeVisible();
 
 
     await expect(
@@ -86,9 +80,7 @@ test(
         "link",
         {
           name:
-            "Activities",
-          exact:
-            true
+            "Activities"
         }
       )
     ).toHaveAttribute(
@@ -101,34 +93,213 @@ test(
 
 
 test(
-  "Red Team activity exposes the activity-detail flow",
+  "Red Team V52 replaces the decorative signal with record context",
   async ({
     page
   }) => {
 
     await page.goto(
-      "/activities/red-team-foundations-2026"
+      route
+    );
+
+
+    await expect(
+      page.locator(
+        '[aria-label="Red Team training activity signal"]'
+      )
+    ).toHaveCount(
+      0
+    );
+
+
+    const context =
+      page.locator(
+        '[data-red-team-activity-ui="record-context"]'
+      );
+
+
+    await expect(
+      context
+    ).toBeVisible();
+
+
+    await expect(
+      context.locator(
+        "dt"
+      )
+    ).toHaveCount(
+      4
     );
 
 
     for (
-      const section
-      of [
-        "intro",
-        "facts",
-        "overview",
-        "context",
-        "final-cta"
+      const value
+      of
+      [
+        "2026",
+        "training",
+        "Tunis / Online"
       ]
     ) {
 
       await expect(
-        page.locator(
-          `[data-red-team-activity-section="${section}"]`
+        context.getByText(
+          value,
+          {
+            exact:
+              true
+          }
         )
-      ).toHaveCount(
-        1
+      ).toBeVisible();
+
+    }
+
+
+    const recordValue =
+      context
+        .locator(
+          "dd"
+        )
+        .filter({
+          hasText:
+            /^Published activity$/
+        });
+
+
+    await expect(
+      recordValue
+    ).toHaveCount(
+      1
+    );
+
+
+    await expect(
+      recordValue
+    ).toBeVisible();
+
+  }
+);
+
+
+test(
+  "Red Team activity introduction leads into the record before conversion",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      route
+    );
+
+
+    const intro =
+      page.locator(
+        '[data-red-team-activity-section="intro"]'
       );
+
+
+    await expect(
+      intro.getByRole(
+        "link",
+        {
+          name:
+            /Read activity record/
+        }
+      )
+    ).toHaveAttribute(
+      "href",
+      "#overview"
+    );
+
+
+    await expect(
+      intro.getByRole(
+        "link",
+        {
+          name:
+            /Activity archive/
+        }
+      )
+    ).toHaveAttribute(
+      "href",
+      "/activities"
+    );
+
+  }
+);
+
+
+test(
+  "Red Team overview preserves the canonical description and five highlights",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      route
+    );
+
+
+    const overview =
+      page.locator(
+        '[data-red-team-activity-section="overview"]'
+      );
+
+
+    await expect(
+      overview.getByRole(
+        "heading",
+        {
+          level:
+            2,
+          name:
+            "What this activity covered."
+        }
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      overview.getByText(
+        /sequence and discipline behind offensive-security work/i
+      )
+    ).toBeVisible();
+
+
+    const highlights =
+      overview.locator(
+        '[data-red-team-activity-ui="published-highlights"] li'
+      );
+
+
+    await expect(
+      highlights
+    ).toHaveCount(
+      5
+    );
+
+
+    for (
+      const highlight
+      of
+      [
+        "Reconnaissance",
+        "Attack-surface discovery",
+        "Privilege concepts",
+        "Operational discipline",
+        "Security reporting"
+      ]
+    ) {
+
+      await expect(
+        overview.getByText(
+          highlight,
+          {
+            exact:
+              true
+          }
+        )
+      ).toBeVisible();
 
     }
 
@@ -137,39 +308,128 @@ test(
 
 
 test(
-  "Red Team activity does not render course-detail navigation",
+  "Red Team V52 consolidates both canonical narrative sections",
   async ({
     page
   }) => {
 
     await page.goto(
-      "/activities/red-team-foundations-2026"
+      route
+    );
+
+
+    const record =
+      page.locator(
+        '[data-red-team-activity-section="record"]'
+      );
+
+
+    const rows =
+      record.locator(
+        '[data-red-team-activity-record-section]'
+      );
+
+
+    await expect(
+      rows
+    ).toHaveCount(
+      2
     );
 
 
     await expect(
-      page.getByRole(
-        "navigation",
+      record.getByRole(
+        "heading",
+        {
+          level:
+            3,
+          name:
+            "From isolated techniques to methodology"
+        }
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      record.getByRole(
+        "heading",
+        {
+          level:
+            3,
+          name:
+            "Operational thinking"
+        }
+      )
+    ).toBeVisible();
+
+  }
+);
+
+
+test(
+  "Red Team V52 has one current-programme handoff",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      route
+    );
+
+
+    await expect(
+      page.locator(
+        '[data-red-team-activity-section="final-cta"]'
+      )
+    ).toHaveCount(
+      0
+    );
+
+
+    const context =
+      page.locator(
+        '[data-red-team-activity-section="context"]'
+      );
+
+
+    await expect(
+      context.getByRole(
+        "heading",
+        {
+          level:
+            2,
+          name:
+            "Continue into the current Red Team Foundations programme."
+        }
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      context.getByRole(
+        "link",
         {
           name:
-            "Course sections"
+            /View related course/
         }
       )
-    ).toHaveCount(
-      0
+    ).toHaveAttribute(
+      "href",
+      "/training/red-team-foundations"
     );
 
 
     await expect(
-      page.getByText(
-        "View curriculum",
+      context.getByRole(
+        "link",
         {
-          exact:
-            true
+          name:
+            /Activity archive/
         }
       )
-    ).toHaveCount(
-      0
+    ).toHaveAttribute(
+      "href",
+      "/activities"
     );
 
   }
@@ -177,25 +437,136 @@ test(
 
 
 test(
-  "training journey uses a canonical or catalogue link",
+  "Red Team V52 keeps one purposeful section sequence",
   async ({
     page
   }) => {
 
     await page.goto(
-      "/activities/red-team-foundations-2026"
+      route
     );
 
 
-    const trainingLinks =
+    const order =
+      await page
+        .locator(
+          '[data-red-team-activity-section]'
+        )
+        .evaluateAll(
+          elements =>
+            elements.map(
+              element =>
+                element.getAttribute(
+                  "data-red-team-activity-section"
+                )
+            )
+        );
+
+
+    expect(
+      order
+    ).toEqual([
+      "intro",
+      "overview",
+      "record",
+      "context"
+    ]);
+
+  }
+);
+
+
+test(
+  "Red Team V52 uses one shared content frame",
+  async ({
+    page
+  }) => {
+
+    await page.setViewportSize({
+      width:
+        1440,
+      height:
+        900
+    });
+
+
+    await page.goto(
+      route
+    );
+
+
+    const frames =
       page.locator(
-        'a[href^="/training"]'
+        '[data-red-team-activity-frame]'
+      );
+
+
+    await expect(
+      frames
+    ).toHaveCount(
+      4
+    );
+
+
+    const geometry =
+      await frames.evaluateAll(
+        elements =>
+          elements.map(
+            element => {
+
+              const rect =
+                element.getBoundingClientRect();
+
+
+              return {
+                x:
+                  rect.x,
+
+                width:
+                  rect.width
+              };
+
+            }
+          )
+      );
+
+
+    const xs =
+      geometry.map(
+        item =>
+          item.x
+      );
+
+
+    const widths =
+      geometry.map(
+        item =>
+          item.width
       );
 
 
     expect(
-      await trainingLinks.count()
-    ).toBeGreaterThanOrEqual(
+      Math.max(
+        ...xs
+      )
+      -
+      Math.min(
+        ...xs
+      )
+    ).toBeLessThanOrEqual(
+      1
+    );
+
+
+    expect(
+      Math.max(
+        ...widths
+      )
+      -
+      Math.min(
+        ...widths
+      )
+    ).toBeLessThanOrEqual(
       1
     );
 
@@ -204,20 +575,153 @@ test(
 
 
 test(
-  "other activity routes stay isolated from V49",
+  "Red Team V52 reduces the oversized opening composition",
   async ({
     page
   }) => {
 
-    for (
-      const route
-      of [
-        "/activities/cr4ckout-2",
-        "/activities/cr4ckout-launched",
-        "/activities/training-hub-established",
-        "/activities/ai-security-foundations-2026"
-      ]
-    ) {
+    await page.setViewportSize({
+      width:
+        1440,
+      height:
+        900
+    });
+
+
+    await page.goto(
+      route
+    );
+
+
+    const height =
+      await page
+        .locator(
+          '[data-red-team-activity-section="intro"]'
+        )
+        .evaluate(
+          element =>
+            element
+              .getBoundingClientRect()
+              .height
+        );
+
+
+    expect(
+      height
+    ).toBeLessThan(
+      650
+    );
+
+  }
+);
+
+
+test(
+  "Red Team activity remains distinct from the current course detail",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/training/red-team-foundations"
+    );
+
+
+    await expect(
+      page.locator(
+        '[data-red-team-activity-audit="v52"]'
+      )
+    ).toHaveCount(
+      0
+    );
+
+  }
+);
+
+
+test(
+  "other activity routes remain isolated from Red Team V52",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/activities/ai-security-foundations-2026"
+    );
+
+
+    await expect(
+      page.locator(
+        '[data-red-team-activity-audit="v52"]'
+      )
+    ).toHaveCount(
+      0
+    );
+
+  }
+);
+
+
+for (
+  const viewport
+  of
+  [
+    {
+      label:
+        "320",
+      width:
+        320,
+      height:
+        800
+    },
+    {
+      label:
+        "390",
+      width:
+        390,
+      height:
+        844
+    },
+    {
+      label:
+        "768",
+      width:
+        768,
+      height:
+        1024
+    },
+    {
+      label:
+        "1024",
+      width:
+        1024,
+      height:
+        768
+    },
+    {
+      label:
+        "1440",
+      width:
+        1440,
+      height:
+        900
+    }
+  ]
+) {
+
+  test(
+    `Red Team activity V52 remains contained at ${viewport.label}`,
+    async ({
+      page
+    }) => {
+
+      await page.setViewportSize({
+        width:
+          viewport.width,
+        height:
+          viewport.height
+      });
+
 
       await page.goto(
         route
@@ -226,111 +730,36 @@ test(
 
       await expect(
         page.locator(
-          '[data-red-team-activity-design="v49"]'
+          '[data-red-team-activity-audit="v52"]'
         )
-      ).toHaveCount(
-        0
-      );
-
-    }
-
-  }
-);
+      ).toBeVisible();
 
 
-test(
-  "Red Team activity remains overflow-free",
-  async ({
-    page
-  }) => {
-
-    for (
-      const viewport
-      of [
-        {
-          width:
-            1440,
-
-          height:
-            900
-        },
-        {
-          width:
-            1180,
-
-          height:
-            820
-        },
-        {
-          width:
-            1024,
-
-          height:
-            768
-        },
-        {
-          width:
-            768,
-
-          height:
-            1024
-        },
-        {
-          width:
-            430,
-
-          height:
-            932
-        },
-        {
-          width:
-            390,
-
-          height:
-            844
-        },
-        {
-          width:
-            360,
-
-          height:
-            800
-        }
-      ]
-    ) {
-
-      await page.setViewportSize(
-        viewport
-      );
-
-
-      await page.goto(
-        "/activities/red-team-foundations-2026"
-      );
-
-
-      const geometry =
+      const dimensions =
         await page.evaluate(
           () => ({
-            scroll:
-              document.documentElement.scrollWidth,
+            scrollWidth:
+              document
+                .documentElement
+                .scrollWidth,
 
-            client:
-              document.documentElement.clientWidth
+            clientWidth:
+              document
+                .documentElement
+                .clientWidth
           })
         );
 
 
       expect(
-        geometry.scroll,
-        `${viewport.width}px viewport`
+        dimensions.scrollWidth
       ).toBeLessThanOrEqual(
-        geometry.client
+        dimensions.clientWidth
         +
         1
       );
 
     }
+  );
 
-  }
-);
+}

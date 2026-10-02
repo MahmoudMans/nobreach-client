@@ -9,14 +9,7 @@ import {
 } from "vitest";
 
 
-const layout =
-  readFileSync(
-    "src/app/activities/[slug]/layout.tsx",
-    "utf8"
-  );
-
-
-const component =
+const page =
   readFileSync(
     "src/app/activities/[slug]/red-team-foundations-2026-v49.tsx",
     "utf8"
@@ -31,31 +24,41 @@ const css =
 
 
 describe(
-  "Red Team Foundations activity V49",
+  "Red Team Foundations activity V49 compatibility + V52 audit",
   () => {
 
     it(
-      "has an exclusive route gate",
+      "keeps V49 route authority while activating V52",
       () => {
 
         expect(
-          layout
+          page
         ).toContain(
-          '"red-team-foundations-2026"'
+          'data-red-team-activity-design="v49"'
         );
 
-
         expect(
-          layout
+          page
         ).toContain(
-          "<RedTeamFoundationsActivityV49 />"
+          'data-red-team-activity-audit="v52"'
         );
 
+        expect(
+          page
+        ).toContain(
+          'data-activity-detail-slug="red-team-foundations-2026"'
+        );
 
         expect(
-          layout
+          css
         ).toContain(
-          "return children"
+          "NB_RED_TEAM_FOUNDATIONS_ACTIVITY_V49"
+        );
+
+        expect(
+          css
+        ).toContain(
+          "NB_RED_TEAM_ACTIVITY_AUDIT_V52"
         );
 
       }
@@ -63,25 +66,26 @@ describe(
 
 
     it(
-      "uses canonical activity content",
+      "continues to bind every relevant canonical activity field",
       () => {
 
         expect(
-          component
+          page
         ).toContain(
-          "@/content/activities"
+          'from "@/content/activities"'
         );
 
 
         for (
           const token
-          of [
+          of
+          [
             "activity.title",
             "activity.year",
             "activity.category",
+            "activity.location",
             "activity.summary",
             "activity.description",
-            "activity.location",
             "activity.highlights",
             "activity.sections",
             "activity.relatedTrainingSlug"
@@ -89,7 +93,7 @@ describe(
         ) {
 
           expect(
-            component
+            page
           ).toContain(
             token
           );
@@ -101,27 +105,31 @@ describe(
 
 
     it(
-      "does not duplicate the course-detail UI",
+      "replaces the decorative training signal with useful record context",
       () => {
 
         expect(
-          component
+          page
         ).not.toContain(
-          "Course sections"
+          'aria-label="Red Team training activity signal"'
         );
 
-
         expect(
-          component
+          page
         ).not.toContain(
-          "enrollment"
+          'data-red-team-activity-section="facts"'
         );
 
+        expect(
+          page
+        ).toContain(
+          'data-red-team-activity-ui="record-context"'
+        );
 
         expect(
-          component
-        ).not.toContain(
-          "Curriculum"
+          page
+        ).toContain(
+          "Record context"
         );
 
       }
@@ -129,17 +137,31 @@ describe(
 
 
     it(
-      "uses one H1",
+      "keeps the canonical overview and every published highlight",
       () => {
 
         expect(
-          component.match(
-            /<h1>/g
-          )
-          ??
-          []
-        ).toHaveLength(
-          1
+          page
+        ).toContain(
+          'data-red-team-activity-section="overview"'
+        );
+
+        expect(
+          page
+        ).toContain(
+          "What this activity covered."
+        );
+
+        expect(
+          page
+        ).toContain(
+          "activity.highlights.map"
+        );
+
+        expect(
+          page
+        ).toContain(
+          'data-red-team-activity-ui="published-highlights"'
         );
 
       }
@@ -147,20 +169,132 @@ describe(
 
 
     it(
-      "uses the NoBreach visual system",
+      "consolidates canonical narrative sections into one record region",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          'data-red-team-activity-section="record"'
+        );
+
+        expect(
+          page
+        ).toContain(
+          'data-red-team-activity-ui="record-sections"'
+        );
+
+        expect(
+          page
+        ).toContain(
+          "activity.sections.map"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "item.paragraphs.map"
+        );
+
+      }
+    );
+
+
+    it(
+      "uses one current-programme handoff rather than repeated CTA sections",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          'data-red-team-activity-section="context"'
+        );
+
+        expect(
+          page
+        ).not.toContain(
+          'data-red-team-activity-section="final-cta"'
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Continue into the current Red Team Foundations programme."
+        );
+
+        expect(
+          page
+        ).toContain(
+          "View related course"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Activity archive"
+        );
+
+      }
+    );
+
+
+    it(
+      "uses one four-section page sequence",
+      () => {
+
+        expect(
+          (
+            page.match(
+              /data-red-team-activity-section=/g
+            )
+            ??
+            []
+          ).length
+        ).toBe(
+          4
+        );
+
+
+        for (
+          const section
+          of
+          [
+            "intro",
+            "overview",
+            "record",
+            "context"
+          ]
+        ) {
+
+          expect(
+            page
+          ).toContain(
+            `data-red-team-activity-section="${section}"`
+          );
+
+        }
+
+      }
+    );
+
+
+    it(
+      "retains the restrained No Breach visual vocabulary",
       () => {
 
         for (
           const token
-          of [
-            "#07090d",
-            "#0b0f16",
-            "#101620",
-            "#151d29",
-            "#a1e2f0",
-            "96px",
-            "80px",
-            "64px"
+          of
+          [
+            "#080b10",
+            "#0c121b",
+            "#111b28",
+            "#f3f6fb",
+            "#b7c2d0",
+            "#94a3b8",
+            "#a5e8f3",
+            "#b69ae8",
+            "#273446"
           ]
         ) {
 
@@ -171,6 +305,13 @@ describe(
           );
 
         }
+
+
+        expect(
+          css
+        ).toContain(
+          "@media"
+        );
 
       }
     );
