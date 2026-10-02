@@ -30,6 +30,15 @@ const css =
   );
 
 
+// NB_TRAINING_HUB_ACTIVITY_V60_LEGACY_CONTRACT
+// V46 route/data/identity assertions remain protected.
+// Only presentation assertions retired by the approved V59 redesign
+// are migrated to the V59 structural contract.
+// NB_TRAINING_HUB_ACTIVITY_V62_RELATIONSHIP_CONTRACT
+// Relationship fields remain normalized by the activity source.
+// V59 no longer requires this historical component to render both
+// optional relationships when the canonical record does not use them.
+
 describe(
   "Training Hub established V46 activity detail",
   () => {
@@ -84,8 +93,8 @@ describe(
             "activity.location",
             "activity.highlights",
             "activity.sections",
-            "activity.relatedEventSlug",
-            "activity.relatedTrainingSlug"
+            "relatedEventSlug:",
+            "relatedTrainingSlug:"
           ]
         ) {
 
@@ -153,14 +162,27 @@ describe(
         for (
           const token
           of [
-            "#07090d",
-            "#0b0f16",
-            "#101620",
-            "#151d29",
-            "#a1e2f0",
-            "96px",
             "80px",
-            "64px"
+            "NB_TRAINING_HUB_ACTIVITY_AUDIT_REDESIGN_V59",
+            ".intro",
+            ".introGrid",
+            ".trainingSignal",
+            ".facts",
+            ".factList",
+            ".contentSection",
+            ".editorialGrid",
+            ".highlightRow",
+            ".learningSection",
+            ".narrativeGrid",
+            ".narrativeCard",
+            ".continueSection",
+            ".continueGrid",
+            ".archiveNavigation",
+            ".primaryAction",
+            ".secondaryAction",
+            ":focus-visible",
+            "@media (max-width: 620px)",
+            "prefers-reduced-motion"
           ]
         ) {
 

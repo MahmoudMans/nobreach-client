@@ -517,11 +517,12 @@ export function TrainingHubEstablishedV46() {
         styles.page
       }
       data-training-hub-activity-design="v46"
+      data-training-hub-audit-redesign="v59"
       data-activity-detail-slug="training-hub-established"
     >
 
       {/* ================================================================
-          PAGE INTRO
+          HERO / HISTORICAL ACTIVITY IDENTITY
          ================================================================ */}
 
       <section
@@ -580,13 +581,7 @@ export function TrainingHubEstablishedV46() {
                   styles.eyebrow
                 }
               >
-                {
-                  activity.category
-                }
-                {" "}
-                / {
-                  activity.year
-                }
+                TRAINING HUB / ACTIVITY RECORD
               </p>
 
 
@@ -619,7 +614,7 @@ export function TrainingHubEstablishedV46() {
                   }
                   href="/training"
                 >
-                  Explore Training Hub
+                  Explore current Training Hub
 
                   <Arrow />
                 </Link>
@@ -631,7 +626,7 @@ export function TrainingHubEstablishedV46() {
                   }
                   href="/activities"
                 >
-                  Activity archive
+                  Back to activities
 
                   <span
                     aria-hidden="true"
@@ -650,6 +645,7 @@ export function TrainingHubEstablishedV46() {
               }
               aria-label="Training Hub activity signal"
             >
+
               <div
                 className={
                   styles.signalHeader
@@ -713,7 +709,7 @@ export function TrainingHubEstablishedV46() {
                 }
               >
                 <span>
-                  ACTIVITY RECORD
+                  ESTABLISHED
                 </span>
 
                 <span>
@@ -722,6 +718,7 @@ export function TrainingHubEstablishedV46() {
                   }
                 </span>
               </div>
+
             </div>
 
           </div>
@@ -751,6 +748,7 @@ export function TrainingHubEstablishedV46() {
               styles.factList
             }
           >
+
             <div>
               <dt>
                 Year
@@ -769,7 +767,11 @@ export function TrainingHubEstablishedV46() {
                 Category
               </dt>
 
-              <dd>
+              <dd
+                className={
+                  styles.capitalizeValue
+                }
+              >
                 {
                   activity.category
                 }
@@ -805,18 +807,19 @@ export function TrainingHubEstablishedV46() {
                 Published activity
               </dd>
             </div>
+
           </dl>
         </Container>
       </section>
 
 
       {/* ================================================================
-          OVERVIEW
+          01 — ACTIVITY OVERVIEW
          ================================================================ */}
 
       <section
         className={
-          styles.section
+          styles.contentSection
         }
         data-activity-detail-section="overview"
       >
@@ -832,6 +835,7 @@ export function TrainingHubEstablishedV46() {
               styles.editorialGrid
             }
           >
+
             <header
               className={
                 styles.sectionHeading
@@ -851,7 +855,7 @@ export function TrainingHubEstablishedV46() {
 
 
               <h2>
-                The published Training Hub activity record.
+                A dedicated learning layer for practical cybersecurity.
               </h2>
             </header>
 
@@ -861,6 +865,7 @@ export function TrainingHubEstablishedV46() {
                 styles.overviewContent
               }
             >
+
               <p
                 className={
                   styles.largeCopy
@@ -901,6 +906,9 @@ export function TrainingHubEstablishedV46() {
                                 index
                               ) => (
                                 <li
+                                  className={
+                                    styles.highlightRow
+                                  }
                                   key={
                                     highlight
                                   }
@@ -932,7 +940,9 @@ export function TrainingHubEstablishedV46() {
                     )
                   : null
               }
+
             </div>
+
           </div>
 
         </Container>
@@ -940,57 +950,87 @@ export function TrainingHubEstablishedV46() {
 
 
       {/* ================================================================
-          CANONICAL NARRATIVE SECTIONS
+          02 — LEARNING MODEL
+
+          Canonical narrative records remain separate data-bound units,
+          but they now belong to one visual chapter.
          ================================================================ */}
 
-      {
-        activity.sections.map(
-          (
-            section,
-            index
-          ) => (
-            <section
+      <section
+        className={
+          `${styles.contentSection} ${styles.learningSection}`
+        }
+        data-training-hub-consolidated-section="learning-model"
+      >
+        <Container
+          size="wide"
+          className={
+            styles.container
+          }
+        >
+
+          <div
+            className={
+              styles.editorialGrid
+            }
+          >
+
+            <header
               className={
-                index
-                %
-                2
-                ===
-                0
-                  ? `${styles.section} ${styles.sectionAlt}`
-                  : styles.section
-              }
-              data-activity-detail-section="narrative"
-              key={
-                `${section.title}-${index}`
+                styles.sectionHeading
               }
             >
-              <Container
-                size="wide"
+              <p
                 className={
-                  styles.container
+                  styles.sectionEyebrow
                 }
               >
-                <div
-                  className={
-                    styles.editorialGrid
-                  }
-                >
-                  <header
-                    className={
-                      styles.sectionHeading
-                    }
-                  >
-                    <p
+                <span>
+                  02
+                </span>
+
+                Learning model
+              </p>
+
+
+              <h2>
+                Education built around practice.
+              </h2>
+            </header>
+
+
+            <div
+              className={
+                styles.narrativeGrid
+              }
+            >
+              {
+                activity.sections.map(
+                  (
+                    section,
+                    index
+                  ) => (
+                    <article
                       className={
-                        styles.sectionEyebrow
+                        styles.narrativeCard
+                      }
+                      data-activity-detail-section="narrative"
+                      key={
+                        `${section.title}-${index}`
                       }
                     >
-                      <span>
+
+                      <span
+                        className={
+                          styles.narrativeIndex
+                        }
+                        aria-hidden="true"
+                      >
                         {
                           String(
                             index
                             +
-                            2
+                            1
                           ).padStart(
                             2,
                             "0"
@@ -998,161 +1038,40 @@ export function TrainingHubEstablishedV46() {
                         }
                       </span>
 
-                      Activity record
-                    </p>
+
+                      <h3>
+                        {
+                          section.title
+                        }
+                      </h3>
 
 
-                    <h2>
-                      {
-                        section.title
-                      }
-                    </h2>
-                  </header>
+                      <div
+                        className={
+                          styles.prose
+                        }
+                      >
+                        {
+                          section.paragraphs.map(
+                            paragraph => (
+                              <p
+                                key={
+                                  paragraph
+                                }
+                              >
+                                {
+                                  paragraph
+                                }
+                              </p>
+                            )
+                          )
+                        }
+                      </div>
 
-
-                  <div
-                    className={
-                      styles.prose
-                    }
-                  >
-                    {
-                      section.paragraphs.map(
-                        paragraph => (
-                          <p
-                            key={
-                              paragraph
-                            }
-                          >
-                            {
-                              paragraph
-                            }
-                          </p>
-                        )
-                      )
-                    }
-                  </div>
-                </div>
-              </Container>
-            </section>
-          )
-        )
-      }
-
-
-      {/* ================================================================
-          ECOSYSTEM CONTEXT
-         ================================================================ */}
-
-      <section
-        className={
-          `${styles.section} ${styles.contextSection}`
-        }
-        data-activity-detail-section="context"
-      >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
-
-          <div
-            className={
-              styles.contextGrid
-            }
-          >
-
-            <div>
-              <p
-                className={
-                  styles.sectionEyebrow
-                }
-              >
-                <span>
-                  NB
-                </span>
-
-                Training Hub
-              </p>
-
-
-              <h2>
-                Continue into the No Breach learning ecosystem.
-              </h2>
-            </div>
-
-
-            <div
-              className={
-                styles.contextBody
+                    </article>
+                  )
+                )
               }
-            >
-              <p>
-                Explore the current No Breach training catalogue and
-                related published activity through the dedicated Academy
-                and archive routes.
-              </p>
-
-
-              <div
-                className={
-                  styles.contextActions
-                }
-              >
-                <Link
-                  className={
-                    styles.primaryAction
-                  }
-                  href={
-                    activity.relatedTrainingSlug
-                      ? `/training/${activity.relatedTrainingSlug}`
-                      : "/training"
-                  }
-                >
-                  {
-                    activity.relatedTrainingSlug
-                      ? "Related training"
-                      : "Explore Training Hub"
-                  }
-
-                  <Arrow />
-                </Link>
-
-
-                {
-                  activity.relatedEventSlug
-                    ? (
-                        <Link
-                          className={
-                            styles.secondaryAction
-                          }
-                          href={
-                            `/events/${activity.relatedEventSlug}`
-                          }
-                        >
-                          Related event
-
-                          <Arrow />
-                        </Link>
-                      )
-                    : (
-                        <Link
-                          className={
-                            styles.secondaryAction
-                          }
-                          href="/activities"
-                        >
-                          Activity archive
-
-                          <span
-                            aria-hidden="true"
-                          >
-                            →
-                          </span>
-                        </Link>
-                      )
-                }
-              </div>
             </div>
 
           </div>
@@ -1162,14 +1081,17 @@ export function TrainingHubEstablishedV46() {
 
 
       {/* ================================================================
-          FINAL CTA
+          03 — CONTINUE LEARNING
+
+          V46 context and final-cta markers remain for compatibility,
+          but both now belong to one compact visual ending.
          ================================================================ */}
 
       <section
         className={
-          styles.finalCta
+          styles.continueSection
         }
-        data-activity-detail-section="final-cta"
+        data-training-hub-consolidated-section="continue-learning"
       >
         <Container
           size="wide"
@@ -1180,73 +1102,153 @@ export function TrainingHubEstablishedV46() {
 
           <div
             className={
-              styles.finalLayout
+              styles.continueGrid
             }
           >
-            <div>
+
+            <header
+              className={
+                styles.sectionHeading
+              }
+            >
               <p
                 className={
                   styles.sectionEyebrow
                 }
               >
                 <span>
-                  NB
+                  03
                 </span>
 
-                Activities
+                Continue learning
               </p>
 
 
               <h2>
-                Explore more published No Breach work.
+                Continue with the current Training Hub.
               </h2>
-            </div>
+            </header>
 
 
             <div
               className={
-                styles.finalBody
+                styles.continueBody
               }
             >
-              <p>
-                Continue through the activity archive or explore the
-                current Academy programme catalogue.
-              </p>
 
-
-              <div
+              <section
                 className={
-                  styles.finalActions
+                  styles.continuePrimary
                 }
+                data-activity-detail-section="context"
               >
-                <Link
+                <p
                   className={
-                    styles.primaryAction
+                    styles.continueLead
                   }
-                  href="/activities"
                 >
-                  Browse activities
+                  Explore the current No Breach training catalogue or return
+                  to the wider activity archive.
+                </p>
 
-                  <Arrow />
-                </Link>
 
-
-                <Link
+                <div
                   className={
-                    styles.secondaryAction
+                    styles.continueActions
                   }
-                  href="/training"
                 >
-                  Explore Academy
-
-                  <span
-                    aria-hidden="true"
+                  <Link
+                    className={
+                      styles.primaryAction
+                    }
+                    href="/training"
                   >
-                    →
+                    Explore Training Hub
+
+                    <Arrow />
+                  </Link>
+
+
+                  <Link
+                    className={
+                      styles.secondaryAction
+                    }
+                    href="/activities"
+                  >
+                    All activities
+
+                    <span
+                      aria-hidden="true"
+                    >
+                      →
+                    </span>
+                  </Link>
+                </div>
+              </section>
+
+
+              <section
+                className={
+                  styles.archiveNavigation
+                }
+                data-activity-detail-section="final-cta"
+                aria-label="Training Hub record navigation"
+              >
+                <div>
+                  <span
+                    className={
+                      styles.archiveLabel
+                    }
+                  >
+                    Historical record
                   </span>
-                </Link>
-              </div>
+
+                  <p>
+                    Established {
+                      activity.year
+                    }
+                    {
+                      activity.location
+                        ? ` · ${activity.location}`
+                        : ""
+                    }
+                  </p>
+                </div>
+
+
+                <div
+                  className={
+                    styles.archiveLinks
+                  }
+                >
+                  <Link
+                    href="/training"
+                  >
+                    Current Training Hub
+
+                    <span
+                      aria-hidden="true"
+                    >
+                      ↗
+                    </span>
+                  </Link>
+
+                  <Link
+                    href="/activities"
+                  >
+                    Activity archive
+
+                    <span
+                      aria-hidden="true"
+                    >
+                      →
+                    </span>
+                  </Link>
+                </div>
+              </section>
+
             </div>
+
           </div>
 
         </Container>
