@@ -4,63 +4,59 @@ import {
 } from "@playwright/test";
 
 
+const route =
+  "/activities/ai-security-foundations-2026";
+
+
 test(
-  "AI Security activity renders one strict detail experience",
+  "AI Security activity V51 opens as a compact published record",
   async ({
     page
   }) => {
 
-    const response =
-      await page.goto(
-        "/activities/ai-security-foundations-2026"
-      );
-
-
-    expect(
-      response?.status()
-    ).toBe(
-      200
+    await page.goto(
+      route
     );
 
 
-    const root =
+    await expect(
       page.locator(
-        '[data-ai-security-activity-design="v50"]'
-      );
-
-
-    await expect(
-      root
-    ).toHaveCount(
-      1
-    );
-
-
-    await expect(
-      root
+        '[data-ai-security-activity-audit="v51"]'
+      )
     ).toBeVisible();
 
 
     await expect(
-      page.locator(
-        "h1"
+      page.getByRole(
+        "heading",
+        {
+          level:
+            1,
+          name:
+            "AI Security Foundations"
+        }
       )
-    ).toHaveCount(
-      1
-    );
+    ).toBeVisible();
+
+
+    await expect(
+      page.getByText(
+        /Training activity focused on security boundaries around AI applications/i
+      )
+    ).toBeVisible();
 
   }
 );
 
 
 test(
-  "AI Security activity exposes one lightweight breadcrumb",
+  "AI Security activity keeps one lightweight breadcrumb",
   async ({
     page
   }) => {
 
     await page.goto(
-      "/activities/ai-security-foundations-2026"
+      route
     );
 
 
@@ -76,9 +72,7 @@ test(
 
     await expect(
       breadcrumb
-    ).toHaveCount(
-      1
-    );
+    ).toBeVisible();
 
 
     await expect(
@@ -86,9 +80,7 @@ test(
         "link",
         {
           name:
-            "Activities",
-          exact:
-            true
+            "Activities"
         }
       )
     ).toHaveAttribute(
@@ -101,35 +93,206 @@ test(
 
 
 test(
-  "AI Security activity uses its restrained system visual",
+  "AI Security activity V51 replaces the decorative signal with record facts",
   async ({
     page
   }) => {
 
     await page.goto(
-      "/activities/ai-security-foundations-2026"
+      route
     );
 
 
-    const root =
+    await expect(
       page.locator(
-        '[data-ai-security-activity-design="v50"]'
+        '[aria-label="AI Security activity signal"]'
+      )
+    ).toHaveCount(
+      0
+    );
+
+
+    const context =
+      page.locator(
+        '[data-ai-activity-ui="record-context"]'
       );
 
 
+    await expect(
+      context
+    ).toBeVisible();
+
+
+    await expect(
+      context.locator(
+        "dt"
+      )
+    ).toHaveCount(
+      4
+    );
+
+
     for (
-      const label
-      of [
-        "PROMPT",
-        "MODEL",
-        "TOOL",
-        "ACTION"
+      const value
+      of
+      [
+        "2026",
+        "training",
+        "Tunis / Online"
       ]
     ) {
 
       await expect(
-        root.getByText(
-          label,
+        context.getByText(
+          value,
+          {
+            exact:
+              true
+          }
+        )
+      ).toBeVisible();
+
+    }
+
+
+    const recordValue =
+      context
+        .locator(
+          "dd"
+        )
+        .filter({
+          hasText:
+            /^Published activity$/
+        });
+
+
+    await expect(
+      recordValue
+    ).toHaveCount(
+      1
+    );
+
+
+    await expect(
+      recordValue
+    ).toBeVisible();
+
+  }
+);
+
+
+test(
+  "AI Security activity introduction leads into the record before conversion",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      route
+    );
+
+
+    const intro =
+      page.locator(
+        '[data-ai-activity-section="intro"]'
+      );
+
+
+    await expect(
+      intro.getByRole(
+        "link",
+        {
+          name:
+            /Read activity record/
+        }
+      )
+    ).toHaveAttribute(
+      "href",
+      "#overview"
+    );
+
+
+    await expect(
+      intro.getByRole(
+        "link",
+        {
+          name:
+            /Activity archive/
+        }
+      )
+    ).toHaveAttribute(
+      "href",
+      "/activities"
+    );
+
+  }
+);
+
+
+test(
+  "AI Security activity overview preserves the canonical description and highlights",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      route
+    );
+
+
+    const overview =
+      page.locator(
+        '[data-ai-activity-section="overview"]'
+      );
+
+
+    await expect(
+      overview.getByRole(
+        "heading",
+        {
+          level:
+            2,
+          name:
+            "What this activity covered."
+        }
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      overview.getByText(
+        /traditional application-security thinking extends into modern AI-enabled systems/i
+      )
+    ).toBeVisible();
+
+
+    const highlights =
+      overview.locator(
+        '[data-ai-activity-ui="published-highlights"] li'
+      );
+
+
+    await expect(
+      highlights
+    ).toHaveCount(
+      4
+    );
+
+
+    for (
+      const highlight
+      of
+      [
+        "AI application attack surfaces",
+        "Prompt-injection concepts",
+        "Tool-use security boundaries",
+        "Application-security context"
+      ]
+    ) {
+
+      await expect(
+        overview.getByText(
+          highlight,
           {
             exact:
               true
@@ -144,75 +307,128 @@ test(
 
 
 test(
-  "AI Security activity exposes the correct content flow",
+  "AI Security activity consolidates both canonical narrative sections",
   async ({
     page
   }) => {
 
     await page.goto(
-      "/activities/ai-security-foundations-2026"
+      route
     );
 
 
-    for (
-      const section
-      of [
-        "intro",
-        "facts",
-        "overview",
-        "context",
-        "final-cta"
-      ]
-    ) {
-
-      await expect(
-        page.locator(
-          `[data-ai-activity-section="${section}"]`
-        )
-      ).toHaveCount(
-        1
+    const record =
+      page.locator(
+        '[data-ai-activity-section="record"]'
       );
 
-    }
+
+    const rows =
+      record.locator(
+        '[data-ai-activity-record-section]'
+      );
+
+
+    await expect(
+      rows
+    ).toHaveCount(
+      2
+    );
+
+
+    await expect(
+      record.getByRole(
+        "heading",
+        {
+          level:
+            3,
+          name:
+            "Security beyond the model"
+        }
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      record.getByRole(
+        "heading",
+        {
+          level:
+            3,
+          name:
+            "Practical security perspective"
+        }
+      )
+    ).toBeVisible();
 
   }
 );
 
 
 test(
-  "AI Security activity remains distinct from the course page",
+  "AI Security activity has one current-programme handoff",
   async ({
     page
   }) => {
 
     await page.goto(
-      "/activities/ai-security-foundations-2026"
+      route
     );
 
 
     await expect(
-      page.getByRole(
-        "navigation",
+      page.locator(
+        '[data-ai-activity-section="final-cta"]'
+      )
+    ).toHaveCount(
+      0
+    );
+
+
+    const context =
+      page.locator(
+        '[data-ai-activity-section="context"]'
+      );
+
+
+    await expect(
+      context.getByRole(
+        "heading",
+        {
+          level:
+            2,
+          name:
+            "Continue into the current AI Security programme."
+        }
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      context.getByRole(
+        "link",
         {
           name:
-            "Course sections"
+            /View related course/
         }
       )
-    ).toHaveCount(
-      0
+    ).toHaveAttribute(
+      "href",
+      "/training/ai-security-foundations"
     );
 
 
     await expect(
-      page.getByText(
-        "View curriculum",
+      context.getByRole(
+        "link",
         {
-          exact:
-            true
+          name:
+            /Explore Training Hub/
         }
       )
-    ).toHaveCount(
-      0
+    ).toHaveAttribute(
+      "href",
+      "/training"
     );
 
   }
@@ -220,25 +436,136 @@ test(
 
 
 test(
-  "AI Security activity provides a Training Hub journey",
+  "AI Security activity V51 keeps one purposeful section sequence",
   async ({
     page
   }) => {
 
     await page.goto(
-      "/activities/ai-security-foundations-2026"
+      route
     );
 
 
-    const links =
+    const order =
+      await page
+        .locator(
+          '[data-ai-activity-section]'
+        )
+        .evaluateAll(
+          elements =>
+            elements.map(
+              element =>
+                element.getAttribute(
+                  "data-ai-activity-section"
+                )
+            )
+        );
+
+
+    expect(
+      order
+    ).toEqual([
+      "intro",
+      "overview",
+      "record",
+      "context"
+    ]);
+
+  }
+);
+
+
+test(
+  "AI Security activity V51 uses one shared content frame",
+  async ({
+    page
+  }) => {
+
+    await page.setViewportSize({
+      width:
+        1440,
+      height:
+        900
+    });
+
+
+    await page.goto(
+      route
+    );
+
+
+    const frames =
       page.locator(
-        'a[href^="/training"]'
+        '[data-ai-activity-frame]'
+      );
+
+
+    await expect(
+      frames
+    ).toHaveCount(
+      4
+    );
+
+
+    const geometry =
+      await frames.evaluateAll(
+        elements =>
+          elements.map(
+            element => {
+
+              const rect =
+                element.getBoundingClientRect();
+
+
+              return {
+                x:
+                  rect.x,
+
+                width:
+                  rect.width
+              };
+
+            }
+          )
+      );
+
+
+    const xs =
+      geometry.map(
+        item =>
+          item.x
+      );
+
+
+    const widths =
+      geometry.map(
+        item =>
+          item.width
       );
 
 
     expect(
-      await links.count()
-    ).toBeGreaterThanOrEqual(
+      Math.max(
+        ...xs
+      )
+      -
+      Math.min(
+        ...xs
+      )
+    ).toBeLessThanOrEqual(
+      1
+    );
+
+
+    expect(
+      Math.max(
+        ...widths
+      )
+      -
+      Math.min(
+        ...widths
+      )
+    ).toBeLessThanOrEqual(
       1
     );
 
@@ -247,20 +574,160 @@ test(
 
 
 test(
-  "other activity routes remain isolated from V50",
+  "AI Security activity V51 reduces the oversized opening composition",
   async ({
     page
   }) => {
 
-    for (
-      const route
-      of [
-        "/activities/red-team-foundations-2026",
-        "/activities/cr4ckout-2",
-        "/activities/cr4ckout-launched",
-        "/activities/training-hub-established"
-      ]
-    ) {
+    await page.setViewportSize({
+      width:
+        1440,
+      height:
+        900
+    });
+
+
+    await page.goto(
+      route
+    );
+
+
+    const height =
+      await page
+        .locator(
+          '[data-ai-activity-section="intro"]'
+        )
+        .evaluate(
+          element =>
+            element
+              .getBoundingClientRect()
+              .height
+        );
+
+
+    expect(
+      height
+    ).toBeLessThan(
+      650
+    );
+
+  }
+);
+
+
+test(
+  "AI Security activity remains distinct from the current course detail",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/training/ai-security-foundations"
+    );
+
+
+    await expect(
+      page.locator(
+        '[data-ai-security-activity-audit="v51"]'
+      )
+    ).toHaveCount(
+      0
+    );
+
+
+    await expect(
+      page.locator(
+        '[data-ai-course-detail]'
+      )
+    ).toBeVisible();
+
+  }
+);
+
+
+test(
+  "other activity detail routes remain isolated from V51",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/activities/red-team-foundations-2026"
+    );
+
+
+    await expect(
+      page.locator(
+        '[data-ai-security-activity-audit="v51"]'
+      )
+    ).toHaveCount(
+      0
+    );
+
+  }
+);
+
+
+for (
+  const viewport
+  of
+  [
+    {
+      label:
+        "320",
+      width:
+        320,
+      height:
+        800
+    },
+    {
+      label:
+        "390",
+      width:
+        390,
+      height:
+        844
+    },
+    {
+      label:
+        "768",
+      width:
+        768,
+      height:
+        1024
+    },
+    {
+      label:
+        "1024",
+      width:
+        1024,
+      height:
+        768
+    },
+    {
+      label:
+        "1440",
+      width:
+        1440,
+      height:
+        900
+    }
+  ]
+) {
+
+  test(
+    `AI Security activity V51 remains contained at ${viewport.label}`,
+    async ({
+      page
+    }) => {
+
+      await page.setViewportSize({
+        width:
+          viewport.width,
+        height:
+          viewport.height
+      });
+
 
       await page.goto(
         route
@@ -269,111 +736,36 @@ test(
 
       await expect(
         page.locator(
-          '[data-ai-security-activity-design="v50"]'
+          '[data-ai-security-activity-audit="v51"]'
         )
-      ).toHaveCount(
-        0
-      );
-
-    }
-
-  }
-);
+      ).toBeVisible();
 
 
-test(
-  "AI Security activity remains overflow-free",
-  async ({
-    page
-  }) => {
-
-    for (
-      const viewport
-      of [
-        {
-          width:
-            1440,
-
-          height:
-            900
-        },
-        {
-          width:
-            1180,
-
-          height:
-            820
-        },
-        {
-          width:
-            1024,
-
-          height:
-            768
-        },
-        {
-          width:
-            768,
-
-          height:
-            1024
-        },
-        {
-          width:
-            430,
-
-          height:
-            932
-        },
-        {
-          width:
-            390,
-
-          height:
-            844
-        },
-        {
-          width:
-            360,
-
-          height:
-            800
-        }
-      ]
-    ) {
-
-      await page.setViewportSize(
-        viewport
-      );
-
-
-      await page.goto(
-        "/activities/ai-security-foundations-2026"
-      );
-
-
-      const geometry =
+      const dimensions =
         await page.evaluate(
           () => ({
-            scroll:
-              document.documentElement.scrollWidth,
+            scrollWidth:
+              document
+                .documentElement
+                .scrollWidth,
 
-            client:
-              document.documentElement.clientWidth
+            clientWidth:
+              document
+                .documentElement
+                .clientWidth
           })
         );
 
 
       expect(
-        geometry.scroll,
-        `${viewport.width}px viewport`
+        dimensions.scrollWidth
       ).toBeLessThanOrEqual(
-        geometry.client
+        dimensions.clientWidth
         +
         1
       );
 
     }
+  );
 
-  }
-);
+}
