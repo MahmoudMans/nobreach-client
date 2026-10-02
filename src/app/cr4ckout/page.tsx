@@ -8,6 +8,10 @@ import {
   Container
 } from "@/components/layout/container";
 
+import {
+  getEvent
+} from "@/content/events";
+
 import styles from "./cr4ckout.module.css";
 
 
@@ -18,38 +22,75 @@ export const metadata:
     "CR4CKOUT | No Breach",
 
   description:
-    "CR4CKOUT is the signature No Breach story-driven cybersecurity challenge combining technical skill, creative thinking and specialized security challenges."
+    "CR4CKOUT is the No Breach story-driven cybersecurity challenge built around technical investigation, creative thinking and hands-on security problems."
 };
 
 
 const eventProfile = [
   {
     label:
-      "FORMAT",
+      "Format",
 
     value:
       "Story-driven challenge"
   },
   {
     label:
-      "FOCUS",
+      "Setting",
 
     value:
-      "Specialized security"
+      "Universities and tech events"
   },
   {
     label:
-      "SETTING",
-
-    value:
-      "Universities + tech events"
-  },
-  {
-    label:
-      "ORIGIN",
+      "Origin",
 
     value:
       "Tunisia"
+  }
+] as const;
+
+
+const experienceFlow = [
+  {
+    index:
+      "01",
+
+    title:
+      "Hack",
+
+    description:
+      "Enter the challenge and investigate the environment."
+  },
+  {
+    index:
+      "02",
+
+    title:
+      "Learn",
+
+    description:
+      "Adapt, research and build understanding as the story evolves."
+  },
+  {
+    index:
+      "03",
+
+    title:
+      "Break",
+
+    description:
+      "Solve technical obstacles through practical security thinking and reasoning."
+  },
+  {
+    index:
+      "04",
+
+    title:
+      "Build",
+
+    description:
+      "Turn what you discover into stronger technical intuition."
   }
 ] as const;
 
@@ -59,21 +100,15 @@ const challengeAreas = [
     index:
       "01",
 
-    code:
-      "CRYPT",
-
     title:
       "Cryptography",
 
     description:
-      "Technical challenges built around reasoning, patterns and cryptographic problem solving."
+      "Technical challenges built around reasoning, patterns and cryptographic problem-solving."
   },
   {
     index:
       "02",
-
-    code:
-      "STEGO",
 
     title:
       "Steganography",
@@ -85,9 +120,6 @@ const challengeAreas = [
     index:
       "03",
 
-    code:
-      "ACCESS",
-
     title:
       "System access challenges",
 
@@ -97,48 +129,108 @@ const challengeAreas = [
 ] as const;
 
 
-const experience = [
-  {
-    index:
-      "01",
+const featuredEvent =
+  (() => {
 
-    label:
-      "HACK",
+    const event =
+      getEvent(
+        "cr4ckout-2-0"
+      );
 
-    copy:
-      "Enter the challenge and investigate the environment."
-  },
-  {
-    index:
-      "02",
 
-    label:
-      "LEARN",
+    if (
+      !event
+    ) {
 
-    copy:
-      "Adapt, research and build understanding as the story evolves."
-  },
-  {
-    index:
-      "03",
+      throw new Error(
+        "CR4CKOUT 2.0 event data is missing."
+      );
 
-    label:
-      "BREAK",
+    }
 
-    copy:
-      "Solve technical obstacles through practical security thinking."
-  },
-  {
-    index:
-      "04",
 
-    label:
-      "BUILD",
+    return event;
 
-    copy:
-      "Turn what you discover into stronger technical intuition."
-  }
-] as const;
+  })();
+
+
+const eventStatusLabels = {
+  upcoming:
+    "Upcoming event",
+
+  ongoing:
+    "Ongoing event",
+
+  past:
+    "Past event"
+} as const;
+
+
+function Arrow() {
+
+  return (
+    <span
+      aria-hidden="true"
+    >
+      →
+    </span>
+  );
+
+}
+
+
+function SectionHeading({
+  eyebrow,
+  title,
+  description
+}: {
+  eyebrow:
+    string;
+
+  title:
+    string;
+
+  description:
+    string;
+}) {
+
+  return (
+    <header
+      className={
+        styles.sectionHeading
+      }
+    >
+      <p
+        className={
+          styles.sectionEyebrow
+        }
+      >
+        {
+          eyebrow
+        }
+      </p>
+
+
+      <h2>
+        {
+          title
+        }
+      </h2>
+
+
+      <p
+        className={
+          styles.sectionDescription
+        }
+      >
+        {
+          description
+        }
+      </p>
+    </header>
+  );
+
+}
 
 
 export default function Cr4ckoutPage() {
@@ -149,79 +241,110 @@ export default function Cr4ckoutPage() {
         styles.page
       }
       data-cr4ckout-design="continuous-system"
+      data-cr4ckout-audit="v11"
     >
+      {/* ================================================================
+          INTRODUCTION
+         ================================================================ */}
+
       <section
         className={
           styles.hero
         }
         data-cr4ckout-section="hero"
       >
-        <div
-          className={
-            styles.heroDecoration
-          }
-          aria-hidden="true"
-        />
-
-
-        <Container size="wide">
+        <Container>
           <div
             className={
-              styles.heroGrid
+              styles.frame
             }
+            data-cr4ckout-frame="hero"
           >
             <div
               className={
-                styles.heroCopy
+                styles.heroGrid
               }
             >
-              <p
-                className={
-                  styles.eyebrow
-                }
-              >
-                NOBREACH / SIGNATURE CHALLENGE
-              </p>
-
-
-              <h1>
-                CR4CKOUT
-              </h1>
-
-
-              <p
-                className={
-                  styles.heroStatement
-                }
-              >
-                A hacking experience
-                like no other.
-              </p>
-
-
-              <p
-                className={
-                  styles.heroLead
-                }
-              >
-                CR4CK0UT is our signature challenge — a game-like,
-                story-driven hackathon that blends technical skill with
-                creative thinking.
-              </p>
-
-
               <div
                 className={
-                  styles.heroActions
+                  styles.heroCopy
                 }
               >
-                <a
+                <p
                   className={
-                    styles.primaryButton
+                    styles.heroEyebrow
                   }
-                  href="#challenge-areas"
                 >
-                  Explore the challenge
+                  No Breach / Signature challenge
+                </p>
+
+
+                <h1>
+                  CR4CKOUT
+                </h1>
+
+
+                <p
+                  className={
+                    styles.heroHeadline
+                  }
+                >
+                  A story-driven hacking challenge.
+                </p>
+
+
+                <p
+                  className={
+                    styles.heroLead
+                  }
+                >
+                  A game-like hackathon that connects technical skill with
+                  creative thinking. Investigate technical problems, follow
+                  story cues and work through practical security challenges.
+                </p>
+
+
+                <div
+                  className={
+                    styles.heroActions
+                  }
+                >
+                  <a
+                    href="#experience"
+                    className={
+                      styles.primaryAction
+                    }
+                  >
+                    Explore the challenge
+
+                    <span
+                      aria-hidden="true"
+                    >
+                      ↓
+                    </span>
+                  </a>
+
+
+                  <a
+                    href="#host"
+                    className={
+                      styles.secondaryAction
+                    }
+                  >
+                    Host CR4CKOUT
+
+                    <Arrow />
+                  </a>
+                </div>
+
+
+                <a
+                  href="#events"
+                  className={
+                    styles.eventShortcut
+                  }
+                >
+                  View event information
 
                   <span
                     aria-hidden="true"
@@ -229,638 +352,472 @@ export default function Cr4ckoutPage() {
                     ↓
                   </span>
                 </a>
+              </div>
 
 
-                <Link
+              <figure
+                className={
+                  styles.themeFigure
+                }
+                data-cr4ckout-ui="theme-illustration"
+                aria-labelledby="challenge-theme-title"
+              >
+                <figcaption
+                  id="challenge-theme-title"
                   className={
-                    styles.secondaryButton
+                    styles.themeCaption
                   }
-                  href="/contact"
                 >
-                  Host CR4CKOUT
+                  Challenge themes
+                </figcaption>
+
+
+                <div
+                  className={
+                    styles.themeMap
+                  }
+                  aria-label="Illustration of CR4CKOUT themes: Cryptography, Steganography and System access"
+                >
+                  <span
+                    className={
+                      `${styles.themeLabel} ${styles.themeCryptography}`
+                    }
+                  >
+                    Cryptography
+                  </span>
+
 
                   <span
+                    className={
+                      `${styles.themeLabel} ${styles.themeSteganography}`
+                    }
+                  >
+                    Steganography
+                  </span>
+
+
+                  <span
+                    className={
+                      styles.themeCore
+                    }
                     aria-hidden="true"
                   >
-                    ↗
-                  </span>
-                </Link>
-              </div>
-
-
-              <p
-                className={
-                  styles.heroMicro
-                }
-              >
-                Story / skill / investigation / creative thinking
-              </p>
-            </div>
-
-
-            <div
-              className={
-                styles.heroVisual
-              }
-              aria-hidden="true"
-            >
-              <div
-                className={
-                  styles.visualHeader
-                }
-              >
-                <span>
-                  NB / CR4
-                </span>
-
-                <span>
-                  SIGNAL ACTIVE
-                </span>
-              </div>
-
-
-              <div
-                className={
-                  styles.visualField
-                }
-              >
-                <div
-                  className={
-                    styles.visualAxis
-                  }
-                />
-
-
-                <div
-                  className={
-                    styles.visualCore
-                  }
-                >
-                  <span>
-                    EVENT
-                  </span>
-
-                  <strong>
                     CR4
-                  </strong>
-
-                  <span>
-                    OUT
-                  </span>
-                </div>
-
-
-                <div
-                  className={
-                    styles.visualSignalOne
-                  }
-                >
-                  <span>
-                    01
                   </span>
 
-                  CRYPT
-                </div>
 
-
-                <div
-                  className={
-                    styles.visualSignalTwo
-                  }
-                >
-                  <span>
-                    02
-                  </span>
-
-                  STEGO
-                </div>
-
-
-                <div
-                  className={
-                    styles.visualSignalThree
-                  }
-                >
-                  <span>
-                    03
-                  </span>
-
-                  ACCESS
-                </div>
-              </div>
-
-
-              <div
-                className={
-                  styles.visualFooter
-                }
-              >
-                <span>
-                  OBSERVE
-                </span>
-
-                <span>
-                  THINK
-                </span>
-
-                <span>
-                  BREAK
-                </span>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-
-      <section
-        className={
-          styles.profile
-        }
-        data-cr4ckout-section="profile"
-        aria-label="CR4CKOUT event profile"
-      >
-        <Container size="wide">
-          <dl
-            className={
-              styles.profileGrid
-            }
-          >
-            {
-              eventProfile.map(
-                (
-                  item
-                ) => (
-                  <div
+                  <span
                     className={
-                      styles.profileItem
-                    }
-                    key={
-                      item.label
+                      `${styles.themeLabel} ${styles.themeAccess}`
                     }
                   >
-                    <dt>
-                      {item.label}
-                    </dt>
-
-                    <dd>
-                      {item.value}
-                    </dd>
-                  </div>
-                )
-              )
-            }
-          </dl>
-        </Container>
-      </section>
-
-
-      <section
-        className={
-          styles.story
-        }
-        data-cr4ckout-section="story"
-      >
-        <Container size="wide">
-          <div
-            className={
-              styles.storyGrid
-            }
-          >
-            <header
-              className={
-                styles.storyHeading
-              }
-            >
-              <p
-                className={
-                  styles.eyebrow
-                }
-              >
-                01 / THE EXPERIENCE
-              </p>
-
-
-              <h2>
-                Technical depth.
-                <span>
-                  Creative thinking.
-                </span>
-              </h2>
-            </header>
-
-
-            <div
-              className={
-                styles.storyBody
-              }
-            >
-              <p
-                className={
-                  styles.storyLead
-                }
-              >
-                It’s the only event of its kind in Tunisia, focused on
-                niche, high-skill areas like cryptography,
-                steganography, and system access challenges — all
-                wrapped in a clean, fun, high-quality experience.
-              </p>
-
-
-              <p>
-                CR4CKOUT is designed as an experience rather than a
-                conventional conference session. Participants move
-                through technical problems, story cues and practical
-                challenges that reward both skill and imagination.
-              </p>
-
-
-              <div
-                className={
-                  styles.storyPrinciples
-                }
-              >
-                <div>
-                  <span>
-                    01
+                    System access
                   </span>
-
-                  <p>
-                    Technical problems require real reasoning.
-                  </p>
                 </div>
 
 
-                <div>
-                  <span>
-                    02
-                  </span>
-
-                  <p>
-                    Story progression keeps the challenge connected.
-                  </p>
-                </div>
-
-
-                <div>
-                  <span>
-                    03
-                  </span>
-
-                  <p>
-                    Creative thinking matters as much as speed.
-                  </p>
-                </div>
-              </div>
+                <p
+                  className={
+                    styles.themeNote
+                  }
+                >
+                  A thematic illustration of the challenge areas—not a live
+                  event-status display.
+                </p>
+              </figure>
             </div>
+
+
+            <dl
+              className={
+                styles.heroFacts
+              }
+              aria-label="CR4CKOUT overview"
+            >
+              {
+                eventProfile.map(
+                  item => (
+                    <div
+                      key={
+                        item.label
+                      }
+                    >
+                      <dt>
+                        {
+                          item.label
+                        }
+                      </dt>
+
+                      <dd>
+                        {
+                          item.value
+                        }
+                      </dd>
+                    </div>
+                  )
+                )
+              }
+            </dl>
           </div>
         </Container>
       </section>
 
+
+      {/* ================================================================
+          THE EXPERIENCE
+         ================================================================ */}
+
+      <section
+        id="experience"
+        className={
+          styles.section
+        }
+        data-cr4ckout-section="experience"
+      >
+        <Container>
+          <div
+            className={
+              styles.frame
+            }
+            data-cr4ckout-frame="experience"
+          >
+            <SectionHeading
+              eyebrow="01 / The experience"
+              title="Hack. Learn. Break. Build."
+              description="CR4CKOUT connects technical problems and story cues into one experience rather than a conventional conference session. Participants investigate, research and solve practical challenges, drawing on both technical reasoning and creative thinking."
+            />
+
+
+            <ol
+              className={
+                styles.experienceGrid
+              }
+              data-cr4ckout-ui="experience-framework"
+            >
+              {
+                experienceFlow.map(
+                  item => (
+                    <li
+                      key={
+                        item.index
+                      }
+                      data-cr4ckout-experience-step
+                    >
+                      <span
+                        className={
+                          styles.stepIndex
+                        }
+                        aria-hidden="true"
+                      >
+                        {
+                          item.index
+                        }
+                      </span>
+
+
+                      <h3>
+                        {
+                          item.title
+                        }
+                      </h3>
+
+
+                      <p>
+                        {
+                          item.description
+                        }
+                      </p>
+                    </li>
+                  )
+                )
+              }
+            </ol>
+          </div>
+        </Container>
+      </section>
+
+
+      {/* ================================================================
+          CHALLENGE AREAS
+         ================================================================ */}
 
       <section
         id="challenge-areas"
         className={
-          styles.challenges
+          `${styles.section} ${styles.challengeSection}`
         }
         data-cr4ckout-section="challenges"
       >
-        <Container size="wide">
-          <header
-            className={
-              styles.sectionHeader
-            }
-          >
-            <div>
-              <p
-                className={
-                  styles.eyebrow
-                }
-              >
-                02 / CHALLENGE AREAS
-              </p>
-
-
-              <h2>
-                Niche problems.
-                <span>
-                  Serious technical thinking.
-                </span>
-              </h2>
-            </div>
-
-
-            <p>
-              CR4CKOUT focuses on specialized challenge areas instead
-              of generic competition mechanics.
-            </p>
-          </header>
-
-
+        <Container>
           <div
             className={
-              styles.challengeRows
+              styles.frame
             }
+            data-cr4ckout-frame="challenges"
           >
-            {
-              challengeAreas.map(
-                (
-                  challenge
-                ) => (
-                  <article
-                    className={
-                      styles.challengeRow
-                    }
-                    data-cr4ckout-challenge
-                    key={
-                      challenge.index
-                    }
-                  >
-                    <span
-                      className={
-                        styles.challengeIndex
-                      }
-                    >
-                      {challenge.index}
-                    </span>
-
-
-                    <span
-                      className={
-                        styles.challengeCode
-                      }
-                    >
-                      {challenge.code}
-                    </span>
-
-
-                    <h3>
-                      {challenge.title}
-                    </h3>
-
-
-                    <p>
-                      {challenge.description}
-                    </p>
-                  </article>
-                )
-              )
-            }
-          </div>
-        </Container>
-      </section>
-
-
-      <section
-        className={
-          styles.experience
-        }
-        data-cr4ckout-section="experience"
-      >
-        <Container size="wide">
-          <header
-            className={
-              styles.experienceHeader
-            }
-          >
-            <p
-              className={
-                styles.eyebrow
-              }
-            >
-              03 / EXPERIENCE FLOW
-            </p>
-
-
-            <h2>
-              Hack.
-              <span>
-                Learn.
-              </span>
-              Break.
-              <span>
-                Build.
-              </span>
-            </h2>
-
-
-            <p>
-              The challenge moves as one connected experience rather
-              than a collection of unrelated tasks.
-            </p>
-          </header>
-
-
-          <ol
-            className={
-              styles.experienceSteps
-            }
-          >
-            {
-              experience.map(
-                (
-                  step
-                ) => (
-                  <li
-                    key={
-                      step.index
-                    }
-                  >
-                    <span
-                      className={
-                        styles.stepIndex
-                      }
-                    >
-                      {step.index}
-                    </span>
-
-
-                    <strong>
-                      {step.label}
-                    </strong>
-
-
-                    <p>
-                      {step.copy}
-                    </p>
-                  </li>
-                )
-              )
-            }
-          </ol>
-        </Container>
-      </section>
-
-
-      <section
-        className={
-          styles.archive
-        }
-        data-cr4ckout-section="archive"
-      >
-        <Container size="wide">
-          <div
-            className={
-              styles.archiveGrid
-            }
-          >
-            <header
-              className={
-                styles.archiveIntro
-              }
-            >
-              <p
-                className={
-                  styles.eyebrow
-                }
-              >
-                04 / EVENT ARCHIVE
-              </p>
-
-
-              <h2>
-                Follow the published
-                CR4CKOUT activity.
-              </h2>
-
-
-              <p>
-                Explore the event history and continue through the
-                wider NoBreach event programme.
-              </p>
-            </header>
+            <SectionHeading
+              eyebrow="02 / Challenge areas"
+              title="Explore the technical challenges."
+              description="Cryptography, steganography and controlled system access bring different kinds of investigation into the experience."
+            />
 
 
             <div
               className={
-                styles.archiveLinks
+                styles.challengeRows
               }
+              data-cr4ckout-ui="challenge-areas"
             >
-              <Link
-                className={
-                  styles.archivePrimary
-                }
-                href="/events/cr4ckout-2-0"
-              >
-                <span
-                  className={
-                    styles.archiveMeta
-                  }
-                >
-                  FEATURED EVENT
-                </span>
+              {
+                challengeAreas.map(
+                  item => (
+                    <article
+                      className={
+                        styles.challengeRow
+                      }
+                      data-cr4ckout-challenge
+                      key={
+                        item.index
+                      }
+                    >
+                      <span
+                        className={
+                          styles.challengeIndex
+                        }
+                        aria-hidden="true"
+                      >
+                        {
+                          item.index
+                        }
+                      </span>
 
 
-                <strong>
-                  CR4CKOUT 2.0
-                </strong>
+                      <h3>
+                        {
+                          item.title
+                        }
+                      </h3>
 
 
-                <span
-                  className={
-                    styles.archiveArrow
-                  }
-                  aria-hidden="true"
-                >
-                  ↗
-                </span>
-              </Link>
-
-
-              <Link
-                className={
-                  styles.archiveSecondary
-                }
-                href="/events"
-              >
-                <span>
-                  Browse all NoBreach events
-                </span>
-
-                <span
-                  aria-hidden="true"
-                >
-                  →
-                </span>
-              </Link>
+                      <p>
+                        {
+                          item.description
+                        }
+                      </p>
+                    </article>
+                  )
+                )
+              }
             </div>
           </div>
         </Container>
       </section>
 
 
+      {/* ================================================================
+          EVENTS
+         ================================================================ */}
+
       <section
+        id="events"
+        className={
+          styles.section
+        }
+        data-cr4ckout-section="events"
+      >
+        <Container>
+          <div
+            className={
+              `${styles.frame} ${styles.eventLayout}`
+            }
+            data-cr4ckout-frame="events"
+          >
+            <div
+              className={
+                styles.eventIntro
+              }
+            >
+              <SectionHeading
+                eyebrow="03 / Events"
+                title="CR4CKOUT event information."
+                description="Explore CR4CKOUT event details and the wider No Breach event programme."
+              />
+
+
+              <Link
+                href="/events"
+                className={
+                  styles.textAction
+                }
+              >
+                Browse all No Breach events
+
+                <Arrow />
+              </Link>
+            </div>
+
+
+            <article
+              className={
+                styles.eventFeature
+              }
+              data-cr4ckout-ui="event-feature"
+            >
+              <div
+                className={
+                  styles.eventTopline
+                }
+              >
+                <span>
+                  {
+                    eventStatusLabels[
+                      featuredEvent.status
+                    ]
+                  }
+                </span>
+
+                <span>
+                  Featured event
+                </span>
+              </div>
+
+
+              <h3>
+                {
+                  featuredEvent.title
+                }
+              </h3>
+
+
+              <dl
+                className={
+                  styles.eventMetadata
+                }
+              >
+                <div>
+                  <dt>
+                    Year
+                  </dt>
+
+                  <dd>
+                    {
+                      featuredEvent.year
+                    }
+                  </dd>
+                </div>
+
+
+                {
+                  featuredEvent.location
+                    ? (
+                        <div>
+                          <dt>
+                            Location
+                          </dt>
+
+                          <dd>
+                            {
+                              featuredEvent.location
+                            }
+                          </dd>
+                        </div>
+                      )
+                    : null
+                }
+              </dl>
+
+
+              <p
+                className={
+                  styles.eventSummary
+                }
+              >
+                {
+                  featuredEvent.summary
+                }
+              </p>
+
+
+              <Link
+                href={`/events/${featuredEvent.slug}`}
+                className={
+                  styles.eventAction
+                }
+              >
+                View event details
+
+                <Arrow />
+              </Link>
+            </article>
+          </div>
+        </Container>
+      </section>
+
+
+      {/* ================================================================
+          HOSTING
+         ================================================================ */}
+
+      <section
+        id="host"
         className={
           styles.host
         }
         data-cr4ckout-section="host"
       >
-        <Container size="wide">
+        <Container>
           <div
             className={
-              styles.hostInner
+              `${styles.frame} ${styles.hostLayout}`
             }
+            data-cr4ckout-frame="host"
           >
-            <div
-              className={
-                styles.hostCopy
-              }
-            >
+            <div>
               <p
                 className={
-                  styles.eyebrow
+                  styles.sectionEyebrow
                 }
               >
-                HOST CR4CKOUT
+                Host CR4CKOUT
               </p>
 
 
               <h2>
-                Want to host CR4CK0UT at your university or tech event?
+                Bring CR4CKOUT to your university or tech event.
               </h2>
-
-
-              <p>
-                Contact us — and let’s bring the experience to your
-                crowd.
-              </p>
             </div>
 
 
             <div
               className={
-                styles.hostActions
+                styles.hostCopy
               }
             >
-              <Link
+              <p>
+                Tell No Breach about your event and audience to discuss
+                bringing the challenge to your setting.
+              </p>
+
+
+              <p
                 className={
-                  styles.primaryButton
+                  styles.hostGuidance
                 }
+              >
+                Share your institution or event, location, preferred timing
+                and expected audience.
+              </p>
+
+
+              <Link
                 href="/contact"
-              >
-                Contact NoBreach
-
-                <span
-                  aria-hidden="true"
-                >
-                  ↗
-                </span>
-              </Link>
-
-
-              <Link
                 className={
-                  styles.secondaryButton
+                  styles.primaryAction
                 }
-                href="/events"
               >
-                Explore events
+                Discuss hosting
 
-                <span
-                  aria-hidden="true"
-                >
-                  →
-                </span>
+                <Arrow />
               </Link>
             </div>
           </div>
@@ -868,4 +825,5 @@ export default function Cr4ckoutPage() {
       </section>
     </div>
   );
+
 }

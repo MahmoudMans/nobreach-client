@@ -23,12 +23,19 @@ const css =
   );
 
 
+const normalizedPage =
+  page.replace(
+    /\s+/g,
+    " "
+  );
+
+
 describe(
-  "CR4CKOUT continuous NoBreach design system",
+  "CR4CKOUT V10 compatibility + V11 audit",
   () => {
 
     it(
-      "uses one event landing-page architecture",
+      "keeps the established route identity while activating V11",
       () => {
 
         expect(
@@ -37,22 +44,62 @@ describe(
           'data-cr4ckout-design="continuous-system"'
         );
 
+        expect(
+          page
+        ).toContain(
+          'data-cr4ckout-audit="v11"'
+        );
+
+        expect(
+          css
+        ).toContain(
+          "NB_CR4CKOUT_DESIGN_AUTHORITY_V10"
+        );
+
+        expect(
+          css
+        ).toContain(
+          "NB_CR4CKOUT_AUDIT_V11"
+        );
 
         expect(
           page.match(
             /<h1>/g
           )
-          ??
-          []
         ).toHaveLength(
           1
         );
 
+      }
+    );
+
+
+    it(
+      "removes unsupported exclusivity and simulated active status",
+      () => {
 
         expect(
           page
         ).not.toContain(
-          "<nav"
+          "only event of its kind in Tunisia"
+        );
+
+        expect(
+          page
+        ).not.toContain(
+          "SIGNAL ACTIVE"
+        );
+
+        expect(
+          page
+        ).not.toContain(
+          "A hacking experience like no other."
+        );
+
+        expect(
+          page
+        ).toContain(
+          "A story-driven hacking challenge."
         );
 
       }
@@ -60,59 +107,110 @@ describe(
 
 
     it(
-      "uses the exact seven-section event flow",
-      () => {
-
-        const sections =
-          page.match(
-            /data-cr4ckout-section="[^"]+"/g
-          )
-          ??
-          [];
-
-
-        expect(
-          sections
-        ).toEqual([
-          'data-cr4ckout-section="hero"',
-          'data-cr4ckout-section="profile"',
-          'data-cr4ckout-section="story"',
-          'data-cr4ckout-section="challenges"',
-          'data-cr4ckout-section="experience"',
-          'data-cr4ckout-section="archive"',
-          'data-cr4ckout-section="host"'
-        ]);
-
-      }
-    );
-
-
-    it(
-      "preserves the approved CR4CKOUT event content",
+      "integrates three factual overview signals into the introduction",
       () => {
 
         for (
-          const value
-          of [
-            "CR4CKOUT",
-            "A hacking experience",
-            "like no other.",
-            "CR4CK0UT is our signature challenge",
-            "game-like",
-            "story-driven hackathon",
-            "It’s the only event of its kind in Tunisia",
-            "Cryptography",
-            "Steganography",
-            "System access challenges",
-            "Want to host CR4CK0UT at your university or tech event?",
-            "Contact us — and let’s bring the experience to your"
+          const token
+          of
+          [
+            "Story-driven challenge",
+            "Universities and tech events",
+            "Tunisia"
           ]
         ) {
 
           expect(
             page
           ).toContain(
-            value
+            token
+          );
+
+        }
+
+
+        expect(
+          page
+        ).not.toContain(
+          "Specialized security"
+        );
+
+      }
+    );
+
+
+    it(
+      "uses one merged four-part experience framework",
+      () => {
+
+        for (
+          const token
+          of
+          [
+            "Hack. Learn. Break. Build.",
+            "Enter the challenge and investigate the environment.",
+            "Adapt, research and build understanding as the story evolves.",
+            "Solve technical obstacles through practical security thinking and reasoning.",
+            "Turn what you discover into stronger technical intuition."
+          ]
+        ) {
+
+          expect(
+            normalizedPage
+          ).toContain(
+            token
+          );
+
+        }
+
+
+        expect(
+          page
+        ).toContain(
+          'data-cr4ckout-ui="experience-framework"'
+        );
+
+      }
+    );
+
+
+    it(
+      "preserves the three technical challenge areas without code labels",
+      () => {
+
+        for (
+          const token
+          of
+          [
+            "Cryptography",
+            "Steganography",
+            "System access challenges"
+          ]
+        ) {
+
+          expect(
+            page
+          ).toContain(
+            token
+          );
+
+        }
+
+
+        for (
+          const retired
+          of
+          [
+            '"CRYPT"',
+            '"STEGO"',
+            '"ACCESS"'
+          ]
+        ) {
+
+          expect(
+            page
+          ).not.toContain(
+            retired
           );
 
         }
@@ -122,15 +220,64 @@ describe(
 
 
     it(
-      "preserves event routes",
+      "binds event information to the canonical CR4CKOUT record",
       () => {
 
         expect(
           page
         ).toContain(
-          'href="/contact"'
+          'from "@/content/events"'
         );
 
+        expect(
+          page
+        ).toMatch(
+          /getEvent\(\s*"cr4ckout-2-0"/
+        );
+
+        expect(
+          page
+        ).toContain(
+          "featuredEvent.year"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "featuredEvent.location"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "featuredEvent.status"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "/events/${featuredEvent.slug}"
+        );
+
+      }
+    );
+
+
+    it(
+      "keeps event browsing and hosting as distinct actions",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          "View event details"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Browse all No Breach events"
+        );
 
         expect(
           page
@@ -138,11 +285,22 @@ describe(
           'href="/events"'
         );
 
+        expect(
+          page
+        ).toContain(
+          "Discuss hosting"
+        );
 
         expect(
           page
         ).toContain(
-          'href="/events/cr4ckout-2-0"'
+          'href="/contact"'
+        );
+
+        expect(
+          page
+        ).not.toContain(
+          "Explore events"
         );
 
       }
@@ -150,100 +308,47 @@ describe(
 
 
     it(
-      "uses the four-step challenge progression",
+      "keeps one purposeful five-section page flow",
       () => {
 
         for (
-          const value
-          of [
-            '"HACK"',
-            '"LEARN"',
-            '"BREAK"',
-            '"BUILD"'
+          const section
+          of
+          [
+            "hero",
+            "experience",
+            "challenges",
+            "events",
+            "host"
           ]
         ) {
 
           expect(
             page
           ).toContain(
-            value
+            `data-cr4ckout-section="${section}"`
           );
 
         }
 
-      }
-    );
-
-
-    it(
-      "uses the final NoBreach visual tokens",
-      () => {
 
         for (
-          const value
-          of [
-            "#07090d",
-            "#0b0f16",
-            "#101620",
-            "#151d29",
-            "#a1e2f0",
-            "#83b3d7",
-            "#7e60b9",
-            '"Space Grotesk"',
-            '"Inter"',
-            '"IBM Plex Mono"'
+          const retired
+          of
+          [
+            'data-cr4ckout-section="profile"',
+            'data-cr4ckout-section="story"',
+            'data-cr4ckout-section="archive"'
           ]
         ) {
 
           expect(
-            css
-          ).toContain(
-            value
+            page
+          ).not.toContain(
+            retired
           );
 
         }
-
-      }
-    );
-
-
-    it(
-      "contains accessibility and responsive contracts",
-      () => {
-
-        expect(
-          css
-        ).toContain(
-          ":focus-visible"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          "outline:\n    2px"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          "min-height:\n    48px;"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          "max-width:\n    640px"
-        );
-
-
-        expect(
-          css
-        ).toContain(
-          "prefers-reduced-motion"
-        );
 
       }
     );

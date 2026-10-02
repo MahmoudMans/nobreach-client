@@ -4,48 +4,22 @@ import {
 } from "@playwright/test";
 
 
-const route =
-  "/cr4ckout";
-
-
 test(
-  "CR4CKOUT renders the continuous seven-section event page",
+  "CR4CKOUT V11 presents the signature challenge without unsupported status claims",
   async ({
     page
   }) => {
 
-    await page.setViewportSize({
-      width:
-        1440,
-
-      height:
-        900
-    });
-
-
     await page.goto(
-      route
+      "/cr4ckout"
     );
 
 
-    const root =
+    await expect(
       page.locator(
-        '[data-cr4ckout-design="continuous-system"]'
-      );
-
-
-    await expect(
-      root
-    ).toBeVisible();
-
-
-    await expect(
-      root.locator(
-        ":scope > section[data-cr4ckout-section]"
+        '[data-cr4ckout-audit="v11"]'
       )
-    ).toHaveCount(
-      7
-    );
+    ).toBeVisible();
 
 
     await expect(
@@ -54,39 +28,40 @@ test(
         {
           level:
             1,
-
           name:
             "CR4CKOUT"
         }
       )
-    ).toHaveCount(
-      1
-    );
-
-  }
-);
-
-
-test(
-  "CR4CKOUT does not introduce another navigation bar",
-  async ({
-    page
-  }) => {
-
-    await page.goto(
-      route
-    );
-
-
-    const root =
-      page.locator(
-        '[data-cr4ckout-design="continuous-system"]'
-      );
+    ).toBeVisible();
 
 
     await expect(
-      root.locator(
-        "nav"
+      page.getByText(
+        "A story-driven hacking challenge.",
+        {
+          exact:
+            true
+        }
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      page.getByText(
+        /only event of its kind in Tunisia/i
+      )
+    ).toHaveCount(
+      0
+    );
+
+
+    await expect(
+      page.getByText(
+        "SIGNAL ACTIVE",
+        {
+          exact:
+            true
+        }
       )
     ).toHaveCount(
       0
@@ -97,13 +72,71 @@ test(
 
 
 test(
-  "hero presents the event identity and primary actions",
+  "CR4CKOUT V11 uses a static challenge-theme illustration",
   async ({
     page
   }) => {
 
     await page.goto(
-      route
+      "/cr4ckout"
+    );
+
+
+    const figure =
+      page.locator(
+        '[data-cr4ckout-ui="theme-illustration"]'
+      );
+
+
+    await expect(
+      figure
+    ).toBeVisible();
+
+
+    for (
+      const label
+      of
+      [
+        "Challenge themes",
+        "Cryptography",
+        "Steganography",
+        "System access"
+      ]
+    ) {
+
+      await expect(
+        figure.getByText(
+          label,
+          {
+            exact:
+              true
+          }
+        )
+      ).toBeVisible();
+
+    }
+
+
+    await expect(
+      figure.locator(
+        "a, button"
+      )
+    ).toHaveCount(
+      0
+    );
+
+  }
+);
+
+
+test(
+  "CR4CKOUT V11 integrates three overview facts into the hero",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/cr4ckout"
     );
 
 
@@ -113,184 +146,19 @@ test(
       );
 
 
-    await expect(
-      hero.getByText(
-        /a hacking experience/i
-      )
-    ).toBeVisible();
-
-
-    await expect(
-      hero.getByRole(
-        "link",
-        {
-          name:
-            /explore the challenge/i
-        }
-      )
-    ).toHaveAttribute(
-      "href",
-      "#challenge-areas"
-    );
-
-
-    await expect(
-      hero.getByRole(
-        "link",
-        {
-          name:
-            /host cr4ckout/i
-        }
-      )
-    ).toHaveAttribute(
-      "href",
-      "/contact"
-    );
-
-  }
-);
-
-
-test(
-  "compact event profile contains four meaningful signals",
-  async ({
-    page
-  }) => {
-
-    await page.goto(
-      route
-    );
-
-
-    const profile =
-      page.locator(
-        '[data-cr4ckout-section="profile"]'
-      );
-
-
-    await expect(
-      profile
-    ).toBeVisible();
-
-
-    await expect(
-      profile.locator(
-        "dt"
-      )
-    ).toHaveCount(
-      4
-    );
-
-
-    await expect(
-      profile.getByText(
-        "Story-driven challenge"
-      )
-    ).toBeVisible();
-
-
-    await expect(
-      profile.getByText(
+    for (
+      const value
+      of
+      [
+        "Story-driven challenge",
+        "Universities and tech events",
         "Tunisia"
-      )
-    ).toBeVisible();
-
-  }
-);
-
-
-test(
-  "challenge area is a three-row editorial sequence",
-  async ({
-    page
-  }) => {
-
-    await page.goto(
-      route
-    );
-
-
-    const section =
-      page.locator(
-        '[data-cr4ckout-section="challenges"]'
-      );
-
-
-    await expect(
-      section.locator(
-        "[data-cr4ckout-challenge]"
-      )
-    ).toHaveCount(
-      3
-    );
-
-
-    for (
-      const name
-      of [
-        "Cryptography",
-        "Steganography",
-        "System access challenges"
       ]
     ) {
 
       await expect(
-        section.getByRole(
-          "heading",
-          {
-            level:
-              3,
-
-            name
-          }
-        )
-      ).toBeVisible();
-
-    }
-
-  }
-);
-
-
-test(
-  "experience uses the four connected HACK LEARN BREAK BUILD steps",
-  async ({
-    page
-  }) => {
-
-    await page.goto(
-      route
-    );
-
-
-    const section =
-      page.locator(
-        '[data-cr4ckout-section="experience"]'
-      );
-
-
-    await expect(
-      section.locator(
-        "ol > li"
-      )
-    ).toHaveCount(
-      4
-    );
-
-
-    for (
-      const label
-      of [
-        "HACK",
-        "LEARN",
-        "BREAK",
-        "BUILD"
-      ]
-    ) {
-
-      await expect(
-        section.getByText(
-          label,
+        hero.getByText(
+          value,
           {
             exact:
               true
@@ -305,28 +173,205 @@ test(
 
 
 test(
-  "archive preserves the published CR4CKOUT event routes",
+  "CR4CKOUT V11 merges the experience narrative into four connected stages",
   async ({
     page
   }) => {
 
     await page.goto(
-      route
+      "/cr4ckout"
     );
 
 
-    const archive =
+    const experience =
       page.locator(
-        '[data-cr4ckout-section="archive"]'
+        '[data-cr4ckout-section="experience"]'
       );
 
 
     await expect(
-      archive.getByRole(
+      experience.getByRole(
+        "heading",
+        {
+          level:
+            2,
+          name:
+            "Hack. Learn. Break. Build."
+        }
+      )
+    ).toBeVisible();
+
+
+    const steps =
+      experience.locator(
+        '[data-cr4ckout-experience-step]'
+      );
+
+
+    await expect(
+      steps
+    ).toHaveCount(
+      4
+    );
+
+
+    for (
+      const title
+      of
+      [
+        "Hack",
+        "Learn",
+        "Break",
+        "Build"
+      ]
+    ) {
+
+      await expect(
+        experience.getByRole(
+          "heading",
+          {
+            level:
+              3,
+            name:
+              title
+          }
+        )
+      ).toBeVisible();
+
+    }
+
+  }
+);
+
+
+test(
+  "CR4CKOUT V11 preserves three descriptive challenge areas",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/cr4ckout"
+    );
+
+
+    const challenges =
+      page.locator(
+        '[data-cr4ckout-section="challenges"]'
+      );
+
+
+    await expect(
+      challenges.locator(
+        '[data-cr4ckout-challenge]'
+      )
+    ).toHaveCount(
+      3
+    );
+
+
+    for (
+      const title
+      of
+      [
+        "Cryptography",
+        "Steganography",
+        "System access challenges"
+      ]
+    ) {
+
+      await expect(
+        challenges.getByRole(
+          "heading",
+          {
+            level:
+              3,
+            name:
+              title
+          }
+        )
+      ).toBeVisible();
+
+    }
+
+  }
+);
+
+
+test(
+  "CR4CKOUT V11 exposes verified context for CR4CKOUT 2.0",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/cr4ckout"
+    );
+
+
+    const feature =
+      page.locator(
+        '[data-cr4ckout-ui="event-feature"]'
+      );
+
+
+    await expect(
+      feature
+    ).toBeVisible();
+
+
+    await expect(
+      feature.getByText(
+        "Past event",
+        {
+          exact:
+            true
+        }
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      feature.getByRole(
+        "heading",
+        {
+          level:
+            3,
+          name:
+            "CR4CKOUT 2.0"
+        }
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      feature.getByText(
+        "2025",
+        {
+          exact:
+            true
+        }
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      feature.getByText(
+        "Tunis, Tunisia",
+        {
+          exact:
+            true
+        }
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      feature.getByRole(
         "link",
         {
           name:
-            /cr4ckout 2\.0/i
+            /View event details/
         }
       )
     ).toHaveAttribute(
@@ -334,13 +379,33 @@ test(
       "/events/cr4ckout-2-0"
     );
 
+  }
+);
+
+
+test(
+  "CR4CKOUT V11 separates event details from general event browsing",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/cr4ckout"
+    );
+
+
+    const events =
+      page.locator(
+        '[data-cr4ckout-section="events"]'
+      );
+
 
     await expect(
-      archive.getByRole(
+      events.getByRole(
         "link",
         {
           name:
-            /browse all nobreach events/i
+            /Browse all No Breach events/
         }
       )
     ).toHaveAttribute(
@@ -348,38 +413,32 @@ test(
       "/events"
     );
 
+
+    await expect(
+      events.getByRole(
+        "link",
+        {
+          name:
+            /View event details/
+        }
+      )
+    ).toHaveAttribute(
+      "href",
+      "/events/cr4ckout-2-0"
+    );
+
   }
 );
 
 
 test(
-  "hosting CTA is the final page conversion section",
+  "CR4CKOUT V11 gives organizers useful hosting guidance",
   async ({
     page
   }) => {
 
     await page.goto(
-      route
-    );
-
-
-    const root =
-      page.locator(
-        '[data-cr4ckout-design="continuous-system"]'
-      );
-
-
-    const sections =
-      root.locator(
-        ":scope > section[data-cr4ckout-section]"
-      );
-
-
-    await expect(
-      sections.last()
-    ).toHaveAttribute(
-      "data-cr4ckout-section",
-      "host"
+      "/cr4ckout"
     );
 
 
@@ -395,10 +454,16 @@ test(
         {
           level:
             2,
-
           name:
-            /want to host cr4ck0ut/i
+            "Bring CR4CKOUT to your university or tech event."
         }
+      )
+    ).toBeVisible();
+
+
+    await expect(
+      host.getByText(
+        /institution or event, location, preferred timing and expected audience/i
       )
     ).toBeVisible();
 
@@ -408,7 +473,7 @@ test(
         "link",
         {
           name:
-            /contact nobreach/i
+            /Discuss hosting/
         }
       )
     ).toHaveAttribute(
@@ -416,12 +481,66 @@ test(
       "/contact"
     );
 
+
+    await expect(
+      host.getByRole(
+        "link",
+        {
+          name:
+            /Explore events/
+        }
+      )
+    ).toHaveCount(
+      0
+    );
+
   }
 );
 
 
 test(
-  "desktop hero occupies the first meaningful viewport",
+  "CR4CKOUT V11 keeps one purposeful page sequence",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      "/cr4ckout"
+    );
+
+
+    const order =
+      await page
+        .locator(
+          '[data-cr4ckout-section]'
+        )
+        .evaluateAll(
+          elements =>
+            elements.map(
+              element =>
+                element.getAttribute(
+                  "data-cr4ckout-section"
+                )
+            )
+        );
+
+
+    expect(
+      order
+    ).toEqual([
+      "hero",
+      "experience",
+      "challenges",
+      "events",
+      "host"
+    ]);
+
+  }
+);
+
+
+test(
+  "CR4CKOUT V11 uses one shared outer frame",
   async ({
     page
   }) => {
@@ -429,144 +548,90 @@ test(
     await page.setViewportSize({
       width:
         1440,
-
       height:
         900
     });
 
 
     await page.goto(
-      route
+      "/cr4ckout"
     );
 
 
-    const hero =
+    const frames =
       page.locator(
-        '[data-cr4ckout-section="hero"]'
+        '[data-cr4ckout-frame]'
       );
 
 
     await expect(
-      hero
-    ).toBeVisible();
-
-    const box =
-      await hero.evaluate(
-        (element) => {
-          const rect =
-            element.getBoundingClientRect();
-
-          return {
-            x:
-              rect.x,
-            y:
-              rect.y,
-            width:
-              rect.width,
-            height:
-              rect.height
-          };
-        }
-      );
-
-
-    expect(
-      box
-    ).not.toBeNull();
-
-
-    expect(
-      box?.height
-      ??
-      0
-    ).toBeGreaterThan(
-      700
-    );
-
-  }
-);
-
-
-test(
-  "all CR4CKOUT sections stay in the dark NoBreach surface system",
-  async ({
-    page
-  }) => {
-
-    await page.goto(
-      route
-    );
-
-
-    const sections =
-      page.locator(
-        "[data-cr4ckout-section]"
-      );
-
-
-    await expect(
-      sections
+      frames
     ).toHaveCount(
-      7
+      5
     );
 
 
-    for (
-      let index = 0;
-      index < 7;
-      index += 1
-    ) {
+    const geometry =
+      await frames.evaluateAll(
+        elements =>
+          elements.map(
+            element => {
 
-      const section =
-        sections.nth(
-          index
-        );
+              const rect =
+                element.getBoundingClientRect();
 
 
-      const background =
-        await section.evaluate(
-          (
-            element
-          ) =>
-            getComputedStyle(
-              element
-            ).backgroundColor
-        );
+              return {
+                x:
+                  rect.x,
 
+                width:
+                  rect.width
+              };
 
-      const channels =
-        background
-          .match(
-            /\d+/g
+            }
           )
-          ?.slice(
-            0,
-            3
-          )
-          .map(
-            Number
-          )
-        ??
-        [];
+      );
 
 
-      if (
-        channels.length
-        ===
-        3
-      ) {
+    const xs =
+      geometry.map(
+        item =>
+          item.x
+      );
 
-        expect(
-          Math.max(
-            ...channels
-          )
-        ).toBeLessThan(
-          70
-        );
 
-      }
+    const widths =
+      geometry.map(
+        item =>
+          item.width
+      );
 
-    }
+
+    expect(
+      Math.max(
+        ...xs
+      )
+      -
+      Math.min(
+        ...xs
+      )
+    ).toBeLessThanOrEqual(
+      1
+    );
+
+
+    expect(
+      Math.max(
+        ...widths
+      )
+      -
+      Math.min(
+        ...widths
+      )
+    ).toBeLessThanOrEqual(
+      1
+    );
 
   }
 );
@@ -574,62 +639,61 @@ test(
 
 for (
   const viewport
-  of [
+  of
+  [
     {
-      name:
-        "desktop",
-
+      label:
+        "320",
       width:
-        1440,
-
+        320,
       height:
-        900
+        800
     },
     {
-      name:
-        "compact",
-
-      width:
-        1180,
-
-      height:
-        820
-    },
-    {
-      name:
-        "tablet",
-
-      width:
-        820,
-
-      height:
-        1180
-    },
-    {
-      name:
-        "mobile",
-
+      label:
+        "390",
       width:
         390,
-
       height:
         844
     },
     {
-      name:
-        "narrow",
-
+      label:
+        "768",
       width:
-        360,
-
+        768,
+      height:
+        1024
+    },
+    {
+      label:
+        "1024",
+      width:
+        1024,
+      height:
+        768
+    },
+    {
+      label:
+        "1280",
+      width:
+        1280,
       height:
         800
+    },
+    {
+      label:
+        "1440",
+      width:
+        1440,
+      height:
+        900
     }
   ]
 ) {
 
   test(
-    `CR4CKOUT remains contained at ${viewport.name}`,
+    `CR4CKOUT V11 remains contained at ${viewport.label}`,
     async ({
       page
     }) => {
@@ -637,32 +701,24 @@ for (
       await page.setViewportSize({
         width:
           viewport.width,
-
         height:
           viewport.height
       });
 
 
       await page.goto(
-        route
+        "/cr4ckout"
       );
 
 
       await expect(
-        page.getByRole(
-          "heading",
-          {
-            level:
-              1,
-
-            name:
-              "CR4CKOUT"
-          }
+        page.locator(
+          '[data-cr4ckout-audit="v11"]'
         )
       ).toBeVisible();
 
 
-      const geometry =
+      const dimensions =
         await page.evaluate(
           () => ({
             scrollWidth:
@@ -679,9 +735,9 @@ for (
 
 
       expect(
-        geometry.scrollWidth
+        dimensions.scrollWidth
       ).toBeLessThanOrEqual(
-        geometry.clientWidth
+        dimensions.clientWidth
         +
         1
       );
