@@ -566,16 +566,60 @@ export default async function ActivitiesPage({
         );
 
 
+  const categoryCounts =
+    new Map<
+      ActivityCategory,
+      number
+    >();
+
+
+  for (
+    const activity
+    of
+    activities
+  ) {
+
+    categoryCounts.set(
+      activity.category,
+      (
+        categoryCounts.get(
+          activity.category
+        )
+        ??
+        0
+      )
+      +
+      1
+    );
+
+  }
+
+
+  const representedCategoryCount =
+    categoryCounts.size;
+
+
+  const activeFilterLabel =
+    categoryOptions.find(
+      option =>
+        option.key
+        ===
+        activeFilter
+    )?.label
+    ??
+    "All";
+
+
   return (
     <div
       className={
         styles.page
       }
       data-activities-index-design="v45"
+      data-activities-audit="v46"
     >
-
       {/* ================================================================
-          PAGE INTRO
+          INTRODUCTION
          ================================================================ */}
 
       <section
@@ -590,163 +634,155 @@ export default async function ActivitiesPage({
             styles.container
           }
         >
-
           <div
             className={
-              styles.introGrid
+              styles.frame
             }
+            data-activities-frame="intro"
           >
-
             <div
               className={
-                styles.introCopy
+                styles.introGrid
               }
             >
-              <p
-                className={
-                  styles.eyebrow
-                }
-              >
-                NOBREACH / ACTIVITIES
-              </p>
-
-
-              <h1>
-                Activity archive.
-              </h1>
-
-
-              <p
-                className={
-                  styles.introLead
-                }
-              >
-                Published training, workshops, CTFs, university
-                engagements, community activity and media records from
-                across the No Breach ecosystem.
-              </p>
-
-
               <div
                 className={
-                  styles.introActions
+                  styles.introCopy
                 }
               >
-                <a
+                <p
                   className={
-                    styles.primaryAction
+                    styles.eyebrow
                   }
-                  href="#archive"
                 >
-                  Explore the archive
+                  No Breach / Activities
+                </p>
 
-                  <span
-                    aria-hidden="true"
+
+                <h1>
+                  Activity archive.
+                </h1>
+
+
+                <p
+                  className={
+                    styles.introLead
+                  }
+                >
+                  Published training, workshops, CTFs, university
+                  engagements, community activity and media records from
+                  across the No Breach ecosystem.
+                </p>
+
+
+                <div
+                  className={
+                    styles.introActions
+                  }
+                >
+                  <a
+                    className={
+                      styles.primaryAction
+                    }
+                    href="#archive"
                   >
-                    ↓
-                  </span>
-                </a>
+                    Explore the archive
+
+                    <span
+                      aria-hidden="true"
+                    >
+                      ↓
+                    </span>
+                  </a>
 
 
-                <Link
+                  <Link
+                    className={
+                      styles.secondaryAction
+                    }
+                    href="/events"
+                  >
+                    Events
+
+                    <Arrow />
+                  </Link>
+                </div>
+              </div>
+
+
+              <aside
+                className={
+                  styles.archiveOverview
+                }
+                data-activities-ui="archive-overview"
+                aria-labelledby="archive-overview-title"
+              >
+                <p
                   className={
-                    styles.secondaryAction
+                    styles.overviewLabel
                   }
-                  href="/events"
                 >
-                  Events
+                  Archive overview
+                </p>
 
-                  <Arrow />
-                </Link>
-              </div>
+
+                <h2
+                  id="archive-overview-title"
+                >
+                  Published activity at a glance.
+                </h2>
+
+
+                <dl
+                  className={
+                    styles.overviewList
+                  }
+                >
+                  <div>
+                    <dt>
+                      Published records
+                    </dt>
+
+                    <dd>
+                      {
+                        activities.length
+                      }
+                    </dd>
+                  </div>
+
+
+                  <div>
+                    <dt>
+                      Represented types
+                    </dt>
+
+                    <dd>
+                      {
+                        representedCategoryCount
+                      }
+                    </dd>
+                  </div>
+
+
+                  <div>
+                    <dt>
+                      Public evidence
+                    </dt>
+
+                    <dd>
+                      Verified LinkedIn posts
+                    </dd>
+                  </div>
+                </dl>
+              </aside>
             </div>
-
-
-            <div
-              className={
-                styles.activitySignal
-              }
-              aria-label="No Breach public activity stream"
-            >
-              <div
-                className={
-                  styles.signalHeader
-                }
-              >
-                <span>
-                  FIELD LOG
-                </span>
-
-                <span>
-                  NB / PUBLIC
-                </span>
-              </div>
-
-
-              <div
-                className={
-                  styles.signalTrack
-                }
-              >
-                <div>
-                  <span>
-                    01
-                  </span>
-
-                  <strong>
-                    PRACTICE
-                  </strong>
-                </div>
-
-                <i />
-
-                <div>
-                  <span>
-                    02
-                  </span>
-
-                  <strong>
-                    COMMUNITY
-                  </strong>
-                </div>
-
-                <i />
-
-                <div>
-                  <span>
-                    03
-                  </span>
-
-                  <strong>
-                    SHARE
-                  </strong>
-                </div>
-              </div>
-
-
-              <div
-                className={
-                  styles.signalFooter
-                }
-              >
-                <span>
-                  PUBLISHED RECORD
-                </span>
-
-                <span>
-                  ACTIVITY ARCHIVE
-                </span>
-              </div>
-            </div>
-
           </div>
-
         </Container>
       </section>
 
 
       {/* ================================================================
-          ARCHIVE
+          PUBLISHED ACTIVITY
          ================================================================ */}
 
       <section
@@ -762,342 +798,388 @@ export default async function ActivitiesPage({
             styles.container
           }
         >
-
-          <header
+          <div
             className={
-              styles.sectionHeader
+              styles.frame
             }
+            data-activities-frame="archive"
           >
-            <div>
+            <header
+              className={
+                styles.sectionHeader
+              }
+            >
+              <div>
+                <p
+                  className={
+                    styles.sectionEyebrow
+                  }
+                >
+                  01 / Published activity
+                </p>
+
+
+                <h2>
+                  Browse the published record.
+                </h2>
+              </div>
+
+
               <p
                 className={
-                  styles.sectionEyebrow
+                  styles.sectionIntroduction
+                }
+              >
+                Filter the published No Breach activity record by type.
+                Each result keeps its context and dedicated detail route
+                together.
+              </p>
+            </header>
+
+
+            <div
+              className={
+                styles.filterArea
+              }
+              data-activities-ui="filter-toolbar"
+            >
+              <div
+                className={
+                  styles.filterSummary
                 }
               >
                 <span>
-                  01
+                  Filter by type
                 </span>
 
-                Published work
-              </p>
-
-
-              <h2>
-                Field activity, documented.
-              </h2>
-            </div>
-
-
-            <p>
-              Browse the published No Breach activity record by type.
-              Each entry opens its dedicated activity detail.
-            </p>
-          </header>
-
-
-          <div
-            className={
-              styles.filterArea
-            }
-          >
-            <div
-              className={
-                styles.filterLabel
-              }
-            >
-              <span>
-                FILTER
-              </span>
-
-              <span>
-                {
-                  visibleActivities.length
-                }
-                {" "}
-                {
-                  visibleActivities.length
-                  ===
-                  1
-                    ? "record"
-                    : "records"
-                }
-              </span>
-            </div>
-
-
-            <nav
-              className={
-                styles.filters
-              }
-              aria-label="Activity filters"
-            >
-              {
-                categoryOptions.map(
-                  option => {
-
-                    const active =
-                      activeFilter
-                      ===
-                      option.key;
-
-
-                    const href =
-                      option.key
-                      ===
-                      "all"
-                        ? "/activities"
-                        : `/activities?type=${option.key}`;
-
-
-                    return (
-                      <Link
-                        className={
-                          active
-                            ? `${styles.filterLink} ${styles.filterLinkActive}`
-                            : styles.filterLink
-                        }
-                        data-activity-filter={
-                          option.key
-                        }
-                        data-active={
-                          active
-                            ? "true"
-                            : "false"
-                        }
-                        href={
-                          href
-                        }
-                        key={
-                          option.key
-                        }
-                        aria-current={
-                          active
-                            ? "page"
-                            : undefined
-                        }
-                      >
-                        {
-                          option.label
-                        }
-                      </Link>
-                    );
-
+                <strong>
+                  {
+                    activeFilterLabel
                   }
-                )
-              }
-            </nav>
-          </div>
+                  {" · "}
+                  {
+                    visibleActivities.length
+                  }
+                  {" "}
+                  {
+                    visibleActivities.length
+                    ===
+                    1
+                      ? "record"
+                      : "records"
+                  }
+                </strong>
+              </div>
 
 
-          {
-            visibleActivities.length
-            >
-            0
-              ? (
-                  <div
-                    className={
-                      styles.activityList
-                    }
-                    data-activity-list="true"
-                  >
-                    {
-                      visibleActivities.map(
-                        (
-                          activity,
-                          index
-                        ) => (
-                          <article
+              <nav
+                className={
+                  styles.filters
+                }
+                aria-label="Activity filters"
+              >
+                {
+                  categoryOptions.map(
+                    option => {
+
+                      const active =
+                        activeFilter
+                        ===
+                        option.key;
+
+
+                      const href =
+                        option.key
+                        ===
+                        "all"
+                          ? "/activities"
+                          : `/activities?type=${option.key}`;
+
+
+                      const count =
+                        option.key
+                        ===
+                        "all"
+                          ? activities.length
+                          : (
+                              categoryCounts.get(
+                                option.key
+                              )
+                              ??
+                              0
+                            );
+
+
+                      return (
+                        <Link
+                          className={
+                            active
+                              ? `${styles.filterLink} ${styles.filterLinkActive}`
+                              : styles.filterLink
+                          }
+                          data-activity-filter={
+                            option.key
+                          }
+                          data-active={
+                            active
+                              ? "true"
+                              : "false"
+                          }
+                          href={
+                            href
+                          }
+                          key={
+                            option.key
+                          }
+                          aria-current={
+                            active
+                              ? "page"
+                              : undefined
+                          }
+                          aria-label={`${option.label}: ${count} ${count === 1 ? "record" : "records"}`}
+                        >
+                          <span>
+                            {
+                              option.label
+                            }
+                          </span>
+
+                          <span
                             className={
-                              styles.activityRow
+                              styles.filterCount
                             }
-                            data-activity-row="true"
-                            data-activity-category={
-                              activity.category
-                            }
-                            key={
-                              activity.slug
-                            }
+                            aria-hidden="true"
                           >
+                            {
+                              count
+                            }
+                          </span>
+                        </Link>
+                      );
 
-                            <div
+                    }
+                  )
+                }
+              </nav>
+            </div>
+
+
+            {
+              visibleActivities.length
+              >
+              0
+                ? (
+                    <div
+                      className={
+                        styles.activityList
+                      }
+                      data-activity-list="true"
+                    >
+                      {
+                        visibleActivities.map(
+                          (
+                            activity,
+                            index
+                          ) => (
+                            <article
                               className={
-                                styles.activityIndex
+                                styles.activityRow
                               }
-                              aria-hidden="true"
-                            >
-                              {
-                                String(
-                                  index
-                                  +
-                                  1
-                                ).padStart(
-                                  2,
-                                  "0"
-                                )
+                              data-activity-row="true"
+                              data-activity-category={
+                                activity.category
                               }
-                            </div>
-
-
-                            <div
-                              className={
-                                styles.activityRecord
+                              key={
+                                activity.slug
                               }
                             >
+                              <span
+                                className={
+                                  styles.activityIndex
+                                }
+                                aria-hidden="true"
+                              >
+                                {
+                                  String(
+                                    index
+                                    +
+                                    1
+                                  ).padStart(
+                                    2,
+                                    "0"
+                                  )
+                                }
+                              </span>
+
+
                               <div
                                 className={
-                                  styles.activityTopline
+                                  styles.activityRecord
                                 }
                               >
-                                <span>
-                                  {
-                                    activity.year
+                                <div
+                                  className={
+                                    styles.activityTopline
                                   }
-                                </span>
+                                >
+                                  <span>
+                                    {
+                                      activity.year
+                                    }
+                                  </span>
 
-                                <span>
+                                  <span>
+                                    {
+                                      activity.category
+                                    }
+                                  </span>
+                                </div>
+
+
+                                <h3>
                                   {
-                                    activity.category
+                                    activity.title
                                   }
-                                </span>
+                                </h3>
+
+
+                                <p
+                                  className={
+                                    styles.activitySummary
+                                  }
+                                >
+                                  {
+                                    activity.summary
+                                  }
+                                </p>
+
+
+                                <div
+                                  className={
+                                    styles.activityContext
+                                  }
+                                >
+                                  {
+                                    activity.location
+                                      ? (
+                                          <span
+                                            className={
+                                              styles.activityLocation
+                                            }
+                                          >
+                                            {
+                                              activity.location
+                                            }
+                                          </span>
+                                        )
+                                      : null
+                                  }
+
+
+                                  {
+                                    activity.highlights.length
+                                    >
+                                    0
+                                      ? (
+                                          <div
+                                            className={
+                                              styles.highlightLine
+                                            }
+                                            aria-label="Activity highlights"
+                                          >
+                                            {
+                                              activity.highlights
+                                                .slice(
+                                                  0,
+                                                  2
+                                                )
+                                                .map(
+                                                  highlight => (
+                                                    <span
+                                                      key={
+                                                        highlight
+                                                      }
+                                                    >
+                                                      {
+                                                        highlight
+                                                      }
+                                                    </span>
+                                                  )
+                                                )
+                                            }
+                                          </div>
+                                        )
+                                      : null
+                                  }
+                                </div>
                               </div>
 
 
-                              <h3>
-                                {
-                                  activity.title
-                                }
-                              </h3>
-
-
-                              <p
+                              <Link
                                 className={
-                                  styles.activitySummary
+                                  styles.activityAction
+                                }
+                                href={
+                                  `/activities/${activity.slug}`
                                 }
                               >
-                                {
-                                  activity.summary
-                                }
-                              </p>
+                                View activity
 
-
-                              {
-                                activity.location
-                                  ? (
-                                      <p
-                                        className={
-                                          styles.activityLocation
-                                        }
-                                      >
-                                        {
-                                          activity.location
-                                        }
-                                      </p>
-                                    )
-                                  : null
-                              }
-
-
-                              {
-                                activity.highlights.length
-                                >
-                                0
-                                  ? (
-                                      <div
-                                        className={
-                                          styles.highlightLine
-                                        }
-                                        aria-label="Activity highlights"
-                                      >
-                                        {
-                                          activity.highlights
-                                            .slice(
-                                              0,
-                                              2
-                                            )
-                                            .map(
-                                              highlight => (
-                                                <span
-                                                  key={
-                                                    highlight
-                                                  }
-                                                >
-                                                  {
-                                                    highlight
-                                                  }
-                                                </span>
-                                              )
-                                            )
-                                        }
-                                      </div>
-                                    )
-                                  : null
-                              }
-                            </div>
-
-
-                            <Link
-                              className={
-                                styles.activityAction
-                              }
-                              href={
-                                `/activities/${activity.slug}`
-                              }
-                            >
-                              View activity
-
-                              <Arrow />
-                            </Link>
-
-                          </article>
+                                <Arrow />
+                              </Link>
+                            </article>
+                          )
                         )
-                      )
-                    }
-                  </div>
-                )
-              : (
-                  <div
-                    className={
-                      styles.emptyState
-                    }
-                    data-activities-empty="true"
-                  >
-                    <div>
-                      <p
-                        className={
-                          styles.emptyLabel
-                        }
-                      >
-                        FILTER / EMPTY
-                      </p>
-
-                      <h3>
-                        No published activity matches this filter.
-                      </h3>
-
-                      <p>
-                        Browse all published No Breach activity instead.
-                      </p>
-                    </div>
-
-
-                    <Link
-                      className={
-                        styles.textAction
                       }
-                      href="/activities"
+                    </div>
+                  )
+                : (
+                    <div
+                      className={
+                        styles.emptyState
+                      }
+                      data-activities-empty="true"
                     >
-                      Reset filter
+                      <div>
+                        <p
+                          className={
+                            styles.emptyLabel
+                          }
+                        >
+                          No matching records
+                        </p>
 
-                      <span
-                        aria-hidden="true"
+
+                        <h3>
+                          No published activity matches this filter.
+                        </h3>
+
+
+                        <p>
+                          Return to the complete archive to browse the
+                          currently published activity.
+                        </p>
+                      </div>
+
+
+                      <Link
+                        className={
+                          styles.textAction
+                        }
+                        href="/activities"
                       >
-                        →
-                      </span>
-                    </Link>
-                  </div>
-                )
-          }
+                        Reset filter
 
+                        <span
+                          aria-hidden="true"
+                        >
+                          →
+                        </span>
+                      </Link>
+                    </div>
+                  )
+            }
+          </div>
         </Container>
       </section>
 
@@ -1117,7 +1199,7 @@ export default async function ActivitiesPage({
 
 
       {/* ================================================================
-          FINAL CTA
+          RELATED ACTIVITY
          ================================================================ */}
 
       <section
@@ -1134,8 +1216,9 @@ export default async function ActivitiesPage({
         >
           <div
             className={
-              styles.finalLayout
+              `${styles.frame} ${styles.finalLayout}`
             }
+            data-activities-frame="final-cta"
           >
             <div>
               <p
@@ -1143,11 +1226,7 @@ export default async function ActivitiesPage({
                   styles.sectionEyebrow
                 }
               >
-                <span>
-                  NB
-                </span>
-
-                Ecosystem
+                Related activity
               </p>
 
 
@@ -1204,7 +1283,6 @@ export default async function ActivitiesPage({
           </div>
         </Container>
       </section>
-
     </div>
   );
 

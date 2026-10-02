@@ -24,28 +24,35 @@ const css =
 
 
 describe(
-  "Activities index V45",
+  "Activities index V45 compatibility + V46 refinement",
   () => {
 
     it(
-      "uses exactly one activity archive PageIntro",
+      "keeps V45 authority while activating V46",
       () => {
 
         expect(
           page
         ).toContain(
-          'data-activities-section="intro"'
+          'data-activities-index-design="v45"'
         );
 
+        expect(
+          page
+        ).toContain(
+          'data-activities-audit="v46"'
+        );
 
         expect(
-          page.match(
-            /<h1>/g
-          )
-          ??
-          []
-        ).toHaveLength(
-          1
+          css
+        ).toContain(
+          "NB_ACTIVITIES_INDEX_V45"
+        );
+
+        expect(
+          css
+        ).toContain(
+          "NB_ACTIVITIES_ARCHIVE_REFINEMENT_V46"
         );
 
       }
@@ -53,12 +60,64 @@ describe(
 
 
     it(
-      "provides the canonical activity filters",
+      "replaces the decorative field log with useful archive context",
+      () => {
+
+        expect(
+          page
+        ).not.toContain(
+          "FIELD LOG"
+        );
+
+        expect(
+          page
+        ).not.toContain(
+          "NB / PUBLIC"
+        );
+
+        expect(
+          page
+        ).not.toContain(
+          "PRACTICE"
+        );
+
+        expect(
+          page
+        ).toContain(
+          'data-activities-ui="archive-overview"'
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Published records"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Represented types"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Verified LinkedIn posts"
+        );
+
+      }
+    );
+
+
+    it(
+      "preserves all canonical URL-backed filters and adds counts",
       () => {
 
         for (
           const category
-          of [
+          of
+          [
+            "all",
             "conference",
             "training",
             "workshop",
@@ -72,7 +131,92 @@ describe(
           expect(
             page
           ).toContain(
-            `key:\n          "${category}"`
+            `"${category}"`
+          );
+
+        }
+
+
+        expect(
+          page
+        ).toContain(
+          "`/activities?type=${option.key}`"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "categoryCounts"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "styles.filterCount"
+        );
+
+      }
+    );
+
+
+    it(
+      "keeps editorial activity rows and dedicated detail routes",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          'data-activity-list="true"'
+        );
+
+        expect(
+          page
+        ).toContain(
+          'data-activity-row="true"'
+        );
+
+        expect(
+          page
+        ).toContain(
+          "`/activities/${activity.slug}`"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "View activity"
+        );
+
+        expect(
+          page
+        ).not.toContain(
+          "activityCard"
+        );
+
+      }
+    );
+
+
+    it(
+      "keeps source-backed record context grouped together",
+      () => {
+
+        for (
+          const token
+          of
+          [
+            "activity.year",
+            "activity.category",
+            "activity.summary",
+            "activity.location",
+            "activity.highlights"
+          ]
+        ) {
+
+          expect(
+            page
+          ).toContain(
+            token
           );
 
         }
@@ -82,57 +226,14 @@ describe(
 
 
     it(
-      "preserves URL-backed activity filtering",
+      "preserves the verified LinkedIn archive without rewriting it",
       () => {
 
         expect(
           page
         ).toContain(
-          "/activities?type=${option.key}"
+          "LinkedInActivitySection"
         );
-
-
-        expect(
-          page
-        ).toContain(
-          "searchParams"
-        );
-
-      }
-    );
-
-
-    it(
-      "uses editorial rows rather than an activity card wall",
-      () => {
-
-        expect(
-          page
-        ).toContain(
-          "styles.activityRow"
-        );
-
-
-        expect(
-          page
-        ).not.toContain(
-          "styles.activityGrid"
-        );
-
-      }
-    );
-
-
-    it(
-      "preserves verified LinkedIn activity",
-      () => {
-
-        expect(
-          page
-        ).toContain(
-          "@/components/activities/linkedin-activity-section"
-        );
-
 
         expect(
           page
@@ -140,25 +241,59 @@ describe(
           'data-activities-section="linkedin"'
         );
 
+        expect(
+          css
+        ).toContain(
+          ":global([data-linkedin-activity-section])"
+        );
+
       }
     );
 
 
     it(
-      "uses the strict NoBreach palette and rhythm",
+      "retains the ecosystem handoff with distinct destinations",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          "Continue through the No Breach ecosystem."
+        );
+
+        expect(
+          page
+        ).toContain(
+          'href="/events"'
+        );
+
+        expect(
+          page
+        ).toContain(
+          'href="/cr4ckout"'
+        );
+
+      }
+    );
+
+
+    it(
+      "uses the restrained No Breach palette and responsive reflow",
       () => {
 
         for (
           const token
-          of [
-            "#07090d",
-            "#0b0f16",
-            "#101620",
-            "#151d29",
-            "#a1e2f0",
-            "96px",
-            "80px",
-            "64px"
+          of
+          [
+            "#080b10",
+            "#0c121b",
+            "#111b28",
+            "#f3f6fb",
+            "#b7c2d0",
+            "#94a3b8",
+            "#a5e8f3",
+            "#b69ae8",
+            "#273446"
           ]
         ) {
 
@@ -169,6 +304,19 @@ describe(
           );
 
         }
+
+
+        expect(
+          css
+        ).toContain(
+          "@media"
+        );
+
+        expect(
+          css
+        ).toContain(
+          "max-width:"
+        );
 
       }
     );

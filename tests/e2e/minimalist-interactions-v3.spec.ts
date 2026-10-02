@@ -90,10 +90,7 @@ test(
       filters.getByRole(
         "link",
         {
-          name:
-            "Training",
-          exact:
-            true
+          name: /^Training:\s+\d+\s+records?$/i
         }
       );
 
@@ -196,10 +193,7 @@ test(
       filters.getByRole(
         "link",
         {
-          name:
-            "All",
-          exact:
-            true
+          name: /^All:\s+\d+\s+records?$/i
         }
       );
 
