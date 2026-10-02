@@ -518,17 +518,40 @@ function Arrow() {
 
 export function Cr4ckoutLaunchedV47() {
 
+  const eventHref =
+    activity.relatedEventSlug
+      ? `/events/${activity.relatedEventSlug}`
+      : "/events";
+
+
+  const eventLabel =
+    activity.relatedEventSlug
+      ? "Related event"
+      : "Events";
+
+
   return (
     <article
       className={
         styles.page
       }
       data-cr4ckout-launched-design="v47"
+      data-cr4ckout-launched-audit-redesign="v64"
       data-activity-detail-slug="cr4ckout-launched"
+      data-related-event-slug={
+        activity.relatedEventSlug
+        ??
+        undefined
+      }
+      data-related-training-slug={
+        activity.relatedTrainingSlug
+        ??
+        undefined
+      }
     >
 
       {/* ================================================================
-          PAGE INTRO
+          HERO / LAUNCH RECORD
          ================================================================ */}
 
       <section
@@ -587,13 +610,7 @@ export function Cr4ckoutLaunchedV47() {
                   styles.eyebrow
                 }
               >
-                {
-                  activity.category
-                }
-                {" "}
-                / {
-                  activity.year
-                }
+                CR4CKOUT / LAUNCH RECORD
               </p>
 
 
@@ -626,7 +643,7 @@ export function Cr4ckoutLaunchedV47() {
                   }
                   href="/cr4ckout"
                 >
-                  Discover CR4CKOUT
+                  Explore current CR4CKOUT
 
                   <Arrow />
                 </Link>
@@ -638,7 +655,7 @@ export function Cr4ckoutLaunchedV47() {
                   }
                   href="/activities"
                 >
-                  Activity archive
+                  Back to activities
 
                   <span
                     aria-hidden="true"
@@ -679,6 +696,7 @@ export function Cr4ckoutLaunchedV47() {
                 }
                 aria-hidden="true"
               >
+
                 <div>
                   <span>
                     01
@@ -724,6 +742,7 @@ export function Cr4ckoutLaunchedV47() {
                     BUILD
                   </strong>
                 </div>
+
               </div>
 
 
@@ -733,7 +752,7 @@ export function Cr4ckoutLaunchedV47() {
                 }
               >
                 <span>
-                  ACTIVITY RECORD
+                  LAUNCHED
                 </span>
 
                 <span>
@@ -767,11 +786,13 @@ export function Cr4ckoutLaunchedV47() {
             styles.container
           }
         >
+
           <dl
             className={
               styles.factList
             }
           >
+
             <div>
               <dt>
                 Year
@@ -790,7 +811,11 @@ export function Cr4ckoutLaunchedV47() {
                 Category
               </dt>
 
-              <dd>
+              <dd
+                className={
+                  styles.capitalizeValue
+                }
+              >
                 {
                   activity.category
                 }
@@ -826,13 +851,15 @@ export function Cr4ckoutLaunchedV47() {
                 CR4CKOUT
               </dd>
             </div>
+
           </dl>
+
         </Container>
       </section>
 
 
       {/* ================================================================
-          OVERVIEW
+          01 — LAUNCH OVERVIEW
          ================================================================ */}
 
       <section
@@ -847,11 +874,13 @@ export function Cr4ckoutLaunchedV47() {
             styles.container
           }
         >
+
           <div
             className={
-              styles.editorialGrid
+              styles.sectionGrid
             }
           >
+
             <header
               className={
                 styles.sectionHeading
@@ -866,21 +895,22 @@ export function Cr4ckoutLaunchedV47() {
                   01
                 </span>
 
-                Activity overview
+                Launch overview
               </p>
 
 
               <h2>
-                The published CR4CKOUT launch record.
+                A cybersecurity community built around participation.
               </h2>
             </header>
 
 
             <div
               className={
-                styles.overviewContent
+                styles.sectionBody
               }
             >
+
               <p
                 className={
                   styles.largeCopy
@@ -913,7 +943,11 @@ export function Cr4ckoutLaunchedV47() {
                         </p>
 
 
-                        <ol>
+                        <ol
+                          className={
+                            styles.highlightGrid
+                          }
+                        >
                           {
                             activity.highlights.map(
                               (
@@ -921,6 +955,9 @@ export function Cr4ckoutLaunchedV47() {
                                 index
                               ) => (
                                 <li
+                                  className={
+                                    styles.highlightRow
+                                  }
                                   key={
                                     highlight
                                   }
@@ -952,64 +989,93 @@ export function Cr4ckoutLaunchedV47() {
                     )
                   : null
               }
+
             </div>
+
           </div>
+
         </Container>
       </section>
 
 
       {/* ================================================================
-          CANONICAL ACTIVITY NARRATIVE
+          02 — COMMUNITY MODEL
          ================================================================ */}
 
-      {
-        activity.sections.map(
-          (
-            section,
-            index
-          ) => (
-            <section
+      <section
+        className={
+          `${styles.section} ${styles.sectionAlt}`
+        }
+        data-cr4ckout-launched-consolidated-section="community-model"
+      >
+        <Container
+          size="wide"
+          className={
+            styles.container
+          }
+        >
+
+          <div
+            className={
+              styles.sectionGrid
+            }
+          >
+
+            <header
               className={
-                index
-                %
-                2
-                ===
-                0
-                  ? `${styles.section} ${styles.sectionAlt}`
-                  : styles.section
-              }
-              data-cr4ckout-activity-section="narrative"
-              key={
-                `${section.title}-${index}`
+                styles.sectionHeading
               }
             >
-              <Container
-                size="wide"
+              <p
                 className={
-                  styles.container
+                  styles.sectionEyebrow
                 }
               >
-                <div
-                  className={
-                    styles.editorialGrid
-                  }
-                >
-                  <header
-                    className={
-                      styles.sectionHeading
-                    }
-                  >
-                    <p
+                <span>
+                  02
+                </span>
+
+                Community model
+              </p>
+
+
+              <h2>
+                Security knowledge grows through shared practice.
+              </h2>
+            </header>
+
+
+            <div
+              className={
+                styles.narrativeGrid
+              }
+            >
+              {
+                activity.sections.map(
+                  (
+                    section,
+                    index
+                  ) => (
+                    <article
                       className={
-                        styles.sectionEyebrow
+                        styles.narrativeCard
+                      }
+                      data-cr4ckout-activity-section="narrative"
+                      key={
+                        `${section.title}-${index}`
                       }
                     >
-                      <span>
+                      <span
+                        className={
+                          styles.narrativeIndex
+                        }
+                        aria-hidden="true"
+                      >
                         {
                           String(
                             index
                             +
-                            2
+                            1
                           ).padStart(
                             2,
                             "0"
@@ -1017,56 +1083,59 @@ export function Cr4ckoutLaunchedV47() {
                         }
                       </span>
 
-                      Activity record
-                    </p>
+
+                      <h3>
+                        {
+                          section.title
+                        }
+                      </h3>
 
 
-                    <h2>
-                      {
-                        section.title
-                      }
-                    </h2>
-                  </header>
+                      <div
+                        className={
+                          styles.prose
+                        }
+                      >
+                        {
+                          section.paragraphs.map(
+                            paragraph => (
+                              <p
+                                key={
+                                  paragraph
+                                }
+                              >
+                                {
+                                  paragraph
+                                }
+                              </p>
+                            )
+                          )
+                        }
+                      </div>
 
+                    </article>
+                  )
+                )
+              }
+            </div>
 
-                  <div
-                    className={
-                      styles.prose
-                    }
-                  >
-                    {
-                      section.paragraphs.map(
-                        paragraph => (
-                          <p
-                            key={
-                              paragraph
-                            }
-                          >
-                            {
-                              paragraph
-                            }
-                          </p>
-                        )
-                      )
-                    }
-                  </div>
-                </div>
-              </Container>
-            </section>
-          )
-        )
-      }
+          </div>
+
+        </Container>
+      </section>
 
 
       {/* ================================================================
-          CR4CKOUT CONTEXT
+          03 — RELATED RECORDS
+
+          Legacy V47 context + final-cta markers remain in one visual chapter.
          ================================================================ */}
 
       <section
         className={
           `${styles.section} ${styles.contextSection}`
         }
-        data-cr4ckout-activity-section="context"
+        data-cr4ckout-launched-consolidated-section="related-records"
       >
         <Container
           size="wide"
@@ -1080,24 +1149,29 @@ export function Cr4ckoutLaunchedV47() {
               styles.contextGrid
             }
           >
-            <div>
+
+            <header
+              className={
+                styles.sectionHeading
+              }
+            >
               <p
                 className={
                   styles.sectionEyebrow
                 }
               >
                 <span>
-                  CR
+                  03
                 </span>
 
-                CR4CKOUT
+                Related records
               </p>
 
 
               <h2>
-                Continue into the CR4CKOUT ecosystem.
+                Continue with CR4CKOUT.
               </h2>
-            </div>
+            </header>
 
 
             <div
@@ -1105,156 +1179,134 @@ export function Cr4ckoutLaunchedV47() {
                 styles.contextBody
               }
             >
-              <p>
-                Explore the dedicated CR4CKOUT experience and related
-                published No Breach event records.
-              </p>
 
-
-              <div
-                className={
-                  styles.contextActions
-                }
+              <section
+                data-cr4ckout-activity-section="context"
               >
-                <Link
+                <p
                   className={
-                    styles.primaryAction
+                    styles.contextLead
                   }
-                  href="/cr4ckout"
                 >
-                  Explore CR4CKOUT
-
-                  <Arrow />
-                </Link>
-
-
-                {
-                  activity.relatedEventSlug
-                    ? (
-                        <Link
-                          className={
-                            styles.secondaryAction
-                          }
-                          href={
-                            `/events/${activity.relatedEventSlug}`
-                          }
-                        >
-                          Related event
-
-                          <Arrow />
-                        </Link>
-                      )
-                    : (
-                        <Link
-                          className={
-                            styles.secondaryAction
-                          }
-                          href="/events"
-                        >
-                          Event archive
-
-                          <span
-                            aria-hidden="true"
-                          >
-                            →
-                          </span>
-                        </Link>
-                      )
-                }
-              </div>
-            </div>
-          </div>
-
-        </Container>
-      </section>
+                  Explore the current CR4CKOUT experience, browse published
+                  event records, or return to the wider No Breach activity
+                  archive.
+                </p>
 
 
-      {/* ================================================================
-          FINAL CTA
-         ================================================================ */}
-
-      <section
-        className={
-          styles.finalCta
-        }
-        data-cr4ckout-activity-section="final-cta"
-      >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
-          <div
-            className={
-              styles.finalLayout
-            }
-          >
-            <div>
-              <p
-                className={
-                  styles.sectionEyebrow
-                }
-              >
-                <span>
-                  NB
-                </span>
-
-                Activities
-              </p>
-
-
-              <h2>
-                Explore more published No Breach activity.
-              </h2>
-            </div>
-
-
-            <div
-              className={
-                styles.finalBody
-              }
-            >
-              <p>
-                Return to the activity archive or explore published No
-                Breach event records.
-              </p>
-
-
-              <div
-                className={
-                  styles.finalActions
-                }
-              >
-                <Link
+                <div
                   className={
-                    styles.primaryAction
+                    styles.contextActions
                   }
-                  href="/activities"
                 >
-                  Browse activities
-
-                  <Arrow />
-                </Link>
-
-
-                <Link
-                  className={
-                    styles.secondaryAction
-                  }
-                  href="/events"
-                >
-                  Explore events
-
-                  <span
-                    aria-hidden="true"
+                  <Link
+                    className={
+                      styles.primaryAction
+                    }
+                    href="/cr4ckout"
                   >
-                    →
-                  </span>
-                </Link>
-              </div>
+                    Explore CR4CKOUT
+
+                    <Arrow />
+                  </Link>
+
+
+                  <Link
+                    className={
+                      styles.secondaryAction
+                    }
+                    href={
+                      eventHref
+                    }
+                  >
+                    {
+                      eventLabel
+                    }
+
+                    <span
+                      aria-hidden="true"
+                    >
+                      →
+                    </span>
+                  </Link>
+                </div>
+              </section>
+
+
+              <section
+                className={
+                  styles.finalCta
+                }
+                data-cr4ckout-activity-section="final-cta"
+              >
+                <div
+                  className={
+                    styles.finalLayout
+                  }
+                >
+                  <div
+                    className={
+                      styles.finalBody
+                    }
+                  >
+                    <span
+                      className={
+                        styles.archiveLabel
+                      }
+                    >
+                      Historical record
+                    </span>
+
+                    <p>
+                      Launched {
+                        activity.year
+                      }
+                      {
+                        activity.location
+                          ? ` · ${activity.location}`
+                          : ""
+                      }
+                    </p>
+                  </div>
+
+
+                  <div
+                    className={
+                      styles.finalActions
+                    }
+                  >
+                    <Link
+                      href="/activities"
+                    >
+                      Activity archive
+
+                      <span
+                        aria-hidden="true"
+                      >
+                        →
+                      </span>
+                    </Link>
+
+
+                    <Link
+                      href="/events"
+                    >
+                      Events
+
+                      <span
+                        aria-hidden="true"
+                      >
+                        →
+                      </span>
+                    </Link>
+                  </div>
+                </div>
+              </section>
+
             </div>
+
           </div>
+
         </Container>
       </section>
 

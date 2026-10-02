@@ -4,6 +4,10 @@ import {
 } from "@playwright/test";
 
 
+// NB_CR4CKOUT_LAUNCHED_V65_CTA_CONTRACT
+// Destination remains /cr4ckout; accessible name follows the
+// approved V64 historical/current wording.
+
 test(
   "CR4CKOUT launched renders one strict activity detail",
   async ({
@@ -195,7 +199,7 @@ test(
         "link",
         {
           name:
-            /discover cr4ckout/i
+            /explore current cr4ckout/i
         }
       )
     ).toHaveAttribute(
