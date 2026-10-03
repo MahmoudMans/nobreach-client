@@ -37,6 +37,9 @@ const browserCss =
   );
 
 
+// NB_INSIGHTS_V78_FUNCTIONAL_BROWSER_CONTRACT
+// Functional compatibility is protected by browser behavior and
+// semantic authority rather than the retired resourceSystem CSS class.
 describe(
   "Insights resource index",
   () => {
@@ -101,9 +104,9 @@ describe(
       () => {
 
         expect(
-          page
+          browser
         ).toContain(
-          "InsightsBrowser"
+          '"use client"'
         );
 
 
@@ -117,7 +120,84 @@ describe(
         expect(
           browser
         ).toContain(
-          "styles.resourceSystem"
+          'data-insights-browser-redesign="v76"'
+        );
+
+
+        expect(
+          browser
+        ).toContain(
+          "styles.browserV76"
+        );
+
+
+        expect(
+          browser
+        ).toContain(
+          "initialCategory"
+        );
+
+
+        expect(
+          browser
+        ).toContain(
+          "useState<InsightFilter>"
+        );
+
+
+        expect(
+          browser
+        ).toContain(
+          "useMemo"
+        );
+
+
+        expect(
+          browser
+        ).toContain(
+          "insightCategories"
+        );
+
+
+        expect(
+          browser
+        ).toContain(
+          "Search insights"
+        );
+
+
+        expect(
+          browser
+        ).toContain(
+          "aria-pressed"
+        );
+
+
+        expect(
+          browser
+        ).toContain(
+          "visibleInsights"
+        );
+
+
+        expect(
+          browser
+        ).toContain(
+          "`/insights/${insight.slug}`"
+        );
+
+
+        expect(
+          browser
+        ).toContain(
+          "data-insights-empty"
+        );
+
+
+        expect(
+          browser
+        ).toContain(
+          "Clear filters"
         );
 
       }

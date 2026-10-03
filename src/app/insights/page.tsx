@@ -1,20 +1,31 @@
+import {
+  InsightsBrowser
+} from "@/components/insights/insights-browser";
 
-import { InsightsBrowser } from "@/components/insights/insights-browser";
+import {
+  isInsightFilter,
+  type InsightFilter
+} from "@/lib/insight-filter";
 
-import { isInsightFilter, type InsightFilter } from "@/lib/insight-filter";
-import { createMetadata } from "@/lib/seo";
+import {
+  createMetadata
+} from "@/lib/seo";
 
 import indexStyles from "./insights-index.module.css";
+
 
 export const metadata =
   createMetadata({
     title:
       "Cybersecurity Insights",
+
     description:
       "Technical writing from No Breach covering web security, API security, offensive security and AI security.",
+
     path:
       "/insights"
   });
+
 
 type Props = {
   searchParams:
@@ -26,38 +37,51 @@ type Props = {
     }>;
 };
 
+
 function resolveCategory(
   value:
     | string
     | string[]
     | undefined
 ): InsightFilter {
+
   const candidate =
-    Array.isArray(value)
+    Array.isArray(
+      value
+    )
       ? value[0]
       : value;
+
 
   if (
     isInsightFilter(
       candidate
     )
   ) {
+
     return candidate;
+
   }
 
+
   return "all";
+
 }
+
 
 export default async function InsightsPage({
   searchParams
 }: Props) {
+
   const params =
     await searchParams;
+
 
   const initialCategory =
     resolveCategory(
       params.category
     );
+
 
   return (
     <div
@@ -65,7 +89,13 @@ export default async function InsightsPage({
         indexStyles.page
       }
       data-insights-index="resource-system"
+      data-insights-index-redesign="v76"
     >
+
+      {/* ================================================================
+          HERO
+         ================================================================ */}
+
       <section
         className={
           indexStyles.pageIntro
@@ -78,6 +108,7 @@ export default async function InsightsPage({
           }
           aria-hidden="true"
         />
+
 
         <div
           className={
@@ -97,9 +128,11 @@ export default async function InsightsPage({
               NOBREACH / RESEARCH
             </p>
 
+
             <h1>
               Security thinking worth publishing.
             </h1>
+
 
             <p
               className={
@@ -111,6 +144,7 @@ export default async function InsightsPage({
               AI systems and offensive testing.
             </p>
           </div>
+
 
           <aside
             className={
@@ -125,6 +159,7 @@ export default async function InsightsPage({
             >
               RESEARCH FOCUS
             </p>
+
 
             <div
               className={
@@ -147,13 +182,56 @@ export default async function InsightsPage({
         </div>
       </section>
 
+
+      {/* ================================================================
+          01 — RESEARCH LIBRARY
+         ================================================================ */}
+
       <section
         className={
           indexStyles.resources
         }
         data-insights-index-section="resources"
-        aria-label="Research library"
+        aria-labelledby="insights-library-title"
       >
+        <div
+          className={
+            indexStyles.libraryHeader
+          }
+        >
+          <div>
+            <p
+              className={
+                indexStyles.libraryEyebrow
+              }
+            >
+              <span>
+                01
+              </span>
+
+              Research library
+            </p>
+
+
+            <h2
+              id="insights-library-title"
+            >
+              Published technical research.
+            </h2>
+          </div>
+
+
+          <p
+            className={
+              indexStyles.libraryLead
+            }
+          >
+            Browse No Breach writing by security topic or
+            search across the published library.
+          </p>
+        </div>
+
+
         <div
           className={
             indexStyles.currentContent
@@ -167,7 +245,7 @@ export default async function InsightsPage({
         </div>
       </section>
 
-
     </div>
   );
+
 }

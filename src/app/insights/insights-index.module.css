@@ -819,3 +819,194 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_INSIGHTS_AUDIT_REDESIGN_V76
+
+   Editorial research-library refinement.
+   Existing visual-system markers remain untouched above.
+   ========================================================================== */
+
+
+.page[data-insights-index-redesign="v76"] {
+  --insights-v76-bg: #05080b;
+  --insights-v76-surface: #080d12;
+  --insights-v76-text: #f2f5f7;
+  --insights-v76-secondary: #aab3be;
+  --insights-v76-muted: #74808d;
+  --insights-v76-border: #1b2731;
+  --insights-v76-border-strong: #2b3a46;
+  --insights-v76-accent: #8dd9ea;
+  --insights-v76-focus: #bceeff;
+
+  overflow-x: clip;
+  background: var(--insights-v76-bg);
+}
+
+
+.page[data-insights-index-redesign="v76"] .pageIntro {
+  min-height: 0;
+  padding-block:
+    clamp(5rem, 6.5vw, 6rem);
+}
+
+
+.page[data-insights-index-redesign="v76"] .pageIntroInner {
+  align-items: center;
+  gap:
+    clamp(4rem, 7vw, 7rem);
+}
+
+
+.page[data-insights-index-redesign="v76"] .pageIntroCopy h1 {
+  max-width: 10.5ch;
+  font-size:
+    clamp(4.2rem, 6vw, 6rem);
+  line-height: 0.96;
+  letter-spacing: -0.06em;
+}
+
+
+.page[data-insights-index-redesign="v76"] .introLead {
+  max-width: 47rem;
+  color: var(--insights-v76-secondary);
+  line-height: 1.65;
+}
+
+
+.page[data-insights-index-redesign="v76"] .researchFocus {
+  min-height: 0;
+}
+
+
+.page[data-insights-index-redesign="v76"] .focusRows {
+  gap: 0;
+}
+
+
+.page[data-insights-index-redesign="v76"] .focusRows span {
+  padding-block: 0.9rem;
+}
+
+
+.page[data-insights-index-redesign="v76"] .resources {
+  padding-block:
+    clamp(4.75rem, 6vw, 5.75rem)
+    clamp(5.25rem, 7vw, 6.5rem);
+}
+
+
+.libraryHeader {
+  width:
+    min(
+      calc(100% - 2 * clamp(1.25rem, 5vw, 5rem)),
+      1360px
+    );
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns:
+    minmax(0, 0.92fr)
+    minmax(18rem, 0.55fr);
+  gap:
+    clamp(3rem, 7vw, 7rem);
+  align-items: start;
+  padding-bottom:
+    clamp(2rem, 3vw, 2.75rem);
+  border-bottom:
+    1px solid
+    var(--insights-v76-border-strong);
+}
+
+
+.libraryEyebrow {
+  display: flex;
+  gap: 0.75rem;
+  margin: 0 0 1rem;
+  color: var(--insights-v76-secondary);
+  font-family:
+    var(--font-geist-mono),
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+  font-size: 0.68rem;
+  font-weight: 650;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+
+.libraryEyebrow span {
+  color: var(--insights-v76-accent);
+}
+
+
+.libraryHeader h2 {
+  max-width: 13ch;
+  margin: 0;
+  color: var(--insights-v76-text);
+  font-size:
+    clamp(2.55rem, 4vw, 3.8rem);
+  font-weight: 520;
+  line-height: 1.04;
+  letter-spacing: -0.05em;
+}
+
+
+.libraryLead {
+  max-width: 31rem;
+  margin: 0;
+  color: var(--insights-v76-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+
+.page[data-insights-index-redesign="v76"] .currentContent {
+  width:
+    min(
+      calc(100% - 2 * clamp(1.25rem, 5vw, 5rem)),
+      1360px
+    );
+  margin:
+    clamp(2rem, 3vw, 2.6rem)
+    auto
+    0;
+}
+
+
+@media (max-width: 900px) {
+
+  .libraryHeader {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+
+  .libraryHeader h2 {
+    max-width: 18ch;
+  }
+
+}
+
+
+@media (max-width: 680px) {
+
+  .page[data-insights-index-redesign="v76"] .pageIntro,
+  .page[data-insights-index-redesign="v76"] .resources {
+    padding-block: 3.75rem;
+  }
+
+
+  .page[data-insights-index-redesign="v76"] .pageIntroCopy h1 {
+    max-width: none;
+    font-size:
+      clamp(3.15rem, 15vw, 4.8rem);
+  }
+
+
+  .libraryHeader {
+    padding-bottom: 1.8rem;
+  }
+
+}
