@@ -1997,3 +1997,301 @@
       #080d12
     );
 }
+
+
+/* ==========================================================================
+   NB_ATTACK_SURFACE_V92_FINAL_RHYTHM
+
+   Final acceptance corrections:
+   - five equal Recon Workflow desktop tracks
+   - Field Index owns desktop sticky navigation
+   - Dossier Information returns to static document flow
+   - tighter masthead + workflow rhythm
+   - continuation surface remains unified
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01 — OPENING RHYTHM
+   ========================================================================== */
+
+
+.page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+.masthead {
+  min-height: 0 !important;
+
+  padding-top:
+    clamp(
+      3.5rem,
+      4.5vw,
+      4.5rem
+    ) !important;
+
+  padding-bottom:
+    clamp(
+      3.5rem,
+      4.5vw,
+      4.5rem
+    ) !important;
+}
+
+
+.page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+.topline {
+  margin-bottom:
+    clamp(
+      2rem,
+      2.75vw,
+      2.75rem
+    ) !important;
+}
+
+
+/* ==========================================================================
+   02 — RECON WORKFLOW RHYTHM
+   ========================================================================== */
+
+
+.page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+.exposure {
+  min-height: 0 !important;
+
+  padding-top:
+    clamp(
+      3.5rem,
+      4vw,
+      4rem
+    ) !important;
+
+  padding-bottom:
+    clamp(
+      3rem,
+      3.5vw,
+      3.5rem
+    ) !important;
+}
+
+
+.page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+.exposureMap {
+  margin-top:
+    clamp(
+      2rem,
+      2.5vw,
+      2.5rem
+    ) !important;
+}
+
+
+/* ==========================================================================
+   03 — FIVE EQUAL DESKTOP WORKFLOW TRACKS
+
+   The old visual model reserved a narrow axis track.
+   The axis is now hidden, so desktop layout must contain only the five
+   actual reconnaissance stages.
+   ========================================================================== */
+
+
+@media (min-width: 1001px) {
+
+  .page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+  [data-attack-surface-workflow="v84"] {
+    display: grid !important;
+
+    grid-template-columns:
+      repeat(
+        5,
+        minmax(
+          0,
+          1fr
+        )
+      ) !important;
+
+    grid-template-rows:
+      auto !important;
+
+    grid-template-areas:
+      none !important;
+
+    grid-auto-flow:
+      row !important;
+
+    width:
+      100% !important;
+
+    min-width:
+      0 !important;
+  }
+
+
+  .page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+  [data-attack-surface-workflow="v84"]
+  > [role="listitem"] {
+    grid-column:
+      auto !important;
+
+    grid-row:
+      auto !important;
+
+    width:
+      auto !important;
+
+    min-width:
+      0 !important;
+
+    max-width:
+      none !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   04 — RESEARCH RAIL PRIORITY
+
+   Sticky owner:
+     indexRail
+
+   Static children:
+     fieldIndex
+     dossierMeta
+     metaSticky
+
+   This prevents a sticky child from being constrained by a short left-rail
+   wrapper while also removing unnecessary persistence from metadata.
+   ========================================================================== */
+
+
+@media (min-width: 1001px) {
+
+  .page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+  .indexRail {
+    position:
+      sticky !important;
+
+    top:
+      6.75rem !important;
+
+    align-self:
+      start !important;
+
+    height:
+      fit-content !important;
+
+    min-height:
+      0 !important;
+  }
+
+
+  .page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+  .fieldIndex {
+    position:
+      static !important;
+
+    top:
+      auto !important;
+
+    right:
+      auto !important;
+
+    bottom:
+      auto !important;
+
+    left:
+      auto !important;
+
+    transform:
+      none !important;
+  }
+
+
+  .page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+  .dossierMeta,
+  .page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+  .metaSticky {
+    position:
+      static !important;
+
+    top:
+      auto !important;
+
+    right:
+      auto !important;
+
+    bottom:
+      auto !important;
+
+    left:
+      auto !important;
+
+    align-self:
+      start !important;
+
+    transform:
+      none !important;
+
+    max-height:
+      none !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   05 — TABLET + MOBILE NORMAL DOCUMENT FLOW
+   ========================================================================== */
+
+
+@media (max-width: 1000px) {
+
+  .page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+  .indexRail,
+  .page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+  .fieldIndex,
+  .page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+  .dossierMeta,
+  .page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+  .metaSticky {
+    position:
+      static !important;
+
+    top:
+      auto !important;
+
+    transform:
+      none !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   06 — CONTINUATION SURFACE AUTHORITY
+
+   Preserve the successful V89 composition and guarantee equal computed
+   section surfaces even if V91 was not previously committed.
+   ========================================================================== */
+
+
+.page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+.continuationGroupV89 {
+  background:
+    var(
+      --attack-v84-surface,
+      #080d12
+    );
+}
+
+
+.page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+.continuationGroupV89
+> [data-attack-surface-continuation="dispatches"],
+.page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+.continuationGroupV89
+> [data-attack-surface-continuation="actions"] {
+  background:
+    var(
+      --attack-v84-surface,
+      #080d12
+    ) !important;
+}
