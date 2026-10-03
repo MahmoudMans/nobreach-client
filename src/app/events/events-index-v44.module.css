@@ -1538,3 +1538,492 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_EVENTS_AUDIT_REDESIGN_V68
+
+   Events V44 compatibility is preserved above.
+   V68 separates stable page chapters from changing publication statuses.
+   ========================================================================== */
+
+
+.page[data-events-audit-redesign="v68"] {
+  --events-v68-bg: #05080b;
+  --events-v68-surface: #080d12;
+  --events-v68-raised: #0b1219;
+  --events-v68-text: #f2f5f7;
+  --events-v68-secondary: #aab3be;
+  --events-v68-muted: #74808d;
+  --events-v68-border: #1b2731;
+  --events-v68-border-strong: #2b3a46;
+  --events-v68-accent: #8dd9ea;
+  --events-v68-accent-hover: #a5e5f2;
+  --events-v68-accent-ink: #051014;
+  --events-v68-focus: #bceeff;
+
+  overflow-x: clip;
+  background: var(--events-v68-bg);
+  color: var(--events-v68-text);
+}
+
+
+.page[data-events-audit-redesign="v68"] .intro,
+.page[data-events-audit-redesign="v68"] .section,
+.page[data-events-audit-redesign="v68"] .finalCta {
+  min-height: 0;
+}
+
+
+.page[data-events-audit-redesign="v68"] .intro {
+  padding-block:
+    clamp(5rem, 7vw, 6.5rem);
+}
+
+
+.page[data-events-audit-redesign="v68"] .introGrid {
+  gap:
+    clamp(4rem, 7vw, 7.5rem);
+  align-items: center;
+}
+
+
+.page[data-events-audit-redesign="v68"] .introCopy h1 {
+  font-size:
+    clamp(4.5rem, 7vw, 7rem);
+  letter-spacing: -0.065em;
+  line-height: 0.92;
+}
+
+
+.page[data-events-audit-redesign="v68"] .introLead {
+  max-width: 47rem;
+  margin-top: 1.8rem;
+  color: var(--events-v68-secondary);
+  line-height: 1.65;
+}
+
+
+.page[data-events-audit-redesign="v68"] .introActions {
+  margin-top: 2rem;
+}
+
+
+.page[data-events-audit-redesign="v68"] .eventStream {
+  min-height: 0;
+  border-top:
+    1px solid
+    var(--events-v68-border-strong);
+  border-bottom:
+    1px solid
+    var(--events-v68-border);
+}
+
+
+.page[data-events-audit-redesign="v68"] .streamHeader,
+.page[data-events-audit-redesign="v68"] .streamFooter {
+  padding-block: 0.95rem;
+}
+
+
+.page[data-events-audit-redesign="v68"] .streamStates {
+  padding-block:
+    clamp(1.85rem, 3vw, 2.6rem);
+}
+
+
+.page[data-events-audit-redesign="v68"] .streamStates > div {
+  display: grid;
+  gap: 0.65rem;
+}
+
+
+.page[data-events-audit-redesign="v68"] .streamStates > div span {
+  color: var(--events-v68-muted);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+}
+
+
+.page[data-events-audit-redesign="v68"] .streamStates > div strong {
+  color: var(--events-v68-text);
+  font-family:
+    var(--font-geist-mono),
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+  font-size:
+    clamp(1.7rem, 2.8vw, 2.5rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+
+.page[data-events-audit-redesign="v68"] .section {
+  padding-block:
+    clamp(4.75rem, 7vw, 6.25rem);
+}
+
+
+.page[data-events-audit-redesign="v68"] .sectionAlt {
+  background:
+    var(--events-v68-surface);
+}
+
+
+.page[data-events-audit-redesign="v68"] .sectionHeader {
+  gap:
+    clamp(3rem, 7vw, 7rem);
+  align-items: start;
+}
+
+
+.page[data-events-audit-redesign="v68"] .sectionHeader h2 {
+  max-width: 18ch;
+  font-size:
+    clamp(2.4rem, 3.7vw, 3.55rem);
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+}
+
+
+.page[data-events-audit-redesign="v68"] .sectionHeader > p {
+  max-width: 29rem;
+  color: var(--events-v68-secondary);
+  line-height: 1.65;
+}
+
+
+.currentGroups {
+  display: grid;
+  gap: 0;
+  margin-top:
+    clamp(2.4rem, 4vw, 3.5rem);
+  border-top:
+    1px solid
+    var(--events-v68-border-strong);
+}
+
+
+.statusGroup,
+.archiveStatus {
+  padding-block: 1.6rem;
+  border-bottom:
+    1px solid
+    var(--events-v68-border);
+}
+
+
+.statusHeader {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto;
+  gap: 2rem;
+  align-items: start;
+}
+
+
+.statusLabel {
+  margin: 0 0 0.65rem;
+  color: var(--events-v68-muted);
+  font-family:
+    var(--font-geist-mono),
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+
+.statusHeader h3 {
+  margin: 0;
+  color: var(--events-v68-text);
+  font-size:
+    clamp(1.35rem, 2vw, 1.85rem);
+  font-weight: 520;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+
+.statusCount {
+  color: var(--events-v68-accent);
+  font-family:
+    var(--font-geist-mono),
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+  font-size:
+    clamp(1.7rem, 2.5vw, 2.25rem);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+
+.page[data-events-audit-redesign="v68"] .emptyState {
+  min-height: 0;
+  margin-top: 1.45rem;
+  padding:
+    1.5rem 0 0;
+  border-top:
+    1px solid
+    var(--events-v68-border);
+}
+
+
+.emptyCopy {
+  max-width: 39rem;
+  margin-top: 0.65rem;
+  color: var(--events-v68-secondary);
+  line-height: 1.65;
+}
+
+
+.page[data-events-audit-redesign="v68"] .emptyState > div > p:last-child {
+  max-width: 39rem;
+  color: var(--events-v68-muted);
+}
+
+
+.page[data-events-audit-redesign="v68"] .textAction {
+  align-self: end;
+}
+
+
+.page[data-events-audit-redesign="v68"] .eventList {
+  margin-top: 1.45rem;
+}
+
+
+.page[data-events-audit-redesign="v68"] .eventRow {
+  min-height: 0;
+  padding-block:
+    clamp(1.65rem, 2.7vw, 2.25rem);
+}
+
+
+.page[data-events-audit-redesign="v68"] .eventSummary {
+  max-width: 48rem;
+  color: var(--events-v68-secondary);
+  line-height: 1.65;
+}
+
+
+.page[data-events-audit-redesign="v68"] .eventMeta {
+  max-width: 53rem;
+  margin-top: 1.15rem;
+  color: var(--events-v68-muted);
+  font-size: 0.76rem;
+  line-height: 1.65;
+  letter-spacing: 0.015em;
+}
+
+
+.page[data-events-audit-redesign="v68"] .eventAction {
+  white-space: nowrap;
+}
+
+
+.archiveSection {
+  background:
+    var(--events-v68-surface);
+}
+
+
+.archiveEmpty {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top:
+    1px solid
+    var(--events-v68-border);
+}
+
+
+.archiveEmpty h3 {
+  max-width: 30rem;
+  margin:
+    0.7rem 0 0;
+  color: var(--events-v68-text);
+  font-size: 1.35rem;
+  font-weight: 520;
+}
+
+
+.archiveEmpty > p:last-child {
+  max-width: 34rem;
+  margin:
+    0.85rem 0 0;
+  color: var(--events-v68-secondary);
+  line-height: 1.65;
+}
+
+
+.page[data-events-audit-redesign="v68"] .compactFinal {
+  padding-block:
+    clamp(4.5rem, 6vw, 5.5rem);
+}
+
+
+.page[data-events-audit-redesign="v68"] .finalLayout {
+  gap:
+    clamp(3rem, 7vw, 7rem);
+  align-items: center;
+}
+
+
+.page[data-events-audit-redesign="v68"] .finalLayout h2 {
+  max-width: 15ch;
+  font-size:
+    clamp(2.35rem, 3.6vw, 3.4rem);
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+}
+
+
+.page[data-events-audit-redesign="v68"] .finalBody > p {
+  max-width: 31rem;
+  color: var(--events-v68-secondary);
+  line-height: 1.65;
+}
+
+
+.page[data-events-audit-redesign="v68"] .primaryAction:focus-visible,
+.page[data-events-audit-redesign="v68"] .secondaryAction:focus-visible,
+.page[data-events-audit-redesign="v68"] .textAction:focus-visible,
+.page[data-events-audit-redesign="v68"] .eventAction:focus-visible {
+  outline:
+    2px solid
+    var(--events-v68-focus);
+  outline-offset: 4px;
+}
+
+
+@media (max-width: 900px) {
+
+  .page[data-events-audit-redesign="v68"] .introGrid {
+    grid-template-columns: 1fr;
+    gap: 3.75rem;
+  }
+
+
+  .page[data-events-audit-redesign="v68"] .eventStream {
+    max-width: 46rem;
+  }
+
+
+  .page[data-events-audit-redesign="v68"] .sectionHeader,
+  .page[data-events-audit-redesign="v68"] .finalLayout {
+    grid-template-columns: 1fr;
+    gap: 2.4rem;
+  }
+
+}
+
+
+@media (max-width: 680px) {
+
+  .page[data-events-audit-redesign="v68"] .intro,
+  .page[data-events-audit-redesign="v68"] .section,
+  .page[data-events-audit-redesign="v68"] .compactFinal {
+    padding-block: 3.75rem;
+  }
+
+
+  .page[data-events-audit-redesign="v68"] .introCopy h1 {
+    font-size:
+      clamp(3.5rem, 17vw, 5rem);
+  }
+
+
+  .page[data-events-audit-redesign="v68"] .introActions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+
+  .page[data-events-audit-redesign="v68"] .primaryAction,
+  .page[data-events-audit-redesign="v68"] .secondaryAction {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+
+  .page[data-events-audit-redesign="v68"] .streamStates {
+    gap: 0.4rem;
+  }
+
+
+  .page[data-events-audit-redesign="v68"] .streamStates > div strong {
+    font-size: 1.65rem;
+  }
+
+
+  .statusHeader {
+    gap: 1rem;
+  }
+
+
+  .page[data-events-audit-redesign="v68"] .emptyState {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+
+
+  .page[data-events-audit-redesign="v68"] .eventRow {
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+
+  .page[data-events-audit-redesign="v68"] .eventAction {
+    grid-column: 2;
+    justify-self: start;
+    margin-top: 0.3rem;
+  }
+
+
+  .page[data-events-audit-redesign="v68"] .eventMeta {
+    font-size: 0.78rem;
+  }
+
+
+  .page[data-events-audit-redesign="v68"] .finalActions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 390px) {
+
+  .page[data-events-audit-redesign="v68"] .streamHeader,
+  .page[data-events-audit-redesign="v68"] .streamFooter {
+    font-size: 0.56rem;
+  }
+
+
+  .page[data-events-audit-redesign="v68"] .streamStates > div span {
+    font-size: 0.53rem;
+  }
+
+
+  .page[data-events-audit-redesign="v68"] .streamStates > div strong {
+    font-size: 1.45rem;
+  }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  .page[data-events-audit-redesign="v68"] a {
+    transition: none;
+  }
+
+}

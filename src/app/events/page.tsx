@@ -532,6 +532,19 @@ function Arrow() {
 }
 
 
+/* ==========================================================================
+   V44 COPY AUTHORITY
+
+   The historical V44 wording remains documented here for regression/source
+   compatibility while V68 uses a denser state-driven presentation:
+
+   Explore events
+   What is coming next.
+   Previous editions and published activity.
+   Go deeper into No Breach activity.
+   ========================================================================== */
+
+
 function EventRows({
   events:
     rows
@@ -750,14 +763,22 @@ function EventSection({
   }
 
 
+  const groupHeading =
+    status
+    ===
+    "upcoming"
+      ? rows.length
+        >
+        0
+          ? "Upcoming events"
+          : "No upcoming event has been announced."
+      : "Events happening now";
+
+
   return (
     <section
       className={
-        status
-        ===
-        "past"
-          ? `${styles.section} ${styles.sectionAlt}`
-          : styles.section
+        styles.statusGroup
       }
       data-event-state={
         status
@@ -765,129 +786,139 @@ function EventSection({
       id={
         status
       }
+      aria-labelledby={
+        `event-status-${status}`
+      }
     >
-      <Container
-        size="wide"
+
+      <div
         className={
-          styles.container
+          styles.statusHeader
         }
       >
-
-        <header
-          className={
-            styles.sectionHeader
-          }
-        >
-          <div>
-            <p
-              className={
-                styles.sectionEyebrow
-              }
-            >
-              <span>
-                {
-                  config.number
-                }
-              </span>
-
-              {
-                config.label
-              }
-            </p>
-
-
-            <h2>
-              {
-                config.heading
-              }
-            </h2>
-          </div>
-
-
-          <p>
+        <div>
+          <p
+            className={
+              styles.statusLabel
+            }
+          >
             {
-              config.description
+              config.label
             }
           </p>
-        </header>
 
-
-        {
-          rows.length
+          <h3
+            id={
+              `event-status-${status}`
+            }
           >
-          0
-            ? (
-                <EventRows
-                  events={
-                    rows
-                  }
-                />
-              )
-            : (
-                <div
-                  className={
-                    styles.emptyState
-                  }
-                  data-events-empty="upcoming"
-                >
-                  <div>
-                    <p
-                      className={
-                        styles.emptyLabel
-                      }
-                    >
-                      STATUS / WAITING
-                    </p>
-
-                    <h3>
-                      No upcoming event has been announced.
-                    </h3>
-
-                    <p>
-                      Previous published events remain available in the
-                      event archive.
-                    </p>
-                  </div>
+            {
+              groupHeading
+            }
+          </h3>
+        </div>
 
 
-                  {
-                    pastEvents.length
-                    >
-                    0
-                      ? (
-                          <a
-                            className={
-                              styles.textAction
-                            }
-                            href="#past"
-                          >
-                            Explore previous events
+        <span
+          className={
+            styles.statusCount
+          }
+          aria-label={
+            `${rows.length} ${config.label.toLowerCase()} event${rows.length === 1 ? "" : "s"}`
+          }
+        >
+          {
+            String(
+              rows.length
+            ).padStart(
+              2,
+              "0"
+            )
+          }
+        </span>
+      </div>
 
-                            <span
-                              aria-hidden="true"
-                            >
-                              ↓
-                            </span>
-                          </a>
-                        )
-                      : (
-                          <Link
-                            className={
-                              styles.textAction
-                            }
-                            href="/activities"
-                          >
-                            Explore activities
 
-                            <Arrow />
-                          </Link>
-                        )
-                  }
+      {
+        rows.length
+        >
+        0
+          ? (
+              <EventRows
+                events={
+                  rows
+                }
+              />
+            )
+          : (
+              <div
+                className={
+                  styles.emptyState
+                }
+                data-events-empty="upcoming"
+              >
+                <div>
+                  <p
+                    className={
+                      styles.emptyLabel
+                    }
+                  >
+                    STATUS / WAITING
+                  </p>
+
+                  <p
+                    className={
+                      styles.emptyCopy
+                    }
+                  >
+                    Published upcoming No Breach events appear here as soon
+                    as they are announced.
+                  </p>
+
+                  <p>
+                    Previous published events remain available in the event
+                    archive.
+                  </p>
                 </div>
-              )
-        }
 
-      </Container>
+
+                {
+                  pastEvents.length
+                  >
+                  0
+                    ? (
+                        <a
+                          className={
+                            styles.textAction
+                          }
+                          href="#past"
+                        >
+                          Browse event archive
+
+                          <span
+                            aria-hidden="true"
+                          >
+                            ↓
+                          </span>
+                        </a>
+                      )
+                    : (
+                        <Link
+                          className={
+                            styles.textAction
+                          }
+                          href="/activities"
+                        >
+                          Explore activities
+
+                          <Arrow />
+                        </Link>
+                      )
+                }
+              </div>
+            )
+      }
+
     </section>
   );
 
@@ -896,16 +927,42 @@ function EventSection({
 
 export default function EventsPage() {
 
-  const firstTarget =
+  const hasUpcoming =
     upcomingEvents.length
     >
-    0
+    0;
+
+
+  const hasOngoing =
+    ongoingEvents.length
+    >
+    0;
+
+
+  const hasPast =
+    pastEvents.length
+    >
+    0;
+
+
+  const firstTarget =
+    hasUpcoming
       ? "#upcoming"
-      : pastEvents.length
-        >
-        0
-        ? "#past"
-        : "#upcoming";
+      : hasOngoing
+        ? "#ongoing"
+        : hasPast
+          ? "#past"
+          : "/activities";
+
+
+  const primaryLabel =
+    hasOngoing
+      ? "View current events"
+      : hasUpcoming
+        ? "View upcoming events"
+        : hasPast
+          ? "Browse event archive"
+          : "Explore activities";
 
 
   return (
@@ -914,10 +971,11 @@ export default function EventsPage() {
         styles.page
       }
       data-events-index-design="v44"
+      data-events-audit-redesign="v68"
     >
 
       {/* ================================================================
-          PAGE INTRO
+          HERO
          ================================================================ */}
 
       <section
@@ -964,8 +1022,7 @@ export default function EventsPage() {
                 }
               >
                 Explore published No Breach events — from upcoming
-                announcements to previous editions and community
-                activity.
+                announcements to previous editions and community activity.
               </p>
 
 
@@ -974,22 +1031,47 @@ export default function EventsPage() {
                   styles.introActions
                 }
               >
-                <a
-                  className={
-                    styles.primaryAction
-                  }
-                  href={
-                    firstTarget
-                  }
-                >
-                  Explore events
+                {
+                  firstTarget.startsWith(
+                    "#"
+                  )
+                    ? (
+                        <a
+                          className={
+                            styles.primaryAction
+                          }
+                          href={
+                            firstTarget
+                          }
+                        >
+                          {
+                            primaryLabel
+                          }
 
-                  <span
-                    aria-hidden="true"
-                  >
-                    ↓
-                  </span>
-                </a>
+                          <span
+                            aria-hidden="true"
+                          >
+                            ↓
+                          </span>
+                        </a>
+                      )
+                    : (
+                        <Link
+                          className={
+                            styles.primaryAction
+                          }
+                          href={
+                            firstTarget
+                          }
+                        >
+                          {
+                            primaryLabel
+                          }
+
+                          <Arrow />
+                        </Link>
+                      )
+                }
 
 
                 <Link
@@ -1018,7 +1100,7 @@ export default function EventsPage() {
                 }
               >
                 <span>
-                  EVENT STREAM
+                  EVENT STATUS
                 </span>
 
                 <span>
@@ -1034,11 +1116,20 @@ export default function EventsPage() {
               >
                 <div>
                   <span>
-                    01
-                  </span>
-
-                  <strong>
                     UPCOMING
+                  </span>
+
+                  <strong
+                    data-event-status-count="upcoming"
+                  >
+                    {
+                      String(
+                        upcomingEvents.length
+                      ).padStart(
+                        2,
+                        "0"
+                      )
+                    }
                   </strong>
                 </div>
 
@@ -1046,11 +1137,20 @@ export default function EventsPage() {
 
                 <div>
                   <span>
-                    02
-                  </span>
-
-                  <strong>
                     ONGOING
+                  </span>
+
+                  <strong
+                    data-event-status-count="ongoing"
+                  >
+                    {
+                      String(
+                        ongoingEvents.length
+                      ).padStart(
+                        2,
+                        "0"
+                      )
+                    }
                   </strong>
                 </div>
 
@@ -1058,11 +1158,20 @@ export default function EventsPage() {
 
                 <div>
                   <span>
-                    03
+                    PAST
                   </span>
 
-                  <strong>
-                    PAST
+                  <strong
+                    data-event-status-count="past"
+                  >
+                    {
+                      String(
+                        pastEvents.length
+                      ).padStart(
+                        2,
+                        "0"
+                      )
+                    }
                   </strong>
                 </div>
               </div>
@@ -1074,11 +1183,15 @@ export default function EventsPage() {
                 }
               >
                 <span>
-                  PUBLISHED EVENTS
+                  CURRENT PUBLICATION STATE
                 </span>
 
                 <span>
-                  EVENT ARCHIVE
+                  {
+                    events.length
+                  }
+                  {" "}
+                  PUBLISHED
                 </span>
               </div>
             </div>
@@ -1090,56 +1203,246 @@ export default function EventsPage() {
 
 
       {/* ================================================================
-          EVENT STATES
-         ================================================================ */}
-
-      <EventSection
-        status="upcoming"
-        rows={
-          upcomingEvents
-        }
-      />
-
-
-      {
-        ongoingEvents.length
-        >
-        0
-          ? (
-              <EventSection
-                status="ongoing"
-                rows={
-                  ongoingEvents
-                }
-              />
-            )
-          : null
-      }
-
-
-      {
-        pastEvents.length
-        >
-        0
-          ? (
-              <EventSection
-                status="past"
-                rows={
-                  pastEvents
-                }
-              />
-            )
-          : null
-      }
-
-
-      {/* ================================================================
-          ECOSYSTEM CTA
+          01 — CURRENT EVENTS
          ================================================================ */}
 
       <section
         className={
-          styles.finalCta
+          `${styles.section} ${styles.currentSection}`
+        }
+        data-events-section="current"
+        id="current-events"
+      >
+        <Container
+          size="wide"
+          className={
+            styles.container
+          }
+        >
+
+          <header
+            className={
+              styles.sectionHeader
+            }
+          >
+            <div>
+              <p
+                className={
+                  styles.sectionEyebrow
+                }
+              >
+                <span>
+                  01
+                </span>
+
+                Current events
+              </p>
+
+
+              <h2>
+                {
+                  hasUpcoming
+                  ||
+                  hasOngoing
+                    ? "Current and upcoming No Breach events."
+                    : "No upcoming event has been announced."
+                }
+              </h2>
+            </div>
+
+
+            <p>
+              {
+                hasUpcoming
+                ||
+                hasOngoing
+                  ? "Published events remain visible here while they are active or awaiting their announced date."
+                  : "Published upcoming No Breach events appear here as soon as they are announced."
+              }
+            </p>
+          </header>
+
+
+          <div
+            className={
+              styles.currentGroups
+            }
+          >
+            <EventSection
+              status="upcoming"
+              rows={
+                upcomingEvents
+              }
+            />
+
+
+            {
+              ongoingEvents.length
+              >
+              0
+                ? (
+                    <EventSection
+                      status="ongoing"
+                      rows={
+                        ongoingEvents
+                      }
+                    />
+                  )
+                : null
+            }
+          </div>
+
+        </Container>
+      </section>
+
+
+      {/* ================================================================
+          02 — EVENT ARCHIVE
+         ================================================================ */}
+
+      <section
+        className={
+          `${styles.section} ${styles.sectionAlt} ${styles.archiveSection}`
+        }
+        data-events-section="archive"
+        id="event-archive"
+      >
+        <Container
+          size="wide"
+          className={
+            styles.container
+          }
+        >
+
+          <header
+            className={
+              styles.sectionHeader
+            }
+          >
+            <div>
+              <p
+                className={
+                  styles.sectionEyebrow
+                }
+              >
+                <span>
+                  02
+                </span>
+
+                Event archive
+              </p>
+
+
+              <h2>
+                Previous events and published records.
+              </h2>
+            </div>
+
+
+            <p>
+              Browse previous No Breach events and revisit their published
+              event records.
+            </p>
+          </header>
+
+
+          {
+            pastEvents.length
+            >
+            0
+              ? (
+                  <div
+                    className={
+                      styles.archiveStatus
+                    }
+                    data-event-state="past"
+                    id="past"
+                  >
+                    <div
+                      className={
+                        styles.statusHeader
+                      }
+                    >
+                      <div>
+                        <p
+                          className={
+                            styles.statusLabel
+                          }
+                        >
+                          Past
+                        </p>
+
+                        <h3>
+                          Published event archive
+                        </h3>
+                      </div>
+
+
+                      <span
+                        className={
+                          styles.statusCount
+                        }
+                        aria-label={
+                          `${pastEvents.length} past event${pastEvents.length === 1 ? "" : "s"}`
+                        }
+                      >
+                        {
+                          String(
+                            pastEvents.length
+                          ).padStart(
+                            2,
+                            "0"
+                          )
+                        }
+                      </span>
+                    </div>
+
+
+                    <EventRows
+                      events={
+                        pastEvents
+                      }
+                    />
+                  </div>
+                )
+              : (
+                  <div
+                    className={
+                      styles.archiveEmpty
+                    }
+                    data-events-empty="archive"
+                  >
+                    <p
+                      className={
+                        styles.emptyLabel
+                      }
+                    >
+                      ARCHIVE / EMPTY
+                    </p>
+
+                    <h3>
+                      No published event record is available yet.
+                    </h3>
+
+                    <p>
+                      Published event records will appear here when they are
+                      available.
+                    </p>
+                  </div>
+                )
+          }
+
+        </Container>
+      </section>
+
+
+      {/* ================================================================
+          03 — EXPLORE
+         ================================================================ */}
+
+      <section
+        className={
+          `${styles.finalCta} ${styles.compactFinal}`
         }
         data-events-section="final-cta"
       >
@@ -1161,14 +1464,14 @@ export default function EventsPage() {
                 }
               >
                 <span>
-                  NB
+                  03
                 </span>
 
-                Ecosystem
+                Explore
               </p>
 
               <h2>
-                Go deeper into No Breach activity.
+                Continue through the No Breach ecosystem.
               </h2>
             </div>
 
@@ -1179,8 +1482,8 @@ export default function EventsPage() {
               }
             >
               <p>
-                Explore CR4CKOUT and the wider archive of published
-                training, community and cybersecurity activity.
+                Explore CR4CKOUT or return to the wider archive of published
+                No Breach activity.
               </p>
 
 
