@@ -763,15 +763,96 @@ function EventSection({
   }
 
 
+  if (
+    isUpcoming
+    &&
+    rows.length
+    ===
+    0
+  ) {
+
+    return (
+      <section
+        className={
+          `${styles.statusGroup} ${styles.emptyStatusGroup}`
+        }
+        data-event-state="upcoming"
+        id="upcoming"
+        aria-label="Upcoming event publication state"
+      >
+
+        <div
+          className={
+            styles.emptyState
+          }
+          data-events-empty="upcoming"
+        >
+          <div>
+            <p
+              className={
+                styles.emptyLabel
+              }
+            >
+              UPCOMING / WAITING
+            </p>
+
+
+            <p
+              className={
+                styles.emptyCopy
+              }
+            >
+              Previous event records remain available below.
+            </p>
+          </div>
+
+
+          {
+            pastEvents.length
+            >
+            0
+              ? (
+                  <a
+                    className={
+                      styles.textAction
+                    }
+                    href="#past"
+                  >
+                    Browse event archive
+
+                    <span
+                      aria-hidden="true"
+                    >
+                      ↓
+                    </span>
+                  </a>
+                )
+              : (
+                  <Link
+                    className={
+                      styles.textAction
+                    }
+                    href="/activities"
+                  >
+                    Explore activities
+
+                    <Arrow />
+                  </Link>
+                )
+          }
+        </div>
+
+      </section>
+    );
+
+  }
+
+
   const groupHeading =
     status
     ===
     "upcoming"
-      ? rows.length
-        >
-        0
-          ? "Upcoming events"
-          : "No upcoming event has been announced."
+      ? "Upcoming events"
       : "Events happening now";
 
 
@@ -807,6 +888,7 @@ function EventSection({
             }
           </p>
 
+
           <h3
             id={
               `event-status-${status}`
@@ -839,85 +921,11 @@ function EventSection({
       </div>
 
 
-      {
-        rows.length
-        >
-        0
-          ? (
-              <EventRows
-                events={
-                  rows
-                }
-              />
-            )
-          : (
-              <div
-                className={
-                  styles.emptyState
-                }
-                data-events-empty="upcoming"
-              >
-                <div>
-                  <p
-                    className={
-                      styles.emptyLabel
-                    }
-                  >
-                    STATUS / WAITING
-                  </p>
-
-                  <p
-                    className={
-                      styles.emptyCopy
-                    }
-                  >
-                    Published upcoming No Breach events appear here as soon
-                    as they are announced.
-                  </p>
-
-                  <p>
-                    Previous published events remain available in the event
-                    archive.
-                  </p>
-                </div>
-
-
-                {
-                  pastEvents.length
-                  >
-                  0
-                    ? (
-                        <a
-                          className={
-                            styles.textAction
-                          }
-                          href="#past"
-                        >
-                          Browse event archive
-
-                          <span
-                            aria-hidden="true"
-                          >
-                            ↓
-                          </span>
-                        </a>
-                      )
-                    : (
-                        <Link
-                          className={
-                            styles.textAction
-                          }
-                          href="/activities"
-                        >
-                          Explore activities
-
-                          <Arrow />
-                        </Link>
-                      )
-                }
-              </div>
-            )
-      }
+      <EventRows
+        events={
+          rows
+        }
+      />
 
     </section>
   );
@@ -972,6 +980,7 @@ export default function EventsPage() {
       }
       data-events-index-design="v44"
       data-events-audit-redesign="v68"
+      data-events-audit-refinement="v69"
     >
 
       {/* ================================================================
@@ -1257,7 +1266,7 @@ export default function EventsPage() {
                 ||
                 hasOngoing
                   ? "Published events remain visible here while they are active or awaiting their announced date."
-                  : "Published upcoming No Breach events appear here as soon as they are announced."
+                  : "New No Breach event announcements will appear here when published."
               }
             </p>
           </header>
@@ -1358,46 +1367,6 @@ export default function EventsPage() {
                     data-event-state="past"
                     id="past"
                   >
-                    <div
-                      className={
-                        styles.statusHeader
-                      }
-                    >
-                      <div>
-                        <p
-                          className={
-                            styles.statusLabel
-                          }
-                        >
-                          Past
-                        </p>
-
-                        <h3>
-                          Published event archive
-                        </h3>
-                      </div>
-
-
-                      <span
-                        className={
-                          styles.statusCount
-                        }
-                        aria-label={
-                          `${pastEvents.length} past event${pastEvents.length === 1 ? "" : "s"}`
-                        }
-                      >
-                        {
-                          String(
-                            pastEvents.length
-                          ).padStart(
-                            2,
-                            "0"
-                          )
-                        }
-                      </span>
-                    </div>
-
-
                     <EventRows
                       events={
                         pastEvents

@@ -2027,3 +2027,108 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_EVENTS_FINAL_POLISH_V69
+
+   Final local refinement after V68 visual regression review.
+
+   - compact Current Events empty state
+   - remove space owned by deleted duplicate status heading
+   - remove archive intermediate-heading space
+   - strengthen factual event metadata
+   ========================================================================== */
+
+
+.page[data-events-audit-refinement="v69"] .currentSection {
+  padding-block:
+    clamp(4.5rem, 5.5vw, 5rem);
+}
+
+
+.page[data-events-audit-refinement="v69"] .currentGroups {
+  margin-top:
+    clamp(2rem, 3vw, 2.6rem);
+}
+
+
+.page[data-events-audit-refinement="v69"] .emptyStatusGroup {
+  padding-block: 0;
+  border-bottom:
+    1px solid
+    var(--events-v68-border);
+}
+
+
+.page[data-events-audit-refinement="v69"] .emptyStatusGroup .emptyState {
+  margin-top: 0;
+  padding-block: 1.45rem;
+  border-top: 0;
+}
+
+
+.page[data-events-audit-refinement="v69"] .emptyStatusGroup .emptyCopy {
+  max-width: 34rem;
+  margin-top: 0.7rem;
+}
+
+
+.page[data-events-audit-refinement="v69"] .archiveSection {
+  padding-block:
+    clamp(5rem, 6vw, 5.75rem);
+}
+
+
+.page[data-events-audit-refinement="v69"] .archiveStatus {
+  padding-block: 0;
+  border-bottom: 0;
+}
+
+
+.page[data-events-audit-refinement="v69"] .archiveStatus .eventList {
+  margin-top:
+    clamp(2rem, 3vw, 2.5rem);
+  border-top:
+    1px solid
+    var(--events-v68-border-strong);
+}
+
+
+.page[data-events-audit-refinement="v69"] .eventMeta {
+  max-width: 54rem;
+  margin-top: 1.15rem;
+  color: #8793a0;
+  font-size: 0.82rem;
+  line-height: 1.7;
+  letter-spacing: 0.012em;
+}
+
+
+@media (max-width: 680px) {
+
+  .page[data-events-audit-refinement="v69"] .currentSection {
+    padding-block: 3.5rem;
+  }
+
+
+  .page[data-events-audit-refinement="v69"] .archiveSection {
+    padding-block: 4rem;
+  }
+
+
+  .page[data-events-audit-refinement="v69"] .emptyStatusGroup .emptyState {
+    padding-block: 1.25rem;
+  }
+
+
+  .page[data-events-audit-refinement="v69"] .archiveStatus .eventList {
+    margin-top: 1.6rem;
+  }
+
+
+  .page[data-events-audit-refinement="v69"] .eventMeta {
+    font-size: 0.8rem;
+  }
+
+}

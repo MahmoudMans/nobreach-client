@@ -4,6 +4,10 @@ import {
 } from "@playwright/test";
 
 
+// NB_EVENTS_V70_LEGACY_UPCOMING_CONTRACT
+// Upcoming remains represented when empty; V69 removes the duplicate
+// nested heading and exposes the semantic UPCOMING / WAITING state.
+
 test(
   "Events renders one index experience",
   async ({
@@ -189,7 +193,7 @@ test(
 
       await expect(
         upcoming.getByText(
-          "No upcoming event has been announced.",
+          "UPCOMING / WAITING",
           {
             exact:
               true

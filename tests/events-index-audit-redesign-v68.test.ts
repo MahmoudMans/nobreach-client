@@ -286,3 +286,114 @@ describe(
 
   }
 );
+
+
+describe(
+  "Events final polish V69",
+  () => {
+
+    it(
+      "adds V69 refinement authority without replacing V68",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          'data-events-audit-redesign="v68"'
+        );
+
+        expect(
+          page
+        ).toContain(
+          'data-events-audit-refinement="v69"'
+        );
+
+      }
+    );
+
+
+    it(
+      "reduces the empty Upcoming state to one waiting message",
+      () => {
+
+        expect(
+          page
+        ).toContain(
+          "UPCOMING / WAITING"
+        );
+
+        expect(
+          page
+        ).toContain(
+          "Previous event records remain available below."
+        );
+
+        expect(
+          page
+        ).toContain(
+          "New No Breach event announcements will appear here when published."
+        );
+
+      }
+    );
+
+
+    it(
+      "removes the redundant archive intermediate heading",
+      () => {
+
+        expect(
+          page
+        ).not.toContain(
+          "Published event archive"
+        );
+
+        expect(
+          page
+        ).toContain(
+          'data-event-state="past"'
+        );
+
+        expect(
+          page
+        ).toContain(
+          "pastEvents"
+        );
+
+      }
+    );
+
+
+    it(
+      "adds the final compact spacing and metadata layer",
+      () => {
+
+        expect(
+          css
+        ).toContain(
+          "NB_EVENTS_FINAL_POLISH_V69"
+        );
+
+        expect(
+          css
+        ).toContain(
+          ".emptyStatusGroup"
+        );
+
+        expect(
+          css
+        ).toContain(
+          ".archiveStatus .eventList"
+        );
+
+        expect(
+          css
+        ).toContain(
+          "font-size: 0.82rem"
+        );
+
+      }
+    );
+
+  }
+);

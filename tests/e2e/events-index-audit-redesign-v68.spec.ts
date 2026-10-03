@@ -167,8 +167,15 @@ test(
     ) {
 
       await expect(
+        upcoming.locator(
+          '[data-events-empty="upcoming"]'
+        )
+      ).toBeVisible();
+
+
+      await expect(
         upcoming.getByText(
-          "No upcoming event has been announced.",
+          "UPCOMING / WAITING",
           {
             exact: true
           }
@@ -177,8 +184,11 @@ test(
 
 
       await expect(
-        upcoming.locator(
-          '[data-events-empty="upcoming"]'
+        upcoming.getByText(
+          "Previous event records remain available below.",
+          {
+            exact: true
+          }
         )
       ).toBeVisible();
 
@@ -498,6 +508,201 @@ test(
       );
 
     }
+
+  }
+);
+
+
+
+test(
+  "Events V69 removes duplicate state messaging",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      ROUTE
+    );
+
+
+    const upcomingRows =
+      await page
+        .locator(
+          '[data-event-row="upcoming"]'
+        )
+        .count();
+
+
+    const ongoingRows =
+      await page
+        .locator(
+          '[data-event-row="ongoing"]'
+        )
+        .count();
+
+
+    if (
+      upcomingRows
+      ===
+      0
+      &&
+      ongoingRows
+      ===
+      0
+    ) {
+
+      await expect(
+        page.getByText(
+          "No upcoming event has been announced.",
+          {
+            exact: true
+          }
+        )
+      ).toHaveCount(
+        1
+      );
+
+
+      await expect(
+        page.getByText(
+          "New No Breach event announcements will appear here when published.",
+          {
+            exact: true
+          }
+        )
+      ).toBeVisible();
+
+
+      await expect(
+        page.locator(
+          '[data-events-empty="upcoming"]'
+        )
+      ).toContainText(
+        "Previous event records remain available below."
+      );
+
+    }
+
+  }
+);
+
+
+test(
+  "Events V69 archive goes directly from chapter header to records",
+  async ({
+    page
+  }) => {
+
+    await page.goto(
+      ROUTE
+    );
+
+
+    const pastRows =
+      await page
+        .locator(
+          '[data-event-row="past"]'
+        )
+        .count();
+
+
+    if (
+      pastRows
+      >
+      0
+    ) {
+
+      await expect(
+        page.getByRole(
+          "heading",
+          {
+            name:
+              "Published event archive"
+          }
+        )
+      ).toHaveCount(
+        0
+      );
+
+
+      const archive =
+        page.locator(
+          '[data-events-section="archive"]'
+        );
+
+
+      await expect(
+        archive.locator(
+          '[data-event-state="past"]'
+        )
+      ).toHaveCount(
+        1
+      );
+
+
+      await expect(
+        archive.locator(
+          '[data-event-row="past"]'
+        ).first()
+      ).toBeVisible();
+
+    }
+
+  }
+);
+
+
+test(
+  "Events V69 keeps the refined chapters compact",
+  async ({
+    page
+  }) => {
+
+    await page.setViewportSize({
+      width: 1440,
+      height: 900
+    });
+
+
+    await page.goto(
+      ROUTE
+    );
+
+
+    const currentHeight =
+      await page
+        .locator(
+          '[data-events-section="current"]'
+        )
+        .evaluate(
+          element =>
+            element.getBoundingClientRect().height
+        );
+
+
+    expect(
+      currentHeight
+    ).toBeLessThan(
+      680
+    );
+
+
+    const archiveHeight =
+      await page
+        .locator(
+          '[data-events-section="archive"]'
+        )
+        .evaluate(
+          element =>
+            element.getBoundingClientRect().height
+        );
+
+
+    expect(
+      archiveHeight
+    ).toBeLessThan(
+      720
+    );
 
   }
 );
