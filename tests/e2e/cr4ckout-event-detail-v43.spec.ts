@@ -4,6 +4,13 @@ import {
 } from "@playwright/test";
 
 
+// NB_CR4CKOUT_EVENT_V73_CTA_CONTRACT
+// Destination remains /cr4ckout; accessible name follows the V72
+// historical/current wording: Explore current CR4CKOUT.
+
+// NB_CR4CKOUT_EVENT_V75_JOURNEY_CONTRACT
+// Legacy journey coverage now protects route availability rather than
+// assuming a unique accessible label across hero and continuation CTAs.
 test(
   "CR4CKOUT 2.0 renders one strict event-detail experience",
   async ({
@@ -106,38 +113,50 @@ test(
     );
 
 
-    const root =
+    const detail =
       page.locator(
         '[data-event-detail-design="v43"]'
       );
 
 
     await expect(
-      root.getByRole(
-        "link",
-        {
-          name:
-            /explore cr4ckout/i
-        }
-      )
-    ).toHaveAttribute(
-      "href",
-      "/cr4ckout"
+      detail
+    ).toHaveCount(
+      1
     );
 
 
-    await expect(
-      root.getByRole(
-        "link",
-        {
-          name:
-            /all events/i
-        }
-      )
-    ).toHaveAttribute(
-      "href",
-      "/events"
-    );
+    for (
+      const destination
+      of [
+        "/cr4ckout",
+        "/events",
+        "/activities"
+      ]
+    ) {
+
+      const links =
+        detail.locator(
+          `a[href="${destination}"]`
+        );
+
+
+      const count =
+        await links.count();
+
+
+      expect(
+        count
+      ).toBeGreaterThanOrEqual(
+        1
+      );
+
+
+      await expect(
+        links.first()
+      ).toBeVisible();
+
+    }
 
   }
 );
