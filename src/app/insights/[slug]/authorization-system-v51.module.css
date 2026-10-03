@@ -2351,3 +2351,561 @@ p {
   line-height:
     1.45;
 }
+
+
+/* ==========================================================================
+   NB_AUTHORIZATION_INSIGHT_REDESIGN_V80
+
+   Targeted editorial refinement:
+   - compact reading-page hero
+   - support rails demoted
+   - center article remains primary
+   - article section headings reduced
+   - related research + final CTA behave as one continuation chapter
+   ========================================================================== */
+
+
+.page[data-authorization-insight-redesign="v80"] {
+  --authorization-v80-bg: #05080b;
+  --authorization-v80-surface: #080d12;
+  --authorization-v80-text: #f2f5f7;
+  --authorization-v80-secondary: #aab3be;
+  --authorization-v80-muted: #74808d;
+  --authorization-v80-border: #1b2731;
+  --authorization-v80-border-strong: #2b3a46;
+  --authorization-v80-accent: #8dd9ea;
+  --authorization-v80-focus: #bceeff;
+
+  overflow-x: clip;
+}
+
+
+/* --------------------------------------------------------------------------
+   HERO — editorial rather than landing-page height
+   -------------------------------------------------------------------------- */
+
+
+.page[data-authorization-insight-redesign="v80"] .intro {
+  min-height: 0;
+  padding-block:
+    clamp(4.5rem, 6vw, 5.5rem);
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .introGrid {
+  gap:
+    clamp(3.75rem, 7vw, 7rem);
+  align-items: center;
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .introCopy h1 {
+  max-width: 14ch;
+  font-size:
+    clamp(4rem, 5.7vw, 5.8rem);
+  line-height: 0.96;
+  letter-spacing: -0.06em;
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .summary {
+  max-width: 49rem;
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .authSignal {
+  min-height: 0;
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .signalCore {
+  padding-block:
+    clamp(2.1rem, 3vw, 2.9rem);
+}
+
+
+/* --------------------------------------------------------------------------
+   READING FRAME — research body remains primary
+   -------------------------------------------------------------------------- */
+
+
+.page[data-authorization-insight-redesign="v80"] .readingSection {
+  padding-block:
+    clamp(4.5rem, 6vw, 5.5rem);
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .readingGrid {
+  grid-template-columns:
+    minmax(9.5rem, 0.24fr)
+    minmax(0, 1fr)
+    minmax(11rem, 0.28fr);
+  gap:
+    clamp(2.5rem, 4.5vw, 4.75rem);
+  align-items: start;
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .contentsColumn,
+.page[data-authorization-insight-redesign="v80"] .infoColumn {
+  color:
+    var(--authorization-v80-muted);
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .railLabel {
+  color:
+    var(--authorization-v80-muted);
+  font-size: 0.62rem;
+  letter-spacing: 0.11em;
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .contents ol {
+  margin-top: 0.9rem;
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .contents li {
+  padding-block: 0.9rem;
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .contents a {
+  color:
+    var(--authorization-v80-secondary);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .contents li > span {
+  color:
+    var(--authorization-v80-muted);
+  font-size: 0.62rem;
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .infoPanel dt {
+  color:
+    var(--authorization-v80-muted);
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .infoPanel dd {
+  color:
+    var(--authorization-v80-secondary);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .contextLinks {
+  margin-top: 1.8rem;
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .contextLinks > a {
+  color:
+    var(--authorization-v80-secondary);
+  line-height: 1.4;
+}
+
+
+.contextRelationV80 {
+  display: block;
+  color:
+    var(--authorization-v80-muted);
+  font-family:
+    var(--font-geist-mono),
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+
+.contextDestinationV80 {
+  display: block;
+  color:
+    var(--authorization-v80-secondary);
+}
+
+
+/* --------------------------------------------------------------------------
+   ARTICLE — slightly quieter section titles, same prose measure
+   -------------------------------------------------------------------------- */
+
+
+.page[data-authorization-insight-redesign="v80"] .research {
+  min-width: 0;
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .articleSection {
+  padding-block:
+    clamp(3.25rem, 4.5vw, 4.4rem);
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .articleSection:first-child {
+  padding-top: 0;
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .articleSection header h2 {
+  max-width: 22ch;
+  font-size:
+    clamp(2.45rem, 3.35vw, 3.15rem);
+  line-height: 1.06;
+  letter-spacing: -0.045em;
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .prose {
+  max-width: 55rem;
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .prose p {
+  line-height: 1.72;
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .prose ul {
+  margin-top: 1.6rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   RELATED RESEARCH — retain flat rows, tighten density
+   -------------------------------------------------------------------------- */
+
+
+.page[data-authorization-insight-redesign="v80"] .relatedSection {
+  padding-block:
+    clamp(4.5rem, 5.5vw, 5.25rem)
+    1.75rem;
+  background:
+    var(--authorization-v80-surface);
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .sectionHeader {
+  padding-bottom:
+    clamp(1.75rem, 2.5vw, 2.25rem);
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .sectionHeader h2 {
+  font-size:
+    clamp(2.4rem, 3.6vw, 3.45rem);
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .relatedRow {
+  padding-block:
+    clamp(1.6rem, 2.5vw, 2.15rem);
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .relatedRow h3 {
+  font-size:
+    clamp(1.25rem, 1.6vw, 1.55rem);
+  line-height: 1.25;
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .relatedRow > div > p:last-child {
+  max-width: 48rem;
+  line-height: 1.6;
+}
+
+
+/* --------------------------------------------------------------------------
+   FINAL CTA — same continuation chapter, compact action band
+   -------------------------------------------------------------------------- */
+
+
+.page[data-authorization-insight-redesign="v80"] .finalCta {
+  min-height: 0;
+  padding-block:
+    1.75rem
+    clamp(4.5rem, 5.5vw, 5.25rem);
+  background:
+    var(--authorization-v80-surface);
+  border-top: 0;
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .finalLayout {
+  grid-template-columns:
+    minmax(15rem, 0.78fr)
+    minmax(18rem, 0.62fr);
+  gap:
+    clamp(2.75rem, 6vw, 6rem);
+  align-items: end;
+  padding-top: 2rem;
+  border-top:
+    1px solid
+    var(--authorization-v80-border-strong);
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .finalLayout h2 {
+  max-width: 18ch;
+  font-size:
+    clamp(1.75rem, 2.4vw, 2.35rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .finalBody {
+  gap: 1.25rem;
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .finalBody > p {
+  max-width: 31rem;
+  color:
+    var(--authorization-v80-secondary);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+
+.page[data-authorization-insight-redesign="v80"] .finalActions {
+  gap: 0.65rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   FOCUS
+   -------------------------------------------------------------------------- */
+
+
+.page[data-authorization-insight-redesign="v80"] a:focus-visible {
+  outline:
+    2px solid
+    var(--authorization-v80-focus);
+  outline-offset: 4px;
+}
+
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE
+   -------------------------------------------------------------------------- */
+
+
+@media (max-width: 1000px) {
+
+  .page[data-authorization-insight-redesign="v80"] .readingGrid {
+    gap: 2.5rem;
+  }
+
+
+  .page[data-authorization-insight-redesign="v80"] .finalLayout {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+}
+
+
+@media (max-width: 760px) {
+
+  .page[data-authorization-insight-redesign="v80"] .intro,
+  .page[data-authorization-insight-redesign="v80"] .readingSection {
+    padding-block: 3.75rem;
+  }
+
+
+  .page[data-authorization-insight-redesign="v80"] .introCopy h1 {
+    max-width: none;
+    font-size:
+      clamp(3.2rem, 14vw, 4.75rem);
+  }
+
+
+  .page[data-authorization-insight-redesign="v80"] .articleSection {
+    padding-block: 3rem;
+  }
+
+
+  .page[data-authorization-insight-redesign="v80"] .articleSection header h2 {
+    max-width: none;
+    font-size:
+      clamp(2.2rem, 8vw, 2.8rem);
+  }
+
+
+  .page[data-authorization-insight-redesign="v80"] .relatedSection {
+    padding-top: 4rem;
+  }
+
+
+  .page[data-authorization-insight-redesign="v80"] .finalCta {
+    padding-bottom: 4rem;
+  }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  .page[data-authorization-insight-redesign="v80"] a {
+    transition: none;
+  }
+
+}
+
+
+/* ==========================================================================
+   NB_AUTHORIZATION_V83_MOBILE_READING_FRAME
+
+   V80 owns the desktop three-track reading grid with a higher-specificity
+   selector. On mobile, explicitly give that same V80 route selector ownership
+   of the ordered stack so the center research track cannot collapse to zero.
+   ========================================================================== */
+
+
+@media (max-width: 760px) {
+
+  .page[data-authorization-insight-redesign="v80"] .readingGrid {
+    display:
+      flex;
+
+    width:
+      100%;
+
+    max-width:
+      100%;
+
+    min-width:
+      0;
+
+    flex-direction:
+      column;
+
+    align-items:
+      stretch;
+
+    gap:
+      clamp(
+        2.75rem,
+        10vw,
+        3.5rem
+      );
+
+    grid-template-columns:
+      none;
+
+    grid-template-rows:
+      none;
+
+    grid-template-areas:
+      none;
+  }
+
+
+  .page[data-authorization-insight-redesign="v80"] .contentsColumn,
+  .page[data-authorization-insight-redesign="v80"] .research,
+  .page[data-authorization-insight-redesign="v80"] .infoColumn {
+    position:
+      relative;
+
+    display:
+      block;
+
+    width:
+      100%;
+
+    max-width:
+      none;
+
+    min-width:
+      0;
+
+    height:
+      auto;
+
+    min-height:
+      0;
+
+    grid-column:
+      auto;
+
+    grid-row:
+      auto;
+
+    visibility:
+      visible;
+
+    opacity:
+      1;
+
+    overflow:
+      visible;
+  }
+
+
+  .page[data-authorization-insight-redesign="v80"] .contentsColumn {
+    order:
+      1;
+  }
+
+
+  .page[data-authorization-insight-redesign="v80"] .research {
+    order:
+      2;
+  }
+
+
+  .page[data-authorization-insight-redesign="v80"] .infoColumn {
+    order:
+      3;
+  }
+
+
+  .page[data-authorization-insight-redesign="v80"] .contents,
+  .page[data-authorization-insight-redesign="v80"] .infoPanel {
+    position:
+      static;
+
+    top:
+      auto;
+
+    right:
+      auto;
+
+    bottom:
+      auto;
+
+    left:
+      auto;
+
+    width:
+      100%;
+
+    max-width:
+      none;
+
+    min-width:
+      0;
+
+    height:
+      auto;
+
+    max-height:
+      none;
+
+    transform:
+      none;
+  }
+
+}

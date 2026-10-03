@@ -499,6 +499,32 @@ const relatedTraining =
     );
 
 
+function titleFromSlug(
+  slug:
+    string
+) {
+
+  return slug
+    .split(
+      "-"
+    )
+    .map(
+      part =>
+        part.charAt(
+          0
+        ).toUpperCase()
+        +
+        part.slice(
+          1
+        )
+    )
+    .join(
+      " "
+    );
+
+}
+
+
 function Arrow() {
 
   return (
@@ -520,6 +546,7 @@ export function AuthorizationSystemInsightV51() {
         styles.page
       }
       data-authorization-insight-design="v51"
+      data-authorization-insight-redesign="v80"
       data-insight-slug="authorization-is-a-system-not-a-checkbox"
     >
 
@@ -1149,7 +1176,25 @@ export function AuthorizationSystemInsightV51() {
                             slug
                           }
                         >
-                          Related training
+                          <span
+                            className={
+                              styles.contextRelationV80
+                            }
+                          >
+                            Related training
+                          </span>
+
+                          <span
+                            className={
+                              styles.contextDestinationV80
+                            }
+                          >
+                            {
+                              titleFromSlug(
+                                slug
+                              )
+                            }
+                          </span>
 
                           <Arrow />
                         </Link>
@@ -1181,6 +1226,7 @@ export function AuthorizationSystemInsightV51() {
                   styles.relatedSection
                 }
                 data-insight-section="related"
+                data-authorization-continuation="research"
               >
                 <Container
                   size="wide"
@@ -1320,6 +1366,7 @@ export function AuthorizationSystemInsightV51() {
           styles.finalCta
         }
         data-insight-section="final-cta"
+        data-authorization-continuation="actions"
       >
         <Container
           size="wide"
