@@ -1256,3 +1256,744 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_ATTACK_SURFACE_REDESIGN_V84
+
+   Reading-first refinement of the committed V53 Reconnaissance Dossier.
+   V53 identity remains intact.
+   ========================================================================== */
+
+
+.page[data-attack-surface-insight-redesign="v84"] {
+  --attack-v84-bg: #05080b;
+  --attack-v84-surface: #080d12;
+  --attack-v84-text: #f2f5f7;
+  --attack-v84-secondary: #aab3be;
+  --attack-v84-muted: #74808d;
+  --attack-v84-border: #1b2731;
+  --attack-v84-border-strong: #2b3a46;
+  --attack-v84-accent: #8dd9ea;
+  --attack-v84-focus: #bceeff;
+
+  overflow-x: clip;
+}
+
+
+/* ==========================================================================
+   INTELLIGENCE MASTHEAD
+   ========================================================================== */
+
+
+.page[data-attack-surface-insight-redesign="v84"] .masthead {
+  min-height: 0;
+  padding-block:
+    clamp(4.75rem, 6.5vw, 6rem);
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .topline {
+  margin-bottom:
+    clamp(3rem, 4.5vw, 4.25rem);
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .mastheadBody {
+  min-height: 0;
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .mastheadBody h1 {
+  max-width: 14ch;
+  font-size:
+    clamp(4.15rem, 6vw, 6rem);
+  line-height: 0.96;
+  letter-spacing: -0.06em;
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .mastheadMeta {
+  align-self: end;
+}
+
+
+/* ==========================================================================
+   RECON WORKFLOW
+   ========================================================================== */
+
+
+.page[data-attack-surface-insight-redesign="v84"] .exposure {
+  min-height: 0;
+  padding-block:
+    clamp(4.25rem, 5.75vw, 5.25rem);
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .exposureHeader {
+  align-items: end;
+  gap:
+    clamp(2rem, 5vw, 5rem);
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .exposureHeader h2 {
+  max-width: 16ch;
+  font-size:
+    clamp(2.7rem, 4vw, 3.8rem);
+  line-height: 1.04;
+  letter-spacing: -0.05em;
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .exposureMap {
+  margin-top:
+    clamp(2.5rem, 3.5vw, 3.5rem);
+}
+
+
+/*
+ * The old rotated EXTERNAL / CONTEXT / DEPTH labels visually implied a
+ * quantitative chart. V84 preserves the reconnaissance sequence but removes
+ * that pseudo-axis from the composition.
+ */
+
+.page[data-attack-surface-insight-redesign="v84"] .exposureAxis {
+  display: none;
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .exposureStep {
+  min-width: 0;
+}
+
+
+/* ==========================================================================
+   DOSSIER READING SYSTEM
+   ========================================================================== */
+
+
+.page[data-attack-surface-insight-redesign="v84"] .dossier {
+  padding-block:
+    clamp(4.5rem, 6vw, 5.75rem);
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .dossierGrid {
+  align-items: start;
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .fieldIndex {
+  position: sticky;
+  top: 7.25rem;
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .dossierMeta {
+  position: static;
+  top: auto;
+}
+
+
+/* chapter hierarchy */
+
+.page[data-attack-surface-insight-redesign="v84"] .chapter {
+  padding-block:
+    clamp(3.5rem, 4.75vw, 4.75rem);
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .chapter:first-child {
+  padding-top: 0;
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .chapterNumber {
+  font-size:
+    clamp(2.35rem, 3.2vw, 2.85rem);
+  line-height: 1;
+  opacity: 0.72;
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .chapterHeader h2 {
+  max-width: 21ch;
+  font-size:
+    clamp(2.55rem, 3.55vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .chapterBody {
+  max-width: 54rem;
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .chapterBody p {
+  line-height: 1.72;
+}
+
+
+/* support rails should remain useful without competing with the research */
+
+.page[data-attack-surface-insight-redesign="v84"] .fieldIndex,
+.page[data-attack-surface-insight-redesign="v84"] .dossierMeta {
+  color: var(--attack-v84-muted);
+}
+
+
+/* ==========================================================================
+   RESEARCH DISPATCHES
+   ========================================================================== */
+
+
+.page[data-attack-surface-insight-redesign="v84"] .dispatches {
+  padding-block:
+    clamp(4.5rem, 5.5vw, 5.25rem)
+    1.75rem;
+  background:
+    var(--attack-v84-surface);
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .dispatchHeader {
+  padding-bottom:
+    clamp(1.8rem, 2.6vw, 2.4rem);
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .dispatchHeader h2 {
+  font-size:
+    clamp(2.65rem, 4vw, 3.65rem);
+  line-height: 1.04;
+  letter-spacing: -0.05em;
+}
+
+
+/*
+ * Three research records should read as three dispatches, not a 2+1 card grid.
+ */
+
+.page[data-attack-surface-insight-redesign="v84"] .dispatchRows {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .dispatchRow {
+  display: grid;
+  grid-template-columns:
+    3rem
+    minmax(14rem, 0.78fr)
+    minmax(20rem, 1fr)
+    auto;
+  gap:
+    clamp(1.4rem, 3vw, 3rem);
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  padding-block:
+    clamp(1.75rem, 2.5vw, 2.3rem);
+  border-top:
+    1px solid
+    var(--attack-v84-border);
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .dispatchRow:last-child {
+  border-bottom:
+    1px solid
+    var(--attack-v84-border);
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .dispatchRow > div {
+  min-width: 0;
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .dispatchRow h3 {
+  margin-top: 0.45rem;
+  font-size:
+    clamp(1.35rem, 1.8vw, 1.65rem);
+  line-height: 1.2;
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .dispatchSummary {
+  max-width: 42rem;
+  color: var(--attack-v84-secondary);
+  line-height: 1.6;
+}
+
+
+/* ==========================================================================
+   END OF DOSSIER
+   ========================================================================== */
+
+
+.page[data-attack-surface-insight-redesign="v84"] .closing {
+  min-height: 0;
+  padding-block:
+    1.75rem
+    clamp(4.5rem, 5.5vw, 5.25rem);
+  background:
+    var(--attack-v84-surface);
+  border-top: 0;
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .closingGrid {
+  grid-template-columns:
+    minmax(9rem, 0.28fr)
+    minmax(18rem, 0.8fr)
+    auto;
+  gap:
+    clamp(2rem, 5vw, 5rem);
+  align-items: end;
+  padding-top: 2rem;
+  border-top:
+    1px solid
+    var(--attack-v84-border-strong);
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .closingGrid h2 {
+  max-width: 18ch;
+  font-size:
+    clamp(2rem, 2.9vw, 2.75rem);
+  line-height: 1.06;
+  letter-spacing: -0.045em;
+}
+
+
+.page[data-attack-surface-insight-redesign="v84"] .closingActions {
+  gap: 0.65rem;
+}
+
+
+/* ==========================================================================
+   FOCUS
+   ========================================================================== */
+
+
+.page[data-attack-surface-insight-redesign="v84"] a:focus-visible {
+  outline:
+    2px solid
+    var(--attack-v84-focus);
+  outline-offset: 4px;
+}
+
+
+/* ==========================================================================
+   TABLET
+   ========================================================================== */
+
+
+@media (max-width: 1050px) {
+
+  .page[data-attack-surface-insight-redesign="v84"] .dispatchRow {
+    grid-template-columns:
+      2.5rem
+      minmax(14rem, 0.85fr)
+      minmax(16rem, 1fr)
+      auto;
+    gap: 1.4rem;
+  }
+
+
+  .page[data-attack-surface-insight-redesign="v84"] .closingGrid {
+    grid-template-columns:
+      minmax(8rem, 0.3fr)
+      1fr;
+  }
+
+
+  .page[data-attack-surface-insight-redesign="v84"] .closingActions {
+    grid-column: 2;
+  }
+
+}
+
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+
+
+@media (max-width: 760px) {
+
+  .page[data-attack-surface-insight-redesign="v84"] .masthead,
+  .page[data-attack-surface-insight-redesign="v84"] .exposure,
+  .page[data-attack-surface-insight-redesign="v84"] .dossier {
+    padding-block: 3.75rem;
+  }
+
+
+  .page[data-attack-surface-insight-redesign="v84"] .topline {
+    margin-bottom: 2.75rem;
+  }
+
+
+  .page[data-attack-surface-insight-redesign="v84"] .mastheadBody h1 {
+    max-width: none;
+    font-size:
+      clamp(3.15rem, 14vw, 4.65rem);
+  }
+
+
+  .page[data-attack-surface-insight-redesign="v84"] .exposureHeader {
+    align-items: start;
+  }
+
+
+  .page[data-attack-surface-insight-redesign="v84"] .fieldIndex,
+  .page[data-attack-surface-insight-redesign="v84"] .dossierMeta {
+    position: static;
+    top: auto;
+  }
+
+
+  .page[data-attack-surface-insight-redesign="v84"] .chapter {
+    padding-block: 3rem;
+  }
+
+
+  .page[data-attack-surface-insight-redesign="v84"] .chapterHeader h2 {
+    max-width: none;
+    font-size:
+      clamp(2.2rem, 9vw, 2.8rem);
+  }
+
+
+  .page[data-attack-surface-insight-redesign="v84"] .dispatches {
+    padding-top: 4rem;
+  }
+
+
+  .page[data-attack-surface-insight-redesign="v84"] .dispatchRow {
+    grid-template-columns:
+      2.25rem
+      minmax(0, 1fr);
+    gap:
+      0.85rem
+      1rem;
+    align-items: start;
+  }
+
+
+  .page[data-attack-surface-insight-redesign="v84"] .dispatchSummary {
+    grid-column: 2;
+  }
+
+
+  .page[data-attack-surface-insight-redesign="v84"] .dispatchRow > svg,
+  .page[data-attack-surface-insight-redesign="v84"] .dispatchRow > span:last-child {
+    grid-column: 2;
+  }
+
+
+  .page[data-attack-surface-insight-redesign="v84"] .closing {
+    padding-bottom: 4rem;
+  }
+
+
+  .page[data-attack-surface-insight-redesign="v84"] .closingGrid {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+    align-items: start;
+  }
+
+
+  .page[data-attack-surface-insight-redesign="v84"] .closingActions {
+    grid-column: auto;
+  }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  .page[data-attack-surface-insight-redesign="v84"] a {
+    transition: none;
+  }
+
+}
+
+
+/* ==========================================================================
+   NB_ATTACK_SURFACE_V86_LAYOUT_CONTRACT
+
+   Finalize two runtime geometry contracts discovered after V84:
+
+   1. The shared article relatedGrid still contributes a two-column grid.
+      The dedicated reconnaissance dossier owns dispatch geometry, so force
+      the dispatch collection into one vertical editorial sequence.
+
+   2. Legacy section margins leave ~96px of external space between the
+      dispatch section and the end-of-dossier actions. Remove external margins
+      so both sections become one visually continuous research conclusion.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   FULL-WIDTH DISPATCH OWNERSHIP
+
+   Intentionally stronger than the shared article relatedGrid selector.
+   -------------------------------------------------------------------------- */
+
+
+.page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+[data-attack-surface-dispatches="v84"].dispatchRows {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  gap: 0;
+  row-gap: 0;
+  column-gap: 0;
+  grid-template-columns: none;
+  grid-template-rows: none;
+  grid-auto-flow: row;
+}
+
+
+.page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+[data-attack-surface-dispatches="v84"].dispatchRows
+> a[href^="/insights/"] {
+  flex:
+    0
+    0
+    auto;
+
+  grid-column:
+    1
+    /
+    -1;
+
+  width:
+    100%;
+
+  max-width:
+    none;
+
+  min-width:
+    0;
+
+  box-sizing:
+    border-box;
+}
+
+
+/* --------------------------------------------------------------------------
+   ONE CONTINUOUS RESEARCH CONCLUSION
+
+   Padding remains inside each chapter for rhythm.
+   External margins must not create a detached 96px void.
+   -------------------------------------------------------------------------- */
+
+
+.page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+[data-attack-surface-continuation="dispatches"] {
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-block: 0;
+}
+
+
+.page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+[data-attack-surface-continuation="actions"] {
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-block: 0;
+}
+
+
+/*
+ * Some shared article shells express inter-section spacing through sibling
+ * margin rules. Explicitly neutralize only this V84 continuation boundary.
+ */
+
+.page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+[data-attack-surface-continuation="dispatches"]
++
+[data-attack-surface-continuation="actions"] {
+  margin-block-start: 0;
+}
+
+
+/* --------------------------------------------------------------------------
+   NARROW WIDTHS
+
+   Preserve the same one-column dispatch ownership.
+   -------------------------------------------------------------------------- */
+
+
+@media (max-width: 760px) {
+
+  .page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+  [data-attack-surface-dispatches="v84"].dispatchRows {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+  [data-attack-surface-dispatches="v84"].dispatchRows
+  > a[href^="/insights/"] {
+    width: 100%;
+    max-width: none;
+  }
+
+}
+
+
+/* ==========================================================================
+   NB_ATTACK_SURFACE_V89_CONTINUATION_GROUP
+
+   Structural resolution of the final continuation:
+
+     shared article layout
+       -> continuationGroupV89
+            -> Research Dispatches
+            -> End-of-Dossier Actions
+
+   The shared article rhythm now applies BEFORE the continuation group rather
+   than BETWEEN its two internal sections.
+   ========================================================================== */
+
+
+.continuationGroupV89 {
+  display: block;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  background:
+    var(
+      --attack-v84-surface,
+      #080d12
+    );
+}
+
+
+/*
+ * The two continuation sections own their internal padding.
+ * They must not create an external void between each other.
+ */
+
+.page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+.continuationGroupV89
+> [data-attack-surface-continuation="dispatches"],
+.page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+.continuationGroupV89
+> [data-attack-surface-continuation="actions"] {
+  margin: 0 !important;
+  margin-block: 0 !important;
+}
+
+
+/*
+ * Exact internal boundary:
+ *
+ * Dispatches -> End of Dossier
+ */
+
+.page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+.continuationGroupV89
+> [data-attack-surface-continuation="dispatches"]
++
+[data-attack-surface-continuation="actions"] {
+  margin-top: 0 !important;
+  margin-block-start: 0 !important;
+}
+
+
+/* Preserve V86 dispatch ownership inside the new structural group. */
+
+.page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+.continuationGroupV89
+[data-attack-surface-dispatches="v84"].dispatchRows {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  gap: 0;
+}
+
+
+.page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+.continuationGroupV89
+[data-attack-surface-dispatches="v84"].dispatchRows
+> a[href^="/insights/"] {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+
+@media (max-width: 760px) {
+
+  .continuationGroupV89 {
+    width: 100%;
+    min-width: 0;
+  }
+
+}
+
+
+/* ==========================================================================
+   NB_ATTACK_SURFACE_V91_CONTINUATION_SURFACE
+
+   V89 fixed the geometry by structurally grouping Research Dispatches and
+   End-of-Dossier Actions.
+
+   Runtime now shows:
+     dispatches = transparent
+     actions    = #080d12
+
+   Both are visually one continuation chapter, so give both children the same
+   explicit dossier surface.
+   ========================================================================== */
+
+
+.page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+.continuationGroupV89
+> [data-attack-surface-continuation="dispatches"],
+.page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+.continuationGroupV89
+> [data-attack-surface-continuation="actions"] {
+  background:
+    var(
+      --attack-v84-surface,
+      #080d12
+    ) !important;
+}
+
+
+/*
+ * Parent uses the exact same surface so there is no transparent seam.
+ */
+
+.page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+.continuationGroupV89 {
+  background:
+    var(
+      --attack-v84-surface,
+      #080d12
+    );
+}

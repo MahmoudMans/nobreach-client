@@ -542,6 +542,7 @@ export function AttackSurfaceInsightV53() {
         `${sharedArticleStyles.article} ${styles.page}`
       }
       data-attack-surface-insight-design="v53"
+      data-attack-surface-insight-redesign="v84"
       data-insight-slug="attack-surface-mapping-before-exploitation"
     >
 
@@ -738,12 +739,16 @@ export function AttackSurfaceInsightV53() {
               styles.exposureMap
             }
             data-attack-surface-map="v53"
-            aria-hidden="true"
+            data-attack-surface-workflow="v84"
+            role="list"
+            aria-label="Reconnaissance workflow"
           >
             <div
               className={
                 styles.exposureAxis
               }
+              data-attack-surface-axis="decorative"
+              aria-hidden="true"
             >
               <span>
                 EXTERNAL
@@ -792,6 +797,7 @@ export function AttackSurfaceInsightV53() {
                     className={
                       styles.exposureStep
                     }
+                    role="listitem"
                     key={
                       item[
                         0
@@ -1284,6 +1290,13 @@ export function AttackSurfaceInsightV53() {
           RESEARCH DISPATCHES
          ================================================================ */}
 
+      <div
+        className={
+          styles.continuationGroupV89
+        }
+        data-attack-surface-continuation-group="v89"
+      >
+
       {
         relatedResearch.length
         >
@@ -1295,6 +1308,7 @@ export function AttackSurfaceInsightV53() {
                 `${sharedArticleStyles.relatedSection} ${styles.dispatches}`
               }
               data-insight-section="related"
+              data-attack-surface-continuation="dispatches"
             >
               <Container
                 size="wide"
@@ -1320,18 +1334,6 @@ export function AttackSurfaceInsightV53() {
                       Continue the investigation.
                     </h2>
                   </div>
-
-
-                  <Link
-                    href="/insights"
-                    className={
-                      styles.inlineAction
-                    }
-                  >
-                    Research index
-
-                    <Arrow />
-                  </Link>
                 </header>
 
 
@@ -1339,6 +1341,7 @@ export function AttackSurfaceInsightV53() {
                   className={
                     `${sharedArticleStyles.relatedGrid} ${styles.dispatchRows}`
                   }
+                    data-attack-surface-dispatches="v84"
                 >
                   {
                     relatedResearch.map(
@@ -1424,6 +1427,7 @@ export function AttackSurfaceInsightV53() {
           styles.closing
         }
         data-insight-section="final-cta"
+        data-attack-surface-continuation="actions"
       >
         <Container
           size="wide"
@@ -1482,12 +1486,14 @@ export function AttackSurfaceInsightV53() {
                   styles.secondaryAction
                 }
               >
-                More research
+                Research index
               </Link>
             </div>
           </div>
         </Container>
       </section>
+
+      </div>
 
     </article>
   );
