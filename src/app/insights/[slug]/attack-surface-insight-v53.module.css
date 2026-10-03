@@ -2295,3 +2295,225 @@
       #080d12
     ) !important;
 }
+
+
+/* ==========================================================================
+   NB_ATTACK_SURFACE_V94_MASTHEAD_COMPOSITION
+
+   Final masthead composition correction.
+
+   The title, metadata and dossier identity are already accepted.
+   V94 only removes misallocated vertical space between the meaningful groups.
+   ========================================================================== */
+
+
+@media (min-width: 1001px) {
+
+  /*
+   * Overall section inset.
+   */
+
+  .page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+  .masthead {
+    min-height:
+      0 !important;
+
+    height:
+      auto !important;
+
+    padding-top:
+      3rem !important;
+
+    padding-bottom:
+      3.25rem !important;
+  }
+
+
+  /*
+   * The Container owns the relationship between:
+   *
+   *   breadcrumb / dossier id
+   *              ↓
+   *   dossier identity / H1 / lower band
+   *
+   * Do not leave a flexible 1fr row or distributed vertical space here.
+   */
+
+  .page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+  .masthead
+  > .container {
+    min-height:
+      0 !important;
+
+    height:
+      auto !important;
+
+    grid-template-rows:
+      auto
+      auto !important;
+
+    align-content:
+      start !important;
+
+    row-gap:
+      0 !important;
+  }
+
+
+  /*
+   * Breadcrumb row.
+   */
+
+  .page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+  .topline {
+    margin:
+      0 !important;
+  }
+
+
+  /*
+   * Main masthead body.
+   *
+   * Explicitly remove any flexible-height or distributed-space behavior.
+   */
+
+  .page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+  .mastheadBody {
+    min-height:
+      0 !important;
+
+    height:
+      auto !important;
+
+    margin-top:
+      2.75rem !important;
+
+    padding-top:
+      0 !important;
+
+    padding-bottom:
+      0 !important;
+
+    grid-template-rows:
+      auto
+      auto
+      auto !important;
+
+    grid-auto-rows:
+      auto !important;
+
+    align-content:
+      start !important;
+
+    row-gap:
+      0 !important;
+  }
+
+
+  /*
+   * Dossier identity -> title.
+   */
+
+  .page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+  .kicker {
+    margin-top:
+      0 !important;
+
+    margin-bottom:
+      1.5rem !important;
+  }
+
+
+  /*
+   * Keep the accepted title scale.
+   * Only normalize its external rhythm.
+   */
+
+  .page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+  .mastheadBody
+  h1 {
+    margin-top:
+      0 !important;
+
+    margin-bottom:
+      0 !important;
+  }
+
+
+  /*
+   * H1 -> summary/meta band.
+   */
+
+  .page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+  .introLower {
+    margin-top:
+      2.5rem !important;
+
+    padding-top:
+      0 !important;
+
+    align-items:
+      end !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   SHORT DESKTOP HEIGHT
+
+   Avoid returning to a cinematic empty masthead on laptop-height viewports.
+   ========================================================================== */
+
+
+@media (min-width: 1001px) and (max-height: 820px) {
+
+  .page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+  .masthead {
+    padding-top:
+      2.5rem !important;
+
+    padding-bottom:
+      2.75rem !important;
+  }
+
+
+  .page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+  .mastheadBody {
+    margin-top:
+      2.25rem !important;
+  }
+
+
+  .page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+  .introLower {
+    margin-top:
+      2rem !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   MOBILE / TABLET
+
+   Preserve the existing V92 reflow.
+   Only prevent desktop-specific structural overrides from leaking down.
+   ========================================================================== */
+
+
+@media (max-width: 1000px) {
+
+  .page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+  .masthead
+  > .container,
+  .page[data-attack-surface-insight-design="v53"][data-attack-surface-insight-redesign="v84"]
+  .mastheadBody {
+    height:
+      auto !important;
+
+    min-height:
+      0 !important;
+  }
+
+}
