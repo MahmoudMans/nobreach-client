@@ -542,6 +542,7 @@ export function PromptInjectionInsightV54() {
         `${sharedArticleStyles.article} ${styles.page}`
       }
       data-prompt-injection-insight-design="v54"
+      data-prompt-injection-insight-redesign="v96"
       data-insight-slug="prompt-injection-matters-when-ai-can-act"
     >
 
@@ -718,7 +719,9 @@ export function PromptInjectionInsightV54() {
               styles.actionPath
             }
             data-ai-action-boundary="v54"
-            aria-hidden="true"
+            data-ai-action-boundary-redesign="v96"
+            role="list"
+            aria-label="AI action path"
           >
             {
               [
@@ -751,6 +754,7 @@ export function PromptInjectionInsightV54() {
                     className={
                       styles.pathNode
                     }
+                    role="listitem"
                     key={
                       node[
                         0
@@ -799,6 +803,7 @@ export function PromptInjectionInsightV54() {
                             className={
                               styles.pathArrow
                             }
+                            aria-hidden="true"
                           >
                             →
                           </span>
@@ -1268,6 +1273,13 @@ export function PromptInjectionInsightV54() {
           RELATED RESEARCH
          ================================================================ */}
 
+      <div
+        className={
+          styles.continuationGroupV96
+        }
+        data-prompt-injection-continuation-group="v96"
+      >
+
       {
         relatedResearch.length
         >
@@ -1279,6 +1291,7 @@ export function PromptInjectionInsightV54() {
                 `${sharedArticleStyles.relatedSection} ${styles.related}`
               }
               data-insight-section="related"
+              data-prompt-injection-continuation="research"
             >
               <Container
                 size="wide"
@@ -1306,16 +1319,7 @@ export function PromptInjectionInsightV54() {
                   </div>
 
 
-                  <Link
-                    href="/insights"
-                    className={
-                      styles.textAction
-                    }
-                  >
-                    All insights
 
-                    <Arrow />
-                  </Link>
                 </header>
 
 
@@ -1323,6 +1327,7 @@ export function PromptInjectionInsightV54() {
                   className={
                     `${sharedArticleStyles.relatedGrid} ${styles.relatedList}`
                   }
+                    data-prompt-injection-related="v96"
                 >
                   {
                     relatedResearch.map(
@@ -1408,6 +1413,7 @@ export function PromptInjectionInsightV54() {
           styles.finalCta
         }
         data-insight-section="final-cta"
+        data-prompt-injection-continuation="actions"
       >
         <Container
           size="wide"
@@ -1457,12 +1463,14 @@ export function PromptInjectionInsightV54() {
                   styles.secondaryAction
                 }
               >
-                More research
+                All insights
               </Link>
             </div>
           </div>
         </Container>
       </section>
+
+      </div>
 
     </article>
   );

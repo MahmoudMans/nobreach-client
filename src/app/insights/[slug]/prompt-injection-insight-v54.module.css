@@ -2278,3 +2278,469 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_PROMPT_INJECTION_REDESIGN_V96
+
+   Reading-first refinement of the V54 AI Action Boundary article.
+
+   Preserve:
+   - canonical content
+   - H1 authority
+   - NoBreach palette
+   - AI Action Boundary identity
+   - flat long-form research treatment
+
+   Correct:
+   - opening rhythm
+   - action-path semantics/rhythm
+   - sticky navigation priority
+   - related-research row geometry
+   - final continuation cohesion
+   ========================================================================== */
+
+
+/* ==========================================================================
+   01 — COMPACT ARTICLE INTRO
+   ========================================================================== */
+
+
+.page[data-prompt-injection-insight-redesign="v96"] .intro {
+  min-height: 0 !important;
+  height: auto !important;
+
+  padding-top:
+    clamp(
+      3.75rem,
+      4.5vw,
+      4.5rem
+    ) !important;
+
+  padding-bottom:
+    clamp(
+      4rem,
+      5vw,
+      5rem
+    ) !important;
+}
+
+
+.page[data-prompt-injection-insight-redesign="v96"]
+.intro
+> .container {
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+
+.page[data-prompt-injection-insight-redesign="v96"] .breadcrumb {
+  margin-bottom: 0 !important;
+}
+
+
+.page[data-prompt-injection-insight-redesign="v96"] .introGrid {
+  margin-top:
+    clamp(
+      2.5rem,
+      3vw,
+      3rem
+    ) !important;
+
+  align-items: end;
+}
+
+
+.page[data-prompt-injection-insight-redesign="v96"] .introCopy {
+  min-width: 0;
+}
+
+
+.page[data-prompt-injection-insight-redesign="v96"]
+.introCopy
+.eyebrow {
+  margin-top: 0 !important;
+  margin-bottom: 1.5rem !important;
+}
+
+
+.page[data-prompt-injection-insight-redesign="v96"]
+.introCopy
+h1 {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+
+.page[data-prompt-injection-insight-redesign="v96"] .summary {
+  margin-top: 2rem !important;
+}
+
+
+.page[data-prompt-injection-insight-redesign="v96"] .introMeta {
+  align-self: end;
+}
+
+
+/* ==========================================================================
+   02 — AI ACTION BOUNDARY
+   ========================================================================== */
+
+
+.page[data-prompt-injection-insight-redesign="v96"] .boundary {
+  min-height: 0 !important;
+  height: auto !important;
+
+  padding-top:
+    clamp(
+      3.75rem,
+      4.5vw,
+      4.5rem
+    ) !important;
+
+  padding-bottom:
+    clamp(
+      3.75rem,
+      4.5vw,
+      4.5rem
+    ) !important;
+}
+
+
+.page[data-prompt-injection-insight-redesign="v96"] .boundaryHeader {
+  align-items: end;
+
+  gap:
+    clamp(
+      2rem,
+      4vw,
+      4rem
+    );
+}
+
+
+.page[data-prompt-injection-insight-redesign="v96"]
+.boundaryHeader
+h2 {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+
+.page[data-prompt-injection-insight-redesign="v96"] .actionPath {
+  margin-top:
+    clamp(
+      2.5rem,
+      3vw,
+      3rem
+    ) !important;
+}
+
+
+/* ==========================================================================
+   03 — READING SYSTEM PRIORITY
+
+   Navigation remains useful throughout the research.
+   Metadata remains available without occupying permanent viewport space.
+   ========================================================================== */
+
+
+@media (min-width: 1001px) {
+
+  .page[data-prompt-injection-insight-redesign="v96"] .indexColumn {
+    position: sticky !important;
+    top: 6.75rem !important;
+
+    align-self: start !important;
+
+    height: fit-content !important;
+    min-height: 0 !important;
+  }
+
+
+  .page[data-prompt-injection-insight-redesign="v96"] .sectionIndex {
+    position: static !important;
+
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+
+    transform: none !important;
+  }
+
+
+  .page[data-prompt-injection-insight-redesign="v96"] .factsColumn,
+  .page[data-prompt-injection-insight-redesign="v96"] .factsSticky {
+    position: static !important;
+
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+
+    align-self: start !important;
+
+    transform: none !important;
+
+    max-height: none !important;
+  }
+
+}
+
+
+@media (max-width: 1000px) {
+
+  .page[data-prompt-injection-insight-redesign="v96"] .indexColumn,
+  .page[data-prompt-injection-insight-redesign="v96"] .sectionIndex,
+  .page[data-prompt-injection-insight-redesign="v96"] .factsColumn,
+  .page[data-prompt-injection-insight-redesign="v96"] .factsSticky {
+    position: static !important;
+
+    top: auto !important;
+
+    transform: none !important;
+  }
+
+}
+
+
+/* ==========================================================================
+   04 — RELATED RESEARCH
+
+   Three equal-purpose records become one editorial vertical sequence.
+   ========================================================================== */
+
+
+.page[data-prompt-injection-insight-redesign="v96"]
+[data-prompt-injection-related="v96"].relatedList {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+
+  gap: 0 !important;
+
+  grid-template-columns: none !important;
+  grid-template-rows: none !important;
+}
+
+
+.page[data-prompt-injection-insight-redesign="v96"]
+[data-prompt-injection-related="v96"]
+> .relatedItem {
+  display: grid !important;
+
+  grid-template-columns:
+    3rem
+    minmax(
+      14rem,
+      0.8fr
+    )
+    minmax(
+      20rem,
+      1fr
+    )
+    1.5rem !important;
+
+  align-items: center;
+
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+
+  min-height: 0 !important;
+
+  gap:
+    clamp(
+      1.4rem,
+      2.5vw,
+      2.75rem
+    ) !important;
+
+  padding:
+    clamp(
+      1.75rem,
+      2.25vw,
+      2.25rem
+    )
+    0 !important;
+}
+
+
+.page[data-prompt-injection-insight-redesign="v96"]
+[data-prompt-injection-related="v96"]
+> .relatedItem
+.relatedSummary {
+  max-width: 42rem;
+
+  line-height: 1.6;
+}
+
+
+/* ==========================================================================
+   05 — ONE CONTINUATION CHAPTER
+   ========================================================================== */
+
+
+.page[data-prompt-injection-insight-redesign="v96"]
+.continuationGroupV96 {
+  display: block;
+
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+
+  margin: 0;
+  padding: 0;
+
+  background:
+    var(
+      --pi-bg,
+      #07090d
+    );
+}
+
+
+.page[data-prompt-injection-insight-redesign="v96"]
+.continuationGroupV96
+> [data-prompt-injection-continuation="research"] {
+  min-height: 0 !important;
+
+  margin: 0 !important;
+
+  padding-top:
+    clamp(
+      4.25rem,
+      5vw,
+      5rem
+    ) !important;
+
+  padding-bottom:
+    1.5rem !important;
+
+  background:
+    var(
+      --pi-bg,
+      #07090d
+    ) !important;
+}
+
+
+.page[data-prompt-injection-insight-redesign="v96"]
+.continuationGroupV96
+> [data-prompt-injection-continuation="actions"] {
+  min-height: 0 !important;
+
+  margin: 0 !important;
+
+  padding-top:
+    1.5rem !important;
+
+  padding-bottom:
+    clamp(
+      4.25rem,
+      5vw,
+      5rem
+    ) !important;
+
+  background:
+    var(
+      --pi-bg,
+      #07090d
+    ) !important;
+}
+
+
+.page[data-prompt-injection-insight-redesign="v96"]
+.continuationGroupV96
+.finalCta
+.finalCtaInner {
+  min-height: 0 !important;
+
+  padding-top: 2rem;
+
+  border-top:
+    1px solid
+    var(
+      --pi-line,
+      rgba(
+        161,
+        226,
+        240,
+        0.13
+      )
+    );
+}
+
+
+/* ==========================================================================
+   06 — MOBILE RELATED RESEARCH
+   ========================================================================== */
+
+
+@media (max-width: 760px) {
+
+  .page[data-prompt-injection-insight-redesign="v96"]
+  [data-prompt-injection-related="v96"]
+  > .relatedItem {
+    grid-template-columns:
+      2.25rem
+      minmax(
+        0,
+        1fr
+      ) !important;
+
+    gap:
+      0.85rem
+      1rem !important;
+
+    align-items: start;
+  }
+
+
+  .page[data-prompt-injection-insight-redesign="v96"]
+  [data-prompt-injection-related="v96"]
+  > .relatedItem
+  .relatedSummary {
+    grid-column: 2;
+  }
+
+
+  .page[data-prompt-injection-insight-redesign="v96"]
+  [data-prompt-injection-related="v96"]
+  > .relatedItem
+  > span:last-child {
+    grid-column: 2;
+  }
+
+}
+
+
+/* ==========================================================================
+   07 — FOCUS / REDUCED MOTION
+   ========================================================================== */
+
+
+.page[data-prompt-injection-insight-redesign="v96"] a:focus-visible {
+  outline:
+    2px solid
+    var(
+      --pi-cyan,
+      #a1e2f0
+    );
+
+  outline-offset: 4px;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  .page[data-prompt-injection-insight-redesign="v96"] * {
+    scroll-behavior: auto;
+  }
+
+}
