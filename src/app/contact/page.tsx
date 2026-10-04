@@ -29,12 +29,14 @@ export default function ContactPage() {
         styles.page
       }
       data-contact-design="v12-simple"
+      data-contact-redesign="v101"
     >
       <section
         className={
-          styles.intro
+          styles.contactStage
         }
         aria-labelledby="contact-title"
+        data-contact-section="direct-contact"
       >
         <Container
           size="wide"
@@ -44,137 +46,153 @@ export default function ContactPage() {
         >
           <div
             className={
-              styles.introInner
+              styles.contactGrid
             }
           >
-            <p
+            <div
               className={
-                styles.eyebrow
+                styles.intro
               }
             >
-              Contact
-            </p>
+              <div
+                className={
+                  styles.introInner
+                }
+              >
+                <p
+                  className={
+                    styles.eyebrow
+                  }
+                >
+                  Contact
+                </p>
 
 
-            <h1
-              id="contact-title"
-            >
-              Get in touch.
-            </h1>
+                <h1
+                  id="contact-title"
+                >
+                  Get in touch.
+                </h1>
 
 
-            <p
+                <p
+                  className={
+                    styles.lead
+                  }
+                >
+                  You can contact us directly by email or connect with us on
+                  LinkedIn.
+                </p>
+              </div>
+            </div>
+
+
+            <div
               className={
-                styles.lead
+                styles.channels
               }
+              aria-label="Contact options"
             >
-              You can contact us directly by email or connect with us on
-              LinkedIn.
-            </p>
-          </div>
-        </Container>
-      </section>
-
-
-      <section
-        className={
-          styles.channels
-        }
-        aria-label="Contact options"
-      >
-        <Container
-          size="wide"
-          className={
-            styles.container
-          }
-        >
-          <div
-            className={
-              styles.channelList
-            }
-          >
-            <a
-              className={
-                styles.channel
-              }
-              href={
-                `mailto:${emailAddress}`
-              }
-              data-contact-channel="email"
-            >
-              <span
+              <p
                 className={
-                  styles.channelLabel
+                  styles.directoryLabel
                 }
               >
-                Email
-              </span>
+                Direct contact
+              </p>
 
 
-              <span
+              <div
                 className={
-                  styles.channelValue
+                  styles.channelList
                 }
               >
-                {emailAddress}
-              </span>
+                <a
+                  className={
+                    styles.channel
+                  }
+                  href={
+                    `mailto:${emailAddress}`
+                  }
+                  data-contact-channel="email"
+                  data-contact-priority="primary"
+                >
+                  <span
+                    className={
+                      styles.channelLabel
+                    }
+                  >
+                    Email
+                  </span>
 
 
-              <span
-                className={
-                  styles.channelAction
-                }
-                aria-hidden="true"
-              >
-                Write to us
-                <span>
-                  ↗
-                </span>
-              </span>
-            </a>
+                  <span
+                    className={
+                      styles.channelValue
+                    }
+                  >
+                    {emailAddress}
+                  </span>
 
 
-            <a
-              className={
-                styles.channel
-              }
-              href={
-                linkedInUrl
-              }
-              target="_blank"
-              rel="noreferrer"
-              data-contact-channel="linkedin"
-            >
-              <span
-                className={
-                  styles.channelLabel
-                }
-              >
-                LinkedIn
-              </span>
+                  <span
+                    className={
+                      styles.channelAction
+                    }
+                    aria-hidden="true"
+                  >
+                    Write to us
+                    <span>
+                      ↗
+                    </span>
+                  </span>
+                </a>
 
 
-              <span
-                className={
-                  styles.channelValue
-                }
-              >
-                No Breach
-              </span>
+                <a
+                  className={
+                    styles.channel
+                  }
+                  href={
+                    linkedInUrl
+                  }
+                  target="_blank"
+                  rel="noreferrer"
+                  data-contact-channel="linkedin"
+                  data-contact-priority="secondary"
+                >
+                  <span
+                    className={
+                      styles.channelLabel
+                    }
+                  >
+                    LinkedIn
+                  </span>
 
 
-              <span
-                className={
-                  styles.channelAction
-                }
-                aria-hidden="true"
-              >
-                Connect
-                <span>
-                  ↗
-                </span>
-              </span>
-            </a>
+                  <span
+                    className={
+                      styles.channelValue
+                    }
+                  >
+                    No Breach
+                  </span>
+
+
+                  <span
+                    className={
+                      styles.channelAction
+                    }
+                    aria-hidden="true"
+                  >
+                    Connect
+                    <span>
+                      ↗
+                    </span>
+                  </span>
+                </a>
+              </div>
+            </div>
           </div>
         </Container>
       </section>

@@ -395,3 +395,553 @@
   }
 
 }
+
+
+/* ==========================================================================
+   NB_CONTACT_COMPOSITION_V101
+
+   Compact, direct-contact composition.
+
+   Content remains intentionally minimal:
+   - orientation
+   - email
+   - LinkedIn
+
+   No filler sections are introduced.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   PAGE / STAGE
+   -------------------------------------------------------------------------- */
+
+
+.page[data-contact-redesign="v101"] {
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+
+.page[data-contact-redesign="v101"] .contactStage {
+  min-height: 0 !important;
+  height: auto !important;
+
+  padding-top:
+    clamp(
+      4rem,
+      6vw,
+      5.5rem
+    );
+
+  padding-bottom:
+    clamp(
+      4rem,
+      6vw,
+      5.5rem
+    );
+
+  background:
+    #07090d;
+}
+
+
+.page[data-contact-redesign="v101"] .container {
+  width: 100%;
+}
+
+
+/* --------------------------------------------------------------------------
+   DESKTOP COMPOSITION
+   -------------------------------------------------------------------------- */
+
+
+.page[data-contact-redesign="v101"] .contactGrid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      5fr
+    )
+    minmax(
+      0,
+      7fr
+    );
+
+  gap:
+    clamp(
+      4rem,
+      7vw,
+      7.5rem
+    );
+
+  align-items: start;
+}
+
+
+.page[data-contact-redesign="v101"] .intro,
+.page[data-contact-redesign="v101"] .channels {
+  min-height: 0 !important;
+  height: auto !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+
+.page[data-contact-redesign="v101"] .introInner {
+  width: 100%;
+  max-width: 34rem;
+}
+
+
+.page[data-contact-redesign="v101"] .eyebrow,
+.page[data-contact-redesign="v101"] .directoryLabel {
+  margin: 0;
+
+  font-size:
+    0.72rem;
+
+  font-weight:
+    600;
+
+  line-height:
+    1.2;
+
+  letter-spacing:
+    0.18em;
+
+  text-transform:
+    uppercase;
+
+  color:
+    #a9b0bb;
+}
+
+
+.page[data-contact-redesign="v101"] .introInner h1 {
+  max-width: 10ch;
+
+  margin:
+    1.5rem
+    0
+    0;
+
+  font-size:
+    clamp(
+      4rem,
+      6vw,
+      6.15rem
+    );
+
+  font-weight:
+    500;
+
+  line-height:
+    0.98;
+
+  letter-spacing:
+    -0.055em;
+
+  color:
+    #f4f7fb;
+}
+
+
+.page[data-contact-redesign="v101"] .lead {
+  max-width: 31rem;
+
+  margin:
+    2rem
+    0
+    0;
+
+  font-size:
+    clamp(
+      1rem,
+      1.2vw,
+      1.16rem
+    );
+
+  line-height:
+    1.7;
+
+  color:
+    #aeb5c0;
+}
+
+
+/* --------------------------------------------------------------------------
+   CONTACT DIRECTORY
+   -------------------------------------------------------------------------- */
+
+
+.page[data-contact-redesign="v101"] .channels {
+  width: 100%;
+}
+
+
+.page[data-contact-redesign="v101"] .directoryLabel {
+  margin-bottom:
+    1.35rem;
+}
+
+
+.page[data-contact-redesign="v101"] .channelList {
+  width: 100% !important;
+  max-width: none !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border-top:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.16
+    );
+}
+
+
+.page[data-contact-redesign="v101"] .channel {
+  display: grid !important;
+
+  grid-template-columns:
+    minmax(
+      7.5rem,
+      0.42fr
+    )
+    minmax(
+      0,
+      1fr
+    )
+    auto;
+
+  gap:
+    clamp(
+      1.25rem,
+      2vw,
+      2rem
+    );
+
+  align-items: center;
+
+  width: 100% !important;
+  min-width: 0;
+
+  margin: 0 !important;
+
+  padding:
+    clamp(
+      1.65rem,
+      2.25vw,
+      2.15rem
+    )
+    0 !important;
+
+  border-bottom:
+    1px solid
+    rgba(
+      161,
+      226,
+      240,
+      0.14
+    );
+
+  text-decoration: none;
+
+  background:
+    transparent;
+
+  transition:
+    background-color
+    160ms
+    ease,
+    border-color
+    160ms
+    ease;
+}
+
+
+.page[data-contact-redesign="v101"] .channel:hover {
+  background:
+    rgba(
+      161,
+      226,
+      240,
+      0.025
+    );
+
+  border-bottom-color:
+    rgba(
+      161,
+      226,
+      240,
+      0.28
+    );
+}
+
+
+.page[data-contact-redesign="v101"] .channel:focus-visible {
+  outline:
+    2px solid
+    #a1e2f0;
+
+  outline-offset:
+    4px;
+}
+
+
+.page[data-contact-redesign="v101"] .channelLabel {
+  font-size:
+    0.72rem;
+
+  font-weight:
+    600;
+
+  line-height:
+    1.25;
+
+  letter-spacing:
+    0.16em;
+
+  text-transform:
+    uppercase;
+
+  color:
+    #888f9a;
+}
+
+
+.page[data-contact-redesign="v101"] .channelValue {
+  min-width: 0;
+
+  overflow-wrap:
+    anywhere;
+
+  font-size:
+    clamp(
+      1.15rem,
+      1.55vw,
+      1.45rem
+    );
+
+  font-weight:
+    500;
+
+  line-height:
+    1.3;
+
+  letter-spacing:
+    -0.02em;
+
+  color:
+    #eff3f8;
+}
+
+
+.page[data-contact-redesign="v101"] .channelAction {
+  display: inline-flex;
+
+  gap:
+    0.7rem;
+
+  align-items: center;
+
+  justify-self: end;
+
+  white-space: nowrap;
+
+  font-size:
+    0.9rem;
+
+  font-weight:
+    600;
+
+  line-height:
+    1.2;
+
+  color:
+    #9fdfee;
+}
+
+
+/*
+ * Email is the direct-contact path described by the page copy.
+ * Give it a restrained hierarchy advantage without turning it into a card.
+ */
+
+.page[data-contact-redesign="v101"]
+[data-contact-priority="primary"]
+.channelValue {
+  color:
+    #ffffff;
+
+  font-weight:
+    550;
+}
+
+
+.page[data-contact-redesign="v101"]
+[data-contact-priority="primary"]
+.channelAction {
+  color:
+    #b4eef8;
+}
+
+
+.page[data-contact-redesign="v101"]
+[data-contact-priority="secondary"]
+.channelAction {
+  color:
+    #8fcbd9;
+}
+
+
+/* --------------------------------------------------------------------------
+   TABLET
+   -------------------------------------------------------------------------- */
+
+
+@media (max-width: 1000px) {
+
+  .page[data-contact-redesign="v101"] .contactStage {
+    padding-top:
+      3.75rem;
+
+    padding-bottom:
+      4rem;
+  }
+
+
+  .page[data-contact-redesign="v101"] .contactGrid {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      );
+
+    gap:
+      4rem;
+  }
+
+
+  .page[data-contact-redesign="v101"] .introInner {
+    max-width:
+      42rem;
+  }
+
+
+  .page[data-contact-redesign="v101"] .introInner h1 {
+    max-width:
+      none;
+  }
+
+}
+
+
+/* --------------------------------------------------------------------------
+   MOBILE
+   -------------------------------------------------------------------------- */
+
+
+@media (max-width: 640px) {
+
+  .page[data-contact-redesign="v101"] .contactStage {
+    padding-top:
+      3rem;
+
+    padding-bottom:
+      3.5rem;
+  }
+
+
+  .page[data-contact-redesign="v101"] .contactGrid {
+    gap:
+      3.25rem;
+  }
+
+
+  .page[data-contact-redesign="v101"] .introInner h1 {
+    font-size:
+      clamp(
+        3.2rem,
+        15vw,
+        4.5rem
+      );
+  }
+
+
+  .page[data-contact-redesign="v101"] .lead {
+    margin-top:
+      1.5rem;
+
+    font-size:
+      1rem;
+  }
+
+
+  .page[data-contact-redesign="v101"] .channel {
+    grid-template-columns:
+      minmax(
+        0,
+        1fr
+      )
+      auto;
+
+    gap:
+      0.7rem
+      1rem;
+
+    align-items:
+      start;
+
+    padding:
+      1.5rem
+      0 !important;
+  }
+
+
+  .page[data-contact-redesign="v101"] .channelLabel {
+    grid-column:
+      1
+      /
+      -1;
+  }
+
+
+  .page[data-contact-redesign="v101"] .channelValue {
+    grid-column:
+      1;
+
+    font-size:
+      1.08rem;
+  }
+
+
+  .page[data-contact-redesign="v101"] .channelAction {
+    grid-column:
+      2;
+
+    align-self:
+      center;
+  }
+
+}
+
+
+/* --------------------------------------------------------------------------
+   REDUCED MOTION
+   -------------------------------------------------------------------------- */
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  .page[data-contact-redesign="v101"] .channel {
+    transition:
+      none;
+  }
+
+}
