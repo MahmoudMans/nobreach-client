@@ -542,6 +542,7 @@ export function ManualReasoningInsightV55() {
         `${sharedArticleStyles.article} ${styles.page}`
       }
       data-manual-reasoning-insight-design="v55"
+      data-manual-reasoning-insight-redesign="v100"
       data-insight-slug="manual-reasoning-in-web-security-testing"
     >
 
@@ -742,7 +743,9 @@ export function ManualReasoningInsightV55() {
               styles.reasoningTrack
             }
             data-reasoning-loop="v55"
-            aria-hidden="true"
+            data-reasoning-loop-redesign="v100"
+            role="list"
+            aria-label="Manual testing loop"
           >
             {
               [
@@ -780,6 +783,7 @@ export function ManualReasoningInsightV55() {
                     className={
                       styles.reasoningStep
                     }
+                    role="listitem"
                     key={
                       item[
                         0
@@ -828,6 +832,7 @@ export function ManualReasoningInsightV55() {
                             className={
                               styles.connector
                             }
+                            aria-hidden="true"
                           >
                             →
                           </span>
@@ -1291,6 +1296,13 @@ export function ManualReasoningInsightV55() {
           RELATED RESEARCH
          ================================================================ */}
 
+      <div
+        className={
+          styles.continuationGroupV100
+        }
+        data-manual-reasoning-continuation-group="v100"
+      >
+
       {
         relatedResearch.length
         >
@@ -1302,6 +1314,7 @@ export function ManualReasoningInsightV55() {
                 `${sharedArticleStyles.relatedSection} ${styles.related}`
               }
               data-insight-section="related"
+              data-manual-reasoning-continuation="research"
             >
               <Container
                 size="wide"
@@ -1329,16 +1342,7 @@ export function ManualReasoningInsightV55() {
                   </div>
 
 
-                  <Link
-                    href="/insights"
-                    className={
-                      styles.textAction
-                    }
-                  >
-                    All insights
 
-                    <Arrow />
-                  </Link>
                 </header>
 
 
@@ -1346,6 +1350,7 @@ export function ManualReasoningInsightV55() {
                   className={
                     `${sharedArticleStyles.relatedGrid} ${styles.relatedRows}`
                   }
+                  data-manual-reasoning-related="v100"
                 >
                   {
                     relatedResearch.map(
@@ -1431,6 +1436,7 @@ export function ManualReasoningInsightV55() {
           styles.finalCta
         }
         data-insight-section="final-cta"
+        data-manual-reasoning-continuation="actions"
       >
         <Container
           size="wide"
@@ -1480,12 +1486,14 @@ export function ManualReasoningInsightV55() {
                   styles.secondaryAction
                 }
               >
-                More research
+                All insights
               </Link>
             </div>
           </div>
         </Container>
       </section>
+
+      </div>
 
     </article>
   );
