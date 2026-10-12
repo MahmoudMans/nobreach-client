@@ -52,9 +52,13 @@ const programs:
 
       registrationUrl:
         "https://forms.gle/32b6mUKhYWbpz6NF6"
+    },
+    {
+      slug: "grc-enterprise",
+      name: "GRC Enterprise Training Program",
+      registrationUrl: "https://forms.gle/D1wVFRqS1PRFgCzNA"
     }
   ];
-
 
 function getProgram(
   slug:

@@ -1016,7 +1016,7 @@ export default function EventsPage() {
                   styles.eyebrow
                 }
               >
-                NOBREACH / EVENTS
+                No Breach / EVENTS
               </p>
 
 

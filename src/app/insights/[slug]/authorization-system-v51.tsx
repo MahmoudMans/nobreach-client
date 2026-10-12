@@ -749,7 +749,7 @@ export function AuthorizationSystemInsightV51() {
                 </span>
 
                 <span>
-                  NOBREACH
+                  No Breach
                 </span>
               </div>
 

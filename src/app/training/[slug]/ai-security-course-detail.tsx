@@ -286,7 +286,7 @@ export function AISecurityCourseDetail() {
                   styles.enrollmentDescription
                 }
               >
-                Speak with NoBreach
+                Speak with No Breach
                 about access,
                 delivery format,
                 team training,
@@ -384,7 +384,7 @@ export function AISecurityCourseDetail() {
                   styles.enrollmentNote
                 }
               >
-                NoBreach Academy /
+                No Breach Academy /
                 practical cybersecurity
                 education
               </p>
@@ -972,7 +972,7 @@ export function AISecurityCourseDetail() {
 
 
             <h2>
-              Related NoBreach
+              Related No Breach
               programs.
             </h2>
 
@@ -1011,7 +1011,7 @@ export function AISecurityCourseDetail() {
                       }
                     >
                       <span>
-                        NOBREACH ACADEMY
+                        No Breach Academy
                       </span>
 
                       <span>
@@ -1105,7 +1105,7 @@ export function AISecurityCourseDetail() {
                   styles.eyebrow
                 }
               >
-                NOBREACH ACADEMY
+                No Breach Academy
               </p>
 
 
@@ -1119,7 +1119,7 @@ export function AISecurityCourseDetail() {
                 Explore the full
                 training catalogue
                 or speak with
-                NoBreach about
+                No Breach about
                 a program for
                 your team.
               </p>
@@ -1147,7 +1147,7 @@ export function AISecurityCourseDetail() {
                   styles.secondaryButton
                 }
               >
-                Talk to NoBreach
+                Talk to No Breach
               </Link>
             </div>
           </div>

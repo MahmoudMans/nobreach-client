@@ -125,7 +125,7 @@ export default async function InsightsPage({
                 indexStyles.eyebrow
               }
             >
-              NOBREACH / RESEARCH
+              No Breach / RESEARCH
             </p>
 
 

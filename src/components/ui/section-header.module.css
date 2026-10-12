@@ -243,3 +243,48 @@
   margin-top:
     0.55rem;
 }
+
+/* NB_CROSS_SITE_FINISH_V1_START */
+.header {
+  gap: clamp(1.2rem, 3vw, 3rem);
+}
+
+.eyebrow {
+  color: #92eaf2;
+  font-size: .68rem;
+  letter-spacing: .13em;
+}
+
+.title {
+  color: #f5faff;
+  font-size: clamp(1.95rem, 3.55vw, 3.4rem);
+  font-weight: 660;
+  letter-spacing: -.054em;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.description {
+  max-width: 63ch;
+  color: #bfd1e0;
+  font-size: 1.01rem;
+  line-height: 1.76;
+}
+
+@media (max-width: 860px) {
+  .header {
+    grid-template-columns: minmax(0, 1fr);
+    gap: .8rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .title {
+    font-size: clamp(1.8rem, 8.2vw, 2.6rem);
+  }
+
+  .description {
+    font-size: .97rem;
+  }
+}
+/* NB_CROSS_SITE_FINISH_V1_END */

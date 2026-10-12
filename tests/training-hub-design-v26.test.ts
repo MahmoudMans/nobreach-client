@@ -67,7 +67,7 @@ describe(
         expect(
           normalizedPage
         ).toContain(
-          "Explore public learning programs in offensive security, web security and AI security."
+          "Explore public learning programs in offensive security, web security, AI security and enterprise GRC."
         );
 
         expect(

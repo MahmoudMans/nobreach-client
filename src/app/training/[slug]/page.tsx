@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { GrcEnterpriseCourseDetail } from "./grc-enterprise-course-detail";
 import { Breadcrumbs } from "@/components/navigation/breadcrumbs";
 import { TrainingStructuredData } from "@/components/training/training-structured-data";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -76,6 +77,15 @@ export default async function TrainingProgramPage({
 
   if (!program) {
     notFound();
+  }
+
+  if (program.slug === "grc-enterprise") {
+    return (
+      <>
+        <TrainingStructuredData program={program} />
+        <GrcEnterpriseCourseDetail program={program} />
+      </>
+    );
   }
 
   const relatedInsights =

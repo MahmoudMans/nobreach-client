@@ -233,6 +233,73 @@ export const trainingPrograms:
         "Awareness of tool-use authorization problems",
         "Ability to connect AI security to conventional application security"
       ]
+    },
+    {
+      slug: "grc-enterprise",
+      title: "GRC Enterprise Training Program",
+      category: "Governance, Risk & Compliance",
+      summary: "Build practical, enterprise-grade GRC capability with ISO 27001, NIST CSF, SOC 2 and GDPR, from risk registers to audit-ready evidence.",
+      description: "Learn to translate technical security findings into business risk, map controls across major frameworks, build audit-ready GRC artifacts and present an enterprise GRC roadmap.",
+      level: "Professional / Enterprise",
+      format: "Live training · 2 sessions per week",
+      duration: "3 weeks · 6 sessions · 1.5–2 hours each",
+      status: "available",
+      objectives: [
+        "Translate pentest and vulnerability findings, including CVSS context, into business risk and remediation priorities",
+        "Create and maintain a risk register with defensible risk statements",
+        "Map ISO 27001, NIST CSF, SOC 2 and GDPR into a unified control matrix",
+        "Perform gap analysis, control testing and audit-evidence organization",
+        "Understand enterprise GRC platform workflows in ServiceNow, Archer and OneTrust",
+        "Present a maturity-informed GRC program roadmap and 12-month plan"
+      ],
+      modules: [
+        {
+          number: "01",
+          title: "Technical findings to business risk",
+          description: "Interpret vulnerability and pentest outputs, CVSS and business context to express risk in language decision-makers can use."
+        },
+        {
+          number: "02",
+          title: "Risk registers and treatment priorities",
+          description: "Structure risk statements, owners, likelihood, impact and remediation priorities into working risk-register artifacts."
+        },
+        {
+          number: "03",
+          title: "Cross-framework control mapping",
+          description: "Connect ISO 27001, NIST CSF, SOC 2 and GDPR through a unified, reusable control matrix."
+        },
+        {
+          number: "04",
+          title: "Gap analysis, controls and audit evidence",
+          description: "Work with gap analyses, evidence repositories and control testing as practical audit-readiness activities."
+        },
+        {
+          number: "05",
+          title: "Enterprise GRC platforms",
+          description: "Understand GRC workflows and platform concepts associated with ServiceNow, Archer and OneTrust."
+        },
+        {
+          number: "06",
+          title: "Maturity, executive reporting and roadmap",
+          description: "Translate findings and maturity assessments into a defensible 12-month enterprise GRC plan and capstone presentation."
+        }
+      ],
+      prerequisites: [
+        "Specific entry prerequisites have not been published; contact No Breach for suitability guidance."
+      ],
+      audience: [
+        "Learners preparing for GRC, risk, compliance or IT audit roles",
+        "Security practitioners translating technical findings into business decisions",
+        "Consultants and security professionals who work with risk and audit stakeholders",
+        "Students seeking practical enterprise GRC experience"
+      ],
+      outcomes: [
+        "A practice-oriented risk register and findings-to-risk workflow",
+        "A cross-framework control mapping approach for ISO 27001, NIST CSF, SOC 2 and GDPR",
+        "A repeatable gap-analysis and audit-evidence workflow",
+        "A maturity-informed 12-month GRC roadmap for capstone presentation",
+        "An included program certificate with portfolio and resume value"
+      ]
     }
   ];
 

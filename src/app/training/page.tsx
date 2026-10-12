@@ -26,7 +26,7 @@ export const metadata =
       "Training | No Breach",
 
     description:
-      "Compare public No Breach cybersecurity learning programs across offensive security, web security and AI security.",
+      "Compare public No Breach cybersecurity learning programs across offensive security, web security, AI security and enterprise GRC.",
 
     path:
       "/training"
@@ -109,7 +109,7 @@ const faqs = [
       "What does an archived program mean?",
 
     answer:
-      "Archived identifies a program that is not currently presented as an active public edition. You can still review the program and contact NoBreach about future availability."
+      "Archived identifies a program that is not currently presented as an active public edition. You can still review the program and contact No Breach about future availability."
   },
   {
     question:
@@ -191,7 +191,7 @@ export default function TrainingPage() {
               }
             >
               Explore public learning programs in offensive security, web
-              security and AI security. Compare their technical focus, stated
+              security, AI security and enterprise GRC. Compare their technical focus, stated
               level, learning format and intended outcomes.
             </p>
 

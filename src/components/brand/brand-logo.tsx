@@ -32,7 +32,7 @@ export function BrandLogo({
         className
       }
       src="/brand/nobreachlogo.png"
-      alt="NoBreach"
+      alt="No Breach"
       width={876}
       height={280}
       priority={

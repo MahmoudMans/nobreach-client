@@ -1182,3 +1182,264 @@ li {
   }
 
 }
+
+/* NB_ACTIVITY_INSIGHTS_PREMIUM_V1_START */
+.page {
+  --hub-bg: #07101b;
+  --hub-surface: #0b1725;
+  --hub-raised: #14263a;
+  --hub-text: #f5f9ff;
+  --hub-secondary: #c2d2e2;
+  --hub-muted: #a6b8cd;
+  --hub-border: rgba(150, 195, 224, .26);
+  --hub-border-strong: rgba(157, 207, 232, .43);
+  --hub-accent: #92eaf2;
+  --hub-accent-hover: #c8f7fa;
+
+  --launch-bg: #07101b;
+  --launch-surface: #0b1725;
+  --launch-raised: #14263a;
+  --launch-text: #f5f9ff;
+  --launch-secondary: #c2d2e2;
+  --launch-muted: #a6b8cd;
+  --launch-border: rgba(150, 195, 224, .26);
+  --launch-accent: #92eaf2;
+
+  --cr-bg: #07101b;
+  --cr-surface: #0b1725;
+  --cr-surface-raised: #14263a;
+  --cr-text: #f5f9ff;
+  --cr-text-secondary: #c2d2e2;
+  --cr-text-muted: #a6b8cd;
+  --cr-border: rgba(150, 195, 224, .26);
+  --cr-border-strong: rgba(157, 207, 232, .43);
+  --cr-accent: #92eaf2;
+
+  --rt-bg: #07101b;
+  --rt-alt: #0b1725;
+  --rt-raised: #14263a;
+  --rt-text: #f5f9ff;
+  --rt-secondary: #c2d2e2;
+  --rt-muted: #a6b8cd;
+  --rt-cyan: #92eaf2;
+  --rt-line: rgba(150, 195, 224, .26);
+
+  --ai-bg: #07101b;
+  --ai-alt: #0b1725;
+  --ai-raised: #14263a;
+  --ai-text: #f5f9ff;
+  --ai-secondary: #c2d2e2;
+  --ai-muted: #a6b8cd;
+  --ai-cyan: #92eaf2;
+  --ai-line: rgba(150, 195, 224, .26);
+}
+
+.page .intro {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(3.9rem, 6.5vw, 6.4rem);
+  background:
+    radial-gradient(ellipse 49% 69% at 91% 10%, rgba(128, 120, 233, .19), transparent 78%),
+    radial-gradient(ellipse 45% 65% at 6% 15%, rgba(77, 201, 223, .10), transparent 78%),
+    linear-gradient(130deg, #102035, #07101b 80%);
+  border-bottom: 1px solid rgba(150, 195, 224, .25);
+}
+
+.page .intro::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .19;
+  background-image:
+    linear-gradient(rgba(157, 207, 233, .12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(157, 207, 233, .12) 1px, transparent 1px);
+  background-size: 70px 70px;
+  mask-image: linear-gradient(90deg, transparent, #000);
+}
+
+.page .introGrid {
+  position: relative;
+  z-index: 1;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.page .introCopy h1 {
+  font-size: clamp(2.8rem, 5.1vw, 5.15rem);
+  font-weight: 690;
+  line-height: 1.03;
+  letter-spacing: -.059em;
+  text-wrap: balance;
+}
+
+.page :is(
+  .eyebrow,
+  .sectionEyebrow,
+  .archiveLabel
+) {
+  color: #92eaf2;
+}
+
+.page :is(
+  .summary,
+  .introLead,
+  .largeCopy,
+  .continueLead,
+  .relatedLead
+) {
+  color: #c2d2e2;
+  line-height: 1.76;
+}
+
+.page :is(
+  .trainingSignal,
+  .cr4ckoutSignal,
+  .editionSignal,
+  .recordContext
+) {
+  border: 1px solid rgba(155, 201, 230, .35);
+  border-radius: 1.08rem;
+  padding: clamp(1.15rem, 2vw, 2rem);
+  background: linear-gradient(145deg, #182e46, #0e1e30);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, .22);
+}
+
+.page :is(
+  .facts,
+  .factList,
+  .recordFacts
+) {
+  border-color: rgba(155, 201, 230, .29);
+}
+
+.page :is(
+  .section,
+  .contentSection,
+  .recordSection,
+  .context,
+  .learningSection
+) {
+  border-color: rgba(155, 201, 230, .22);
+}
+
+.page .sectionHeading h2 {
+  font-size: clamp(2rem, 3.45vw, 3.4rem);
+  font-weight: 665;
+  line-height: 1.12;
+  letter-spacing: -.05em;
+  text-wrap: balance;
+}
+
+.page :is(
+  .highlightRow,
+  .recordRow,
+  .formatRow
+) {
+  border-color: rgba(155, 201, 230, .24);
+}
+
+.page :is(.narrativeCard, .recordRow) {
+  border: 1px solid rgba(155, 201, 230, .27);
+  border-radius: .9rem;
+  background: #132539;
+}
+
+.page .narrativeCard {
+  padding: clamp(1.25rem, 2vw, 1.95rem);
+}
+
+.page .recordRow {
+  padding: clamp(1rem, 1.75vw, 1.65rem);
+}
+
+.page :is(
+  .narrativeIndex,
+  .recordIndex,
+  .recordNumber
+) {
+  color: #92eaf2;
+}
+
+.page :is(.primaryAction, .secondaryAction) {
+  border-radius: .75rem;
+  font-weight: 700;
+  transition:
+    transform .2s ease,
+    background-color .2s ease,
+    border-color .2s ease;
+}
+
+.page .primaryAction {
+  background: linear-gradient(110deg, #b6f4f7, #80dfe9);
+  border-color: #b6f4f7;
+  color: #081821;
+}
+
+.page .primaryAction:hover {
+  background: #d1fafb;
+  transform: translateY(-2px);
+}
+
+.page .secondaryAction {
+  border-color: rgba(159, 206, 234, .52);
+  background: rgba(139, 198, 231, .055);
+}
+
+.page .secondaryAction:hover {
+  border-color: #92eaf2;
+  background: rgba(146, 234, 242, .09);
+  transform: translateY(-2px);
+}
+
+.page :is(
+  .finalCta,
+  .continueSection,
+  .relatedSection,
+  .context
+) {
+  background-color: #0c1a2b;
+}
+
+@media (max-width: 950px) {
+  .page .introGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .page .intro {
+    padding-block: 3.2rem 3.8rem;
+  }
+
+  .page .introCopy h1 {
+    max-width: 100%;
+    font-size: clamp(2.5rem, 10vw, 3.65rem);
+  }
+
+  .page :is(
+    .introActions,
+    .contextActions,
+    .continueActions,
+    .relatedActions
+  ) {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .page .primaryAction,
+  .page .secondaryAction {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page *,
+  .page *::before,
+  .page *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* NB_ACTIVITY_INSIGHTS_PREMIUM_V1_END */

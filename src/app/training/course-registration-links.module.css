@@ -410,3 +410,77 @@
   }
 
 }
+
+/* NB_TRAINING_PREMIUM_REFRESH_V1_START */
+.registration {
+  border-bottom: 1px solid rgba(146, 234, 242, .22);
+  background: linear-gradient(100deg, #102337, #091524 75%);
+  color: #f5f9ff;
+}
+
+.container {
+  width: min(calc(100% - 40px), 1180px);
+  min-height: 80px;
+}
+
+.label {
+  color: #92eaf2;
+}
+
+.prompt {
+  color: #bbcede;
+}
+
+.actions {
+  gap: .75rem;
+}
+
+.action {
+  border: 1px solid rgba(162, 204, 231, .34);
+  border-radius: .75rem;
+  background: rgba(168, 210, 238, .045);
+  transition:
+    border-color .2s ease,
+    background-color .2s ease,
+    transform .2s ease;
+}
+
+.action:hover {
+  transform: translateY(-2px);
+  border-color: rgba(146, 234, 242, .68);
+  background: rgba(146, 234, 242, .09);
+}
+
+.actionProgram {
+  color: #d4e4f3;
+}
+
+.actionButton {
+  border-radius: .5rem;
+  color: #07161d;
+  background: linear-gradient(110deg, #b8f5f7, #86e3eb);
+}
+
+@media (max-width: 640px) {
+  .container {
+    width: min(calc(100% - 32px), 1180px);
+  }
+
+  .action {
+    width: 100%;
+  }
+}
+
+@media (hover: none) {
+  .action:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .action,
+  .actionButton span {
+    transition: none !important;
+  }
+}
+/* NB_TRAINING_PREMIUM_REFRESH_V1_END */

@@ -60,7 +60,7 @@ describe(
         expect(
           brand
         ).toContain(
-          'alt="NoBreach"'
+          'alt="No Breach"'
         );
 
       }

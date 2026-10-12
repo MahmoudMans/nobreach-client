@@ -1762,3 +1762,422 @@ div {
   }
 
 }
+
+/* NB_EVENTS_CR4CKOUT_PREMIUM_V1_START */
+.page {
+  --ev-canvas: #07101b;
+  --ev-surface: #112238;
+  --ev-text: #f5f9ff;
+  --ev-copy: #c2d2e3;
+  --ev-muted: #a5b9cf;
+  --ev-line: rgba(153, 198, 230, .26);
+  --ev-cyan: #8feaf3;
+  --ev-violet: #bbadff;
+
+  background: var(--ev-canvas);
+  color: var(--ev-text);
+}
+
+.page a:focus-visible {
+  outline: 2px solid var(--ev-cyan);
+  outline-offset: 4px;
+}
+
+.page :is(.primaryAction, .secondaryAction) {
+  min-height: 3.1rem;
+  padding: .83rem 1.2rem;
+  border-radius: .8rem;
+  font-size: .92rem;
+  font-weight: 700;
+
+  transition:
+    transform .22s ease,
+    box-shadow .22s ease,
+    border-color .22s ease,
+    background .22s ease;
+}
+
+.page .primaryAction {
+  border: 1px solid #adf3f7;
+  background:
+    linear-gradient(115deg, #b9f5f6, #80e1ed);
+
+  color: #081721;
+
+  box-shadow:
+    0 12px 32px rgba(96, 219, 235, .13);
+}
+
+.page .primaryAction:hover {
+  transform: translateY(-2px);
+  background: #d1fafb;
+
+  box-shadow:
+    0 18px 40px rgba(96, 219, 235, .20);
+}
+
+.page .secondaryAction {
+  border: 1px solid rgba(173, 207, 234, .50);
+  background: rgba(165, 203, 233, .045);
+  color: #d0eaff;
+}
+
+.page .secondaryAction:hover {
+  transform: translateY(-2px);
+  border-color: var(--ev-cyan);
+  background: rgba(143, 234, 243, .10);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page *,
+  .page *::before,
+  .page *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.page {
+  --cr-bg: #07101b;
+  --cr-alt: #0b1725;
+  --cr-raised: #13253a;
+  --cr-hover: #1c3049;
+  --cr-text: #f5f9ff;
+  --cr-secondary: #c2d2e3;
+  --cr-muted: #a5b9cf;
+  --cr-cyan: #8feaf3;
+  --cr-violet: #bbadff;
+  --cr-control: #7799b7;
+  --cr-line: rgba(153, 198, 230, .26);
+}
+
+/* IMMERSIVE HERO */
+
+.page .hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  padding-block:
+    clamp(4.3rem, 7.5vw, 7.4rem)
+    clamp(4.1rem, 6vw, 6rem);
+
+  background:
+    radial-gradient(
+      ellipse 51% 70% at 88% 15%,
+      rgba(115, 105, 227, .24),
+      transparent 75%
+    ),
+    radial-gradient(
+      ellipse 42% 60% at 7% 10%,
+      rgba(66, 215, 230, .13),
+      transparent 80%
+    ),
+    linear-gradient(145deg, #101f32, #07101b 75%);
+}
+
+.page .hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .24;
+
+  background-image:
+    linear-gradient(
+      rgba(151, 198, 233, .10) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(151, 198, 233, .10) 1px,
+      transparent 1px
+    );
+
+  background-size: 70px 70px;
+  mask-image: linear-gradient(90deg, transparent, #000);
+}
+
+.page .heroGrid {
+  position: relative;
+  z-index: 1;
+  align-items: center;
+  gap: clamp(2.2rem, 5.5vw, 5.5rem);
+}
+
+.page .heroEyebrow,
+.page .sectionEyebrow,
+.page .themeCaption {
+  color: var(--ev-cyan);
+  font-size: .76rem;
+  font-weight: 700;
+  letter-spacing: .10em;
+}
+
+.page .hero h1 {
+  font-size: clamp(3.8rem, 6.8vw, 6.7rem);
+  font-weight: 740;
+  letter-spacing: -.076em;
+  line-height: .98;
+  color: #eaf6ff;
+}
+
+.page .heroHeadline {
+  max-width: 35rem;
+  font-size: clamp(1.55rem, 2.6vw, 2.25rem);
+  letter-spacing: -.04em;
+  line-height: 1.17;
+  text-wrap: balance;
+}
+
+.page .heroLead {
+  color: var(--ev-copy);
+  font-size: 1.1rem;
+  line-height: 1.76;
+}
+
+.page .eventShortcut,
+.page .textAction,
+.page .eventAction {
+  color: var(--ev-cyan);
+}
+
+/* TECHNICAL CHALLENGE DIAGRAM */
+
+.page .themeFigure {
+  overflow: hidden;
+  padding: clamp(1.2rem, 2.6vw, 2.3rem);
+
+  border: 1px solid rgba(153, 198, 230, .36);
+  border-radius: 1.25rem;
+
+  background:
+    radial-gradient(
+      circle at 80% 5%,
+      rgba(129, 112, 240, .17),
+      transparent 55%
+    ),
+    linear-gradient(145deg, #172b44, #0d1b2d);
+
+  box-shadow: 0 24px 76px rgba(0, 0, 0, .27);
+}
+
+.page .themeMap {
+  border: 1px solid var(--ev-line);
+  border-radius: .9rem;
+  background-size: 2.3rem 2.3rem;
+}
+
+.page .themeLabel {
+  border: 1px solid rgba(154, 198, 229, .45);
+  border-radius: 999px;
+
+  background: #12243a;
+  color: #d9ebfb;
+  font-weight: 650;
+}
+
+.page .themeCore {
+  border: 1px solid #96f0f5;
+
+  background:
+    radial-gradient(
+      circle at 35% 20%,
+      #25536c,
+      #0d2235
+    );
+
+  box-shadow:
+    0 0 0 8px rgba(143, 234, 243, .065),
+    0 0 33px rgba(143, 234, 243, .14);
+
+  color: #eaffff;
+}
+
+/* HERO FACTS */
+
+.page .heroFacts {
+  margin-top: 2rem;
+  border: 1px solid var(--ev-line);
+  border-radius: .8rem;
+  overflow: hidden;
+  background: rgba(19, 38, 57, .6);
+}
+
+.page .heroFacts > div {
+  padding: 1.2rem;
+}
+
+/* SECTIONS */
+
+.page .section,
+.page .host {
+  padding-block: clamp(4.5rem, 7vw, 7rem);
+  border-color: var(--ev-line);
+}
+
+.page .sectionHeading h2,
+.page .hostLayout h2 {
+  font-size: clamp(2.25rem, 3.9vw, 3.75rem);
+  line-height: 1.08;
+  letter-spacing: -.055em;
+  font-weight: 670;
+  text-wrap: balance;
+}
+
+.page .sectionDescription {
+  color: var(--ev-copy);
+  font-size: 1.05rem;
+  line-height: 1.73;
+}
+
+/* EXPERIENCE CARDS */
+
+.page .experienceGrid {
+  gap: .8rem;
+  border: 0;
+}
+
+.page .experienceGrid li {
+  padding: clamp(1.2rem, 2.2vw, 2rem);
+
+  border: 1px solid var(--ev-line);
+  border-radius: .85rem;
+
+  background:
+    linear-gradient(150deg, #15283c, #0e1e2f);
+}
+
+.page .stepIndex,
+.page .challengeIndex {
+  color: var(--ev-cyan);
+}
+
+/* CHALLENGE CATEGORIES */
+
+.page .challengeSection {
+  background: #0b1725;
+}
+
+.page .challengeRows {
+  border-top: 0;
+  display: grid;
+  gap: .7rem;
+}
+
+.page .challengeRow {
+  padding: clamp(1.25rem, 2vw, 1.85rem);
+
+  border: 1px solid var(--ev-line);
+  border-radius: .8rem;
+
+  background: rgba(17, 34, 52, .73);
+}
+
+.page .challengeRow h3 {
+  font-size: clamp(1.2rem, 1.9vw, 1.55rem);
+}
+
+/* EVENT SHOWCASE */
+
+.page .eventFeature {
+  border: 1px solid rgba(143, 234, 243, .34);
+  border-radius: 1rem;
+  padding: clamp(1.5rem, 2.8vw, 2.6rem);
+
+  background:
+    linear-gradient(145deg, #172c43, #0d1d2c);
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, .18);
+}
+
+.page .eventTopline {
+  color: #a9c7dc;
+}
+
+.page .eventSummary,
+.page .hostCopy > p {
+  color: var(--ev-copy);
+  line-height: 1.74;
+}
+
+/* HOSTING CTA */
+
+.page .host {
+  background:
+    radial-gradient(
+      ellipse at 91% 11%,
+      rgba(117, 130, 241, .17),
+      transparent 70%
+    ),
+    linear-gradient(120deg, #13283e, #081624);
+}
+
+.page .hostGuidance {
+  color: #aec2d3 !important;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 960px) {
+  .page .heroGrid,
+  .page .eventLayout,
+  .page .hostLayout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page .themeFigure {
+    max-width: 42rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .page .hero {
+    padding-block: 3.5rem 4rem;
+  }
+
+  .page .hero h1 {
+    font-size: clamp(3.1rem, 13vw, 4.8rem);
+  }
+
+  .page .themeMap {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page .themeCryptography,
+  .page .themeSteganography,
+  .page .themeAccess,
+  .page .themeCore {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .page .experienceGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page .experienceGrid li {
+    border: 1px solid var(--ev-line);
+  }
+
+  .page .challengeRow {
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+  }
+
+  .page .challengeRow p {
+    grid-column: 2;
+  }
+
+  .page .heroActions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page .primaryAction,
+  .page .secondaryAction {
+    width: 100%;
+  }
+}
+/* NB_EVENTS_CR4CKOUT_PREMIUM_V1_END */

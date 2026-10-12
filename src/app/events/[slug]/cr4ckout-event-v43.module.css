@@ -1921,3 +1921,342 @@ p {
   }
 
 }
+
+/* NB_EVENTS_CR4CKOUT_PREMIUM_V1_START */
+.page {
+  --ev-canvas: #07101b;
+  --ev-surface: #112238;
+  --ev-text: #f5f9ff;
+  --ev-copy: #c2d2e3;
+  --ev-muted: #a5b9cf;
+  --ev-line: rgba(153, 198, 230, .26);
+  --ev-cyan: #8feaf3;
+  --ev-violet: #bbadff;
+
+  background: var(--ev-canvas);
+  color: var(--ev-text);
+}
+
+.page a:focus-visible {
+  outline: 2px solid var(--ev-cyan);
+  outline-offset: 4px;
+}
+
+.page :is(.primaryAction, .secondaryAction) {
+  min-height: 3.1rem;
+  padding: .83rem 1.2rem;
+  border-radius: .8rem;
+  font-size: .92rem;
+  font-weight: 700;
+
+  transition:
+    transform .22s ease,
+    box-shadow .22s ease,
+    border-color .22s ease,
+    background .22s ease;
+}
+
+.page .primaryAction {
+  border: 1px solid #adf3f7;
+  background:
+    linear-gradient(115deg, #b9f5f6, #80e1ed);
+
+  color: #081721;
+
+  box-shadow:
+    0 12px 32px rgba(96, 219, 235, .13);
+}
+
+.page .primaryAction:hover {
+  transform: translateY(-2px);
+  background: #d1fafb;
+
+  box-shadow:
+    0 18px 40px rgba(96, 219, 235, .20);
+}
+
+.page .secondaryAction {
+  border: 1px solid rgba(173, 207, 234, .50);
+  background: rgba(165, 203, 233, .045);
+  color: #d0eaff;
+}
+
+.page .secondaryAction:hover {
+  transform: translateY(-2px);
+  border-color: var(--ev-cyan);
+  background: rgba(143, 234, 243, .10);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page *,
+  .page *::before,
+  .page *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.page {
+  --event-bg: #07101b;
+  --event-alt: #0b1725;
+  --event-surface: #112238;
+  --event-elevated: #182c42;
+  --event-text: #f5f9ff;
+  --event-secondary: #c2d2e3;
+  --event-muted: #acbed0;
+  --event-subtle: #9aafc5;
+  --event-cyan: #8feaf3;
+  --event-blue: #a5cdff;
+  --event-violet: #bbadff;
+  --event-line: rgba(153, 198, 230, .26);
+  --event-line-soft: rgba(153, 198, 230, .15);
+  --event-v72-bg: #07101b;
+  --event-v72-alt: #0b1725;
+  --event-v72-text: #f5f9ff;
+  --event-v72-secondary: #c2d2e3;
+  --event-v72-border: rgba(153, 198, 230, .24);
+  --event-v72-accent: #8feaf3;
+}
+
+/* INTRO */
+
+.page .intro {
+  overflow: hidden;
+  padding-block: clamp(4.25rem, 7vw, 7rem);
+
+  border-color: var(--ev-line);
+
+  background:
+    radial-gradient(
+      ellipse at 88% 14%,
+      rgba(118, 121, 235, .2),
+      transparent 75%
+    ),
+    linear-gradient(135deg, #0e2033, #07101b);
+}
+
+.page .intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .24;
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      rgba(145, 202, 235, .10) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(145, 202, 235, .10) 1px,
+      transparent 1px
+    );
+
+  background-size: 72px 72px;
+  mask-image: linear-gradient(90deg, transparent, #000);
+}
+
+.page .introGrid {
+  position: relative;
+  z-index: 1;
+  gap: clamp(2.1rem, 5vw, 5.4rem);
+}
+
+.page .introCopy h1 {
+  max-width: 15ch;
+  font-size: clamp(3.2rem, 5.7vw, 5.5rem);
+  font-weight: 690;
+  line-height: 1.02;
+  letter-spacing: -.062em;
+  text-wrap: balance;
+}
+
+.page .eyebrow,
+.page .sectionEyebrow {
+  color: var(--ev-cyan);
+  font-size: .74rem;
+  letter-spacing: .14em;
+  font-weight: 700;
+}
+
+.page .summary,
+.page .largeCopy {
+  color: var(--ev-copy);
+  font-size: 1.06rem;
+  line-height: 1.75;
+}
+
+/* TECHNICAL EVENT VISUAL */
+
+.page .eventSignal {
+  padding-inline: 1.15rem;
+  border: 1px solid rgba(153, 198, 230, .34);
+  border-radius: 1.1rem;
+
+  background:
+    linear-gradient(145deg, #172c44, #0e1e30);
+
+  box-shadow: 0 22px 70px rgba(0, 0, 0, .24);
+}
+
+.page .signalHeader,
+.page .signalFooter {
+  color: #b6cee3;
+  font-size: .66rem;
+}
+
+.page .signalCore span {
+  color: #dceeff;
+}
+
+/* EVENT FACTS */
+
+.page .facts {
+  background: #081523;
+  border-color: var(--ev-line);
+}
+
+.page .factList {
+  border: 1px solid var(--ev-line);
+  border-radius: .8rem;
+  overflow: hidden;
+}
+
+.page .factList > div {
+  padding: 1.35rem;
+  border-color: var(--ev-line);
+}
+
+.page .factList dt {
+  color: #a9c4db;
+}
+
+.page .factList dd {
+  color: #f2f8ff;
+}
+
+/* CONTENT */
+
+.page .section {
+  border-color: var(--ev-line);
+  background: #07101b;
+}
+
+.page .sectionAlt {
+  background: #0b1725;
+}
+
+.page .sectionHeading h2 {
+  font-size: clamp(2.25rem, 3.75vw, 3.65rem);
+  font-weight: 650;
+  line-height: 1.08;
+  letter-spacing: -.052em;
+  text-wrap: balance;
+}
+
+.page .overviewProse p,
+.page .formatGrid li p,
+.page .relatedLead {
+  color: var(--ev-copy);
+  line-height: 1.74;
+}
+
+/* EVENT FORMAT CARDS */
+
+.page .formatGrid {
+  gap: .75rem;
+  border-top: 0;
+}
+
+.page .formatGrid li,
+.page .formatGrid li:nth-child(even),
+.page .formatGrid li:nth-child(odd) {
+  padding: 1.25rem;
+  border: 1px solid var(--ev-line);
+  border-radius: .85rem;
+
+  background:
+    linear-gradient(145deg, #15273b, #0e1e2e);
+}
+
+.page .formatIndex {
+  color: var(--ev-cyan);
+}
+
+.page .additionalRecord {
+  border-color: var(--ev-line);
+}
+
+/* RELATED CONTENT */
+
+.page .relatedSection {
+  background:
+    radial-gradient(
+      ellipse at 90% 10%,
+      rgba(112, 127, 238, .16),
+      transparent 70%
+    ),
+    #0a1726;
+}
+
+.page .relatedLinks {
+  border-color: var(--ev-line);
+}
+
+.page .relatedLinks a {
+  color: #b8d9ee;
+}
+
+.page .relatedLinks a:hover {
+  color: #baf8fb;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .page .introGrid,
+  .page .overviewGrid,
+  .page .relatedGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .page .intro {
+    padding-block: 3.5rem 4rem;
+  }
+
+  .page .introCopy h1 {
+    max-width: 100%;
+    font-size: clamp(2.9rem, 12vw, 4.1rem);
+  }
+
+  .page .factList {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page .factList > div {
+    padding: 1.1rem;
+    border-left: 0;
+    border-bottom: 1px solid var(--ev-line);
+  }
+
+  .page .formatGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page .relatedActions,
+  .page .introActions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page .primaryAction,
+  .page .secondaryAction {
+    width: 100%;
+  }
+}
+/* NB_EVENTS_CR4CKOUT_PREMIUM_V1_END */

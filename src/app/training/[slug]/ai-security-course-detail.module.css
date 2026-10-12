@@ -2814,3 +2814,264 @@ div {
   }
 
 }
+
+/* NB_TRAINING_PREMIUM_REFRESH_V1_START */
+.page {
+  --nb-base: #07101b;
+  --nb-surface: #0b1725;
+  --nb-card: #112236;
+  --nb-elevated: #192f47;
+  --nb-cyan: #92eaf2;
+  --nb-blue: #a5c8fa;
+  --nb-purple: #b7a6f4;
+  --nb-text: #f5f9ff;
+  --nb-muted: #acbfd1;
+  --nb-subtle: #92a7bb;
+  --nb-border: rgba(158, 202, 228, .25);
+  --nb-border-neutral: rgba(158, 202, 228, .2);
+  color: var(--nb-text);
+  background: var(--nb-base);
+  font-family:
+    var(--font-geist-sans),
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+}
+
+.page :is(h1, h2, h3) {
+  font-family: inherit;
+}
+
+.page a:focus-visible {
+  outline: 2px solid var(--nb-cyan);
+  outline-offset: 4px;
+}
+
+.courseIntro {
+  overflow: hidden;
+  padding-block:
+    clamp(4.6rem, 8vw, 8rem)
+    clamp(4rem, 6vw, 6.2rem);
+  border-bottom: 1px solid var(--nb-border);
+  background:
+    radial-gradient(
+      ellipse 52% 70% at 87% 13%,
+      rgba(134, 112, 241, .20),
+      transparent 75%
+    ),
+    radial-gradient(
+      ellipse 42% 58% at 8% 14%,
+      rgba(77, 205, 226, .12),
+      transparent 80%
+    ),
+    linear-gradient(130deg, #0e1f32, #07101b);
+}
+
+.introDecoration {
+  opacity: .48;
+}
+
+.courseSummary h1 {
+  max-width: 13.5ch;
+  font-size: clamp(3rem, 5.45vw, 5.25rem);
+  letter-spacing: -.066em;
+  line-height: 1.04;
+  font-weight: 710;
+  text-wrap: balance;
+}
+
+.lead {
+  color: #c5d5e5;
+  font-size: clamp(1.04rem, 1.4vw, 1.2rem);
+  line-height: 1.76;
+}
+
+.eyebrow,
+.smallLabel {
+  color: var(--nb-cyan);
+}
+
+.enrollmentCard {
+  border: 1px solid rgba(146, 234, 242, .37);
+  border-radius: 1.12rem;
+  background: linear-gradient(155deg, #172c45, #102034);
+  box-shadow: 0 25px 72px rgba(0, 0, 0, .28);
+}
+
+.enrollmentDescription,
+.enrollmentNote {
+  color: #bdcede;
+}
+
+.primaryButton,
+.secondaryButton {
+  min-height: 3.15rem;
+  border-radius: .75rem;
+  font-weight: 700;
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    background-color .2s ease,
+    box-shadow .2s ease;
+}
+
+.primaryButton {
+  border-color: #b3f4f6;
+  color: #08161d;
+  background: linear-gradient(110deg, #b3f4f6, #82e0eb);
+}
+
+.primaryButton:hover {
+  transform: translateY(-2px);
+  background: #d0fafb;
+  box-shadow: 0 15px 36px rgba(111, 224, 234, .2);
+}
+
+.secondaryButton {
+  border-color: rgba(163, 210, 235, .48);
+  color: #bff5f7;
+  background: rgba(151, 208, 231, .045);
+}
+
+.secondaryButton:hover {
+  transform: translateY(-2px);
+  border-color: var(--nb-cyan);
+  background: rgba(146, 234, 242, .09);
+}
+
+.tabsSurface {
+  border-bottom: 1px solid var(--nb-border);
+  background: #0b1725;
+}
+
+.tab {
+  border-radius: .6rem;
+  transition: color .18s ease, background-color .18s ease;
+}
+
+.tab:hover {
+  background: rgba(146, 234, 242, .08);
+  color: #dcfdff;
+}
+
+.overview,
+.curriculum,
+.requirements,
+.outcomes,
+.related {
+  background-color: var(--nb-base);
+}
+
+.sectionHeader h2 {
+  font-size: clamp(2.1rem, 3.6vw, 3.55rem);
+  letter-spacing: -.05em;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.learningItem,
+.audiencePanel,
+.requirementsPanel,
+.courseCard {
+  border: 1px solid var(--nb-border);
+  border-radius: 1rem;
+  background: linear-gradient(150deg, #15283e, #0e1b2b);
+}
+
+.moduleRow {
+  border-bottom: 1px solid var(--nb-border);
+}
+
+.moduleNumber {
+  color: var(--nb-cyan);
+}
+
+.moduleContent h3 {
+  font-size: clamp(1.35rem, 1.9vw, 1.75rem);
+  letter-spacing: -.035em;
+}
+
+.outcomeRow {
+  border-color: var(--nb-border);
+}
+
+.courseCard {
+  transition:
+    border-color .22s ease,
+    transform .22s ease,
+    box-shadow .22s ease;
+}
+
+.courseCard:hover {
+  transform: translateY(-3px);
+  border-color: rgba(146, 234, 242, .5);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, .23);
+}
+
+.academyCta {
+  background:
+    radial-gradient(
+      ellipse at 94% 14%,
+      rgba(123, 134, 243, .2),
+      transparent 70%
+    ),
+    linear-gradient(120deg, #11243b, #081523 80%);
+  border-top: 1px solid var(--nb-border);
+}
+
+.ctaInner h2 {
+  font-size: clamp(2.35rem, 4.25vw, 4.15rem);
+  letter-spacing: -.052em;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+@media (max-width: 960px) {
+  .introGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
+  .enrollmentCard {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .courseIntro {
+    padding-block: 3.65rem 4rem;
+  }
+
+  .courseSummary h1 {
+    max-width: 100%;
+    font-size: clamp(2.65rem, 10vw, 3.5rem);
+  }
+
+  .ctaInner {
+    padding-block: 3rem;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+  }
+}
+
+@media (hover: none) {
+  .courseCard:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page *,
+  .page *::before,
+  .page *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* NB_TRAINING_PREMIUM_REFRESH_V1_END */

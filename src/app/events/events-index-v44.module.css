@@ -2132,3 +2132,386 @@
   }
 
 }
+
+/* NB_EVENTS_CR4CKOUT_PREMIUM_V1_START */
+.page {
+  --ev-canvas: #07101b;
+  --ev-surface: #112238;
+  --ev-text: #f5f9ff;
+  --ev-copy: #c2d2e3;
+  --ev-muted: #a5b9cf;
+  --ev-line: rgba(153, 198, 230, .26);
+  --ev-cyan: #8feaf3;
+  --ev-violet: #bbadff;
+
+  background: var(--ev-canvas);
+  color: var(--ev-text);
+}
+
+.page a:focus-visible {
+  outline: 2px solid var(--ev-cyan);
+  outline-offset: 4px;
+}
+
+.page :is(.primaryAction, .secondaryAction) {
+  min-height: 3.1rem;
+  padding: .83rem 1.2rem;
+  border-radius: .8rem;
+  font-size: .92rem;
+  font-weight: 700;
+
+  transition:
+    transform .22s ease,
+    box-shadow .22s ease,
+    border-color .22s ease,
+    background .22s ease;
+}
+
+.page .primaryAction {
+  border: 1px solid #adf3f7;
+  background:
+    linear-gradient(115deg, #b9f5f6, #80e1ed);
+
+  color: #081721;
+
+  box-shadow:
+    0 12px 32px rgba(96, 219, 235, .13);
+}
+
+.page .primaryAction:hover {
+  transform: translateY(-2px);
+  background: #d1fafb;
+
+  box-shadow:
+    0 18px 40px rgba(96, 219, 235, .20);
+}
+
+.page .secondaryAction {
+  border: 1px solid rgba(173, 207, 234, .50);
+  background: rgba(165, 203, 233, .045);
+  color: #d0eaff;
+}
+
+.page .secondaryAction:hover {
+  transform: translateY(-2px);
+  border-color: var(--ev-cyan);
+  background: rgba(143, 234, 243, .10);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page *,
+  .page *::before,
+  .page *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.page {
+  --events-bg: #07101b;
+  --events-alt: #0b1725;
+  --events-surface: #112238;
+  --events-elevated: #192f47;
+  --events-text: #f5f9ff;
+  --events-secondary: #c2d2e3;
+  --events-muted: #adbed1;
+  --events-subtle: #9aacc0;
+  --events-cyan: #8feaf3;
+  --events-blue: #a5cdff;
+  --events-violet: #bbadff;
+  --events-line: rgba(153, 198, 230, .26);
+  --events-line-soft: rgba(153, 198, 230, .15);
+}
+
+/* INTRO */
+
+.page .intro {
+  overflow: hidden;
+
+  padding-block:
+    clamp(4.5rem, 7.8vw, 7.5rem)
+    clamp(4.3rem, 7vw, 6.5rem);
+
+  border-bottom: 1px solid var(--ev-line);
+
+  background:
+    radial-gradient(
+      ellipse 47% 70% at 86% 17%,
+      rgba(115, 125, 237, .21),
+      transparent 78%
+    ),
+    radial-gradient(
+      ellipse 46% 65% at 5% 14%,
+      rgba(65, 209, 228, .11),
+      transparent 78%
+    ),
+    linear-gradient(135deg, #0d2034, #07101b 75%);
+}
+
+.page .intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .27;
+
+  background-image:
+    linear-gradient(
+      rgba(141, 203, 230, .11) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(141, 203, 230, .11) 1px,
+      transparent 1px
+    );
+
+  background-size: 70px 70px;
+  mask-image: linear-gradient(90deg, transparent, #000);
+}
+
+.page .introGrid {
+  position: relative;
+  z-index: 1;
+  gap: clamp(2.3rem, 6vw, 6.5rem);
+}
+
+.page .eyebrow,
+.page .sectionEyebrow {
+  color: var(--ev-cyan);
+  font-size: .74rem;
+  letter-spacing: .14em;
+  font-weight: 700;
+}
+
+.page .introCopy h1 {
+  max-width: 12ch;
+  font-weight: 690;
+  font-size: clamp(3.7rem, 6.7vw, 6.4rem);
+  line-height: .99;
+  letter-spacing: -.07em;
+  text-wrap: balance;
+}
+
+.page .introLead {
+  max-width: 58ch;
+  color: var(--ev-copy);
+  font-size: 1.09rem;
+  line-height: 1.76;
+}
+
+/* EVENT STREAM VISUALIZATION */
+
+.page .eventStream {
+  padding: 0 1.2rem;
+
+  border: 1px solid rgba(154, 202, 229, .31);
+  border-radius: 1rem;
+
+  background:
+    linear-gradient(145deg, #172a42, #0e1c2f);
+
+  box-shadow: 0 22px 70px rgba(0, 0, 0, .20);
+}
+
+.page .streamHeader,
+.page .streamFooter {
+  color: #aec9df;
+  font-size: .69rem;
+}
+
+.page .streamStates strong {
+  color: #e4f6ff;
+}
+
+.page .streamStates i {
+  background: rgba(143, 234, 243, .32);
+}
+
+/* SECTIONS */
+
+.page .section {
+  border-bottom: 1px solid var(--ev-line);
+  background: #07101b;
+}
+
+.page .sectionAlt {
+  background: #0b1725;
+}
+
+.page .sectionHeader h2,
+.page .finalLayout h2 {
+  font-size: clamp(2.4rem, 4.4vw, 4.25rem);
+  letter-spacing: -.052em;
+  line-height: 1.06;
+  font-weight: 650;
+  text-wrap: balance;
+}
+
+.page .sectionHeader > p {
+  color: var(--ev-copy);
+  font-size: 1rem;
+  line-height: 1.72;
+}
+
+.page .currentGroups,
+.page .statusGroup {
+  border-color: var(--ev-line);
+}
+
+.page .statusLabel {
+  color: var(--ev-cyan);
+}
+
+.page .statusCount {
+  color: #dbefff;
+}
+
+/* EVENT CARDS */
+
+.page .eventList {
+  border-top-color: var(--ev-line);
+}
+
+.page .eventRow {
+  padding-inline: clamp(1rem, 2.1vw, 2rem);
+  margin-block: .75rem;
+
+  border: 1px solid rgba(153, 198, 230, .23);
+  border-radius: .9rem;
+
+  background:
+    linear-gradient(120deg, #13253a, #0d1c2c);
+
+  transition:
+    border-color .22s ease,
+    background .22s ease,
+    box-shadow .22s ease;
+}
+
+.page .eventRow:hover {
+  border-color: rgba(143, 234, 243, .53);
+
+  background:
+    linear-gradient(120deg, #1a314b, #122439);
+
+  box-shadow: 0 20px 55px rgba(0, 0, 0, .20);
+}
+
+.page .eventRecord h3 {
+  font-size: clamp(1.55rem, 2.55vw, 2.5rem);
+  font-weight: 650;
+  line-height: 1.12;
+}
+
+.page .eventSummary {
+  color: var(--ev-copy);
+  font-size: .96rem;
+  line-height: 1.7;
+}
+
+.page .eventTopline,
+.page .eventMeta {
+  color: #b0c7d9;
+}
+
+.page .eventAction,
+.page .textAction {
+  color: var(--ev-cyan);
+}
+
+/* EMPTY STATES */
+
+.page .emptyState,
+.page .archiveEmpty {
+  border-color: var(--ev-line);
+  border-radius: .8rem;
+  background: rgba(19, 36, 55, .56);
+}
+
+.page .emptyCopy {
+  color: var(--ev-copy);
+}
+
+/* FINAL CONTACT SECTION */
+
+.page .finalCta {
+  padding-block: clamp(4.2rem, 6vw, 6.8rem);
+
+  background:
+    radial-gradient(
+      ellipse at 90% 10%,
+      rgba(116, 125, 234, .18),
+      transparent 66%
+    ),
+    linear-gradient(115deg, #13283d, #091625 80%);
+}
+
+.page .finalLayout {
+  border-color: var(--ev-line);
+}
+
+.page .finalBody > p {
+  color: var(--ev-copy);
+  font-size: 1rem;
+  line-height: 1.72;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .page .introGrid,
+  .page .sectionHeader,
+  .page .finalLayout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page .introCopy h1 {
+    max-width: 15ch;
+    font-size: clamp(3.25rem, 9vw, 5rem);
+  }
+}
+
+@media (max-width: 680px) {
+  .page .intro {
+    padding-block: 3.5rem 3.8rem;
+  }
+
+  .page .introCopy h1 {
+    max-width: 100%;
+    font-size: clamp(2.95rem, 13vw, 4.1rem);
+  }
+
+  .page .eventStream {
+    padding-inline: .8rem;
+  }
+
+  .page .eventRow {
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: .85rem;
+    padding: 1.15rem;
+  }
+
+  .page .eventAction {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .page .eventRecord h3 {
+    font-size: 1.55rem;
+  }
+
+  .page .finalActions,
+  .page .introActions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page .primaryAction,
+  .page .secondaryAction {
+    width: 100%;
+  }
+}
+/* NB_EVENTS_CR4CKOUT_PREMIUM_V1_END */

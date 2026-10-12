@@ -203,3 +203,49 @@
   }
 
 }
+
+/* NB_CROSS_SITE_FINISH_V1_START */
+.nav {
+  padding-block: .9rem;
+  border-bottom-color: rgba(153, 203, 231, .18);
+  background: rgba(8, 17, 29, .88);
+}
+
+.list {
+  column-gap: .62rem;
+  row-gap: .45rem;
+}
+
+.item {
+  color: #a8bece;
+}
+
+.link {
+  color: #b7cde0;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.link:hover {
+  color: #aaf3f7;
+}
+
+.current {
+  color: #f0f9ff;
+}
+
+.separator {
+  color: #829fb6;
+}
+
+.link:focus-visible {
+  outline: 2px solid #aaf3f7;
+  outline-offset: 4px;
+}
+
+@media (max-width: 540px) {
+  .nav {
+    padding-block: .78rem;
+  }
+}
+/* NB_CROSS_SITE_FINISH_V1_END */

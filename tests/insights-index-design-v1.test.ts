@@ -69,7 +69,7 @@ describe(
         expect(
           page
         ).toContain(
-          "NOBREACH / RESEARCH"
+          "No Breach / RESEARCH"
         );
 
       }

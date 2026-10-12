@@ -282,7 +282,7 @@ export default function CompanyPage() {
                   styles.eyebrow
                 }
               >
-                NOBREACH / COMPANY
+                No Breach / COMPANY
               </p>
 
               <h1>
@@ -920,7 +920,7 @@ export default function CompanyPage() {
                   styles.eyebrow
                 }
               >
-                WORK WITH NOBREACH
+                WORK WITH No Breach
               </p>
 
               <h2>
