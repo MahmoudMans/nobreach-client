@@ -6,7 +6,7 @@ import styles from "./contact.module.css";
 
 
 const emailAddress =
-  "nhbenbrahim@gmail.com";
+  "nbrch.llc@gmail.com";
 
 
 const linkedInUrl =

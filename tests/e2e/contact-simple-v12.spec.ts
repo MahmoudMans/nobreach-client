@@ -67,14 +67,14 @@ test(
       email
     ).toHaveAttribute(
       "href",
-      "mailto:nhbenbrahim@gmail.com"
+      "mailto:nbrch.llc@gmail.com"
     );
 
 
     await expect(
       email
     ).toContainText(
-      "nhbenbrahim@gmail.com"
+      "nbrch.llc@gmail.com"
     );
 
 

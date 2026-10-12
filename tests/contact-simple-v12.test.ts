@@ -71,7 +71,7 @@ describe(
         expect(
           page
         ).toContain(
-          "nhbenbrahim@gmail.com"
+          "nbrch.llc@gmail.com"
         );
 
 

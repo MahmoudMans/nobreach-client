@@ -245,7 +245,7 @@ test(
 
     await expect(
       page.locator(
-        'a[href="mailto:nhbenbrahim@gmail.com"]'
+        'a[href="mailto:nbrch.llc@gmail.com"]'
       )
     ).toBeVisible();
 
