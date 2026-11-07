@@ -38,7 +38,7 @@ test(
         "[data-linkedin-post]"
       )
     ).toHaveCount(
-      14
+      15
     );
   }
 );
@@ -63,18 +63,18 @@ test(
 
     const links =
       section.locator(
-        'a[href*="linkedin.com/posts/"]'
+        'a[href*="linkedin.com/posts/"], a[href*="linkedin.com/feed/update/urn:li:activity:"]'
       );
 
     await expect(
       links
     ).toHaveCount(
-      14
+      15
     );
 
     for (
       let index = 0;
-      index < 14;
+      index < 15;
       index += 1
     ) {
       const link =
@@ -94,7 +94,7 @@ test(
       expect(
         href
       ).toMatch(
-        /^https:\/\/(?:[a-z]{2}\.)?(?:www\.)?linkedin\.com\/posts\//
+        /^https:\/\/(?:[a-z]{2}\.)?(?:www\.)?linkedin\.com\/(?:posts\/|feed\/update\/urn:li:activity:\d+\/?$)/
       );
 
       await expect(

@@ -44,7 +44,8 @@ test(
         "[data-home-program]"
       )
     ).toHaveCount(
-      3
+      // Red Team, Web Exploitation, AI Security, GRC Enterprise, MCP Security
+      5
     );
 
   }

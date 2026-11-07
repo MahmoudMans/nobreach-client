@@ -16,6 +16,20 @@ export const linkedInPosts:
   readonly LinkedInPost[] = [
     {
       id:
+        "ai-infrastructure-security",
+      source:
+        "Nouha Ben Brahim",
+      topic:
+        "AI Security",
+      title:
+        "When the model is not the only attack surface",
+      summary:
+        "Nouha's technical analysis of AI sandbox research and the LiteLLM supply-chain compromise, and what they reveal about containment, infrastructure security and trust boundaries in AI systems.",
+      href:
+        "https://www.linkedin.com/feed/update/urn:li:activity:7522269684860325889/"
+    },
+    {
+      id:
         "red-team-foundations",
 
       source:

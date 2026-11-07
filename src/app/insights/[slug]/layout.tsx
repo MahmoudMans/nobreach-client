@@ -16,6 +16,9 @@ import {
 import {
   ManualReasoningInsightV55
 } from "./manual-reasoning-insight-v55";
+import {
+  AiInfrastructureInsight
+} from "./ai-infrastructure-insight";
 
 export default async function InsightDetailLayout({
   children,
@@ -34,6 +37,24 @@ export default async function InsightDetailLayout({
     slug
   } =
     await params;
+
+
+  // NB_AI_INFRA_INSIGHT_V1
+  if (
+    slug
+    ===
+    "when-the-model-is-not-the-only-attack-surface"
+  ) {
+    return (
+      <div
+        data-insight-article={
+          slug
+        }
+      >
+        <AiInfrastructureInsight />
+      </div>
+    );
+  }
 
 
   if (

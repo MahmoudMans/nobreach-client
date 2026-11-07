@@ -2,6 +2,10 @@ import type {
   Insight,
   InsightCategory
 } from "@/types/content";
+import {
+  aiInfrastructureArticle,
+  articleBlocksToText
+} from "@/content/articles/ai-infrastructure-security";
 
 export const insightCategories:
   InsightCategory[] = [
@@ -15,6 +19,82 @@ export const insightCategories:
 
 export const insights:
   Insight[] = [
+    {
+      // NB_AI_INFRA_INSIGHT_V1: full article lives in
+      // src/content/articles/ai-infrastructure-security.ts
+      slug:
+        aiInfrastructureArticle.slug,
+      title:
+        "When the model is not the only attack surface",
+      category:
+        "AI Security",
+      summary:
+        "What AI sandbox research and the LiteLLM supply-chain compromise teach us about containment, identity and trust.",
+      author:
+        aiInfrastructureArticle.author,
+      publishedAt:
+        "2026-10-31",
+      readingTime:
+        "10 min read",
+      featured:
+        true,
+      tags: [
+        "AI Security",
+        "Infrastructure Security",
+        "Supply Chain",
+        "Sandboxing",
+        "Containment"
+      ],
+      relatedServiceSlugs: [
+        "infrastructure-security"
+      ],
+      relatedTrainingSlugs: [
+        "ai-security-foundations",
+        "mcp-security"
+      ],
+      sections:
+        aiInfrastructureArticle.sections.map(
+          (section) => {
+            const own =
+              articleBlocksToText(
+                section.blocks
+              );
+
+            const nested =
+              section.subsections.map(
+                (subsection) =>
+                  articleBlocksToText(
+                    subsection.blocks
+                  )
+              );
+
+            const bullets = [
+              ...own.bullets,
+              ...nested.flatMap(
+                (item) =>
+                  item.bullets
+              )
+            ];
+
+            return {
+              id:
+                section.id,
+              heading:
+                section.heading,
+              paragraphs: [
+                ...own.paragraphs,
+                ...nested.flatMap(
+                  (item) =>
+                    item.paragraphs
+                )
+              ],
+              ...(bullets.length > 0
+                ? { bullets }
+                : {})
+            };
+          }
+        )
+    },
     {
       slug:
         "authorization-is-a-system-not-a-checkbox",

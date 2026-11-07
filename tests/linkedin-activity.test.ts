@@ -33,7 +33,7 @@ describe(
         expect(
           linkedInPosts.length
         ).toBe(
-          14
+          15
         );
       }
     );
@@ -58,10 +58,11 @@ describe(
             true
           );
 
+          // Public permalinks: /posts/... or /feed/update/urn:li:activity:...
           expect(
             url.pathname
-          ).toContain(
-            "/posts/"
+          ).toMatch(
+            /^\/posts\/|^\/feed\/update\/urn:li:activity:\d+\/?$/
           );
         }
       }

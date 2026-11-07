@@ -57,6 +57,11 @@ const programs:
       slug: "grc-enterprise",
       name: "GRC Enterprise Training Program",
       registrationUrl: "https://forms.gle/D1wVFRqS1PRFgCzNA"
+    },
+    {
+      slug: "mcp-security",
+      name: "MCP Security Mentorship Program",
+      registrationUrl: "https://forms.gle/UQqsXvod6Pkui1Aa8"
     }
   ];
 

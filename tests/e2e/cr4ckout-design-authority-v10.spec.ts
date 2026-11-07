@@ -525,10 +525,12 @@ test(
         );
 
 
+    // NB_CR4CKOUT_3_TEASER_V1: the next-edition teaser follows the hero.
     expect(
       order
     ).toEqual([
       "hero",
+      "next-edition",
       "experience",
       "challenges",
       "events",
@@ -564,10 +566,12 @@ test(
       );
 
 
+    // NB_CR4CKOUT_3_TEASER_V1: hero, next-edition, experience,
+    // challenges, events and host.
     await expect(
       frames
     ).toHaveCount(
-      5
+      6
     );
 
 

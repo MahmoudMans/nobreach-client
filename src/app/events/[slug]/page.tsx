@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { Cr4ckout3Teaser } from "./cr4ckout-3-teaser";
 import { Breadcrumbs } from "@/components/navigation/breadcrumbs";
 import { EventStructuredData } from "@/components/content/event-structured-data";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -74,6 +75,11 @@ export default async function EventPage({
 
   if (!event) {
     notFound();
+  }
+
+  // NB_CR4CKOUT_3_TEASER_V1: teaser page with no date or location.
+  if (event.slug === "cr4ckout-3-0") {
+    return <Cr4ckout3Teaser />;
   }
 
   return (

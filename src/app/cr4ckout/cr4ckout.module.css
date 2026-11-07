@@ -2181,3 +2181,13 @@ div {
   }
 }
 /* NB_EVENTS_CR4CKOUT_PREMIUM_V1_END */
+
+/* NB_CR4CKOUT_3_TEASER_V1 */
+.nextEditionSection {
+  scroll-margin-top: 6rem;
+  background: linear-gradient(180deg, #060c16, #07101b);
+}
+
+.page .nextEditionSection {
+  padding-block: clamp(3.5rem, 6vw, 5.5rem);
+}

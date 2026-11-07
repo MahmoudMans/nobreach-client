@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { GrcEnterpriseCourseDetail } from "./grc-enterprise-course-detail";
+import { McpSecurityCourseDetail } from "./mcp-security-course-detail";
 import { Breadcrumbs } from "@/components/navigation/breadcrumbs";
 import { TrainingStructuredData } from "@/components/training/training-structured-data";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -84,6 +85,15 @@ export default async function TrainingProgramPage({
       <>
         <TrainingStructuredData program={program} />
         <GrcEnterpriseCourseDetail program={program} />
+      </>
+    );
+  }
+
+  if (program.slug === "mcp-security") {
+    return (
+      <>
+        <TrainingStructuredData program={program} />
+        <McpSecurityCourseDetail program={program} />
       </>
     );
   }

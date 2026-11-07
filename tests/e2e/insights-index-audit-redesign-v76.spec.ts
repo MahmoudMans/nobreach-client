@@ -354,7 +354,7 @@ test(
 
     await expect(
       page.getByText(
-        "4 articles",
+        "5 articles",
         {
           exact: true
         }

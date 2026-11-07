@@ -337,10 +337,15 @@ describe(
             3
           );
 
+          // Articles are published by No Breach or by its founder
+          // (NB_AI_INFRA_INSIGHT_V1).
           expect(
+            [
+              "No Breach",
+              "Nouha Ben Brahim"
+            ]
+          ).toContain(
             insight.author
-          ).toBe(
-            "No Breach"
           );
         }
       }

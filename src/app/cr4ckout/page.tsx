@@ -12,6 +12,11 @@ import {
   getEvent
 } from "@/content/events";
 
+import {
+  Cr4ckoutNextEditionTeaser,
+  Cr4ckoutTeaserSignal
+} from "@/components/cr4ckout/next-edition-teaser";
+
 import styles from "./cr4ckout.module.css";
 
 
@@ -271,6 +276,9 @@ export default function Cr4ckoutPage() {
                   styles.heroCopy
                 }
               >
+                <Cr4ckoutTeaserSignal />
+
+
                 <p
                   className={
                     styles.heroEyebrow
@@ -451,6 +459,34 @@ export default function Cr4ckoutPage() {
                 )
               }
             </dl>
+          </div>
+        </Container>
+      </section>
+
+
+      {/* ================================================================
+          NEXT EDITION TEASER (NB_CR4CKOUT_3_TEASER_V1)
+          Date, location and story are intentionally withheld.
+         ================================================================ */}
+
+      <section
+        id="next-edition"
+        className={
+          `${styles.section} ${styles.nextEditionSection}`
+        }
+        data-cr4ckout-section="next-edition"
+        aria-label="Next CR4CKOUT edition"
+      >
+        <Container>
+          <div
+            className={
+              styles.frame
+            }
+            data-cr4ckout-frame="next-edition"
+          >
+            <Cr4ckoutNextEditionTeaser
+              variant="section"
+            />
           </div>
         </Container>
       </section>

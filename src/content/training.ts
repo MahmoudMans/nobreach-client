@@ -300,6 +300,67 @@ export const trainingPrograms:
         "A maturity-informed 12-month GRC roadmap for capstone presentation",
         "An included program certificate with portfolio and resume value"
       ]
+    },
+    {
+      slug: "mcp-security",
+      title: "MCP Security Mentorship Program",
+      category: "AI Security",
+      summary: "Build practical command of Model Context Protocol (MCP) security, from architecture and trust boundaries to core attack vectors and the controls that secure MCP deployments before production.",
+      description: "Build practical command of Model Context Protocol (MCP) security, from understanding the architecture and mapping trust boundaries to identifying core attack vectors and applying the controls needed to vet, secure and assess MCP deployments before they reach production.",
+      level: "Open to all experience levels",
+      format: "Live training · Mentorship",
+      duration: "3 sessions per week · 1.5–2 hours each",
+      status: "available",
+      objectives: [
+        "Understand MCP hosts, clients, servers, tools, resources and prompts",
+        "Map data flows and trust boundaries across an MCP deployment",
+        "Recognize core MCP attack vectors, from tool poisoning to over-permissioned tools",
+        "Apply STRIDE to identify threats in MCP deployments systematically",
+        "Select controls to vet, secure and assess MCP deployments before production"
+      ],
+      modules: [
+        {
+          number: "01",
+          title: "Architecture before exploitation",
+          description: "Understand MCP hosts, clients, servers, tools, resources and prompts, then map data flows and trust boundaries before moving into attack scenarios."
+        },
+        {
+          number: "02",
+          title: "Focused on real attack surfaces",
+          description: "Study tool poisoning, malicious and look-alike servers, indirect prompt injection through tool outputs and resources, confused deputy attacks and over-permissioned tools."
+        },
+        {
+          number: "03",
+          title: "Threat modeling built in",
+          description: "Apply STRIDE to MCP deployments to identify threats systematically rather than approaching security as a disconnected list of vulnerabilities."
+        },
+        {
+          number: "04",
+          title: "Defense alongside attack analysis",
+          description: "Learn authentication, authorization, least privilege, sandboxing, MCP server vetting, monitoring, logging and human-in-the-loop controls."
+        },
+        {
+          number: "05",
+          title: "Scenario-based assessment",
+          description: "Consolidate the material through a final assessment designed around scenarios, with certification included on completion."
+        }
+      ],
+      prerequisites: [
+        "Specific entry prerequisites have not been published; contact No Breach for suitability guidance."
+      ],
+      audience: [
+        "Computer science, software engineering and cybersecurity students",
+        "Beginners as well as learners with hands-on or CTF experience",
+        "Students expanding from application security into AI security",
+        "Learners who want to assess tool-connected AI systems before production"
+      ],
+      outcomes: [
+        "A structured understanding of MCP architecture and its security boundaries",
+        "A STRIDE-based threat model of an MCP deployment",
+        "Recognition of tool poisoning, privilege abuse and related MCP attack techniques",
+        "A control set for securing and assessing MCP deployments before production",
+        "Certification on completion of the scenario-based assessment"
+      ]
     }
   ];
 
