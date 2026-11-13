@@ -42,10 +42,21 @@ test(
     ).toBeVisible();
 
 
+    // NB_CR4CKOUT_3_REGISTRATION_V1: the story stays encrypted
     await expect(
       teaser
     ).toContainText(
-      "Classified"
+      "Encrypted"
+    );
+
+
+    await expect(
+      teaser.locator(
+        '[data-cr4ckout-ui="register"]'
+      )
+    ).toHaveAttribute(
+      "href",
+      /^https:\/\/docs\.google\.com\/forms\//
     );
 
 
@@ -74,7 +85,7 @@ test(
 
 
 test(
-  "teaser event page renders without Event structured data",
+  "event page only emits Event structured data with a real date",
   async ({
     page
   }) => {
@@ -104,17 +115,42 @@ test(
     ).toBeVisible();
 
 
-    await expect(
-      page.locator(
-        'script[type="application/ld+json"]',
-        {
-          hasText:
-            '"Event"'
-        }
-      )
-    ).toHaveCount(
-      0
-    );
+    // NB_CR4CKOUT_3_REGISTRATION_V1
+    const eventData =
+      await page
+        .locator(
+          'script[type="application/ld+json"]',
+          {
+            hasText:
+              '"Event"'
+          }
+        )
+        .allTextContents();
+
+
+    for (
+      const raw
+      of eventData
+    ) {
+
+      const data =
+        JSON.parse(
+          raw
+        );
+
+      expect(
+        data.startDate
+      ).toMatch(
+        /^\d{4}-\d{2}-\d{2}/
+      );
+
+      expect(
+        data.location?.name
+      ).not.toMatch(
+        /classified/i
+      );
+
+    }
 
 
     await expect(

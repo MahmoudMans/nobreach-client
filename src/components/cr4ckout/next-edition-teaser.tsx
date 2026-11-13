@@ -1,19 +1,33 @@
-// NB_CR4CKOUT_3_TEASER_V1
-// Teaser for the next CR4CKOUT edition. Date, location and story are
-// deliberately withheld. Update this file (and the "cr4ckout-3-0" record in
-// src/content/events.ts) when the edition is announced.
+// NB_CR4CKOUT_3_TEASER_V1 + NB_CR4CKOUT_3_REGISTRATION_V1
+// Teaser for the next CR4CKOUT edition. Everything is driven by the
+// "cr4ckout-3-0" record in src/content/events.ts:
+//   - registrationUrl set      -> "Registration open" state + Register button
+//   - year / location filled   -> shown as declassified in the file
+//   - story and challenges stay encrypted
 import Link from "next/link";
+import { getEvent } from "@/content/events";
 import { siteConfig } from "@/content/site";
 import styles from "./next-edition-teaser.module.css";
 
 export const NEXT_EDITION_SLUG = "cr4ckout-3-0";
 
-const caseFile = [
-  { label: "Date", state: "Classified" },
-  { label: "Location", state: "Classified" },
+const edition = getEvent(NEXT_EDITION_SLUG);
+
+function revealed(value?: string) {
+  return value && !/classified/i.test(value) ? value : undefined;
+}
+
+const revealedDate = revealed(edition?.year);
+const revealedLocation = revealed(edition?.location);
+const registrationUrl = edition?.registrationUrl;
+const registrationOpen = Boolean(registrationUrl);
+
+const caseFile: { label: string; value?: string; state: string }[] = [
+  { label: "Date", value: revealedDate, state: "Classified" },
+  { label: "Location", value: revealedLocation, state: "Classified" },
   { label: "Story", state: "Encrypted" },
   { label: "Challenges", state: "Sealed" }
-] as const;
+];
 
 // base64 — decodes to a short message for the curious.
 const interceptedFragment =
@@ -30,7 +44,9 @@ export function Cr4ckoutTeaserSignal() {
         className={styles.signalDot}
         aria-hidden="true"
       />
-      Transmission incoming: CR4CKOUT 3.0
+      {registrationOpen
+        ? "Registration open: CR4CKOUT 3.0"
+        : "Transmission incoming: CR4CKOUT 3.0"}
       <span aria-hidden="true">↓</span>
     </a>
   );
@@ -59,7 +75,9 @@ export function Cr4ckoutNextEditionTeaser({
             className={styles.eyebrowDot}
             aria-hidden="true"
           />
-          CR4CKOUT / FILE 03 / CLASSIFIED
+          {registrationOpen
+            ? "CR4CKOUT / FILE 03 / REGISTRATION OPEN"
+            : "CR4CKOUT / FILE 03 / CLASSIFIED"}
         </p>
 
         <Heading className={styles.title}>
@@ -82,7 +100,9 @@ export function Cr4ckoutNextEditionTeaser({
         </Heading>
 
         <p className={styles.tagline}>
-          The next chapter is loading
+          {registrationOpen
+            ? "Registration is open"
+            : "The next chapter is loading"}
           <span
             className={styles.cursor}
             aria-hidden="true"
@@ -90,20 +110,28 @@ export function Cr4ckoutNextEditionTeaser({
         </p>
 
         <p className={styles.lead}>
-          A new edition of the story-driven hacking
-          challenge is being prepared. The story, the
-          challenges and everything else stay encrypted
-          for now.
+          {registrationOpen
+            ? `The next edition of the story-driven hacking challenge is ready for its players.${
+                revealedDate || revealedLocation
+                  ? " The date and location are declassified;"
+                  : ""
+              } The story and the challenges stay encrypted until the day.`
+            : "A new edition of the story-driven hacking challenge is being prepared. The story, the challenges and everything else stay encrypted for now."}
         </p>
 
         <div className={styles.actions}>
           <a
             className={styles.primaryAction}
-            href={siteConfig.linkedin}
+            href={registrationUrl ?? siteConfig.linkedin}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
+            data-cr4ckout-ui={
+              registrationOpen ? "register" : "follow"
+            }
           >
-            Follow for the reveal
+            {registrationOpen
+              ? "Register now"
+              : "Follow for the reveal"}
             <span aria-hidden="true">↗</span>
           </a>
 
@@ -133,24 +161,44 @@ export function Cr4ckoutNextEditionTeaser({
       >
         <div className={styles.fileTop}>
           <span>FILE 03</span>
-          <span className={styles.restricted}>
-            ACCESS RESTRICTED
-          </span>
+          {registrationOpen ? (
+            <span className={styles.open}>
+              REGISTRATION OPEN
+            </span>
+          ) : (
+            <span className={styles.restricted}>
+              ACCESS RESTRICTED
+            </span>
+          )}
         </div>
 
         <dl className={styles.fileRows}>
           {caseFile.map((row) => (
-            <div key={row.label}>
+            <div
+              key={row.label}
+              data-revealed={row.value ? "true" : "false"}
+            >
               <dt>{row.label}</dt>
-              <dd>
-                <span
-                  className={styles.bar}
-                  aria-hidden="true"
-                />
-                <span className={styles.state}>
-                  {row.state}
-                </span>
-              </dd>
+              {row.value ? (
+                <dd className={styles.revealedRow}>
+                  <span className={styles.value}>
+                    {row.value}
+                  </span>
+                  <span className={styles.declassified}>
+                    Declassified
+                  </span>
+                </dd>
+              ) : (
+                <dd>
+                  <span
+                    className={styles.bar}
+                    aria-hidden="true"
+                  />
+                  <span className={styles.state}>
+                    {row.state}
+                  </span>
+                </dd>
+              )}
             </div>
           ))}
         </dl>

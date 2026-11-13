@@ -1,0 +1,215 @@
+/* NB_ANNOUNCEMENT_BAR_V1 */
+
+.bar {
+  position: relative;
+  z-index: 80;
+  border-bottom: 1px solid rgba(187, 173, 255, .22);
+  color: #eef2ff;
+  background:
+    linear-gradient(90deg, rgba(255, 107, 139, .08), transparent 30%, transparent 70%, rgba(143, 234, 243, .08)),
+    linear-gradient(90deg, #120e26, #0a1424 50%, #120e26);
+}
+
+:global(html[data-nb-announcement-dismissed]) .bar {
+  display: none;
+}
+
+.inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(calc(100% - 3rem), 1380px);
+  min-height: 2.6rem;
+  margin-inline: auto;
+  padding-inline: 2.5rem;
+}
+
+.link {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: .3rem .75rem;
+  padding: .5rem 0;
+  color: inherit;
+  font-size: .84rem;
+  line-height: 1.35;
+  text-align: center;
+  text-decoration: none;
+}
+
+.link:focus-visible {
+  border-radius: .3rem;
+  outline: 2px solid #8feaf3;
+  outline-offset: 3px;
+}
+
+.dot {
+  flex: 0 0 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff6b8b;
+  box-shadow: 0 0 10px rgba(255, 107, 139, .7);
+  animation: nbAnnouncePulse 2.2s ease-in-out infinite;
+}
+
+.label {
+  padding: .18rem .5rem;
+  border: 1px solid rgba(187, 173, 255, .45);
+  border-radius: .35rem;
+  color: #ddd7ff;
+  background: rgba(187, 173, 255, .1);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.message {
+  color: #ffffff;
+  font-weight: 650;
+}
+
+.detail {
+  color: #b9c6d8;
+}
+
+.messageShort,
+.ctaShort {
+  display: none;
+}
+
+.detail::before {
+  content: "·";
+  margin-right: .75rem;
+  color: #6f8095;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  color: #8feaf3;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: rgba(143, 234, 243, .45);
+  text-underline-offset: .22em;
+}
+
+.link:hover .cta {
+  color: #c9f8fb;
+  text-decoration-color: currentColor;
+}
+
+.close {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: .45rem;
+  color: #a9b6c8;
+  background: transparent;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.close svg {
+  width: .85rem;
+  height: .85rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-width: 1.8;
+}
+
+.close:hover {
+  border-color: rgba(255, 255, 255, .14);
+  color: #ffffff;
+  background: rgba(255, 255, 255, .06);
+}
+
+.close:focus-visible {
+  outline: 2px solid #8feaf3;
+  outline-offset: 2px;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@keyframes nbAnnouncePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .35; }
+}
+
+@media (max-width: 720px) {
+  .inner {
+    width: calc(100% - 2rem);
+    padding-inline: 0 2.3rem;
+    justify-content: flex-start;
+  }
+
+  .link {
+    justify-content: flex-start;
+    gap: .25rem .6rem;
+    font-size: .8rem;
+    text-align: left;
+  }
+
+  .detail,
+  .message,
+  .ctaLong {
+    display: none;
+  }
+
+  .messageShort,
+  .ctaShort {
+    display: inline;
+  }
+
+  .messageShort {
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .label {
+    padding: 0;
+    border: 0;
+    color: #ffffff;
+    background: none;
+    font-family: inherit;
+    font-size: inherit;
+    letter-spacing: 0;
+  }
+
+  .link {
+    gap: .25rem .4rem;
+  }
+
+  .dot {
+    margin-right: .15rem;
+  }
+
+  .cta {
+    margin-left: .2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dot {
+    animation: none;
+  }
+}

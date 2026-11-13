@@ -4,6 +4,7 @@ import type { TrainingProgram } from "@/types/content";
 import { Breadcrumbs } from "@/components/navigation/breadcrumbs";
 import { Container } from "@/components/layout/container";
 import { TrainingRegistrationAction } from "../course-registration-links";
+import { StarRating } from "@/components/training/star-rating";
 import styles from "./mcp-security-course-detail.module.css";
 
 const mcpComponents = [
@@ -83,6 +84,14 @@ export function McpSecurityCourseDetail({
                 {" "}
                 <span>Mentorship Program.</span>
               </h1>
+
+              {/* NB_TRAINING_RATINGS_V1 */}
+              {program.rating ? (
+                <StarRating
+                  rating={program.rating}
+                  placement="hero"
+                />
+              ) : null}
 
               <p className={styles.lead}>
                 Map the trust boundaries. Understand

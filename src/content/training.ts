@@ -7,6 +7,8 @@ export const trainingPrograms:
     {
       slug:
         "red-team-foundations",
+      // NB_TRAINING_RATINGS_V1: participant feedback
+      rating: { average: 4.9 },
       title:
         "Red Team Foundations",
       category:
@@ -109,6 +111,8 @@ export const trainingPrograms:
     {
       slug:
         "web-exploitation-techniques",
+      // NB_TRAINING_RATINGS_V1: participant feedback
+      rating: { average: 4.8 },
       title:
         "Web Exploitation Techniques",
       category:
@@ -172,6 +176,8 @@ export const trainingPrograms:
     {
       slug:
         "ai-security-foundations",
+      // NB_TRAINING_RATINGS_V1: participant feedback
+      rating: { average: 4.7 },
       title:
         "AI Security Foundations",
       category:
@@ -236,6 +242,8 @@ export const trainingPrograms:
     },
     {
       slug: "grc-enterprise",
+      // NB_TRAINING_RATINGS_V1: participant feedback
+      rating: { average: 4.8 },
       title: "GRC Enterprise Training Program",
       category: "Governance, Risk & Compliance",
       summary: "Build practical, enterprise-grade GRC capability with ISO 27001, NIST CSF, SOC 2 and GDPR, from risk registers to audit-ready evidence.",

@@ -32,7 +32,22 @@ export function TrainingStructuredData({
         educationalLevel:
           program.level,
         teaches:
-          program.objectives
+          program.objectives,
+        // NB_TRAINING_RATINGS_V1: search engines require a rating count
+        ...(program.rating?.count
+          ? {
+              aggregateRating: {
+                "@type":
+                  "AggregateRating",
+                ratingValue:
+                  program.rating.average,
+                bestRating: 5,
+                worstRating: 1,
+                ratingCount:
+                  program.rating.count
+              }
+            }
+          : {})
       }}
     />
   );

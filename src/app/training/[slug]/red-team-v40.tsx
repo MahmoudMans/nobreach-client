@@ -8,6 +8,7 @@ import {
   trainingPrograms
 } from "@/content/training";
 
+import { StarRating } from "@/components/training/star-rating";
 import styles from "./red-team-v40.module.css";
 
 
@@ -170,6 +171,14 @@ export function RedTeamV40() {
                   program.title
                 }
               </h1>
+
+              {/* NB_TRAINING_RATINGS_V1 */}
+              {program.rating ? (
+                <StarRating
+                  rating={program.rating}
+                  placement="hero"
+                />
+              ) : null}
 
 
               <p

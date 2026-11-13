@@ -35,6 +35,7 @@ import {
   trainingPrograms
 } from "@/content/training";
 
+import { StarRating } from "@/components/training/star-rating";
 import styles from "./home.module.css";
 
 
@@ -1272,6 +1273,14 @@ export default function HomePage() {
                       <h3>
                         {program.title}
                       </h3>
+
+                      {/* NB_TRAINING_RATINGS_V1 */}
+                      {program.rating ? (
+                        <StarRating
+                          rating={program.rating}
+                          size="sm"
+                        />
+                      ) : null}
 
                       <p>
                         {program.summary}

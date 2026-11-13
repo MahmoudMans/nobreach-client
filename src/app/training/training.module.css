@@ -2191,3 +2191,10 @@ li {
   }
 }
 /* NB_TRAINING_PREMIUM_REFRESH_V1_END */
+
+/* NB_TRAINING_RATINGS_V1 */
+.programRating,
+:global(#main-content) .programCard .programRating {
+  align-self: flex-start;
+  margin-top: .5rem;
+}

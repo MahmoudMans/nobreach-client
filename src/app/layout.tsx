@@ -7,6 +7,7 @@ import {
   Geist_Mono
 } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { AnnouncementBar } from "@/components/layout/announcement-bar";
 import { SiteHeader } from "@/components/layout/site-header";
 import { siteConfig } from "@/content/site";
 import "@/styles/globals.css";
@@ -62,7 +63,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable}`}
       >
@@ -72,6 +73,8 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
+
+        <AnnouncementBar />
 
         <SiteHeader />
 

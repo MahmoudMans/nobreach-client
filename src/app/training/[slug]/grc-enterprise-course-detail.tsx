@@ -4,6 +4,7 @@ import type { TrainingProgram } from "@/types/content";
 import { Breadcrumbs } from "@/components/navigation/breadcrumbs";
 import { Container } from "@/components/layout/container";
 import { TrainingRegistrationAction } from "../course-registration-links";
+import { StarRating } from "@/components/training/star-rating";
 import styles from "./grc-enterprise-course-detail.module.css";
 
 const frameworkNames = [
@@ -99,6 +100,14 @@ export function GrcEnterpriseCourseDetail({
                 {" "}
                 <span>Training Program.</span>
               </h1>
+
+              {/* NB_TRAINING_RATINGS_V1 */}
+              {program.rating ? (
+                <StarRating
+                  rating={program.rating}
+                  placement="hero"
+                />
+              ) : null}
 
               <p className={styles.lead}>
                 From technical security findings to

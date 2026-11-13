@@ -4,6 +4,7 @@ import {
   trainingPrograms
 } from "@/content/training";
 
+import { StarRating } from "@/components/training/star-rating";
 import styles from "./ai-security-course-detail.module.css";
 
 
@@ -123,6 +124,14 @@ export function AISecurityCourseDetail() {
               <h1>
                 {program.title}
               </h1>
+
+              {/* NB_TRAINING_RATINGS_V1 */}
+              {program.rating ? (
+                <StarRating
+                  rating={program.rating}
+                  placement="hero"
+                />
+              ) : null}
 
 
               <p

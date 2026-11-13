@@ -2,25 +2,26 @@ import type { EventItem } from "@/types/content";
 
 export const events: EventItem[] = [
   {
-    // NB_CR4CKOUT_3_TEASER_V1
-    // Teaser record: date, location and story are intentionally withheld.
-    // When the edition is announced, replace "year" and "location" with the
-    // real values and update the summary, description and format.
+    // NB_CR4CKOUT_3_TEASER_V1 + NB_CR4CKOUT_3_REGISTRATION_V1
+    // "year" holds the display date and "location" the venue. Values that
+    // contain "classified" stay hidden on the site. The story stays encrypted.
     slug: "cr4ckout-3-0",
     title: "CR4CKOUT 3.0",
     year: "Date classified",
     status: "upcoming",
     location: "Location classified",
     summary:
-      "The next chapter of the story-driven hacking challenge is being prepared. Everything else stays encrypted for now.",
+      "Registration is open for the next chapter of the story-driven hacking challenge. The story and the challenges stay encrypted until the day.",
     description: [
-      "A new CR4CKOUT edition is in preparation.",
-      "The story, the challenges and the details will be revealed when the file is declassified."
+      "Registration for CR4CKOUT 3.0 is open.",
+      "The story and the challenges stay encrypted until the event."
     ],
     format: [
       "Story encrypted",
       "Challenges sealed"
-    ]
+    ],
+    registrationUrl:
+      "https://docs.google.com/forms/d/e/1FAIpQLSfF07-cycT7bknomFBuqGCDfjTucjxnVsox0s9-MhBSUy0kqQ/viewform"
   },
   {
     slug: "cr4ckout-2-0",

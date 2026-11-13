@@ -16,6 +16,7 @@ import {
   createMetadata
 } from "@/lib/seo";
 
+import { StarRating } from "@/components/training/star-rating";
 import styles from "./training.module.css";
 
 
@@ -378,6 +379,16 @@ export default function TrainingPage() {
                           program.title
                         }
                       </h3>
+
+
+                      {/* NB_TRAINING_RATINGS_V1 */}
+                      {program.rating ? (
+                        <StarRating
+                          rating={program.rating}
+                          size="sm"
+                          className={styles.programRating}
+                        />
+                      ) : null}
 
 
                       <p

@@ -52,6 +52,15 @@ export type TrainingProgram = {
   prerequisites: string[];
   audience: string[];
   outcomes: string[];
+  // NB_TRAINING_RATINGS_V1: real participant feedback only
+  rating?: TrainingRating;
+};
+
+export type TrainingRating = {
+  // average score out of 5, e.g. 4.8
+  average: number;
+  // number of participants who rated the program (optional; hidden if absent)
+  count?: number;
 };
 
 export type ActivityCategory =
@@ -96,6 +105,10 @@ export type EventItem = {
   summary: string;
   description: string[];
   format: string[];
+  // NB_CR4CKOUT_3_REGISTRATION_V1
+  // ISO date (YYYY-MM-DD) when announced, used for structured data
+  startDate?: string;
+  registrationUrl?: string;
 };
 
 export type TeamMember = {

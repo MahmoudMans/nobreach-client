@@ -39,7 +39,7 @@ describe(
   () => {
 
     it(
-      "publishes an upcoming record that withholds date and location",
+      "publishes an upcoming record with an open registration form",
       () => {
 
         const event =
@@ -57,16 +57,17 @@ describe(
           "upcoming"
         );
 
+        // NB_CR4CKOUT_3_REGISTRATION_V1
         expect(
-          event?.year
-        ).not.toMatch(
-          /\d/
+          event?.registrationUrl
+        ).toBe(
+          "https://docs.google.com/forms/d/e/1FAIpQLSfF07-cycT7bknomFBuqGCDfjTucjxnVsox0s9-MhBSUy0kqQ/viewform"
         );
 
         expect(
-          event?.location
-        ).not.toMatch(
-          /tunis|online/i
+          event?.format.join(" ")
+        ).toMatch(
+          /encrypted/i
         );
 
       }

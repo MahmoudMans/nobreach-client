@@ -335,6 +335,36 @@
   text-transform: uppercase;
 }
 
+/* NB_CR4CKOUT_3_REGISTRATION_V1: open state + declassified rows */
+.open {
+  padding: .3rem .55rem;
+  border: 1px solid rgba(143, 234, 243, .5);
+  border-radius: .35rem;
+  color: #c9f8fb;
+  background: rgba(143, 234, 243, .08);
+}
+
+.fileRows .revealedRow {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.value {
+  min-width: 0;
+  color: #ffffff;
+  font-size: .98rem;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.declassified {
+  color: #8feaf3;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: .62rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
 .fragment {
   margin: 1.2rem 0 0;
   padding: .9rem 1rem;

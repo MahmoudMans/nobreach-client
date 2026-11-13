@@ -1,13 +1,16 @@
-// NB_CR4CKOUT_3_TEASER_V1
-// Dedicated teaser page for /events/cr4ckout-3-0.
-// No Event structured data is emitted on purpose: there is no public date yet.
+// NB_CR4CKOUT_3_TEASER_V1 + NB_CR4CKOUT_3_REGISTRATION_V1
+// Dedicated page for /events/cr4ckout-3-0.
+// Event structured data is only emitted once a real startDate is set.
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
+import { JsonLd } from "@/components/ui/json-ld";
+import { siteConfig } from "@/content/site";
 import { Cr4ckoutNextEditionTeaser } from "@/components/cr4ckout/next-edition-teaser";
 import { getActivity } from "@/content/activities";
 import { getEvent } from "@/content/events";
 import styles from "./cr4ckout-3-teaser.module.css";
 
+const edition = getEvent("cr4ckout-3-0");
 const previousEdition = getEvent("cr4ckout-2-0");
 const launch = getActivity("cr4ckout-launched");
 
@@ -41,6 +44,44 @@ export function Cr4ckout3Teaser() {
       className={styles.page}
       data-event-detail="cr4ckout-3-teaser"
     >
+      {edition?.startDate ? (
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "Event",
+            name: edition.title,
+            description: edition.summary,
+            startDate: edition.startDate,
+            eventStatus: "https://schema.org/EventScheduled",
+            eventAttendanceMode:
+              "https://schema.org/OfflineEventAttendanceMode",
+            location: {
+              "@type": "Place",
+              name: edition.location,
+              address: edition.location
+            },
+            organizer: {
+              "@type": "Organization",
+              name: siteConfig.name,
+              url: siteConfig.url
+            },
+            url: new URL(
+              `/events/${edition.slug}`,
+              siteConfig.url
+            ).toString(),
+            ...(edition.registrationUrl
+              ? {
+                  offers: {
+                    "@type": "Offer",
+                    url: edition.registrationUrl,
+                    availability: "https://schema.org/InStock"
+                  }
+                }
+              : {})
+          }}
+        />
+      ) : null}
+
       <section className={styles.hero}>
         <Container>
           <Link
